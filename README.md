@@ -79,9 +79,7 @@ Encapsulating Context and Hooks in atomic modules has the following advantages.
 - Easier to debug and test.
 - Idiomatic.
 
-T
-
-```
+```tsx
 import React, { useState, useEffect, createContext, useContext, useMemo } from 'react';
 import useNotifications from 'hooks/useNotifications'
 import { OneOrMoreChildren, CustomHookContextType } from './types';
