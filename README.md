@@ -84,7 +84,7 @@ import React, { useState, useEffect, createContext, useContext, useMemo } from '
 import useNotifications from 'hooks/useNotifications'
 import { OneOrMoreChildren, CustomHookContextType } from './types';
 
-const customHookDefaults = { showNotification: () => {}, message: null };
+const customHookDefaults = { setMessage: () => {} };
 const CustomHookContext = createContext<CustomHookContextType>(customHookDefaults);
 
 export default function useCustomHook() {
