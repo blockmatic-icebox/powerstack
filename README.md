@@ -168,7 +168,7 @@ Just put all related functionality on the same file or directory with and index.
 
 ## Testing
 
-Write tests, not too mainly integration.
+Write tests, not too many, mainly integration.
 E2E testing and API black box testing will catch most errors and regressions you care about, let the code change fast internally without unit test overhead.
 Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
 
