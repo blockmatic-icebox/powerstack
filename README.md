@@ -111,7 +111,7 @@ export function CustomHookProvider({ children }: OneOrMoreChildren) {
   useEffect(()=>{
       observable.subscribe('message', ({message})=> setMessage(message))
       return () => observable.unsubscribe()
-  },[message])
+  },[])
 
   return (
     <CustomHookContext.Provider value={{ setMessage }}>
@@ -123,7 +123,7 @@ export function CustomHookProvider({ children }: OneOrMoreChildren) {
 
 ```
 
-## Project Structures
+## Project Structure
 
 It very simple. Functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js.
 Just put all related functionality on the same file or directory with and index.tsx file.
