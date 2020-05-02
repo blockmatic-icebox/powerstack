@@ -111,12 +111,11 @@ export function CustomHookProvider({ children }: OneOrMoreChildren) {
   useEffect(()=>{
       observable.subscribe('message', ({message})=> setMessage(message))
       return () => observable.unsubscribe()
-  },[])
+  },[observable])
 
   return (
     <CustomHookContext.Provider value={{ setMessage }}>
       {children}
-      <FlashMessage position="top" MessageComponent={InAppNotification} />
     </CustomHookContext.Provider>
   );
 }
