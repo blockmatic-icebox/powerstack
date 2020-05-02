@@ -66,7 +66,7 @@ Hooks allow you to reuse stateful logic without changing your component hierarch
 
 Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
 
-## Hook + Context Pattern
+## Context Hook Pattern
 
 This is ADN of the Hooks Architecture, you will find it everywhere.
 
