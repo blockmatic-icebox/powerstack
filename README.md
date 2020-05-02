@@ -182,6 +182,15 @@ TODO
 - https://github.com/blockmatic/react-dapp-stack
 - https://telosdreamstack.io
 
+## Credits
+
+- @kentcdodds
+- @rauchg
+- @kevinwolfdev
+- @kevinrodriguez-io
+- @lmatteis
+- @mpj
+
 ## Contributing
 
 Read the [contributing guidelines](https://developers.blockmatic.io) for details.
