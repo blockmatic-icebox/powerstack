@@ -102,7 +102,7 @@ export default function useCustomHook() {
 export function CustomHookProvider({ children }: OneOrMoreChildren) {
   const [message, setMessage] = useState<Message | null>(null);
   const { showNotification } = useNotifications()
-  const observable = useMemo(()=> createObservable())
+  const observable = useMemo(()=> createObservable(), [])
 
   useEffect(()=>{
       showNotification({message})
