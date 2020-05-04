@@ -184,12 +184,12 @@ TODO
 
 ## Credits
 
-- @kentcdodds
-- @rauchg
-- @kevinwolfdev
-- @kevinrodriguez-io
-- @lmatteis
-- @mpj
+- Kent C. Dodds [@kentcdodds](https://github.com/kentcdodds)
+- Kevin Wolf [@kevinwolfdev](https://github.com/kevinwolfdev)
+- Kevin Rodríguez [@kevinrodriguez-io](https://github.com/kevinrodriguez-io)
+- Guillermo Rauch [@rauchg](https://github.com/rauchg)
+- Luca Matteis [@lmatteis](https://github.com/lmatteis)
+- Mattias Petter Johansson [@mpj](https://github.com/mpj)
 
 ## Contributing
 
