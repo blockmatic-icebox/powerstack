@@ -80,47 +80,135 @@ Encapsulating Context and Hooks in atomic modules has the following advantages.
 - Idiomatic.
 
 ```tsx
-import React, { useState, useEffect, createContext, useContext, useMemo } from 'react';
-import useNotifications from 'hooks/useNotifications'
-import { OneOrMoreChildren, CustomHookContextType } from './types';
+import React from 'react';
+import useNotifications from 'hooks/useNotifications';
+import { createObservable } from 'lib/observables';
+import { CustomHookContextType, Message } from './types';
 
 const customHookDefaults = { setMessage: () => {} };
-const CustomHookContext = createContext<CustomHookContextType>(customHookDefaults);
+const CustomHookContext = React.createContext<CustomHookContextType>(customHookDefaults);
 
-export default function useCustomHook() {
-  const context = useContext(CustomHookContext);
+const CustomHookProvider = ({ children }) => {
+  const [message, setMessage] = React.useState<Message | null>(null);
+  const observable = React.useMemo(() => createObservable(), []);
+  const { showNotification } = useNotifications();
 
-  if (context === undefined) {
-    throw new Error(
-      'You must wrap your application with <CustomHookProvider /> in order to useCustomHook().',
-    );
-  }
+  React.useEffect(() => {
+    showNotification({ message });
+  }, [message, showNotification]);
 
-  return context;
-}
-
-export function CustomHookProvider({ children }: OneOrMoreChildren) {
-  const [message, setMessage] = useState<Message | null>(null);
-  const { showNotification } = useNotifications()
-  const observable = useMemo(()=> createObservable(), [])
-
-  useEffect(()=>{
-      showNotification({message})
-  },[message])
-
-  useEffect(()=>{
-      observable.subscribe('message', ({message})=> setMessage(message))
-      return () => observable.unsubscribe()
-  },[observable])
+  React.useEffect(() => {
+    observable.subscribe('message', ({ message }) => setMessage(message));
+    return () => observable.unsubscribe();
+  }, [observable]);
 
   return (
     <CustomHookContext.Provider value={{ setMessage }}>
       {children}
     </CustomHookContext.Provider>
   );
-}
+};
+
+const useCustomHook = () => {
+  const context = React.useContext(CustomHookContext);
+
+  if (context === undefined) {
+    throw new Error(
+      'You must wrap your application with <CustomHookProvider /> in order to useCustomHook().'
+    );
+  }
+
+  return context;
+};
+
+export default useCustomHook;
 
 ```
+
+## Context Container Pattern
+
+The context container pattern allow us to easily create state containers based on react hooks.  It simplifies and removes all the boilerplate required to create context hooks.
+
+
+[@kevinwolfdev](https://github.com/kevinwolfdev) created this utility function that creates context containers for react hooks. 
+
+```jsx
+import React from 'react';
+
+export interface ContainerProviderProps<State = void> {
+  initialState?: State;
+}
+
+export interface Container<Value, State = void> {
+  Provider: React.ComponentType<ContainerProviderProps<State>>;
+  useContainer: () => Value;
+}
+
+const EMPTY: unique symbol = Symbol('__EMPTY__');
+
+const createContainer = <Value, State = void>(
+  useHook: (initialState?: State) => Value,
+  errorMsg = 'Component must be wrapped with <Container.Provider />',
+): Container<Value, State> => {
+  const Context = React.createContext<Value | typeof EMPTY>(EMPTY);
+
+  const Provider: React.FC<ContainerProviderProps<State>> = ({ initialState, children }) => {
+    const value = useHook(initialState);
+    return <Context.Provider value={value}>{children}</Context.Provider>;
+  };
+
+  const useContainer = (): Value => {
+    const value = React.useContext(Context);
+    if (value === EMPTY) {
+      throw new Error(errorMsg);
+    }
+    return value;
+  };
+
+  return { Provider, useContainer };
+};
+
+export default createContainer;
+
+```
+
+Example: 
+
+```jsx
+import randomQuote from 'lib/randomQuote';
+import React from 'react';
+import createContainer from 'utils/createContainer';
+
+export const useRandomQuote = () => {
+  const [quote, setQuote] = React.useState<string>(randomQuote());
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setQuote(randomQuote());
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  });
+
+  return quote;
+};
+
+const RandomQuoteContext = createContainer(useRandomQuote);
+
+export default RandomQuoteContext;
+
+```
+
+```jsx
+export const MyComponent = () => {
+  const {quote} = RandomQuoteContext.useContainer()
+
+  return (<div><h3>Random Quote</h3><p>{quote.text}</p></div>)
+};
+```
+
+
 
 ## Project Structure
 
@@ -175,7 +263,8 @@ Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 
 ## Examples
 
-TODO
+The TELOS DreamStack project starters follow this architecture and patterns.
+https://github.com/telosdreamstack
 
 ## Other resources
 
