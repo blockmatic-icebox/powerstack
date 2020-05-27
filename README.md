@@ -88,7 +88,7 @@ import { CustomHookContextType, Message } from './types';
 const customHookDefaults = { setMessage: () => {} };
 const CustomHookContext = React.createContext<CustomHookContextType>(customHookDefaults);
 
-const CustomHookProvider = ({ children }) => {
+const CustomHookProvider : React.FC  = ({ children }) => {
   const [message, setMessage] = React.useState<Message | null>(null);
   const observable = React.useMemo(() => createObservable(), []);
   const { showNotification } = useNotifications();
@@ -127,7 +127,7 @@ export default useCustomHook;
 
 ## Context Container Pattern
 
-The context container pattern allow us to easily create state containers based on react hooks.  It simplifies and removes all the boilerplate required to create context hooks.
+The context container pattern allows us to easily create state containers based on react hooks.  It simplifies and removes all the boilerplate required to create context hooks.
 
 
 [@kevinwolfdev](https://github.com/kevinwolfdev) created this utility function that creates context containers for react hooks. 
