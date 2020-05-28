@@ -74,8 +74,8 @@ The Context API in React allows you share state between different components.
 Encapsulating Context and Hooks in atomic modules has the following advantages.
 
 - Prevents prop drilling.
-- Allows to follow the single responsibility principle.
-- Allows portability.
+- Single responsibility principle.
+- Increased portability.
 - Easier to debug and test.
 - Idiomatic.
 
