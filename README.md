@@ -202,7 +202,7 @@ export default RandomQuoteContext;
 
 ```jsx
 export const MyComponent = () => {
-  const {quote} = RandomQuoteContext.useContainer()
+  const quote = RandomQuoteContext.useContainer()
 
   return (<div><h3>Random Quote</h3><p>{quote.text}</p></div>)
 };
