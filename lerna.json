@@ -1,0 +1,17 @@
+{
+  "packages": ["example", "packages/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "createRelease": "github"
+    },
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "ignoreChanges": ["!packages/**"],
+      "message": "chore(release): 🚀 [skip ci]"
+    }
+  }
+}

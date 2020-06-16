@@ -1,0 +1,8 @@
+.DS_Store
+coverage
+node_modules
+packages/**/lib
+storybook-static
+rn-renderer
+example
+**/__tests__/**
