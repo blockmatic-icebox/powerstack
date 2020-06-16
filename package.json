@@ -33,6 +33,7 @@
     "@blockmatic/eslint-config": "^1.3.11",
     "@blockmatic/prettier-config": "^1.3.3",
     "@blockmatic/tsconfig": "^1.8.4",
+    "env-cmd": "^10.1.0",
     "eslint": "6.6.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "husky": "^4.2.5",
