@@ -328,6 +328,12 @@ Specifically the cost for `useCallback` and `useMemo` are that you make the code
 - https://kentcdodds.com/blog/usememo-and-usecallback
 - https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
 
+### typescript types or interfaces?
+
+Always use interface for public API's definition when authoring a library or 3rd party ambient type definitions.
+
+Use type for your React Component Props and State, because it is more constrained.
+
 ## Examples
 
 The TELOS DreamStack project starters follow this architecture and patterns.
