@@ -269,6 +269,65 @@ We provide a hooks architecture toolkit with tools for creating react and react 
 
 See [packages/hooks-architecture](./packages/hooks-architecture) for a thorough guide.
 
+## Code Style Conventions
+
+### Define components and methods as constant arrow functions
+
+It helps with type inference and typescript intelisense in your VSCode
+
+```jsx
+const MyComponent: React:FC = ({children}) => {
+ const myMethod = () => { }
+
+ return <View>{children}</View>;
+}
+```
+
+### Keep things that don't change outside of React components in VanillaJS
+
+Ej. defaults, constants, browser configuration.
+
+```jsx
+const userAgent = window.navigator.userAgent;
+const pageTitle = randomTitle();
+
+const MyPageTitle: React:FC = ({children}) =>  {
+ return <Text>{pageTitle}</Text>;
+}
+```
+
+### Names in camelCase, tolerate snake_ase attributes ( eosio cpp style )
+
+```jsx
+const myVar = 'this a var or function name within the JS code'
+const blockmaticAccount = await rpc.get_account('blockmaticio')
+console.log(blockmaticAccount.last_code_update) // eosio snake case attributes, that's fine.
+```
+
+### useState with functional updates
+
+```jsx
+const [count, setCount] = React.useState(0)
+const inc = React.useCallback(() => setCount((c) => c + 1), [])
+```
+
+### useReducer
+
+`useReducer` memoization works exactly as `useState` in this case. Since dispatch is guaranteed to have same reference across renders, `useCallback` is not needed, which makes code less error-prone to memoization related bugs.
+
+```jsx
+const [count, inc] = React.useReducer((c) => c + 1, 0)
+```
+
+### avoid over optimization (`useCallback` and `useMemo`)
+
+Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
+
+Specifically the cost for `useCallback` and `useMemo` are that you make the code more complex for your co-workers, you could make a mistake in the dependencies array, and you're potentially making performance worse by invoking the built-in hooks and preventing dependencies and memoized values from being garbage collected. Those are all fine costs to incur if you get the performance benefits necessary, but it's best to measure first.
+
+- https://kentcdodds.com/blog/usememo-and-usecallback
+- https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
+
 ## Examples
 
 The TELOS DreamStack project starters follow this architecture and patterns.
