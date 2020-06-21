@@ -6,10 +6,10 @@ export type Unwrap<T> = T extends Promise<infer U> ? U : T extends (...args: any
 type ExtendableError = Error & Record<string, any>
 
 export type State<Result> = {
-  isLoading: boolean
+  loading: boolean
   result: Result | null
   error: ExtendableError | null
-  wasSuccessful: boolean
+  success: boolean
 }
 
 export type Action<Result> = { type: 'start' } | { type: 'succeed'; payload: Result } | { type: 'fail'; payload: Error }

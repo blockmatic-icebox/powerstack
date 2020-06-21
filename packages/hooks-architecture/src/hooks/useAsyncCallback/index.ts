@@ -8,10 +8,10 @@ export default function useAsyncCallback<Cb extends AnyPromise, Result = Unwrap<
   const isMounted = useIsMounted()
 
   const [state, dispatch] = useReducer(createReducer<Result>(), {
-    isLoading: false,
+    loading: false,
     result: null,
     error: null,
-    wasSuccessful: false,
+    success: false,
   })
 
   const exec = useCallback(
