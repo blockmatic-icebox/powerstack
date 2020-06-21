@@ -265,7 +265,8 @@ Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 
 ## Hooks Architecture toolkit
 
-We provide a hooks architecture toolkit with tools for creating react and react native application following these patterns.
+We provide a hooks architecture toolkit with tools for creating react and react native applications following these architectural patterns.
+
 See [packages/hooks-architecture](./packages/hooks-architecture) for a thorough guide.
 
 ## Examples
