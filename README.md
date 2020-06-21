@@ -80,57 +80,57 @@ Encapsulating Context and Hooks in atomic modules has the following advantages.
 - Idiomatic.
 
 ```tsx
-import React from 'react';
-import useNotifications from 'hooks/useNotifications';
-import { createObservable } from 'lib/observables';
-import { CustomHookContextType, Message } from './types';
+import React from 'react'
+import useNotifications from 'hooks/useNotifications'
+import { createObservable } from 'lib/observables'
+import { CustomHookContextType, Message } from './types'
 
-const customHookDefaults = { setMessage: () => {} };
-const CustomHookContext = React.createContext<CustomHookContextType>(customHookDefaults);
+const customHookDefaults = { setMessage: () => {} }
+const CustomHookContext = React.createContext<CustomHookContextType>(
+  customHookDefaults,
+)
 
-const CustomHookProvider : React.FC  = ({ children }) => {
-  const [message, setMessage] = React.useState<Message | null>(null);
-  const observable = React.useMemo(() => createObservable(), []);
-  const { showNotification } = useNotifications();
-
-  React.useEffect(() => {
-    showNotification({ message });
-  }, [message, showNotification]);
+const CustomHookProvider: React.FC = ({ children }) => {
+  const [message, setMessage] = React.useState<Message | null>(null)
+  const observable = React.useMemo(() => createObservable(), [])
+  const { showNotification } = useNotifications()
 
   React.useEffect(() => {
-    observable.subscribe('message', ({ message }) => setMessage(message));
-    return () => observable.unsubscribe();
-  }, [observable]);
+    showNotification({ message })
+  }, [message, showNotification])
+
+  React.useEffect(() => {
+    observable.subscribe('message', ({ message }) => setMessage(message))
+    return () => observable.unsubscribe()
+  }, [observable])
 
   return (
     <CustomHookContext.Provider value={{ setMessage }}>
       {children}
     </CustomHookContext.Provider>
-  );
-};
+  )
+}
 
 const useCustomHook = () => {
-  const context = React.useContext(CustomHookContext);
+  const context = React.useContext(CustomHookContext)
 
   if (context === undefined) {
     throw new Error(
-      'You must wrap your application with <CustomHookProvider /> in order to useCustomHook().'
-    );
+      'You must wrap your application with <CustomHookProvider /> in order to useCustomHook().',
+    )
   }
 
-  return context;
-};
+  return context
+}
 
-export default useCustomHook;
-
+export default useCustomHook
 ```
 
 ## Context Container Pattern
 
-The context container pattern allows us to easily create state containers based on react hooks.  It simplifies and removes all the boilerplate required to create context hooks.
+The context container pattern allows us to easily create state containers based on react hooks. It simplifies and removes all the boilerplate required to create context hooks.
 
-
-[@kevinwolfdev](https://github.com/kevinwolfdev) created this utility function that creates context containers for react hooks. 
+[@kevinwolfdev](https://github.com/kevinwolfdev) created this utility function that creates context containers for react hooks.
 
 ```jsx
 import React from 'react';
@@ -172,43 +172,45 @@ export default createContainer;
 
 ```
 
-Example: 
+Example:
 
 ```jsx
-import randomQuote from 'lib/randomQuote';
-import React from 'react';
-import createContainer from 'utils/createContainer';
+import randomQuote from 'lib/randomQuote'
+import React from 'react'
+import createContainer from 'utils/createContainer'
 
 export const useRandomQuote = () => {
-  const [quote, setQuote] = React.useState<string>(randomQuote());
+  const [quote, setQuote] = React.useState < string > randomQuote()
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setQuote(randomQuote());
-    }, 3000);
+      setQuote(randomQuote())
+    }, 3000)
     return () => {
-      clearInterval(interval);
-    };
-  });
+      clearInterval(interval)
+    }
+  })
 
-  return quote;
-};
+  return quote
+}
 
-const RandomQuoteContext = createContainer(useRandomQuote);
+const RandomQuoteContext = createContainer(useRandomQuote)
 
-export default RandomQuoteContext;
-
+export default RandomQuoteContext
 ```
 
 ```jsx
 export const MyComponent = () => {
   const quote = RandomQuoteContext.useContainer()
 
-  return (<div><h3>Random Quote</h3><p>{quote.text}</p></div>)
-};
+  return (
+    <div>
+      <h3>Random Quote</h3>
+      <p>{quote.text}</p>
+    </div>
+  )
+}
 ```
-
-
 
 ## Project Structure
 
@@ -261,15 +263,15 @@ Of course it depends on the project and the particular functionality. Test your 
 
 Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 
+## Hooks Architecture toolkit
+
+We provide a hooks architecture toolkit with tools for creating react and react native application following these patterns.
+See [packages/hooks-architecture](./packages/hooks-architecture) for a thorough guide.
+
 ## Examples
 
 The TELOS DreamStack project starters follow this architecture and patterns.
 https://github.com/telosdreamstack
-
-## Other resources
-
-- https://github.com/blockmatic/react-dapp-stack
-- https://telosdreamstack.io
 
 ## Credits
 
@@ -282,7 +284,15 @@ https://github.com/telosdreamstack
 
 ## Contributing
 
-Read the [contributing guidelines](https://developers.blockmatic.io) for details.
+[Contributing Guide](./CONTRIBUTING.md)
+
+[Code of Conduct](./CONTRIBUTING.md#conduct)
+
+## Important
+
+See [LICENSE](./LICENSE) for copyright and license terms.
+
+All repositories and other materials are provided subject to the terms of this [IMPORTANT](./IMPORTANT.md) notice and you must familiarize yourself with its terms. The notice contains important information, limitations and restrictions relating to our software, publications, trademarks, third-party resources, and forward-looking statements. By accessing any of our repositories and other materials, you accept and agree to the terms of the notice.
 
 ## Blockmatic
 
@@ -303,15 +313,15 @@ Blockmatic is building a robust ecosystem of people and tools for the developmen
 
 <!-- icons with padding -->
 
-[1.1]: http://i.imgur.com/tXSoThF.png "twitter icon with padding"
-[2.1]: http://i.imgur.com/P3YfQoD.png "facebook icon with padding"
-[3.1]: http://i.imgur.com/0o48UoR.png "github icon with padding"
+[1.1]: http://i.imgur.com/tXSoThF.png 'twitter icon with padding'
+[2.1]: http://i.imgur.com/P3YfQoD.png 'facebook icon with padding'
+[3.1]: http://i.imgur.com/0o48UoR.png 'github icon with padding'
 
 <!-- icons without padding -->
 
-[1.2]: http://i.imgur.com/wWzX9uB.png "twitter icon without padding"
-[2.2]: http://i.imgur.com/fep1WsG.png "facebook icon without padding"
-[3.2]: http://i.imgur.com/9I6NRUm.png "github icon without padding"
+[1.2]: http://i.imgur.com/wWzX9uB.png 'twitter icon without padding'
+[2.2]: http://i.imgur.com/fep1WsG.png 'facebook icon without padding'
+[3.2]: http://i.imgur.com/9I6NRUm.png 'github icon without padding'
 
 <!-- links to your social media accounts -->
 <!-- update these accordingly -->
