@@ -85,10 +85,7 @@ import useNotifications from 'hooks/useNotifications'
 import { createObservable } from 'lib/observables'
 import { CustomHookContextType, Message } from './types'
 
-const customHookDefaults = { setMessage: () => {} }
-const CustomHookContext = React.createContext<CustomHookContextType>(
-  customHookDefaults,
-)
+const CustomHookContext = React.createContext<CustomHookContextType | null>(null)
 
 const CustomHookProvider: React.FC = ({ children }) => {
   const [message, setMessage] = React.useState<Message | null>(null)
