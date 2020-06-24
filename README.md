@@ -461,7 +461,7 @@ const inc = React.useCallback(() => setCount((c) => c + 1), [])
 const [count, inc] = React.useReducer((c) => c + 1, 0)
 ```
 
-### avoid over optimization (`useCallback` and `useMemo`)
+### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
 
@@ -470,12 +470,18 @@ Specifically the cost for `useCallback` and `useMemo` are that you make the code
 - https://kentcdodds.com/blog/usememo-and-usecallback
 - https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
 
-### typescript types or interfaces?
+### Typescript types or interfaces?
 
 Always use interface for public API's definition when authoring a library or 3rd party ambient type definitions.
 
-Use type for your React Component Props and State, because it is more constrained.
+Use type for your React Component Props and State, because it is more constrained. 
 
+### File names
+
+- PascalCase for all react components.  eg. `AddUser.tsx`
+- camelCase for hooks files. eg. `useSubscription.tsx`
+- lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
+ 
 ## Examples
 
 The TELOS DreamStack project starters follow this architecture and patterns.
