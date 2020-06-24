@@ -68,10 +68,9 @@ Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motiva
 
 ## Context Hook Pattern
 
-This is ADN of the Hooks Architecture, you will find it everywhere.
-
-The Context API in React allows you share state between different components.  
-Encapsulating Context and Hooks in atomic modules has the following advantages.
+This is ADN of the Hooks Architecture, you will find it everywhere.   
+The Context API in React allows you to share state between different components.     
+Encapsulating Context and Hooks in atomic modules has the following advantages.    
 
 - Prevents prop drilling.
 - Single responsibility principle.
@@ -211,10 +210,10 @@ export const MyComponent = () => {
 
 ## Dispatch Context Pattern
 
-Often times want to separate your actions and you state in different React contexts to prevent unncessary or undesired renders.
+Often we want to separate actions from the state into different React contexts to prevent unnecessary or undesired renders.
 
-Ex. Consider the following code. We have 2 components, one for load posts button and one for displaying the posts.
-When you click on the button that invokes the login action it will set isLoggedIn to true in the context of our custom hook, which will cause the LoginComponent to rerender and sometimes that's not disarable. 
+Consider the following code. We have 2 components, one for load posts button and one for displaying the posts.
+When you click on the button that invokes the login action it will set isLoggedIn to true in the context of our custom hook, which will cause the LoginComponent to rerender, and sometimes that's not desirable.
 
 ```jsx
 const LoadPost: React.FC = () => {
@@ -235,7 +234,7 @@ const ShowPost: React.FC = () => {
 
 ```
 
-We can prevent this behaviour by splitting the context hooks, typically one for state and another one for the actions.
+We can prevent this behavior by splitting the context hooks, typically one for state and another one for the actions. 
 
 
 ```jsx
