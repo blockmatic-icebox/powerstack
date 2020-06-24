@@ -333,22 +333,24 @@ __The state and dispatch separation is annoying__
 
 Some people find this annoying/overly verbose:
 
-```
+```jsx
 const state = usePostState()
-const dispatch = usePostDispatch()
+const dispatch = usePostsDispatch()
 ```
 
 They say "can't we just do this?":
 
-```
+```jsx
 const [state, dispatch] = usePost()
 ```
+
 Sure you can:
 
+```jsx
 const usePost = () => {
   return [usePostsState(), usePostsDispatch()]
 }
-
+```
 
 Kent. C. Dodds has great article on the topic https://kentcdodds.com/blog/how-to-use-react-context-effectively 
 
