@@ -480,6 +480,15 @@ Use type for your React Component Props and State, because it is more constraine
 - PascalCase for all react components.  eg. `AddUser.tsx`
 - camelCase for hooks files. eg. `useSubscription.tsx`
 - lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
+
+## The Hooks Architecture Toolkit
+
+Tools to leverage this type of architecture will be provided as part of this project. 
+
+Checkout the [./packages](https://github.com/blockmatic/hooks-architecture/tree/master/packages) directory if you want to take a look, more usage documentation will be provided soon.
+
+This is a work in progress. Join the telegram channel for more information.
+https://t.me/blockmatic
  
 ## Examples
 
