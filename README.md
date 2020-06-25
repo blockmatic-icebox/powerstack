@@ -175,7 +175,7 @@ import randomQuote from 'lib/randomQuote'
 import React from 'react'
 import createContainer from 'utils/createContainer'
 
-export const useRandomQuote = () => {
+const useRandomQuote = () => {
   const [quote, setQuote] = React.useState < string > randomQuote()
 
   React.useEffect(() => {
@@ -190,7 +190,9 @@ export const useRandomQuote = () => {
   return quote
 }
 
-const RandomQuoteContext = createContainer(useRandomQuote)
+const RandomQuoteContext = createContainer(useRandomQuote,
+  'You must wrap your application with <RandomQuoteContext.Provider /> in order to RandomQuoteContext.useContainer().'
+)
 
 export default RandomQuoteContext
 ```
@@ -389,7 +391,7 @@ Just put all related functionality on the same file or directory with and index.
 │       ├── useProfileCustomizations.tsx
 │       └── Preferences
 │           ├── index.tsx
-│           └──  usePreferenceMatrix.tsx
+│           └── usePreferenceMatrix.tsx
 ├── utils .................................. Utility functions
 │   └── index.tsx
 └── library ................................ Third party libs, sdks, etc
@@ -481,14 +483,11 @@ Use type for your React Component Props and State, because it is more constraine
 - camelCase for hooks files. eg. `useSubscription.tsx`
 - lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
 
-## The Hooks Architecture Toolkit
+## Hooks utilities 
 
-Tools to leverage this type of architecture will be provided as part of this project. 
+`@blockmatic/hooks-utils` provides a set utility hooks you can leverage in your projects. 
 
-Checkout the [./packages](https://github.com/blockmatic/hooks-architecture/tree/master/packages) directory if you want to take a look, more usage documentation will be provided soon.
-
-This is a work in progress. Join the telegram channel for more information.
-https://t.me/blockmatic
+https://github.com/blockmatic/hooks-utils
  
 ## Examples
 
@@ -503,18 +502,6 @@ https://github.com/telosdreamstack
 - Guillermo Rauch [@rauchg](https://github.com/rauchg)
 - Luca Matteis [@lmatteis](https://github.com/lmatteis)
 - Mattias Petter Johansson [@mpj](https://github.com/mpj)
-
-## Contributing
-
-[Contributing Guide](./CONTRIBUTING.md)
-
-[Code of Conduct](./CONTRIBUTING.md#conduct)
-
-## Important
-
-See [LICENSE](./LICENSE) for copyright and license terms.
-
-All repositories and other materials are provided subject to the terms of this [IMPORTANT](./IMPORTANT.md) notice and you must familiarize yourself with its terms. The notice contains important information, limitations and restrictions relating to our software, publications, trademarks, third-party resources, and forward-looking statements. By accessing any of our repositories and other materials, you accept and agree to the terms of the notice.
 
 ## Blockmatic
 
