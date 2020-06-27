@@ -406,12 +406,6 @@ Of course it depends on the project and the particular functionality. Test your 
 
 Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 
-## Hooks Architecture Toolkit
-
-We provide a hooks architecture toolkit with tools for creating react and react native applications following these architectural patterns.
-
-See [packages/hooks-architecture](./packages/hooks-architecture) for a thorough guide.
-
 ## Code Style Conventions
 
 ### Define components and methods as constant arrow functions
