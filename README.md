@@ -240,10 +240,10 @@ We can prevent this behavior by splitting the context hooks, typically one for s
 
 
 ```jsx
-import React, { createContext, useReducer, Dispatch, useContext } from "react";
-import { Post } from "../types/Post";
+import React, { createContext, useReducer, Dispatch, useContext } from "react"
+import { Post } from "../types/Post"
 
-export type ExtendableError = Error & Record<string, any>;
+export type ExtendableError = Error & Record<string, any>
 
 type PostsState = {
   posts: Post[];
@@ -262,7 +262,7 @@ type PostsAction = {
     | "FETCHING_BLOGPOSTS"
     | "FETCH_BLOGPOSTS_ERROR"
     | "RESET";
-  payload?: Post[] | ExtendableError;
+  payload?: Post[] | ExtendableError
 };
 
 const reducer = (
@@ -271,11 +271,11 @@ const reducer = (
 ): PostsState => {
   switch (type) {
     case "FETCHING_BLOGPOSTS":
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true }
     case "FETCH_BLOGPOSTS":
-      return { ...state, isLoading: false, posts: payload as Post[] };
+      return { ...state, isLoading: false, posts: payload as Post[] }
     case "FETCH_BLOGPOSTS_ERROR":
-      return { ...state, isLoading: false, error: payload as ExtendableError };
+      return { ...state, isLoading: false, error: payload as ExtendableError }
     case "RESET":
       return initialState;
     default:
@@ -283,11 +283,11 @@ const reducer = (
   }
 };
 
-const PostsContext = createContext(initialState);
-const PostsDispatchContext = createContext<Dispatch<PostsAction> | null>(null);
+const PostsContext = createContext(initialState)
+const PostsDispatchContext = createContext<Dispatch<PostsAction> | null>(null)
 
 export const PostsProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <PostsDispatchContext.Provider value={dispatch}>
       <PostsContext.Provider value={state}>{children}</PostsContext.Provider>
@@ -295,11 +295,11 @@ export const PostsProvider: React.FC = ({ children }) => {
   );
 };
 
-export const usePosts = () => useContext(PostsContext);
+export const usePosts = () => useContext(PostsContext)
 
 export const usePostsActions = () => {
   const dispatch = useContext(PostsDispatchContext);
-  if (!dispatch) throw new Error("PostsProvider must be provided");
+  if (!dispatch) throw new Error("PostsProvider must be provided")
   const fetchPosts = async () => {
     try {
       dispatch({
@@ -319,7 +319,7 @@ export const usePostsActions = () => {
       });
     }
   };
-  const reset = () => dispatch({ type: "RESET" });
+  const reset = () => dispatch({ type: "RESET" })
   return {
     fetchPosts,
     reset,
