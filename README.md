@@ -477,11 +477,14 @@ Use type for your React Component Props and State, because it is more constraine
 - camelCase for hooks files. eg. `useSubscription.tsx`
 - lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
 
-## Hooks utilities 
+## Recommended Libraries 
 
-`@blockmatic/hooks-utils` provides a set utility hooks you can leverage in your projects. 
-
-https://github.com/blockmatic/hooks-utils
+- [react-use](https://github.com/streamich/react-use) - React hooks swissknife.
+- [the-platform](https://github.com/jaredpalmer/the-platform) - Web API's turned into React Hooks and Suspense-friendly React components.
+- [react-hook-form](https://github.com/react-hook-form/react-hook-form) - Performant, flexible and extensible forms with easy to use validation.
+- [react-apollo-hooks](https://github.com/trojanowski/react-apollo-hooks) - GraphQL hooks. 
+- [usetranslation-hook](https://react.i18next.com/latest/usetranslation-hook) - Internationalization hooks with i18next. 
+- [@blockmatic/hooks-utils](https://github.com/blockmatic/hooks-utils) - Blockmatic's utility hooks. 
  
 ## Examples
 
