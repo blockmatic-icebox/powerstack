@@ -16,7 +16,7 @@
 
 # Hooks Architecture
 
-A simple and powerful project structure for React apps.
+A simple and powerful project architecture for React and React Native apps.
 
 ## General Philosophy
 
