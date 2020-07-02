@@ -20,8 +20,6 @@ A simple and powerful project structure for React apps.
 
 ## General Philosophy
 
-Functional reactive programming (FRP) is a paradigm that has gained lots of attention lately, especially in the JavaScript front end world. It’s an overloaded term, but it describes a simple idea:
-
 > Everything should be pure so it’s easy to test and reason about (functional), and async behavior should be modeled using values that change over time (reactive).
 
 React in itself is not fully functional, nor is it fully reactive. But it is inspired by some of the concepts behind FRP. Functional components for instance are pure functions with respect to their props. And they are reactive to prop or state changes. `useEffect` allows handling side effects in a reactive manner.
