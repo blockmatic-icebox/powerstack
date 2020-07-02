@@ -483,7 +483,7 @@ Use type for your React Component Props and State, because it is more constraine
 - [react-apollo-hooks](https://github.com/trojanowski/react-apollo-hooks) - GraphQL hooks. 
 - [usetranslation-hook](https://react.i18next.com/latest/usetranslation-hook) - Internationalization hooks with i18next. 
 - [@blockmatic/hooks-utils](https://github.com/blockmatic/hooks-utils) - Blockmatic's utility hooks. 
-- [@blockmatic/eosio-hooks](https://github.com/blockmatic/eosio-hooks) - Hooks for EOSIO based applications. 
+- [@blockmatic/eosio-hooks](https://github.com/blockmatic/eosio-hooks) - Hooks for EOSIO applications. 
  
 ## Examples
 
