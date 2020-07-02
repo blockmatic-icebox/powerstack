@@ -26,7 +26,7 @@ React in itself is not fully functional, nor is it fully reactive. But it is ins
 
 Hooks Architecture follows pragmatic functional JavaScript best practices and React hooks patterns to provide a powerful, expressive and flexible framework for building applications with speed and simplicity. Composability and atomicity allow teams to develop faster and with less concern of introducing bugs when modifying existing code.
 
-In Hooks Architecture everything is expressed and encapsulated as a custom hook or a functional component, no other abstractions are required. Just like a fractal, this pattern is repeated everywhere greatly simplifying developer experience.
+In Hooks Architecture everything is expressed and encapsulated as a custom hook or a functional component, **no other abstractions are required**. Just like a fractal, this pattern is repeated everywhere greatly simplifying developer experience.
 
 Hooks Architecture follows the following principles:
 
