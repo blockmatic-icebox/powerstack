@@ -447,6 +447,12 @@ Specifically the cost for `useCallback` and `useMemo` are that you make the code
 - https://kentcdodds.com/blog/usememo-and-usecallback
 - https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
 
+### Use ternaries rather than && in JSX
+
+When you use AND operator to conditionally render `flag && <Component>` it could cause the `flag` value to be displayed, that abviously not desirable. Using ternaries is safer and preferable. `flag ? <Component/> : null`
+
+- https://kentcdodds.com/blog/use-ternaries-rather-than-and-and-in-jsx
+
 ### Typescript types or interfaces?
 
 Always use interface for public API's definition when authoring a library or 3rd party ambient type definitions.
