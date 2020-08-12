@@ -468,6 +468,7 @@ Use type for your React Component Props and State, because it is more constraine
 ## Recommended Libraries 
 
 - [react-use](https://github.com/streamich/react-use) - React hooks swissknife.
+- [swr](https://github.com/vercel/swr) - React Hooks library for remote data fetching.
 - [the-platform](https://github.com/jaredpalmer/the-platform) - Web API's turned into React Hooks and Suspense-friendly React components.
 - [react-hook-form](https://github.com/react-hook-form/react-hook-form) - Performant, flexible and extensible forms with easy to use validation.
 - [react-apollo-hooks](https://github.com/trojanowski/react-apollo-hooks) - GraphQL hooks. 
