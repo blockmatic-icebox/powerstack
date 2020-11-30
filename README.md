@@ -583,11 +583,6 @@ See original source of Default is Bad https://basarat.gitbook.io/typescript/main
 - [@blockmatic/hooks-utils](https://github.com/blockmatic/hooks-utils) - Blockmatic's utility hooks. 
 - [@blockmatic/eosio-hooks](https://github.com/blockmatic/eosio-hooks) - Hooks for EOSIO applications. 
 - [sindresorhus/promise-fun](https://github.com/sindresorhus/promise-fun) - Useful promise patterns.
- 
-## Examples
-
-The TELOS DreamStack project starters follow this architecture and patterns.
-https://github.com/telosdreamstack
 
 ## Credits
 
