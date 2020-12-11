@@ -104,93 +104,27 @@ const useCustomHook = () => {
 export default useCustomHook
 ```
 
-## Context Container Pattern
+## Hooks Utils and createContextHook
 
-The context container pattern allows us to easily create state containers based on react hooks. It simplifies and removes all the boilerplate required to create context hooks.
-
-[@kevinwolfdev](https://github.com/kevinwolfdev) created this utility function that creates context containers for react hooks.
+`createContextHook` allows us to quickly create react hooks with a context. It simplifies and removes all the boilerplate required to create context hooks.
 
 ```jsx
+import { createContextHook } from '@blockmatic/hooks-utils'
 import React from 'react'
 
-export interface ContainerProviderProps<State = void> {
-  initialState?: State;
+const useHookFn = () => {
+  const [state, setState] = React.useState(false)
+  const toggle = () => setState(!state)
+  return { state, toggle }
 }
 
-export interface Container<Value, State = void> {
-  Provider: React.ComponentType<ContainerProviderProps<State>>
-  useContainer: () => Value
-}
-
-const EMPTY: unique symbol = Symbol('__EMPTY__')
-
-const createContainer = <Value, State = void>(
-  useHook: (initialState?: State) => Value,
-  errorMsg = 'Component must be wrapped with <Container.Provider />',
-): Container<Value, State> => {
-  const Context = React.createContext<Value | typeof EMPTY>(EMPTY)
-
-  const Provider: React.FC<ContainerProviderProps<State>> = ({ initialState, children }) => {
-    const value = useHook(initialState);
-    return <Context.Provider value={value}>{children}</Context.Provider>;
-  }
-
-  const useContainer = (): Value => {
-    const value = React.useContext(Context)
-    if (value === EMPTY) {
-      throw new Error(errorMsg)
-    }
-    return value
-  };
-
-  return { Provider, useContainer }
-};
-
-export default createContainer
-
-```
-
-Example:
-
-```jsx
-import randomQuote from 'lib/randomQuote'
-import React from 'react'
-import createContainer from 'utils/createContainer'
-
-const useRandomQuote = () => {
-  const [quote, setQuote] = React.useState < string > randomQuote()
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setQuote(randomQuote())
-    }, 3000)
-    return () => {
-      clearInterval(interval)
-    }
-  })
-
-  return quote
-}
-
-const RandomQuoteContext = createContainer(useRandomQuote,
-  'You must wrap your application with <RandomQuoteContext.Provider /> in order to RandomQuoteContext.useContainer().'
+export const [useHook, HookProvider] = createContextHook(
+  useHookFn,
+  'You must wrap your application with <HookProvider /> in order to useHook().',
 )
-
-export default RandomQuoteContext
 ```
 
-```jsx
-export const MyComponent = () => {
-  const quote = RandomQuoteContext.useContainer()
-
-  return (
-    <div>
-      <h3>Random Quote</h3>
-      <p>{quote.text}</p>
-    </div>
-  )
-}
-```
+Go to https://github.com/blockmatic/hooks-utils for more detail.
 
 ## Dispatch Context Pattern
 
