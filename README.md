@@ -282,8 +282,8 @@ Just put all related functionality on the same file or directory with and index.
 ├── AppProvider.tsx ......................... Group all global providers in one file
 ├── assets .................................. Global static assets
 ├── components .............................. Global components
-│   ├── Container.tsx
-│   ├── Header.tsx
+│   ├── Comments.tsx
+│   ├── Ratings.tsx
 │   └── VideoPlayer/
 │       ├── index.tsx
 │       ├── useVideoPlayerControls.tsx
@@ -304,10 +304,7 @@ Just put all related functionality on the same file or directory with and index.
 │   ├── Header.tsx
 │   └── Profile/
 │       ├── index.tsx
-│       ├── useProfileCustomizations.tsx
-│       └── Preferences
-│           ├── index.tsx
-│           └── usePreferenceMatrix.tsx
+│       └── useProfileCustomizations.tsx
 ├── utils .................................. Utility functions
 │   └── index.tsx
 └── library ................................ Third party libs, sdks, etc
