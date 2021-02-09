@@ -378,6 +378,11 @@ Specifically the cost for `useCallback` and `useMemo` are that you make the code
 - https://kentcdodds.com/blog/usememo-and-usecallback
 - https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
 
+### Avoid isLoading booleans
+
+Why using a status enum (or even better: a state machine) will help your app stay bug free.  
+https://kentcdodds.com/blog/stop-using-isloading-booleans
+
 ### Use ternaries rather than && in JSX
 
 When you use AND operator to conditionally render `flag && <Component>` it could cause the `flag` value to be displayed, that abviously not desirable. Using ternaries is safer and preferable. `flag ? <Component/> : null`
