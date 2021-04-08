@@ -346,10 +346,10 @@ const MyPageTitle: React:FC = ({children}) =>  {
 }
 ```
 
-### Names in camelCase, tolerate snake_ase attributes ( eosio cpp style )
+### Favor camelCase variables, snake_ase attributes is ok ( eosio cpp style )
 
 ```jsx
-const myVar = 'this a var or function name within the JS code'
+const myVar = 'hello'
 const blockmaticAccount = await rpc.get_account('blockmaticio')
 console.log(blockmaticAccount.last_code_update) // eosio snake case attributes, that's fine.
 ```
@@ -363,12 +363,15 @@ const inc = React.useCallback(() => setCount((c) => c + 1), [])
 
 ### useReducer
 
-`useReducer` memoization works exactly as `useState` in this case. Since dispatch is guaranteed to have same reference across renders, `useCallback` is not needed, which makes code less error-prone to memoization related bugs.
+`useReducer` memoization works exactly as `useState` in this example. Since dispatch is guaranteed to have same reference across renders, `useCallback` is not needed, which makes code less error-prone to memoization related bugs.
 
 ```jsx
 const [count, inc] = React.useReducer((c) => c + 1, 0)
 ```
 
+### Rerturn arrays in hooks
+
+If a hook returns an array, you can name the variables whatever you want more easily than using destructuring. 
 ### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
