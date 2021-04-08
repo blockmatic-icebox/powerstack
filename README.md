@@ -372,6 +372,18 @@ const [count, inc] = React.useReducer((c) => c + 1, 0)
 ### Rerturn arrays in hooks
 
 If a hook returns an array, you can name the variables whatever you want more easily than using destructuring. 
+
+### Keep the state flat
+
+Three main reasons:
+
+- Updating nested Javascript objects immutably generally results in uglier code that is harder to maintain, unless you use a utility library to wrap up the process
+
+- Immutably updating nested data requires that you return new copies of all items in the nesting hierarchy. Since components generally do shallow-equality reference comparisons on data to see if they need to update, updating nested data usually means that more objects are updated, and more components will probably have to re-render even if the actual data isn't different.
+
+- Flat data, and in particular normalized data, enables some more optimized approaches for defining components (such as a list where each list item component is itself connected, given an item ID as a prop, and is responsible for looking up its own item's data by that ID)
+
+https://stackoverflow.com/questions/38842454/why-should-i-keep-the-state-flat
 ### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
