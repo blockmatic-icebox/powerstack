@@ -280,15 +280,15 @@ Just put all related functionality on the same file or directory with and index.
 .
 ├── App.tsx ................................. Entry point
 ├── AppProvider.tsx ......................... Group all global providers in one file
-├── assets .................................. Global static assets
-├── components .............................. Global components
+├── assets .................................. Static assets
+├── components .............................. Components used by different views
 │   ├── Comments.tsx
 │   ├── Ratings.tsx
 │   └── VideoPlayer/
 │       ├── index.tsx
 │       ├── useVideoPlayerControls.tsx
 │       └── useStreaming.tsx
-├── hooks .................................. Global hooks ( typically with context )
+├── hooks .................................. Global hooks utilized by different views and components ( typically with context )
 │   ├── useWallet.tsx
 │   ├── useAuth.tsx
 │   ├── useBigHook/
