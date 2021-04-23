@@ -271,6 +271,11 @@ const usePost = () => {
 
 Kent. C. Dodds has great article on the topic https://kentcdodds.com/blog/how-to-use-react-context-effectively 
 
+
+## Error Boundaries
+
+https://www.npmjs.com/package/react-error-boundary
+
 ## Project Structure
 
 It very simple. Functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js.
