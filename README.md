@@ -393,10 +393,10 @@ https://stackoverflow.com/questions/38842454/why-should-i-keep-the-state-flat
 ### Keep i18n files flat too
 
 - Use snake_case keys.
-- Dont create nested objects.
-- Dont use full text as translation key.
+- Don't create nested objects.
+- Don't use full text as translation key.
 
-This allows us to quickly search for the keys and know where are these used and defined in the project, its much better navigating thru deep structures to find them.
+This allows us to quickly search for the keys and know where are these used and defined in the project, it's much better than navigating thru deep structures to find them.
 
 Eg: 
 
