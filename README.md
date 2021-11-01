@@ -389,6 +389,24 @@ Three main reasons:
 - Flat data, and in particular normalized data, enables some more optimized approaches for defining components (such as a list where each list item component is itself connected, given an item ID as a prop, and is responsible for looking up its own item's data by that ID)
 
 https://stackoverflow.com/questions/38842454/why-should-i-keep-the-state-flat
+
+### Keep i18n files flat too
+
+- Use snake_case keys.
+- Dont create nested objects.
+- Dont use full text as translation key.
+
+This allows us to quickly search for the keys and know where are these used and defined in the project, its much better navigating thru deep structures to find them.
+
+Eg: 
+
+```
+{
+  login_title: 'Login',
+  login_username_input_label: 'Enter your username',
+  login_username_input_error: 'Invalid username',
+}
+```
 ### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
