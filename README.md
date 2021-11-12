@@ -50,7 +50,7 @@ Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motiva
 
 ## Context Hook Pattern
 
-This is ADN of the Hooks Architecture, you will find it everywhere.   
+This is the DNA of Hooks Architecture, you will find it everywhere.
 The Context API in React allows you to share state between different components.     
 Encapsulating Context and Hooks in atomic modules has the following advantages.    
 
