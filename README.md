@@ -118,7 +118,7 @@ Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 ## Useful React Patterns 
 ### Context Hook Pattern
 
-This is ADN of the Hooks Architecture, you will find it everywhere.   
+While we encorage Zustand VanillaJS stores for global state the context hook pattern still plays a fundamental role in hooks architecture.  
 The Context API in React allows you to share state between different components.     
 Encapsulating Context and Hooks in atomic modules has the following advantages.    
 
