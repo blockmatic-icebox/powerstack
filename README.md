@@ -1,24 +1,27 @@
-# Hooks Architecture
+# React dApp Architecture
 
-A simple and powerful project architecture for React and React Native apps.
-
+This project provides an opinitioned architecture, best practices and starter boilerplates for web3 applications.
 ## General Philosophy
 
-> Everything should be pure so it’s easy to test and reason about (functional), and async behavior should be modeled using values that change over time (reactive).
+React in itself is not fully functional, nor is it fully reactive. But it is inspired by some of the concepts behind FRP, Functional components for instance are pure functions with respect to their props, and they are reactive to prop or state changes. `useEffect` allows handling side effects in a reactive manner.
 
-React in itself is not fully functional, nor is it fully reactive. But it is inspired by some of the concepts behind FRP. Functional components for instance are pure functions with respect to their props. And they are reactive to prop or state changes. `useEffect` allows handling side effects in a reactive manner.
+Functional JavaScript best practices and React hooks patterns provide a powerful, expressive and flexible framework for building applications with speed and simplicity. Composability and atomicity allow teams to develop faster and with less concern of introducing bugs when modifying existing code. With React hooks everything is expressed and encapsulated as a pure function, custom hook or a functional component, no other abstractions are required. **Just like a fractal, this pattern is repeated everywhere greatly simplifying developer experience**.
 
-Hooks Architecture follows pragmatic functional JavaScript best practices and React hooks patterns to provide a powerful, expressive and flexible framework for building applications with speed and simplicity. Composability and atomicity allow teams to develop faster and with less concern of introducing bugs when modifying existing code.
+The React dApp Architecture follows the following principles:
+### The Best Code is No Code ( aka Use Frameworks )
 
-In Hooks Architecture everything is expressed and encapsulated as a custom hook or a functional component, no other abstractions are required. **Just like a fractal, this pattern is repeated everywhere greatly simplifying developer experience**.
+The fewer lines of code the better. Every line of code you write increases complexity and error surface. Frameworks provide battle tested and maintained codebases.
+React dApp Architecture avoids boilerplate code and focuses on functionality.
+### Agnostic Global State with Zustand
 
-Hooks Architecture follows the following principles:
+While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need.
+Zustand is a framework agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have. Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
 
+Learn more [pmndrs/zustand](https://github.com/pmndrs/zustand)
 ### Optimize for Change
 
-The only constant in the universe is change. And software is no different, software evolves constantly.
-By encapsulating functionality in small composable hooks you can accomplish great flexibility and speed.
-
+The only constant in the universe is change; And software is no different, software evolves constantly.
+By encapsulating functionality in small composable pieces you can accomplish great flexibility and speed.
 ### Avoid Hasty Abstractions
 
 We could spend weeks optimizing code for performance, or coming up with the best API for our new abstraction, only to find out the next day that we made incorrect assumptions and the API needs a complete rework or the feature the code was written for is no longer needed. We don't know for sure. All we can really be sure of is that things will probably change.
@@ -33,12 +36,7 @@ The big problem with inheritance is that you’re encouraged to predict the futu
 
 A slight change in requirements can make the most elegant code fall apart. The more complex a system, the more difficult it is to build a mental model of the system, and the harder it becomes to operate and debug it. As Edsger W. Dijkstra put it, _“Simplicity is prerequisite for reliability”_
 
-### The Best Code is No Code
-
-The fewer lines of code the better. Every line of code you write increases complexity and error surface.
-Hooks Architecture avoids boilerplate code and focuses on functionality.
-
-## The Essence of React Hooks
+### The Essence of React Hooks
 
 React Hooks is the new way of writing ReactJS applications. They let you use state and other React features without writing a class, which means you can now write your entire application using _functional programming and functional components_ and this has a myriad of advantages.
 
@@ -48,7 +46,77 @@ Hooks allow you to reuse stateful logic without changing your component hierarch
 
 Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
 
-## Context Hook Pattern
+## dApp Architecture
+
+If you are new to Web3 and some of its concept I highly recommend you watching Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M).
+
+## Project Structure
+
+This repository contains NextJS starters to interact different blockchains. At high level we have  the following structure:
+
+```
+.
+├── contracts ............................... smart contracts code and abis
+├── next-ethereum ........................... ethereum nextjs dapp starter
+├── next-eosio .............................. eosio nextjs dapp starter
+├── next-solana ............................. solana nextjs dapp starter
+├── expo-ethereum ........................... ethereum nextjs dapp starter
+├── expo-eosio .............................. eosio nextjs dapp starter
+└── expo-solana ............................. solana nextjs dapp starter
+
+```
+
+Inside the projects functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js with emotion.sh
+Each project contains it's onw README file with detailed information. 
+
+```
+.
+├── store ................................... Zustand store. Slicing is recommended
+├── assets .................................. Static assets
+├── components .............................. Components used by different views
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   └── VideoPlayer/
+│       ├── index.tsx
+│       ├── useVideoPlayerControls.tsx
+│       └── useStreaming.tsx
+├── hooks .................................. Global hooks ( prefer Zustand over context api for global state )
+│   ├── useWallet.tsx
+│   ├── useAuth.tsx
+│   ├── useBigHook/
+│   │    ├── index.tsx
+│   │    ├── Big.tsx
+│   │    └── BigHookProvider.tsx
+│   └── ...
+├── pages .................................. NextJS route container components
+│   ├── index.tsx
+│   ├── Swaps.tsx
+│   ├── Trade.tsx
+│   └── Profile/
+│       ├── index.tsx
+│       └── useProfileCustomizations.tsx
+├── utils .................................. Utility functions
+│   └── index.tsx
+└── library ................................ Third party libs, sdks, etc
+    └── somelib.tsx
+```
+
+__Starters__
+
+_under development ..._
+
+- [NextJS Ethereum](./next-ethereum)
+- [NextJS EOSIO](./next-eosio)
+- [NextJS Solana](./next-solana)
+## Testing
+
+Write tests, not too many, mainly integration.
+E2E testing and API black box testing will catch most errors and regressions you care about, let the code change fast internally without unit test overhead. Let if flux.
+Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
+
+Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
+## Useful React Patterns 
+### Context Hook Pattern
 
 This is ADN of the Hooks Architecture, you will find it everywhere.   
 The Context API in React allows you to share state between different components.     
@@ -104,7 +172,7 @@ const useCustomHook = () => {
 export default useCustomHook
 ```
 
-## Hooks Utils and createContextHook
+### Hooks Utils and createContextHook
 
 `createContextHook` allows us to quickly create react hooks with a context. It simplifies and removes all the boilerplate required to create context hooks.
 
@@ -124,205 +192,25 @@ export const [useHook, HookProvider] = createContextHook(
 )
 ```
 
-Go to https://github.com/blockmatic/hooks-utils for more detail.
+### Error Boundaries
 
-## Dispatch Context Pattern
+https://www.npmjs.com/package/react-error-boundaries
 
-Often we want to separate actions from the state into different React contexts to prevent unnecessary or undesired renders.
-
-Consider the following code. We have 2 components, one for load posts button and one for displaying the posts.
-When you click on the button that invokes the login action it will set isLoggedIn to true in the context of our custom hook, which will cause the LoginComponent to rerender, and sometimes that's not desirable.
+### useState with functional updates
 
 ```jsx
-const LoadPost: React.FC = () => {
-  const { loadPosts } = useCustomHook()
-  
-  return <div onClick={loadPosts}>login</div>
-}
-
-const ShowPost: React.FC = () => {
-  const { posts } = useCustomHook()
-
-  if (posts) {
-    return <div>{posts.map(post => <Post post={post} />)}</div>
-  }else{
-    return <div>please login</div>
-  }
-}
-
+const [count, setCount] = React.useState(0)
+const inc = React.useCallback(() => setCount((c) => c + 1), [])
 ```
 
-We can prevent this behavior by splitting the context hooks, typically one for state and another one for the actions. 
+### useReducer
 
+`useReducer` memoization works exactly as `useState` in this example. Since dispatch is guaranteed to have same reference across renders, `useCallback` is not needed, which makes code less error-prone to memoization related bugs.
 
 ```jsx
-import React, { createContext, useReducer, Dispatch, useContext } from "react"
-import { Post } from "../types/Post"
-
-export type ExtendableError = Error & Record<string, any>
-
-type PostsState = {
-  posts: Post[];
-  isLoading: boolean;
-  error?: ExtendableError;
-};
-
-const initialState: PostsState = {
-  posts: [],
-  isLoading: false,
-};
-
-type PostsAction = {
-  type:
-    | "FETCH_BLOGPOSTS"
-    | "FETCHING_BLOGPOSTS"
-    | "FETCH_BLOGPOSTS_ERROR"
-    | "RESET";
-  payload?: Post[] | ExtendableError
-};
-
-const reducer = (
-  state = initialState,
-  { type, payload }: PostsAction
-): PostsState => {
-  switch (type) {
-    case "FETCHING_BLOGPOSTS":
-      return { ...state, isLoading: true }
-    case "FETCH_BLOGPOSTS":
-      return { ...state, isLoading: false, posts: payload as Post[] }
-    case "FETCH_BLOGPOSTS_ERROR":
-      return { ...state, isLoading: false, error: payload as ExtendableError }
-    case "RESET":
-      return initialState;
-    default:
-      return state;
-  }
-};
-
-const PostsContext = createContext(initialState)
-const PostsDispatchContext = createContext<Dispatch<PostsAction> | null>(null)
-
-export const PostsProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  return (
-    <PostsDispatchContext.Provider value={dispatch}>
-      <PostsContext.Provider value={state}>{children}</PostsContext.Provider>
-    </PostsDispatchContext.Provider>
-  );
-};
-
-export const usePosts = () => useContext(PostsContext)
-
-export const usePostsActions = () => {
-  const dispatch = useContext(PostsDispatchContext);
-  if (!dispatch) throw new Error("PostsProvider must be provided")
-  const fetchPosts = async () => {
-    try {
-      dispatch({
-        type: "FETCHING_BLOGPOSTS",
-      });
-      const result = (await (
-        await fetch("https://jsonplaceholder.typicode.com/posts")
-      ).json()) as Post[];
-      dispatch({
-        type: "FETCH_BLOGPOSTS",
-        payload: result,
-      });
-    } catch (error) {
-      dispatch({
-        type: "FETCH_BLOGPOSTS_ERROR",
-        payload: error,
-      });
-    }
-  };
-  const reset = () => dispatch({ type: "RESET" })
-  return {
-    fetchPosts,
-    reset,
-  };
-};
-
+const [count, inc] = React.useReducer((c) => c + 1, 0)
 ```
 
-See the full working example at [kevinrodriguez-io/react-posts-example-context/](https://github.com/kevinrodriguez-io/react-posts-example-context/)
-
-__The state and dispatch separation is annoying__
-
-Some people find this annoying/overly verbose:
-
-```jsx
-const state = usePostState()
-const dispatch = usePostsDispatch()
-```
-
-They say "can't we just do this?":
-
-```jsx
-const [state, dispatch] = usePost()
-```
-
-Sure you can:
-
-```jsx
-const usePost = () => {
-  return [usePostsState(), usePostsDispatch()]
-}
-```
-
-Kent. C. Dodds has great article on the topic https://kentcdodds.com/blog/how-to-use-react-context-effectively 
-
-
-## Error Boundaries
-
-https://www.npmjs.com/package/react-error-boundary
-
-## Project Structure
-
-It very simple. Functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js.
-Just put all related functionality on the same file or directory with and index.tsx file.
-
-```
-.
-├── App.tsx ................................. Entry point
-├── AppProvider.tsx ......................... Group all global providers in one file
-├── assets .................................. Static assets
-├── components .............................. Components used by different views
-│   ├── Comments.tsx
-│   ├── Ratings.tsx
-│   └── VideoPlayer/
-│       ├── index.tsx
-│       ├── useVideoPlayerControls.tsx
-│       └── useStreaming.tsx
-├── hooks .................................. Global hooks utilized by different views and components ( typically with context )
-│   ├── useWallet.tsx
-│   ├── useAuth.tsx
-│   ├── useBigHook/
-│   │    ├── index.tsx
-│   │    ├── Big.tsx
-│   │    └── BigHookProvider.tsx
-│   └── ...
-├── views .................................. Container components ( by feature or route )
-│   ├── Admin.tsx
-│   ├── Signup.tsx
-│   ├── Signin.tsx
-│   ├── Container.tsx
-│   ├── Header.tsx
-│   └── Profile/
-│       ├── index.tsx
-│       └── useProfileCustomizations.tsx
-├── utils .................................. Utility functions
-│   └── index.tsx
-└── library ................................ Third party libs, sdks, etc
-    └── somelib.tsx
-```
-
-## Testing
-
-Write tests, not too many, mainly integration.
-E2E testing and API black box testing will catch most errors and regressions you care about, let the code change fast internally without unit test overhead. Let if flux.
-Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
-
-Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 
 ## Code Style Conventions
 
@@ -350,33 +238,6 @@ const MyPageTitle: React:FC = ({children}) =>  {
  return <Text>{pageTitle}</Text>;
 }
 ```
-
-### Favor camelCase variables, snake_ase attributes is ok ( eosio cpp style )
-
-```jsx
-const myVar = 'hello'
-const blockmaticAccount = await rpc.get_account('blockmaticio')
-console.log(blockmaticAccount.last_code_update) // eosio snake case attributes, that's fine.
-```
-
-### useState with functional updates
-
-```jsx
-const [count, setCount] = React.useState(0)
-const inc = React.useCallback(() => setCount((c) => c + 1), [])
-```
-
-### useReducer
-
-`useReducer` memoization works exactly as `useState` in this example. Since dispatch is guaranteed to have same reference across renders, `useCallback` is not needed, which makes code less error-prone to memoization related bugs.
-
-```jsx
-const [count, inc] = React.useReducer((c) => c + 1, 0)
-```
-
-### Rerturn arrays in hooks
-
-If a hook returns an array, you can name the variables whatever you want more easily than using destructuring. 
 
 ### Keep the state flat
 
@@ -407,6 +268,18 @@ Eg:
   login_username_input_error: 'Invalid username',
 }
 ```
+
+### Favor camelCase variables, snake_ase attributes is ok
+
+```jsx
+const myVar = 'hello'
+const blockmaticAccount = await rpc.get_account('blockmaticio')
+console.log(blockmaticAccount.last_code_update) // eosio snake case attributes, that's fine.
+```
+### Rerturn arrays in hooks
+
+If a hook returns an array, you can name the variables whatever you want more easily than using destructuring. 
+
 ### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
@@ -462,8 +335,7 @@ There are a few maintainability concerns here:
 For this reason I recommend simple exports + destructured import. E.g. `foo.ts`:
 
 ```ts
-export class Foo {
-}
+export class Foo {}
 ```
 And then:
 
@@ -521,8 +393,7 @@ HighCharts.chart('container', { ... }); // Notice `.default`
 Can be one statement for function / class e.g. 
 
 ```ts
-export default function foo() {
-}
+export default function foo() {}
 ```
 
 Can be one statement for *non named / type annotated* objects e.g.: 
@@ -546,26 +417,7 @@ export default foo;
 
 See original source of Default is Bad https://basarat.gitbook.io/typescript/main-1/defaultisbad
 
-## Recommended Libraries 
-
-- [react-use](https://github.com/streamich/react-use) - React hooks swissknife.
-- [swr](https://github.com/vercel/swr) - React Hooks library for remote data fetching.
-- [the-platform](https://github.com/jaredpalmer/the-platform) - Web API's turned into React Hooks and Suspense-friendly React components.
-- [react-hook-form](https://github.com/react-hook-form/react-hook-form) - Performant, flexible and extensible forms with easy to use validation.
-- [react-apollo-hooks](https://github.com/trojanowski/react-apollo-hooks) - GraphQL hooks. 
-- [usetranslation-hook](https://react.i18next.com/latest/usetranslation-hook) - Internationalization hooks with i18next. 
-- [@blockmatic/hooks-utils](https://github.com/blockmatic/hooks-utils) - Blockmatic's utility hooks. 
-- [@blockmatic/eosio-hooks](https://github.com/blockmatic/eosio-hooks) - Hooks for EOSIO applications. 
-- [sindresorhus/promise-fun](https://github.com/sindresorhus/promise-fun) - Useful promise patterns.
-
-## Credits
-
-- Kent C. Dodds [@kentcdodds](https://github.com/kentcdodds)
-- Kevin Wolf [@kevinwolfdev](https://github.com/kevinwolfdev)
-- Kevin Rodríguez [@kevinrodriguez-io](https://github.com/kevinrodriguez-io)
-- Guillermo Rauch [@rauchg](https://github.com/rauchg)
-- Luca Matteis [@lmatteis](https://github.com/lmatteis)
-- Mattias Petter Johansson [@mpj](https://github.com/mpj)
+---
 
 ## Blockmatic
 
