@@ -1,6 +1,6 @@
 # React dApp Architecture
 
-This project provides an opinitioned architecture, best practices and starter boilerplates for web3 applications.
+This project provides an opinionated architecture, best practices and starter boilerplates for web3 applications.
 ## General Philosophy
 
 React in itself is not fully functional, nor is it fully reactive. But it is inspired by some of the concepts behind FRP, Functional components for instance are pure functions with respect to their props, and they are reactive to prop or state changes. `useEffect` allows handling side effects in a reactive manner.
