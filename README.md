@@ -4,7 +4,7 @@ Front-end architecture, coding guidelines and boilerplates for web3 react applic
 ## General Philosophy
 
 The dApp Architecture project aims to facilitate starting up quickly and following industry best practices. 
-The project provides a well documented architecture, starter boilerplates, coding conventions and guidelines to avoid common pitfalls.
+The project provides a well documented architecture and guidelines to avoid common pitfalls.
 
 If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is great resource to get started.
 
