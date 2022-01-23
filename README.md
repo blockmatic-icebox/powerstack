@@ -17,7 +17,7 @@ Frameworks provide battle tested and maintained codebases.
 The only constant in the universe is change; And software is no different, software evolves constantly.
 By encapsulating functionality in small composable pieces you can accomplish great flexibility and speed.
 
-### Follow Cannonical Approaches 
+### A Cannonical Approach
 
 React Hooks is the new way of writing ReactJS applications. They let you use state and other React features without writing a class, which means you can now write your entire application using _functional programming and functional components_ and this has a myriad of advantages.
 
