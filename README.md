@@ -1,6 +1,6 @@
 # React dApp Architecture
 
-A robust open-source front-end architecture, coding guidelines and starter boilerplates for web3 react applications.
+Front-end architecture, coding guidelines and boilerplates for web3 react applications.
 ## General Philosophy
 
 The dApp Architecture project aims to facilitate starting up quickly and following industry best practices. 
