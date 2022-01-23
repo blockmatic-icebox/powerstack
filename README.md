@@ -1,42 +1,23 @@
 # React dApp Architecture
 
-This project provides an opinionated architecture, best practices and starter boilerplates for web3 applications.
+A robust open-source front-end architecture, coding guidelines and starter boilerplates for web3 react applications.
 ## General Philosophy
 
-React in itself is not fully functional, nor is it fully reactive. But it is inspired by some of the concepts behind FRP, Functional components for instance are pure functions with respect to their props, and they are reactive to prop or state changes. `useEffect` allows handling side effects in a reactive manner.
+The dApp Architecture project aims to facilitate starting up Web3 projects quickly and following industry best practices. 
+The project provides a well documented architecture, starter boilerplates, coding conventions and guidelines to avoid common pitfalls.
 
-Functional JavaScript best practices and React hooks patterns provide a powerful, expressive and flexible framework for building applications with speed and simplicity. Composability and atomicity allow teams to develop faster and with less concern of introducing bugs when modifying existing code. With React hooks everything is expressed and encapsulated as a pure function, custom hook or a functional component, no other abstractions are required. **Just like a fractal, this pattern is repeated everywhere greatly simplifying developer experience**.
+The React dApp Architecture follows the following design principles:
+### The Best Code is No Code 
 
-The React dApp Architecture follows the following principles:
-### The Best Code is No Code ( aka Use Frameworks )
+The fewer lines of code the better. Every line of code you write increases complexity and error surface. 
+Frameworks provide battle tested and maintained codebases.
 
-The fewer lines of code the better. Every line of code you write increases complexity and error surface. Frameworks provide battle tested and maintained codebases.
-React dApp Architecture avoids boilerplate code and focuses on functionality.
-### Agnostic Global State with Zustand
-
-While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need.
-Zustand is a framework agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have. Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
-
-Learn more [pmndrs/zustand](https://github.com/pmndrs/zustand)
 ### Optimize for Change
 
 The only constant in the universe is change; And software is no different, software evolves constantly.
 By encapsulating functionality in small composable pieces you can accomplish great flexibility and speed.
-### Avoid Hasty Abstractions
 
-We could spend weeks optimizing code for performance, or coming up with the best API for our new abstraction, only to find out the next day that we made incorrect assumptions and the API needs a complete rework or the feature the code was written for is no longer needed. We don't know for sure. All we can really be sure of is that things will probably change.
-
-For this reason, always start coding locally on your presentation views and extract functionality in custom hooks later when you realize the need for it.
-
-Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
-
-### Composition over Inheritance
-
-The big problem with inheritance is that you’re encouraged to predict the future. Inheritance encourages you to build this taxonomy of objects very early on in your project, and you are most likely going to make design mistakes doing that, because humans cannot predict the future (even though it feels like we can).
-
-A slight change in requirements can make the most elegant code fall apart. The more complex a system, the more difficult it is to build a mental model of the system, and the harder it becomes to operate and debug it. As Edsger W. Dijkstra put it, _“Simplicity is prerequisite for reliability”_
-
-### The Essence of React Hooks
+### Follow Cannonical Approaches 
 
 React Hooks is the new way of writing ReactJS applications. They let you use state and other React features without writing a class, which means you can now write your entire application using _functional programming and functional components_ and this has a myriad of advantages.
 
@@ -45,6 +26,20 @@ Most notably having the ability to separate functionality by concern and not by 
 Hooks allow you to reuse stateful logic without changing your component hierarchy and it lets you use more of React’s features without classes.
 
 Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
+
+### Avoid Hasty Abstractions
+
+We could spend weeks optimizing code for performance, or coming up with the best API for our new abstraction, only to find out the next day that we made incorrect assumptions and the API needs a complete rework or the feature the code was written for is no longer needed. We don't know for sure. All we can really be sure of is that things will probably change.
+
+For this reason, always start coding locally on your presentation views and extract ui functionality in custom hooks later when you realize the need for it. The same applies global state, dont overthink zustand slicing, make it work first and then optimize.
+
+Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
+
+### Composition over Inheritance
+
+The big problem with inheritance is that you’re encouraged to predict the future. Inheritance encourages you to build this taxonomy of objects very early on in your project, and you are most likely going to make design mistakes doing that, because humans cannot predict the future (even though it feels like we can).
+
+A slight change in requirements can make the most elegant code fall apart. The more complex a system, the more difficult it is to build a mental model of the system, and the harder it becomes to operate and debug it. As Edsger W. Dijkstra put it, _“Simplicity is prerequisite for reliability”_
 
 ## dApp Architecture
 
@@ -57,10 +52,10 @@ This repository contains NextJS starters to interact different blockchains. At h
 ```
 .
 ├── contracts ............................... smart contracts code and abis
-├── next-ethereum ........................... ethereum nextjs dapp starter
+├── next-ethers ............................. ethers nextjs dapp starter
 ├── next-eosio .............................. eosio nextjs dapp starter
 ├── next-solana ............................. solana nextjs dapp starter
-├── expo-ethereum ........................... ethereum nextjs dapp starter
+├── expo-ethers ............................. ethers nextjs dapp starter
 ├── expo-eosio .............................. eosio nextjs dapp starter
 └── expo-solana ............................. solana nextjs dapp starter
 
@@ -103,9 +98,11 @@ Each project contains it's onw README file with detailed information.
 
 __Starters__
 
+Each dApp starter has it's own README.md file with detailed feature list and components information. 
+
 _under development ..._
 
-- [NextJS Ethereum](./next-ethereum)
+- [NextJS Ethers](./next-ethers)
 - [NextJS EOSIO](./next-eosio)
 - [NextJS Solana](./next-solana)
 ## Testing
@@ -212,7 +209,7 @@ const [count, inc] = React.useReducer((c) => c + 1, 0)
 ```
 
 
-## Code Style Conventions
+## Code Guidelines & Style Conventions
 
 ### Define components and methods as constant arrow functions
 
@@ -317,8 +314,7 @@ Use type for your React Component Props and State, because it is more constraine
 Consider you have a file `foo.ts` with the following contents:
 
 ```ts
-class Foo {
-}
+class Foo {}
 export default Foo;
 ```
 

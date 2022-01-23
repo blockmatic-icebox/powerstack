@@ -1,5 +1,5 @@
 {
-  "name": "next-dapp",
+  "name": "next-ethers",
   "private": true,
   "scripts": {
     "dev": "next dev",
