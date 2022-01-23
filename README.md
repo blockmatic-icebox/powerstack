@@ -3,14 +3,17 @@
 A robust open-source front-end architecture, coding guidelines and starter boilerplates for web3 react applications.
 ## General Philosophy
 
-The dApp Architecture project aims to facilitate starting up Web3 projects quickly and following industry best practices. 
+The dApp Architecture project aims to facilitate starting up quickly and following industry best practices. 
 The project provides a well documented architecture, starter boilerplates, coding conventions and guidelines to avoid common pitfalls.
+
+If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is great resource to get started.
 
 The React dApp Architecture follows the following design principles:
 ### The Best Code is No Code 
 
 The fewer lines of code the better. Every line of code you write increases complexity and error surface. 
-Frameworks provide battle tested and maintained codebases.
+Well maintained frameworks and libraries provide battle tested code and regurlarly updated codebases. 
+It is also easier to onboard new developers to the project when using known frameworks and tools such as NextJS and Ethers.
 
 ### Optimize for Change
 
@@ -23,9 +26,13 @@ React Hooks is the new way of writing ReactJS applications. They let you use sta
 
 Most notably having the ability to separate functionality by concern and not by stage in the lifecycle method ( single responsibility principle ) which makes the source code of the applications much more readable, maintainable and increases the reusability and portability of the components.
 
-Hooks allow you to reuse stateful logic without changing your component hierarchy and it lets you use more of React’s features without classes.
-
 Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
+
+### Global State with Zustand
+
+While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need. Zustand is a framework agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have. Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
+
+Learn more [pmndrs/zustand](https://github.com/pmndrs/zustand)
 
 ### Avoid Hasty Abstractions
 
@@ -43,23 +50,8 @@ A slight change in requirements can make the most elegant code fall apart. The m
 
 ## dApp Architecture
 
-If you are new to Web3 and some of its concept I highly recommend you watching Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M).
-
+_{diagrams_here}_
 ## Project Structure
-
-This repository contains NextJS starters to interact different blockchains. At high level we have  the following structure:
-
-```
-.
-├── contracts ............................... smart contracts code and abis
-├── next-ethers ............................. ethers nextjs dapp starter
-├── next-eosio .............................. eosio nextjs dapp starter
-├── next-solana ............................. solana nextjs dapp starter
-├── expo-ethers ............................. ethers nextjs dapp starter
-├── expo-eosio .............................. eosio nextjs dapp starter
-└── expo-solana ............................. solana nextjs dapp starter
-
-```
 
 Inside the projects functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js with emotion.sh
 Each project contains it's onw README file with detailed information. 
@@ -96,7 +88,15 @@ Each project contains it's onw README file with detailed information.
     └── somelib.tsx
 ```
 
-__Starters__
+## Testing
+
+Write tests, not too many, mainly integration.
+E2E testing and API black box testing will catch most errors and regressions you care about, let the code change fast internally without unit test overhead. Let if flux.
+Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
+
+Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
+
+## Starters
 
 Each dApp starter has it's own README.md file with detailed feature list and components information. 
 
@@ -105,13 +105,6 @@ _under development ..._
 - [NextJS Ethers](./next-ethers)
 - [NextJS EOSIO](./next-eosio)
 - [NextJS Solana](./next-solana)
-## Testing
-
-Write tests, not too many, mainly integration.
-E2E testing and API black box testing will catch most errors and regressions you care about, let the code change fast internally without unit test overhead. Let if flux.
-Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
-
-Read more about [this testing approach](https://kentcdodds.com/blog/write-tests)
 ## Useful React Patterns 
 ### Context Hook Pattern
 
