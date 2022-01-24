@@ -2,6 +2,9 @@
 
 __work in progress ...__
 
+## Features
+
+
 ## Stack 
 
  - nextjs
@@ -15,6 +18,7 @@ __work in progress ...__
  - react hook form
  - react i18next
  - yup validations
+ - vercel deployment
 
  Suggested
 

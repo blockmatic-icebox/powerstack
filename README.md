@@ -28,11 +28,9 @@ Most notably having the ability to separate functionality by concern and not by 
 
 Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
 
-### Global State with Zustand
+### Simple Global State
 
-While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need. Zustand is a framework agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have. Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
-
-Learn more [pmndrs/zustand](https://github.com/pmndrs/zustand)
+While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need. Zustand is an agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have.  
 
 ### Avoid Hasty Abstractions
 
@@ -47,12 +45,95 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 The big problem with inheritance is that you’re encouraged to predict the future. Inheritance encourages you to build this taxonomy of objects very early on in your project, and you are most likely going to make design mistakes doing that, because humans cannot predict the future (even though it feels like we can).
 
 A slight change in requirements can make the most elegant code fall apart. The more complex a system, the more difficult it is to build a mental model of the system, and the harder it becomes to operate and debug it. As Edsger W. Dijkstra put it, _“Simplicity is prerequisite for reliability”_
-
 ## dApp Architecture
 
 _{diagrams_here}_
 
+## Starter features
+
+- multi-chain support 
+- wallet integration
+- auto-refresh when wallet and network changes
+- real-time subscriptions client
+- support multiple graphql links
+- typescript types auto-generated from graphql
+- simple global state management
+- global state devtool
+- internationalization 
+- css-in-js and dynamic theming
+- helpful comments in code
+
 ## Tech Stack 
+
+...
+### Ethers
+
+- Ecosystem, documentation and tests
+- Convenient abstractions, utils and cli
+- ENS names are first-class citizens
+- New Projects are using ethers over web3js
+- Tiny (~88kb compressed; 284kb uncompressed)
+
+A Complete, Tiny and Simple Ethereum Library in JavaScript by its creator Richard Moore at DevCon 2019 [youtube.com/watch?v=r1ldSzcqaHo](https://www.youtube.com/watch?v=r1ldSzcqaHo). 
+### Zustand
+
+Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
+
+__Why zustand over redux?__   
+- Simple and un-opinionated
+- Makes hooks the primary means of consuming state
+- Doesn't wrap your app in context providers
+- Can inform components transiently (without causing render)
+
+__Why zustand over context?__
+- Less boilerplate
+- Renders components only on changes
+- Centralized, action-based state management
+
+__Why zustand over valtio and jotai?__
+- Familiar flux pattern
+- Ecosystem and extensions
+
+Zustand, valtio and jotai are three different takes on three different global state management paradigms implementations
+
+- Zustand is another take on the flux pattern famously catapulted by Redux
+- Valtio is another take on functional reactive programming initially represented by MobX
+- Jotai is another take on atom based state management spearheaded by Recoil
+
+Learn more [pmndrs/zustand](https://github.com/pmndrs/zustand)
+
+### GraphQL
+
+GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+
+Know exactly what data you can request from your API without leaving your editor, highlight potential issues before sending a query, and take advantage of improved code intelligence. GraphQL makes it easy to build powerful tools like GraphiQL by leveraging your API’s type system.
+
+#### Apollo Client
+
+- Great documentation and maintainance
+- Large ecosystem and a lot of tooling  
+#### The Graph
+
+- Leading GraphQL protocol in the blockchain space
+- Anyone can build and publish open APIs, called subgraphs
+- Many different providers
+
+[thegraph.com](https://thegraph.com/en/)
+#### ChainGraph
+
+Experimental project for GraphQL streaming on EOSIO chains.
+
+- Subscribe to state and not the table deltas
+- Query and subscribe to multiples contract and tables
+- Powerful filtering
+
+[chaingraph.io](https://chaingraph.io)
+
+### Emotion
+
+Emotion is a library designed for writing css styles with JavaScript. It provides powerful and predictable style composition in addition to a great developer experience with features such as source maps, labels, and testing utilities. Both string and object styles are supported.
+
+[emotion.sh](https://emotion.sh/)
 ## Project Structure
 
 Inside the projects functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js with emotion.sh
