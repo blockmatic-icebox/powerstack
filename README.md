@@ -3,10 +3,10 @@
 Front-end architecture, coding guidelines and boilerplates for web3 react applications.
 ## General Philosophy
 
-The dApp Architecture project aims to facilitate starting up quickly and following industry best practices. 
+The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.   
 The project provides a well documented architecture and guidelines to avoid common pitfalls.
 
-If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is great resource to get started.
+If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is a great resource to get started.
 
 The React dApp Architecture follows the following design principles:
 ### The Best Code is No Code 
@@ -51,6 +51,8 @@ A slight change in requirements can make the most elegant code fall apart. The m
 ## dApp Architecture
 
 _{diagrams_here}_
+
+## Tech Stack 
 ## Project Structure
 
 Inside the projects functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js with emotion.sh

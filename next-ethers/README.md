@@ -2,6 +2,24 @@
 
 __work in progress ...__
 
+## Stack 
+
+ - nextjs
+ - ethers
+ - zustand
+ - useDapp
+ - wagmi
+ - apollo client
+ - the graph
+ - emotion css
+ - react hook form
+ - react i18next
+ - yup validations
+
+ Suggested
+
+ - framer motion for animations
+
 ### Why Ethers? 
 
 https://www.youtube.com/watch?v=r1ldSzcqaHo
