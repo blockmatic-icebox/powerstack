@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
+
+- [Getting Started](#getting-started)
+- [Learn More](#learn-more)
+- [Deploy on Vercel](#deploy-on-vercel)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ## Getting Started
 
 First, run the development server:

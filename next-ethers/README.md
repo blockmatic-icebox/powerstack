@@ -2,6 +2,17 @@
 
 __work in progress ...__
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
+
+- [Features](#features)
+- [Stack](#stack)
+  - [Why Ethers?](#why-ethers)
+  - [wagmi vs usedapp](#wagmi-vs-usedapp)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Features
 
 

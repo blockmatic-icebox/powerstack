@@ -1,6 +1,63 @@
+
 # React dApp Architecture
 
 Front-end architecture, coding guidelines and boilerplates for web3 react applications.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
+
+- [General Philosophy](#general-philosophy)
+  - [The Best Code is No Code](#the-best-code-is-no-code)
+  - [Optimize for Change](#optimize-for-change)
+  - [Cannonical Approach](#cannonical-approach)
+  - [Simple Global State](#simple-global-state)
+  - [Avoid Hasty Abstractions](#avoid-hasty-abstractions)
+  - [Composition over Inheritance](#composition-over-inheritance)
+- [dApp Architecture](#dapp-architecture)
+- [Starter features](#starter-features)
+- [Tech Stack](#tech-stack)
+  - [Ethers](#ethers)
+  - [Zustand](#zustand)
+  - [GraphQL](#graphql)
+    - [Apollo Client](#apollo-client)
+    - [The Graph](#the-graph)
+    - [ChainGraph](#chaingraph)
+  - [Emotion](#emotion)
+- [Project Structure](#project-structure)
+- [Testing](#testing)
+- [Starters](#starters)
+- [Useful React Patterns](#useful-react-patterns)
+  - [Context Hook Pattern](#context-hook-pattern)
+  - [Hooks Utils and createContextHook](#hooks-utils-and-createcontexthook)
+  - [Error Boundaries](#error-boundaries)
+  - [useState with functional updates](#usestate-with-functional-updates)
+  - [useReducer](#usereducer)
+- [Code Guidelines & Style Conventions](#code-guidelines--style-conventions)
+  - [Define components and methods as constant arrow functions](#define-components-and-methods-as-constant-arrow-functions)
+  - [Keep things that don't change outside of React components in VanillaJS](#keep-things-that-dont-change-outside-of-react-components-in-vanillajs)
+  - [Keep the state flat](#keep-the-state-flat)
+  - [Keep i18n files flat too](#keep-i18n-files-flat-too)
+  - [Favor camelCase variables, snake_ase attributes is ok](#favor-camelcase-variables-snake_ase-attributes-is-ok)
+  - [Rerturn arrays in hooks](#rerturn-arrays-in-hooks)
+  - [Avoid over optimization (`useCallback` and `useMemo`)](#avoid-over-optimization-usecallback-and-usememo)
+  - [Avoid isLoading booleans](#avoid-isloading-booleans)
+  - [Use ternaries rather than && in JSX](#use-ternaries-rather-than--in-jsx)
+  - [Typescript types or interfaces?](#typescript-types-or-interfaces)
+  - [File names](#file-names)
+  - [Avoid export default](#avoid-export-default)
+    - [Poor Discoverability](#poor-discoverability)
+    - [Autocomplete](#autocomplete)
+    - [CommonJS interop](#commonjs-interop)
+    - [Typo Protection](#typo-protection)
+    - [TypeScript auto-import](#typescript-auto-import)
+    - [Re-exporting](#re-exporting)
+    - [Dynamic Imports](#dynamic-imports)
+    - [Needs two lines for non-class / non-function](#needs-two-lines-for-non-class--non-function)
+- [Blockmatic](#blockmatic)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## General Philosophy
 
 The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.   
@@ -20,7 +77,7 @@ It is also easier to onboard new developers to the project when using known fram
 The only constant in the universe is change; And software is no different, software evolves constantly.
 By encapsulating functionality in small composable pieces you can accomplish great flexibility and speed.
 
-### A Cannonical Approach
+### Cannonical Approach
 
 React Hooks is the new way of writing ReactJS applications. They let you use state and other React features without writing a class, which means you can now write your entire application using _functional programming and functional components_ and this has a myriad of advantages.
 
