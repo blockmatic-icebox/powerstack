@@ -133,7 +133,9 @@ _{diagrams_here}_
 
 A Complete, Tiny and Simple Ethereum Library in JavaScript by its creator Richard Moore at DevCon 2019 [youtube.com/watch?v=r1ldSzcqaHo](https://www.youtube.com/watch?v=r1ldSzcqaHo). 
 
-Ethers playground https://playground.ethers.org -  https://www.youtube.com/watch?v=qzRWio_-wVw 
+Ethers playground 
+- https://playground.ethers.org 
+- [Introduction to Ethers.js Playground - Richard Moore (Ricmoo)](https://www.youtube.com/watch?v=qzRWio_-wVw) 
 ### Zustand
 
 Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
