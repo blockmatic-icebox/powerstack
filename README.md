@@ -132,6 +132,8 @@ _{diagrams_here}_
 - Tiny (~88kb compressed; 284kb uncompressed)
 
 A Complete, Tiny and Simple Ethereum Library in JavaScript by its creator Richard Moore at DevCon 2019 [youtube.com/watch?v=r1ldSzcqaHo](https://www.youtube.com/watch?v=r1ldSzcqaHo). 
+
+Ethers playground https://playground.ethers.org -  https://www.youtube.com/watch?v=qzRWio_-wVw 
 ### Zustand
 
 Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
@@ -165,6 +167,8 @@ GraphQL provides a complete and understandable description of the data in your A
 
 Know exactly what data you can request from your API without leaving your editor, highlight potential issues before sending a query, and take advantage of improved code intelligence. GraphQL makes it easy to build powerful tools like GraphiQL by leveraging your API’s type system.
 
+Learn the basics [howtographql.com/](https://www.howtographql.com/)
+
 #### Apollo Client
 
 - Great documentation and maintainance
@@ -195,7 +199,7 @@ Emotion is a library designed for writing css styles with JavaScript. It provide
 [emotion.sh](https://emotion.sh/)
 ## Project Structure
 
-Inside the projects functionality modularized in atomic modules that internally use hooks, context, jsx and css-in-js with emotion.sh
+Inside each project directory functionality modularized in modules that internally use hooks, context, jsx and css-in-js with emotion.sh
 Each project contains it's onw README file with detailed information. 
 
 ```
@@ -224,9 +228,10 @@ Each project contains it's onw README file with detailed information.
 │   └── Profile/
 │       ├── index.tsx
 │       └── useProfileCustomizations.tsx
-├── utils .................................. Utility functions
+├── utils .................................. Utilities, helpers, constants, and the like
 │   └── index.tsx
-└── library ................................ Third party libs, sdks, etc
+└── lib .................................... JS services, third party libs, sdks, etc
+│   ├── apollo-client.tsx
     └── somelib.tsx
 ```
 
