@@ -117,7 +117,7 @@ _{diagrams_here}_
 - simple global state management
 - global state devtool
 - internationalization 
-- css-in-js and dynamic theming
+- css-in-js and theming with emotion
 - helpful comments in code
 
 ## Tech Stack 
@@ -233,7 +233,7 @@ Each project contains it's onw README file with detailed information.
 ├── utils .................................. Utilities, helpers, constants, and the like
 │   └── index.tsx
 └── lib .................................... JS services, third party libs, sdks, etc
-│   ├── apollo-client.tsx
+    ├── apollo-client.tsx
     └── somelib.tsx
 ```
 
