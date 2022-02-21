@@ -353,6 +353,12 @@ const [count, inc] = React.useReducer((c) => c + 1, 0)
 
 ## Code Guidelines & Style Conventions
 
+### Prefer serializables objects on store state
+
+It is highly recommended that you only put plain serializable objects, arrays, and primitives into your store. It's technically possible to insert non-serializable items into the store, but doing so can break the ability to persist and rehydrate the contents of a store, as well as interfere with time-travel debugging.
+
+If you are okay with things like persistence and time-travel debugging potentially not working as intended, then you are totally welcome to put non-serializable items into your store. Ultimately, it's your application, and how you implement it is up to you. As with many other things, just be sure you understand what tradeoffs are involved.
+
 ### Define components and methods as constant arrow functions
 
 It helps with type inference and typescript intelisense in your VSCode
