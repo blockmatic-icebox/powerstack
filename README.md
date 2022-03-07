@@ -254,6 +254,16 @@ _under development ..._
 - [NextJS Ethers](./next-ethers)
 - [NextJS EOSIO](./next-eosio)
 - [NextJS Solana](./next-solana)
+
+## Recommended Libraries
+
+Recommended libraries not included in the boilerplates.
+
+- [react-use](https://github.com/streamich/react-use) - React hooks swissknife.
+- [react-hook-form](https://github.com/react-hook-form/react-hook-form) - Performant, flexible and extensible forms with easy to use validation.
+- [react-i18next](https://react.i18next.com/latest/usetranslation-hook) - Internationalization
+- https://github.com/crcn/sift.js/
+- https://github.com/cchanxzy/react-currency-input-field
 ## Useful React Patterns 
 ### Context Hook Pattern
 
