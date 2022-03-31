@@ -1,7 +1,10 @@
 
-# React dApp Architecture
+# PowerStack Architecture
 
-Front-end architecture, coding guidelines and boilerplates for web3 react applications.
+High performance fullstack architecture, coding guidelines and boilerplates for web3 applications.
+
+_Disclaimer: this project is currently under development._
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
