@@ -267,6 +267,9 @@ Recommended libraries not included in the boilerplates.
 - [react-i18next](https://react.i18next.com/latest/usetranslation-hook) - Internationalization
 - https://github.com/crcn/sift.js/
 - https://github.com/cchanxzy/react-currency-input-field
+- https://github.com/sindresorhus/promise-fun
+- https://lodash.com/docs/4.17.15
+
 ## Useful React Patterns 
 ### Context Hook Pattern
 
