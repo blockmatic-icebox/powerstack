@@ -13,23 +13,22 @@ _Disclaimer: this project is currently under development._
 - [General Philosophy](#general-philosophy)
   - [The Best Code is No Code](#the-best-code-is-no-code)
   - [Optimize for Change](#optimize-for-change)
-  - [Cannonical Approach](#cannonical-approach)
-  - [Simple Global State](#simple-global-state)
   - [Avoid Hasty Abstractions](#avoid-hasty-abstractions)
-  - [Composition over Inheritance](#composition-over-inheritance)
+  - [Follow Standards](#follow-standards)
 - [dApp Architecture](#dapp-architecture)
 - [Starter features](#starter-features)
 - [Tech Stack](#tech-stack)
   - [Ethers](#ethers)
-  - [Zustand](#zustand)
+  - [React Remix](#react-remix)
+  - [React Native with Zustand](#react-native-with-zustand)
   - [GraphQL](#graphql)
     - [Apollo Client](#apollo-client)
     - [The Graph](#the-graph)
     - [ChainGraph](#chaingraph)
   - [Emotion](#emotion)
-- [Project Structure](#project-structure)
 - [Testing](#testing)
 - [Starters](#starters)
+- [Recommended JS Libraries](#recommended-js-libraries)
 - [Useful React Patterns](#useful-react-patterns)
   - [Context Hook Pattern](#context-hook-pattern)
   - [Hooks Utils and createContextHook](#hooks-utils-and-createcontexthook)
@@ -37,6 +36,7 @@ _Disclaimer: this project is currently under development._
   - [useState with functional updates](#usestate-with-functional-updates)
   - [useReducer](#usereducer)
 - [Code Guidelines & Style Conventions](#code-guidelines--style-conventions)
+  - [Prefer serializables objects on store state](#prefer-serializables-objects-on-store-state)
   - [Define components and methods as constant arrow functions](#define-components-and-methods-as-constant-arrow-functions)
   - [Keep things that don't change outside of React components in VanillaJS](#keep-things-that-dont-change-outside-of-react-components-in-vanillajs)
   - [Keep the state flat](#keep-the-state-flat)
@@ -69,28 +69,14 @@ The project provides a well documented architecture and guidelines to avoid comm
 If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is a great resource to get started.
 
 The React dApp Architecture follows the following design principles:
+
 ### The Best Code is No Code 
 
 The fewer lines of code the better. Every line of code you write increases complexity and error surface. 
-Well maintained frameworks and libraries provide battle tested code and regurlarly updated codebases. 
-It is also easier to onboard new developers to the project when using known frameworks and tools such as NextJS and Ethers.
-
 ### Optimize for Change
 
 The only constant in the universe is change; And software is no different, software evolves constantly.
 By encapsulating functionality in small composable pieces you can accomplish great flexibility and speed.
-
-### Cannonical Approach
-
-React Hooks is the new way of writing ReactJS applications. They let you use state and other React features without writing a class, which means you can now write your entire application using _functional programming and functional components_ and this has a myriad of advantages.
-
-Most notably having the ability to separate functionality by concern and not by stage in the lifecycle method ( single responsibility principle ) which makes the source code of the applications much more readable, maintainable and increases the reusability and portability of the components.
-
-Read [ReactJS Hooks Motivation](https://reactjs.org/docs/hooks-intro.html#motivation) for more information.
-
-### Simple Global State
-
-While hooks are great for encapsulating UI functionality, state management on a application is more than just UI state and most of time Vanilla JS is all you need. Zustand is an agnostic state management library that greatly simplifies global state on React applications. While you can technically keep all your logic in hooks, as your application grows you will find that this approach creates some overhead, is very verbose and it can have an inpact on rendering performance, the more context providers you add the more undesired rerenders your application will typically have.  
 
 ### Avoid Hasty Abstractions
 
@@ -100,11 +86,9 @@ For this reason, always start coding locally on your presentation views and extr
 
 Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 
-### Composition over Inheritance
+### Follow Standards
 
-The big problem with inheritance is that you’re encouraged to predict the future. Inheritance encourages you to build this taxonomy of objects very early on in your project, and you are most likely going to make design mistakes doing that, because humans cannot predict the future (even though it feels like we can).
-
-A slight change in requirements can make the most elegant code fall apart. The more complex a system, the more difficult it is to build a mental model of the system, and the harder it becomes to operate and debug it. As Edsger W. Dijkstra put it, _“Simplicity is prerequisite for reliability”_
+.....
 ## dApp Architecture
 
 _{diagrams_here}_
@@ -139,7 +123,17 @@ Presentation by Richard Moore at DevCon 2019: [A Complete, Tiny and Simple Ether
 Ethers playground 
 - https://playground.ethers.org 
 - [Introduction to Ethers.js Playground](https://www.youtube.com/watch?v=qzRWio_-wVw)  by Richard Moore (Ricmoo) at Toronto Ethereum Developers Meetup 2021
-### Zustand
+
+### React Remix
+
+The most performant React framework out there.
+
+- https://remix.run/docs/en/v1/api/conventions
+- https://www.youtube.com/watch?v=d_BhzHVV4aQ
+- https://www.youtube.com/watch?v=QpP3daA2na4
+- https://remix.run/docs/en/v1/pages/technical-explanation
+
+### React Native with Zustand
 
 Zustand helps to keep state management and concise, reduces boilerplate and prevents undesired ui renders. Lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
 
@@ -202,43 +196,6 @@ Experimental project for GraphQL streaming on EOSIO chains.
 Emotion is a library designed for writing css styles with JavaScript. It provides powerful and predictable style composition in addition to a great developer experience with features such as source maps, labels, and testing utilities. Both string and object styles are supported.
 
 [emotion.sh](https://emotion.sh/)
-## Project Structure
-
-Inside each project directory functionality modularized in modules that internally use hooks, context, jsx and css-in-js with emotion.sh
-Each project contains it's onw README file with detailed information. 
-
-```
-.
-├── store ................................... Zustand store. Slicing is recommended
-├── assets .................................. Static assets
-├── components .............................. Components used by different views
-│   ├── Footer.tsx
-│   ├── Header.tsx
-│   └── VideoPlayer/
-│       ├── index.tsx
-│       ├── useVideoPlayerControls.tsx
-│       └── useStreaming.tsx
-├── hooks .................................. Global hooks ( prefer Zustand over context api for global state )
-│   ├── useWallet.tsx
-│   ├── useAuth.tsx
-│   ├── useBigHook/
-│   │    ├── index.tsx
-│   │    ├── Big.tsx
-│   │    └── BigHookProvider.tsx
-│   └── ...
-├── pages .................................. NextJS route container components
-│   ├── index.tsx
-│   ├── Swaps.tsx
-│   ├── Trade.tsx
-│   └── Profile/
-│       ├── index.tsx
-│       └── useProfileCustomizations.tsx
-├── utils .................................. Utilities, helpers, constants, and the like
-│   └── index.tsx
-└── lib .................................... JS services, third party libs, sdks, etc
-    ├── apollo-client.tsx
-    └── somelib.tsx
-```
 
 ## Testing
 
@@ -254,11 +211,7 @@ Each dApp starter has it's own README.md file with detailed feature list and com
 
 _under development ..._
 
-- [NextJS Ethers](./next-ethers)
-- [NextJS EOSIO](./next-eosio)
-- [NextJS Solana](./next-solana)
-
-## Recommended Libraries
+## Recommended JS Libraries
 
 Recommended libraries not included in the boilerplates.
 
