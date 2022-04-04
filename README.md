@@ -26,6 +26,8 @@ _Disclaimer: this project is currently under development._
     - [The Graph](#the-graph)
     - [ChainGraph](#chaingraph)
   - [Emotion](#emotion)
+- [Google Cloud](#google-cloud)
+- [Containers](#containers)
 - [Testing](#testing)
 - [Starters](#starters)
 - [Recommended JS Libraries](#recommended-js-libraries)
@@ -196,6 +198,21 @@ Experimental project for GraphQL streaming on EOSIO chains.
 Emotion is a library designed for writing css styles with JavaScript. It provides powerful and predictable style composition in addition to a great developer experience with features such as source maps, labels, and testing utilities. Both string and object styles are supported.
 
 [emotion.sh](https://emotion.sh/)
+
+## Google Cloud
+
+- cloud run features
+- ease of configuration
+- lower cost 
+- better developer experience
+
+Learn more [cloud.google.com/](https://cloud.google.com), [CloudRun Overview](https://www.youtube.com/watch?v=gx8VTa1c8DA&t=1s)
+
+## Containers
+
+The primary benefits of containers are efficiency and agility. Containers are orders of magnitude faster to provision, and much lighter-weight to build and define versus methods like omnibus software builds and full Virtual Machine images. Containers in a single OS are also more efficient at resource utilization than running a Hypervisor and guest OSs.
+
+Efficiency and agility are good for everyone, but they become game-changers at scale. 
 
 ## Testing
 
