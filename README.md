@@ -3,6 +3,13 @@
 
 High performance fullstack architecture, coding guidelines and boilerplates for web3 applications.
 
+You can think about the this architecture as a big redux where:
+
+- actions are in contracts
+- reducers are in the backend
+- dispatcher is the wallet
+- with performant ui rendering 
+
 _Disclaimer: this project is currently under development._
 
 
