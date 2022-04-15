@@ -1,16 +1,18 @@
 # PowerStack Remix Starter
 
-PowerStack Remix template for development speed and great developer experience. 
+PowerStack Remix template for development speed and great developer experience.
 
 ### Tech Stack
 
 - remix react framework https://remix.run
 - stitches styling framework https://stitches.dev
 - remix-forms https://remix-forms.seasoned.cc/get-started
+- prisma orm https://www.prisma.io/
 - lodash utilities https://lodash.com/docs
 - react-use hooks https://github.com/streamich/react-use
 - typescript https://www.typescriptlang.org
 - react-i18next internationalization https://github.com/sergiodxa/remix-i18next
+- docker https://www.docker.com
 
 ### File Structure
 
@@ -53,6 +55,22 @@ You can start editing the page by modifying `app/routes/index.tsx`. The page aut
 - `dev`: runs your application on `localhost:3000`
 - `build`: creates the production build version
 - `start`: starts a simple server with the build production code
+
+## Docker
+
+```
+# Build the image
+docker build -t image_name .
+
+# Start a container
+docker run -p 3000:3000 -d image_name
+
+# Get container ID
+docker ps
+
+# Print app output
+docker logs <container id>
+```
 
 ## Contributing
 

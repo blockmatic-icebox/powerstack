@@ -1,13 +1,13 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
 export interface ClientStyleContextData {
-  reset: () => void;
-  sheet: string;
+  reset: () => void
+  sheet: string
 }
 
 const ClientStyleContext = createContext<ClientStyleContextData>({
   reset: () => {},
-  sheet: "",
-});
+  sheet: '',
+})
 
-export default ClientStyleContext;
+export default ClientStyleContext

@@ -1,10 +1,10 @@
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react'
 
-import { styled } from "../styles/stitches.config";
+import { styled } from '../styles/stitches.config'
 
-const Container = styled("div", {
-  backgroundColor: "#d6d6d6",
-});
+const Container = styled('div', {
+  backgroundColor: '#d6d6d6',
+})
 
 export default function Jokes() {
   return (
@@ -13,5 +13,5 @@ export default function Jokes() {
       <p>This route works fine.</p>
       <Link to="/">Back to home</Link>
     </Container>
-  );
+  )
 }

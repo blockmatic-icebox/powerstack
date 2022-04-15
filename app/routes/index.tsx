@@ -1,12 +1,12 @@
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react'
 
-import { styled } from "../styles/stitches.config";
+import { styled } from '../styles/stitches.config'
 
-const Container = styled("div", {
-  fontFamily: "system-ui, sans-serif",
+const Container = styled('div', {
+  fontFamily: 'system-ui, sans-serif',
   lineHeight: 1.4,
-  backgroundColor: "#999",
-});
+  backgroundColor: '#999',
+})
 
 export default function Index() {
   return (
@@ -21,5 +21,5 @@ export default function Index() {
         </li>
       </ul>
     </Container>
-  );
+  )
 }
