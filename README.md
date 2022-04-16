@@ -6,7 +6,8 @@ PowerStack Remix template for development speed and great developer experience.
 
 - remix react framework https://remix.run
 - stitches styling framework https://stitches.dev
-- remix-forms https://remix-forms.seasoned.cc/get-started
+- remix-validated-form https://www.remix-validated-form.io
+- zod validator https://github.com/colinhacks/zod
 - prisma orm https://www.prisma.io/
 - lodash utilities https://lodash.com/docs
 - react-use hooks https://github.com/streamich/react-use
