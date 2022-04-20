@@ -9,11 +9,11 @@ PowerStack Remix template for development speed and great developer experience.
 - remix-validated-form https://www.remix-validated-form.io
 - zod validator https://github.com/colinhacks/zod
 - prisma orm https://www.prisma.io/
-- remix-ustils https://github.com/sergiodxa/remix-utils
+- remix-tils https://github.com/sergiodxa/remix-utils
 - lodash tools https://lodash.com/docs
 - react-use hooks https://github.com/streamich/react-use
 - typescript https://www.typescriptlang.org
-- react-i18next internationalization https://github.com/sergiodxa/remix-i18next
+- remix-i18next internationalization https://github.com/sergiodxa/remix-i18next
 - docker https://www.docker.com
 
 ### File Structure
