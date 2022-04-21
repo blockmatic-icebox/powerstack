@@ -9,3 +9,8 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// Remove this placeholder
+model User {
+  id    Int     @id @default(autoincrement())
+}
