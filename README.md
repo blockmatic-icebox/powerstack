@@ -9,21 +9,32 @@ PowerStack Remix template for development speed and great developer experience.
 - remix-validated-form https://www.remix-validated-form.io
 - zod validator https://github.com/colinhacks/zod
 - prisma orm https://www.prisma.io/
-- remix-tils https://github.com/sergiodxa/remix-utils
+- remix-utils https://github.com/sergiodxa/remix-utils
 - lodash tools https://lodash.com/docs
 - react-use hooks https://github.com/streamich/react-use
 - typescript https://www.typescriptlang.org
 - remix-i18next internationalization https://github.com/sergiodxa/remix-i18next
 - docker https://www.docker.com
+- sentry reporting https://sentry.io/
+- login with crypto wallets and remix-auth https://github.com/sergiodxa/remix-auth
+- ethers https://docs.ethers.io/v5/
+- ~/library with utilities
 
 ### File Structure
 
 ```
 - app/
+  - components/
+  - library/
+  - routes/
+  - store/
   - styles/
     - client.context.tsx
     - server.context.tsx
     - stitches.config.ts
+  - app-config.ts
+  - app-secrets.ts
+  - auth.server.ts
   - entry.client.tsx
   - entry.server.tsx
   - root.tsx

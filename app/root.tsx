@@ -1,4 +1,5 @@
-import type { MetaFunction } from '@remix-run/node'
+import type { LoaderFunction, MetaFunction } from '@remix-run/node'
+import { json } from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -7,8 +8,12 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
 } from '@remix-run/react'
 import { useContext, useEffect } from 'react'
+import { appconfig } from './app-config'
+import { auth, session_storage } from './auth.server'
+import { useStore } from './store'
 
 import ClientStyleContext from './styles/client.context'
 import { styled } from './styles/stitches.config'
@@ -60,7 +65,23 @@ const Document = ({ children, title }: DocumentProps) => {
   )
 }
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await auth.isAuthenticated(request)
+  const session = await session_storage.getSession(
+    request.headers.get('cookie'),
+  )
+  const error = session.get(auth.sessionErrorKey)
+  console.log('SESSION', { user, session_data: JSON.stringify(session), error })
+  useStore.getState().setSessionData({ user, appconfig })
+
+  return json({
+    user,
+    appconfig,
+  })
+}
+
 export default function App() {
+  useStore.getState().setSessionData(useLoaderData())
   return (
     <Document>
       <Outlet />
