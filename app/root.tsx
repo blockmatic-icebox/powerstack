@@ -18,6 +18,7 @@ import { useStore } from './store'
 import ClientStyleContext from './styles/client.context'
 import { styled } from './styles/stitches.config'
 import type { AppSessionData } from './types'
+// import { StitchesUIProvider } from '@blockmatic/stitches-ui'
 
 const Container = styled('div', {
   backgroundColor: '#ff0000',
@@ -99,11 +100,13 @@ export function CatchBoundary() {
 
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
+      {/* <StitchesUIProvider theme={stitches_theme}> */}
       <Container>
         <p>
           [CatchBoundary]: {caught.status} {caught.statusText}
         </p>
       </Container>
+      {/* <StitchesUIProvider/> */}
     </Document>
   )
 }
