@@ -16,14 +16,14 @@ import { auth, session_storage } from './auth.server'
 import { useStore } from './store'
 
 import ClientStyleContext from './styles/client.context'
-import { styled } from './styles/stitches.config'
+import { styled, globalStyles } from './styles/stitches.config'
 import type { AppSessionData } from './types'
-// import { StitchesUIProvider } from '@blockmatic/stitches-ui'
 
 const Container = styled('div', {
   backgroundColor: '#ff0000',
   padding: '1em',
 })
+
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -44,6 +44,8 @@ const Document = ({ children, title }: DocumentProps) => {
     // reset cache to re-apply global styles
     clientStyleData.reset()
   }, [clientStyleData])
+
+  globalStyles()
 
   return (
     <html lang="en">
