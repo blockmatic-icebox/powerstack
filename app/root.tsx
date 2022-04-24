@@ -71,13 +71,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   const session = await session_storage.getSession(
     request.headers.get('cookie'),
   )
-  const error = session.get(auth.sessionErrorKey)
+  const session_error = session.get(auth.sessionErrorKey) || null
 
-  useStore.getState().setSessionData({ user, appconfig })
   const session_data: AppSessionData = {
     user,
     appconfig,
-    error,
+    session_error,
   }
   return json(session_data)
 }

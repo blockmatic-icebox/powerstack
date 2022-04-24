@@ -4,20 +4,23 @@ import create from 'zustand'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from '~/library'
-import type { UserInterfaceState } from './ui-state'
+import type { UserInterfaceActions, UserInterfaceState } from './ui-state'
 import { createUserInterfaceSlice } from './ui-state'
-import type { AppSessionState } from './session-state'
+import type { AppSessionActions, AppSessionState } from './session-state'
 import { createAppSessionSlice } from './session-state'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = AppSessionState & UserInterfaceState
+export type AppStateActions = AppSessionActions & UserInterfaceActions
+export type AppStore = AppState & AppStateActions
+
 export type StoreSlice<T> = (
-  set: SetState<AppState>,
-  get: GetState<AppState>,
+  set: SetState<AppStore>,
+  get: GetState<AppStore>,
 ) => T
 
 //github.com/pmndrs/zustand#using-zustand-without-react
-export const store = createVanillaStore<AppState>(
+export const store = createVanillaStore<AppStore>(
   // compose all slices into AppState
   (set, get) => ({
     ...createAppSessionSlice(set, get),

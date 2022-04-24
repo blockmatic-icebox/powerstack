@@ -10,5 +10,5 @@ export type AppUser = {
 export type AppSessionData = {
   user: AppUser
   appconfig: AppConfig
-  error: string
+  session_error: string
 }

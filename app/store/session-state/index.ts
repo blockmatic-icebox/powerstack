@@ -14,9 +14,9 @@ export type AppSessionActions = {
   setSessionData: (session_data: AppSessionData) => void
 }
 
-export type Session = AppSessionState & AppSessionActions
+export type AppSession = AppSessionState & AppSessionActions
 
-export const createAppSessionSlice: StoreSlice<Session> = (set) => ({
+export const createAppSessionSlice: StoreSlice<AppSession> = (set) => ({
   ...defaultAppSessionState,
 
   setUser: (user: AppUser) => set({ user }),
