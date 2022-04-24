@@ -23,8 +23,8 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
+  for (var name3 in all)
+    __defProp(target, name3, { get: all[name3], enumerable: true });
 };
 var __reExport = (target, module2, copyDefault, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
@@ -64,14 +64,45 @@ var import_server = require("react-dom/server");
 
 // app/styles/stitches.config.ts
 var import_react = require("@stitches/react");
+
+// app/styles/light-theme.json
+var name = "light";
+var typeStyles = { "display-1": { fontFamily: "Gilroy-ExtraBold", fontSize: "48px", lineHeight: "62px", letterSpacing: "0.1em" }, "display-2": { fontFamily: "Gilroy-ExtraBold", fontSize: "40px", lineHeight: "52px", letterSpacing: "0.1em" }, "h-1": { fontFamily: "Gilroy-Bold", fontSize: "33px", lineHeight: "44px", letterSpacing: "0.1em" }, "h-2": { fontFamily: "Gilroy-Bold", fontSize: "28px", lineHeight: "38px", letterSpacing: "0.1em" }, "h-3": { fontFamily: "Gilroy-Bold", fontSize: "23px", lineHeight: "32px", letterSpacing: "0.1em" }, "h-4": { fontFamily: "Gilroy-Bold", fontSize: "19px", lineHeight: "27px", letterSpacing: "0.1em" }, "h-5": { fontFamily: "Gilroy-Bold", fontSize: "16px", lineHeight: "23px", letterSpacing: "0.1em" }, body: { fontFamily: "Gilroy-Bold", fontSize: "16px", lineHeight: "23px", letterSpacing: "0.1em" }, small: { fontFamily: "Gilroy-SemiBold", fontSize: "13px", lineHeight: "20px", letterSpacing: "0.1em" }, "x-small": { fontFamily: "Gilroy-SemiBold", fontSize: "11px", lineHeight: "17px", letterSpacing: "0.1em" } };
+var radii = { "radius-4": "4px", "radius-6": "6px", "radius-12": "12px", "radius-20": "20px" };
+var shadows = { "drop-shadow-1": "0px 4px 8px 0px #00000014, 2px 2px 2px 0px #0000000a", "drop-shadow-2": "0px 8px 16px 0px #00000014, 4px 4px 4px 0px #0000000a", "drop-shadow-3": "0px 12px 20px 0px #00000014, 6px 6px 6px 0px #0000000a", "drop-shadow-4": "0px 16px 24px 0px #00000014, 8px 8px 8px 0px #0000000a", "drop-shadow-5": "0px 24px 28px 0px #00000014, 12px 12px 12px 0px #0000000a" };
+var colors = { primary: "#044bff", "shadow-layer-1": "#00000014", "shadow-layer-2": "#0000000a", background: "#ffffff", neutral: "#eaeef0", "neutral-400": "#eef2f3", "neutral-300": "#f2f5f7", "neutral-600": "#b3c1c8", "neutral-700": "#7d94a0", "neutral-200": "#f6f8fa", "neutral-800": "#51646d", text: "#000505", "primary-400": "#1d5dff", "primary-300": "#366fff", "primary-200": "#4f81ff", "primary-600": "#033ccc", "primary-700": "#052e96", "primary-800": "#052062" };
+var fonts = { bold: "Gilroy-Bold", "extra-bold": "Gilroy-ExtraBold", "semi-bold": "Gilroy-SemiBold" };
+var durations = { instant: "0", "x-fast": "107", fast: "160", normal: "240", slow: "360", "x-slow": "540" };
+var easeCurves = { "in-out-quint": { x1: 0.86, y1: 0, x2: 0.07, y2: 1 }, "out-quint": { x1: 0.23, y1: 1, x2: 0.32, y2: 1 }, "in-sine": { x1: 0.47, y1: 0, x2: 0.745, y2: 0.715 } };
+var space = { none: "0px", "xxx-small": "6px", "xx-small": "9px", "x-small": "14px", small: "21px", regular: "32px", large: "48px", "x-large": "72px", "xx-large": "108px", "xxx-large": "162px" };
+var light_theme_default = { name, typeStyles, radii, shadows, colors, fonts, durations, easeCurves, space };
+
+// app/styles/dark-theme.json
+var name2 = "dark";
+var typeStyles2 = { "display-1": { fontFamily: "Gilroy-ExtraBold", fontSize: "48px", lineHeight: "62px", letterSpacing: "0.1em" }, "display-2": { fontFamily: "Gilroy-ExtraBold", fontSize: "40px", lineHeight: "52px", letterSpacing: "0.1em" }, "h-1": { fontFamily: "Gilroy-Bold", fontSize: "33px", lineHeight: "44px", letterSpacing: "0.1em" }, "h-2": { fontFamily: "Gilroy-Bold", fontSize: "28px", lineHeight: "38px", letterSpacing: "0.1em" }, "h-3": { fontFamily: "Gilroy-Bold", fontSize: "23px", lineHeight: "32px", letterSpacing: "0.1em" }, "h-4": { fontFamily: "Gilroy-Bold", fontSize: "19px", lineHeight: "27px", letterSpacing: "0.1em" }, "h-5": { fontFamily: "Gilroy-Bold", fontSize: "16px", lineHeight: "23px", letterSpacing: "0.1em" }, body: { fontFamily: "Gilroy-Bold", fontSize: "16px", lineHeight: "23px", letterSpacing: "0.1em" }, small: { fontFamily: "Gilroy-SemiBold", fontSize: "13px", lineHeight: "20px", letterSpacing: "0.1em" }, "x-small": { fontFamily: "Gilroy-SemiBold", fontSize: "11px", lineHeight: "17px", letterSpacing: "0.1em" } };
+var radii2 = { "radius-4": "4px", "radius-6": "6px", "radius-12": "12px", "radius-20": "20px" };
+var shadows2 = { "drop-shadow-1": "0px 4px 8px 0px #0000003d, 2px 2px 2px 0px #0000001f", "drop-shadow-2": "0px 8px 16px 0px #0000003d, 4px 4px 4px 0px #00000021", "drop-shadow-3": "0px 12px 20px 0px #0000003d, 6px 6px 6px 0px #0000001f", "drop-shadow-4": "0px 16px 24px 0px #0000003d, 8px 8px 8px 0px #0000001f", "drop-shadow-5": "0px 24px 28px 0px #0000003d, 12px 12px 12px 0px #0000001f" };
+var colors2 = { primary: "#00023e", "shadow-layer-1": "#00000014", "shadow-layer-2": "#0000000a", background: "#002f2f", neutral: "#eaeef0", "neutral-400": "#eef2f3", "neutral-300": "#f2f5f7", "neutral-600": "#b3c1c8", "neutral-700": "#7d94a0", "neutral-200": "#f6f8fa", "neutral-800": "#51646d", text: "#fefefe", "primary-400": "#00036b", "primary-300": "#000598", "primary-200": "#0006c4", "primary-600": "#010231", "primary-700": "#010224", "primary-800": "#010218" };
+var fonts2 = { bold: "Gilroy-Bold", "extra-bold": "Gilroy-ExtraBold", "semi-bold": "Gilroy-SemiBold" };
+var durations2 = { instant: "0", "x-fast": "107", fast: "160", normal: "240", slow: "360", "x-slow": "540" };
+var easeCurves2 = { "in-out-quint": { x1: 0.86, y1: 0, x2: 0.07, y2: 1 }, "out-quint": { x1: 0.23, y1: 1, x2: 0.32, y2: 1 }, "in-sine": { x1: 0.47, y1: 0, x2: 0.745, y2: 0.715 } };
+var space2 = { none: "0px", "xxx-small": "6px", "xx-small": "9px", "x-small": "14px", small: "21px", regular: "32px", large: "48px", "x-large": "72px", "xx-large": "108px", "xxx-large": "162px" };
+var dark_theme_default = { name: name2, typeStyles: typeStyles2, radii: radii2, shadows: shadows2, colors: colors2, fonts: fonts2, durations: durations2, easeCurves: easeCurves2, space: space2 };
+
+// app/styles/stitches.config.ts
+console.log("Light Theme for Stitches\n", light_theme_default);
+console.log("Dark Theme for Stitches\n", dark_theme_default);
 var stitches = (0, import_react.createStitches)({
   theme: {
     colors: {
       red: "#ff6d6d",
-      steel: "#363645",
+      steel: "#363645b0",
       black: "#000",
       white: "#fff",
       grey: "#666"
+    },
+    space: {
+      "space-1": "20px"
     }
   },
   media: {
@@ -96,7 +127,7 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
   });
 }
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/root.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\root.tsx
 var root_exports = {};
 __export(root_exports, {
   CatchBoundary: () => CatchBoundary,
@@ -261,7 +292,7 @@ var ClientStyleContext = (0, import_react3.createContext)({
 });
 var client_context_default = ClientStyleContext;
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/root.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\root.tsx
 var Container = styled("div", {
   backgroundColor: "#ff0000",
   padding: "1em"
@@ -314,7 +345,7 @@ function ErrorBoundary({ error }) {
   }, /* @__PURE__ */ React.createElement(Container, null, /* @__PURE__ */ React.createElement("p", null, "[ErrorBoundary]: There was an error: ", error.message)));
 }
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/actions/login/$strategy.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\actions\login\$strategy.tsx
 var strategy_exports = {};
 __export(strategy_exports, {
   action: () => action
@@ -328,7 +359,7 @@ var action = async ({ request, params }) => {
   });
 };
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/index.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\index.tsx
 var routes_exports = {};
 __export(routes_exports, {
   default: () => Index
@@ -397,10 +428,29 @@ var WalletLogin = () => {
   }, "Login with Phantom"), /* @__PURE__ */ React.createElement("p", null, "Address:", " ", (user == null ? void 0 : user.address) && (user == null ? void 0 : user.network) === "solana" ? user.address : "wallet not connected"));
 };
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/index.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\index.tsx
 var Container2 = styled("div", {
   fontFamily: "system-ui, sans-serif",
-  lineHeight: 1.4
+  lineHeight: 1.4,
+  margin: "auto",
+  padding: "$space-1",
+  "@media (min-width: 1000px)": {
+    width: "600px"
+  },
+  variants: {
+    color: {
+      red: {
+        backgroundColor: "$red"
+      },
+      steel: {
+        backgroundColor: "$steel",
+        color: "white"
+      }
+    }
+  },
+  defaultVariants: {
+    color: "steel"
+  }
 });
 function Index() {
   const { user, appconfig: appconfig2 } = useStore();
@@ -413,7 +463,7 @@ function Index() {
   }, "Jokes: Error"))));
 }
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/jokes.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\jokes.tsx
 var jokes_exports = {};
 __export(jokes_exports, {
   default: () => Jokes
@@ -428,7 +478,7 @@ function Jokes() {
   }, "Back to home"));
 }
 
-// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/jokes/jokes-error.tsx
+// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\jokes\jokes-error.tsx
 var jokes_error_exports = {};
 __export(jokes_error_exports, {
   default: () => JokesError
@@ -438,7 +488,7 @@ function JokesError() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "90cbd525", "entry": { "module": "/build/entry.client-LLUJGBMV.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-S5UHSVAV.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-P3A2FPAL.js", "imports": ["/build/_shared/chunk-FHZ2PEHM.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-33B452JE.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-3SZMRQWW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WQIBBHBW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-90CBD525.js" };
+var assets_manifest_default = { "version": "84c8e2c5", "entry": { "module": "/build/entry.client-4PQNENKJ.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-QLFXOJ5S.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-6DI4TP4B.js", "imports": ["/build/_shared/chunk-FHZ2PEHM.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-MOLQ2Q3Z.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-EYAYF6XX.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-Z7UYQFSA.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WN55ZSKU.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-84C8E2C5.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };
@@ -491,4 +541,4 @@ module.exports = __toCommonJS(stdin_exports);
   entry,
   routes
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=/build/index.js.map

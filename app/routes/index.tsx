@@ -19,6 +19,25 @@ import { styled } from '~/styles/stitches.config'
 const Container = styled('div', {
   fontFamily: 'system-ui, sans-serif',
   lineHeight: 1.4,
+  margin: 'auto',
+  padding: '$space-1',
+  '@media (min-width: 1000px)': {
+    width: '600px',
+  },
+  variants: {
+    color: {
+      red: {
+        backgroundColor: '$red',
+      },
+      steel: {
+        backgroundColor: '$steel',
+        color: 'white'
+      }
+    }
+  },
+  defaultVariants: {
+    color: 'steel'
+  }
 })
 
 export default function Index() {

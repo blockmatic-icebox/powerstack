@@ -10,7 +10,8 @@
     "start": "remix-serve build",
     "lint": "eslint --ignore-path .gitignore \"**/*.+(js|ts|tsx)\"",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "prisma-gen": "prisma db pull && prisma generate"
+    "prisma-gen": "prisma db pull && prisma generate",
+    "theme-gen": "node theme-gen.js"
   },
   "dependencies": {
     "@prisma/client": "^3.12.0",
