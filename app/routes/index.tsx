@@ -2,6 +2,19 @@ import { Link } from '@remix-run/react'
 import { WalletLogin } from '~/components/WalletLogin'
 import { useStore } from '~/store'
 import { styled } from '~/styles/stitches.config'
+// import {
+//   Box,
+//   Button,
+//   Flex,
+//   Grid,
+//   Link,
+//   Container,
+//   Heading,
+//   Text,
+//   Paragraph,
+//   Input,
+//   Textarea,
+// } from '@blockmatic/stitches-ui'
 
 const Container = styled('div', {
   fontFamily: 'system-ui, sans-serif',
