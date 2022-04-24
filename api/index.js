@@ -137,6 +137,7 @@ var import_node = require("@remix-run/node");
 var import_ethers = require("ethers");
 var import_remix_auth = require("remix-auth");
 var import_remix_auth_form = require("remix-auth-form");
+var import_tweetnacl = __toESM(require("tweetnacl"));
 var session_storage = (0, import_node.createCookieSessionStorage)({
   cookie: {
     name: "__session",
@@ -148,21 +149,41 @@ var session_storage = (0, import_node.createCookieSessionStorage)({
   }
 });
 var auth = new import_remix_auth.Authenticator(session_storage);
+var enc = new TextEncoder().encode;
+var getFormData = (form) => {
+  var _a, _b, _c;
+  const address = (_a = form.get("address")) == null ? void 0 : _a.toString();
+  const signature = (_b = form.get("signature")) == null ? void 0 : _b.toString();
+  const message2 = (_c = form.get("message")) == null ? void 0 : _c.toString();
+  if (!address || !signature || !message2)
+    throw new import_remix_auth.AuthorizationError(`Invalid login request`);
+  return {
+    address,
+    signature,
+    message: message2
+  };
+};
 auth.use(new import_remix_auth_form.FormStrategy(async ({ form }) => {
-  const address = form.get("address");
-  const signature = form.get("signature");
-  const message = form.get("message");
-  console.log("metamask strategy", { address, signature, message });
-  if (!address || !signature || !message)
-    throw new import_remix_auth.AuthorizationError(`Invalid metamask login request`);
-  const signerAddr = await import_ethers.ethers.utils.verifyMessage(message.toString(), signature.toString());
-  if (signerAddr !== address)
+  const { address, signature, message: message2 } = getFormData(form);
+  const addr = await import_ethers.ethers.utils.verifyMessage(message2, signature);
+  if (addr !== address)
     throw new import_remix_auth.AuthorizationError(`Invalid signature`);
   const user = {
-    address: address.toString()
+    address: address.toString(),
+    network: "rinkeby"
   };
   return user;
 }), "metamask");
+auth.use(new import_remix_auth_form.FormStrategy(async ({ form }) => {
+  const { address, signature, message: message2 } = getFormData(form);
+  const resp2 = import_tweetnacl.default.sign.detached.verify(enc(message2), enc(signature), enc(address));
+  console.log("auth response", resp2);
+  const user = {
+    address: address.toString(),
+    network: "solana"
+  };
+  return user;
+}), "phantom");
 
 // app/store/index.ts
 var import_vanilla = __toESM(require("zustand/vanilla"));
@@ -174,10 +195,12 @@ var import_simple_zustand_devtools = require("simple-zustand-devtools");
 var import_lodash = __toESM(require("lodash"));
 var isBrowser = typeof window !== "undefined";
 var userAgent = isBrowser ? import_lodash.default.get(window, "navigator.userAgent") : "";
-var hasEthereum = isBrowser && import_lodash.default.has(window, "ethereum");
+var ethereum = isBrowser && import_lodash.default.get(window, "ethereum");
 var isAndroid = /(Android)/i.test(userAgent);
 var isIphone = /(iPhone|iPod)/i.test(userAgent);
 var isIpad = /(iPad)/i.test(userAgent);
+var isPhantom = isBrowser && import_lodash.default.has(window, "solana.isPhantom");
+var solana = isBrowser && import_lodash.default.get(window, "solana");
 
 // app/store/global-defaults.ts
 var dummy_appconfig = {
@@ -302,42 +325,66 @@ __export(routes_exports, {
 });
 var import_react8 = require("@remix-run/react");
 
-// app/components/wallet.tsx
+// app/components/WalletLogin.tsx
 var import_react6 = require("@stitches/react");
-var import_lodash2 = __toESM(require("lodash"));
 var import_ethers2 = require("ethers");
 var import_react7 = require("@remix-run/react");
 var StyledWallet = (0, import_react6.styled)("div", {
   border: "1px dotted gray",
   minHeight: 100
 });
-var Wallet = () => {
-  const { user, appconfig: appconfig2 } = useStore();
+var message = "Login to PowerStack Remix";
+var useLoginSubmit = () => {
   const location = (0, import_react7.useLocation)();
   const fetcher = (0, import_react7.useFetcher)();
-  const loginWithMetamask = async () => {
-    const message = "Login to PowerStack Remix";
-    const ethereum = import_lodash2.default.get(window, "ethereum");
-    if (!ethereum)
-      alert("window.ethereum not found");
-    const accounts = await ethereum.send("eth_requestAccounts");
-    const provider = new import_ethers2.ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const signature = await signer.signMessage(message);
-    const address = await signer.getAddress();
-    console.log({ accounts, signature, address });
-    fetcher.submit({
-      signature,
-      address,
-      message
-    }, {
+  const submit = ({ strategy, signed_message }) => {
+    fetcher.submit(signed_message, {
       method: "post",
-      action: `/actions/login/metamask?redirect_to=${location.pathname || "/"}`
+      action: `/actions/login/${strategy}?redirect_to=${location.pathname || "/"}`
     });
   };
-  return /* @__PURE__ */ React.createElement(StyledWallet, null, /* @__PURE__ */ React.createElement("p", null, "Supported Network: Rinkeby"), /* @__PURE__ */ React.createElement("button", {
+  return submit;
+};
+var WalletLogin = () => {
+  const { user } = useStore();
+  const submit = useLoginSubmit();
+  const loginWithMetamask = async () => {
+    if (!ethereum)
+      return alert("Metamask not found");
+    const provider = new import_ethers2.ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    submit({
+      strategy: "metamask",
+      signed_message: {
+        signature: await signer.signMessage(message),
+        address: await signer.getAddress(),
+        message
+      }
+    });
+  };
+  const loginWithPhantom = async () => {
+    if (!isPhantom)
+      return alert("Phantom not found");
+    try {
+      const resp2 = await solana.connect({ onlyIfTrusted: true });
+      console.log(resp2.publicKey.toString(), solana.isConnected);
+    } catch (err) {
+      alert(err.message);
+    }
+    submit({
+      strategy: "phantom",
+      signed_message: {
+        signature: await solana.signMessage(new TextEncoder().encode(message), "utf8"),
+        address: resp.publicKey.toString(),
+        message
+      }
+    });
+  };
+  return /* @__PURE__ */ React.createElement(StyledWallet, null, /* @__PURE__ */ React.createElement("h3", null, "Rinkeby"), /* @__PURE__ */ React.createElement("button", {
     onClick: loginWithMetamask
-  }, "Login with Metamask"), /* @__PURE__ */ React.createElement("p", null, "Address: ", (user == null ? void 0 : user.address) ? user.address : "wallet not connected"));
+  }, "Login with Metamask"), /* @__PURE__ */ React.createElement("p", null, "Address:", " ", (user == null ? void 0 : user.address) && (user == null ? void 0 : user.network) === "rinkeby" ? user.address : "wallet not connected"), /* @__PURE__ */ React.createElement("h3", null, "Solana"), /* @__PURE__ */ React.createElement("button", {
+    onClick: loginWithPhantom
+  }, "Login with Phantom"), /* @__PURE__ */ React.createElement("p", null, "Address:", " ", (user == null ? void 0 : user.address) && (user == null ? void 0 : user.network) === "solana" ? user.address : "wallet not connected"));
 };
 
 // route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/index.tsx
@@ -349,7 +396,7 @@ function Index() {
   const { user, appconfig: appconfig2 } = useStore();
   console.log("Index user value", user);
   console.log("Index appconfig value", appconfig2);
-  return /* @__PURE__ */ React.createElement(Container2, null, /* @__PURE__ */ React.createElement("h1", null, "Welcome ", user ? "Back" : null, " to PoweStack Remix"), /* @__PURE__ */ React.createElement(Wallet, null), /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
+  return /* @__PURE__ */ React.createElement(Container2, null, /* @__PURE__ */ React.createElement("h1", null, "Welcome ", user ? "Back" : null, " to PoweStack Remix"), /* @__PURE__ */ React.createElement(WalletLogin, null), /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
     to: "/jokes"
   }, "Jokes")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
     to: "/jokes-error"
@@ -381,7 +428,7 @@ function JokesError() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "37863a44", "entry": { "module": "/build/entry.client-LLUJGBMV.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-S5UHSVAV.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-OHPYQGB4.js", "imports": ["/build/_shared/chunk-B5JJD2GF.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-XD66Y556.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-3SZMRQWW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WQIBBHBW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-37863A44.js" };
+var assets_manifest_default = { "version": "82900892", "entry": { "module": "/build/entry.client-LLUJGBMV.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-S5UHSVAV.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-GV45FPYN.js", "imports": ["/build/_shared/chunk-ABLT7S5O.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-32WOESKH.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-3SZMRQWW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WQIBBHBW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-82900892.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };

@@ -35,6 +35,7 @@
     "remix-utils": "^3.0.0",
     "remix-validated-form": "^4.3.0",
     "simple-zustand-devtools": "^1.0.1",
+    "tweetnacl": "^1.0.3",
     "zustand": "^3.7.0"
   },
   "devDependencies": {

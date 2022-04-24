@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react'
-import { Wallet } from '~/components/wallet'
+import { WalletLogin } from '~/components/WalletLogin'
 import { useStore } from '~/store'
 import { styled } from '~/styles/stitches.config'
 
@@ -15,7 +15,7 @@ export default function Index() {
   return (
     <Container>
       <h1>Welcome {user ? 'Back' : null} to PoweStack Remix</h1>
-      <Wallet />
+      <WalletLogin />
       <ul>
         <li>
           <Link to="/jokes">Jokes</Link>

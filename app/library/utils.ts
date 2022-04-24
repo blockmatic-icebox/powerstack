@@ -1,19 +1,21 @@
 // This file is exclusively for Utilty functions
 // These fucntions must be pure functions and perform simple tasks
-// All interactions with apis go in the services folder.
 
 import _ from 'lodash'
 
+export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'
 export const isNode = !isBrowser
 export const userAgent = isBrowser ? _.get(window, 'navigator.userAgent') : ''
-export const hasEthereum = isBrowser && _.has(window, 'ethereum')
+export const ethereum = isBrowser && _.get(window, 'ethereum')
 export const isAndroid = /(Android)/i.test(userAgent)
 export const isIphone = /(iPhone|iPod)/i.test(userAgent)
 export const isIpad = /(iPad)/i.test(userAgent)
 export const isMobile = isIphone || isAndroid
 // A mobile browser with ethereum we assume it's Metamask Browser
-export const isMetamask = isMobile && hasEthereum
+export const isMetamask = isMobile && ethereum
+export const isPhantom = isBrowser && _.has(window, 'solana.isPhantom')
+export const solana = isBrowser && _.get(window, 'solana')
 
 export const formatAddress = (key: string) =>
   `${key.slice(0, 4)}...${key.slice(-4)}`

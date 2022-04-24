@@ -2,7 +2,9 @@ import { createCookieSessionStorage } from '@remix-run/node'
 import { ethers } from 'ethers'
 import { Authenticator, AuthorizationError } from 'remix-auth'
 import { FormStrategy } from 'remix-auth-form'
-import { Address } from './types'
+import { appconfig } from './app-config'
+import type { Address, Network, User } from './types'
+import nacl from 'tweetnacl'
 
 export const session_storage = createCookieSessionStorage({
   cookie: {
@@ -15,34 +17,63 @@ export const session_storage = createCookieSessionStorage({
   },
 })
 
-export type RareMintUser = {
-  address: Address
-} | null
+export const auth = new Authenticator<User>(session_storage)
 
-export const auth = new Authenticator<RareMintUser>(session_storage)
+const enc = new TextEncoder().encode
 
 export type WalletType = 'metamask' | 'wallet_connect'
 
+const getFormData = (form: FormData) => {
+  const address = form.get('address')?.toString()
+  const signature = form.get('signature')?.toString()
+  const message = form.get('message')?.toString()
+
+  if (!address || !signature || !message)
+    throw new AuthorizationError(`Invalid login request`)
+
+  return {
+    address,
+    signature,
+    message,
+  }
+}
+
 auth.use(
   new FormStrategy(async ({ form }) => {
-    const address = form.get('address')
-    const signature = form.get('signature')
-    const message = form.get('message')
+    const { address, signature, message } = getFormData(form)
+    const addr = await ethers.utils.verifyMessage(message, signature)
+    if (addr !== address) throw new AuthorizationError(`Invalid signature`)
 
-    // all these values are required
-    console.log('metamask strategy', { address, signature, message })
-    if (!address || !signature || !message)
-      throw new AuthorizationError(`Invalid metamask login request`)
-
-    const signerAddr = await ethers.utils.verifyMessage(message.toString(), signature.toString())
-    if (signerAddr !== address) throw new AuthorizationError(`Invalid signature`)
-
-    const user: RareMintUser = {
+    const user: User = {
       address: address.toString(),
+      network: 'rinkeby', // TODO: change to dynamically set by the user
     }
 
     return user
   }),
   // each strategy has a name and can be changed to use another one
   'metamask',
+)
+
+auth.use(
+  new FormStrategy(async ({ form }) => {
+    const { address, signature, message } = getFormData(form)
+
+    const resp = nacl.sign.detached.verify(
+      enc(message),
+      enc(signature),
+      enc(address),
+    )
+    console.log('auth response', resp)
+    // throw new AuthorizationError(`Invalid signature`)
+
+    const user: User = {
+      address: address.toString(),
+      network: 'solana', // TODO: change to dynamically set by the user
+    }
+
+    return user
+  }),
+  // each strategy has a name and can be changed to use another one
+  'phantom',
 )

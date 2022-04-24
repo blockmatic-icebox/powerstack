@@ -18,6 +18,7 @@ PowerStack Remix template for development speed and great developer experience.
 - sentry reporting https://sentry.io/
 - login with crypto wallets and remix-auth https://github.com/sergiodxa/remix-auth
 - ethers https://docs.ethers.io/v5/
+- zustand https://github.com/pmndrs/zustand
 - ~/library with utilities
 
 ### File Structure
@@ -48,6 +49,12 @@ PowerStack Remix template for development speed and great developer experience.
 4. `entry.client.tsx` - Every time that styles update and be re-injected it sets the
    Stitches sheet to a React state.
 5. `entry.server.tsx` - Create the markup with the styles injected to serve on the server response.
+
+## Preview
+
+Open this example on [CodeSandbox](https://codesandbox.io/):
+
+[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/blockmatic/powerstack-remix/tree/main/examples/main)
 
 ## Getting Started
 
