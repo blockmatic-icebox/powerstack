@@ -19,6 +19,7 @@ PowerStack Remix template for development speed and great developer experience.
 - login with crypto wallets and remix-auth https://github.com/sergiodxa/remix-auth
 - ethers https://docs.ethers.io/v5/
 - zustand https://github.com/pmndrs/zustand
+- react-icons https://react-icons.github.io/react-icons/
 - ~/library with utilities
 
 ### File Structure
