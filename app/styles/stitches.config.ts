@@ -18,9 +18,7 @@ export const { styled, globalCss, getCssText, config }  = createStitches({
       heading: 700,
       bold: 700,
     },
-    space: {
-      'space-1': '20px'
-    }
+    space: lightTheme.space,
   },
   media: {
     tabletUp: '(min-width: 768px)',
