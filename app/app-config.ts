@@ -24,9 +24,9 @@ type Network = {
 }
 
 type Cloudinary = {
-  cloudName: string
-  apiKey: string
-  apiSecret: string
+  cloud_name: string
+  api_key: string
+  api_secret: string
 }
 
 // global application configuration based on env

@@ -2,8 +2,7 @@ import { createCookieSessionStorage } from '@remix-run/node'
 import { ethers } from 'ethers'
 import { Authenticator, AuthorizationError } from 'remix-auth'
 import { FormStrategy } from 'remix-auth-form'
-import { appconfig } from './app-config'
-import type { Address, Network, User } from './types'
+import type { AppUser } from './types'
 import nacl from 'tweetnacl'
 
 export const session_storage = createCookieSessionStorage({
@@ -17,7 +16,7 @@ export const session_storage = createCookieSessionStorage({
   },
 })
 
-export const auth = new Authenticator<User>(session_storage)
+export const auth = new Authenticator<AppUser>(session_storage)
 
 const enc = new TextEncoder().encode
 
@@ -44,7 +43,7 @@ auth.use(
     const addr = await ethers.utils.verifyMessage(message, signature)
     if (addr !== address) throw new AuthorizationError(`Invalid signature`)
 
-    const user: User = {
+    const user: AppUser = {
       address: address.toString(),
       network: 'rinkeby', // TODO: change to dynamically set by the user
     }
@@ -67,7 +66,7 @@ auth.use(
     console.log('auth response', resp)
     // throw new AuthorizationError(`Invalid signature`)
 
-    const user: User = {
+    const user: AppUser = {
       address: address.toString(),
       network: 'solana', // TODO: change to dynamically set by the user
     }

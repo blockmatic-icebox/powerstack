@@ -202,11 +202,21 @@ var isIpad = /(iPad)/i.test(userAgent);
 var isPhantom = isBrowser && import_lodash.default.has(window, "solana.isPhantom");
 var solana = isBrowser && import_lodash.default.get(window, "solana");
 
-// app/store/global-defaults.ts
+// app/store/ui-state.ts
+var defaultUserInterfaceState = {
+  show_wallet: false,
+  show_sidebar: false
+};
+var createUserInterfaceSlice = (set) => __spreadProps(__spreadValues({}, defaultUserInterfaceState), {
+  setShowWallet: (value) => set({ show_wallet: value }),
+  setShowSidebar: (value) => set({ show_sidebar: value })
+});
+
+// app/store/session-state/default-session-state.ts
 var dummy_appconfig = {
   network: {
     chain: "",
-    chainId: ""
+    chain_id: ""
   },
   contracts: {},
   services: {
@@ -217,32 +227,29 @@ var dummy_appconfig = {
     sentry: ""
   },
   cloudinary: {
-    cloudName: "",
-    apiKey: "",
-    apiSecret: ""
+    cloud_name: "",
+    api_key: "",
+    api_secret: ""
   },
   features: {}
 };
-var defaultAppStateState = {
-  show_wallet: false,
-  show_sidebar: true,
+var defaultAppSessionState = {
   appconfig: dummy_appconfig,
-  user: null
+  user: null,
+  session_error: null
 };
 
-// app/store/global-slice.ts
-var createGlobalSlice = (set) => __spreadProps(__spreadValues({}, defaultAppStateState), {
-  setShowWallet: (flag) => set({ show_wallet: flag }),
-  setShowSidebar: (flag) => set({ show_sidebar: flag }),
+// app/store/session-state/index.ts
+var createAppSessionSlice = (set) => __spreadProps(__spreadValues({}, defaultAppSessionState), {
   setUser: (user) => set({ user }),
   setSessionData: (session_data) => set(session_data)
 });
 
 // app/store/index.ts
-var store = (0, import_vanilla.default)((set, get2) => __spreadValues({}, createGlobalSlice(set, get2)));
+var store = (0, import_vanilla.default)((set, get2) => __spreadValues(__spreadValues({}, createAppSessionSlice(set, get2)), createUserInterfaceSlice(set, get2)));
 var useStoreBase = (0, import_zustand.default)(store);
 if (isBrowser)
-  (0, import_simple_zustand_devtools.mountStoreDevtool)("RareMintStore", useStoreBase);
+  (0, import_simple_zustand_devtools.mountStoreDevtool)("AppStore", useStoreBase);
 var useStore = (0, import_auto_zustand_selectors_hook.createSelectorHooks)(useStoreBase);
 
 // app/styles/client.context.ts
@@ -281,15 +288,19 @@ var loader = async ({ request }) => {
   const user = await auth.isAuthenticated(request);
   const session = await session_storage.getSession(request.headers.get("cookie"));
   const error = session.get(auth.sessionErrorKey);
-  console.log("SESSION", { user, session_data: JSON.stringify(session), error });
   useStore.getState().setSessionData({ user, appconfig });
-  return (0, import_node2.json)({
+  const session_data = {
     user,
-    appconfig
-  });
+    appconfig,
+    error
+  };
+  return (0, import_node2.json)(session_data);
 };
 function App() {
-  useStore.getState().setSessionData((0, import_react4.useLoaderData)());
+  const session_data = (0, import_react4.useLoaderData)();
+  (0, import_react5.useEffect)(() => {
+    useStore.getState().setSessionData(session_data);
+  }, [session_data]);
   return /* @__PURE__ */ React.createElement(Document, null, /* @__PURE__ */ React.createElement(import_react4.Outlet, null));
 }
 function CatchBoundary() {
@@ -428,7 +439,7 @@ function JokesError() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "82900892", "entry": { "module": "/build/entry.client-LLUJGBMV.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-S5UHSVAV.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-GV45FPYN.js", "imports": ["/build/_shared/chunk-ABLT7S5O.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-32WOESKH.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-3SZMRQWW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WQIBBHBW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-82900892.js" };
+var assets_manifest_default = { "version": "e25d0e1b", "entry": { "module": "/build/entry.client-LLUJGBMV.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-S5UHSVAV.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-KLIUOQU7.js", "imports": ["/build/_shared/chunk-QBFGHW2J.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-5PICQL63.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-3SZMRQWW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WQIBBHBW.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-E25D0E1B.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };

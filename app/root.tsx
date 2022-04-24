@@ -17,6 +17,7 @@ import { useStore } from './store'
 
 import ClientStyleContext from './styles/client.context'
 import { styled } from './styles/stitches.config'
+import type { AppSessionData } from './types'
 
 const Container = styled('div', {
   backgroundColor: '#ff0000',
@@ -71,17 +72,22 @@ export const loader: LoaderFunction = async ({ request }) => {
     request.headers.get('cookie'),
   )
   const error = session.get(auth.sessionErrorKey)
-  console.log('SESSION', { user, session_data: JSON.stringify(session), error })
-  useStore.getState().setSessionData({ user, appconfig })
 
-  return json({
+  useStore.getState().setSessionData({ user, appconfig })
+  const session_data: AppSessionData = {
     user,
     appconfig,
-  })
+    error,
+  }
+  return json(session_data)
 }
 
 export default function App() {
-  useStore.getState().setSessionData(useLoaderData())
+  const session_data: AppSessionData = useLoaderData()
+
+  useEffect(() => {
+    useStore.getState().setSessionData(session_data)
+  }, [session_data])
   return (
     <Document>
       <Outlet />

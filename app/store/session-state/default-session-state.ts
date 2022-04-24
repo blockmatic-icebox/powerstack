@@ -1,11 +1,11 @@
 import type { AppConfig } from '~/app-config'
-import type { GlobalSliceState } from './global-slice'
+import type { SessionState } from '.'
 
 // dummy for solve typescript undefined appconfig, we know it'll always be defined but we need to make ts happy
 export const dummy_appconfig: AppConfig = {
   network: {
     chain: '',
-    chainId: '',
+    chain_id: '',
   },
   contracts: {},
   services: {
@@ -16,16 +16,15 @@ export const dummy_appconfig: AppConfig = {
     sentry: '',
   },
   cloudinary: {
-    cloudName: '',
-    apiKey: '',
-    apiSecret: '',
+    cloud_name: '',
+    api_key: '',
+    api_secret: '',
   },
   features: {},
 }
 
-export const defaultAppStateState: GlobalSliceState = {
-  show_wallet: false,
-  show_sidebar: true,
+export const defaultAppSessionState: SessionState = {
   appconfig: dummy_appconfig, // this gets replaced on root.tsx loader.
   user: null,
+  session_error: null,
 }
