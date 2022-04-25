@@ -6,12 +6,26 @@ import darkTheme from './dark-theme.json'
 console.log('Light Theme for Stitches\n', lightTheme)
 console.log('Dark Theme for Stitches\n', darkTheme)
 
+const getFontSizes = () => {
+  let fontSizes:any = {}
+  for (const property in lightTheme.typeStyles) {
+    const tempFontSize:string = lightTheme.typeStyles[property as keyof object]['fontSize']
+    fontSizes[property as keyof object] = tempFontSize
+  }
+  return fontSizes
+}
+
 export const { styled, globalCss, getCssText, config }  = createStitches({
   theme: {
     // colors,
-    colors: lightTheme.colors,
+    colors: {
+      ...lightTheme.colors,
+      'header-bg': 'hsla(0,0%,100%,.8)'
+    },
     sizes: {
       container: '78.5rem',
+      iconSmall: '1.375rem',
+      iconMedium: '2.75rem'
     },
     fontWeights: {
       body: 400,
@@ -19,6 +33,8 @@ export const { styled, globalCss, getCssText, config }  = createStitches({
       bold: 700,
     },
     space: lightTheme.space,
+    fonts: lightTheme.fonts,
+    fontSizes: getFontSizes()
   },
   media: {
     tabletUp: '(min-width: 768px)',
@@ -88,7 +104,25 @@ export const { styled, globalCss, getCssText, config }  = createStitches({
 export type CSS = Stitches.CSS<typeof config>;
 
 export const globalStyles = globalCss({
+  '@font-face': [
+    {
+      fontDisplay: 'swap',
+      fontFamily: 'Gilroy-Bold',
+      src: 'url(/fonts/Gilroy-Bold.ttf)',
+    },
+    {
+      fontDisplay: 'swap',
+      fontFamily: '"Gilroy-ExtraBold"',
+      src: 'url(/fonts/Gilroy-ExtraBold.ttf)',
+    },
+    {
+      fontDisplay: 'swap',
+      fontFamily: 'Gilroy-SemiBold',
+      src: 'url(/fonts/Gilroy-SemiBold.ttf)',
+    },
+  ],
   body: {
+    fontFamily: '$semi-bold',
     margin: 0,
   },
   '*, *::before, *::after': {

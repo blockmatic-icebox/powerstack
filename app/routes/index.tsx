@@ -1,51 +1,13 @@
 import { Link } from '@remix-run/react'
 import { WalletLogin } from '~/components/WalletLogin'
 import { useStore } from '~/store'
-import { styled } from '~/styles/stitches.config'
-// import {
-//   Box,
-//   Button,
-//   Flex,
-//   Grid,
-//   Link,
-//   Container,
-//   Heading,
-//   Text,
-//   Paragraph,
-//   Input,
-//   Textarea,
-// } from '@blockmatic/stitches-ui'
-
-const Container = styled('div', {
-  fontFamily: 'system-ui, sans-serif',
-  lineHeight: 1.4,
-  margin: 'auto',
-  padding: '$space-1',
-  '@media (min-width: 1000px)': {
-    width: '600px',
-  },
-  variants: {
-    color: {
-      red: {
-        backgroundColor: '$red',
-      },
-      steel: {
-        backgroundColor: '$steel',
-        color: 'white'
-      }
-    }
-  },
-  defaultVariants: {
-    color: 'steel'
-  }
-})
+import { Header } from '~/components/Header'
 
 export default function Index() {
   const { user, appconfig } = useStore()
-  console.log('Index user value', user)
-  console.log('Index appconfig value', appconfig)
   return (
-    <Container>
+    <div>
+      <Header />
       <h1>Welcome {user ? 'Back' : null} to PoweStack Remix</h1>
       <WalletLogin />
       <ul>
@@ -56,6 +18,6 @@ export default function Index() {
           <Link to="/jokes-error">Jokes: Error</Link>
         </li>
       </ul>
-    </Container>
+    </div>
   )
 }
