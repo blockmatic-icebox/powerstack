@@ -92,26 +92,120 @@ var dark_theme_default = { name: name2, typeStyles: typeStyles2, radii: radii2, 
 // app/styles/stitches.config.ts
 console.log("Light Theme for Stitches\n", light_theme_default);
 console.log("Dark Theme for Stitches\n", dark_theme_default);
-var stitches = (0, import_react.createStitches)({
+var getFontSizes = () => {
+  let fontSizes = {};
+  for (const property in light_theme_default.typeStyles) {
+    const tempFontSize = light_theme_default.typeStyles[property]["fontSize"];
+    fontSizes[property] = tempFontSize;
+  }
+  return fontSizes;
+};
+var { styled, globalCss, getCssText, config } = (0, import_react.createStitches)({
   theme: {
-    colors: {
-      red: "#ff6d6d",
-      steel: "#363645b0",
-      black: "#000",
-      white: "#fff",
-      grey: "#666"
+    colors: __spreadProps(__spreadValues({}, light_theme_default.colors), {
+      "header-bg": "hsla(0,0%,100%,.8)"
+    }),
+    sizes: {
+      container: "78.5rem",
+      iconSmall: "1.375rem",
+      iconMedium: "2.75rem"
     },
-    space: {
-      "space-1": "20px"
-    }
+    fontWeights: {
+      body: 400,
+      heading: 700,
+      bold: 700
+    },
+    space: light_theme_default.space,
+    fonts: light_theme_default.fonts,
+    fontSizes: getFontSizes()
   },
   media: {
     tabletUp: "(min-width: 768px)",
     desktopUp: "(min-width: 1024px)",
     largeDesktopUp: "(min-width: 1680px)"
+  },
+  utils: {
+    p: (value) => ({
+      padding: value
+    }),
+    pt: (value) => ({
+      paddingTop: value
+    }),
+    pr: (value) => ({
+      paddingRight: value
+    }),
+    pb: (value) => ({
+      paddingBottom: value
+    }),
+    pl: (value) => ({
+      paddingLeft: value
+    }),
+    px: (value) => ({
+      paddingLeft: value,
+      paddingRight: value
+    }),
+    py: (value) => ({
+      paddingTop: value,
+      paddingBottom: value
+    }),
+    m: (value) => ({
+      margin: value
+    }),
+    mt: (value) => ({
+      marginTop: value
+    }),
+    mr: (value) => ({
+      marginRight: value
+    }),
+    mb: (value) => ({
+      marginBottom: value
+    }),
+    ml: (value) => ({
+      marginLeft: value
+    }),
+    mx: (value) => ({
+      marginLeft: value,
+      marginRight: value
+    }),
+    my: (value) => ({
+      marginTop: value,
+      marginBottom: value
+    }),
+    bg: (value) => ({
+      backgroundColor: value
+    }),
+    size: (value) => ({
+      width: value,
+      height: value
+    })
   }
 });
-var { styled, globalCss, getCssText } = stitches;
+var globalStyles = globalCss({
+  "@font-face": [
+    {
+      fontDisplay: "swap",
+      fontFamily: "Gilroy-Bold",
+      src: "url(/fonts/Gilroy-Bold.ttf)"
+    },
+    {
+      fontDisplay: "swap",
+      fontFamily: '"Gilroy-ExtraBold"',
+      src: "url(/fonts/Gilroy-ExtraBold.ttf)"
+    },
+    {
+      fontDisplay: "swap",
+      fontFamily: "Gilroy-SemiBold",
+      src: "url(/fonts/Gilroy-SemiBold.ttf)"
+    }
+  ],
+  body: {
+    fontFamily: "$semi-bold",
+    margin: 0
+  },
+  "*, *::before, *::after": {
+    boxSizing: "border-box"
+  }
+});
 
 // app/entry.server.tsx
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
@@ -127,7 +221,7 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
   });
 }
 
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\root.tsx
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/root.tsx
 var root_exports = {};
 __export(root_exports, {
   CatchBoundary: () => CatchBoundary,
@@ -233,6 +327,18 @@ var isIpad = /(iPad)/i.test(userAgent);
 var isPhantom = isBrowser && import_lodash.default.has(window, "solana.isPhantom");
 var solana = isBrowser && import_lodash.default.get(window, "solana");
 
+// app/library/prisma.ts
+var import_client = require("@prisma/client");
+var prisma;
+if (false) {
+  prisma = new import_client.PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new import_client.PrismaClient();
+  }
+  prisma = global.prisma;
+}
+
 // app/store/ui-state.ts
 var defaultUserInterfaceState = {
   show_wallet: false,
@@ -292,7 +398,7 @@ var ClientStyleContext = (0, import_react3.createContext)({
 });
 var client_context_default = ClientStyleContext;
 
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\root.tsx
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/root.tsx
 var Container = styled("div", {
   backgroundColor: "#ff0000",
   padding: "1em"
@@ -307,6 +413,7 @@ var Document = ({ children, title }) => {
   (0, import_react5.useEffect)(() => {
     clientStyleData.reset();
   }, [clientStyleData]);
+  globalStyles();
   return /* @__PURE__ */ React.createElement("html", {
     lang: "en"
   }, /* @__PURE__ */ React.createElement("head", null, title ? /* @__PURE__ */ React.createElement("title", null, title) : null, /* @__PURE__ */ React.createElement(import_react4.Meta, null), /* @__PURE__ */ React.createElement(import_react4.Links, null), /* @__PURE__ */ React.createElement("style", {
@@ -345,7 +452,7 @@ function ErrorBoundary({ error }) {
   }, /* @__PURE__ */ React.createElement(Container, null, /* @__PURE__ */ React.createElement("p", null, "[ErrorBoundary]: There was an error: ", error.message)));
 }
 
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\actions\login\$strategy.tsx
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/actions/login/$strategy.tsx
 var strategy_exports = {};
 __export(strategy_exports, {
   action: () => action
@@ -359,25 +466,210 @@ var action = async ({ request, params }) => {
   });
 };
 
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\index.tsx
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/$account.tsx
+var account_exports = {};
+__export(account_exports, {
+  default: () => Index,
+  loader: () => loader2
+});
+var import_node3 = require("@remix-run/node");
+var import_react6 = require("@remix-run/react");
+var loader2 = async ({ params }) => {
+  const account = await prisma.accounts.findFirst({
+    where: {
+      account: params.account
+    }
+  });
+  return (0, import_node3.json)({ account });
+};
+function Index() {
+  const { account } = (0, import_react6.useLoaderData)();
+  return /* @__PURE__ */ React.createElement("pre", null, JSON.stringify(account, null, 2));
+}
+
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/about.tsx
+var about_exports = {};
+__export(about_exports, {
+  default: () => Index2
+});
+
+// app/components/Flex.tsx
+var Flex = styled("div", {
+  boxSizing: "border-box",
+  display: "flex",
+  variants: {
+    direction: {
+      row: {
+        flexDirection: "row"
+      },
+      column: {
+        flexDirection: "column"
+      },
+      rowReverse: {
+        flexDirection: "row-reverse"
+      },
+      columnReverse: {
+        flexDirection: "column-reverse"
+      }
+    },
+    align: {
+      start: {
+        alignItems: "flex-start"
+      },
+      center: {
+        alignItems: "center"
+      },
+      end: {
+        alignItems: "flex-end"
+      },
+      stretch: {
+        alignItems: "stretch"
+      },
+      baseline: {
+        alignItems: "baseline"
+      }
+    },
+    justify: {
+      start: {
+        justifyContent: "flex-start"
+      },
+      center: {
+        justifyContent: "center"
+      },
+      end: {
+        justifyContent: "flex-end"
+      },
+      between: {
+        justifyContent: "space-between"
+      }
+    },
+    wrap: {
+      noWrap: {
+        flexWrap: "nowrap"
+      },
+      wrap: {
+        flexWrap: "wrap"
+      },
+      wrapReverse: {
+        flexWrap: "wrap-reverse"
+      }
+    }
+  },
+  defaultVariants: {
+    direction: "row",
+    align: "stretch",
+    justify: "start",
+    wrap: "noWrap"
+  }
+});
+
+// app/components/Container.tsx
+var Container2 = styled("div", {
+  px: "$regular",
+  maxWidth: "$container",
+  margin: "0 auto",
+  width: "100%"
+});
+
+// app/components/Header.tsx
+var import_react7 = require("@remix-run/react");
+
+// app/components/icons/GhLoginIcon.tsx
+var GhLoginIcon = () => /* @__PURE__ */ React.createElement("svg", {
+  width: "32",
+  height: "32",
+  viewBox: "0 0 32 32",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /* @__PURE__ */ React.createElement("path", {
+  d: "M16 1C7.43625 1 0.5 7.94013 0.5 16.5C0.5 23.3497 4.94075 29.1583 11.0981 31.2056C11.8731 31.3516 12.1573 30.8724 12.1573 30.4603C12.1573 30.0922 12.1444 29.117 12.1379 27.8253C7.82633 28.7605 6.917 25.7458 6.917 25.7458C6.21175 23.9568 5.19262 23.4789 5.19262 23.4789C3.78858 22.5179 5.30112 22.5373 5.30112 22.5373C6.85758 22.6458 7.67521 24.1338 7.67521 24.1338C9.05729 26.504 11.3035 25.8194 12.1896 25.4228C12.3291 24.4205 12.7282 23.7372 13.1713 23.3497C9.72896 22.9622 6.111 21.6292 6.111 15.6901C6.111 13.998 6.71162 12.616 7.70621 11.531C7.53183 11.1396 7.00871 9.56375 7.84183 7.42863C7.84183 7.42863 9.13996 7.01271 12.1043 9.01738C13.3443 8.6725 14.6618 8.502 15.9793 8.49425C17.2968 8.502 18.6143 8.6725 19.8543 9.01738C22.7993 7.01271 24.0975 7.42863 24.0975 7.42863C24.9306 9.56375 24.4075 11.1396 24.2525 11.531C25.2406 12.616 25.8412 13.998 25.8412 15.6901C25.8412 21.6447 22.2181 22.9558 18.7693 23.3368C19.3118 23.8018 19.8156 24.7525 19.8156 26.2043C19.8156 28.2787 19.7962 29.945 19.7962 30.4487C19.7962 30.8556 20.0675 31.34 20.8618 31.185C27.0631 29.1519 31.5 23.3394 31.5 16.5C31.5 7.94013 24.5599 1 16 1",
+  fill: "black"
+}));
+var GhLoginIcon_default = GhLoginIcon;
+
+// app/components/Header.tsx
+function Header() {
+  const linkStyles = {
+    color: "$text",
+    ml: "$small",
+    textDecoration: "none",
+    transition: "color 0.4s",
+    "&:hover": {
+      color: "$primary-400"
+    }
+  };
+  const NavBar = styled(Flex, {
+    backdropFilter: "saturate(180%) blur(5px)",
+    boxShadow: "inset 0 -1px 0 0 rgba(0,0,0,.1)",
+    bg: "$header-bg",
+    position: "absolute",
+    py: "$x-small",
+    top: 0,
+    width: "100%"
+  });
+  const LinkItem = styled(import_react7.Link, linkStyles);
+  const AnchorItem = styled("a", __spreadProps(__spreadValues({}, linkStyles), {
+    "& svg": {
+      size: "$iconSmall"
+    }
+  }));
+  const VisuallyHidden = styled("h2", {
+    position: "absolute",
+    clip: "rect(1px, 1px, 1px, 1px)",
+    overflow: "hidden",
+    height: "1px",
+    width: "1px",
+    wordWrap: "normal"
+  });
+  const Logo = styled("img", {
+    maxHeight: "$iconMedium",
+    objectFit: "contain"
+  });
+  return /* @__PURE__ */ React.createElement(NavBar, null, /* @__PURE__ */ React.createElement(Container2, null, /* @__PURE__ */ React.createElement(Flex, {
+    justify: "between",
+    align: "center"
+  }, /* @__PURE__ */ React.createElement(Logo, {
+    src: "/logo-text-icon.png",
+    alt: "Blockmatic Logo"
+  }), /* @__PURE__ */ React.createElement(Flex, {
+    justify: "end",
+    as: "nav",
+    role: "navigation",
+    "aria-labelledby": "main-nav-title",
+    align: "center"
+  }, /* @__PURE__ */ React.createElement(VisuallyHidden, null, "Main navigation"), /* @__PURE__ */ React.createElement(LinkItem, {
+    to: "#"
+  }, "Login"), /* @__PURE__ */ React.createElement(AnchorItem, {
+    "aria-label": "Go to Powerstack Template",
+    href: "https://github.com/blockmatic/powerstack-remix"
+  }, /* @__PURE__ */ React.createElement(GhLoginIcon_default, null))))));
+}
+
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/about.tsx
+function Index2() {
+  const { user } = useStore();
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Header, null), /* @__PURE__ */ React.createElement("h1", null, "Something"), /* @__PURE__ */ React.createElement("pre", null, JSON.stringify(user, null, 2)));
+}
+
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/index.tsx
 var routes_exports = {};
 __export(routes_exports, {
-  default: () => Index
+  default: () => Index3
 });
-var import_react8 = require("@remix-run/react");
+var import_react10 = require("@remix-run/react");
 
 // app/components/WalletLogin.tsx
-var import_react6 = require("@stitches/react");
+var import_react8 = require("@stitches/react");
 var import_ethers2 = require("ethers");
-var import_react7 = require("@remix-run/react");
-var StyledWallet = (0, import_react6.styled)("div", {
+var import_react9 = require("@remix-run/react");
+var StyledWallet = (0, import_react8.styled)("div", {
   border: "1px dotted gray",
   minHeight: 100
 });
 var message = "Login to PowerStack Remix";
 var useLoginSubmit = () => {
-  const location = (0, import_react7.useLocation)();
-  const fetcher = (0, import_react7.useFetcher)();
+  const location = (0, import_react9.useLocation)();
+  const fetcher = (0, import_react9.useFetcher)();
   const submit = ({ strategy, signed_message }) => {
     fetcher.submit(signed_message, {
       method: "post",
@@ -428,67 +720,17 @@ var WalletLogin = () => {
   }, "Login with Phantom"), /* @__PURE__ */ React.createElement("p", null, "Address:", " ", (user == null ? void 0 : user.address) && (user == null ? void 0 : user.network) === "solana" ? user.address : "wallet not connected"));
 };
 
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\index.tsx
-var Container2 = styled("div", {
-  fontFamily: "system-ui, sans-serif",
-  lineHeight: 1.4,
-  margin: "auto",
-  padding: "$space-1",
-  "@media (min-width: 1000px)": {
-    width: "600px"
-  },
-  variants: {
-    color: {
-      red: {
-        backgroundColor: "$red"
-      },
-      steel: {
-        backgroundColor: "$steel",
-        color: "white"
-      }
-    }
-  },
-  defaultVariants: {
-    color: "steel"
-  }
-});
-function Index() {
+// route:/Users/gaboesquivel/Code/powerstack-remix/app/routes/index.tsx
+function Index3() {
   const { user, appconfig: appconfig2 } = useStore();
-  console.log("Index user value", user);
-  console.log("Index appconfig value", appconfig2);
-  return /* @__PURE__ */ React.createElement(Container2, null, /* @__PURE__ */ React.createElement("h1", null, "Welcome ", user ? "Back" : null, " to PoweStack Remix"), /* @__PURE__ */ React.createElement(WalletLogin, null), /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
-    to: "/jokes"
-  }, "Jokes")), /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react8.Link, {
-    to: "/jokes-error"
-  }, "Jokes: Error"))));
-}
-
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\jokes.tsx
-var jokes_exports = {};
-__export(jokes_exports, {
-  default: () => Jokes
-});
-var import_react9 = require("@remix-run/react");
-var Container3 = styled("div", {
-  backgroundColor: "#d6d6d6"
-});
-function Jokes() {
-  return /* @__PURE__ */ React.createElement(Container3, null, /* @__PURE__ */ React.createElement("h1", null, "Jokes"), /* @__PURE__ */ React.createElement("p", null, "This route works fine."), /* @__PURE__ */ React.createElement(import_react9.Link, {
-    to: "/"
-  }, "Back to home"));
-}
-
-// route:D:\Users\Andler\Development\git_local\remix\powerstack-remix\app\routes\jokes\jokes-error.tsx
-var jokes_error_exports = {};
-__export(jokes_error_exports, {
-  default: () => JokesError
-});
-function JokesError() {
-  throw new Error("This route is no joking with us.");
+  console.log(JSON.stringify(appconfig2));
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Header, null), /* @__PURE__ */ React.createElement("h1", null, "Welcome ", user ? "Back" : null, " to PoweStack Remix"), /* @__PURE__ */ React.createElement(WalletLogin, null), /* @__PURE__ */ React.createElement("ul", null, /* @__PURE__ */ React.createElement("li", null, /* @__PURE__ */ React.createElement(import_react10.Link, {
+    to: "/about"
+  }, "About"))));
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "84c8e2c5", "entry": { "module": "/build/entry.client-4PQNENKJ.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-VJK2PPKE.js", "/build/_shared/chunk-QLFXOJ5S.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-6DI4TP4B.js", "imports": ["/build/_shared/chunk-FHZ2PEHM.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-MOLQ2Q3Z.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-EYAYF6XX.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes": { "id": "routes/jokes", "parentId": "root", "path": "jokes", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes-Z7UYQFSA.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/jokes/jokes-error": { "id": "routes/jokes/jokes-error", "parentId": "routes/jokes", "path": "jokes-error", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/jokes/jokes-error-WN55ZSKU.js", "imports": void 0, "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-84C8E2C5.js" };
+var assets_manifest_default = { "version": "2d790f81", "entry": { "module": "/build/entry.client-NELYJJVT.js", "imports": ["/build/_shared/chunk-4ACWVKRS.js", "/build/_shared/chunk-OG5HDHT3.js", "/build/_shared/chunk-HSYOKXM2.js", "/build/_shared/chunk-6SKE6JXS.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-W5JTOZYM.js", "imports": ["/build/_shared/chunk-LBZBGASG.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": true, "hasErrorBoundary": true }, "routes/$account": { "id": "routes/$account", "parentId": "root", "path": ":account", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/$account-JGY64W5Z.js", "imports": void 0, "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/about-UGLEDKRV.js", "imports": ["/build/_shared/chunk-63VZOVCT.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/actions/login/$strategy": { "id": "routes/actions/login/$strategy", "parentId": "root", "path": "actions/login/:strategy", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/actions/login/$strategy-Z6YG3TY5.js", "imports": void 0, "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-RU6YW7SP.js", "imports": ["/build/_shared/chunk-63VZOVCT.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-2D790F81.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };
@@ -509,6 +751,22 @@ var routes = {
     caseSensitive: void 0,
     module: strategy_exports
   },
+  "routes/$account": {
+    id: "routes/$account",
+    parentId: "root",
+    path: ":account",
+    index: void 0,
+    caseSensitive: void 0,
+    module: account_exports
+  },
+  "routes/about": {
+    id: "routes/about",
+    parentId: "root",
+    path: "about",
+    index: void 0,
+    caseSensitive: void 0,
+    module: about_exports
+  },
   "routes/index": {
     id: "routes/index",
     parentId: "root",
@@ -516,22 +774,6 @@ var routes = {
     index: true,
     caseSensitive: void 0,
     module: routes_exports
-  },
-  "routes/jokes": {
-    id: "routes/jokes",
-    parentId: "root",
-    path: "jokes",
-    index: void 0,
-    caseSensitive: void 0,
-    module: jokes_exports
-  },
-  "routes/jokes/jokes-error": {
-    id: "routes/jokes/jokes-error",
-    parentId: "routes/jokes",
-    path: "jokes-error",
-    index: void 0,
-    caseSensitive: void 0,
-    module: jokes_error_exports
   }
 };
 module.exports = __toCommonJS(stdin_exports);
@@ -541,4 +783,4 @@ module.exports = __toCommonJS(stdin_exports);
   entry,
   routes
 });
-//# sourceMappingURL=/build/index.js.map
+//# sourceMappingURL=index.js.map

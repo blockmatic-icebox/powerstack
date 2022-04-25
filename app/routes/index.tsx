@@ -5,6 +5,7 @@ import { Header } from '~/components/Header'
 
 export default function Index() {
   const { user, appconfig } = useStore()
+  console.log(JSON.stringify(appconfig))
   return (
     <div>
       <Header />
@@ -12,10 +13,7 @@ export default function Index() {
       <WalletLogin />
       <ul>
         <li>
-          <Link to="/jokes">Jokes</Link>
-        </li>
-        <li>
-          <Link to="/jokes-error">Jokes: Error</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
     </div>
