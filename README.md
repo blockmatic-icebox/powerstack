@@ -22,7 +22,6 @@ PowerStack Remix template for development speed and great developer experience.
 - react-icons https://react-icons.github.io/react-icons/
 - ~/library with utilities
 
-
 ### Remix Fundamentals
 
 - https://remix.run/docs/en/v1/api/conventions
@@ -51,7 +50,6 @@ PowerStack Remix template for development speed and great developer experience.
 ### Conventions
 
 - https://github.com/blockmatic/powerstack-architecture
-
 
 ### File Structure
 
@@ -112,16 +110,16 @@ You can start editing the page by modifying `app/routes/index.tsx`. The page aut
 
 ```
 # Build the image
-docker build -t image_name .
+docker build -t powerstack_remix .
 
 # Start a container
-docker run -p 3000:3000 -d image_name
+docker run --env-file -p 3000:3000 -d powerstack_remix
 
 # Get container ID
 docker ps
 
 # Print app output
-docker logs <container id>
+docker logs -f <container id>
 ```
 
 ## Contributing
