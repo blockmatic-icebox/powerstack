@@ -10,17 +10,13 @@ type FeatureFlags = {}
 type Contracts = {}
 
 // apis and other services
-type Services = {}
+type Services = {
+  graphql_api: string
+}
 
 type Analytics = {
   google: string
   sentry: string
-}
-
-// ethereum network config
-type Network = {
-  chain: string
-  chain_id: string
 }
 
 type Cloudinary = {
@@ -31,7 +27,6 @@ type Cloudinary = {
 
 // global application configuration based on env
 export type AppConfig = {
-  network: Network
   contracts: Contracts
   services: Services
   features: FeatureFlags
@@ -40,10 +35,6 @@ export type AppConfig = {
 }
 
 export const appconfig: AppConfig = {
-  network: {
-    chain: env.get('CHAIN').required().asString(),
-    chain_id: env.get('CHAIN_ID').required().asString(),
-  },
   contracts: {},
   services: {
     graphql_api: env.get('GRAPHQL_API').required().asString(),
@@ -53,9 +44,9 @@ export const appconfig: AppConfig = {
     sentry: env.get('SENTRY_DSN').asString() || '',
   },
   cloudinary: {
-    cloudName: env.get('CLOUDINARY_CLOUD_NAME').required().asString(),
-    apiKey: env.get('CLOUDINARY_API_KEY').required().asString(),
-    apiSecret: env.get('CLOUDINARY_API_SECRET').required().asString(),
+    cloud_name: env.get('CLOUDINARY_CLOUD_NAME').asString() || '',
+    api_key: env.get('CLOUDINARY_API_KEY').asString() || '',
+    api_secret: env.get('CLOUDINARY_API_SECRET').asString() || '',
   },
   features: {},
 }
