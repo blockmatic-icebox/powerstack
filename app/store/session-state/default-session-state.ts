@@ -1,12 +1,8 @@
 import type { AppConfig } from '~/app-config'
-import type { SessionState } from '.'
+import type { AppSessionState } from '.'
 
 // dummy for solve typescript undefined appconfig, we know it'll always be defined but we need to make ts happy
 export const dummy_appconfig: AppConfig = {
-  network: {
-    chain: '',
-    chain_id: '',
-  },
   contracts: {},
   services: {
     graphql_api: '',
@@ -23,7 +19,7 @@ export const dummy_appconfig: AppConfig = {
   features: {},
 }
 
-export const defaultAppSessionState: SessionState = {
+export const defaultAppSessionState: AppSessionState = {
   appconfig: dummy_appconfig, // this gets replaced on root.tsx loader.
   user: null,
   session_error: null,
