@@ -64,10 +64,11 @@ export const light_theme = {
       }
     },
     "radii": {
-      "radius-4": "4px",
-      "radius-6": "6px",
-      "radius-12": "12px",
-      "radius-20": "20px"
+      "radius-18": "18px",
+      "radius-32": "32px",
+      "radius-40": "40px",
+      "radius-24": "24px",
+      "radius-14": "14px"
     },
     "shadows": {
       "drop-shadow-1": "0px 4px 8px 0px #00000014, 2px 2px 2px 0px #0000000a",
@@ -77,6 +78,7 @@ export const light_theme = {
       "drop-shadow-5": "0px 24px 28px 0px #00000014, 12px 12px 12px 0px #0000000a"
     },
     "colors": {
+      "login": "linear-gradient(0deg, #ffffffe6 8.333%,#f9f9fb 33.333%)",
       "primary": "#044bff",
       "shadow-layer-1": "#00000014",
       "shadow-layer-2": "#0000000a",
@@ -89,12 +91,12 @@ export const light_theme = {
       "neutral-200": "#f6f8fa",
       "neutral-800": "#51646d",
       "text": "#000505",
-      "primary-400": "#1d5dff",
-      "primary-300": "#366fff",
-      "primary-200": "#4f81ff",
-      "primary-600": "#033ccc",
-      "primary-700": "#052e96",
-      "primary-800": "#052062"
+      "primary-400": "#2e69ff",
+      "primary-300": "#5887ff",
+      "primary-200": "#82a5ff",
+      "primary-600": "#043fd4",
+      "primary-700": "#0633a7",
+      "primary-800": "#06277b"
     },
     "fonts": {
       "bold": "Gilroy-Bold",

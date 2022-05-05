@@ -1,8 +1,8 @@
 import { Flex } from './Flex';
 import { Container } from './Container';
 import { styled } from '~/styles/stitches.config'
-import { Link } from '@remix-run/react'
-import { GhLoginIcon } from './icons';
+import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from './icons';
+import { Button } from '~/components/Button'
 
 export function Header() {
   const linkStyles = {
@@ -16,22 +16,24 @@ export function Header() {
   }
 
   const NavBar = styled(Flex, {
-    backdropFilter: 'saturate(180%) blur(5px)',
-    boxShadow: 'inset 0 -1px 0 0 rgba(0,0,0,.1)',
-    bg: '$header-bg',
-    position: 'absolute',
-    py: '$x-small',
+    backdropFilter: 'saturate(180%) blur(10px)',
+    position: 'sticky',
+    py: '$regular',
     top: 0,
     width: '100%',
+    zIndex: 1000,
+    '@small': {
+      py: '$regular',
+    },
   })
-
-  const LinkItem = styled(Link, linkStyles)
 
   const AnchorItem = styled('a', {
     ...linkStyles,
+    ml: '$large',
+    size: '$iconSmall',
     '& svg': {
       size: '$iconSmall'
-    }
+    },
   })
 
   const VisuallyHidden = styled('h2', {
@@ -43,35 +45,75 @@ export function Header() {
     wordWrap: 'normal',
   })
 
-  const Logo = styled('img', {
-    maxHeight: '$iconMedium',
-    objectFit: 'contain'
+  const Logo = styled(BlockmaticIcon, {
+    height: '21px',
+    width: 'max-content',
+    '@small': {
+      height: '36px',
+    },
+  })
+
+  const NavContainer = styled(Container, {
+    px: '$small',
+    '@small': {
+      px: '$small'
+    }
+  })
+
+  const LoginButton = styled(Button, {
+    ml: '$large',
+    maxWidth: '200px',
+    width: '100%',
+  })
+
+  const LanguageButton = styled('button', {
+    background: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    size: '$iconSmall',
+    p: 0,
+    svg: {
+      size: '$iconSmall',
+      path: {
+        transition: 'stroke 0.4s'
+      }
+    },
+    '&:hover': {
+      path: {
+        stroke: '$primary'
+      },
+    }
   })
 
   return (
     <NavBar>
-      <Container>
+      <NavContainer>
         <Flex justify="between" align="center">
-            {/* ToDo: Logo needs to be improved */}
-            <Logo src="/logo-text-icon.png" alt="Blockmatic Logo" />
-            <Flex
-              justify="end"
-              as="nav"
-              role="navigation"
-              aria-labelledby="main-nav-title"
-              align="center"
+          <Logo />
+          <Flex
+            justify="end"
+            as="nav"
+            role="navigation"
+            aria-labelledby="main-nav-title"
+            align="center"
+            css={{ flex: 1 }}
+          >
+            <VisuallyHidden>Main navigation</VisuallyHidden>
+            <LanguageButton type="button" aria-label="Language Switcher Icon">
+              <GlobeIcon />
+            </LanguageButton>
+            <AnchorItem
+              aria-label="Go to Powerstack Template"
+              href="https://github.com/blockmatic/powerstack-remix"
             >
-              <VisuallyHidden>Main navigation</VisuallyHidden>
-              <LinkItem to="#">Login</LinkItem>
-              <AnchorItem
-                aria-label="Go to Powerstack Template"
-                href="https://github.com/blockmatic/powerstack-remix"
-              >
-                <GhLoginIcon />
-              </AnchorItem>
-            </Flex>
+              <GhLoginIcon />
+            </AnchorItem>
+            <LoginButton onClick={() => console.log('I\'m dummy, gimme power!')} variant="primary">
+              Login
+            </LoginButton>
+          </Flex>
         </Flex>
-      </Container>
+      </NavContainer>
     </NavBar>
   );
 }

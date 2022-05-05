@@ -2,6 +2,10 @@
   "name": "light",
     "colors" : [
     {
+      "name" : "login",
+      "value" : "linear-gradient(0deg, #ffffffe6 8.333%,#f9f9fb 33.333%)"
+    },
+    {
       "name" : "primary",
       "value" : "#044bff"
     },
@@ -51,27 +55,27 @@
     },
     {
       "name" : "primary-400",
-      "value" : "#1d5dff"
+      "value" : "#2e69ff"
     },
     {
       "name" : "primary-300",
-      "value" : "#366fff"
+      "value" : "#5887ff"
     },
     {
       "name" : "primary-200",
-      "value" : "#4f81ff"
+      "value" : "#82a5ff"
     },
     {
       "name" : "primary-600",
-      "value" : "#033ccc"
+      "value" : "#043fd4"
     },
     {
       "name" : "primary-700",
-      "value" : "#052e96"
+      "value" : "#0633a7"
     },
     {
       "name" : "primary-800",
-      "value" : "#052062"
+      "value" : "#06277b"
     }
   ],
     "Shadows" : [
@@ -239,20 +243,24 @@
   ],
     "BorderRadiuses" : [
     {
-      "name" : "radius-4",
-      "value" : "4px"
+      "name" : "radius-18",
+      "value" : "18px"
     },
     {
-      "name" : "radius-6",
-      "value" : "6px"
+      "name" : "radius-32",
+      "value" : "32px"
     },
     {
-      "name" : "radius-12",
-      "value" : "12px"
+      "name" : "radius-40",
+      "value" : "40px"
     },
     {
-      "name" : "radius-20",
-      "value" : "20px"
+      "name" : "radius-24",
+      "value" : "24px"
+    },
+    {
+      "name" : "radius-14",
+      "value" : "14px"
     }
   ],
   "space": [

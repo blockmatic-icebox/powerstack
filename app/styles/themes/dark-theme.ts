@@ -64,10 +64,11 @@ export const dark_theme = {
       }
     },
     "radii": {
-      "radius-4": "4px",
-      "radius-6": "6px",
-      "radius-12": "12px",
-      "radius-20": "20px"
+      "radius-18": "18px",
+      "radius-32": "32px",
+      "radius-40": "40px",
+      "radius-24": "24px",
+      "radius-14": "14px"
     },
     "shadows": {
       "drop-shadow-1": "0px 4px 8px 0px #0000003d, 2px 2px 2px 0px #0000001f",
@@ -77,6 +78,7 @@ export const dark_theme = {
       "drop-shadow-5": "0px 24px 28px 0px #0000003d, 12px 12px 12px 0px #0000001f"
     },
     "colors": {
+      "login": "#141416",
       "primary": "#00023e",
       "shadow-layer-1": "#00000014",
       "shadow-layer-2": "#0000000a",

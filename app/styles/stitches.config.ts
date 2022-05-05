@@ -25,21 +25,20 @@ export const { styled, globalCss, getCssText, config } = createStitches({
     sizes: {
       container: '78.5rem',
       iconSmall: '1.375rem',
-      iconMedium: '2.75rem'
+      iconMedium: '2.75rem',
     },
     fontWeights: {
       body: 400,
       heading: 700,
       bold: 700,
     },
-    space: light_theme.space,
-    fonts: light_theme.fonts,
     fontSizes: getFontSizes()
   },
   media: {
-    tabletUp: '(min-width: 768px)',
-    desktopUp: '(min-width: 1024px)',
-    largeDesktopUp: '(min-width: 1680px)',
+    'x-small': '(min-width: 425px)',
+    'small': '(min-width: 768px)',
+    'medium': '(min-width: 1024px)',
+    'large': '(min-width: 1440px)',
   },
   utils: {
     p: (value: Stitches.PropertyValue<'padding'>) => ({
@@ -127,5 +126,27 @@ export const globalStyles = globalCss({
   },
   '*, *::before, *::after': {
     boxSizing: 'border-box',
+    '-webkit-font-smoothing': 'antialiased',
+    '-moz-osx-font-smoothing': 'grayscale',
+    scrollBehavior: 'smooth',
+    letterSpacing: '0.02em',
   },
+  '::-webkit-scrollbar': {
+    width: '13px',
+    height: '13px',
+    right: 0,
+  },
+  '::-webkit-scrollbar-track, ::-webkit-scrollbar-corner': {
+    background: '$neutral-200',
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    background: '$neutral-600',
+    borderRadius: '18px',
+    border: '3px solid $neutral-200',
+  },
+
+  '::-webkit-scrollbar-thumb:hover': {
+    background: '$neutral-700',
+  }
 })
