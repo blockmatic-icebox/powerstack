@@ -1,8 +1,8 @@
-import { Flex } from './Flex';
-import { Container } from './Container';
+import { Flex } from '../primitives/Flex'
+import { Container } from '../primitives/Container'
 import { styled } from '~/styles/stitches.config'
-import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from './icons';
-import { Button } from '~/components/Button'
+import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/icons'
+import { Button } from '~/components/primitives/Button'
 
 export function Header() {
   const linkStyles = {
@@ -11,8 +11,8 @@ export function Header() {
     textDecoration: 'none',
     transition: 'color 0.4s',
     '&:hover': {
-      color: '$primary-400'
-    }
+      color: '$primary-400',
+    },
   }
 
   const NavBar = styled(Flex, {
@@ -32,7 +32,7 @@ export function Header() {
     ml: '$large',
     size: '$iconSmall',
     '& svg': {
-      size: '$iconSmall'
+      size: '$iconSmall',
     },
   })
 
@@ -56,8 +56,8 @@ export function Header() {
   const NavContainer = styled(Container, {
     px: '$small',
     '@small': {
-      px: '$small'
-    }
+      px: '$small',
+    },
   })
 
   const LoginButton = styled(Button, {
@@ -75,14 +75,14 @@ export function Header() {
     svg: {
       size: '$iconSmall',
       path: {
-        transition: 'stroke 0.4s'
-      }
+        transition: 'stroke 0.4s',
+      },
     },
     '&:hover': {
       path: {
-        stroke: '$primary'
+        stroke: '$primary',
       },
-    }
+    },
   })
 
   return (
@@ -108,12 +108,15 @@ export function Header() {
             >
               <GhLoginIcon />
             </AnchorItem>
-            <LoginButton onClick={() => console.log('I\'m dummy, gimme power!')} variant="primary">
+            <LoginButton
+              onClick={() => console.log("I'm dummy, gimme power!")}
+              variant="primary"
+            >
               Login
             </LoginButton>
           </Flex>
         </Flex>
       </NavContainer>
     </NavBar>
-  );
+  )
 }

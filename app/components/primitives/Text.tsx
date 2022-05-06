@@ -1,4 +1,4 @@
-import { styled } from "~/styles/stitches.config";
+import { styled } from '~/styles/stitches.config'
 
 export const Text = styled('p', {
   fontFamily: '$semi-bold',
@@ -9,23 +9,23 @@ export const Text = styled('p', {
       h1: {
         rt: 'center',
         fontFamily: '$extra-bold',
-        fontSize: '$h-1'
+        fontSize: '$h-1',
       },
       h2: {
         rt: 'center',
         fontFamily: '$extra-bold',
-        fontSize: '$h-2'
+        fontSize: '$h-2',
       },
       h3: {
         rt: 'center',
         fontFamily: '$extra-bold',
-        fontSize: '$h-3'
+        fontSize: '$h-3',
       },
       h4: {
         rt: 'center',
         fontFamily: '$extra-bold',
-        fontSize: '$h-4'
+        fontSize: '$h-4',
       },
-    }
-  }
+    },
+  },
 })

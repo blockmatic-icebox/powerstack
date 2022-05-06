@@ -4,11 +4,15 @@ import _ from 'lodash'
 import { ethers } from 'ethers'
 import { useFetcher, useLocation } from '@remix-run/react'
 import { ethereum, isPhantom, solana } from '~/library'
-import { AnchorIcon, MetamaskIcon, PhantonIcon, GitlabIcon, GhLoginIcon, BitbucketIcon } from '~/components/icons'
-import { Button } from '~/components/Button'
-import { Flex } from '~/components/Flex'
-import { Text } from '~/components/Text'
-import { Card } from '~/components/Card'
+import {
+  AnchorIcon,
+  MetamaskIcon,
+  PhantonIcon,
+  GitlabIcon,
+  GhLoginIcon,
+  BitbucketIcon,
+} from '~/icons'
+import { Button, Flex, Text, Card } from '~/components'
 
 const message = 'Login to PowerStack Remix'
 
@@ -58,21 +62,20 @@ export const WalletLogin = () => {
     try {
       const resp = await solana.connect({ onlyIfTrusted: true })
       console.log(resp.publicKey.toString(), solana.isConnected) // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
+      submit({
+        strategy: 'phantom',
+        signed_message: {
+          signature: await solana.signMessage(
+            new TextEncoder().encode(message),
+            'utf8',
+          ),
+          address: resp.publicKey.toString(),
+          message,
+        },
+      })
     } catch (err) {
       alert((err as Error).message)
     }
-
-    submit({
-      strategy: 'phantom',
-      signed_message: {
-        signature: await solana.signMessage(
-          new TextEncoder().encode(message),
-          'utf8',
-        ),
-        address: resp.publicKey.toString(),
-        message,
-      },
-    })
   }
 
   const Title = styled(Text, {
@@ -91,8 +94,8 @@ export const WalletLogin = () => {
   const LoginButton = styled(Button, {
     '& svg': {
       flexShrink: 0,
-      mr: '$regular'
-    }
+      mr: '$regular',
+    },
   })
 
   const Separator = styled('div', {
@@ -106,29 +109,39 @@ export const WalletLogin = () => {
       display: 'block',
       height: '1px',
       backgroundColor: '#E5E7EB',
-    }
+    },
   })
 
   const IconsFlex = styled(Flex, {
     px: '$small',
     columnGap: '$small',
     button: {
-      flex: '1'
-    }
+      flex: '1',
+    },
   })
 
   return (
     <Card direction="column" variant="login">
-      <Title as="h1" variant="h1">Welcome {user ? 'Back' : null} to PowerStack Remix</Title>
+      <Title as="h1" variant="h1">
+        Welcome {user ? 'Back' : null} to PowerStack Remix
+      </Title>
       <LoginButton onClick={loginWithPhantom} variant="panthom">
         <PhantonIcon />
         Login with Phantom
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={() => console.log('I\'m dummy, gimme power!')} variant="anchor">
+      <LoginButton
+        css={{ mb: '$small' }}
+        onClick={() => console.log("I'm dummy, gimme power!")}
+        variant="anchor"
+      >
         <AnchorIcon />
         Login with Anchor
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={loginWithMetamask} variant="metamask">
+      <LoginButton
+        css={{ mb: '$small' }}
+        onClick={loginWithMetamask}
+        variant="metamask"
+      >
         <MetamaskIcon />
         Login with Metamask
       </LoginButton>
@@ -146,13 +159,28 @@ export const WalletLogin = () => {
       </p> */}
       <Separator>Or sign in with</Separator>
       <IconsFlex justify="center">
-        <Button css={{ 'svg': { mr: 0 } }} onClick={() => console.log('I\'m dummy, gimme power!')} variant="oAuth" aria-label="Login with Github">
+        <Button
+          css={{ svg: { mr: 0 } }}
+          onClick={() => console.log("I'm dummy, gimme power!")}
+          variant="oAuth"
+          aria-label="Login with Github"
+        >
           <GhLoginIcon />
         </Button>
-        <Button css={{ 'svg': { mr: 0 } }} onClick={() => console.log('I\'m dummy, gimme power!')} variant="oAuth" aria-label="Login with Gitlab">
+        <Button
+          css={{ svg: { mr: 0 } }}
+          onClick={() => console.log("I'm dummy, gimme power!")}
+          variant="oAuth"
+          aria-label="Login with Gitlab"
+        >
           <GitlabIcon />
         </Button>
-        <Button css={{ 'svg': { mr: 0 } }} onClick={() => console.log('I\'m dummy, gimme power!')} variant="oAuth" aria-label="Login with BitBucket">
+        <Button
+          css={{ svg: { mr: 0 } }}
+          onClick={() => console.log("I'm dummy, gimme power!")}
+          variant="oAuth"
+          aria-label="Login with BitBucket"
+        >
           <BitbucketIcon />
         </Button>
       </IconsFlex>

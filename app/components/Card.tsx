@@ -1,5 +1,5 @@
-import { Flex } from "~/components/Flex";
-import { styled } from "~/styles/stitches.config";
+import { Flex } from '~/components/primitives/Flex'
+import { styled } from '~/styles/stitches.config'
 
 export const Card = styled(Flex, {
   mx: 'auto',
@@ -11,7 +11,7 @@ export const Card = styled(Flex, {
   background: '#fff8',
   '> button, > hr': {
     width: '100%',
-    mb: '$small'
+    mb: '$small',
   },
   '> hr': {
     height: 1,
@@ -24,12 +24,12 @@ export const Card = styled(Flex, {
     boxShadow: '0px 12px 20px 0px #00000014, 6px 6px 6px 0px #0000000a',
     '&::before': {
       minHeight: 'calc(100% - 4px)',
-    minWidth: '100%',
-    }
+      minWidth: '100%',
+    },
   },
 
   '@small': {
-    px: '$x-large'
+    px: '$x-large',
   },
 
   variants: {
@@ -57,7 +57,7 @@ export const Card = styled(Flex, {
           py: '$x-large',
           px: '$x-large',
         },
-      }
-    }
-  }
+      },
+    },
+  },
 })

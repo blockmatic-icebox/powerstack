@@ -1,5 +1,5 @@
 import { useStore } from '~/store'
-import { Header } from '~/components/Header'
+import { Header } from '~/components'
 
 export default function Index() {
   const { user } = useStore()
