@@ -1,1 +1,1 @@
-export const Main = () => <div>I'm on the side</div>
+export const Main = () => <div>I'm the Main</div>
