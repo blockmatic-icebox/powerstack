@@ -12,6 +12,7 @@ type Contracts = {}
 // apis and other services
 type Services = {
   graphql_api: string
+  graphql_api_key: string
 }
 
 type Analytics = {
@@ -38,6 +39,7 @@ export const appconfig: AppConfig = {
   contracts: {},
   services: {
     graphql_api: env.get('GRAPHQL_API').required().asString(),
+    graphql_api_key: env.get('GRAPHQL_API_KEY').required().asString(),
   },
   analytics: {
     google: env.get('GOOGLE_ANALYTICS').asString() || '',

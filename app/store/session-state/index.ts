@@ -2,6 +2,7 @@ import type { StoreSlice } from '..'
 import type { AppConfig } from '~/app-config'
 import { defaultAppSessionState } from './default-session-state'
 import type { AppSessionData, AppUser } from '~/types'
+import { ApolloClient } from '@apollo/client'
 
 export type AppSessionState = {
   appconfig: AppConfig
@@ -16,7 +17,10 @@ export type AppSessionActions = {
 
 export type AppSession = AppSessionState & AppSessionActions
 
-export const createAppSessionSlice: StoreSlice<AppSession> = (set) => ({
+// apollo stuff
+let apollo_client: ApolloClient<any> | null = null
+
+export const createAppSessionSlice: StoreSlice<AppSession> = (set, get) => ({
   ...defaultAppSessionState,
 
   setUser: (user: AppUser) => set({ user }),
