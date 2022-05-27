@@ -2,6 +2,8 @@
 
 PowerStack Remix template for development speed and great developer experience.
 
+_Disclaimer: This is a work in progress. Will be finalized soon._
+
 ### Tech Stack
 
 - remix react framework https://remix.run
