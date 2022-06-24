@@ -110,6 +110,7 @@ _{diagrams_here}_
 - [Remix](https://github.com/blockmatic/powerstack-remix): Webapp Client.
 - [Expo](https://github.com/blockmatic/powerstack-expo): Mobile Client for Andriod and iOS.
 - [Hasura](https://github.com/blockmatic/powerstack-hasura): GraphQL Engine.
+- [Apollo](https://github.com/blockmatic/powerstack-apollo): GraphQL Apollo server.
 - [Auth](https://github.com/nhost/hasura-auth): API JWT Auth.
 - [Node](https://github.com/blockmatic/powerstack-node): NodeJS Service.
 - [Compose](https://github.com/blockmatic/powerstack-compose): Full Environment.
