@@ -34,6 +34,8 @@ _Disclaimer: this project is currently under development._
   - [Backend](#backend)
     - [GraphQL](#graphql)
     - [Hasura Engine](#hasura-engine)
+    - [Database Migrations](#database-migrations)
+    - [PostgreSQL](#postgresql)
     - [Google Cloud](#google-cloud)
     - [Docker Containers](#docker-containers)
   - [Web3](#web3)
@@ -164,7 +166,7 @@ Hasura GraphQL engine lets you do anything you would usually do with Postgres by
 
 Learn more at [hasura.io](https://hasura.io)
 
-#### Hasura Database Migrations
+#### Database Migrations
 
 It enables a rock-solid deployment process because you are doing exactly the same when updating your local database, your development database, your QA database, your acceptance database and your production database. It’s always the same process and it can be automated.
 
