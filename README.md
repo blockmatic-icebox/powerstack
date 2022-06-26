@@ -164,6 +164,27 @@ Hasura GraphQL engine lets you do anything you would usually do with Postgres by
 
 Learn more at [hasura.io](https://hasura.io)
 
+#### Hasura Database Migrations
+
+It enables a rock-solid deployment process because you are doing exactly the same when updating your local database, your development database, your QA database, your acceptance database and your production database. It’s always the same process and it can be automated.
+
+[hasura.io/docs/latest/graphql/core/migrations](https://hasura.io/docs/latest/graphql/core/migrations/index.html)
+
+#### PostgreSQL
+
+PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
+
+- Postgres has a strongly typed schema that leaves very little room for errors. You first create the schema for a table and then add rows to the table. You can also define relationships between different tables with rules so that you can store related data across several tables and avoid data duplication.
+
+- You can change tables in PostgreSQL without requiring to lock it for every operation. For example, you can add a column and set a default value quickly without locking the entire table. This ensures that every row in a table has the column and your codebase remains clean without needing to check if the column exists at every stage. It is also much quicker to update every row since Postgres doesn't need to retrieve each row, update, and put it back.
+
+- Postgres also supports JSONB, which lets you create unstructured data, but with data constraint and validation functions to help ensure that JSON documents are more meaningful. The folks at Sisense have written a great blog with a detailed comparison of [Postgres vs MongoDB for JSON documents](https://www.sisense.com/blog/postgres-vs-mongodb-for-storing-json-data/).
+
+- The newest round of performance comparisons of PostgreSQL and MongoDB produced a near repeat of the results from the first tests that proved PostgreSQL can outperform MongoDB.
+
+Learn more at [postgresql.org](https://www.postgresql.org)
+
+
 #### Google Cloud
 
 - CloudRun features.
