@@ -22,7 +22,7 @@ _Disclaimer: this project is currently under development._
   - [Avoid Hasty Abstractions](#avoid-hasty-abstractions)
   - [Declarative Code](#declarative-code)
   - [Composition over Inheritance](#composition-over-inheritance)
-  - [Project Features](#project-features)
+- [Project Features](#project-features)
 - [dApp Architecture](#dapp-architecture)
 - [Starters](#starters)
 - [Tech Stack](#tech-stack)
@@ -92,7 +92,7 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 
 ### Composition over Inheritance
 
-### Project Features
+## Project Features
 
 - Powerful open source architecture.
 - Clear documentation and conventions.
