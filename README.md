@@ -14,67 +14,74 @@ _Disclaimer: this project is currently under development._
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** 
+**Table of Contents**
 
-- [General Philosophy](#general-philosophy)
-  - [The Best Code is No Code](#the-best-code-is-no-code)
-  - [Optimize for Change](#optimize-for-change)
-  - [Avoid Hasty Abstractions](#avoid-hasty-abstractions)
-  - [Declarative Code](#declarative-code)
-  - [Composition over Inheritance](#composition-over-inheritance)
-- [Project Features](#project-features)
-- [dApp Architecture](#dapp-architecture)
-- [Starters](#starters)
-- [Tech Stack](#tech-stack)
-  - [Frontend](#frontend)
-    - [React Remix](#react-remix)
-    - [Apollo Client](#apollo-client)
-    - [Vercel](#vercel)
-    - [Expo](#expo)
-  - [Backend](#backend)
-    - [GraphQL](#graphql)
-    - [Hasura Engine](#hasura-engine)
-    - [Database Migrations](#database-migrations)
-    - [PostgreSQL](#postgresql)
-    - [Google Cloud](#google-cloud)
-    - [Docker Containers](#docker-containers)
-  - [Web3](#web3)
-    - [Ethers](#ethers)
-    - [The Graph](#the-graph)
-    - [ChainGraph](#chaingraph)
-  - [Automation](#automation)
-    - [GraphQL CodeGen](#graphql-codegen)
-- [Testing Strategies](#testing-strategies)
-- [Code Guidelines and Style Conventions](#code-guidelines-and-style-conventions)
-  - [JavaScript](#javascript)
-  - [Underscore Variables and camelCase functions](#underscore-variables-and-camelcase-functions)
-  - [Avoid export default](#avoid-export-default)
-  - [React](#react)
-  - [File Names](#file-names)
-  - [Define components and methods as constant arrow functions](#define-components-and-methods-as-constant-arrow-functions)
-  - [Keep things that don't change outside of React components in VanillaJS](#keep-things-that-dont-change-outside-of-react-components-in-vanillajs)
-  - [Avoid over optimization (`useCallback` and `useMemo`)](#avoid-over-optimization-usecallback-and-usememo)
-  - [Use ternaries rather than && in JSX](#use-ternaries-rather-than--in-jsx)
-  - [Keep State Simple](#keep-state-simple)
-    - [Prefer serializables objects on store state](#prefer-serializables-objects-on-store-state)
-    - [Keep the state flat](#keep-the-state-flat)
-    - [Keep i18n files flat](#keep-i18n-files-flat)
-- [Blockmatic](#blockmatic)
+- [PowerStack Architecture](#powerstack-architecture)
+  - [General Philosophy](#general-philosophy)
+    - [The Best Code is No Code](#the-best-code-is-no-code)
+    - [Optimize for Change](#optimize-for-change)
+    - [Avoid Hasty Abstractions](#avoid-hasty-abstractions)
+    - [Declarative Code](#declarative-code)
+    - [Composition over Inheritance](#composition-over-inheritance)
+  - [Project Features](#project-features)
+  - [dApp Architecture](#dapp-architecture)
+  - [Starters](#starters)
+  - [Tech Stack](#tech-stack)
+    - [Frontend](#frontend)
+      - [React Remix](#react-remix)
+      - [Apollo Client](#apollo-client)
+      - [Vercel](#vercel)
+      - [Expo](#expo)
+    - [Backend](#backend)
+      - [GraphQL](#graphql)
+      - [Hasura Engine](#hasura-engine)
+      - [Database Migrations](#database-migrations)
+      - [PostgreSQL](#postgresql)
+      - [Google Cloud](#google-cloud)
+      - [Docker Containers](#docker-containers)
+    - [Web3](#web3)
+      - [Ethers](#ethers)
+      - [The Graph](#the-graph)
+      - [ChainGraph](#chaingraph)
+    - [Automation](#automation)
+      - [GraphQL CodeGen](#graphql-codegen)
+  - [Testing Strategies](#testing-strategies)
+  - [Code Guidelines and Style Conventions](#code-guidelines-and-style-conventions)
+    - [JavaScript](#javascript)
+      - [Underscore Variables and camelCase functions](#underscore-variables-and-camelcase-functions)
+      - [Avoid export default](#avoid-export-default)
+    - [React](#react)
+      - [File Names](#file-names)
+      - [Define components and methods as constant arrow functions](#define-components-and-methods-as-constant-arrow-functions)
+      - [Keep things that don't change outside of React components in VanillaJS](#keep-things-that-dont-change-outside-of-react-components-in-vanillajs)
+      - [Avoid over optimization (`useCallback` and `useMemo`)](#avoid-over-optimization-usecallback-and-usememo)
+      - [Use ternaries rather than && in JSX](#use-ternaries-rather-than--in-jsx)
+      - [Keep State Simple](#keep-state-simple)
+      - [Prefer serializables objects on store state](#prefer-serializables-objects-on-store-state)
+      - [Keep the state flat](#keep-the-state-flat)
+      - [Keep i18n files flat](#keep-i18n-files-flat)
+      - [Avoid inline css](#avoid-inline-css)
+      - [Avoid generic styled names](#avoid-generic-styled-names)
+      - [Use Design System as much as possible](#use-design-system-as-much-as-possible)
+  - [Blockmatic](#blockmatic)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+---
+
 ## General Philosophy
 
-The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.   
+The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.
 The project provides a well documented architecture and guidelines to avoid common pitfalls.
 
 If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is a great resource to get started.
 
 The React dApp Architecture follows the following design principles:
 
-### The Best Code is No Code 
+### The Best Code is No Code
 
-The fewer lines of code the better. Every line of code you write increases complexity and error surface. 
+The fewer lines of code the better. Every line of code you write increases complexity and error surface.
+
 ### Optimize for Change
 
 The only constant in the universe is change; And software is no different, software evolves constantly.
@@ -90,7 +97,11 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 
 ### Declarative Code
 
+---
+
 ### Composition over Inheritance
+
+---
 
 ## Project Features
 
@@ -102,12 +113,18 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 - Auto-refresh when wallet and network changes.
 - Real-time graphql subscriptions client.
 - TypeScript types auto-generated from GraphQL Schema.
-- Internationalization and Accessibilty. 
+- Internationalization and Accessibilty.
 - CSS-in-JS and design system with Stitches.
+
+---
+
 ## dApp Architecture
 
 _{diagrams_here}_
-## Starters 
+
+---
+
+## Starters
 
 - [Remix](https://github.com/blockmatic/powerstack-remix): Webapp Client.
 - [Expo](https://github.com/blockmatic/powerstack-expo): Mobile Client for Andriod and iOS.
@@ -116,9 +133,13 @@ _{diagrams_here}_
 - [Auth](https://github.com/nhost/hasura-auth): API JWT Auth.
 - [Node](https://github.com/blockmatic/powerstack-node): NodeJS Service.
 - [Compose](https://github.com/blockmatic/powerstack-compose): Full Environment.
-## Tech Stack 
+
+---
+
+## Tech Stack
 
 ### Frontend
+
 #### React Remix
 
 - SSR React framework with powerful conventions.
@@ -129,11 +150,11 @@ Learn more [Modern React](https://github.com/blockmatic/modern-react) and [Remix
 #### Apollo Client
 
 - Great documentation and maintainance.
-- Large ecosystem and a lot of tooling. 
+- Large ecosystem and a lot of tooling.
 
 Learn more [apollographql.com/docs/react/](https://www.apollographql.com/docs/react/)
 
-#### Vercel 
+#### Vercel
 
 - Ease of configuration.
 - Deployment speed.
@@ -143,11 +164,12 @@ Learn more [vercel.com/docs](https://vercel.com/docs)
 
 #### Expo
 
-Develop for all your users' devices with just one codebase in TypeScript!. 
+Develop for all your users' devices with just one codebase in TypeScript!.
 
 Learn more [expo.dev](https://expo.dev/)
 
-### Backend 
+### Backend
+
 #### GraphQL
 
 GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
@@ -186,12 +208,11 @@ PostgreSQL is a powerful, open source object-relational database system with ove
 
 Learn more at [postgresql.org](https://www.postgresql.org)
 
-
 #### Google Cloud
 
 - CloudRun features.
 - Ease of configuration.
-- Lower cost. 
+- Lower cost.
 - Better developer experience.
 
 Learn more [cloud.google.com/](https://cloud.google.com), [CloudRun Overview](https://www.youtube.com/watch?v=gx8VTa1c8DA&t=1s)
@@ -200,11 +221,12 @@ Learn more [cloud.google.com/](https://cloud.google.com), [CloudRun Overview](ht
 
 The primary benefits of containers are efficiency and agility. Containers are orders of magnitude faster to provision, and much lighter-weight to build and define versus methods like omnibus software builds and full Virtual Machine images. Containers in a single OS are also more efficient at resource utilization than running a Hypervisor and guest OSs.
 
-Efficiency and agility are good for everyone, but they become game-changers at scale. 
+Efficiency and agility are good for everyone, but they become game-changers at scale.
 
 Learn more at [cloud.google.com/containers](https://cloud.google.com/containers/) and [Docker](https://docs.docker.com/get-started/)
 
 ### Web3
+
 #### Ethers
 
 - Ecosystem, documentation and tests.
@@ -215,8 +237,9 @@ Learn more at [cloud.google.com/containers](https://cloud.google.com/containers/
 
 Presentation by Richard Moore at DevCon 2019: [A Complete, Tiny and Simple Ethereum Library in JavaScript](https://www.youtube.com/watch?v=r1ldSzcqaHo)
 
-Ethers playground 
-- https://playground.ethers.org 
+Ethers playground:
+
+- <https://playground.ethers.org>
 - [Introduction to Ethers.js Playground](https://www.youtube.com/watch?v=qzRWio_-wVw)  by Richard Moore (Ricmoo) at Toronto Ethereum Developers Meetup 2021
 
 #### The Graph
@@ -226,6 +249,7 @@ Ethers playground
 - Many different providers.
 
 [thegraph.com](https://thegraph.com/en/)
+
 #### ChainGraph
 
 Experimental project for GraphQL streaming on EOSIO chains.
@@ -245,6 +269,8 @@ Experimental project for GraphQL streaming on EOSIO chains.
 
 Learn more [gaboesquivel.com/blog/2020/typescript-code-generation-from-graphql/](https://gaboesquivel.com/blog/2020/typescript-code-generation-from-graphql/)
 
+---
+
 ## Testing Strategies
 
 In general focus on testing the critical pieces like the smart contracts and apis, write tests, not too many, mainly integration for most things.
@@ -252,31 +278,34 @@ In general focus on testing the critical pieces like the smart contracts and api
 In UI, E2E testing wiil catch most errors and regressions you care about, let the code change fast internally without unit test overhead. Let if flux.
 Of course it depends on the project and the particular functionality. Test your business critical flows first, then extend coverage.
 
+---
+
 ## Code Guidelines and Style Conventions
 
 ### JavaScript
 
-### Underscore Variables and camelCase functions
+#### Underscore Variables and camelCase functions
 
 ```jsx
 const my_message= 'hello'
 const saySomething = () => console.log(my_message)
 ```
 
-### Avoid export default
+#### Avoid export default
 
 Discoverability is very poor for default exports. You cannot explore a module with intellisense to see if it has a default export or not.
 
 Learn more [Default is Bad](https://basarat.gitbook.io/typescript/main-1/defaultisbad)
 
 ### React
-### File Names
+
+#### File Names
 
 - PascalCase for all react components.  eg. `AddUser.tsx`
 - camelCase for hooks files. eg. `useSubscription.tsx`
 - lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
 
-### Define components and methods as constant arrow functions
+#### Define components and methods as constant arrow functions
 
 It helps with type inference and typescript intelisense in your VSCode.
 
@@ -288,7 +317,7 @@ const MyComponent: React:FC = ({children}) => {
 }
 ```
 
-### Keep things that don't change outside of React components in VanillaJS
+#### Keep things that don't change outside of React components in VanillaJS
 
 Ej. defaults, constants, browser configuration.
 
@@ -301,29 +330,31 @@ const MyPageTitle = () =>  {
 }
 ```
 
-### Avoid over optimization (`useCallback` and `useMemo`)
+#### Avoid over optimization (`useCallback` and `useMemo`)
 
 Apply the AHA Programming principle and wait until the abstraction/optimization is screaming at you before applying it and you'll save yourself from incurring the costs without reaping the benefit.
 
 Specifically the cost for `useCallback` and `useMemo` are that you make the code more complex for your co-workers, you could make a mistake in the dependencies array, and you're potentially making performance worse by invoking the built-in hooks and preventing dependencies and memoized values from being garbage collected. Those are all fine costs to incur if you get the performance benefits necessary, but it's best to measure first.
 
-- https://kentcdodds.com/blog/usememo-and-usecallback
-- https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853
+- <https://kentcdodds.com/blog/usememo-and-usecallback>
+- <https://medium.com/@sdolidze/react-hooks-memoization-99a9a91c8853>
 
-### Use ternaries rather than && in JSX
+#### Use ternaries rather than && in JSX
 
 When you use AND operator to conditionally render `flag && <Component>` it could cause the `flag` value to be displayed, that abviously not desirable. Using ternaries is safer and preferable. `flag ? <Component/> : null`
 
-- https://kentcdodds.com/blog/use-ternaries-rather-than-and-and-in-jsx
+- <https://kentcdodds.com/blog/use-ternaries-rather-than-and-and-in-jsx>
 
-### Keep State Simple
+#### Keep State Simple
 
 In Remix app you will realize that there's very few you are going to need on the Zustand store, most state will come from the [data loaders](https://remix.run/docs/en/v1/guides/data-loading). When you need state follow these best practices
+
 #### Prefer serializables objects on store state
 
 It is highly recommended that you only put plain serializable objects, arrays, and primitives into your store. It's technically possible to insert non-serializable items into the store, but doing so can break the ability to persist and rehydrate the contents of a store, as well as interfere with time-travel debugging.
 
 If you are okay with things like persistence and time-travel debugging potentially not working as intended, then you are totally welcome to put non-serializable items into your store. Ultimately, it's your application, and how you implement it is up to you. As with many other things, just be sure you understand what tradeoffs are involved.
+
 #### Keep the state flat
 
 Updating nested Javascript objects immutably generally results in uglier code that is harder to maintain, unless you use a utility library to wrap up the process
@@ -340,15 +371,94 @@ Flat data, and in particular normalized data, enables some more optimized approa
 
 This allows us to quickly search for the keys and know where are these used and defined in the project, it's much better than navigating thru deep structures to find them.
 
-Eg: 
+E.g.:
 
-```
-{
+```ts
+export const i18n = {
   login_title: 'Login',
   login_username_input_label: 'Enter your username',
   login_username_input_error: 'Invalid username',
 }
 ```
+
+#### Avoid inline css
+
+Inline css on React Components are very useful if we depend on a dynamic aspect and/or value within the render cycle for the User Experience however, creating inline css and styled objects are forbidden and to create these we have to use [stitches styling conventions](https://stitches.dev/docs/styling).
+
+The reason behind this is to:
+
+- Have modular responsibility.
+- Give Design System good practices.
+- To make code clean thanks to `specialized named components`.
+- Reduce lines of code without affecting his reading.
+
+#### Avoid generic styled names
+
+Generic names are OK only if they comes from a Design System and for Layouts & Templates markups. Relying on generic names at component level (e.g.: Organizations, Atoms & Molecules) can turn into a development madness due the property inheritance, nested component definitions and simplicity is lost. For that, it is better to use `specialized names` on our Styled Components.
+
+E.g.:
+
+```tsx
+const DashboardMainSectionContainer = styled('section', {
+  // styles here...
+})
+
+const DashboardMainSectionHeader = styled('header', {
+  // styles here...
+})
+
+const DashboardMainSectionBody = styled('div', {
+  // styles here...
+})
+```
+
+> Keep in mind that we can still use Generic names, but only for Primitives which they
+> possess the ability to use **Variants** for every primitive style based on the Atom
+> that we are declaring on a render cycle and we defined on the Design System.
+
+#### Use Design System as much as possible
+
+We have a couple of ways to add the design system throughout powerstack: Using [toolabs](https://www.toolabs.com/) theme export to generate the theme created by running the command `yarn theme-gen` or by importing a design system manually.
+
+Stitches give us the ability to use design system conventions in order to pass these special properties and values t our each component that we create.
+
+```tsx
+import { Card, Image } from 'components/primitives'
+
+const TopSectionImageWrapper = styled('figure', {
+  width: '100%',
+  px: '$small',
+})
+
+const DesktopImage = styled(Image, {
+  display: 'none',
+  '@large': { // @media screen and (min-width: 1366px) [or any large size definition]
+    display: 'block',
+  }
+})
+
+export const Component = () => (
+  // ...
+  <Card variant="secondary">
+    <TopSectionImageWrapper>
+      <DesktopImage width="600" height="300" size="cover" />
+      {/* ... */}
+    </TopSectionImageWrapper>
+  </Card>
+)
+```
+
+> We can still base our components on a Primitive, but this shall not modify the primitive
+> itself much nor extend a variant that it might be only a specialized styled component. We create
+> these in order to render components for different views or any case needed.
+>
+> > E.g.:
+> > Image on mobile disappears and shows on desktop. This is a very common a11y practice, since
+> > we always want to save user interaction status when makes sense, like the Image placement
+> > differences on the HTML for different breakpoints on a organization/template.
+>
+> Variants should exists only if they are part of Design System or if this style is in
+> use on 2 or more pages.
 
 ---
 
