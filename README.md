@@ -420,7 +420,7 @@ const DashboardMainSectionBody = styled('div', {
 
 We have a couple of ways to add the design system throughout powerstack: Using [toolabs](https://www.toolabs.com/) theme export to generate the theme created by running the command `yarn theme-gen` or by importing a design system manually.
 
-Stitches give us the ability to use design system conventions in order to pass these special properties and values t our each component that we create.
+Stitches give us the ability to use design system conventions in order to pass these special properties and values to our each component that we create.
 
 ```tsx
 import { Card, Image } from 'components/primitives'
@@ -431,7 +431,7 @@ const TopSectionImageWrapper = styled('figure', {
 })
 
 const DesktopImage = styled(Image, {
-  display: 'none',
+  display: 'none', // now it is invisible for a11y
   '@large': { // @media screen and (min-width: 1366px) [or any large size definition]
     display: 'block',
   }
@@ -454,8 +454,8 @@ export const Component = () => (
 >
 > > E.g.:
 > > Image on mobile disappears and shows on desktop. This is a very common a11y practice, since
-> > we always want to save user interaction status when makes sense, like the Image placement
-> > differences on the HTML for different breakpoints on a organization/template.
+> > we always want to give right user interaction and navigation, or for component placement
+> > differences (like Images) on the HTML for different breakpoints on a organization/template.
 >
 > Variants should exists only if they are part of Design System or if this style is in
 > use on 2 or more pages.
