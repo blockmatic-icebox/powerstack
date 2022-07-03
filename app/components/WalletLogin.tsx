@@ -169,14 +169,20 @@ export const WalletLogin = () => {
       </p> */}
       <Separator>Or sign in with</Separator>
       <IconsFlex justify="center">
-        <Button
+        <a
+          href="https://powerstack-auth-atgjsg75cq-uc.a.run.app/login/federated/twitter"
+          role="button"
+        >
+          Sign in with Twitter
+        </a>
+        {/* <Button 
           css={{ svg: { mr: 0 } }}
           onClick={() => loginWithTwitter()}
           variant="oAuth"
           aria-label="Login with Twitter"
         >
           <GhLoginIcon />
-        </Button>
+        </Button> */}
         {/* <Button
           css={{ svg: { mr: 0 } }}
           onClick={() => console.log("I'm dummy, gimme power!")}
