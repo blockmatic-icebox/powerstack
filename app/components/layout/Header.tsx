@@ -1,8 +1,8 @@
-import { Flex } from '../primitives/Flex'
-import { Container } from '../primitives/Container'
+import { Flex } from '../deprecated/Flex'
+import { Container } from '../base/Container'
 import { styled } from '~/styles/stitches.config'
 import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/icons'
-import { Button } from '~/components/primitives/Button'
+import { Button } from '~/components/base/Button'
 
 export function Header() {
   const linkStyles = {

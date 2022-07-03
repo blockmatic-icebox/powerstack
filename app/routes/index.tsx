@@ -1,9 +1,9 @@
-import { WalletLogin } from '~/components/WalletLogin'
+import { WalletLogin } from '~/components/modules/WalletLogin'
 import { Header } from '~/components/layout/Header'
 import { styled } from '~/styles/stitches.config'
-import { Container } from '~/components/primitives/Container'
+import { Container } from '~/components/base/Container'
 import { Footer } from '~/components/layout/Footer'
-import { Flex } from '~/components/primitives/Flex'
+import { Flex } from '~/components/deprecated/Flex'
 
 const MainContent = styled(Flex, {
   minHeight: '75vh',

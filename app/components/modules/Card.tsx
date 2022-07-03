@@ -1,4 +1,4 @@
-import { Flex } from '~/components/primitives/Flex'
+import { Flex } from '~/components/deprecated/Flex'
 import { styled } from '~/styles/stitches.config'
 
 export const Card = styled(Flex, {
