@@ -105,7 +105,7 @@ You can start editing the page by modifying `app/routes/index.tsx`. The page aut
 docker build -t powerstack-remix:local .
 
 # Start a container
-docker run --name powerstack-remix --env-file .env -p 3000:9903 -d powerstack-remix:local
+docker run --name powerstack-remix --env-file .env -p 3000:3303 -d powerstack-remix:local
 
 # Get container ID
 docker ps -aqf "name=^powerstack-remix$"

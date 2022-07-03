@@ -10,7 +10,7 @@ tasks:
 
   run:
     cmds:
-      - docker run --name powerstack-remix --env-file .env -p 3303:3303 -d powerstack-remix:local
+      - docker run --name powerstack-remix --env-file .env -p 3000:3303 -d powerstack-remix:local
 
   id:
     cmds:
