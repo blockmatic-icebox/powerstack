@@ -4,6 +4,9 @@ import { styled } from '~/styles/stitches.config'
 import { Container } from '~/components/primitives/Container'
 import { Footer } from '~/components/layout/Footer'
 import { Flex } from '~/components/primitives/Flex'
+import { json, LoaderFunction } from '@remix-run/node'
+import { auth } from '~/auth.server'
+import { useLoaderData } from '@remix-run/react'
 
 const MainContent = styled(Flex, {
   minHeight: '75vh',
@@ -18,10 +21,19 @@ const LoginBackground = styled(Flex, {
   minHeight: '100vh',
 })
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await auth.isAuthenticated(request)
+  return json({
+    user,
+  })
+}
+
 export default function Index() {
+  const data = useLoaderData()
   return (
     <LoginBackground direction="column">
       <Header />
+      {data.user && <p>{JSON.stringify(data.user)}</p>}
       <MainContent align="center" justify="center">
         <Container>
           <WalletLogin />

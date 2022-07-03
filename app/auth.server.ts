@@ -39,6 +39,19 @@ const getFormData = (form: FormData) => {
 
 auth.use(
   new FormStrategy(async ({ form }) => {
+    const user = {
+      address: '',
+      network: '',
+      provider: 'twitter',
+    }
+    return user
+  }),
+  // each strategy has a name and can be changed to use another one
+  'twitter',
+)
+
+auth.use(
+  new FormStrategy(async ({ form }) => {
     const { address, signature, message } = getFormData(form)
     const addr = await ethers.utils.verifyMessage(message, signature)
     if (addr !== address) throw new AuthorizationError(`Invalid signature`)
@@ -46,6 +59,7 @@ auth.use(
     const user: AppUser = {
       address: address.toString(),
       network: 'rinkeby', // TODO: change to dynamically set by the user
+      provider: 'metamask',
     }
 
     return user
@@ -69,6 +83,7 @@ auth.use(
     const user: AppUser = {
       address: address.toString(),
       network: 'solana', // TODO: change to dynamically set by the user
+      provider: 'phantom',
     }
 
     return user
