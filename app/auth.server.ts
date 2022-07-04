@@ -4,6 +4,7 @@ import { Authenticator, AuthorizationError } from 'remix-auth'
 import { FormStrategy } from 'remix-auth-form'
 import type { AppUser } from './types'
 import nacl from 'tweetnacl'
+import { decode } from 'jsonwebtoken'
 
 export const session_storage = createCookieSessionStorage({
   cookie: {
@@ -19,6 +20,16 @@ export const session_storage = createCookieSessionStorage({
 export const auth = new Authenticator<AppUser>(session_storage)
 
 const enc = new TextEncoder().encode
+
+const verifyToken = async (token: string) => {
+  // TODO: CALL AUTH SERVICE
+  const decoded_token = decode(token)
+  return {
+    id: '',
+    name: '',
+    username: '',
+  }
+}
 
 export type WalletType = 'metamask' | 'wallet_connect'
 
@@ -39,14 +50,20 @@ const getFormData = (form: FormData) => {
 
 auth.use(
   new FormStrategy(async ({ form }) => {
+    const token = form.get('token')?.toString() || ''
+    // VALIDATE TOKEN with auth service
+    const userData = await verifyToken(token)
+    console.log('userData', userData)
     const user = {
       address: '',
       network: '',
       provider: 'twitter',
+      id: '',
+      name: '',
+      username: '',
     }
     return user
   }),
-  // each strategy has a name and can be changed to use another one
   'twitter',
 )
 
@@ -60,6 +77,9 @@ auth.use(
       address: address.toString(),
       network: 'rinkeby', // TODO: change to dynamically set by the user
       provider: 'metamask',
+      id: '',
+      name: '',
+      username: '',
     }
 
     return user
@@ -84,6 +104,9 @@ auth.use(
       address: address.toString(),
       network: 'solana', // TODO: change to dynamically set by the user
       provider: 'phantom',
+      id: '',
+      name: '',
+      username: '',
     }
 
     return user

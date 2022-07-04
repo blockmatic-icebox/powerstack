@@ -9,16 +9,16 @@ export interface AccountProfileLoaderData {
 }
 
 export const loader: LoaderFunction = async ({ params }) => {
-  const account = await prisma.accounts.findFirst({
-    where: {
-      account: params.account,
-    },
-  })
+  // const account = await prisma.accounts.findFirst({
+  //   where: {
+  //     account: params.account,
+  //   },
+  // })
 
-  return json<AccountProfileLoaderData>({ account })
+  return json<AccountProfileLoaderData>({ account: null })
 }
 
 export default function Index() {
   const { account } = useLoaderData<AccountProfileLoaderData>()
-  return <pre>{JSON.stringify(account, null, 2)}</pre>
+  return <pre>HOME PROTECTED</pre>
 }

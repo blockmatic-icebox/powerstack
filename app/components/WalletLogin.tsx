@@ -121,20 +121,22 @@ export const WalletLogin = () => {
     }
   }
 
-  const loginWithTwitter = async () => {
-    try {
-      // submit({
-      //   strategy: 'twitter',
-      // })
-    } catch (err) {
-      alert((err as Error).message)
-    }
-  }
+  // const loginWithTwitter = async () => {
+  //   try {
+  //     submit({
+  //       strategy: 'twitter',
+  //       token:
+  //     })
+  //   } catch (err) {
+  //     alert((err as Error).message)
+  //   }
+  // }
 
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    setPath(window.location.href)
+    console.log({ l: window.location.origin })
+    setPath(window.location.origin)
   }, [])
 
   return (
@@ -176,8 +178,14 @@ export const WalletLogin = () => {
       </p> */}
       <Separator>Or sign in with</Separator>
       <IconsFlex justify="center">
+        {/* <a
+          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter`}
+          role="button"
+        >
+          Sign in with Twitter
+        </a> */}
         <a
-          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
+          href={`http://localhost:4001/provider/twitter?redirect_uri=${path}`}
           role="button"
         >
           Sign in with Twitter

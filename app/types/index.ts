@@ -7,6 +7,9 @@ export type AppUser = {
   address: Address
   network: Network
   provider: string
+  id: string
+  name: string
+  username: string
 } | null
 
 export type AppSessionData = {

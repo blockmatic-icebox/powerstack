@@ -21,11 +21,18 @@ const LoginBackground = styled(Flex, {
   minHeight: '100vh',
 })
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const user = await auth.isAuthenticated(request)
-  return json({
-    user,
-  })
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const url = new URL(request.url)
+  const token = url.searchParams.get('token')
+  const provider = url.searchParams.get('provider')
+  if (token && provider) {
+    console.log({ token, provider })
+    // return auth.authenticate(provider, request, {
+    //   successRedirect: '/home',
+    //   failureRedirect: '/about',
+    // })
+  }
+  return json({ user: {} })
 }
 
 export default function Index() {
@@ -33,7 +40,7 @@ export default function Index() {
   return (
     <LoginBackground direction="column">
       <Header />
-      {data.user && <p>{JSON.stringify(data.user)}</p>}
+      {/* {data.user && <p>{JSON.stringify(data.user)}</p>} */}
       <MainContent align="center" justify="center">
         <Container>
           <WalletLogin />
