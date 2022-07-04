@@ -13,6 +13,7 @@ import {
   BitbucketIcon,
 } from '~/icons'
 import { Button, Flex, Text, Card } from '~/components'
+import { useEffect, useState } from 'react'
 
 const message = 'Login to PowerStack Remix'
 
@@ -130,6 +131,12 @@ export const WalletLogin = () => {
     }
   }
 
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    setPath(window.location.href)
+  }, [])
+
   return (
     <Card direction="column" variant="login">
       <Title as="h1" variant="h1">
@@ -170,7 +177,7 @@ export const WalletLogin = () => {
       <Separator>Or sign in with</Separator>
       <IconsFlex justify="center">
         <a
-          href="https://powerstack-auth-atgjsg75cq-uc.a.run.app/login/federated/twitter"
+          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
           role="button"
         >
           Sign in with Twitter
