@@ -33,7 +33,7 @@ const verifyToken = async (token: string) => {
     console.log(decoded_token)
     return decoded_token
   } catch (error) {
-    console.log('error', error)
+    console.log('error', (error as Error).message)
     return null
   }
 }
