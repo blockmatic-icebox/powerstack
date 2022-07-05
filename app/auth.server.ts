@@ -30,7 +30,6 @@ const verifyToken = async (token: string) => {
     } = await axios.post(`${appconfig.services.auth}/token/verify`, {
       token,
     })
-    console.log(decoded_token)
     return decoded_token
   } catch (error) {
     console.log('error', (error as Error).message)

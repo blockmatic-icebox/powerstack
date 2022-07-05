@@ -173,7 +173,7 @@ export const WalletLogin = () => {
           Sign in with Twitter
         </a> */}
         <a
-          href={`http://localhost:4001/provider/twitter?redirect_uri=${path}`}
+          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
           role="button"
         >
           Sign in with Twitter
