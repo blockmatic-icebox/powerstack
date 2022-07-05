@@ -4,7 +4,9 @@ import { Authenticator, AuthorizationError } from 'remix-auth'
 import { FormStrategy } from 'remix-auth-form'
 import type { AppUser } from './types'
 import nacl from 'tweetnacl'
-import { decode } from 'jsonwebtoken'
+import axios from 'axios'
+import { TwitterStrategy } from './twitter-auth-strategy'
+import { appconfig } from './app-config'
 
 export const session_storage = createCookieSessionStorage({
   cookie: {
@@ -22,12 +24,17 @@ export const auth = new Authenticator<AppUser>(session_storage)
 const enc = new TextEncoder().encode
 
 const verifyToken = async (token: string) => {
-  // TODO: CALL AUTH SERVICE
-  const decoded_token = decode(token)
-  return {
-    id: '',
-    name: '',
-    username: '',
+  try {
+    const {
+      data: { decoded_token },
+    } = await axios.post(`${appconfig.services.auth}/token/verify`, {
+      token,
+    })
+    console.log(decoded_token)
+    return decoded_token
+  } catch (error) {
+    console.log('error', error)
+    return null
   }
 }
 
@@ -49,18 +56,18 @@ const getFormData = (form: FormData) => {
 }
 
 auth.use(
-  new FormStrategy(async ({ form }) => {
-    const token = form.get('token')?.toString() || ''
-    // VALIDATE TOKEN with auth service
-    const userData = await verifyToken(token)
-    console.log('userData', userData)
-    const user = {
+  new TwitterStrategy({}, async (params) => {
+    if (!params.token) throw new AuthorizationError(`Not token provided`)
+    const decoded_token = await verifyToken(params.token)
+    if (!decoded_token) throw new AuthorizationError(`Invalid token provided`)
+    const user: AppUser = {
       address: '',
       network: '',
       provider: 'twitter',
-      id: '',
-      name: '',
-      username: '',
+      id: decoded_token.user.id,
+      name: decoded_token.user.name,
+      username: decoded_token.user.username,
+      token: params.token,
     }
     return user
   }),
@@ -80,6 +87,7 @@ auth.use(
       id: '',
       name: '',
       username: '',
+      token: '',
     }
 
     return user
@@ -107,6 +115,7 @@ auth.use(
       id: '',
       name: '',
       username: '',
+      token: '',
     }
 
     return user

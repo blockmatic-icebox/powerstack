@@ -10,6 +10,7 @@ export type AppUser = {
   id: string
   name: string
   username: string
+  token: string
 } | null
 
 export type AppSessionData = {

@@ -26,11 +26,10 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   const token = url.searchParams.get('token')
   const provider = url.searchParams.get('provider')
   if (token && provider) {
-    console.log({ token, provider })
-    // return auth.authenticate(provider, request, {
-    //   successRedirect: '/home',
-    //   failureRedirect: '/about',
-    // })
+    return auth.authenticate(provider, request, {
+      successRedirect: '/profile',
+      failureRedirect: '/invalid-user',
+    })
   }
   return json({ user: {} })
 }

@@ -121,21 +121,9 @@ export const WalletLogin = () => {
     }
   }
 
-  // const loginWithTwitter = async () => {
-  //   try {
-  //     submit({
-  //       strategy: 'twitter',
-  //       token:
-  //     })
-  //   } catch (err) {
-  //     alert((err as Error).message)
-  //   }
-  // }
-
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    console.log({ l: window.location.origin })
     setPath(window.location.origin)
   }, [])
 
