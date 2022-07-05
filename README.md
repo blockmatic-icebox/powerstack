@@ -1,4 +1,3 @@
-
 # PowerStack Architecture
 
 High performance fullstack architecture, coding guidelines and boilerplates for web3 applications.
@@ -14,7 +13,8 @@ _Disclaimer: this project is currently under development._
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** 
+
+**Table of Contents**
 
 - [General Philosophy](#general-philosophy)
   - [The Best Code is No Code](#the-best-code-is-no-code)
@@ -65,16 +65,17 @@ _Disclaimer: this project is currently under development._
 
 ## General Philosophy
 
-The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.   
+The dApp Architecture project aims to facilitate starting up quickly and following industry best practices.  
 The project provides a well documented architecture and guidelines to avoid common pitfalls.
 
 If you are new to Web3 and its concepts Nader Dabit's talk at Next.js Conf 2021 [Defining the Web3 Stack](https://www.youtube.com/watch?v=f9XRH7bjV8M) is a great resource to get started.
 
 The React dApp Architecture follows the following design principles:
 
-### The Best Code is No Code 
+### The Best Code is No Code
 
-The fewer lines of code the better. Every line of code you write increases complexity and error surface. 
+The fewer lines of code the better. Every line of code you write increases complexity and error surface.
+
 ### Optimize for Change
 
 The only constant in the universe is change; And software is no different, software evolves constantly.
@@ -102,12 +103,14 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 - Auto-refresh when wallet and network changes.
 - Real-time graphql subscriptions client.
 - TypeScript types auto-generated from GraphQL Schema.
-- Internationalization and Accessibilty. 
+- Internationalization and Accessibilty.
 - CSS-in-JS and design system with Stitches.
+
 ## dApp Architecture
 
 _{diagrams_here}_
-## Starters 
+
+## Starters
 
 - [Remix](https://github.com/blockmatic/powerstack-remix): Webapp Client.
 - [Expo](https://github.com/blockmatic/powerstack-expo): Mobile Client for Andriod and iOS.
@@ -116,9 +119,11 @@ _{diagrams_here}_
 - [Auth](https://github.com/nhost/hasura-auth): API JWT Auth.
 - [Node](https://github.com/blockmatic/powerstack-node): NodeJS Service.
 - [Compose](https://github.com/blockmatic/powerstack-compose): Full Environment.
-## Tech Stack 
+
+## Tech Stack
 
 ### Frontend
+
 #### React Remix
 
 - SSR React framework with powerful conventions.
@@ -129,11 +134,11 @@ Learn more [Modern React](https://github.com/blockmatic/modern-react) and [Remix
 #### Apollo Client
 
 - Great documentation and maintainance.
-- Large ecosystem and a lot of tooling. 
+- Large ecosystem and a lot of tooling.
 
 Learn more [apollographql.com/docs/react/](https://www.apollographql.com/docs/react/)
 
-#### Vercel 
+#### Vercel
 
 - Ease of configuration.
 - Deployment speed.
@@ -143,11 +148,12 @@ Learn more [vercel.com/docs](https://vercel.com/docs)
 
 #### Expo
 
-Develop for all your users' devices with just one codebase in TypeScript!. 
+Develop for all your users' devices with just one codebase in TypeScript!.
 
 Learn more [expo.dev](https://expo.dev/)
 
-### Backend 
+### Backend
+
 #### GraphQL
 
 GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
@@ -163,6 +169,10 @@ Hasura GraphQL engine automatically generates your GraphQL schema and resolvers 
 The Hasura console gives you UI tools that speed up your data-modeling process, or working with your existing database. The console also automatically generates migrations or metadata files that you can edit directly and check into your version control.
 
 Hasura GraphQL engine lets you do anything you would usually do with Postgres by giving you GraphQL over native Postgres constructs.
+
+##### How does Hasura work?
+
+Learn about Hasura's philosophy [here](https://hasura.io/blog/how-hasura-works/).
 
 Learn more at [hasura.io](https://hasura.io)
 
@@ -186,12 +196,11 @@ PostgreSQL is a powerful, open source object-relational database system with ove
 
 Learn more at [postgresql.org](https://www.postgresql.org)
 
-
 #### Google Cloud
 
 - CloudRun features.
 - Ease of configuration.
-- Lower cost. 
+- Lower cost.
 - Better developer experience.
 
 Learn more [cloud.google.com/](https://cloud.google.com), [CloudRun Overview](https://www.youtube.com/watch?v=gx8VTa1c8DA&t=1s)
@@ -200,11 +209,12 @@ Learn more [cloud.google.com/](https://cloud.google.com), [CloudRun Overview](ht
 
 The primary benefits of containers are efficiency and agility. Containers are orders of magnitude faster to provision, and much lighter-weight to build and define versus methods like omnibus software builds and full Virtual Machine images. Containers in a single OS are also more efficient at resource utilization than running a Hypervisor and guest OSs.
 
-Efficiency and agility are good for everyone, but they become game-changers at scale. 
+Efficiency and agility are good for everyone, but they become game-changers at scale.
 
 Learn more at [cloud.google.com/containers](https://cloud.google.com/containers/) and [Docker](https://docs.docker.com/get-started/)
 
 ### Web3
+
 #### Ethers
 
 - Ecosystem, documentation and tests.
@@ -215,9 +225,10 @@ Learn more at [cloud.google.com/containers](https://cloud.google.com/containers/
 
 Presentation by Richard Moore at DevCon 2019: [A Complete, Tiny and Simple Ethereum Library in JavaScript](https://www.youtube.com/watch?v=r1ldSzcqaHo)
 
-Ethers playground 
-- https://playground.ethers.org 
-- [Introduction to Ethers.js Playground](https://www.youtube.com/watch?v=qzRWio_-wVw)  by Richard Moore (Ricmoo) at Toronto Ethereum Developers Meetup 2021
+Ethers playground
+
+- https://playground.ethers.org
+- [Introduction to Ethers.js Playground](https://www.youtube.com/watch?v=qzRWio_-wVw) by Richard Moore (Ricmoo) at Toronto Ethereum Developers Meetup 2021
 
 #### The Graph
 
@@ -226,6 +237,7 @@ Ethers playground
 - Many different providers.
 
 [thegraph.com](https://thegraph.com/en/)
+
 #### ChainGraph
 
 Experimental project for GraphQL streaming on EOSIO chains.
@@ -259,8 +271,8 @@ Of course it depends on the project and the particular functionality. Test your 
 ### Underscore Variables and camelCase functions
 
 ```jsx
-const my_message= 'hello'
-const saySomething = () => console.log(my_message)
+const my_message = "hello";
+const saySomething = () => console.log(my_message);
 ```
 
 ### Avoid export default
@@ -270,11 +282,12 @@ Discoverability is very poor for default exports. You cannot explore a module wi
 Learn more [Default is Bad](https://basarat.gitbook.io/typescript/main-1/defaultisbad)
 
 ### React
+
 ### File Names
 
-- PascalCase for all react components.  eg. `AddUser.tsx`
+- PascalCase for all react components. eg. `AddUser.tsx`
 - camelCase for hooks files. eg. `useSubscription.tsx`
-- lowercase with dash separator for package folders and names. eg.  `eosio-hooks-transit`
+- lowercase with dash separator for package folders and names. eg. `eosio-hooks-transit`
 
 ### Define components and methods as constant arrow functions
 
@@ -296,9 +309,9 @@ Ej. defaults, constants, browser configuration.
 const userAgent = window.navigator.userAgent;
 const pageTitle = randomTitle();
 
-const MyPageTitle = () =>  {
- return <Text>{pageTitle}</Text>;
-}
+const MyPageTitle = () => {
+  return <Text>{pageTitle}</Text>;
+};
 ```
 
 ### Avoid over optimization (`useCallback` and `useMemo`)
@@ -319,11 +332,13 @@ When you use AND operator to conditionally render `flag && <Component>` it could
 ### Keep State Simple
 
 In Remix app you will realize that there's very few you are going to need on the Zustand store, most state will come from the [data loaders](https://remix.run/docs/en/v1/guides/data-loading). When you need state follow these best practices
+
 #### Prefer serializables objects on store state
 
 It is highly recommended that you only put plain serializable objects, arrays, and primitives into your store. It's technically possible to insert non-serializable items into the store, but doing so can break the ability to persist and rehydrate the contents of a store, as well as interfere with time-travel debugging.
 
 If you are okay with things like persistence and time-travel debugging potentially not working as intended, then you are totally welcome to put non-serializable items into your store. Ultimately, it's your application, and how you implement it is up to you. As with many other things, just be sure you understand what tradeoffs are involved.
+
 #### Keep the state flat
 
 Updating nested Javascript objects immutably generally results in uglier code that is harder to maintain, unless you use a utility library to wrap up the process
@@ -340,7 +355,7 @@ Flat data, and in particular normalized data, enables some more optimized approa
 
 This allows us to quickly search for the keys and know where are these used and defined in the project, it's much better than navigating thru deep structures to find them.
 
-Eg: 
+Eg:
 
 ```
 {
@@ -371,15 +386,15 @@ Blockmatic is building a robust ecosystem of people and tools for the developmen
 
 <!-- icons with padding -->
 
-[1.1]: http://i.imgur.com/tXSoThF.png 'twitter icon with padding'
-[2.1]: http://i.imgur.com/P3YfQoD.png 'facebook icon with padding'
-[3.1]: http://i.imgur.com/0o48UoR.png 'github icon with padding'
+[1.1]: http://i.imgur.com/tXSoThF.png "twitter icon with padding"
+[2.1]: http://i.imgur.com/P3YfQoD.png "facebook icon with padding"
+[3.1]: http://i.imgur.com/0o48UoR.png "github icon with padding"
 
 <!-- icons without padding -->
 
-[1.2]: http://i.imgur.com/wWzX9uB.png 'twitter icon without padding'
-[2.2]: http://i.imgur.com/fep1WsG.png 'facebook icon without padding'
-[3.2]: http://i.imgur.com/9I6NRUm.png 'github icon without padding'
+[1.2]: http://i.imgur.com/wWzX9uB.png "twitter icon without padding"
+[2.2]: http://i.imgur.com/fep1WsG.png "facebook icon without padding"
+[3.2]: http://i.imgur.com/9I6NRUm.png "github icon without padding"
 
 <!-- links to your social media accounts -->
 <!-- update these accordingly -->
