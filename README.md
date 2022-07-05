@@ -4,25 +4,30 @@ PowerStack Remix template for development speed and great developer experience.
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
-### Tech Stack
+#### Essential
 
 - remix react framework https://remix.run
 - stitches styling framework https://stitches.dev
-- remix-validated-form https://www.remix-validated-form.io
-- zod validator https://github.com/colinhacks/zod
-- prisma orm https://www.prisma.io/
 - remix-utils https://github.com/sergiodxa/remix-utils
 - lodash tools https://lodash.com/docs
 - react-use hooks https://github.com/streamich/react-use
+- remix-auth https://github.com/sergiodxa/remix-auth
+- remix-validated-form https://www.remix-validated-form.io
+- zod validator https://github.com/colinhacks/zod
 - typescript https://www.typescriptlang.org
-- remix-i18next internationalization https://github.com/sergiodxa/remix-i18next
-- docker https://www.docker.com
-- sentry reporting https://sentry.io/
-- login with crypto wallets and remix-auth https://github.com/sergiodxa/remix-auth
-- ethers https://docs.ethers.io/v5/
 - zustand https://github.com/pmndrs/zustand
-- react-icons https://react-icons.github.io/react-icons/
-- ~/library with utilities
+- sentry reporting https://sentry.io/
+
+### Remix Fundamentals
+
+- https://remix.run/docs/en/v1/api/conventions
+- https://www.youtube.com/watch?v=d_BhzHVV4aQ
+- https://www.youtube.com/watch?v=QpP3daA2na4
+- https://remix.run/docs/en/v1/pages/technical-explanation
+
+### Conventions
+
+- https://github.com/blockmatic/powerstack-architecture
 
 ### Remix Fundamentals
 
@@ -36,22 +41,13 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 - https://github.com/sergiodxa/remix-auth/
 - https://www.youtube.com/watch?v=5O_uufXA8xE
 
-### Prisma ORM
-
-- https://www.youtube.com/watch?v=mU8-nKwfw4Y
-- https://www.prisma.io/docs/concepts/overview/what-is-prisma
-
 ### GraphQL ( Real-time ) API
 
 - endpoint: https://powerstack.hasura.app/v1/graphql
-- simple graphiql: https://graphiql-online.com/
+- graphiql: https://graphiql-online.com/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
 - https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/
-
-### Conventions
-
-- https://github.com/blockmatic/powerstack-architecture
 
 ### File Structure
 
@@ -82,12 +78,6 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
    Stitches sheet to a React state.
 5. `entry.server.tsx` - Create the markup with the styles injected to serve on the server response.
 
-## Preview
-
-Open this example on [CodeSandbox](https://codesandbox.io/):
-
-[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/blockmatic/powerstack-remix/tree/main/examples/main)
-
 ## Getting Started
 
 First, run the development server:
@@ -112,16 +102,22 @@ You can start editing the page by modifying `app/routes/index.tsx`. The page aut
 
 ```
 # Build the image
-docker build -t powerstack_remix .
+docker build -t powerstack-remix:local .
 
 # Start a container
-docker run --env-file -p 3000:3000 -d powerstack_remix
+docker run --name powerstack-remix --env-file .env -p 3000:3303 -d powerstack-remix:local
 
 # Get container ID
-docker ps
+docker ps -aqf "name=^powerstack-remix$"
 
 # Print app output
-docker logs -f <container id>
+docker logs -f powerstack-remix
+
+# Stop, start, restart, kill
+docker stop powerstack-remix
+docker start powerstack-remix
+docker restart powerstack-remix
+docker kill powerstack-remix
 ```
 
 ## Contributing

@@ -1,18 +1,17 @@
-import { WalletLogin } from '~/components/WalletLogin'
+import { WalletLogin } from '~/components/modules/WalletLogin'
 import { Header } from '~/components/layout/Header'
 import { styled } from '~/styles/stitches.config'
-import { Container } from '~/components/primitives/Container'
+import { Container } from '~/components/base/Container'
 import { Footer } from '~/components/layout/Footer'
-import { Flex } from '~/components/primitives/Flex'
 import { json, LoaderFunction } from '@remix-run/node'
 import { auth } from '~/auth.server'
 import { useLoaderData } from '@remix-run/react'
 
-const MainContent = styled(Flex, {
+const MainContent = styled('div', {
   minHeight: '75vh',
   position: 'relative',
 })
-const LoginBackground = styled(Flex, {
+const LoginBackground = styled('div', {
   // ToDo: Add a contrasting image
   // backgroundImage: 'url(/assets/images/login-bg.png)',
   backgroundRepeat: 'no-repeat',
