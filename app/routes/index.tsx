@@ -3,13 +3,15 @@ import { Header } from '~/components/layout/Header'
 import { styled } from '~/styles/stitches.config'
 import { Container } from '~/components/base/Container'
 import { Footer } from '~/components/layout/Footer'
-import { Flex } from '~/components/deprecated/Flex'
+import { json, LoaderFunction } from '@remix-run/node'
+import { auth } from '~/auth.server'
+import { useLoaderData } from '@remix-run/react'
 
-const MainContent = styled(Flex, {
+const MainContent = styled('div', {
   minHeight: '75vh',
   position: 'relative',
 })
-const LoginBackground = styled(Flex, {
+const LoginBackground = styled('div', {
   // ToDo: Add a contrasting image
   // backgroundImage: 'url(/assets/images/login-bg.png)',
   backgroundRepeat: 'no-repeat',
@@ -18,10 +20,25 @@ const LoginBackground = styled(Flex, {
   minHeight: '100vh',
 })
 
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const url = new URL(request.url)
+  const token = url.searchParams.get('token')
+  const provider = url.searchParams.get('provider')
+  if (token && provider) {
+    return auth.authenticate(provider, request, {
+      successRedirect: '/profile',
+      failureRedirect: '/invalid-user',
+    })
+  }
+  return json({ user: {} })
+}
+
 export default function Index() {
+  const data = useLoaderData()
   return (
     <LoginBackground direction="column">
       <Header />
+      {/* {data.user && <p>{JSON.stringify(data.user)}</p>} */}
       <MainContent align="center" justify="center">
         <Container>
           <WalletLogin />

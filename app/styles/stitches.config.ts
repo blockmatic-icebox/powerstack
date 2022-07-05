@@ -1,16 +1,17 @@
-import type * as Stitches from '@stitches/react';
+import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
 import { light_theme } from './themes/light-theme'
 import { dark_theme } from './themes/dark-theme'
 
-console.log('Light Theme for Stitches\n', light_theme)
-console.log('Dark Theme for Stitches\n', dark_theme)
+// console.log('Light Theme for Stitches\n', light_theme)
+// console.log('Dark Theme for Stitches\n', dark_theme)
 
 // NOTE: Light theme is default theme if Dark is available.
 const getFontSizes = () => {
-  let fontSizes:any = {}
+  let fontSizes: any = {}
   for (const property in light_theme.theme.typeStyles) {
-    const tempFontSize:string = light_theme.theme.typeStyles[property as keyof object]['fontSize']
+    const tempFontSize: string =
+      light_theme.theme.typeStyles[property as keyof object]['fontSize']
     fontSizes[property as keyof object] = tempFontSize
   }
   return fontSizes
@@ -32,13 +33,13 @@ export const { styled, globalCss, getCssText, config } = createStitches({
       heading: 700,
       bold: 700,
     },
-    fontSizes: getFontSizes()
+    fontSizes: getFontSizes(),
   },
   media: {
     'x-small': '(min-width: 425px)',
-    'small': '(min-width: 768px)',
-    'medium': '(min-width: 1024px)',
-    'large': '(min-width: 1440px)',
+    small: '(min-width: 768px)',
+    medium: '(min-width: 1024px)',
+    large: '(min-width: 1440px)',
   },
   utils: {
     p: (value: Stitches.PropertyValue<'padding'>) => ({
@@ -97,10 +98,10 @@ export const { styled, globalCss, getCssText, config } = createStitches({
       width: value,
       height: value,
     }),
-  }
+  },
 })
 
-export type CSS = Stitches.CSS<typeof config>;
+export type CSS = Stitches.CSS<typeof config>
 
 export const globalStyles = globalCss({
   '@font-face': [
@@ -148,5 +149,5 @@ export const globalStyles = globalCss({
 
   '::-webkit-scrollbar-thumb:hover': {
     background: '$neutral-700',
-  }
+  },
 })
