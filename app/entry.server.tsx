@@ -1,8 +1,7 @@
 import type { EntryContext } from '@remix-run/node'
 import { RemixServer } from '@remix-run/react'
 import { renderToString } from 'react-dom/server'
-
-import { getCssText } from './styles/stitches.config'
+import { getGeneratedStylesheet } from './styles'
 
 export default function handleRequest(
   request: Request,
@@ -16,7 +15,7 @@ export default function handleRequest(
 
   markup = markup.replace(
     /<style id="stitches">.*<\/style>/g,
-    `<style id="stitches">${getCssText()}</style>`,
+    `<style id="stitches">${getGeneratedStylesheet()}</style>`,
   )
 
   responseHeaders.set('Content-Type', 'text/html')

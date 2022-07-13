@@ -725,10 +725,32 @@
     lodash.has "^4.5.2"
     read-pkg-up "^7.0.1"
 
+"@blockmatic/hooks-utils@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@blockmatic/hooks-utils/-/hooks-utils-1.1.2.tgz#fabbab3ed15c4c9a4bb09aa20bb01de90ee69389"
+  integrity sha512-VcoFeBlZoO2HjQYU9EMROf/yJWRNngPfYVefCcTvyL5TEpzaWI4h5/QwjH0/86bv7/xyGg7YloO3hlecGF4qzg==
+  dependencies:
+    "@blockmatic/use-async-callback" "^0.1.1"
+    "@blockmatic/use-is-mounted" "^0.1.1"
+
 "@blockmatic/prettier-config@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@blockmatic/prettier-config/-/prettier-config-2.0.0.tgz#0555ea770fda3aeea672923ffd2582828e8e9d7f"
   integrity sha512-6XDBMdMoDzwD6/rp4fJhG7IYFJQETEH6ngN3uhn2JdZgMg4YKJoHd0sHztNs9N2kjl4VkJxWDFkE1Hk6U4G8Og==
+
+"@blockmatic/use-async-callback@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@blockmatic/use-async-callback/-/use-async-callback-0.1.1.tgz#8e0ed00adab05b8b3b97be19189dfdcca26f7366"
+  integrity sha512-yhYOMporRI81NCFFbGl2QvbEoMGAE1AO4cM2d1QsSlXncdGjwfCvGqG2fnYfUM3xvQXt+R6FsrvCrLn1kBPr4Q==
+  dependencies:
+    "@blockmatic/use-is-mounted" "^0.1.1"
+
+"@blockmatic/use-is-mounted@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@blockmatic/use-is-mounted/-/use-is-mounted-0.1.1.tgz#57ad7c376c53da3f51aff790ddaedf7b736436da"
+  integrity sha512-RifnzW+4pjSo4Otn4XMD3om5DQWbl6MuEpo1FUyNGnb4S6b56W8DilSxLb3hBkcZESH1gp4MzbAcw5JlBmVPGA==
+  dependencies:
+    react "^16.13.1"
 
 "@endemolshinegroup/cosmiconfig-typescript-loader@3.0.2":
   version "3.0.2"
@@ -7798,7 +7820,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7958,6 +7980,15 @@ react-use@^17.3.2:
     throttle-debounce "^3.0.1"
     ts-easing "^0.2.0"
     tslib "^2.1.0"
+
+react@^16.13.1:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^18.0.0:
   version "18.0.0"

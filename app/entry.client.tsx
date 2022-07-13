@@ -1,22 +1,20 @@
-import * as React from 'react'
+import React, { createContext } from 'react'
 import { RemixBrowser } from '@remix-run/react'
 import { hydrate } from 'react-dom'
-import { getCssText } from './styles/stitches.config'
-import ClientStyleContext from './styles/client.context'
-
+import { getGeneratedStylesheet } from '~/styles'
+import { ClientStyleContext } from './styles/styles.context'
 interface ClientCacheProviderProps {
   children: React.ReactNode
 }
 
-function ClientCacheProvider({ children }: ClientCacheProviderProps) {
-  const [sheet, setSheet] = React.useState(getCssText())
+const generated_stylesheet = getGeneratedStylesheet()
+console.log('sssstyyyllesss', generated_stylesheet)
 
-  const reset = React.useCallback(() => {
-    setSheet(getCssText())
-  }, [])
+function ClientCacheProvider({ children }: ClientCacheProviderProps) {
+  const [stylesheet] = React.useState(generated_stylesheet)
 
   return (
-    <ClientStyleContext.Provider value={{ reset, sheet }}>
+    <ClientStyleContext.Provider value={{ stylesheet }}>
       {children}
     </ClientStyleContext.Provider>
   )

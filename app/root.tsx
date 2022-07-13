@@ -14,16 +14,14 @@ import { useContext, useEffect } from 'react'
 import { appconfig } from './app-config'
 import { auth, session_storage } from './auth.server'
 import { useStore } from './store'
-
-import ClientStyleContext from './styles/client.context'
-import { styled, globalStyles } from './styles/stitches.config'
+import { styled } from './styles/stitches.config'
+import { ClientStyleContext } from './styles/styles.context'
 import type { AppSessionData } from './types'
 
 const Container = styled('div', {
   backgroundColor: '#ff0000',
   padding: '1em',
 })
-
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -37,15 +35,7 @@ interface DocumentProps {
 }
 
 const Document = ({ children, title }: DocumentProps) => {
-  const clientStyleData = useContext(ClientStyleContext)
-
-  // Only executed on client
-  useEffect(() => {
-    // reset cache to re-apply global styles
-    clientStyleData.reset()
-  }, [clientStyleData])
-
-  globalStyles()
+  const { stylesheet } = useContext(ClientStyleContext)
 
   return (
     <html lang="en">
@@ -55,7 +45,7 @@ const Document = ({ children, title }: DocumentProps) => {
         <Links />
         <style
           id="stitches"
-          dangerouslySetInnerHTML={{ __html: clientStyleData.sheet }}
+          dangerouslySetInnerHTML={{ __html: stylesheet }}
           suppressHydrationWarning
         />
       </head>
