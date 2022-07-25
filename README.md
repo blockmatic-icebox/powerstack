@@ -16,7 +16,7 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 - [ ] Upload to IPFS using Pinata.
 - [ ] State-of-art optimization for Web Vitals.
 - [ ] Lighthouse CI performance reports.
-- [ ] Portable vanillajs store with Zustand.
+- [ ] Portable vanillajs core logic store with Zustand.
 - [ ] CSS-in-JS design system Stitches.
 - [ ] Import design tokens from Toolabs Design Manager.
 - [ ] GraphQL client with support for multiple indexers.
@@ -48,8 +48,10 @@ PowerStack leverages open source Hasura GraphQL engine in conjunction with Graph
 
 more https://github.com/blockmatic/powerstack-hasura
 
-endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql
-graphiql: https://graphiql-online.com/
+endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql  
+graphiql: https://graphiql-online.com
+
+### Hasura
 
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
