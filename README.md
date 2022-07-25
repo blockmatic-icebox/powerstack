@@ -318,7 +318,7 @@ When you use AND operator to conditionally render `flag && <Component>` it could
 
 ### Keep State Simple
 
-In Remix app you will realize that there's very few you are going to need on the Zustand store, most state will come from the [data loaders](https://remix.run/docs/en/v1/guides/data-loading). When you need state follow these best practices
+In NextJS you will realize that there's very few you are going to need on the Zustand store, most state will come from the [data loaders](https://remix.run/docs/en/v1/guides/data-loading). When you need state follow these best practices
 #### Prefer serializables objects on store state
 
 It is highly recommended that you only put plain serializable objects, arrays, and primitives into your store. It's technically possible to insert non-serializable items into the store, but doing so can break the ability to persist and rehydrate the contents of a store, as well as interfere with time-travel debugging.
