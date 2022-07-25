@@ -27,7 +27,7 @@ _Disclaimer: this project is currently under development._
 - [Starters](#starters)
 - [Tech Stack](#tech-stack)
   - [Frontend](#frontend)
-    - [React Remix](#react-remix)
+    - [NextJS](#nextjs)
     - [Apollo Client](#apollo-client)
     - [Vercel](#vercel)
     - [Expo](#expo)
@@ -109,22 +109,22 @@ Read more about [AHA Programming](https://kentcdodds.com/blog/aha-programming)
 _{diagrams_here}_
 ## Starters 
 
-- [Remix](https://github.com/blockmatic/powerstack-remix): Webapp Client.
+- [Next](https://github.com/blockmatic/powerstack-next): Webapp Client.
 - [Expo](https://github.com/blockmatic/powerstack-expo): Mobile Client for Andriod and iOS.
 - [Hasura](https://github.com/blockmatic/powerstack-hasura): GraphQL Engine.
 - [Apollo](https://github.com/blockmatic/powerstack-apollo): GraphQL Apollo server.
 - [Auth](https://github.com/nhost/hasura-auth): API JWT Auth.
-- [Node](https://github.com/blockmatic/powerstack-node): NodeJS Service.
+- [Node](https://github.com/blockmatic/powerstack-node): NodeJS service.
 - [Compose](https://github.com/blockmatic/powerstack-compose): Full Environment.
 ## Tech Stack 
 
 ### Frontend
-#### React Remix
+#### NextJS
 
 - SSR React framework with powerful conventions.
 - Great documentation and community.
 
-Learn more [Modern React](https://github.com/blockmatic/modern-react) and [Remix Philosophy](https://remix.run/docs/en/v1/pages/philosophy)
+Learn more [Next.org](https://nextjs.org/) 
 
 #### Apollo Client
 
