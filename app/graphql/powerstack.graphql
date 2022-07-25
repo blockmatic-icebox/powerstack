@@ -1,7 +1,0 @@
-subscription Account {
-  accounts {
-    account
-    email
-    first_name
-  }
-}

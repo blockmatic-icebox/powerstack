@@ -1,50 +1,56 @@
-# PowerStack Remix Starter
+# PowerStack NextJS Starter
 
-PowerStack Remix template for development speed and great developer experience.
+PowerStack Web3 NextJS starter for rapid development of multichain applications.
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
-#### Essential
+## Architecture
 
-- remix react framework https://remix.run
-- stitches styling framework https://stitches.dev
-- remix-utils https://github.com/sergiodxa/remix-utils
-- lodash tools https://lodash.com/docs
-- react-use hooks https://github.com/streamich/react-use
-- remix-auth https://github.com/sergiodxa/remix-auth
-- remix-validated-form https://www.remix-validated-form.io
-- zod validator https://github.com/colinhacks/zod
-- typescript https://www.typescriptlang.org
-- zustand https://github.com/pmndrs/zustand
-- sentry reporting https://sentry.io/
+![](./_docs/mvvm-architecture.png)
 
-### Remix Fundamentals
+## Features
 
-- https://remix.run/docs/en/v1/api/conventions
-- https://www.youtube.com/watch?v=d_BhzHVV4aQ
-- https://www.youtube.com/watch?v=QpP3daA2na4
-- https://remix.run/docs/en/v1/pages/technical-explanation
+- [ ] Web2 and Web3 authentication ( EVM, Solana, EOSIO, Web3Auth ).
+- [ ] Wallet integration: sign messages and transactions.
+- [ ] Upload to Arweave using Blundr.
+- [ ] Upload to IPFS using Pinata.
+- [ ] State-of-art optimization for Web Vitals.
+- [ ] Lighthouse CI performance reports.
+- [ ] Portable vanillajs store with Zustand.
+- [ ] CSS-in-JS design system Stitches.
+- [ ] Import design tokens from Toolabs Design Manager.
+- [ ] GraphQL client with support for multiple indexers.
+- [ ] Autogenerate TypeScript types from GraphQL schema.
+- [ ] Simple base ui components with forms validation.
+- [ ] Utilities library for common web2 and web3 tasks.
+- [ ] Crash reporting and web analytics.
+- [ ] TypeScript, ESLint, Prettier and Husky for code quality.
+
+## Tech Stack
+
+- Nextjs https://nextjs.org/
+- Stitches styling framework https://stitches.dev
+- Lodash tools https://lodash.com/docs
+- React-use hooks https://github.com/streamich/react-use
+- Remix-validated-form https://www.remix-validated-form.io
+- Zod validator https://github.com/colinhacks/zod
+- Typescript https://www.typescriptlang.org
+- Zustand https://github.com/pmndrs/zustand
+- Sentry reporting https://sentry.io/
 
 ### Conventions
 
 - https://github.com/blockmatic/powerstack-architecture
 
-### Remix Fundamentals
+### GraphQL
 
-- https://remix.run/docs/en/v1/api/conventions
-- https://www.youtube.com/watch?v=d_BhzHVV4aQ
-- https://www.youtube.com/watch?v=QpP3daA2na4
-- https://remix.run/docs/en/v1/pages/technical-explanation
+PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
-### Auth Strategy
+more https://github.com/blockmatic/powerstack-hasura
 
-- https://github.com/sergiodxa/remix-auth/
-- https://www.youtube.com/watch?v=5O_uufXA8xE
+endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql
+graphiql: https://graphiql-online.com/
 
-### GraphQL ( Real-time ) API
-
-- endpoint: https://powerstack.hasura.app/v1/graphql
-- graphiql: https://graphiql-online.com/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
 - https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/
@@ -52,45 +58,25 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 ### File Structure
 
 ```
-- app/
-  - components/
-  - library/
-  - routes/
-  - store/
-  - styles/
-    - client.context.tsx
-    - server.context.tsx
-    - stitches.config.ts
-  - app-config.ts
-  - app-secrets.ts
-  - auth.server.ts
-  - entry.client.tsx
-  - entry.server.tsx
-  - root.tsx
+- components/
+- library/
+- pages/
+- store/
+- styles/
+   - index.ts
+   - stitches.config.ts
+- root.tsx
 ```
-
-1. `client.context.tsx` - Keeps the client context of styles and to reset styles sheets after every interaction into the state.
-2. `server.context.tsx` - Keeps the server context mounted on `entry.server.tsx`
-   with the Stitches sheets.
-3. `stitches.config.ts` - Keeps the Stitches configuration that is shared into
-   the project.
-4. `entry.client.tsx` - Every time that styles update and be re-injected it sets the
-   Stitches sheet to a React state.
-5. `entry.server.tsx` - Create the markup with the styles injected to serve on the server response.
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/routes/index.tsx`. The page auto-updates as you edit the file.
 
 ## Commands
 
@@ -102,27 +88,23 @@ You can start editing the page by modifying `app/routes/index.tsx`. The page aut
 
 ```
 # Build the image
-docker build -t powerstack-remix:local .
+docker build -t powerstack-next:local .
 
 # Start a container
-docker run --name powerstack-remix --env-file .env -p 3000:3303 -d powerstack-remix:local
+docker run --name powerstack-next --env-file .env -p 3000:3303 -d powerstack-next:local
 
 # Get container ID
-docker ps -aqf "name=^powerstack-remix$"
+docker ps -aqf "name=^powerstack-next$"
 
 # Print app output
-docker logs -f powerstack-remix
+docker logs -f powerstack-next
 
 # Stop, start, restart, kill
-docker stop powerstack-remix
-docker start powerstack-remix
-docker restart powerstack-remix
-docker kill powerstack-remix
+docker stop powerstack-next
+docker start powerstack-next
+docker restart powerstack-next
+docker kill powerstack-next
 ```
-
-## Contributing
-
-Read the [contributing guidelines](https://developers.blockmatic.io) for details.
 
 ## Blockmatic
 

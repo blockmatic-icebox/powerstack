@@ -1,7 +1,9 @@
 module.exports = {
   extends: [
-    '@remix-run/eslint-config',
-    '@remix-run/eslint-config/node',
-    // '@blockmatic',   need to debug
+    'next/core-web-vitals',
+    //  '@blockmatic', //   need to debug
   ],
+  rules: {
+    'react/no-unescaped-entities': 'off',
+  },
 }
