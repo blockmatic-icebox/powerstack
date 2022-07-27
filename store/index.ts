@@ -1,6 +1,8 @@
 import createVanillaStore from 'zustand/vanilla'
 import type { SetState, GetState } from 'zustand'
+import { persist } from 'zustand/middleware'
 import create from 'zustand'
+import { createAuthSlice, AuthSlice } from './auth-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from 'library'
@@ -12,7 +14,7 @@ import { createAppSessionSlice } from './session-state'
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = AppSessionState & UserInterfaceState
 export type AppStateActions = AppSessionActions & UserInterfaceActions
-export type AppStore = AppState & AppStateActions
+export type AppStore = AppState & AppStateActions & AuthSlice
 
 export type StoreSlice<T> = (
   set: SetState<AppStore>,
@@ -23,6 +25,7 @@ export type StoreSlice<T> = (
 export const store = createVanillaStore<AppStore>(
   // compose all slices into AppState
   (set, get) => ({
+    ...createAuthSlice(set, get),
     ...createAppSessionSlice(set, get),
     ...createUserInterfaceSlice(set, get),
   }),

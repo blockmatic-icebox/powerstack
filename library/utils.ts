@@ -1,7 +1,9 @@
 // This file is exclusively for Utilty functions
 // These fucntions must be pure functions and perform simple tasks
-
+import AnchorLink from 'anchor-link'
 import _ from 'lodash'
+import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
+import { appconfig } from 'environment/app-config'
 
 export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'
@@ -47,3 +49,13 @@ export const copyToClipboard = (text: string) => {
   document.execCommand('copy')
   textField.remove()
 }
+
+export const newAnchorLink = new AnchorLink({
+  chains: [
+    {
+      chainId: appconfig.config.eosChainId,
+      nodeUrl: appconfig.services.chainRpc,
+    },
+  ],
+  transport: new AnchorLinkBrowserTransport({}),
+})

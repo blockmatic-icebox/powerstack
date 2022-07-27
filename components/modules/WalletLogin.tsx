@@ -82,7 +82,7 @@ const IconsFlex = styled('div', {
 })
 
 export const WalletLogin = () => {
-  const { user } = useStore()
+  const { user, loginWithAnchor } = useStore()
   const submit = useLoginSubmit()
 
   const loginWithMetamask = async () => {
@@ -98,6 +98,7 @@ export const WalletLogin = () => {
     //   },
     // })
   }
+  const loginAnchor = async () => await loginWithAnchor()
 
   const loginWithPhantom = async () => {
     if (!isPhantom) return alert('Phantom not found')
@@ -131,7 +132,7 @@ export const WalletLogin = () => {
       <Title as="h1" variant="h1">
         Welcome {user ? 'Back' : null} to PowerStack Remix
       </Title>
-      <LoginButton onClick={() => {}} variant="panthom">
+      <LoginButton onClick={() => loginAnchor()} variant="panthom">
         <PhantonIcon />
         Login with Phantom
       </LoginButton>

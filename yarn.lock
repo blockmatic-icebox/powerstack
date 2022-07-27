@@ -1452,6 +1452,24 @@
     tslib "^2.4.0"
     value-or-promise "1.0.11"
 
+"@greymass/eosio@^0.6.0":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@greymass/eosio/-/eosio-0.6.1.tgz#2af601b6f38a37cb3c78b62d80fd293b80814f62"
+  integrity sha512-K9VmejZmXHczuLBdQzEQayzISEG/s1PQ9awNf3nMeiVOnmjC5jnw/qNatY1PDpVhXsu+FcW59EAoCEWpuKnrfA==
+  dependencies:
+    bn.js "^4.11.9"
+    brorand "^1.1.0"
+    elliptic "^6.5.4"
+    hash.js "^1.0.0"
+    tslib "^2.0.3"
+
+"@greymass/miniaes@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@greymass/miniaes/-/miniaes-1.0.0.tgz#2337a4637edbb49289f3c977c5891bb6bef1ba75"
+  integrity sha512-xKYTnAyyoq3gpJS11JvU4dkju28M8Zbp06CuP3aKR4DMH6B2z64LauGGGzKksKh5Qd770JA/dzhLbImnBlymbg==
+  dependencies:
+    tslib "^2.1.0"
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.5.tgz#2cbaf9a89460da24b5ca6531b8bbfc23e1df50c7"
@@ -2641,6 +2659,28 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+anchor-link-browser-transport@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/anchor-link-browser-transport/-/anchor-link-browser-transport-3.5.1.tgz#47dd4fc888954d0e988ba24cf383fc8e91b6a5c5"
+  integrity sha512-R6NCmmhdhXcVynuMUjRGZOLDW6upwAPEx4mtctB9kjYQVDO6xssGrBHOEd3jRjrjBbQL/XpP58JrclVnSxr6TQ==
+  dependencies:
+    tslib "^2.0.3"
+
+anchor-link@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/anchor-link/-/anchor-link-3.5.1.tgz#e7bff3ef6933881f332925767de5963dd2356c46"
+  integrity sha512-77hRmr1M8PwExXhTwKFrE2jXPq4AsfoUCqAgcQelD86TvEuDUrXgKNl1zfoAXLC8mIU3ZW+QdF7fieZQRrq7Kg==
+  dependencies:
+    "@greymass/eosio" "^0.6.0"
+    "@greymass/miniaes" "^1.0.0"
+    eosio-signing-request "^2.5.0"
+    fetch-ponyfill "^7.1.0"
+    isomorphic-ws "^4.0.1"
+    pako "^2.0.3"
+    tslib "^2.1.0"
+    uuid "^8.3.2"
+    ws "^8.5.0"
+
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.0, ansi-escapes@^4.3.1:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
@@ -3721,6 +3761,14 @@ env-var@^7.1.1:
   resolved "https://registry.yarnpkg.com/env-var/-/env-var-7.1.1.tgz#c1697f8dfded0b54418dc9bbd78a82119910e57c"
   integrity sha512-4+vvlq+wwGQNwY/nI3/+Ojc1MKHCmITRJ6VWkQzDtMD6fAEb60ACRUCnlIAonMKW9YzqYmYxbyVu9vTb++yNRg==
 
+eosio-signing-request@^2.5.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/eosio-signing-request/-/eosio-signing-request-2.5.1.tgz#2d33e4e6aeb747ea80cb1357b11ef77d1e2f18e6"
+  integrity sha512-vA1jg118gSLJUmAs9FLDfrz+h2/sxt3lEKu19AO1lAzCgCB3Ib70VGfmFoLrty9Qzm1USTnn1EkogN780Ylq0Q==
+  dependencies:
+    "@greymass/eosio" "^0.6.0"
+    tslib "^2.0.3"
+
 error-ex@^1.3.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/error-ex/-/error-ex-1.3.2.tgz#b4ac40648107fdcdcfae242f428bea8a14d4f1bf"
@@ -4372,6 +4420,13 @@ fbjs@^3.0.0:
     promise "^7.1.1"
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.30"
+
+fetch-ponyfill@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/fetch-ponyfill/-/fetch-ponyfill-7.1.0.tgz#4266ed48b4e64663a50ab7f7fcb8e76f990526d0"
+  integrity sha512-FhbbL55dj/qdVO3YNK7ZEkshvj3eQ7EuIGV2I6ic/2YiocvyWv+7jg2s4AyS0wdRU75s3tA8ZxI/xPigb0v5Aw==
+  dependencies:
+    node-fetch "~2.6.1"
 
 figures@^3.0.0:
   version "3.2.0"
@@ -5739,7 +5794,7 @@ node-domexception@1.0.0:
   resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
   integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
 
-node-fetch@2, node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.7:
+node-fetch@2, node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.7, node-fetch@~2.6.1:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -6009,6 +6064,11 @@ pac-resolver@^5.0.0:
     degenerator "^3.0.2"
     ip "^1.1.5"
     netmask "^2.0.2"
+
+pako@^2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-2.0.4.tgz#6cebc4bbb0b6c73b0d5b8d7e8476e2b2fbea576d"
+  integrity sha512-v8tweI900AUkZN6heMU/4Uy4cXRc2AYNRggVmTR+dEncawDJgCdLMximOVA2p4qO57WMynangsfGRb5WD6L1Bg==
 
 param-case@^3.0.4:
   version "3.0.4"
