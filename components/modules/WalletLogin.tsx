@@ -129,9 +129,9 @@ export const WalletLogin = () => {
 
   return (
     <Card direction="column" variant="login">
-      <Title as="h1" variant="h1">
+      {/* <Title as="h1" variant="h1">
         Welcome {user ? 'Back' : null} to PowerStack Remix
-      </Title>
+      </Title> */}
       <LoginButton onClick={() => loginAnchor()} variant="panthom">
         <PhantonIcon />
         Login with Phantom

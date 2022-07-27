@@ -1,0 +1,22 @@
+import type { StoreSlice } from '.'
+import type { AppUser } from 'types'
+
+export type UserState = {
+  user: AppUser | null
+}
+
+export type UserActions = {
+  setUser: (user: AppUser) => void
+}
+
+export type User = UserState & UserActions
+
+const defaultUserSliceState: UserState = {
+  user: null,
+}
+
+export const createUserSlice: StoreSlice<User> = (set, get) => ({
+  ...defaultUserSliceState,
+
+  setUser: (user: AppUser) => set({ user }),
+})

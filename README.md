@@ -38,11 +38,14 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 - Zustand https://github.com/pmndrs/zustand
 - Sentry reporting https://sentry.io/
 
-### Conventions
+## State Management
 
-- https://github.com/blockmatic/powerstack-architecture
+Core logic in presentation components is general problem in react, the solution is zustand, a portable agnostic store in vanillajs.
+By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
 
-### GraphQL
+In the current setup Zustand only runs on the browser, this is important to understand, if you need server side rendering you have to write a query in [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props), Currently we dont have synchronization server/client, you get an empty store on the server. dont use zustand inside `getServerSideProps`. We are explorating ways to sync them, right now we prefer to keep it simple.
+
+### GraphQL Client
 
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
@@ -51,11 +54,13 @@ more https://github.com/blockmatic/powerstack-hasura
 endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql  
 graphiql: https://graphiql-online.com
 
-### Hasura
-
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
 - https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/
+
+### Conventions
+
+- https://github.com/blockmatic/powerstack-architecture
 
 ### File Structure
 

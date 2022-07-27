@@ -4,7 +4,6 @@ import { newAnchorLink } from 'library/utils'
 import { powerstackAuthService } from 'services/powerstack-auth'
 import * as jwt from 'jsonwebtoken'
 
-
 export enum AuthType {
   ANCHOR,
 }
@@ -56,7 +55,7 @@ export const createAuthSlice: StoreSlice<AuthSlice> = (set, get) => ({
       const pub_key = PublicKey.from(identity.session.publicKey)
 
       const payload = {
-        identity
+        identity,
       }
 
       const result = await powerstackAuthService.getTokenAnchorEOS(payload)
