@@ -28,7 +28,6 @@ type Cloudinary = {
   api_secret: string
 }
 
-
 type Config = {
   eosChainId: string
   eosChainName: string
@@ -47,23 +46,23 @@ export type AppConfig = {
 export const appconfig: AppConfig = {
   contracts: {},
   services: {
-    auth: env.get('AUTH_API').required().asString(),
-    chainRpc: env.get('REACT_APP_EOSIO_API_HOST').required().asString(),
-    graphql_api: env.get('GRAPHQL_API').required().asString(),
-    graphql_api_key: env.get('GRAPHQL_API_KEY').required().asString(),
+    auth: env.get('NEXT_PUBLIC_AUTH_API').required().asString(),
+    chainRpc: env.get('NEXT_PUBLIC_EOS_API_HOST').required().asString(),
+    graphql_api: env.get('NEXT_PUBLIC_GRAPHQL_API').required().asString(),
+    graphql_api_key: env.get('NEXT_PUBLIC_GRAPHQL_API_KEY').required().asString(),
   },
   analytics: {
-    google: env.get('GOOGLE_ANALYTICS').asString() || '',
-    sentry: env.get('SENTRY_DSN').asString() || '',
+    google: env.get('NEXT_PUBLIC_GOOGLE_ANALYTICS').asString() || '',
+    sentry: env.get('NEXT_PUBLIC_SENTRY_DSN').asString() || '',
   },
   config: {
-    eosChainId: env.get('REACT_APP_CHAIN_ID').asString() || '',
-    eosChainName: env.get('REACT_APP_CHAIN_NAME').asString() || '',
+    eosChainId: env.get('NEXT_PUBLIC_EOS_CHAIN_ID').asString() || '',
+    eosChainName: env.get('NEXT_PUBLIC_EOS_CHAIN_NAME').asString() || '',
   },
   cloudinary: {
-    cloud_name: env.get('CLOUDINARY_CLOUD_NAME').asString() || '',
-    api_key: env.get('CLOUDINARY_API_KEY').asString() || '',
-    api_secret: env.get('CLOUDINARY_API_SECRET').asString() || '',
+    cloud_name: env.get('NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME').asString() || '',
+    api_key: env.get('NEXT_PUBLIC_CLOUDINARY_API_KEY').asString() || '',
+    api_secret: env.get('NEXT_PUBLIC_CLOUDINARY_API_SECRET').asString() || '',
   },
   features: {},
 }

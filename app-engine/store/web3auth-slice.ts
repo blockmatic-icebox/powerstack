@@ -81,7 +81,7 @@ const defaultWeb3AuthState: Web3AuthState = {
 }
 
 const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState) => {
-  web3auth.on(ADAPTER_EVENTS.CONNECTED, (web3auth_user: unknown) => {
+  web3auth.on(ADAPTER_EVENTS.CONNECTED, (web3auth_user: {}) => {
     console.log('you are successfully logged in', web3auth_user)
     set({ web3auth_user })
   })

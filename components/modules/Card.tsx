@@ -1,7 +1,8 @@
-import { Flex } from 'components/deprecated/Flex'
-import { styled } from 'styles/stitches.config'
 
-export const Card = styled(Flex, {
+import { styled } from '../../styles/stitches.config'
+
+export const Card = styled('div', {
+  display: 'flex',
   mx: 'auto',
   borderRadius: '$radius-40',
   px: '$small',

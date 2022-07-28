@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app'
-import { useStore } from '../store'
+import { useStore } from '../app-engine/store'
 import { useEffect } from 'react'
-import { isBrowser } from '../library/utils'
-import { Container } from 'components/layout'
+import { isBrowser } from '../app-engine/library/utils'
+import { Container } from '../components/layout'
 
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
 //       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm . its not necessary at the moment.
@@ -22,10 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // log the store state on every update
   useEffect(() => {
     if (!useStore.getState())
-      console.log(
-        '✓ zustand state updated',
-        JSON.parse(JSON.stringify(useStore.getState())),
-      )
+      console.log('✓ zustand state updated', JSON.parse(JSON.stringify(useStore.getState())))
   }, [store])
 
   return (

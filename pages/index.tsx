@@ -1,5 +1,5 @@
 import { WalletLogin } from 'components/modules/WalletLogin'
-import { styled } from 'styles/stitches.config'
+import { styled } from '../styles/stitches.config'
 import { NextPage } from 'next'
 import { Container, Footer, Header } from 'components/layout'
 
@@ -24,10 +24,10 @@ const LoginBackground = styled('div', {
 
 const Home: NextPage = () => {
   return (
-    <LoginBackground direction="column">
+    <LoginBackground >
       <Header />
       {/* {data.user && <p>{JSON.stringify(data.user)}</p>} */}
-      <MainContent align="center" justify="center">
+      <MainContent>
         <Container>
           <WalletLogin />
         </Container>

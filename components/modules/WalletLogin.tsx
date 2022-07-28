@@ -1,8 +1,7 @@
-import { styled } from 'styles/stitches.config'
-import { useStore } from 'store'
+import { styled } from '../../styles/stitches.config'
 import _ from 'lodash'
 import { ethers } from 'ethers'
-import { ethereum, isPhantom, solana } from 'library'
+import { ethereum, isPhantom, solana } from '../../app-engine/library/index'
 import {
   AnchorIcon,
   MetamaskIcon,
@@ -10,10 +9,11 @@ import {
   // GitlabIcon,
   // GhLoginIcon,
   // BitbucketIcon,
-} from 'icons'
+} from '~/icons'
 import { useEffect, useState } from 'react'
 import { Button } from 'components/base'
 import { Card } from './Card'
+import { useStore } from '~/app-engine/store/index'
 
 const message = 'Login to PowerStack App'
 
@@ -128,7 +128,7 @@ export const WalletLogin = () => {
   }, [])
 
   return (
-    <Card direction="column" variant="login">
+    <Card>
       {/* <Title as="h1" variant="h1">
         Welcome {user ? 'Back' : null} to PowerStack Remix
       </Title> */}
@@ -161,7 +161,7 @@ export const WalletLogin = () => {
           : 'wallet not connected'}
       </p> */}
       <Separator>Or sign in with</Separator>
-      <IconsFlex justify="center">
+      <IconsFlex>
         {/* <a
           href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter`}
           role="button"

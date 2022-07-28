@@ -4,14 +4,15 @@ import create from 'zustand'
 import { createAuthSlice, AuthSlice } from './auth-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
-import { isBrowser } from 'library'
+import { isBrowser } from '../library'
 import { LayoutActions, LayoutState, createLayoutSlice } from './layout-slice'
 import { UserActions, UserState, createUserSlice } from './user-slice'
 import { createZustandSlice, ZustandStore } from './zustand-state'
+import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './web3auth-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
-export type AppState = ZustandStore & UserState & LayoutState
-export type AppStateActions = UserActions & LayoutActions
+export type AppState = ZustandStore & UserState & LayoutState & Web3AuthState
+export type AppStateActions = UserActions & LayoutActions & Web3AuthActions
 export type AppStore = AppState & AppStateActions & AuthSlice
 
 // these types is used within the slices
@@ -24,6 +25,7 @@ export const zustand_store = createVanillaStore<AppStore>(
   // compose all slices into AppState
   (set, get) => ({
     ...createZustandSlice(set, get),
+    ...createWeb3AuthSlice(set, get),
     ...createAuthSlice(set, get),
     ...createUserSlice(set, get),
     ...createLayoutSlice(set, get),

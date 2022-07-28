@@ -1,4 +1,4 @@
-import { appconfig } from 'environment/app-config'
+import { appconfig } from '../../environment'
 import { PublicKey } from 'anchor-link'
 
 interface RequestTokenAnchorEOSParams {

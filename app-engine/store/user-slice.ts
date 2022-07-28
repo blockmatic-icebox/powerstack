@@ -1,5 +1,5 @@
-import type { StoreSlice } from '.'
-import type { AppUser } from 'types'
+import type { StoreSlice } from './'
+import type { AppUser } from '../types/app-engine'
 
 export type UserState = {
   user: AppUser | null

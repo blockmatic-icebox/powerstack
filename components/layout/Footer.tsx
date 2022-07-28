@@ -1,6 +1,6 @@
-import { styled } from 'styles/stitches.config'
-import { LightModeIcon } from 'icons'
-import { Button } from 'components/base'
+import { styled } from '../../styles/stitches.config'
+import { LightModeIcon } from '../../icons'
+import { Button } from '../../components/base'
 import { Container } from './Container'
 
 // NOTE: Should be a Link component
@@ -38,10 +38,8 @@ export const Footer = () => (
   <FooterWrapper>
     <Container css={{ position: 'relative', px: '$xx-large' }}>
       <p>
-        <ExternalLink href="https://github.com/blockmatic">
-          Blockmatic
-        </ExternalLink>{' '}
-        © 2022, all rights reserved. | Privacy Policy
+        <ExternalLink href="https://github.com/blockmatic">Blockmatic</ExternalLink> © 2022, all
+        rights reserved. | Privacy Policy
       </p>
       <ThemeTogglerWrapper>
         <Button variant="transparent">

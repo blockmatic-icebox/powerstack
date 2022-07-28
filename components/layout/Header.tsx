@@ -1,10 +1,9 @@
-import { Flex } from '../deprecated/Flex'
-import { Container } from './Container'
-import { styled } from 'styles/stitches.config'
-import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from 'icons'
-import { Button } from 'components/base/Button'
 
-export function Header() {
+import { styled } from '../../styles/stitches.config'
+import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '../../icons'
+import { Container } from './Container'
+import { Button } from '../base/Button'
+
   const linkStyles = {
     color: '$text',
     ml: '$small',
@@ -15,7 +14,8 @@ export function Header() {
     },
   }
 
-  const NavBar = styled(Flex, {
+  const NavBar = styled('div', {
+    display: 'flex',
     backdropFilter: 'saturate(180%) blur(10px)',
     position: 'sticky',
     py: '$regular',
@@ -85,18 +85,32 @@ export function Header() {
     },
   })
 
-  return (
+// TODO: rename these components
+
+const Flex1 = styled('div',{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
+})
+const Flex2 = styled('div',{
+  display: 'flex',
+  flex: 1,
+  justifyContent: 'flex-end',
+  alignItems:'center'
+})
+const Flex3 = styled('div',{
+  display: 'flex'
+})
+
+export const Header = () => (
     <NavBar>
       <NavContainer>
-        <Flex justify="between" align="center">
+        <Flex1>
           <Logo />
-          <Flex
-            justify="end"
+          <Flex2
             as="nav"
             role="navigation"
             aria-labelledby="main-nav-title"
-            align="center"
-            css={{ flex: 1 }}
           >
             <VisuallyHidden>Main navigation</VisuallyHidden>
             <LanguageButton type="button" aria-label="Language Switcher Icon">
@@ -108,15 +122,12 @@ export function Header() {
             >
               <GhLoginIcon />
             </AnchorItem>
-            <LoginButton
-              onClick={() => console.log("I'm dummy, gimme power!")}
-              variant="primary"
-            >
+            <LoginButton onClick={() => console.log("I'm dummy, gimme power!")} variant="primary">
               Login
             </LoginButton>
-          </Flex>
-        </Flex>
+          </Flex2>
+        </Flex1>
       </NavContainer>
     </NavBar>
   )
-}
+

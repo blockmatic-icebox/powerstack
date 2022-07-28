@@ -3,7 +3,7 @@
 import AnchorLink from 'anchor-link'
 import _ from 'lodash'
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
-import { appconfig } from 'environment/app-config'
+import { appconfig } from '../../environment'
 
 export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'
@@ -19,14 +19,11 @@ export const isMetamask = isMobile && ethereum
 export const isPhantom = isBrowser && _.has(window, 'solana.isPhantom')
 export const solana = isBrowser && _.get(window, 'solana')
 
-export const formatAddress = (key: string) =>
-  `${key.slice(0, 4)}...${key.slice(-4)}`
+export const formatAddress = (key: string) => `${key.slice(0, 4)}...${key.slice(-4)}`
 
-export const base64Encode = (obj: {}) =>
-  Buffer.from(JSON.stringify(obj)).toString('base64')
+export const base64Encode = (obj: {}) => Buffer.from(JSON.stringify(obj)).toString('base64')
 
-export const base64Decode = (str: string) =>
-  JSON.parse(Buffer.from(str, 'base64').toString())
+export const base64Decode = (str: string) => JSON.parse(Buffer.from(str, 'base64').toString())
 
 export function getBase64(file: File): Promise<any> {
   return new Promise((resolve, rejects) => {
