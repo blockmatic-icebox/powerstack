@@ -1,12 +1,12 @@
-import { appconfig } from '../../environment'
-import { PublicKey } from 'anchor-link'
 
+import { PublicKey } from 'anchor-link'
+import { app_engine } from '../index'
 interface RequestTokenAnchorEOSParams {
   identity: any
 }
 
 const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
-  const response = await fetch(`${appconfig.services.auth}/provider/anchor`, {
+  const response = await fetch(`${app_engine.getState().app_engine_config.services.auth_api}/provider/anchor`, {
     method: 'POST',
     headers: {
       'Access-Control-Allow-Origin': '*',

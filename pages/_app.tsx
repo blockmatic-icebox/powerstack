@@ -1,28 +1,16 @@
 import type { AppProps } from 'next/app'
-import { useStore } from '../app-engine/store'
+import { useAppEngine } from '~/app-engine/index'
 import { useEffect } from 'react'
-import { isBrowser } from '../app-engine/library/utils'
-import { Container } from '../components/layout'
-
-// NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
-//       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm . its not necessary at the moment.
-if (isBrowser && !useStore.getState().zustand_initialized) {
-  useStore.setState({
-    zustand_initialized: true,
-    zustand_init_time: new Date(),
-  })
-  console.log('🗂 initialized zustand state')
-  // initialize web3auth on first page load
-  // useStore.getState().web3authInit()
-}
+import { Container } from '~/components/layout/index'
+import '~/app-engine'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const store = useStore()
+  const store = useAppEngine()
 
   // log the store state on every update
   useEffect(() => {
-    if (!useStore.getState())
-      console.log('✓ zustand state updated', JSON.parse(JSON.stringify(useStore.getState())))
+    if (!useAppEngine.getState())
+      console.log('✓ zustand state updated', JSON.parse(JSON.stringify(useAppEngine.getState())))
   }, [store])
 
   return (

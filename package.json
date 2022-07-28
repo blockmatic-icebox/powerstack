@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen-graphql": "env-cmd -f .env graphql-codegen --config codegen.yml && eslint --fix ./app-engine/graphql/generated/**/*.ts",
+    "prisma-gen": "prisma db pull && prisma generate",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "theme-gen": "node ./_scripts/theme-gen.js",
+    "lhci:mobile": "lhci autorun",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from 'react'
 import { Button } from '~/components/base/index'
 import { Card } from './Card'
-import { useStore } from '~/app-engine/store/index'
+import { useAppEngine } from '~/app-engine/index'
 
 const message = 'Login to PowerStack App'
 
@@ -82,7 +82,7 @@ const IconsFlex = styled('div', {
 })
 
 export const WalletLogin = () => {
-  const { user, loginWithAnchor } = useStore()
+  const { user, loginWithAnchor } = useAppEngine()
   const submit = useLoginSubmit()
 
   const loginWithMetamask = async () => {

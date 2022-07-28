@@ -1,5 +1,5 @@
 import AnchorLink, { PublicKey } from 'anchor-link'
-import { StoreSlice } from '../store'
+import type { StoreSlice } from '../index'
 import { newAnchorLink } from '../library/utils'
 import { powerstackAuthService } from '../services/powerstack-auth'
 import * as jwt from 'jsonwebtoken'
@@ -8,7 +8,7 @@ export enum AuthType {
   ANCHOR,
 }
 
-export type AuthSlice = {
+export type AuthState = {
   anchorLink?: AnchorLink
   authed: boolean
   token: string
@@ -20,7 +20,7 @@ export type AuthSlice = {
   setSessionToken: (token: string) => void
 }
 
-const authSliceDefaultState = {
+const authStateDefaultState = {
   authed: false,
   authType: undefined,
   cred_id: undefined,
@@ -28,8 +28,8 @@ const authSliceDefaultState = {
   token: '',
 }
 
-export const createAuthSlice: StoreSlice<AuthSlice> = (set, get) => ({
-  ...authSliceDefaultState,
+export const createAuthSlice: StoreSlice<AuthState> = (set, get) => ({
+  ...authStateDefaultState,
   setSessionToken: (token) => {
     if (!token) return localStorage.removeItem('bitcash_session')
     const decoded_token = jwt.decode(token.replace('Bearer ', ''))
@@ -73,6 +73,6 @@ export const createAuthSlice: StoreSlice<AuthSlice> = (set, get) => ({
   logout: async () => {
     // await get().anchorLink?.removeSession('100xapp')
     get().setSessionToken('')
-    set(authSliceDefaultState)
+    set(authStateDefaultState)
   },
 })

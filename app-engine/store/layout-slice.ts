@@ -1,4 +1,4 @@
-import type { StoreSlice } from '.'
+import type { StoreSlice } from '../index'
 
 export type LayoutState = {
   show_wallet: boolean

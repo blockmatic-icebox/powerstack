@@ -3,7 +3,7 @@
 import AnchorLink from 'anchor-link'
 import _ from 'lodash'
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
-import { appconfig } from '../../environment'
+import { app_engine } from '../index'
 
 export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'
@@ -50,8 +50,8 @@ export const copyToClipboard = (text: string) => {
 export const newAnchorLink = new AnchorLink({
   chains: [
     {
-      chainId: appconfig.config.eosChainId,
-      nodeUrl: appconfig.services.chainRpc,
+      chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+      nodeUrl: 'https://eos.greymass.com',
     },
   ],
   transport: new AnchorLinkBrowserTransport({}),

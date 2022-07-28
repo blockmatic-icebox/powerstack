@@ -1,4 +1,4 @@
-import { StoreSlice } from '.'
+import type { StoreSlice } from '../index'
 import _ from 'lodash'
 
 export type SolanaStoreSlice = {
