@@ -28,14 +28,12 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 
 ## Tech Stack
 
-- Nextjs https://nextjs.org/
+- Nextjs https://nextjs.org
+- Zustand https://github.com/pmndrs/zustand
 - Stitches styling framework https://stitches.dev
 - Lodash tools https://lodash.com/docs
-- React-use hooks https://github.com/streamich/react-use
-- Remix-validated-form https://www.remix-validated-form.io
 - Zod validator https://github.com/colinhacks/zod
-- Typescript https://www.typescriptlang.org
-- Zustand https://github.com/pmndrs/zustand
+- React-use hooks https://github.com/streamich/react-use
 - Sentry reporting https://sentry.io/
 
 ## State Management
