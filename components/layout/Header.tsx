@@ -1,6 +1,6 @@
 
-import { styled } from '../../styles/stitches.config'
-import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '../../icons'
+import { styled } from '~/styles/stitches.config'
+import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
 

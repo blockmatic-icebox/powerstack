@@ -9,9 +9,9 @@ import {
   // GitlabIcon,
   // GhLoginIcon,
   // BitbucketIcon,
-} from '~/icons'
+} from '~/components/icons/index'
 import { useEffect, useState } from 'react'
-import { Button } from 'components/base'
+import { Button } from '~/components/base/index'
 import { Card } from './Card'
 import { useStore } from '~/app-engine/store/index'
 
