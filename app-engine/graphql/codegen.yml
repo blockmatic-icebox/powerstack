@@ -1,9 +1,9 @@
 overwrite: true
 generates:
-  app/graphql/generated/powerstack.ts:
-    documents: 'app/**/powerstack.graphql'
+  app-engine/graphql/generated.ts:
+    documents: 'app-engine/graphql/**/*.graphql'
     schema:
-      - https://powerstack.hasura.app/v1/graphql:
+      - https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql :
           headers:
             x-hasura-admin-secret: ${HASURA_ADMIN_SECRET}
     plugins:

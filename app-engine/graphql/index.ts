@@ -1,2 +1,2 @@
-export * from './apollo-client'
-export * as PowerstackGraphQL from './generated/powerstack'
+export * from './graphql-client'
+export * as PowerstackGraphQL from './generated-sdk'
