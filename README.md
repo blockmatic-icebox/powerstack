@@ -1,6 +1,8 @@
 # PowerStack NextJS Starter
 
-PowerStack Web3 NextJS starter for rapid development of multichain applications.
+NextJS application starter for rapid development of multi-chain applications.
+
+⚡️ [PowerStack: a powerful fullstack web3 development framework](https://powerstack.xyz).
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
