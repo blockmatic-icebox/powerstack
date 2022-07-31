@@ -3,11 +3,8 @@ export type AppAddress = string
 
 export interface AppUser {
   address: AppAddress
-  user_id: string
-  fullname: string
-  username: string
+  jwt_token: string
 } 
-
 export interface AppSession {
   name: string
 
