@@ -30,9 +30,14 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 
 ## Tech Stack
 
-- NextJS https://nextjs.org
+- NextJS https://nextjs.org 
 - Zustand store https://github.com/pmndrs/zustand
 - Stitches styling https://stitches.dev
+- Ethers https://docs.ethers.io/v5
+- Solana Web3 https://solana-labs.github.io/solana-web3.js
+- TweetNaCl.js https://github.com/dchest/tweetnacl-js
+- Eosio Core https://github.com/greymass/eosio-core
+- Iron Session https://github.com/vvo/iron-session
 - Lodash tools https://lodash.com/docs
 - Zod validator https://github.com/colinhacks/zod
 - React-use hooks https://github.com/streamich/react-use
