@@ -2,7 +2,7 @@
 
 NextJS application starter for rapid development of multi-chain applications.
 
-⚡️ [PowerStack: a powerful fullstack web3 development framework](https://powerstack.xyz).
+⚡️ [PowerStack: a powerful fullstack development framework](https://powerstack.xyz).
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
@@ -30,7 +30,7 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 
 ## Tech Stack
 
-- NextJS https://nextjs.org 
+- NextJS https://nextjs.org
 - Zustand store https://github.com/pmndrs/zustand
 - Stitches styling https://stitches.dev
 - Ethers https://docs.ethers.io/v5
