@@ -9,7 +9,7 @@ export type NetworkState = {
 
 export type UserActions = {}
 
-export type UserSlice = NetworkState & UserActions
+export type NetworkSlice = NetworkState & UserActions
 
 const defaultNetworkState: NetworkState = {
   current_evm_network: null,
@@ -18,6 +18,6 @@ const defaultNetworkState: NetworkState = {
   supported_network: [],
 }
 
-export const createUserSlice: StoreSlice<UserSlice> = (set, get) => ({
+export const createNetworkSlice: StoreSlice<NetworkSlice> = (set, get) => ({
   ...defaultNetworkState,
 })
