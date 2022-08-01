@@ -1,8 +1,8 @@
 import { app_engine, StoreSlice } from '../index'
 import AnchorLink, { PublicKey } from 'anchor-link'
-import * as jwt from 'jsonwebtoken'
+// import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
-import { newAnchorLink } from '../library/utils'
+// import { newAnchorLink } from '../library/utils'
 
 export type EosioState = {
   eosio_current_provider: null
