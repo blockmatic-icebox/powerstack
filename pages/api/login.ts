@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { auth_service } from '~/app-engine/services/jwt-auth-service'
 import { AppUser } from '~/app-engine/types/app-engine'
 import { withAppSession } from '~/session/index'
 
@@ -8,10 +9,8 @@ const loginRoute = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log('/api/login', { address })
 
   try {
-    // TODO: call auth server and put JWT on the cookie session.
-
-    // save user object
-    const user = { address: '0x123', jwt_token: '' } as AppUser
+    const jwt_token = await auth_service.login()
+    const user = { address: '0x123', jwt_token } as AppUser
     req.session.user = user
     await req.session.save()
     res.send({ user: req.session.user });

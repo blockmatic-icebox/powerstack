@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@cloudinary/url-gen": "^1.8.0",
     "@sentry/browser": "^7.8.0",
     "@stitches/react": "^1.2.8",
     "@web3auth/base": "^1.1.2",

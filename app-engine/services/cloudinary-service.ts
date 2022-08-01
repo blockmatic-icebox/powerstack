@@ -13,13 +13,13 @@ const cld = new Cloudinary({
   },
 })
 
-export const getCloudinaryImage = (image_id: string) => {
+const getCloudinaryImage = (image_id: string) => {
   const image = cld.image(image_id)
   image.addFlag('progressive:semi')
   return image
 }
 
-export const getCloudinaryVideo = (video_id: string, video_quality?: number) => {
+const getCloudinaryVideo = (video_id: string, video_quality?: number) => {
   const video = cld.video(video_id)
   return video_quality ? video.delivery(quality(video_quality)) : video
 }
