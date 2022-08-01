@@ -14,7 +14,7 @@ const loginRoute = async (req: NextApiRequest, res: NextApiResponse) => {
     const user = { address: '0x123', jwt_token: '' } as AppUser
     req.session.user = user
     await req.session.save()
-    res.send({ ok: true })
+    res.send({ user: req.session.user });
   } catch (error) {
     res.status(500).json({ message: (error as Error).message })
   }

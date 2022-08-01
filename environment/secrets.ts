@@ -1,6 +1,10 @@
 import * as env from 'env-var'
 import { AppConfig } from '~/app-engine/types/app-config'
 
+export interface AppSecrets {
+  iron_session_password: '74e1926a5f332cb1c4ad028dbc4fe13f2c49efef'
+}
+
 export const appconfig: AppConfig = {
   contracts: {
     
