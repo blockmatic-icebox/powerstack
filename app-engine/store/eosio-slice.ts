@@ -10,6 +10,7 @@ export type EosioState = {
 
 export type EosioActions = {
   initEosio: () => void
+  loginWithAnchor: () => Promise<void>
 }
 
 export type EosioSlice = EosioState & EosioActions

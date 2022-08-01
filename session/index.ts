@@ -2,6 +2,7 @@
 
 // this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
 import type { IronSessionOptions } from 'iron-session'
+import { withIronSessionApiRoute } from 'iron-session/next'
 import { AppUser } from '~/app-engine/types/app-engine'
 
 export const sessionOptions: IronSessionOptions = {
@@ -19,3 +20,5 @@ declare module 'iron-session' {
     user?: AppUser
   }
 }
+
+export const withAppSession = (route) => withIronSessionApiRoute(route, sessionOptions)
