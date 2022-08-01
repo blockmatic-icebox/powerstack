@@ -16,7 +16,7 @@ declare module 'iron-session' {
 export const withAppSession = (handler: NextApiHandler) => {
   console.log('with app session')
   return withIronSessionApiRoute(handler, {
-  password: '74e1926a5f332cb1c4ad028dbc4fe13f2c49efef', // TODO: get it from ./environment/
+  password: '', // TODO: get it from ./environment/
   cookieName: 'app-session',
   // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
   cookieOptions: {
