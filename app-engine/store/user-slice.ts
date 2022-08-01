@@ -11,12 +11,12 @@ export type UserActions = {
 
 export type User = UserState & UserActions
 
-const defaultUserSliceState: UserState = {
+const defaultUserState: UserState = {
   user: null,
 }
 
 export const createUserSlice: StoreSlice<User> = (set, get) => ({
-  ...defaultUserSliceState,
+  ...defaultUserState,
 
   setUser: (user: AppUser) => set({ user }),
 })

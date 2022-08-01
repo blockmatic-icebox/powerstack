@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
 
-export type SolanaStoreSlice = {
+export type SolanaState = {
   solana_current_provider: null
 }
 
@@ -9,9 +9,9 @@ export type SolanaActions = {
   initSolana: () => void
 }
 
-export type SolanaStore = SolanaStoreSlice & SolanaActions
+export type SolanaStore = SolanaState & SolanaActions
 
-const defaultSolanaState: SolanaStoreSlice = {
+const defaultSolanaState: SolanaState = {
   solana_current_provider: null,
 }
 

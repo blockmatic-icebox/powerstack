@@ -1,18 +1,18 @@
 import createVanillaStore, { StoreApi } from 'zustand/vanilla'
 import { persist } from 'zustand/middleware'
 import create from 'zustand'
-import { createAuthSlice, AuthState } from './store/auth-slice'
+import { createAuthSlice, AuthState, AuthActions } from './store/auth-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from './library'
 import { LayoutActions, LayoutState, createLayoutSlice } from './store/layout-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createConfigSlice, ConfigState } from './store/config-slice'
-import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
+import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice/index'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = ConfigState & UserState & LayoutState & Web3AuthState & AuthState
-export type AppActions = UserActions & LayoutActions & Web3AuthActions
+export type AppActions = UserActions & LayoutActions & Web3AuthActions & AuthActions
 export type AppEngine = AppState & AppActions
 
 // these types is used within the slices

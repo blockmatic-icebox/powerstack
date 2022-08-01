@@ -2,7 +2,7 @@ import { providers } from 'ethers'
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
 
-export type EtherStoreSlice = {
+export type EtherState = {
   ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
 }
 
@@ -10,9 +10,9 @@ export type EtherActions = {
   initEthers: () => void
 }
 
-export type EtherStore = EtherStoreSlice & EtherActions
+export type EtherStore = EtherState & EtherActions
 
-const defaultEtherState: EtherStoreSlice = {
+const defaultEtherState: EtherState = {
   ether_current_provider: null,
 }
 

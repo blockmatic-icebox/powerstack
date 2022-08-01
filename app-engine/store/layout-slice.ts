@@ -10,14 +10,14 @@ export type LayoutActions = {
   setShowSidebar: (value: boolean) => void
 }
 
-export type LayoutStoreSlice = LayoutState & LayoutActions
+export type LayoutSlice = LayoutState & LayoutActions
 
 const defaultUserInterfaceState = {
   show_wallet: false,
   show_sidebar: false,
 }
 
-export const createLayoutSlice: StoreSlice<LayoutStoreSlice> = (set) => ({
+export const createLayoutSlice: StoreSlice<LayoutSlice> = (set) => ({
   ...defaultUserInterfaceState,
 
   setShowWallet: (value) => set({ show_wallet: value }),

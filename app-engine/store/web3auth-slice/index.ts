@@ -1,46 +1,6 @@
-import type { StoreSetState, StoreSlice } from '../index'
-import type { CustomChainConfig } from '@web3auth/base'
+import type { StoreSetState, StoreSlice } from '../../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS } from '@web3auth/base'
-
-export const web3auth_chain_config = {
-  mainnet: {
-    displayName: 'Ethereum Mainnet',
-    chainNamespace: 'eip155',
-    chainId: '0x1',
-    rpcTarget: `https://mainnet.infura.io/v3/776218ac4734478c90191dde8cae483c`,
-    blockExplorer: 'https://etherscan.io/',
-    ticker: 'ETH',
-    tickerName: 'Ethereum',
-  } as CustomChainConfig,
-  rinkeby: {
-    displayName: 'Rinkeby Testnet',
-    chainNamespace: 'eip155',
-    chainId: '0x4',
-    rpcTarget: `https://mainnet.infura.io/v3/776218ac4734478c90191dde8cae483c`,
-    blockExplorer: 'https://etherscan.io/',
-    ticker: 'ETH',
-    tickerName: 'Ethereum',
-  } as CustomChainConfig,
-  solana: {
-    chainNamespace: 'solana',
-    rpcTarget: 'https://api.mainnet-beta.solana.com',
-    blockExplorer: 'https://explorer.solana.com/',
-    chainId: '0x1',
-    displayName: 'Solana Mainnet',
-    ticker: 'SOL',
-    tickerName: 'Solana',
-  } as CustomChainConfig,
-  polygon: {
-    chainNamespace: 'eip155',
-    rpcTarget: 'https://polygon-rpc.com',
-    blockExplorer: 'https://polygonscan.com/',
-    chainId: '0x89',
-    displayName: 'Polygon Mainnet',
-    ticker: 'matic',
-    tickerName: 'Matic',
-  } as CustomChainConfig,
-} as const
 
 // export interface Web3AuthWalletProvider {
 //   getAccounts: () => Promise<any>
@@ -70,7 +30,7 @@ export type Web3AuthActions = {
   web3authSignAndSendTransaction: () => Promise<void>
 }
 
-export type Web3AuthStore = Web3AuthState & Web3AuthActions
+export type Web3AuthSlice = Web3AuthState & Web3AuthActions
 
 const defaultWeb3AuthState: Web3AuthState = {
   web3auth: null,
@@ -98,7 +58,7 @@ const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState) => {
   )
 }
 
-export const createWeb3AuthSlice: StoreSlice<Web3AuthStore> = (set, get) => ({
+export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   ...defaultWeb3AuthState,
 
   web3authInit: async () => {

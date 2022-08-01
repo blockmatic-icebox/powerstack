@@ -2,6 +2,7 @@ import { styled } from '~/styles/stitches.config'
 import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
+import { useAppEngine } from '~/app-engine/index'
 
 const linkStyles = {
   color: '$text',
@@ -100,27 +101,30 @@ const Flex3 = styled('div', {
   display: 'flex',
 })
 
-export const Header = () => (
-  <NavBar>
-    <NavContainer>
-      <Flex1>
-        <Logo />
-        <Flex2 as="nav" role="navigation" aria-labelledby="main-nav-title">
-          <VisuallyHidden>Main navigation</VisuallyHidden>
-          <LanguageButton type="button" aria-label="Language Switcher Icon">
-            <GlobeIcon />
-          </LanguageButton>
-          <AnchorItem
-            aria-label="Go to Powerstack Template"
-            href="https://github.com/blockmatic/powerstack-remix"
-          >
-            <GhLoginIcon />
-          </AnchorItem>
-          <LoginButton onClick={() => console.log("I'm dummy, gimme power!")} variant="primary">
-            Login
-          </LoginButton>
-        </Flex2>
-      </Flex1>
-    </NavContainer>
-  </NavBar>
-)
+export const Header = () => {
+  const { login } = useAppEngine()
+  return (
+    <NavBar>
+      <NavContainer>
+        <Flex1>
+          <Logo />
+          <Flex2 as="nav" role="navigation" aria-labelledby="main-nav-title">
+            <VisuallyHidden>Main navigation</VisuallyHidden>
+            <LanguageButton type="button" aria-label="Language Switcher Icon">
+              <GlobeIcon />
+            </LanguageButton>
+            <AnchorItem
+              aria-label="Go to Powerstack Template"
+              href="https://github.com/blockmatic/powerstack-remix"
+            >
+              <GhLoginIcon />
+            </AnchorItem>
+            <LoginButton onClick={login} variant="primary">
+              Login
+            </LoginButton>
+          </Flex2>
+        </Flex1>
+      </NavContainer>
+    </NavBar>
+  )
+}
