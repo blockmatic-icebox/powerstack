@@ -22,10 +22,7 @@ export const CreateCustomTransaction = (name: string) => {
   return transaction
 }
 
-export const CreateTransationSpan = (
-  transaction: Transaction,
-  spanAttr: any,
-) => {
+export const CreateTransationSpan = (transaction: Transaction, spanAttr: any) => {
   const span = transaction.startChild({ ...spanAttr })
   return span
 }

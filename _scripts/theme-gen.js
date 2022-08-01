@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Spinner = require('cli-spinner').Spinner
 //  NOTE: No longer necessary a 3rd param on script... all automated
-// const [file_name] = process.argv.slice(2) 
+// const [file_name] = process.argv.slice(2)
 const file_names = []
 const spinner_string = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
 
@@ -19,14 +19,12 @@ const themes_spinner = setSpinner(` %s 👀 for themes...
 themes_spinner.setSpinnerString(spinner_string).setSpinnerDelay(80)
 themes_spinner.start()
 
-fs.readdirSync(dir).forEach(json => {
-  const theme_key = json
-    .replace(/(-theme\.json|\.json)/, '')
-    .replace(/theme/, 'default')
+fs.readdirSync(dir).forEach((json) => {
+  const theme_key = json.replace(/(-theme\.json|\.json)/, '').replace(/theme/, 'default')
   file_names.push(theme_key)
   console.log(`🖌️  ${theme_key} theme found!`)
-  
-  themes[theme_key] = require(path.join(dir, json));
+
+  themes[theme_key] = require(path.join(dir, json))
 })
 
 themes_spinner.stop()
@@ -44,20 +42,20 @@ Object.keys(themes).forEach((theme) => {
       typeStyles: {},
       radii: {},
       shadows: {},
-    }
+    },
   }
   const theme_object = themes[theme]
-  
+
   Object.keys(theme_object).forEach((t_key) => {
     new_theme.theme[t_key] = {}
-  
+
     switch (t_key) {
       case 'name':
         new_theme[t_key] = theme_object[t_key]
         break
       case 'typeStyles':
         let typeStyleLabel = ''
-  
+
         theme_object[t_key].forEach((typeStyle) => {
           Object.keys(typeStyle).forEach((style) => {
             if (style === 'name') {
@@ -109,15 +107,13 @@ Object.keys(themes).forEach((theme) => {
         break
     }
   })
-  
+
   Object.keys(new_theme.theme).forEach((key) => {
-    if (Object.keys(new_theme.theme[key]).length === 0)
-      delete new_theme.theme[key]
+    if (Object.keys(new_theme.theme[key]).length === 0) delete new_theme.theme[key]
   })
 
   new_themes.push(new_theme)
 })
-
 
 toolabs_theme_spinner.stop()
 console.log(`
@@ -128,10 +124,14 @@ const writing_theme_spinner = setSpinner(` %s 〰️ Writting Toolabs JSON Theme
 writing_theme_spinner.setSpinnerString(spinner_string).setSpinnerDelay(80)
 writing_theme_spinner.start()
 
-file_names.forEach(file => {
+file_names.forEach((file) => {
   fs.writeFile(
     `./app/styles/themes/${file !== 'default' ? `${file}-` : ''}theme.ts`,
-    `export const ${file !== 'default' ? `${file}_` : ''}theme = ${JSON.stringify(new_themes.find(t => t.name === file), null, 2)}`,
+    `export const ${file !== 'default' ? `${file}_` : ''}theme = ${JSON.stringify(
+      new_themes.find((t) => t.name === file),
+      null,
+      2,
+    )}`,
     (err) => {
       if (err) {
         console.error(err)
@@ -141,14 +141,12 @@ file_names.forEach(file => {
           ❌ There was problem trying to creting the file 💔. Check if values are valid.`,
         )
       }
-  
+
       writing_theme_spinner.stop()
-      console.log(
-        `✔️  Stitches file for ${file} theme created successfully 🪄🎉`,
-      )    
+      console.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
     },
   )
-  
+
   // TODO: fs.writeFile(`./app/types/${file_name ? `${file_name}_` : ''}-theme.ts`)...
 })
 

@@ -10,8 +10,7 @@ import { dark_theme } from './themes/dark-theme'
 const getFontSizes = () => {
   let fontSizes: any = {}
   for (const property in light_theme.theme.typeStyles) {
-    const tempFontSize: string =
-      light_theme.theme.typeStyles[property as keyof object]['fontSize']
+    const tempFontSize: string = light_theme.theme.typeStyles[property as keyof object]['fontSize']
     fontSizes[property as keyof object] = tempFontSize
   }
   return fontSizes

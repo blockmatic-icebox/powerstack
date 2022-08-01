@@ -19,10 +19,7 @@ export const getCloudinaryImage = (image_id: string) => {
   return image
 }
 
-export const getCloudinaryVideo = (
-  video_id: string,
-  video_quality?: number,
-) => {
+export const getCloudinaryVideo = (video_id: string, video_quality?: number) => {
   const video = cld.video(video_id)
   return video_quality ? video.delivery(quality(video_quality)) : video
 }

@@ -13,7 +13,7 @@ import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = ConfigState & UserState & LayoutState & Web3AuthState & AuthState
 export type AppActions = UserActions & LayoutActions & Web3AuthActions
-export type AppEngine = AppState & AppActions 
+export type AppEngine = AppState & AppActions
 
 // these types is used within the slices
 export type StoreSetState = StoreApi<AppEngine>['setState']
@@ -33,7 +33,7 @@ export const app_engine = createVanillaStore<AppEngine>(
 )
 
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
-//       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm . 
+//       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm .
 //       hydration its not necessary at the moment.
 
 // Intialize App Engine State, you must import '~/app-engine'
@@ -55,4 +55,3 @@ if (isBrowser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
 
 // typescrpt selector hooks: https://bit.ly/3fbBHfo
 export const useAppEngine = createSelectorHooks(useAppEngineBare)
-

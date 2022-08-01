@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@blockmatic/prettier-config": "^2.1.0",
     "@cloudinary/url-gen": "^1.8.0",
     "@sentry/browser": "^7.8.0",
     "@stitches/react": "^1.2.8",

@@ -1,4 +1,3 @@
-
 import type { StoreSlice } from '../index'
 import { AppConfig } from '../types/app-config'
 
@@ -28,5 +27,5 @@ export const createConfigSlice: StoreSlice<ConfigState> = (set, get) => ({
       sentry: '',
     },
     features: {},
-  }
+  },
 })

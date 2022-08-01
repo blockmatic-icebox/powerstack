@@ -35,6 +35,11 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@blockmatic/prettier-config@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@blockmatic/prettier-config/-/prettier-config-2.1.0.tgz#8afffd7055185f028a8d78d8ecab1a52e6847c3e"
+  integrity sha512-BKvclGlWShiwUAC75F1GI18KqaKiHtHVKqHefXf4Ft5KSWlSxt2W5NxlsuB4uAyBe8IEtp58PqEJi7IyF2F9hQ==
+
 "@cloudinary/url-gen@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.8.0.tgz#dcadd7de08314d79c225a710efb93a51b1fab413"

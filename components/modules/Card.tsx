@@ -1,4 +1,3 @@
-
 import { styled } from '../../styles/stitches.config'
 
 export const Card = styled('div', {

@@ -24,7 +24,7 @@ const LoginBackground = styled('div', {
 
 const Home: NextPage = () => {
   return (
-    <LoginBackground >
+    <LoginBackground>
       <Header />
       {/* {data.user && <p>{JSON.stringify(data.user)}</p>} */}
       <MainContent>

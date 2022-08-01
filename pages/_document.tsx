@@ -7,10 +7,7 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <style
-            id="stitches"
-            dangerouslySetInnerHTML={{ __html: getGeneratedStylesheet() }}
-          />
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getGeneratedStylesheet() }} />
         </Head>
         <body>
           <Main />

@@ -1,6 +1,6 @@
 export async function fetchJson<JSON = unknown>(
   input: RequestInfo,
-  init?: RequestInit
+  init?: RequestInit,
 ): Promise<JSON> {
   const response = await fetch(input, init)
 
@@ -10,7 +10,7 @@ export async function fetchJson<JSON = unknown>(
 
   // response.ok is true when res.status is 2xx
   // https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
-  if (response.ok)  return data
+  if (response.ok) return data
 
   throw new FetchError({
     message: response.statusText,

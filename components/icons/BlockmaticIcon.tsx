@@ -1,11 +1,5 @@
-const BlockmaticIcon = (props:any) => (
-  <svg
-    width="426"
-    height="84"
-    viewBox="0 0 426 84"
-    fill="none"
-    {...props}
-  >
+const BlockmaticIcon = (props: any) => (
+  <svg width="426" height="84" viewBox="0 0 426 84" fill="none" {...props}>
     <path
       d="M0 37C0 18.9127 14.6627 4 32.75 4V4C50.8373 4 65.5 18.9127 65.5 37V37C65.5 55.0873 50.8373 70 32.75 70V70C14.6627 70 0 55.0873 0 37V37Z"
       fill="url(#pattern0)"
@@ -19,23 +13,13 @@ const BlockmaticIcon = (props:any) => (
       fill="black"
     />
     <defs>
-      <pattern
-        id="pattern0"
-        patternContentUnits="objectBoundingBox"
-        width="1"
-        height="1"
-      >
+      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
         <use
           xlinkHref="#image0_225_511"
           transform="translate(-0.694656 -0.742424) scale(0.0152672 0.0151515)"
         />
       </pattern>
-      <pattern
-        id="pattern1"
-        patternContentUnits="objectBoundingBox"
-        width="1"
-        height="1"
-      >
+      <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
         <use
           xlinkHref="#image0_225_511"
           transform="translate(-0.694656 -0.742424) scale(0.0152672 0.0151515)"
