@@ -1,4 +1,4 @@
-import type { StoreSetState, StoreSlice } from '../../index'
+import type { StoreSetState, StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS } from '@web3auth/base'
 

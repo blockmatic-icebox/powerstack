@@ -8,7 +8,7 @@ import { isBrowser } from './library'
 import { LayoutActions, LayoutState, createLayoutSlice } from './store/layout-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createConfigSlice, ConfigState } from './store/config-slice'
-import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice/index'
+import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = ConfigState & UserState & LayoutState & Web3AuthState & AuthState
