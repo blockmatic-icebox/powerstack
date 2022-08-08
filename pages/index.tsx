@@ -7,6 +7,7 @@ const MainContent = styled('div', {
   minHeight: '75vh',
   position: 'relative',
 })
+
 const LoginBackground = styled('div', {
   // ToDo: Add a contrasting image
   // backgroundImage: 'url(/assets/images/login-bg.png)',
@@ -17,8 +18,11 @@ const LoginBackground = styled('div', {
 })
 
 // export async function getStaticProps() {
+//   console.log('appconfig', appconfig)
 //   return {
-//     hola: 'hola',
+//     props: {
+//       hola: 'hola',
+//     },
 //   }
 // }
 
@@ -26,7 +30,6 @@ const Home: NextPage = () => {
   return (
     <LoginBackground>
       <Header />
-      {/* {data.user && <p>{JSON.stringify(data.user)}</p>} */}
       <MainContent>
         <Container>
           <WalletLogin />

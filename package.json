@@ -16,7 +16,7 @@
     "@sentry/browser": "^7.8.0",
     "@stitches/react": "^1.2.8",
     "@web3auth/base": "^1.1.2",
-    "@web3auth/web3auth": "^1.1.2",
+    "@web3auth/web3auth": "^1.1.4",
     "anchor-link": "^3.5.1",
     "anchor-link-browser-transport": "^3.5.1",
     "apollo-link-sentry": "^3.2.0",
