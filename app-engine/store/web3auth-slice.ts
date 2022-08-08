@@ -1,6 +1,7 @@
 import type { StoreSetState, StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS } from '@web3auth/base'
+import { appconfig } from '~/environment'
 
 // export interface Web3AuthWalletProvider {
 //   getAccounts: () => Promise<any>
@@ -67,8 +68,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
     // instantiate and initialize web3auth client
     const web3auth = new Web3Auth({
-      clientId:
-        'BGg06C3u5cKtQ8pY3sANCcwZe30Ch8qz7xbbd-1RAQsUBPeZThjuG6EH6qeTaBB-VKdii-oeOvp2uemQcHBNxKY',
+      clientId: appconfig.services.web3auth_client_id,
       chainConfig: { chainNamespace: 'eip155', chainId: '0x3' },
       authMode: 'DAPP',
       uiConfig: {
