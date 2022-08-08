@@ -10,6 +10,7 @@ import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createConfigSlice, ConfigState } from './store/config-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
 import { createEosioSlice, EosioActions, EosioSlice, EosioState } from './store/eosio-slice'
+import { createZustandSlice, ZustandState } from './store/zustand-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = ConfigState &
@@ -17,7 +18,8 @@ export type AppState = ConfigState &
   LayoutState &
   Web3AuthState &
   AuthState &
-  EosioState
+  EosioState &
+  ZustandState
 export type AppActions = UserActions & LayoutActions & Web3AuthActions & AuthActions & EosioActions
 export type AppEngine = AppState & AppActions
 
@@ -36,6 +38,7 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createUserSlice(set, get),
     ...createEosioSlice(set, get),
     ...createLayoutSlice(set, get),
+    ...createZustandSlice(set, get),
   }),
 )
 

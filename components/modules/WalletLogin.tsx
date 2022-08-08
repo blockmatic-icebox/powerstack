@@ -1,7 +1,5 @@
 import { styled } from '../../styles/stitches.config'
 import _ from 'lodash'
-import { ethers } from 'ethers'
-import { ethereum, isPhantom, solana } from '../../app-engine/library/index'
 import {
   AnchorIcon,
   MetamaskIcon,
@@ -14,8 +12,7 @@ import { useState } from 'react'
 import { Button } from '~/components/base/index'
 import { Card } from './Card'
 import { useAppEngine } from '~/app-engine/index'
-
-const message = 'Login to PowerStack App'
+import { useLocation } from 'react-use'
 
 type LoginOptions = {
   strategy: 'metamask' | 'phantom' | 'twitter'
@@ -24,18 +21,6 @@ type LoginOptions = {
     address: string
     message: string
   }
-}
-
-const useLoginSubmit = () => {
-  const submit = ({ strategy, signed_message }: LoginOptions) => {
-    //   fetcher.submit(signed_message || {}, {
-    //     method: 'post',
-    //     action: `/actions/login/${strategy}?redirect_to=${
-    //       location.pathname || '/'
-    //     }`,
-    //   })
-  }
-  return submit
 }
 
 const Title = styled('h1', {
@@ -72,62 +57,15 @@ const Separator = styled('div', {
   },
 })
 
-const IconsFlex = styled('div', {
-  display: 'flex',
-  px: '$small',
-  columnGap: '$small',
-  button: {
-    flex: '1',
-  },
-})
-
 export const WalletLogin = () => {
   const { user, loginWithAnchor } = useAppEngine()
-  const submit = useLoginSubmit()
-
-  const loginWithMetamask = async () => {
-    if (!ethereum) return alert('Metamask not found')
-    const provider = new ethers.providers.Web3Provider(ethereum)
-    const signer = provider.getSigner()
-    // submit({
-    //   strategy: 'metamask',
-    //   signed_message: {
-    //     signature: await signer.signMessage(message),
-    //     address: await signer.getAddress(),
-    //     message,
-    //   },
-    // })
-  }
-  const loginAnchor = async () => await loginWithAnchor()
-
-  const loginWithPhantom = async () => {
-    if (!isPhantom) return alert('Phantom not found')
-    try {
-      const resp = await solana.connect()
-      console.log(resp.publicKey.toString(), solana.isConnected) // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
-      // submit({
-      //   strategy: 'phantom',
-      //   signed_message: {
-      //     signature: await solana.signMessage(
-      //       new TextEncoder().encode(message),
-      //       'utf8',
-      //     ),
-      //     address: resp.publicKey.toString(),
-      //     message,
-      //   },
-      // })
-    } catch (err) {
-      alert((err as Error).message)
-    }
-  }
-
-  const [path, setPath] = useState('')
+  const location = useLocation()
 
   return (
     <Card>
       <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
       <p>Address: {user?.address ? user.address : 'wallet not connected'}</p>
-      <LoginButton onClick={() => loginAnchor()} variant="panthom">
+      <LoginButton onClick={() => loginWithAnchor()} variant="panthom">
         <PhantonIcon />
         Login with Phantom
       </LoginButton>
@@ -150,7 +88,7 @@ export const WalletLogin = () => {
         css={{ mb: '$small' }}
         onClick={() => {}}
         variant="metamask"
-        href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
+        href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`}
         role="button"
       >
         Login in with Twitter
