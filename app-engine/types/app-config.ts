@@ -12,6 +12,7 @@ export interface AppServices {
   cloudinary_cloud_name: string
   cloudinary_api_key: string
   cloudinary_api_secret: string
+  web3auth_client_id: string
 }
 
 export interface AppAnalytics {
