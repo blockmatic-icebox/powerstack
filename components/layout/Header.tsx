@@ -116,9 +116,9 @@ export const Header = () => {
             >
               <GhLoginIcon />
             </AnchorItem>
-            <LoginButton onClick={login} variant="primary">
+            {/* <LoginButton onClick={login} variant="primary">
               Login
-            </LoginButton>
+            </LoginButton> */}
           </Flex2>
         </Flex1>
       </NavContainer>
