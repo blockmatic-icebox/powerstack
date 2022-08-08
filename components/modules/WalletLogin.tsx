@@ -84,11 +84,11 @@ export const WalletLogin = () => {
       <Separator>Or use social web2 logins without wallet</Separator>
 
       <LoginButton
-        as="a"
         css={{ mb: '$small' }}
-        onClick={() => {}}
+        onClick={() => {
+          window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
+        }}
         variant="metamask"
-        href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`}
         role="button"
       >
         Login in with Twitter
