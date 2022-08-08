@@ -97,9 +97,6 @@ const Flex2 = styled('div', {
   justifyContent: 'flex-end',
   alignItems: 'center',
 })
-const Flex3 = styled('div', {
-  display: 'flex',
-})
 
 export const Header = () => {
   const { login } = useAppEngine()
@@ -114,8 +111,8 @@ export const Header = () => {
               <GlobeIcon />
             </LanguageButton>
             <AnchorItem
-              aria-label="Go to Powerstack Template"
-              href="https://github.com/blockmatic/powerstack-remix"
+              aria-label="Go to PowerStack repos"
+              href="https://github.com/blockmatic?q=powerstack"
             >
               <GhLoginIcon />
             </AnchorItem>
