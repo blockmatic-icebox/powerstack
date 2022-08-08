@@ -8,6 +8,7 @@ import { isBrowser } from '~/app-engine/library'
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
 //       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm . its not necessary at the moment.
 if (isBrowser && !app_engine.getState().zustand_initialized) {
+  console.log('🗂 initializing zustand state')
   app_engine.setState({
     zustand_initialized: true,
     zustand_init_time: new Date(),

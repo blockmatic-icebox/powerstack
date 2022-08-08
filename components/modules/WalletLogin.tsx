@@ -8,7 +8,6 @@ import {
   GhLoginIcon,
   BitbucketIcon,
 } from '~/components/icons/index'
-import { useState } from 'react'
 import { Button } from '~/components/base/index'
 import { Card } from './Card'
 import { useAppEngine } from '~/app-engine/index'
@@ -58,7 +57,7 @@ const Separator = styled('div', {
 })
 
 export const WalletLogin = () => {
-  const { user, loginWithAnchor } = useAppEngine()
+  const { user, loginWithAnchor, web3authLogin } = useAppEngine()
   const location = useLocation()
 
   return (
@@ -77,7 +76,7 @@ export const WalletLogin = () => {
         <MetamaskIcon />
         Login with Metamask
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={() => {}} variant="metamask">
+      <LoginButton css={{ mb: '$small' }} onClick={() => web3authLogin()} variant="metamask">
         Login with Web3Auth/Torus Wallet
       </LoginButton>
 
