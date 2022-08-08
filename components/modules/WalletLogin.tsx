@@ -125,9 +125,7 @@ export const WalletLogin = () => {
 
   return (
     <Card>
-      <Title>
-        Welcome {user ? 'Back' : null} to PowerStack Remix
-      </Title>
+      <Title>Welcome {user ? 'Back' : null} to PowerStack Remix</Title>
       <LoginButton onClick={() => loginAnchor()} variant="panthom">
         <PhantonIcon />
         Login with Phantom
@@ -144,22 +142,20 @@ export const WalletLogin = () => {
         <MetamaskIcon />
         Login with Metamask
       </LoginButton>
-      <p>
-        Address:{' '}
-        { user?.address ? user.address : 'wallet not connected' }
-      </p>
+      <p>Address: {user?.address ? user.address : 'wallet not connected'}</p>
       <Separator>Or sign in with</Separator>
 
-        <LoginButton as="a"
-          css={{ mb: '$small' }} 
-          onClick={() => {}} 
-          variant="oauth"
-          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
-          role="button"
-        >
-          Sign in with Twitter
-        </LoginButton>
-        {/* <Button 
+      <LoginButton
+        as="a"
+        css={{ mb: '$small' }}
+        onClick={() => {}}
+        variant="oauth"
+        href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
+        role="button"
+      >
+        Sign in with Twitter
+      </LoginButton>
+      {/* <Button 
           css={{ svg: { mr: 0 } }}
           onClick={() => loginWithTwitter()}
           variant="oAuth"
@@ -167,7 +163,7 @@ export const WalletLogin = () => {
         >
           <GhLoginIcon />
         </Button> */}
-        {/* <Button
+      {/* <Button
           css={{ svg: { mr: 0 } }}
           onClick={() => console.log("I'm dummy, gimme power!")}
           variant="oAuth"
@@ -191,7 +187,6 @@ export const WalletLogin = () => {
         >
           <BitbucketIcon />
         </Button> */}
-  
     </Card>
   )
 }

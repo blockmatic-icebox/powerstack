@@ -1,4 +1,4 @@
-import { fetchJson } from "../library/fetch"
+import { fetchJson } from '../library/fetch'
 
 const login = async () => {
   try {
@@ -10,6 +10,6 @@ const login = async () => {
   }
 }
 
-export const auth_service  = {
-  login
+export const auth_service = {
+  login,
 }

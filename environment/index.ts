@@ -2,9 +2,7 @@ import * as env from 'env-var'
 import { AppConfig } from '~/app-engine/types/app-config'
 
 export const appconfig: AppConfig = {
-  contracts: {
-    
-  },
+  contracts: {},
   services: {
     auth_api: env.get('NEXT_PUBLIC_AUTH_API').asString() || '',
     graphql_api: env.get('NEXT_PUBLIC_GRAPHQL_API').asString() || '',

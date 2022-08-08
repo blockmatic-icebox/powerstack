@@ -57,7 +57,7 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
     // set(eosioAuthDefaultState)
   },
 
-  setEOSIOSessionToken: (token:string) => {
+  setEOSIOSessionToken: (token: string) => {
     if (!token) return localStorage.removeItem('bitcash_session')
     // const decoded_token = jwt.decode(token.replace('Bearer ', ''))
 
