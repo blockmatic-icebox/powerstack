@@ -21,6 +21,7 @@ export const createConfigSlice: StoreSlice<ConfigState> = (set, get) => ({
       cloudinary_cloud_name: '',
       cloudinary_api_key: '',
       cloudinary_api_secret: '',
+      web3auth_client_id: '',
     },
     analytics: {
       google: '',
