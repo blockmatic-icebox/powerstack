@@ -6,6 +6,8 @@ NextJS application starter for rapid development of multi-chain applications.
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
+Demo https://powerstack-next.vercel.app/
+
 ## Architecture
 
 ![](./_docs/mvvm-architecture.png)
@@ -153,7 +155,6 @@ docker kill powerstack-next
 We use a [Discussions Board](https://github.com/blockmatic/powerstack-docs/discussions/1) to gather thoughts, bug reports and feature requests from the community.
 
 Follow the standard Github Flow for PRs. [Contributing Guidelines](https://docs.powerstack.xyz/powerstack/other-resources/contributing-guidelines).
-
 
 ## Blockmatic
 
