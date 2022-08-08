@@ -83,7 +83,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
     set({ web3auth: web3auth })
 
-    console.log('🔑 web3auth initialized!')
+    console.log(`🔑 web3auth initialized with client_id ${appconfig.services.web3auth_client_id}!`)
   },
   web3authLogin: async () => get().web3auth.connect(),
   web3authLogout: async () => {},
