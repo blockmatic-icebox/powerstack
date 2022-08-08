@@ -66,9 +66,11 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     console.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
 
+    const client_id =
+      'BCeTdMp4F7vxJyP9pi93aCl2bclncDAUs76Awo74cFzN43pisN_Rmksd4hvQq_85rp9oRQSHXLxtvb2c-mxEyf8' //get().app_engine_config.services.web3auth_client_id,
     // instantiate and initialize web3auth client
     const web3auth = new Web3Auth({
-      clientId: appconfig.services.web3auth_client_id,
+      clientId: client_id,
       chainConfig: { chainNamespace: 'eip155', chainId: '0x3' },
       authMode: 'DAPP',
       uiConfig: {
@@ -83,7 +85,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
     set({ web3auth: web3auth })
 
-    console.log(`🔑 web3auth initialized with client_id ${appconfig.services.web3auth_client_id}!`)
+    console.log(`🔑 web3auth initialized with client_id ${client_id}`)
   },
   web3authLogin: async () => get().web3auth.connect(),
   web3authLogout: async () => {},
