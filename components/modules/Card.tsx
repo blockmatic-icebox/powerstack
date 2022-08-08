@@ -2,6 +2,8 @@ import { styled } from '../../styles/stitches.config'
 
 export const Card = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'center',
   mx: 'auto',
   borderRadius: '$radius-40',
   px: '$small',

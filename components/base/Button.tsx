@@ -97,7 +97,7 @@ export const Button = styled('button', {
           backgroundColor: '$primary-700',
         },
       },
-      oAuth: {
+      oauth: {
         backgroundColor: '$neutral-300',
         '&:hover:not(:disabled)': {
           backgroundColor: '$neutral-400',

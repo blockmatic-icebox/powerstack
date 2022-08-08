@@ -38,7 +38,7 @@ const useLoginSubmit = () => {
   return submit
 }
 
-const Title = styled('p', {
+const Title = styled('h1', {
   fontSize: '$h-2',
   fontWeight: '$semi-bold',
   mb: '$large',
@@ -47,7 +47,7 @@ const Title = styled('p', {
   textAlign: 'center',
   '@tabletUp': {
     fontSize: '$h-1',
-    mb: '$x-large',
+    mb: '$x-small',
   },
 })
 
@@ -123,15 +123,11 @@ export const WalletLogin = () => {
 
   const [path, setPath] = useState('')
 
-  useEffect(() => {
-    setPath(window.location.origin)
-  }, [])
-
   return (
     <Card>
-      {/* <Title as="h1" variant="h1">
+      <Title>
         Welcome {user ? 'Back' : null} to PowerStack Remix
-      </Title> */}
+      </Title>
       <LoginButton onClick={() => loginAnchor()} variant="panthom">
         <PhantonIcon />
         Login with Phantom
@@ -148,32 +144,21 @@ export const WalletLogin = () => {
         <MetamaskIcon />
         Login with Metamask
       </LoginButton>
-      {/* <p>
+      <p>
         Address:{' '}
-        {user?.address && user?.network === 'rinkeby'
-          ? user.address
-          : 'wallet not connected'}
-      </p> */}
-      {/* <p>
-        Address:{' '}
-        {user?.address && user?.network === 'solana'
-          ? user.address
-          : 'wallet not connected'}
-      </p> */}
+        { user?.address ? user.address : 'wallet not connected' }
+      </p>
       <Separator>Or sign in with</Separator>
-      <IconsFlex>
-        {/* <a
-          href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter`}
-          role="button"
-        >
-          Sign in with Twitter
-        </a> */}
-        <a
+
+        <LoginButton as="a"
+          css={{ mb: '$small' }} 
+          onClick={() => {}} 
+          variant="oauth"
           href={`https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${path}`}
           role="button"
         >
           Sign in with Twitter
-        </a>
+        </LoginButton>
         {/* <Button 
           css={{ svg: { mr: 0 } }}
           onClick={() => loginWithTwitter()}
@@ -206,7 +191,7 @@ export const WalletLogin = () => {
         >
           <BitbucketIcon />
         </Button> */}
-      </IconsFlex>
+  
     </Card>
   )
 }
