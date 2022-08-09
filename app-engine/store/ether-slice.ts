@@ -8,6 +8,7 @@ export type EtherState = {
 
 export type EtherActions = {
   initEthers: () => void
+  loginWithMetamask: () => void
 }
 
 export type EtherStore = EtherState & EtherActions
@@ -24,5 +25,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     console.log('⚙️ initializing ether slice ...')
     // TODO:
     console.log('⚙️ ether slice initialized')
+  },
+  loginWithMetamask: () => {
+    console.log('⚙️ login with metamask')
   },
 })

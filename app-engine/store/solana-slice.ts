@@ -7,6 +7,7 @@ export type SolanaState = {
 
 export type SolanaActions = {
   initSolana: () => void
+  loginWithPhantom: () => void
 }
 
 export type SolanaStore = SolanaState & SolanaActions
@@ -23,5 +24,8 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
     console.log('⚙️ initializing solana slice ...')
     // TODO:
     console.log('⚙️ solana slice initialized')
+  },
+  loginWithPhantom: () => {
+    console.log('⚙️ login with phantom')
   },
 })

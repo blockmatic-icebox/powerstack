@@ -57,27 +57,28 @@ const Separator = styled('div', {
 })
 
 export const WalletLogin = () => {
-  const { user, loginWithAnchor, web3authLogin } = useAppEngine()
+  const { user, loginWithAnchor, loginWithPhantom, loginWithMetamask, web3authLogin } =
+    useAppEngine()
   const location = useLocation()
 
   return (
     <Card>
       <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
       <p>Address: {user?.address ? user.address : 'wallet not connected'}</p>
-      <LoginButton onClick={() => loginWithAnchor()} variant="panthom">
+      <LoginButton onClick={loginWithPhantom} variant="panthom">
         <PhantonIcon />
         Login with Phantom
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={() => {}} variant="anchor">
+      <LoginButton css={{ mb: '$small' }} onClick={loginWithAnchor} variant="anchor">
         <AnchorIcon />
         Login with Anchor
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={() => {}} variant="metamask">
+      <LoginButton css={{ mb: '$small' }} onClick={loginWithMetamask} variant="metamask">
         <MetamaskIcon />
         Login with Metamask
       </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={() => web3authLogin()} variant="metamask">
-        Login with Web3Auth/Torus Wallet
+      <LoginButton css={{ mb: '$small' }} onClick={web3authLogin} variant="metamask">
+        Login with Web3Auth
       </LoginButton>
 
       <Separator>Or use social web2 logins without wallet</Separator>

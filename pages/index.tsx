@@ -2,6 +2,7 @@ import { WalletLogin } from 'components/modules/WalletLogin'
 import { styled } from '../styles/stitches.config'
 import { NextPage } from 'next'
 import { Container, Footer, Header } from 'components/layout'
+import { appconfig } from '~/environment'
 
 const MainContent = styled('div', {
   minHeight: '75vh',
@@ -17,8 +18,8 @@ const LoginBackground = styled('div', {
   minHeight: '100vh',
 })
 
-// export async function getStaticProps() {
-//   console.log('appconfig', appconfig)
+// export async function getServerSideProps() {
+//   console.log('index getServerSideProps', appconfig)
 //   return {
 //     props: {
 //       hola: 'hola',
