@@ -58,7 +58,7 @@ PowerStack leverages open source Hasura GraphQL engine in conjunction with Graph
 
 more https://github.com/blockmatic/powerstack-hasura
 
-endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql
+endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql    
 graphiql: https://graphiql-online.com
 
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
