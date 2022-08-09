@@ -26,6 +26,7 @@ Demo https://powerstack-next.vercel.app/
 - [ ] GraphQL client with support for multiple indexers.
 - [ ] Autogenerate TypeScript types from GraphQL schema.
 - [ ] Simple base ui components with forms validation.
+- [ ] Utilities for decimal precision, math and trigonometry in js.
 - [ ] Utilities library for common web2 and web3 tasks.
 - [ ] Crash reporting and web analytics.
 - [ ] TypeScript, ESLint, Prettier and Husky for code quality.
@@ -39,6 +40,7 @@ Demo https://powerstack-next.vercel.app/
 - Solana Web3 https://solana-labs.github.io/solana-web3.js
 - TweetNaCl.js https://github.com/dchest/tweetnacl-js
 - Eosio Core https://github.com/greymass/eosio-core
+- Decimal.js https://github.com/MikeMcl/decimal.js
 - Iron Session https://github.com/vvo/iron-session
 - Lodash tools https://lodash.com/docs
 - Zod validator https://github.com/colinhacks/zod
@@ -58,7 +60,7 @@ PowerStack leverages open source Hasura GraphQL engine in conjunction with Graph
 
 more https://github.com/blockmatic/powerstack-hasura
 
-endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql    
+endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql  
 graphiql: https://graphiql-online.com
 
 - https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/

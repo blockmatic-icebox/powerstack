@@ -1,15 +1,9 @@
-import type { StoreSetState, StoreSlice } from '../index'
+import type { StoreGetState, StoreSetState, StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES } from '@web3auth/base'
 import { ethers } from 'ethers'
-
-// export interface Web3AuthWalletProvider {
-//   getAccounts: () => Promise<any>
-//   getBalance: () => Promise<any>
-//   signAndSendTransaction: () => Promise<void>
-//   signTransaction: () => Promise<void>
-//   signMessage: () => Promise<void>
-// }
+import { AppUser } from '../types/app-engine'
+import Decimal from 'decimal.js'
 
 export type Web3AuthState = {
   web3auth: Web3Auth | null
@@ -41,21 +35,36 @@ const defaultWeb3AuthState: Web3AuthState = {
   web3auth_user: {},
 }
 
-const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState) => {
+const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState, get: StoreGetState) => {
   web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
     console.log('you are successfully logged in', web3auth_user)
-    const prov = await web3auth.connect()
-    const provider = new ethers.providers.Web3Provider(prov)
-    const signer = provider.getSigner()
-
-    // Get user's Ethereum public address
+    const web3auth_provider = await web3auth.connect()
+    if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
+    const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
+    const user_info = await web3auth.getUserInfo()
+    const signer = ethers_provider.getSigner()
     const address = await signer.getAddress()
+    const wei_balance = await ethers_provider.getBalance(address)
+    const balance = ethers.utils.formatEther(wei_balance)
 
-    // Get user's balance in ether
-    const balance = ethers.utils.formatEther(
-      await provider.getBalance(address), // Balance is in wei
-    )
-
+    console.log({ address, balance, user_info })
+    get().setUser({
+      username: user_info.name,
+      user_addresses: [
+        {
+          network: 'rinkeby',
+          address,
+        },
+      ],
+      user_balances: [
+        {
+          network: 'rinkeby',
+          ticker: 'rinkETH',
+          balance: new Decimal(balance),
+          unit_balance: wei_balance.toString(),
+        },
+      ],
+    })
     set({ web3auth_user })
   })
 
@@ -77,7 +86,6 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   web3authInit: async () => {
     console.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
-
     const client_id =
       'BCeTdMp4F7vxJyP9pi93aCl2bclncDAUs76Awo74cFzN43pisN_Rmksd4hvQq_85rp9oRQSHXLxtvb2c-mxEyf8' //get().app_engine_config.services.web3auth_client_id,
     // instantiate and initialize web3auth client
@@ -94,22 +102,18 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
         loginMethodsOrder: ['google', 'twitter', 'apple', 'email_passwordless'],
       },
     })
-
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
-    subscribeToWeb3AuthEvents(web3auth, set)
-    web3auth.initModal()
-
+    subscribeToWeb3AuthEvents(web3auth, set, get)
+    await web3auth.initModal()
     set({ web3auth: web3auth })
-
     console.log(`🔑 web3auth initialized with client_id ${client_id}`)
   },
   web3authLogin: async () => {
     console.log('🔑 login with web3auth')
     const { web3auth } = get()
     if (!web3auth) throw new Error('Web3Auth is not initialized')
-    const response = await web3auth.connect()
-    const user_info = await web3auth.getUserInfo()
-    console.log('User info', response, user_info)
+    await web3auth.connect()
+    console.log('🔑 user logged in')
   },
   web3authLogout: async () => {},
   web3authGetUserInfo: async () => {},

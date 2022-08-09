@@ -21,6 +21,7 @@
     "anchor-link-browser-transport": "^3.5.1",
     "apollo-link-sentry": "^3.2.0",
     "auto-zustand-selectors-hook": "^2.0.0",
+    "decimal.js": "^10.3.1",
     "env-var": "^7.1.1",
     "ethers": "^5.6.9",
     "graphql-ws": "^5.9.1",

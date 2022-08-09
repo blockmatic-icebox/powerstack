@@ -1,21 +1,23 @@
-export type AppAddress = string
+import type { Decimal } from 'decimal.js'
 
+export type Address = string
+
+export interface AppUserAddress {
+  network: string
+  address: string
+}
+export interface AppUserBalance {
+  network: string
+  ticker: string
+  balance: Decimal
+  unit_balance: string // Eg balane in wei
+}
 export interface AppUser {
-  address: AppAddress
-  jwt_token: string
+  username?: string
+  user_addresses: AppUserAddress[]
+  user_balances: AppUserBalance[]
 }
 export interface AppSession {
-  name: string
-}
-
-export interface AppNetwork {
-  name: string
-}
-
-export interface AppWalletProvider {
-  name: string
-}
-
-export interface AppApiProvider {
-  name: string
+  session_token: string // jwt session token
+  app_user: AppUser
 }
