@@ -1,7 +1,7 @@
 import type { StoreSetState, StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
-import { ADAPTER_EVENTS } from '@web3auth/base'
-import { appconfig } from '~/environment'
+import { ADAPTER_EVENTS, CHAIN_NAMESPACES } from '@web3auth/base'
+import { ethers } from 'ethers'
 
 // export interface Web3AuthWalletProvider {
 //   getAccounts: () => Promise<any>
@@ -12,7 +12,7 @@ import { appconfig } from '~/environment'
 // }
 
 export type Web3AuthState = {
-  web3auth: any | null
+  web3auth: Web3Auth | null
   // web3auth_provider: Web3AuthWalletProvider | null
   web3auth_loading: boolean
   web3auth_chain: string
@@ -42,8 +42,20 @@ const defaultWeb3AuthState: Web3AuthState = {
 }
 
 const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState) => {
-  web3auth.on(ADAPTER_EVENTS.CONNECTED, (web3auth_user: {}) => {
+  web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
     console.log('you are successfully logged in', web3auth_user)
+    const prov = await web3auth.connect()
+    const provider = new ethers.providers.Web3Provider(prov)
+    const signer = provider.getSigner()
+
+    // Get user's Ethereum public address
+    const address = await signer.getAddress()
+
+    // Get user's balance in ether
+    const balance = ethers.utils.formatEther(
+      await provider.getBalance(address), // Balance is in wei
+    )
+
     set({ web3auth_user })
   })
 
@@ -71,7 +83,11 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     // instantiate and initialize web3auth client
     const web3auth = new Web3Auth({
       clientId: client_id,
-      chainConfig: { chainNamespace: 'eip155', chainId: '0x3' },
+      chainConfig: {
+        chainNamespace: CHAIN_NAMESPACES.EIP155,
+        chainId: '0x4',
+        rpcTarget: 'https://rinkeby.infura.io/v3/d1113d056f834c6192955c2b26a14cc1',
+      },
       authMode: 'DAPP',
       uiConfig: {
         theme: 'dark',
@@ -87,7 +103,14 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
     console.log(`🔑 web3auth initialized with client_id ${client_id}`)
   },
-  web3authLogin: async () => get().web3auth.connect(),
+  web3authLogin: async () => {
+    console.log('🔑 login with web3auth')
+    const { web3auth } = get()
+    if (!web3auth) throw new Error('Web3Auth is not initialized')
+    const response = await web3auth.connect()
+    const user_info = await web3auth.getUserInfo()
+    console.log('User info', response, user_info)
+  },
   web3authLogout: async () => {},
   web3authGetUserInfo: async () => {},
   web3authGetAccounts: async () => {},
