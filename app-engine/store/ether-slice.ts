@@ -43,10 +43,11 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const address = await signer.getAddress()
     const eth_balance = ethers.utils.formatEther(await provider.getBalance(address))
     const chain_id = ethereum.chainId
+    const signed_message = await signer.signMessage(message)
 
     console.log('🇪🇹 logging in with metamask...', {
       accounts,
-      signature: await signer.signMessage(message),
+      signed_message,
       address,
       eth_balance,
       chain_id,
@@ -63,8 +64,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
     const signer = ethers_provider.getSigner()
     console.log('🇪🇹 signing message with ethers ...')
-    const signedMessage = await signer.signMessage(message)
-    return signedMessage
+    const signed_message = await signer.signMessage(message)
+    return signed_message
   },
   mintOnEvm: async () => {
     console.log('🌞 mint on Evm using Pinata')
