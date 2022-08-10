@@ -3,6 +3,7 @@ import type { StoreSlice } from '../index'
 import _ from 'lodash'
 import { ethereum } from '../library'
 import { getInfuraChainData } from '../library/infura'
+import Decimal from 'decimal.js'
 
 export type EtherState = {
   ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -32,7 +33,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   },
   loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')
-    const { signMessageWithEhters } = get()
     if (!ethereum) throw new Error('Please install the metamask extension to login')
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
     const provider = new ethers.providers.Web3Provider(ethereum)
@@ -41,7 +41,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const message = 'Login to PowerStack App'
     const signer = provider.getSigner()
     const address = await signer.getAddress()
-    const eth_balance = ethers.utils.formatEther(await provider.getBalance(address))
+    const wei_balance = await provider.getBalance(address)
+    const balance = ethers.utils.formatEther(wei_balance)
     const chain_id = ethereum.chainId
     const signed_message = await signer.signMessage(message)
 
@@ -49,10 +50,34 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       accounts,
       signed_message,
       address,
-      eth_balance,
+      balance,
       chain_id,
       network,
       message,
+    })
+    await get().createSession(
+      {
+        network: 'rinkeby',
+        address,
+      },
+      signed_message,
+    )
+    get().setUser({
+      username: 'anon',
+      user_addresses: [
+        {
+          network: 'rinkeby',
+          address,
+        },
+      ],
+      user_balances: [
+        {
+          network: 'rinkeby',
+          ticker: 'rinkETH',
+          balance: new Decimal(balance),
+          unit_balance: wei_balance.toString(),
+        },
+      ],
     })
   },
   signMessageWithEhters: async (message: string) => {

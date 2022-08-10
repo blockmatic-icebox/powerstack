@@ -24,7 +24,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ address, signed_message }),
       })
-      console.log('🍪  cookie session created!')
+      console.log('🍪 cookie session created!')
     } catch (error) {
       console.error('An unexpected error happened:', error)
     }
@@ -36,7 +36,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       await fetchJson('/api/logout', {
         method: 'POST',
       })
-      console.log('🍪  cookie session destroyed!')
+      console.log('🍪 cookie session destroyed!')
       get().setUser(null)
     } catch (error) {
       console.error('An unexpected error happened:', error)

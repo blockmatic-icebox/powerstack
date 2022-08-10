@@ -1,8 +1,7 @@
-import type { StoreGetState, StoreSetState, StoreSlice } from '../index'
+import type { StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES } from '@web3auth/base'
 import { ethers } from 'ethers'
-import { AppUser } from '../types/app-engine'
 import Decimal from 'decimal.js'
 
 export type Web3AuthState = {
@@ -29,7 +28,6 @@ export type Web3AuthSlice = Web3AuthState & Web3AuthActions
 
 const defaultWeb3AuthState: Web3AuthState = {
   web3auth: null,
-  // web3auth_provider: null,
   web3auth_loading: false,
   web3auth_chain: '',
   web3auth_user: {},
