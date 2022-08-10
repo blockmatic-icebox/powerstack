@@ -5,12 +5,12 @@ import { withAppSession } from '~/session/index'
 
 const loginRoute = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { address, message, signature } = await req.body
-  const { address } = await req.body
-  console.log('/api/login', { address })
+  const { address, signed_message } = await req.body
+  console.log('/api/login', { address, signed_message })
 
   try {
-    const jwt_token = await auth_service.login()
-    const user = { address: '0x123', jwt_token } as AppUser
+    // const jwt_token = await auth_service.login()
+    const user: AppUser = { user_addresses: [], user_balances: [] }
     req.session.user = user
     await req.session.save()
     res.send({ user: req.session.user })
