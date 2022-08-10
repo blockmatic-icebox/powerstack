@@ -35,51 +35,6 @@ const defaultWeb3AuthState: Web3AuthState = {
   web3auth_user: {},
 }
 
-const subscribeToWeb3AuthEvents = (web3auth: Web3Auth, set: StoreSetState, get: StoreGetState) => {
-  web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
-    console.log('you are successfully logged in', web3auth_user)
-    const web3auth_provider = await web3auth.connect()
-    if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
-    const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
-    const user_info = await web3auth.getUserInfo()
-    const signer = ethers_provider.getSigner()
-    const address = await signer.getAddress()
-    const wei_balance = await ethers_provider.getBalance(address)
-    const balance = ethers.utils.formatEther(wei_balance)
-
-    console.log({ address, balance, user_info })
-    get().setUser({
-      username: user_info.name,
-      user_addresses: [
-        {
-          network: 'rinkeby',
-          address,
-        },
-      ],
-      user_balances: [
-        {
-          network: 'rinkeby',
-          ticker: 'rinkETH',
-          balance: new Decimal(balance),
-          unit_balance: wei_balance.toString(),
-        },
-      ],
-    })
-    set({ web3auth_user })
-  })
-
-  web3auth.on(ADAPTER_EVENTS.CONNECTING, () => console.log('connecting ...'))
-
-  web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
-    console.log('disconnected')
-    set({ web3auth_user: null })
-  })
-
-  web3auth.on(ADAPTER_EVENTS.ERRORED, (error: unknown) =>
-    console.error('some error or user has cancelled login request', error),
-  )
-}
-
 export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   ...defaultWeb3AuthState,
 
@@ -103,7 +58,56 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       },
     })
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
-    subscribeToWeb3AuthEvents(web3auth, set, get)
+    web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
+      console.log('you are successfully logged in', web3auth_user)
+      const web3auth_provider = await web3auth.connect()
+      if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
+      const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
+      const user_info = await web3auth.getUserInfo()
+      const signer = ethers_provider.getSigner()
+      const address = await signer.getAddress()
+      const wei_balance = await ethers_provider.getBalance(address)
+      const balance = ethers.utils.formatEther(wei_balance)
+
+      console.log({ address, balance, user_info })
+      const signed_message = await get().signMessageWithEhters('login')
+      await get().createSession(
+        {
+          network: 'rinkeby',
+          address,
+        },
+        signed_message,
+      )
+      get().setUser({
+        username: user_info.name,
+        user_addresses: [
+          {
+            network: 'rinkeby',
+            address,
+          },
+        ],
+        user_balances: [
+          {
+            network: 'rinkeby',
+            ticker: 'rinkETH',
+            balance: new Decimal(balance),
+            unit_balance: wei_balance.toString(),
+          },
+        ],
+      })
+      set({ web3auth_user })
+    })
+
+    web3auth.on(ADAPTER_EVENTS.CONNECTING, () => console.log('connecting ...'))
+
+    web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
+      console.log('disconnected')
+      set({ web3auth_user: null })
+    })
+
+    web3auth.on(ADAPTER_EVENTS.ERRORED, (error: unknown) =>
+      console.error('some error or user has cancelled login request', error),
+    )
     await web3auth.initModal()
     set({ web3auth: web3auth })
     console.log(`🔑 web3auth initialized with client_id ${client_id}`)

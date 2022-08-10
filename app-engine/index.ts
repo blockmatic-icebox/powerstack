@@ -1,7 +1,7 @@
 import createVanillaStore, { StoreApi } from 'zustand/vanilla'
 import { persist } from 'zustand/middleware'
 import create from 'zustand'
-import { createAuthSlice, AuthState, AuthActions } from './store/auth-slice'
+import { createSessionSlice, SessionState, SessionActions } from './store/session-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from './library'
@@ -19,7 +19,7 @@ export type AppState = ConfigState &
   UserState &
   LayoutState &
   Web3AuthState &
-  AuthState &
+  SessionState &
   EtherState &
   EosioState &
   SolanaState &
@@ -27,7 +27,7 @@ export type AppState = ConfigState &
 export type AppActions = UserActions &
   LayoutActions &
   Web3AuthActions &
-  AuthActions &
+  SessionActions &
   EtherActions &
   EosioActions &
   SolanaActions
@@ -44,7 +44,7 @@ export const app_engine = createVanillaStore<AppEngine>(
   (set, get) => ({
     ...createConfigSlice(set, get),
     ...createWeb3AuthSlice(set, get),
-    ...createAuthSlice(set, get),
+    ...createSessionSlice(set, get),
     ...createUserSlice(set, get),
     ...createSolanaSlice(set, get),
     ...createEosioSlice(set, get),

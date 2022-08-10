@@ -99,7 +99,7 @@ const Flex2 = styled('div', {
 })
 
 export const Header = () => {
-  const { login } = useAppEngine()
+  // const { login } = useAppEngine()
   return (
     <NavBar>
       <NavContainer>

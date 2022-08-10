@@ -1,4 +1,4 @@
-import { providers } from 'ethers'
+import { ethers, providers } from 'ethers'
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
 
@@ -9,6 +9,7 @@ export type EtherState = {
 export type EtherActions = {
   initEthers: () => void
   loginWithMetamask: () => void
+  signMessageWithEhters: (message: string) => Promise<string>
 }
 
 export type EtherStore = EtherState & EtherActions
@@ -28,5 +29,16 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   },
   loginWithMetamask: () => {
     console.log('⚙️ login with metamask')
+  },
+  signMessageWithEhters: async (message: string) => {
+    console.log('⚙️ sign message with ethers', message)
+    const { web3auth } = get()
+    if (!web3auth) throw new Error('web3auth is not initialized')
+    const web3auth_provider = await web3auth.connect()
+    if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
+    const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
+    const signer = ethers_provider.getSigner()
+    const signedMessage = await signer.signMessage(message)
+    return signedMessage
   },
 })

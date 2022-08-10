@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
+    "gen-graphql": "env-cmd -f .env graphql-codegen --config ./app-engine/graphql/codegen.yml && eslint --fix ./app-engine/graphql/generated/**/*.ts",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "import-dsm": "node ./_scripts/theme-gen.js",
+    "lhci:mobile": "lhci autorun",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
