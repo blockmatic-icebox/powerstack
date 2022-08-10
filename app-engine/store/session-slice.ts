@@ -6,6 +6,7 @@ export interface SessionState {}
 
 export interface SessionActions {
   createSession: (address: AppUserAddress, signed_message: string) => Promise<void>
+  destroySession: () => Promise<void>
 }
 
 export type SessionSlice = SessionState & SessionActions
@@ -24,6 +25,19 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
         body: JSON.stringify({ address, signed_message }),
       })
       console.log('🍪  cookie session created!')
+    } catch (error) {
+      console.error('An unexpected error happened:', error)
+    }
+  },
+
+  destroySession: async () => {
+    console.log('🍪 destroy cookie session')
+    try {
+      await fetchJson('/api/logout', {
+        method: 'POST',
+      })
+      console.log('🍪  cookie session destroyed!')
+      get().setUser(null)
     } catch (error) {
       console.error('An unexpected error happened:', error)
     }

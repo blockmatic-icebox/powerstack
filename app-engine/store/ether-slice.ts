@@ -10,6 +10,7 @@ export type EtherActions = {
   initEthers: () => void
   loginWithMetamask: () => void
   signMessageWithEhters: (message: string) => Promise<string>
+  mintOnEvm: () => Promise<void>
 }
 
 export type EtherStore = EtherState & EtherActions
@@ -41,5 +42,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     console.log('🇪🇹 signing message with ethers ...')
     const signedMessage = await signer.signMessage(message)
     return signedMessage
+  },
+  mintOnEvm: async () => {
+    console.log('🌞 mint on Evm using Pinata')
   },
 })

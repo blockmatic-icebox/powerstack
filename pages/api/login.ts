@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { auth_service } from '~/app-engine/services/jwt-auth-service'
 import { AppUser } from '~/app-engine/types/app-engine'
-import { withAppSession } from '~/session/index'
+import { withAppSessionApiRoute } from '~/session/index'
 
-const loginRoute = async (req: NextApiRequest, res: NextApiResponse) => {
+const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { address, message, signature } = await req.body
   const { address, signed_message } = await req.body
   console.log('/api/login', { address, signed_message })
@@ -19,4 +19,4 @@ const loginRoute = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default withAppSession(loginRoute)
+export default withAppSessionApiRoute(login_route)

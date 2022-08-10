@@ -8,6 +8,7 @@ export type SolanaState = {
 export type SolanaActions = {
   initSolana: () => void
   loginWithPhantom: () => void
+  mintOnSolana: () => Promise<void>
 }
 
 export type SolanaStore = SolanaState & SolanaActions
@@ -21,11 +22,14 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
 
   // this function is called from session-state.ts when a new session is created
   initSolana: () => {
-    console.log('⚙️ initializing solana slice ...')
+    console.log('🌞 initializing solana slice ...')
     // TODO:
-    console.log('⚙️ solana slice initialized')
+    console.log('🌞 solana slice initialized')
   },
   loginWithPhantom: () => {
-    console.log('⚙️ login with phantom')
+    console.log('🌞 login with phantom')
+  },
+  mintOnSolana: async () => {
+    console.log('🌞 mint on Solana using Bundlr')
   },
 })

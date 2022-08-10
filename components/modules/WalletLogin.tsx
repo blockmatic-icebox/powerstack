@@ -60,11 +60,12 @@ export const WalletLogin = () => {
   const { user, loginWithAnchor, loginWithPhantom, loginWithMetamask, web3authLogin } =
     useAppEngine()
   const location = useLocation()
+  const default_user_address = user?.user_addresses[0].address
 
   return (
     <Card>
       <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
-      <p>Address: {user?.address ? user.address : 'wallet not connected'}</p>
+      <p>Address: {default_user_address ? default_user_address : 'wallet not connected'}</p>
       <LoginButton onClick={loginWithPhantom} variant="panthom">
         <PhantonIcon />
         Login with Phantom

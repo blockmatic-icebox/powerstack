@@ -1,3 +1,10 @@
-export const Input = () => <div>I'm the input</div>
+import { styled } from '~/styles/stitches.config'
 
-// as Textarea
+export const Input = styled('input', {
+  boxSizing: 'border-box',
+  border: '$primary dotted 1px',
+  borderRadius: '8px',
+  // display: 'flex',
+  px: '$regular',
+  py: '$small',
+})

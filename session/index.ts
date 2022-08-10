@@ -13,7 +13,7 @@ declare module 'iron-session' {
   }
 }
 
-export const withAppSession = (handler: NextApiHandler) => {
+export const withAppSessionApiRoute = (handler: NextApiHandler) => {
   console.log('with app session')
   return withIronSessionApiRoute(handler, {
     password: 'somepasssdfasdfasdfasdfdsafsdsadfsdafsdafsd', // TODO: get it from ./environment/

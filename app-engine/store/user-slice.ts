@@ -6,7 +6,7 @@ export type UserState = {
 }
 
 export type UserActions = {
-  setUser: (user: AppUser) => void
+  setUser: (user: AppUser | null) => void
   fetchUserBalances: () => Promise<void>
 }
 
@@ -19,7 +19,7 @@ const defaultUserState: UserState = {
 export const createUserSlice: StoreSlice<User> = (set, get) => ({
   ...defaultUserState,
 
-  setUser: (user: AppUser) => {
+  setUser: (user: AppUser | null) => {
     console.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
   },
