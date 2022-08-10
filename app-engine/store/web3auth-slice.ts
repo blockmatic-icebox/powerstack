@@ -70,7 +70,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const balance = ethers.utils.formatEther(wei_balance)
 
       console.log({ address, balance, user_info })
-      const signed_message = await get().signMessageWithEhters('login')
+      const signed_message = await get().signMessageWithEhters('Login to PowerStack dApp')
       await get().createSession(
         {
           network: 'rinkeby',

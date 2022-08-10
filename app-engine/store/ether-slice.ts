@@ -23,21 +23,22 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
 
   // this function is called from session-state.ts when a new session is created
   initEthers: () => {
-    console.log('⚙️ initializing ether slice ...')
+    console.log('🇪🇹 initializing ether slice ...')
     // TODO:
-    console.log('⚙️ ether slice initialized')
+    console.log('🇪🇹 ether slice initialized')
   },
   loginWithMetamask: () => {
-    console.log('⚙️ login with metamask')
+    console.log('🇪🇹 login with metamask')
   },
   signMessageWithEhters: async (message: string) => {
-    console.log('⚙️ sign message with ethers', message)
+    console.log('🇪🇹 sign message with ethers', message)
     const { web3auth } = get()
     if (!web3auth) throw new Error('web3auth is not initialized')
     const web3auth_provider = await web3auth.connect()
     if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
     const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
     const signer = ethers_provider.getSigner()
+    console.log('🇪🇹 signing message with ethers ...')
     const signedMessage = await signer.signMessage(message)
     return signedMessage
   },
