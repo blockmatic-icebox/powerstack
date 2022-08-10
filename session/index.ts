@@ -1,7 +1,4 @@
-// nextjs session with iron-session
-
 // this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
-import type { IronSessionOptions } from 'iron-session'
 import { withIronSessionApiRoute } from 'iron-session/next'
 import { NextApiHandler } from 'next/types'
 import { AppUser } from '~/app-engine/types/app-engine'
@@ -14,7 +11,6 @@ declare module 'iron-session' {
 }
 
 export const withAppSessionApiRoute = (handler: NextApiHandler) => {
-  console.log('with app session')
   return withIronSessionApiRoute(handler, {
     password: 'somepasssdfasdfasdfasdfdsafsdsadfsdafsdafsd', // TODO: get it from ./environment/
     cookieName: 'app-session',

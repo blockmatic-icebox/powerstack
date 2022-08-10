@@ -1,6 +1,8 @@
 import { ethers, providers } from 'ethers'
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
+import { ethereum } from '../library'
+import { getInfuraChainData } from '../library/infura'
 
 export type EtherState = {
   ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -8,7 +10,7 @@ export type EtherState = {
 
 export type EtherActions = {
   initEthers: () => void
-  loginWithMetamask: () => void
+  loginWithMetamask: () => Promise<void>
   signMessageWithEhters: (message: string) => Promise<string>
   mintOnEvm: () => Promise<void>
 }
@@ -28,8 +30,29 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     // TODO:
     console.log('🇪🇹 ether slice initialized')
   },
-  loginWithMetamask: () => {
+  loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')
+    const { signMessageWithEhters } = get()
+    if (!ethereum) throw new Error('Please install the metamask extension to login')
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    const provider = new ethers.providers.Web3Provider(ethereum)
+    const infura_network_id = parseInt(ethereum.networkVersion)
+    const network = getInfuraChainData(infura_network_id).name
+    const message = 'Login to PowerStack App'
+    const signer = provider.getSigner()
+    const address = await signer.getAddress()
+    const eth_balance = ethers.utils.formatEther(await provider.getBalance(address))
+    const chain_id = ethereum.chainId
+
+    console.log('🇪🇹 logging in with metamask...', {
+      accounts,
+      signature: await signer.signMessage(message),
+      address,
+      eth_balance,
+      chain_id,
+      network,
+      message,
+    })
   },
   signMessageWithEhters: async (message: string) => {
     console.log('🇪🇹 sign message with ethers', message)

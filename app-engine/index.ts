@@ -5,7 +5,7 @@ import { createSessionSlice, SessionState, SessionActions } from './store/sessio
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from './library'
-import { LayoutActions, LayoutState, createLayoutSlice } from './store/layout-slice'
+import { UIActions, UIState, createUISlice } from './store/ui-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createConfigSlice, ConfigState } from './store/config-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
@@ -17,7 +17,7 @@ import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = ConfigState &
   UserState &
-  LayoutState &
+  UIState &
   Web3AuthState &
   SessionState &
   EtherState &
@@ -25,7 +25,7 @@ export type AppState = ConfigState &
   SolanaState &
   ZustandState
 export type AppActions = UserActions &
-  LayoutActions &
+  UIActions &
   Web3AuthActions &
   SessionActions &
   EtherActions &
@@ -48,7 +48,7 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createUserSlice(set, get),
     ...createSolanaSlice(set, get),
     ...createEosioSlice(set, get),
-    ...createLayoutSlice(set, get),
+    ...createUISlice(set, get),
     ...createZustandSlice(set, get),
     ...createEtherSlice(set, get),
   }),
