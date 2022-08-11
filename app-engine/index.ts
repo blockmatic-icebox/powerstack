@@ -9,7 +9,7 @@ import { UIActions, UIState, createUISlice } from './store/ui-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
 import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
-import { createEngineSlice, EngineState } from './store/engine-slice'
+import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 
@@ -28,7 +28,8 @@ export type AppActions = UserActions &
   SessionActions &
   EtherActions &
   EosioActions &
-  SolanaActions
+  SolanaActions &
+  EngineActions
 export type AppEngine = AppState & AppActions
 
 // these types is used within the slices
@@ -50,21 +51,6 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createEtherSlice(set, get),
   }),
 )
-
-// NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
-//       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm .
-//       hydration its not necessary at the moment.
-
-// Intialize App Engine State, you must import '~/app-engine'
-if (isBrowser && !app_engine.getState().app_engine_initialized) {
-  app_engine.setState({
-    app_engine_initialized: true,
-    app_engine_init_time: new Date(),
-  })
-  console.log('🗂 initialized zustand state')
-  // initialize web3auth on first page load
-  // useAppEngine.getState().web3authInit()
-}
 
 // standard zustand store https://github.com/pmndrs/zustand
 const useAppEngineBare = create(app_engine)
