@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { ethereum } from '../library'
 import { getInfuraChainData } from '../library/infura'
 import Decimal from 'decimal.js'
+import { client_args } from '~/app-config/client-config'
 
 export type EtherState = {
   ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -38,13 +39,12 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const provider = new ethers.providers.Web3Provider(ethereum)
     const infura_network_id = parseInt(ethereum.networkVersion)
     const network = getInfuraChainData(infura_network_id).name
-    const message = 'Login to PowerStack App'
     const signer = provider.getSigner()
     const address = await signer.getAddress()
     const wei_balance = await provider.getBalance(address)
     const balance = ethers.utils.formatEther(wei_balance)
     const chain_id = ethereum.chainId
-    const signed_message = await signer.signMessage(message)
+    const signed_message = await signer.signMessage(client_args.messages.session_message)
 
     console.log('🇪🇹 logging in with metamask...', {
       accounts,
@@ -53,7 +53,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       balance,
       chain_id,
       network,
-      message,
+      message: client_args.messages.session_message,
     })
     await get().createSession(
       {

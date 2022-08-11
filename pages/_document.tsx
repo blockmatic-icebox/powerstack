@@ -1,6 +1,6 @@
 import React from 'react'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { getGeneratedStylesheet } from '../styles'
+import { getGeneratedStylesheet } from '../app-ui/styles'
 
 export default class Document extends NextDocument {
   render() {

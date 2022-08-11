@@ -2,6 +2,7 @@ import { app_engine, StoreSlice } from '../index'
 import AnchorLink, { PublicKey } from 'anchor-link'
 // import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
+import { client_args } from '~/app-config/client-config'
 // import { newAnchorLink } from '../library/utils'
 
 export type EosioState = {
@@ -83,18 +84,15 @@ interface RequestTokenAnchorEOSParams {
 }
 
 const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
-  const response = await fetch(
-    `${app_engine.getState().app_engine_config.services.auth_api}/provider/anchor`,
-    {
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const response = await fetch(`${client_args.services.auth_api}/provider/anchor`, {
+    method: 'POST',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-  )
+    body: JSON.stringify(data),
+  })
 
   return await response.json()
 }

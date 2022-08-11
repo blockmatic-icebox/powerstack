@@ -7,8 +7,8 @@ import {
   GitlabIcon,
   GhLoginIcon,
   BitbucketIcon,
-} from '~/components/icons/index'
-import { Button } from '~/components/base/index'
+} from '~/app-ui/components/icons/index'
+import { Button } from '~/app-ui/components/base/index'
 import { Card } from './Card'
 import { useAppEngine } from '~/app-engine/index'
 import { useLocation } from 'react-use'

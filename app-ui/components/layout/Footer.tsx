@@ -1,6 +1,6 @@
 import { styled } from '../../styles/stitches.config'
-import { LightModeIcon } from '~/components/icons/index'
-import { Button } from '~/components/base/index'
+import { LightModeIcon } from '~/app-ui/components/icons/index'
+import { Button } from '~/app-ui/components/base/index'
 import { Container } from './Container'
 
 // NOTE: Should be a Link component

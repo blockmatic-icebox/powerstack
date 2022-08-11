@@ -7,23 +7,21 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from './library'
 import { UIActions, UIState, createUISlice } from './store/ui-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
-import { createConfigSlice, ConfigState } from './store/config-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
 import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
-import { createZustandSlice, ZustandState } from './store/zustand-slice'
+import { createEngineSlice, EngineState } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
-export type AppState = ConfigState &
-  UserState &
+export type AppState = UserState &
   UIState &
   Web3AuthState &
   SessionState &
   EtherState &
   EosioState &
   SolanaState &
-  ZustandState
+  EngineState
 export type AppActions = UserActions &
   UIActions &
   Web3AuthActions &
@@ -42,14 +40,13 @@ export type StoreSlice<T> = (set: StoreSetState, get: StoreGetState) => T
 export const app_engine = createVanillaStore<AppEngine>(
   // compose all slices into AppState
   (set, get) => ({
-    ...createConfigSlice(set, get),
     ...createWeb3AuthSlice(set, get),
     ...createSessionSlice(set, get),
     ...createUserSlice(set, get),
     ...createSolanaSlice(set, get),
     ...createEosioSlice(set, get),
     ...createUISlice(set, get),
-    ...createZustandSlice(set, get),
+    ...createEngineSlice(set, get),
     ...createEtherSlice(set, get),
   }),
 )

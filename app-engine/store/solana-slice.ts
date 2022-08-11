@@ -1,6 +1,7 @@
 import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
+import { client_args } from '~/app-config/client-config'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -37,9 +38,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
       const resp = await solana_provider.connect()
       const address = resp.publicKey.toString()
-
-      const message = `Login to PowerStack App`
-      const encoded_message = new TextEncoder().encode(message)
+      const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
       const signed_message = await solana_provider.signMessage(encoded_message, 'utf8')
 
       await get().createSession(

@@ -1,12 +1,18 @@
+import { ethers } from 'ethers'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { auth_service } from '~/app-engine/services/jwt-auth-service'
 import { AppUser } from '~/app-engine/types/app-engine'
-import { withAppSessionApiRoute } from '~/session/index'
+import { withAppSessionApiRoute } from '~/app-server/session'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { address, message, signature } = await req.body
   const { address, signed_message } = await req.body
   console.log('/api/login', { address, signed_message })
+
+  const signer_address = await ethers.utils.verifyMessage(message, signature)
+  if (signer_address !== address) throw new Error(`Invalid signature`)
+
+  const lowerCaseAddress = address.toLowerCase()
 
   try {
     // const jwt_token = await auth_service.login()

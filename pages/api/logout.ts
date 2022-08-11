@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { withAppSessionApiRoute } from '~/session'
+import { withAppSessionApiRoute } from '~/app-server/session'
 
 const logout_route = (req: NextApiRequest, res: NextApiResponse<{ success: boolean }>) => {
   req.session.destroy()

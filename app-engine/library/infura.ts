@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const getInfuraChains = (infura_api_key: string) => {
   return [
     {

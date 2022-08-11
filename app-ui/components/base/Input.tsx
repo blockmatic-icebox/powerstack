@@ -1,4 +1,4 @@
-import { styled } from '~/styles/stitches.config'
+import { styled } from '~/app-ui/styles/stitches.config'
 
 export const Input = styled('input', {
   boxSizing: 'border-box',
