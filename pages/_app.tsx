@@ -21,7 +21,6 @@ if (isBrowser) console.log(useAppEngine.getState())
 
 function MyApp({ Component, pageProps }: AppProps) {
   const engine = useAppEngine()
-  console.log('WAT')
 
   // log the store state on every update
   useEffect(() => {
