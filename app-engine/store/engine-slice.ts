@@ -11,7 +11,7 @@ export interface EngineActions {
 
 export type EngineSlice = EngineState & EngineActions
 
-export const createEngineSlice: StoreSlice<EngineState> = (set, get) => ({
+export const createEngineSlice: StoreSlice<EngineSlice> = (set, get) => ({
   app_engine_initialized: false,
   app_engine_init_time: null,
   initializeAppEngine: () => {
