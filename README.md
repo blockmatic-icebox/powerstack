@@ -101,7 +101,6 @@ graphiql: https://graphiql-online.com
 |       ├── c
 |       ├── d
 |       ├── f
-|       └── g
 |
 ├── app-server ...............................# server side logic
 |
