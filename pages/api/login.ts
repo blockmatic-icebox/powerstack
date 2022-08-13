@@ -1,16 +1,33 @@
 import { ethers } from 'ethers'
 import { NextApiRequest, NextApiResponse } from 'next'
+import nacl from 'tweetnacl'
 import { auth_service } from '~/app-engine/services/jwt-auth-service'
-import { AppUser } from '~/app-engine/types/app-engine'
+import { Address, AppUser } from '~/app-engine/types/app-engine'
 import { withAppSessionApiRoute } from '~/app-server/session'
+
+// interface SignatureValidatorParams {
+//   address: Address
+//   message: string
+//   signed_message: any
+// }
+
+// const verifySolanaMessageSignature = async ({address, message, signed_message}:SignatureValidatorParams) =>{
+//   nacl.sign.detached.verify(message, signed_message, address)
+//  return true
+// }
+// const verifyEthereumMessageSignature = async ({
+//   address,
+//   message,
+//   signed_message,
+// }: SignatureValidatorParams) => {
+//     const signer_address = await ethers.utils.verifyMessage(message, signed_message)
+//   return signer_address !== address
+// }
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { address, message, signature } = await req.body
-  const { address, message, signature } = await req.body
-  console.log('/api/login', { address, signature })
-
-  const signer_address = await ethers.utils.verifyMessage(message, signature)
-  if (signer_address !== address) throw new Error(`Invalid signature`)
+  const { network, address, message, signed_message } = await req.body
+  console.log('/api/login', { network, address, message, signed_message })
 
   try {
     // const jwt_token = await auth_service.login()

@@ -1,7 +1,5 @@
-subscription Account {
-  accounts {
-    account
-    email
-    first_name
+mutation CreateUsername($username: String) {
+  insert_accounts(objects: { username: $username }) {
+    affected_rows
   }
 }
