@@ -3,53 +3,81 @@ import AnchorLink, { PublicKey } from 'anchor-link'
 // import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
-// import { newAnchorLink } from '../library/utils'
+import { newAnchorLink } from '../library'
 
-export type EosioState = {
+export enum EOSIOAuthType {
+  ANCHOR,
+}
+
+export interface EosioState {
+  anchorLink?: AnchorLink
+  authed: boolean
+  token: string
+  authType?: EOSIOAuthType
+  cred_id?: string
+  pub_key?: PublicKey
   eosio_current_provider: null
 }
 
 export type EosioActions = {
   initEosio: () => void
   loginWithAnchor: () => Promise<void>
+  logout: () => void
+  setSessionToken: (token: string) => void
 }
 
 export type EosioSlice = EosioState & EosioActions
 
 const defaultEosioState: EosioState = {
   eosio_current_provider: null,
+  authed: false,
+  authType: undefined,
+  cred_id: undefined,
+  pub_key: undefined,
+  token: '',
 }
 
 export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
   ...defaultEosioState,
-
+  setSessionToken: () => {},
   loginWithAnchor: async () => {
     console.log('loginWithAnchor')
-    // try {
-    //   // get().logout()
-    //   const anchorLink = get().anchorLink || newAnchorLink
+    try {
+      // get().logout() // TODO: fix me @RUBENABIX
+      const anchorLink = get().anchorLink || newAnchorLink
 
-    //   if (!get().anchorLink) set({ anchorLink })
+      if (!get().anchorLink) set({ anchorLink })
 
-    //   // Use the anchor-link login method with the chain id to establish a session
-    //   const identity = await anchorLink.login('100xapp')
-    //   // const account = auth ? await anchorLink.client.v1.chain.get_account(auth.actor.toString()) : undefined
-    //   const pub_key = PublicKey.from(identity.session.publicKey)
+      // Use the anchor-link login method with the chain id to establish a session
+      const identity = await anchorLink.login(client_args.app_name)
+      // const account = auth ? await anchorLink.client.v1.chain.get_account(auth.actor.toString()) : undefined
+      const pub_key = PublicKey.from(identity.session.publicKey)
 
-    //   const payload = {
-    //     identity,
-    //   }
+      const payload = {
+        sign_data: {
+          digest: identity.transaction.signingDigest(identity.session.chainId).toString(),
+          pub_key,
+          signature: identity.signatures.map((sign) => sign.toString())[0],
+        },
+        account: identity.signer.actor.toString(),
+      }
 
-    //   const result = await powerstackAuthService.getTokenAnchorEOS(payload)
+      console.log(payload)
 
-    //   const { token } = result
+      const result = await bitcashAuthService.getTokenAnchorEOS(payload)
 
-    //   set({ authed: true, authType: EOSIOAuthType.ANCHOR, pub_key, token })
-    //   get().setSessionToken(token)
-    // } catch (error) {
-    //   get().logout()
-    //   throw error
-    // }
+      const { token, error } = result
+
+      if (error) throw new Error(error)
+
+      set({ authed: true, authType: AuthType.ANCHOR, pub_key, token })
+      get().setSessionToken(token)
+
+      await get().setAccount(identity.signer.actor.toString())
+    } catch (error) {
+      get().logout()
+      throw error
+    }
   },
   // clear account state and reset auth on logout
   logout: async () => {
@@ -100,29 +128,3 @@ const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
 export const powerstackAuthService = {
   getTokenAnchorEOS,
 }
-
-export enum EOSIOAuthType {
-  ANCHOR,
-}
-
-export type EOSIOAuthState = {
-  anchorLink?: AnchorLink
-  authed: boolean
-  token: string
-  authType?: EOSIOAuthType
-  cred_id?: string
-  pub_key?: PublicKey
-  loginWithAnchor: () => Promise<void>
-  logout: () => void
-  setSessionToken: (token: string) => void
-}
-
-const eosioAuthDefaultState = {
-  authed: false,
-  authType: undefined,
-  cred_id: undefined,
-  pub_key: undefined,
-  token: '',
-}
-
-//==================================================

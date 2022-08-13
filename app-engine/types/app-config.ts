@@ -12,6 +12,10 @@ export interface AppServices {
   cloudinary_api_key: string
   cloudinary_api_secret: string
   web3auth_client_id: string
+  eosio: {
+    eos_chain_id: string
+    chain_rpc: string
+  }
 }
 
 export interface AppAnalytics {
@@ -25,6 +29,7 @@ export interface AppMessages {
 
 // global application configuration based on env
 export interface AppConfig {
+  app_name: string
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags
