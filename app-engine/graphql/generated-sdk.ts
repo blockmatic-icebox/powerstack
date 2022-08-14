@@ -52,51 +52,7 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "accounts" */
 export type Accounts = {
   account_id: Scalars['uuid'];
-  /** fetch data from the table: "addresses" */
-  addresses: Array<Addresses>;
-  /** fetch aggregated fields from the table: "addresses" */
-  addresses_aggregate: Addresses_Aggregate;
   username: Scalars['String'];
-};
-
-
-/** columns and relationships of "accounts" */
-export type AccountsAddressesArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-
-/** columns and relationships of "accounts" */
-export type AccountsAddresses_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-/** aggregated selection of "accounts" */
-export type Accounts_Aggregate = {
-  aggregate?: Maybe<Accounts_Aggregate_Fields>;
-  nodes: Array<Accounts>;
-};
-
-/** aggregate fields of "accounts" */
-export type Accounts_Aggregate_Fields = {
-  count: Scalars['Int'];
-  max?: Maybe<Accounts_Max_Fields>;
-  min?: Maybe<Accounts_Min_Fields>;
-};
-
-
-/** aggregate fields of "accounts" */
-export type Accounts_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Accounts_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "accounts". All fields are combined with a logical 'AND'. */
@@ -105,7 +61,6 @@ export type Accounts_Bool_Exp = {
   _not?: InputMaybe<Accounts_Bool_Exp>;
   _or?: InputMaybe<Array<Accounts_Bool_Exp>>;
   account_id?: InputMaybe<Uuid_Comparison_Exp>;
-  addresses?: InputMaybe<Addresses_Bool_Exp>;
   username?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -118,20 +73,7 @@ export enum Accounts_Constraint {
 /** input type for inserting data into table "accounts" */
 export type Accounts_Insert_Input = {
   account_id?: InputMaybe<Scalars['uuid']>;
-  addresses?: InputMaybe<Addresses_Arr_Rel_Insert_Input>;
   username?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregate max on columns */
-export type Accounts_Max_Fields = {
-  account_id?: Maybe<Scalars['uuid']>;
-  username?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Accounts_Min_Fields = {
-  account_id?: Maybe<Scalars['uuid']>;
-  username?: Maybe<Scalars['String']>;
 };
 
 /** response of any mutation on the table "accounts" */
@@ -152,7 +94,6 @@ export type Accounts_On_Conflict = {
 /** Ordering options when selecting data from "accounts". */
 export type Accounts_Order_By = {
   account_id?: InputMaybe<Order_By>;
-  addresses_aggregate?: InputMaybe<Addresses_Aggregate_Order_By>;
   username?: InputMaybe<Order_By>;
 };
 
@@ -183,204 +124,16 @@ export enum Accounts_Update_Column {
   Username = 'username'
 }
 
-/** columns and relationships of "addresses" */
-export type Addresses = {
-  account_id: Scalars['uuid'];
-  address: Scalars['String'];
-  network: Scalars['String'];
-};
-
-/** aggregated selection of "addresses" */
-export type Addresses_Aggregate = {
-  aggregate?: Maybe<Addresses_Aggregate_Fields>;
-  nodes: Array<Addresses>;
-};
-
-/** aggregate fields of "addresses" */
-export type Addresses_Aggregate_Fields = {
-  count: Scalars['Int'];
-  max?: Maybe<Addresses_Max_Fields>;
-  min?: Maybe<Addresses_Min_Fields>;
-};
-
-
-/** aggregate fields of "addresses" */
-export type Addresses_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Addresses_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** order by aggregate values of table "addresses" */
-export type Addresses_Aggregate_Order_By = {
-  count?: InputMaybe<Order_By>;
-  max?: InputMaybe<Addresses_Max_Order_By>;
-  min?: InputMaybe<Addresses_Min_Order_By>;
-};
-
-/** input type for inserting array relation for remote table "addresses" */
-export type Addresses_Arr_Rel_Insert_Input = {
-  data: Array<Addresses_Insert_Input>;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Addresses_On_Conflict>;
-};
-
-/** Boolean expression to filter rows from the table "addresses". All fields are combined with a logical 'AND'. */
-export type Addresses_Bool_Exp = {
-  _and?: InputMaybe<Array<Addresses_Bool_Exp>>;
-  _not?: InputMaybe<Addresses_Bool_Exp>;
-  _or?: InputMaybe<Array<Addresses_Bool_Exp>>;
-  account_id?: InputMaybe<Uuid_Comparison_Exp>;
-  address?: InputMaybe<String_Comparison_Exp>;
-  network?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "addresses" */
-export enum Addresses_Constraint {
-  /** unique or primary key constraint */
-  AddressesPkey = 'addresses_pkey'
-}
-
-/** input type for inserting data into table "addresses" */
-export type Addresses_Insert_Input = {
-  account_id?: InputMaybe<Scalars['uuid']>;
-  address?: InputMaybe<Scalars['String']>;
-  network?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregate max on columns */
-export type Addresses_Max_Fields = {
-  account_id?: Maybe<Scalars['uuid']>;
-  address?: Maybe<Scalars['String']>;
-  network?: Maybe<Scalars['String']>;
-};
-
-/** order by max() on columns of table "addresses" */
-export type Addresses_Max_Order_By = {
-  account_id?: InputMaybe<Order_By>;
-  address?: InputMaybe<Order_By>;
-  network?: InputMaybe<Order_By>;
-};
-
-/** aggregate min on columns */
-export type Addresses_Min_Fields = {
-  account_id?: Maybe<Scalars['uuid']>;
-  address?: Maybe<Scalars['String']>;
-  network?: Maybe<Scalars['String']>;
-};
-
-/** order by min() on columns of table "addresses" */
-export type Addresses_Min_Order_By = {
-  account_id?: InputMaybe<Order_By>;
-  address?: InputMaybe<Order_By>;
-  network?: InputMaybe<Order_By>;
-};
-
-/** response of any mutation on the table "addresses" */
-export type Addresses_Mutation_Response = {
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Addresses>;
-};
-
-/** on_conflict condition type for table "addresses" */
-export type Addresses_On_Conflict = {
-  constraint: Addresses_Constraint;
-  update_columns?: Array<Addresses_Update_Column>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "addresses". */
-export type Addresses_Order_By = {
-  account_id?: InputMaybe<Order_By>;
-  address?: InputMaybe<Order_By>;
-  network?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: addresses */
-export type Addresses_Pk_Columns_Input = {
-  address: Scalars['String'];
-  network: Scalars['String'];
-};
-
-/** select columns of table "addresses" */
-export enum Addresses_Select_Column {
-  /** column name */
-  AccountId = 'account_id',
-  /** column name */
-  Address = 'address',
-  /** column name */
-  Network = 'network'
-}
-
-/** input type for updating data in table "addresses" */
-export type Addresses_Set_Input = {
-  account_id?: InputMaybe<Scalars['uuid']>;
-  address?: InputMaybe<Scalars['String']>;
-  network?: InputMaybe<Scalars['String']>;
-};
-
-/** update columns of table "addresses" */
-export enum Addresses_Update_Column {
-  /** column name */
-  AccountId = 'account_id',
-  /** column name */
-  Address = 'address',
-  /** column name */
-  Network = 'network'
-}
-
 /** mutation root */
 export type Mutation_Root = {
-  /** delete data from the table: "accounts" */
-  delete_accounts?: Maybe<Accounts_Mutation_Response>;
-  /** delete single row from the table: "accounts" */
-  delete_accounts_by_pk?: Maybe<Accounts>;
-  /** delete data from the table: "addresses" */
-  delete_addresses?: Maybe<Addresses_Mutation_Response>;
-  /** delete single row from the table: "addresses" */
-  delete_addresses_by_pk?: Maybe<Addresses>;
   /** insert data into the table: "accounts" */
   insert_accounts?: Maybe<Accounts_Mutation_Response>;
   /** insert a single row into the table: "accounts" */
   insert_accounts_one?: Maybe<Accounts>;
-  /** insert data into the table: "addresses" */
-  insert_addresses?: Maybe<Addresses_Mutation_Response>;
-  /** insert a single row into the table: "addresses" */
-  insert_addresses_one?: Maybe<Addresses>;
   /** update data of the table: "accounts" */
   update_accounts?: Maybe<Accounts_Mutation_Response>;
   /** update single row of the table: "accounts" */
   update_accounts_by_pk?: Maybe<Accounts>;
-  /** update data of the table: "addresses" */
-  update_addresses?: Maybe<Addresses_Mutation_Response>;
-  /** update single row of the table: "addresses" */
-  update_addresses_by_pk?: Maybe<Addresses>;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_AccountsArgs = {
-  where: Accounts_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Accounts_By_PkArgs = {
-  account_id: Scalars['uuid'];
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_AddressesArgs = {
-  where: Addresses_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Addresses_By_PkArgs = {
-  address: Scalars['String'];
-  network: Scalars['String'];
 };
 
 
@@ -399,20 +152,6 @@ export type Mutation_RootInsert_Accounts_OneArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_AddressesArgs = {
-  objects: Array<Addresses_Insert_Input>;
-  on_conflict?: InputMaybe<Addresses_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Addresses_OneArgs = {
-  object: Addresses_Insert_Input;
-  on_conflict?: InputMaybe<Addresses_On_Conflict>;
-};
-
-
-/** mutation root */
 export type Mutation_RootUpdate_AccountsArgs = {
   _set?: InputMaybe<Accounts_Set_Input>;
   where: Accounts_Bool_Exp;
@@ -423,20 +162,6 @@ export type Mutation_RootUpdate_AccountsArgs = {
 export type Mutation_RootUpdate_Accounts_By_PkArgs = {
   _set?: InputMaybe<Accounts_Set_Input>;
   pk_columns: Accounts_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_AddressesArgs = {
-  _set?: InputMaybe<Addresses_Set_Input>;
-  where: Addresses_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Addresses_By_PkArgs = {
-  _set?: InputMaybe<Addresses_Set_Input>;
-  pk_columns: Addresses_Pk_Columns_Input;
 };
 
 /** column ordering options */
@@ -458,16 +183,8 @@ export enum Order_By {
 export type Query_Root = {
   /** fetch data from the table: "accounts" */
   accounts: Array<Accounts>;
-  /** fetch aggregated fields from the table: "accounts" */
-  accounts_aggregate: Accounts_Aggregate;
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>;
-  /** fetch data from the table: "addresses" */
-  addresses: Array<Addresses>;
-  /** fetch aggregated fields from the table: "addresses" */
-  addresses_aggregate: Addresses_Aggregate;
-  /** fetch data from the table: "addresses" using primary key columns */
-  addresses_by_pk?: Maybe<Addresses>;
 };
 
 
@@ -480,56 +197,15 @@ export type Query_RootAccountsArgs = {
 };
 
 
-export type Query_RootAccounts_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Accounts_Order_By>>;
-  where?: InputMaybe<Accounts_Bool_Exp>;
-};
-
-
 export type Query_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid'];
-};
-
-
-export type Query_RootAddressesArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-
-export type Query_RootAddresses_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-
-export type Query_RootAddresses_By_PkArgs = {
-  address: Scalars['String'];
-  network: Scalars['String'];
 };
 
 export type Subscription_Root = {
   /** fetch data from the table: "accounts" */
   accounts: Array<Accounts>;
-  /** fetch aggregated fields from the table: "accounts" */
-  accounts_aggregate: Accounts_Aggregate;
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>;
-  /** fetch data from the table: "addresses" */
-  addresses: Array<Addresses>;
-  /** fetch aggregated fields from the table: "addresses" */
-  addresses_aggregate: Addresses_Aggregate;
-  /** fetch data from the table: "addresses" using primary key columns */
-  addresses_by_pk?: Maybe<Addresses>;
 };
 
 
@@ -542,41 +218,8 @@ export type Subscription_RootAccountsArgs = {
 };
 
 
-export type Subscription_RootAccounts_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Accounts_Order_By>>;
-  where?: InputMaybe<Accounts_Bool_Exp>;
-};
-
-
 export type Subscription_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid'];
-};
-
-
-export type Subscription_RootAddressesArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-
-export type Subscription_RootAddresses_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Addresses_Order_By>>;
-  where?: InputMaybe<Addresses_Bool_Exp>;
-};
-
-
-export type Subscription_RootAddresses_By_PkArgs = {
-  address: Scalars['String'];
-  network: Scalars['String'];
 };
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
