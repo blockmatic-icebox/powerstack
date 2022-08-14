@@ -13,6 +13,7 @@ type AuthResponse = {
 // WIP: fix login_auth_api_url
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
+    const login_auth_api_url = 'http://localhost:4001/provider/evm'
     const response = await fetchJson(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
