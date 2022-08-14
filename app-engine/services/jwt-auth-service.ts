@@ -17,7 +17,6 @@ const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> =
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
-    console.log({ login_response })
     return login_response as AuthResponse
   } catch (error) {
     console.log('error', error)
