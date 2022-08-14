@@ -1,9 +1,10 @@
 import { styled } from '../app-view/styles/stitches.config'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { Container, Footer, Header } from '~/app-view/components/layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
+import { withSessionSsr } from '~/app-server/session'
 
 const MainContent = styled('div', {
   minHeight: '75vh',
@@ -22,6 +23,22 @@ const ButtonGroup = styled('div', {
   justifyContent: 'space-between',
   maxWidth: 450,
   paddingTop: '$small',
+})
+
+export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
+  const user = req.session.user
+
+  if (!user) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      user: req.session.user,
+    },
+  }
 })
 
 const Home: NextPage = () => {
