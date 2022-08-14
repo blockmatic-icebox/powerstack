@@ -3,17 +3,20 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
+// TODO: fix me @RUBENBIX
+const apollo_base_url = 'powerstack-hasura-panslbmhpa-uc.a.run.app/v1/graphql'
+
 const wsLink =
   typeof window !== 'undefined'
     ? new GraphQLWsLink(
         createClient({
-          url: 'wss://powerstack.xyz/v1/graphql',
+          url: `wss://${apollo_base_url}`,
         }),
       )
     : null
 
-const httpLink = new HttpLink({
-  uri: `https://powerstack.xyz/v1/graphql`,
+const http_link = new HttpLink({
+  uri: `https://${apollo_base_url}`,
 })
 
 const link =
@@ -24,9 +27,9 @@ const link =
           return def.kind === 'OperationDefinition' && def.operation === 'subscription'
         },
         wsLink,
-        httpLink,
+        http_link,
       )
-    : httpLink
+    : http_link
 
 export const anon_apollo_client = new ApolloClient({
   link,
