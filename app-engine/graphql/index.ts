@@ -1,2 +1,2 @@
 export * from './graphql-client'
-export * as PowerstackGraphQL from './generated-sdk'
+export * as AppGraphQL from './generated-sdk'

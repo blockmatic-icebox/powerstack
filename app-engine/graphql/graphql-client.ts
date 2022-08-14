@@ -4,18 +4,11 @@ import { SentryLink } from 'apollo-link-sentry'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import _ from 'lodash'
+import { client_args } from '~/app-config/client-config'
 
 export { ApolloProvider } from '@apollo/client'
 
-export interface AppolloClientOptions {
-  graphql_api_key: string
-  graphql_api: string
-}
-
-export const createApolloClientBrowser = ({
-  graphql_api_key,
-  graphql_api,
-}: AppolloClientOptions) => {
+export const createApolloClientBrowser = (graphql_api: string) => {
   const splitWs = (wsLink: GraphQLWsLink, httpLink: HttpLink) => {
     return split(
       ({ query }) => {
@@ -27,9 +20,7 @@ export const createApolloClientBrowser = ({
     )
   }
 
-  const graphql_api_headers = {
-    'x-api-key': graphql_api_key,
-  }
+  const graphql_api_headers = {}
 
   const httpLink = new HttpLink({
     uri: graphql_api,
@@ -69,3 +60,5 @@ export const createApolloClientBrowser = ({
     }),
   })
 }
+
+export const anon_apollo_client = createApolloClientBrowser(client_args.services.graphql_api)

@@ -1,6 +1,6 @@
 overwrite: true
 generates:
-  app-engine/graphql/generated/generated-sdk.ts:
+  app-engine/graphql/generated-sdk.ts:
     documents: 'app-engine/graphql/schema.graphql'
     schema:
       - https://api.powerstack.xyz/v1/graphql:
@@ -9,5 +9,6 @@ generates:
     plugins:
       - 'typescript'
       - 'typescript-operations'
+      - 'typescript-react-apollo'
     config:
       skipTypename: true

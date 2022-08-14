@@ -64,16 +64,17 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       console.log(payload)
 
-      const result = await bitcashAuthService.getTokenAnchorEOS(payload)
+      // FIX: this thing you broke
+      const result = { token: '', error: '' } // await bitcashAuthService.getTokenAnchorEOS(payload)
 
       const { token, error } = result
 
       if (error) throw new Error(error)
 
-      set({ authed: true, authType: AuthType.ANCHOR, pub_key, token })
+      // set({ authed: true, authType: AuthType.ANCHOR, pub_key, token })
       get().setSessionToken(token)
 
-      await get().setAccount(identity.signer.actor.toString())
+      // await get().setAccount(identity.signer.actor.toString())
     } catch (error) {
       get().logout()
       throw error
