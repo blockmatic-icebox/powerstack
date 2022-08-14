@@ -1,5 +1,5 @@
 import { styled } from '../app-view/styles/stitches.config'
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import { Container, Footer, Header } from '~/app-view/components/layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
@@ -38,7 +38,7 @@ const ButtonGroup = styled('div', {
 // })
 
 const Home: NextPage = () => {
-  const { createAccount } = useAppEngine()
+  const { createUserAccount } = useAppEngine()
   const [username, setUsername] = useState('')
   return (
     <LoginBackground>
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             css={{ maxWidth: 450, width: '100%' }}
           />
           <ButtonGroup>
-            <Button onClick={() => createAccount(username)}>Create your Account</Button>
+            <Button onClick={() => createUserAccount(username)}>Create your Account</Button>
           </ButtonGroup>
         </Container>
       </MainContent>
