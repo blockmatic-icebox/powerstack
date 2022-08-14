@@ -35,7 +35,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')
     if (!ethereum) throw new Error('Please install the metamask extension to login')
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    await ethereum.request({ method: 'eth_requestAccounts' })
     const provider = new ethers.providers.Web3Provider(ethereum)
     const infura_network_id = parseInt(ethereum.networkVersion)
     const network = getInfuraChainData(infura_network_id).name
@@ -43,7 +43,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const address = await signer.getAddress()
     const wei_balance = await provider.getBalance(address)
     const balance = ethers.utils.formatEther(wei_balance)
-    const chain_id = ethereum.chainId // TODO: is it neccessary?
+    // const chain_id = ethereum.chainId // TODO: is it neccessary?
     const message = client_args.messages.session_message
     const signed_message = await signer.signMessage(message)
     console.log('🇪🇹 logging in with metamask...')
@@ -55,6 +55,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       signed_message,
       auth_method,
     })
+    console.log('metamask response', { token, error })
     if (error || !token) return // TODO: fix me handle login error
     get().setUser({
       username: 'anon', // TODO: fix me,

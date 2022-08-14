@@ -9,17 +9,16 @@ export type AuthResponse = {
   error: unknown // TODO: fix type
 }
 
-// TODO: fix type
-// WIP: fix login_auth_api_url
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
-    const login_auth_api_url = 'http://localhost:4001/provider/evm'
-    const response = await fetchJson(login_auth_api_url, {
+    const login_auth_api_url = client_args.services.auth_api + '/provider/evm'
+    const login_response = await fetchJson(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
-    return response as AuthResponse
+    console.log({ login_response })
+    return login_response as AuthResponse
   } catch (error) {
     console.log('error', error)
     throw new Error((error as Error).message)
