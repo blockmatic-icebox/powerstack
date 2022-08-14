@@ -5,7 +5,7 @@ import { createSessionSlice, SessionState, SessionActions } from './store/sessio
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { isBrowser } from './library'
-import { UIActions, UIState, createUISlice } from './store/ui-slice'
+import { ViewActions, ViewState, createViewSlice } from './store/view-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
 import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
@@ -16,7 +16,7 @@ import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphq
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
-  UIState &
+  ViewState &
   Web3AuthState &
   SessionState &
   EtherState &
@@ -25,7 +25,7 @@ export type AppState = UserState &
   EngineState &
   GraphQLState
 export type AppActions = UserActions &
-  UIActions &
+  ViewActions &
   Web3AuthActions &
   SessionActions &
   EtherActions &
@@ -49,7 +49,7 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createUserSlice(set, get),
     ...createSolanaSlice(set, get),
     ...createEosioSlice(set, get),
-    ...createUISlice(set, get),
+    ...createViewSlice(set, get),
     ...createEngineSlice(set, get),
     ...createEtherSlice(set, get),
     ...createGraphQLSlice(set, get),
