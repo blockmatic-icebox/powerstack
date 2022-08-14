@@ -26,14 +26,11 @@ import { withAppSessionApiRoute } from '~/app-server/session'
 // }
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
-  // const { address, message, signature } = await req.body
   const login_payload = (await req.body) as CreateSessionProps
-  console.log('/api/login', login_payload)
-
   try {
     const login_response = await auth_service.login(login_payload)
     console.log({ login_response })
-    // TODO: WIP: continue flow
+    // TODO: WIP: continue flow @RUBENABIX
     const user: AppUser = { user_addresses: [], user_balances: [] }
     req.session.user = user
     await req.session.save()
