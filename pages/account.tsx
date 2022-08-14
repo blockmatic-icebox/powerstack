@@ -1,5 +1,5 @@
 import { styled } from '../app-view/styles/stitches.config'
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import { Container, Footer, Header } from '~/app-view/components/layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'

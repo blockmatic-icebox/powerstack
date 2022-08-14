@@ -12,6 +12,7 @@ import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
+import { GraphQLActions, GraphQLState } from './store/graphql-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -21,7 +22,8 @@ export type AppState = UserState &
   EtherState &
   EosioState &
   SolanaState &
-  EngineState
+  EngineState &
+  GraphQLState
 export type AppActions = UserActions &
   UIActions &
   Web3AuthActions &
@@ -29,7 +31,8 @@ export type AppActions = UserActions &
   EtherActions &
   EosioActions &
   SolanaActions &
-  EngineActions
+  EngineActions &
+  GraphQLActions
 export type AppEngine = AppState & AppActions
 
 // these types is used within the slices
