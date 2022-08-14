@@ -1,11 +1,19 @@
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
-import { AppUserAddress } from '../types/app-engine'
+import { AuthMethod } from '../types/app-engine'
 
 export interface SessionState {}
 
+export interface CreateSessionProps {
+  address: string
+  signed_message: string
+  network: string
+  message: string
+  auth_method: AuthMethod
+}
+
 export interface SessionActions {
-  createSession: (address: AppUserAddress, signed_message: string) => Promise<{}>
+  createSession: (input: CreateSessionProps) => Promise<void>
   destroySession: () => Promise<void>
 }
 
@@ -15,23 +23,34 @@ const defaultSessionState = {}
 
 export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
   ...defaultSessionState,
-  createSession: async (address: AppUserAddress, signed_message: string) => {
+  createSession: async ({
+    network,
+    address,
+    message,
+    signed_message,
+    auth_method,
+  }: CreateSessionProps) => {
     console.log('🍪 create cookie session', JSON.stringify({ address, signed_message }))
-
+    const login_payload = {
+      network,
+      address,
+      message,
+      signed_message,
+      auth_method,
+    }
     try {
-      await fetchJson('/api/login', {
+      const result = await fetchJson('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address, signed_message }),
+        body: JSON.stringify(login_payload),
       })
-
       console.log('🍪 cookie session created!')
       // TODO: read jwt from the cookie and return it
-      const jwt = {}
-      return jwt
+      // const jwt = {}
+      // return jwt
     } catch (error) {
       console.error('An unexpected error happened:', error)
-      return {}
+      // return {}
     }
   },
 
