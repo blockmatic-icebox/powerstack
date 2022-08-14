@@ -1,6 +1,11 @@
 import type { Decimal } from 'decimal.js'
 
-export type AuthMethod = 'web2_twitter' | 'web3_solana' | 'web3_evm' | 'web3_anchor'
+export type AuthMethod =
+  | 'web2_twitter'
+  | 'web3_solana'
+  | 'web3_anchor'
+  | 'web3_metamask'
+  | 'web3_auth'
 
 export type Address = string
 
@@ -17,7 +22,8 @@ export interface AppUserBalance {
 }
 export interface AppUser {
   username?: string
-  jwt: {}
+  jwt: string
+  auth_method: AuthMethod
   user_addresses: AppUserAddress[]
   user_balances: AppUserBalance[]
 }

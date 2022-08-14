@@ -4,9 +4,9 @@ import { CreateSessionProps } from '../store/session-slice'
 
 // const login_auth_api_url = 'https://powerstack-auth-atgjsg75cq-uc.a.run.app'
 
-type AuthResponse = {
-  token: string
-  error: any // TODO: fix type
+export type AuthResponse = {
+  token: string | null
+  error: unknown // TODO: fix type
 }
 
 // TODO: fix type

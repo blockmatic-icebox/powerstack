@@ -1,5 +1,6 @@
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
+import { AuthResponse } from '../services/jwt-auth-service'
 import { AuthMethod } from '../types/app-engine'
 
 export interface SessionState {}
@@ -13,7 +14,7 @@ export interface CreateSessionProps {
 }
 
 export interface SessionActions {
-  createSession: (input: CreateSessionProps) => Promise<void>
+  createSession: (input: CreateSessionProps) => Promise<AuthResponse>
   destroySession: () => Promise<void>
 }
 
@@ -39,18 +40,17 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       auth_method,
     }
     try {
-      const result = await fetchJson('/api/login', {
+      // TODO: move to utils please and create fetch api file and fix type
+      const auth_response = (await fetchJson('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(login_payload),
-      })
+      })) as AuthResponse
       console.log('🍪 cookie session created!')
-      // TODO: read jwt from the cookie and return it
-      // const jwt = {}
-      // return jwt
+      return auth_response
     } catch (error) {
       console.error('An unexpected error happened:', error)
-      // return {}
+      return { error: error as unknown, token: null }
     }
   },
 
