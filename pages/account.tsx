@@ -28,11 +28,7 @@ const ButtonGroup = styled('div', {
 export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
   const user = req.session.user
 
-  if (!user) {
-    return {
-      notFound: true,
-    }
-  }
+  if (!user) return { user: null }
 
   return {
     props: {
