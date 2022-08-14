@@ -31,7 +31,7 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
     const login_response = await auth_service.login(login_payload)
     console.log({ login_response })
     // TODO: WIP: continue flow @RUBENABIX
-    const user: AppUser = { user_addresses: [], user_balances: [] }
+    const user: AppUser = { user_addresses: [], user_balances: [], jwt: {} }
     req.session.user = user
     await req.session.save()
     res.send({ user: req.session.user })

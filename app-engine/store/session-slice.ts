@@ -44,10 +44,13 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(login_payload),
       })
-
-      console.log('🍪 cookie session created!', result)
+      console.log('🍪 cookie session created!')
+      // TODO: read jwt from the cookie and return it
+      const jwt = {}
+      return jwt
     } catch (error) {
       console.error('An unexpected error happened:', error)
+      return {}
     }
   },
 

@@ -1,10 +1,11 @@
 import { styled } from '../app-view/styles/stitches.config'
-import { GetServerSideProps, NextPage } from 'next'
+import { GetServerSidePropsContext, NextPage } from 'next'
 import { Container, Footer, Header } from '~/app-view/components/layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
+import { AppGraphQL, createApolloClient } from '~/app-engine/graphql'
 
 const MainContent = styled('div', {
   minHeight: '75vh',
@@ -25,20 +26,30 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
+const ssrHandler = async ({ req }: GetServerSidePropsContext) => {
   const user = req.session.user
-
   if (!user) return { user: null }
+  const apollo_client = createApolloClient(user.jwt)
+
+  const result = apollo_client.query<AppGraphQL.AccountsQuery, AppGraphQL.AccountsQueryVariables>({
+    query: AppGraphQL.AccountsDocument,
+    variables: {
+      where: {
+        username: { _eq: 'gaboesquivel' },
+      },
+    },
+  })
 
   return {
     props: {
-      user: req.session.user,
+      user: {},
     },
   }
-})
+}
+// export const getServerSideProps = withSessionSsr(ssrHandler)
 
 const Home: NextPage = () => {
-  const { createAccount } = useAppEngine()
+  const { createUserAccount } = useAppEngine()
   const [username, setUsername] = useState('')
   return (
     <LoginBackground>
@@ -53,7 +64,7 @@ const Home: NextPage = () => {
             css={{ maxWidth: 450, width: '100%' }}
           />
           <ButtonGroup>
-            <Button onClick={() => createAccount(username)}>Create your Account</Button>
+            <Button onClick={() => createUserAccount(username)}>Create your Account</Button>
           </ButtonGroup>
         </Container>
       </MainContent>

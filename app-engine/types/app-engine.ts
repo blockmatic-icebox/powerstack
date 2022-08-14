@@ -17,10 +17,7 @@ export interface AppUserBalance {
 }
 export interface AppUser {
   username?: string
+  jwt: {}
   user_addresses: AppUserAddress[]
   user_balances: AppUserBalance[]
-}
-export interface AppSession {
-  session_token: string // jwt session token
-  app_user: AppUser
 }
