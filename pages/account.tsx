@@ -25,17 +25,17 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
-  const user = req.session.user
+// export const getServerSideProps = withSessionSsr(async function getServerSideProps({ req }) {
+//   const user = req.session.user
 
-  if (!user) return { user: null }
+//   if (!user) return { user: null }
 
-  return {
-    props: {
-      user: req.session.user,
-    },
-  }
-})
+//   return {
+//     props: {
+//       user: req.session.user,
+//     },
+//   }
+// })
 
 const Home: NextPage = () => {
   const { createAccount } = useAppEngine()
