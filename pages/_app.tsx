@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { useAppEngine } from '~/app-engine/index'
 import { useEffect } from 'react'
-import { Container } from '~/app-ui/components/layout/index'
+import { Container } from '~/app-view/components/layout/index'
 import { isBrowser } from '~/app-engine/library'
 import '~/app-engine'
 

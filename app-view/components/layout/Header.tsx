@@ -1,5 +1,5 @@
-import { styled } from '~/app-ui/styles/stitches.config'
-import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/app-ui/components/icons/index'
+import { styled } from '~/app-view/styles/stitches.config'
+import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
 import { useAppEngine } from '~/app-engine/index'

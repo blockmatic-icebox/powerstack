@@ -1,7 +1,7 @@
-import { styled } from '../app-ui/styles/stitches.config'
+import { styled } from '../app-view/styles/stitches.config'
 import { NextPage } from 'next'
-import { Container, Footer, Header } from '~/app-ui/components/layout'
-import { Button, Input } from '~/app-ui/components/base'
+import { Container, Footer, Header } from '~/app-view/components/layout'
+import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 
 const MainContent = styled('div', {

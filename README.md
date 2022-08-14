@@ -104,7 +104,7 @@ graphiql: https://graphiql-online.com
 |
 ├── app-server ...............................# server side logic
 |
-├── app-ui ...................................# presentation logic, jsx, animations
+├── app-view .................................# presentation logic, jsx, animations
 |   ├── components............................# reactjs components
 |   |   ├── base..............................# default base/primitive components
 |   |   ├── modules...........................# standalone modular components

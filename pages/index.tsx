@@ -1,8 +1,8 @@
-import { WalletLogin } from '~/app-ui/components/modules/WalletLogin'
-import { styled } from '../app-ui/styles/stitches.config'
+import { WalletLogin } from '~/app-view/components/modules/WalletLogin'
+import { styled } from '../app-view/styles/stitches.config'
 import { NextPage } from 'next'
-import { Container, Footer, Header } from '~/app-ui/components/layout'
-import { Button } from '~/app-ui/components/base'
+import { Container, Footer, Header } from '~/app-view/components/layout'
+import { Button } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 
 const MainContent = styled('div', {
