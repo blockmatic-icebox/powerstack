@@ -1,14 +1,13 @@
 overwrite: true
 generates:
-  app-engine/graphql/generated.ts:
-    documents: 'app-engine/graphql/**/*.graphql'
+  app-engine/graphql/generated/generated-sdk.ts:
+    documents: 'app-engine/graphql/schema.graphql'
     schema:
-      - https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql :
+      - https://api.powerstack.xyz/v1/graphql:
           headers:
             x-hasura-admin-secret: ${HASURA_ADMIN_SECRET}
     plugins:
       - 'typescript'
       - 'typescript-operations'
-      - 'typescript-react-apollo'
     config:
       skipTypename: true
