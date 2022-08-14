@@ -36,7 +36,6 @@ const Home: NextPage = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            type="image"
             alt="Type your username"
             css={{ maxWidth: 450, width: '100%' }}
           />
