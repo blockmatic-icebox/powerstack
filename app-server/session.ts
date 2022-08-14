@@ -12,11 +12,11 @@ declare module 'iron-session' {
 
 export const withAppSessionApiRoute = (handler: NextApiHandler) => {
   return withIronSessionApiRoute(handler, {
-    password: 'somepasssdfasdfasdfasdfdsafsdsadfsdafsdafsd', // TODO: get it from ./environment/
+    password: 'somepasssdfasdfasdfasdfdsafsdsadfsdafsdafsd', // TODO: fix me get it from ./environment/
     cookieName: 'app-session',
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
-      secure: process.env.NODE_ENV === 'production', // TODO: get it from ./environment/
+      secure: process.env.NODE_ENV === 'production', // TODO: fix me get it from ./environment/
     },
   })
 }

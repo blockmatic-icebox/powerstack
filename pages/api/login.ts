@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { NextApiRequest, NextApiResponse } from 'next'
 import nacl from 'tweetnacl'
 import { auth_service } from '~/app-engine/services/jwt-auth-service'
+import { CreateSessionProps } from '~/app-engine/store/session-slice'
 import { Address, AppUser } from '~/app-engine/types/app-engine'
 import { withAppSessionApiRoute } from '~/app-server/session'
 
@@ -26,11 +27,13 @@ import { withAppSessionApiRoute } from '~/app-server/session'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { address, message, signature } = await req.body
-  const { network, address, message, signed_message } = await req.body
-  console.log('/api/login', { network, address, message, signed_message })
+  const login_payload = (await req.body) as CreateSessionProps
+  console.log('/api/login', login_payload)
 
   try {
-    // const jwt_token = await auth_service.login()
+    const login_response = await auth_service.login(login_payload)
+    console.log({ login_response })
+    // TODO: WIP: continue flow
     const user: AppUser = { user_addresses: [], user_balances: [] }
     req.session.user = user
     await req.session.save()

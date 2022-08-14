@@ -40,6 +40,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   web3authInit: async () => {
     console.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
+    // TODO: fix me @RUBENABIX
     const client_id =
       'BCeTdMp4F7vxJyP9pi93aCl2bclncDAUs76Awo74cFzN43pisN_Rmksd4hvQq_85rp9oRQSHXLxtvb2c-mxEyf8' //get().app_engine_config.services.web3auth_client_id,
     // instantiate and initialize web3auth client
@@ -69,14 +70,15 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const balance = ethers.utils.formatEther(wei_balance)
 
       console.log({ address, balance, user_info })
-      const signed_message = await get().signMessageWithEhters(client_args.messages.session_message)
-      await get().createSession(
-        {
-          network: 'rinkeby',
-          address,
-        },
+      const message = client_args.messages.session_message
+      const signed_message = await get().signMessageWithEhters(message)
+      await get().createSession({
+        message,
+        network: 'rinkeby', // TODO: fix me @RUBENABIX why rinkeby?
+        address,
         signed_message,
-      )
+        auth_method: 'web3_evm',
+      })
       get().setUser({
         username: user_info.name,
         user_addresses: [
