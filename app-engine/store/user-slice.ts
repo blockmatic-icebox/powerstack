@@ -23,6 +23,8 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
 
   setUser: (user: AppUser | null) => {
     console.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
+    // TODO: get jwt from cookie
+    if (user) user.jwt = {}
     set({ user })
     get().refreshGraphQLClient()
   },
