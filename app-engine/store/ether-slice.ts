@@ -64,6 +64,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     )
     get().setUser({
       username: 'anon',
+      jwt: {},
       user_addresses: [
         {
           network: 'rinkeby',

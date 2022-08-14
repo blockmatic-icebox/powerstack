@@ -79,6 +79,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       )
       get().setUser({
         username: user_info.name,
+        jwt: {},
         user_addresses: [
           {
             network: 'rinkeby',

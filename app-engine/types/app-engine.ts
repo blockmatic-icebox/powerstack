@@ -14,7 +14,7 @@ export interface AppUserBalance {
 }
 export interface AppUser {
   username?: string
-  jwt?: {}
+  jwt: {}
   user_addresses: AppUserAddress[]
   user_balances: AppUserBalance[]
 }
