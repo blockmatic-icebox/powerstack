@@ -12,7 +12,7 @@ import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
-import { GraphQLActions, GraphQLState } from './store/graphql-slice'
+import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -52,6 +52,7 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createUISlice(set, get),
     ...createEngineSlice(set, get),
     ...createEtherSlice(set, get),
+    ...createGraphQLSlice(set, get),
   }),
 )
 

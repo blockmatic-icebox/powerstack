@@ -15,7 +15,6 @@ export type GraphQLSlice = GraphQLState & GraphQLActions
 export const createGraphQLSlice: StoreSlice<GraphQLSlice> = (set, get) => ({
   graphql_client: createApolloClient(),
   createAuthorizedApolloCleint: async () => {
-    const graphql_client = createApolloClient()
-    set({ graphql_client })
+    set({ graphql_client: createApolloClient })
   },
 })
