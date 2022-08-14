@@ -16,6 +16,8 @@ export const createGraphQLSlice: StoreSlice<GraphQLSlice> = (set, get) => ({
   graphql_client: createApolloClient(),
   refreshGraphQLClient: async () => {
     console.log('🚊 refreshing graphql client ...')
-    set({ graphql_client: createApolloClient(get().user?.jwt) })
+    // TODO: get jwt from cookie session
+    const jwt = {}
+    set({ graphql_client: createApolloClient(jwt) })
   },
 })
