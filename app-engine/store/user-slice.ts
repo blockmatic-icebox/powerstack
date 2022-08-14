@@ -29,13 +29,13 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   fetchUserBalances: async () => {},
 
   createAccount: async (username: string) => {
-    // const result = await anon_apollo_client.mutate<
-    //   AppGraphQL.CreateUsernameMutation,
-    //   AppGraphQL.CreateUsernameMutationVariables
-    // >({
-    //   mutation: AppGraphQL.CreateUsernameDocument,
-    //   variables: { username },
-    // })
-    // console.log('create account result', result)
+    const result = await anon_apollo_client.mutate<
+      AppGraphQL.CreateUsernameMutation,
+      AppGraphQL.CreateUsernameMutationVariables
+    >({
+      mutation: AppGraphQL.CreateUsernameDocument,
+      variables: { username },
+    })
+    console.log('create account result', result)
   },
 })
