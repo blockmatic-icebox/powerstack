@@ -4,7 +4,7 @@ import nacl from 'tweetnacl'
 import { auth_service } from '~/app-engine/services/jwt-auth-service'
 import { CreateSessionProps } from '~/app-engine/store/session-slice'
 import { Address, AppUser } from '~/app-engine/types/app-engine'
-import { withAppSessionApiRoute } from '~/app-server/session'
+import { withSessionRoute } from '~/app-server/session'
 
 // interface SignatureValidatorParams {
 //   address: Address
@@ -40,4 +40,4 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default withAppSessionApiRoute(login_route)
+export default withSessionRoute(login_route)
