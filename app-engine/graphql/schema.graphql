@@ -3,3 +3,10 @@ mutation CreateUsername($username: String) {
     affected_rows
   }
 }
+
+query Accounts($where: accounts_bool_exp = {}) {
+  accounts(where: $where) {
+    account_id
+    username
+  }
+}

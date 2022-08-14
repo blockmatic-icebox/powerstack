@@ -70,7 +70,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
       console.log({ address, balance, user_info })
       const signed_message = await get().signMessageWithEhters(client_args.messages.session_message)
-      await get().createSession(
+      const jwt = await get().createSession(
         {
           network: 'rinkeby',
           address,
@@ -79,6 +79,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       )
       get().setUser({
         username: user_info.name,
+        jwt,
         user_addresses: [
           {
             network: 'rinkeby',

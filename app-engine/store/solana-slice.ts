@@ -50,6 +50,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       )
       get().setUser({
         username: 'solano',
+        jwt: {},
         user_addresses: [
           {
             network: 'solana',

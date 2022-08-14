@@ -1,19 +1,19 @@
 import type { StoreSlice } from '../index'
 
 export type AppMessageType = 'alert' | 'warn' | 'info'
-export type UIState = {
+export type ViewState = {
   show_wallet: boolean
   show_sidebar: boolean
   app_message: string
   app_message_type: AppMessageType
 }
 
-export type UIActions = {
+export type ViewActions = {
   setShowWallet: (value: boolean) => void
   setShowSidebar: (value: boolean) => void
 }
 
-export type UISlice = UIState & UIActions
+export type ViewSlice = ViewState & ViewActions
 
 const defaultUserInterfaceState = {
   show_wallet: false,
@@ -22,7 +22,7 @@ const defaultUserInterfaceState = {
   app_message_type: 'info' as AppMessageType,
 }
 
-export const createUISlice: StoreSlice<UISlice> = (set) => ({
+export const createViewSlice: StoreSlice<ViewSlice> = (set) => ({
   ...defaultUserInterfaceState,
 
   setShowWallet: (value) => set({ show_wallet: value }),

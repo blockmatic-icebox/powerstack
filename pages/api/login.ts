@@ -31,7 +31,7 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     // const jwt_token = await auth_service.login()
-    const user: AppUser = { user_addresses: [], user_balances: [] }
+    const user: AppUser = { user_addresses: [], user_balances: [], jwt: {} }
     req.session.user = user
     await req.session.save()
     res.send({ user: req.session.user })
