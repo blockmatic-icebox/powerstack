@@ -4,20 +4,31 @@ import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { isBrowser } from '../library'
 
-export const createApolloClient = () => {
+export const createApolloClient = (jwt?: {}) => {
   // TODO: fix me @RUBENBIX
   const apollo_base_url = 'powerstack-hasura-panslbmhpa-uc.a.run.app/v1/graphql'
+  const headers = jwt
+    ? {
+        Authorization: `Bearer ${jwt}`,
+      }
+    : {
+        'x-hasura-user-role': 'anon',
+      }
 
   const wsLink = isBrowser
     ? new GraphQLWsLink(
         createClient({
           url: `wss://${apollo_base_url}`,
+          connectionParams: {
+            headers,
+          },
         }),
       )
     : null
 
   const http_link = new HttpLink({
     uri: `https://${apollo_base_url}`,
+    headers,
   })
 
   const link =

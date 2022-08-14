@@ -1,4 +1,4 @@
-import { anon_apollo_client, AppGraphQL } from '../graphql'
+import { AppGraphQL } from '../graphql'
 import type { StoreSlice } from '../index'
 import type { AppUser } from '../types/app-engine'
 
@@ -9,7 +9,7 @@ export type UserState = {
 export type UserActions = {
   setUser: (user: AppUser | null) => void
   fetchUserBalances: () => Promise<void>
-  createAccount: (username: string) => Promise<void>
+  createUserAccount: (username: string) => Promise<void>
 }
 
 export type User = UserState & UserActions
@@ -24,12 +24,13 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   setUser: (user: AppUser | null) => {
     console.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
+    get().refreshGraphQLClient()
   },
 
   fetchUserBalances: async () => {},
 
-  createAccount: async (username: string) => {
-    const result = await anon_apollo_client.mutate<
+  createUserAccount: async (username: string) => {
+    const result = await get().graphql_client.mutate<
       AppGraphQL.CreateUsernameMutation,
       AppGraphQL.CreateUsernameMutationVariables
     >({
