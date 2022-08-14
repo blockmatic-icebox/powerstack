@@ -5,7 +5,7 @@ import { AppUserAddress } from '../types/app-engine'
 export interface SessionState {}
 
 export interface SessionActions {
-  createSession: (address: AppUserAddress, signed_message: string) => Promise<void>
+  createSession: (address: AppUserAddress, signed_message: string) => Promise<{}>
   destroySession: () => Promise<void>
 }
 
@@ -24,9 +24,14 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ address, signed_message }),
       })
+
       console.log('🍪 cookie session created!')
+      // TODO: read jwt from the cookie and return it
+      const jwt = {}
+      return jwt
     } catch (error) {
       console.error('An unexpected error happened:', error)
+      return {}
     }
   },
 

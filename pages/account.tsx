@@ -5,7 +5,7 @@ import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
-import { createApolloClient } from '~/app-engine/graphql'
+import { AppGraphQL, createApolloClient } from '~/app-engine/graphql'
 
 const MainContent = styled('div', {
   minHeight: '75vh',
@@ -30,6 +30,15 @@ const ssrHandler = async ({ req }: GetServerSidePropsContext) => {
   const user = req.session.user
   if (!user) return { user: null }
   const apollo_client = createApolloClient(user.jwt)
+
+  const result = apollo_client.query<AppGraphQL.AccountsQuery, AppGraphQL.AccountsQueryVariables>({
+    query: AppGraphQL.AccountsDocument,
+    variables: {
+      where: {
+        username: { _eq: 'gaboesquivel' },
+      },
+    },
+  })
 
   return {
     props: {

@@ -4,9 +4,9 @@ mutation CreateUsername($username: String) {
   }
 }
 
-# query Accounts($where: Accounts_Bool_Exp = {}) {
-#   accounts(where: $where) {
-#     account_id
-#     username
-#   }
-# }
+query Accounts($where: accounts_bool_exp = {}) {
+  accounts(where: $where) {
+    account_id
+    username
+  }
+}
