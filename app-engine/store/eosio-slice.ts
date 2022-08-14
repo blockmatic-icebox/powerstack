@@ -4,6 +4,7 @@ import AnchorLink, { PublicKey } from 'anchor-link'
 import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
 import { newAnchorLink } from '../library'
+import { SignedTransactionType } from '@greymass/eosio'
 
 export enum EOSIOAuthType {
   ANCHOR,
@@ -11,6 +12,7 @@ export enum EOSIOAuthType {
 
 export interface EosioState {
   anchorLink?: AnchorLink
+  account: string
   authed: boolean
   token: string
   authType?: EOSIOAuthType
@@ -24,6 +26,7 @@ export type EosioActions = {
   loginWithAnchor: () => Promise<void>
   logout: () => void
   setSessionToken: (token: string) => void
+  setAccount: (account: string) => void
 }
 
 export type EosioSlice = EosioState & EosioActions
@@ -35,6 +38,7 @@ const defaultEosioState: EosioState = {
   cred_id: undefined,
   pub_key: undefined,
   token: '',
+  account: '',
 }
 
 export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
@@ -48,10 +52,12 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       if (!get().anchorLink) set({ anchorLink })
 
+      console.log('init wallet login')
       // Use the anchor-link login method with the chain id to establish a session
       const identity = await anchorLink.login(client_args.app_name)
-      // const account = auth ? await anchorLink.client.v1.chain.get_account(auth.actor.toString()) : undefined
+      console.log('identity', identity)
       const pub_key = PublicKey.from(identity.session.publicKey)
+      const account = identity.signer.actor.toString()
 
       const payload = {
         sign_data: {
@@ -59,27 +65,30 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
           pub_key,
           signature: identity.signatures.map((sign) => sign.toString())[0],
         },
-        account: identity.signer.actor.toString(),
+        account,
       }
 
       console.log(payload)
 
-      // FIX: this thing you broke
-      const result = { token: '', error: '' } // await bitcashAuthService.getTokenAnchorEOS(payload)
+      const result = await getTokenAnchorEOS(payload)
+
+      console.log({ anchor: result })
 
       const { token, error } = result
 
       if (error) throw new Error(error)
 
-      // set({ authed: true, authType: AuthType.ANCHOR, pub_key, token })
+      set({ authed: true, authType: EOSIOAuthType.ANCHOR, pub_key, token })
       get().setSessionToken(token)
 
-      // await get().setAccount(identity.signer.actor.toString())
+      await get().setAccount(account)
     } catch (error) {
       get().logout()
       throw error
     }
   },
+  // TODO: is it requered?
+  setAccount: () => {},
   // clear account state and reset auth on logout
   logout: async () => {
     // await get().anchorLink?.removeSession('100xapp')
@@ -106,10 +115,14 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
     console.log('⚙️ eosio slice initialized')
   },
 })
-
-// ============= WIP  =============
 interface RequestTokenAnchorEOSParams {
-  identity: any
+  sign_data: {
+    pub_key: PublicKey
+    signature?: string
+    digest?: string
+    signed_trasaction_weauth?: SignedTransactionType
+  }
+  account: string
 }
 
 const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
