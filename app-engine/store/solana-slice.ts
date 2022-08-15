@@ -2,6 +2,7 @@ import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
+import { AuthMethod } from '../types/app-engine'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -14,6 +15,18 @@ export type SolanaActions = {
 }
 
 export type SolanaStore = SolanaState & SolanaActions
+
+const getProvider = () => {
+  if ('phantom' in window) {
+    const provider = window.phantom?.solana
+
+    if (provider?.isPhantom) {
+      return provider
+    }
+  }
+  alert('Please install phantom')
+  window.open('https://phantom.app/', '_blank')
+}
 
 const defaultSolanaState: SolanaState = {
   solana_current_provider: null,
@@ -30,44 +43,57 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   },
   loginWithPhantom: async () => {
     console.log('🌞 login with phantom')
+    const solana_provider = getProvider()
+    console.log({ solana_provider })
     // TODO: WIP complete and enable
-    // const phantom_installed = _.get(window, 'phantom.solana.isPhantom')
-    // if (!phantom_installed) throw new Error('phantom is not installed')
+    if (!solana_provider) throw new Error('phantom is not installed')
 
-    // try {
-    //   const solana_provider = window.phantom.solana
-    //   solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
-    //   const resp = await solana_provider.connect()
-    //   const address = resp.publicKey.toString()
-    //   const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
-    //   const signed_message = await solana_provider.signMessage(encoded_message, 'utf8')
-    //   await get().createSession(
-    //     {
-    //       network: 'solana',
-    //       address,
-    //     },
-    //     signed_message,
-    //   )
-    //   get().setUser({
-    //     username: 'solano',
-    //     user_addresses: [
-    //       {
-    //         network: 'solana',
-    //         address,
-    //       },
-    //     ],
-    //     user_balances: [
-    //       {
-    //         network: 'solana',
-    //         ticker: 'solana',
-    //         balance: new Decimal(0),
-    //         unit_balance: '0',
-    //       },
-    //     ],
-    //   })
-    // } catch (err) {
-    //   console.error(err)
-    // }
+    try {
+      solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
+      const resp = await solana_provider.connect()
+      const address = resp.publicKey.toString()
+      const message = client_args.messages.session_message
+      const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
+      const signed_message = await solana_provider.signMessage(encoded_message, 'utf8')
+      const auth_method: AuthMethod = 'web3_metamask' // 'web3_solana'
+      const network = 'solana'
+      console.log('solana input', {
+        network,
+        address,
+        message,
+        signed_message,
+        auth_method,
+      })
+      const { token, error } = await get().createSession({
+        network,
+        address,
+        message,
+        signed_message,
+        auth_method,
+      })
+      if (error || !token) return // TODO: fix me handle login error
+      get().setUser({
+        username: 'anon', // TODO: fix me,
+        jwt: token,
+        auth_method,
+        user_addresses: [
+          {
+            network: 'solana',
+            address,
+          },
+        ],
+        user_balances: [
+          {
+            network: 'solana',
+            ticker: 'solana',
+            balance: new Decimal(0), // TODO: fix me
+            unit_balance: '0', // // TODO: fix me
+          },
+        ],
+      })
+    } catch (err) {
+      console.error(err)
+    }
   },
   mintOnSolana: async () => {
     console.log('🌞 mint on solana using bundlr')

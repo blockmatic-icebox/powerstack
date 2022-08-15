@@ -5,6 +5,7 @@ import { ethereum } from '../library'
 import { getInfuraChainData } from '../library/infura'
 import Decimal from 'decimal.js'
 import { client_args } from '~/app-config/client-config'
+import { AuthMethod } from '../types/app-engine'
 
 export type EtherState = {
   ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -47,7 +48,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const message = client_args.messages.session_message
     const signed_message = await signer.signMessage(message)
     console.log('🇪🇹 logging in with metamask...')
-    const auth_method = 'web3_metamask'
+    const auth_method: AuthMethod = 'web3_metamask'
     const { token, error } = await get().createSession({
       network,
       address,
