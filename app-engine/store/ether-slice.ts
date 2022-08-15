@@ -34,51 +34,48 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   },
   loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')
-    // TODO: WIP complete and enable
-    // if (!ethereum) throw new Error('Please install the metamask extension to login')
-    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-    // const provider = new ethers.providers.Web3Provider(ethereum)
-    // const infura_network_id = parseInt(ethereum.networkVersion)
-    // const network = getInfuraChainData(infura_network_id).name
-    // const signer = provider.getSigner()
-    // const address = await signer.getAddress()
-    // const wei_balance = await provider.getBalance(address)
-    // const balance = ethers.utils.formatEther(wei_balance)
-    // const chain_id = ethereum.chainId
-    // const signed_message = await signer.signMessage(client_args.messages.session_message)
-    // console.log('🇪🇹 logging in with metamask...', {
-    //   accounts,
-    //   signed_message,
-    //   address,
-    //   balance,
-    //   chain_id,
-    //   network,
-    //   message: client_args.messages.session_message,
-    // })
-    // await get().createSession(
-    //   {
-    //     network: 'rinkeby',
-    //     address,
-    //   },
-    //   signed_message,
-    // )
-    // get().setUser({
-    //   username: 'anon',
-    //   user_addresses: [
-    //     {
-    //       network: 'rinkeby',
-    //       address,
-    //     },
-    //   ],
-    //   user_balances: [
-    //     {
-    //       network: 'rinkeby',
-    //       ticker: 'rinkETH',
-    //       balance: new Decimal(balance),
-    //       unit_balance: wei_balance.toString(),
-    //     },
-    //   ],
-    // })
+    if (!ethereum) throw new Error('Please install the metamask extension to login')
+    await ethereum.request({ method: 'eth_requestAccounts' })
+    const provider = new ethers.providers.Web3Provider(ethereum)
+    const infura_network_id = parseInt(ethereum.networkVersion)
+    const network = getInfuraChainData(infura_network_id).name
+    const signer = provider.getSigner()
+    const address = await signer.getAddress()
+    const wei_balance = await provider.getBalance(address)
+    const balance = ethers.utils.formatEther(wei_balance)
+    // const chain_id = ethereum.chainId // TODO: is it neccessary?
+    const message = client_args.messages.session_message
+    const signed_message = await signer.signMessage(message)
+    console.log('🇪🇹 logging in with metamask...')
+    const auth_method = 'web3_metamask'
+    const { token, error } = await get().createSession({
+      network,
+      address,
+      message,
+      signed_message,
+      auth_method,
+    })
+    console.log('metamask response', { token, error })
+    if (error || !token) return // TODO: fix me handle login error
+    get().setUser({
+      username: 'anon', // TODO: fix me,
+      jwt: token,
+      auth_method,
+      user_addresses: [
+        {
+          network: 'rinkeby',
+          address,
+        },
+      ],
+      user_balances: [
+        {
+          network: 'rinkeby',
+          ticker: 'rinkETH',
+          balance: new Decimal(balance),
+          unit_balance: wei_balance.toString(),
+        },
+      ],
+    })
   },
   signMessageWithEhters: async (message: string) => {
     console.log('🇪🇹 sign message with ethers', message)
