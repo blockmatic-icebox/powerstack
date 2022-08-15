@@ -72,7 +72,7 @@ export const WalletLogin = () => {
       </LoginButton>
       <LoginButton css={{ mb: '$small' }} onClick={loginWithAnchor} variant="anchor">
         <AnchorIcon />
-        Login with Anchor
+        Login with Anchor XXX
       </LoginButton>
       <LoginButton css={{ mb: '$small' }} onClick={loginWithMetamask} variant="metamask">
         <MetamaskIcon />

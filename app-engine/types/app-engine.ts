@@ -5,7 +5,7 @@ export type AuthMethod =
   | 'web3_solana'
   | 'web3_anchor'
   | 'web3_metamask'
-  | 'web3_auth'
+  | 'web3_auth3'
 
 export type Address = string
 

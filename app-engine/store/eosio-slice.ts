@@ -5,6 +5,8 @@ import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
 import { newAnchorLink } from '../library'
 import { SignedTransactionType } from '@greymass/eosio'
+import { AuthMethod } from '../types/app-engine'
+import Decimal from 'decimal.js'
 
 export enum EOSIOAuthType {
   ANCHOR,
@@ -45,7 +47,7 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
   ...defaultEosioState,
   setSessionToken: () => {},
   loginWithAnchor: async () => {
-    console.log('loginWithAnchor')
+    console.log('loginWithAnchor -------- ')
     try {
       // get().logout() // TODO: fix me @RUBENABIX
       const anchorLink = get().anchorLink || newAnchorLink
@@ -54,37 +56,51 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       console.log('init wallet login')
       // Use the anchor-link login method with the chain id to establish a session
-      const identity = await anchorLink.login(client_args.app_name)
+      const identity = await anchorLink.login('powerstack')
       console.log('identity', identity)
       const pub_key = PublicKey.from(identity.session.publicKey)
       const account = identity.signer.actor.toString()
-
-      const payload = {
-        sign_data: {
-          digest: identity.transaction.signingDigest(identity.session.chainId).toString(),
-          pub_key,
-          signature: identity.signatures.map((sign) => sign.toString())[0],
-        },
+      const auth_method: AuthMethod = 'web3_anchor'
+      const network = 'eosio'
+      console.log({
+        pub_key,
         account,
-      }
-
-      console.log(payload)
-
-      const result = await getTokenAnchorEOS(payload)
-
-      console.log({ anchor: result })
-
-      const { token, error } = result
-
-      if (error) throw new Error(error)
-
-      set({ authed: true, authType: EOSIOAuthType.ANCHOR, pub_key, token })
-      get().setSessionToken(token)
-
-      await get().setAccount(account)
+      })
+      // const { transaction } = await identity.session.transact({
+      //   action: loginAction(identity.signer.actor.toString(), identity.signer.permission.toString()),
+      // })
+      // const sessionInput = {
+      //   network,
+      //   message: identity.transaction.signingDigest(identity.session.chainId).toString(),
+      //   signed_message: identity.signatures.map((sign) => sign.toString())[0],
+      //   auth_method,
+      //   address: account,
+      //   pub_key,
+      // }
+      // console.log('anchor input', sessionInput)
+      // const { token, error } = await get().createSession(sessionInput)
+      // if (error || !token) return // TODO: fix me handle login error
+      // get().setUser({
+      //   username: account, // TODO: fix me,
+      //   jwt: token,
+      //   auth_method,
+      //   user_addresses: [
+      //     {
+      //       network,
+      //       address: account,
+      //     },
+      //   ],
+      //   user_balances: [
+      //     {
+      //       network,
+      //       ticker: 'eosio',
+      //       balance: new Decimal(0), // TODO: fix me
+      //       unit_balance: '0', // // TODO: fix me
+      //     },
+      //   ],
+      // })
     } catch (error) {
-      get().logout()
-      throw error
+      console.log('anchor ->>>>>>>', error)
     }
   },
   // TODO: is it requered?

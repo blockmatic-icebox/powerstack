@@ -69,7 +69,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const address = await signer.getAddress()
       const wei_balance = await ethers_provider.getBalance(address)
       const balance = ethers.utils.formatEther(wei_balance)
-      const auth_method: AuthMethod = 'web3_auth'
+      const auth_method: AuthMethod = 'web3_auth3'
       console.log({ address, balance, user_info })
       const message = client_args.messages.session_message
       const signed_message = await get().signMessageWithEhters(message)

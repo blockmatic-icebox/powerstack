@@ -1,3 +1,4 @@
+import { PublicKey } from 'anchor-link'
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
 import { AuthResponse } from '../services/jwt-auth-service'
@@ -11,6 +12,7 @@ export interface CreateSessionProps {
   network: string
   message: string
   auth_method: AuthMethod
+  pub_key?: PublicKey
 }
 
 export interface SessionActions {
