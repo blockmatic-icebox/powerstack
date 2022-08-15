@@ -11,7 +11,6 @@ export interface CreateSessionProps {
   network: string
   message: string
   auth_method: AuthMethod
-  public_key?: string
 }
 
 export interface SessionActions {
@@ -31,7 +30,6 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
     message,
     signed_message,
     auth_method,
-    public_key,
   }: CreateSessionProps) => {
     console.log('🍪 create cookie session', JSON.stringify({ address, signed_message }))
     const login_payload: CreateSessionProps = {
@@ -40,7 +38,6 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       message,
       signed_message,
       auth_method,
-      public_key,
     }
     try {
       // TODO: move to utils please and create fetch api file and fix type
