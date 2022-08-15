@@ -32,7 +32,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
     auth_method,
   }: CreateSessionProps) => {
     console.log('🍪 create cookie session', JSON.stringify({ address, signed_message }))
-    const login_payload = {
+    const login_payload: CreateSessionProps = {
       network,
       address,
       message,

@@ -1,6 +1,7 @@
 import { client_args } from '~/app-config/client-config'
 import { fetchJson } from '../library/fetch'
 import { CreateSessionProps } from '../store/session-slice'
+import { AuthMethod } from '../types/app-engine'
 
 // const login_auth_api_url = 'https://powerstack-auth-atgjsg75cq-uc.a.run.app'
 
@@ -9,9 +10,22 @@ export type AuthResponse = {
   error: unknown // TODO: fix type
 }
 
+const getLoginPath = (auth_method: AuthMethod) => {
+  switch (auth_method) {
+    case 'web3_solana': {
+      return '/provider/phantom'
+    }
+    case 'web3_metamask':
+    case 'web3_auth':
+    default:
+      return '/provider/evm'
+  }
+}
+
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
-    const login_auth_api_url = client_args.services.auth_api + '/provider/evm'
+    const login_auth_api_url =
+      client_args.services.auth_api + getLoginPath(login_payload.auth_method)
     const login_response = await fetchJson(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
