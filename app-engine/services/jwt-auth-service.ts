@@ -16,6 +16,7 @@ const getLoginPath = (auth_method: AuthMethod) => {
       return '/provider/phantom'
     }
     case 'web3_metamask':
+    case 'web3_auth':
     default:
       return '/provider/evm'
   }
