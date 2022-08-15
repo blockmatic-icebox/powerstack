@@ -4,6 +4,7 @@ import {
   AnchorIcon,
   MetamaskIcon,
   PhantonIcon,
+  TwitterIcon,
   GitlabIcon,
   GhLoginIcon,
   BitbucketIcon,
@@ -56,6 +57,13 @@ const Separator = styled('div', {
   },
 })
 
+const ButtonGroup = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingTop: '$small',
+  
+})
+
 export const WalletLogin = () => {
   const { user, loginWithAnchor, loginWithPhantom, loginWithMetamask, web3authLogin } =
     useAppEngine()
@@ -84,40 +92,42 @@ export const WalletLogin = () => {
 
       <Separator>Or use social web2 logins without wallet</Separator>
 
-      <LoginButton
-        css={{ mb: '$small' }}
-        onClick={() => {
-          window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
-        }}
-        variant="metamask"
-        role="button"
-      >
-        Login in with Twitter
-      </LoginButton>
-      <Button
-        css={{ mb: '$small' }}
-        onClick={() => {}}
-        variant="metamask"
-        aria-label="Login with Github"
-      >
-        <GhLoginIcon /> Login with Github
-      </Button>
-      <Button
-        css={{ mb: '$small' }}
-        onClick={() => {}}
-        variant="metamask"
-        aria-label="Login with Gitlab"
-      >
-        <GitlabIcon /> Login with Gitlab
-      </Button>
-      <Button
-        css={{ mb: '$small' }}
-        onClick={() => {}}
-        variant="metamask"
-        aria-label="Login with BitBucket"
-      >
-        <BitbucketIcon /> Login with BitBucket
-      </Button>
+      <ButtonGroup>
+        <LoginButton
+          css={{ mb: '$small' }}
+          onClick={() => {
+            window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
+          }}
+          variant="metamask"
+          role="button"
+        >
+          <TwitterIcon />
+        </LoginButton>
+        <Button
+          css={{ mb: '$small' }}
+          onClick={() => { }}
+          variant="metamask"
+          aria-label="Login with Github"
+        >
+          <GhLoginIcon />
+        </Button>
+        <Button
+          css={{ mb: '$small' }}
+          onClick={() => { }}
+          variant="metamask"
+          aria-label="Login with Gitlab"
+        >
+          <GitlabIcon />
+        </Button>
+        <Button
+          css={{ mb: '$small' }}
+          onClick={() => { }}
+          variant="metamask"
+          aria-label="Login with BitBucket"
+        >
+          <BitbucketIcon />
+        </Button>
+      </ButtonGroup>
     </Card>
   )
 }
