@@ -55,7 +55,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       const message = client_args.messages.session_message
       const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
       const signed_message = await solana_provider.signMessage(encoded_message, 'utf8')
-      const auth_method: AuthMethod = 'web3_metamask' // 'web3_solana'
+      const auth_method: AuthMethod = 'web3_solana'
       const network = 'solana'
       console.log('solana input', {
         network,
@@ -63,6 +63,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
         message,
         signed_message,
         auth_method,
+        public_key: solana_provider.publicKey,
       })
       const { token, error } = await get().createSession({
         network,
@@ -70,6 +71,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
         message,
         signed_message,
         auth_method,
+        public_key: solana_provider.publicKey,
       })
       if (error || !token) return // TODO: fix me handle login error
       get().setUser({
