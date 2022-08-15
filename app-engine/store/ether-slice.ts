@@ -8,7 +8,7 @@ import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
 
 export type EtherState = {
-  ether_current_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
+  ethereum_static_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
 }
 
 export type EtherActions = {
@@ -21,7 +21,7 @@ export type EtherActions = {
 export type EtherStore = EtherState & EtherActions
 
 const defaultEtherState: EtherState = {
-  ether_current_provider: null,
+  ethereum_static_provider: null,
 }
 
 export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
@@ -29,9 +29,25 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
 
   // this function is called from session-state.ts when a new session is created
   initEthers: () => {
-    console.log('🇪🇹 initializing ether slice ...')
-    // TODO:
-    console.log('🇪🇹 ether slice initialized')
+    console.log('💎 initializing ether-state ...')
+    const {} = get()
+    const ethereum_chain_data = getInfuraChainData(
+      client_args.supported_networks.ethereum.network_id,
+    )
+
+    // instantiate provider objects
+    const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
+      ethereum_chain_data.rpc_url,
+      {
+        chainId: ethereum_chain_data.chain_id,
+        name: ethereum_chain_data.name,
+      },
+    )
+
+    set({
+      ethereum_static_provider,
+    })
+    console.log('💎 ether state initialized')
   },
   loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')

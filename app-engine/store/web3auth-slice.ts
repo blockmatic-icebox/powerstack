@@ -1,6 +1,6 @@
 import type { StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
-import { ADAPTER_EVENTS, CHAIN_NAMESPACES } from '@web3auth/base'
+import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { client_args } from '~/app-config/client-config'
@@ -8,7 +8,7 @@ import { AuthMethod } from '../types/app-engine'
 
 export type Web3AuthState = {
   web3auth: Web3Auth | null
-  // web3auth_provider: Web3AuthWalletProvider | null
+  web3auth_provider: SafeEventEmitterProvider | null
   web3auth_loading: boolean
   web3auth_chain: string
   web3auth_user: unknown
@@ -33,6 +33,7 @@ const defaultWeb3AuthState: Web3AuthState = {
   web3auth_loading: false,
   web3auth_chain: '',
   web3auth_user: {},
+  web3auth_provider: null,
 }
 
 export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
@@ -63,6 +64,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       console.log('you are successfully logged in', web3auth_user)
       const web3auth_provider = await web3auth.connect()
       if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
+      set({ web3auth_provider })
       const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
       const user_info = await web3auth.getUserInfo()
       const signer = ethers_provider.getSigner()

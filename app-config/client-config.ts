@@ -3,6 +3,13 @@ import { AppConfig } from '../app-engine/types/app-config'
 export const client_args: AppConfig = {
   app_name: process.env.NEXT_APP_NAME || '',
   contracts: {},
+  supported_networks: {
+    ethereum: {
+      chain: process.env.NEXT_PUBLIC_ETHEREUM_CHAIN_NAME || '',
+      chain_id: process.env.NEXT_PUBLIC_ETHEREUM_CHAIN_ID || '',
+      network_id: parseInt(process.env.NEXT_PUBLIC_ETHEREUM_NETWORK_ID || '4'), // TODO: check value
+    },
+  },
   services: {
     eosio: {
       eos_chain_id: process.env.NEXT_EOS_CHAIN_ID || '',
