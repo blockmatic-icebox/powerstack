@@ -1,6 +1,9 @@
 import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 import Decimal from 'decimal.js'
 
+// TODO: improve type
+export const isSol = (network: string) => network === 'solana'
+
 export const getSolNativeTokenBalance = async (user_address: string, provider: Connection) => {
   console.log('💫 get sol native token balance')
   const native_token_balance = new Decimal(await provider.getBalance(new PublicKey(user_address)))

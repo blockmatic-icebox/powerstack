@@ -1,8 +1,7 @@
-import Decimal from 'decimal.js'
 import { AppGraphQL } from '../graphql'
 import type { StoreSlice } from '../index'
-import { getEthNativeTokenBalance } from '../library/ethers'
-import { getSolNativeTokenBalance } from '../library/solana'
+import { getEthNativeTokenBalance, isEth } from '../library/ethers'
+import { getSolNativeTokenBalance, isSol } from '../library/solana'
 import type { AppUser } from '../types/app-engine'
 
 export type UserState = {
@@ -11,8 +10,7 @@ export type UserState = {
 
 export type UserActions = {
   setUser: (user: AppUser | null) => void
-  fetchUserBalances: (user: AppUser) => Promise<AppUser>
-  syncUserBalances: () => void
+  fetchUserBalances: (user: AppUser) => Promise<void>
   createUserAccount: (username: string) => Promise<void>
 }
 
@@ -22,67 +20,45 @@ const defaultUserState: UserState = {
   user: null,
 }
 
-const isEth = (user: AppUser | null) =>
-  user &&
-  (user.auth_method === 'web3_anchor' ||
-    user.auth_method === 'web3_metamask' ||
-    user.auth_method === 'web3_auth')
-
-export const isSol = (user: AppUser | null) => user && user?.auth_method === 'web3_solana'
-
 export const createUserSlice: StoreSlice<User> = (set, get) => ({
   ...defaultUserState,
 
   setUser: (user: AppUser | null) => {
     console.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
-    if (user) {
-      console.log('🤵🏻‍♂️ set new user')
-      setTimeout(async () => {
-        // TODO: is it the best place?
-        get().initEthers()
-        get().initSolana()
-        const updated_user = await get().fetchUserBalances(user)
-        set({ user: updated_user })
-      }, 0)
-    }
     get().refreshGraphQLClient()
   },
-
-  syncUserBalances: () => {
+  fetchUserBalances: async () => {
     const user = get().user
     if (user) {
-      setTimeout(async () => {
-        const updated_user = await get().fetchUserBalances(user)
-        set({ user: updated_user })
-      }, 0)
+      const user_addresses = await Promise.all(
+        user?.user_addresses.map(async (user_address) => {
+          if (isEth(user_address.network)) {
+            const ethereum_static_provider = get().ethereum_static_provider
+            if (!ethereum_static_provider) return user_address
+            const balance = await getEthNativeTokenBalance(
+              user_address.address,
+              ethereum_static_provider,
+            )
+            const unit_balance = balance.toString()
+            return { ...user_address, balance, unit_balance }
+          }
+          if (isSol(user_address.network)) {
+            const solana_static_provider = get().solana_static_provider
+            if (!solana_static_provider) return user_address
+            const balance = await getSolNativeTokenBalance(
+              user_address.address,
+              solana_static_provider,
+            )
+            const unit_balance = balance.toString()
+            return { ...user_address, balance, unit_balance }
+          }
+          return user_address
+        }) || [],
+      )
+      user.user_addresses = user_addresses
+      get().setUser(user)
     }
-  },
-
-  fetchUserBalances: async (user: AppUser) => {
-    if (isEth(user)) {
-      const ethereum_static_provider = get().ethereum_static_provider
-      if (!ethereum_static_provider) return user
-      user?.user_addresses.forEach(async (address) => {
-        const eth_balance = (
-          await getEthNativeTokenBalance(address.address, ethereum_static_provider)
-        ).toString()
-        address.balance = new Decimal(eth_balance)
-        address.unit_balance = eth_balance
-      })
-    }
-    if (isSol(user)) {
-      const solana_static_provider = get().solana_static_provider
-      if (!solana_static_provider) return user
-      user?.user_addresses.forEach(async (address) => {
-        const balance = (
-          await getSolNativeTokenBalance(address.address, solana_static_provider)
-        ).toString()
-        address.balance = new Decimal(balance)
-        address.unit_balance = balance
-      })
-    }
-    return user
   },
 
   createUserAccount: async (username: string) => {

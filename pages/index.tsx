@@ -18,7 +18,7 @@ const LoginBackground = styled('div', {
 })
 
 const Home: NextPage = () => {
-  const { destroySession, user, syncUserBalances } = useAppEngine()
+  const { destroySession, user, fetchUserBalances } = useAppEngine()
   return (
     <LoginBackground>
       <Header />
@@ -26,7 +26,13 @@ const Home: NextPage = () => {
         <Container>
           {user && (
             <>
-              <Button onClick={syncUserBalances}>Update balances</Button>
+              <Button
+                onClick={() => {
+                  fetchUserBalances()
+                }}
+              >
+                Update balances
+              </Button>
               <pre>{JSON.stringify(user.user_addresses)}</pre>
               <ul>
                 {user.user_addresses.map((address) => (
