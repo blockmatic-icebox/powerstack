@@ -30,7 +30,7 @@ const Home: NextPage = () => {
               <pre>{JSON.stringify(user.user_addresses)}</pre>
               <ul>
                 {user.user_addresses.map((address) => (
-                  <li>{address.balance?.toString()}</li>
+                  <li key={address.address}>{address.balance?.toString()}</li>
                 ))}
               </ul>
             </>
