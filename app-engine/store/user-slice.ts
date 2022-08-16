@@ -1,7 +1,8 @@
 import Decimal from 'decimal.js'
 import { AppGraphQL } from '../graphql'
 import type { StoreSlice } from '../index'
-import { getEthNativeTokenBalance, getSolNativeTokenBalance } from '../library'
+import { getEthNativeTokenBalance } from '../library/ethers'
+import { getSolNativeTokenBalance } from '../library/solana'
 import type { AppUser } from '../types/app-engine'
 
 export type UserState = {

@@ -92,11 +92,6 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
           {
             network: 'rinkeby',
             address,
-          },
-        ],
-        user_balances: [
-          {
-            network: 'rinkeby',
             ticker: 'rinkETH',
             balance: new Decimal(balance),
             unit_balance: wei_balance.toString(),

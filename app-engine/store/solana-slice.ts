@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
 import bs58 from 'bs58'
-import { Connection } from '@solana/web3.js'
+import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 
 export type SolanaState = {
   solana_current_provider: null

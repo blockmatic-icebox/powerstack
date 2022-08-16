@@ -3,12 +3,6 @@
 import AnchorLink from 'anchor-link'
 import _ from 'lodash'
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
-import { client_args } from '~/app-config/client-config'
-import { app_engine } from '../index'
-import { Address } from '../types/app-engine'
-import { ethers } from 'ethers'
-import Decimal from 'decimal.js'
-import { Connection, Keypair, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 
 export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'
@@ -64,21 +58,3 @@ export const newAnchorLink = new AnchorLink({
   ],
   transport: new AnchorLinkBrowserTransport({}),
 })
-
-export const getEthNativeTokenBalance = async (
-  user_address: Address,
-  provider: ethers.providers.StaticJsonRpcProvider,
-) => {
-  console.log('💫 get eth native token balance', { user_address, provider })
-  const native_token_balance = new Decimal(
-    ethers.utils.formatEther(await provider.getBalance(user_address)),
-  )
-  return native_token_balance
-}
-
-export const getSolNativeTokenBalance = async (user_address: string, provider: Connection) => {
-  console.log('💫 get sol native token balance', { user_address, provider })
-  const native_token_balance = new Decimal(await provider.getBalance(new PublicKey(user_address)))
-  console.log(`${native_token_balance} / ${LAMPORTS_PER_SOL} SOL`)
-  return native_token_balance
-}
