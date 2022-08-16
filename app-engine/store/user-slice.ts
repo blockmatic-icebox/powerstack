@@ -10,7 +10,7 @@ export type UserState = {
 
 export type UserActions = {
   setUser: (user: AppUser | null) => void
-  fetchUserBalances: (user: AppUser) => Promise<void>
+  fetchUserBalances: () => Promise<void>
   createUserAccount: (username: string) => Promise<void>
 }
 
