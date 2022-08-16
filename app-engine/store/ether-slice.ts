@@ -27,15 +27,11 @@ const defaultEtherState: EtherState = {
 export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   ...defaultEtherState,
 
-  // this function is called from session-state.ts when a new session is created
   initEthers: () => {
     console.log('💎 initializing ether-state ...')
-    const {} = get()
     const ethereum_chain_data = getInfuraChainData(
       client_args.supported_networks.ethereum.network_id,
     )
-
-    // instantiate provider objects
     const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
       ethereum_chain_data.rpc_url,
       {
@@ -43,7 +39,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
         name: ethereum_chain_data.name,
       },
     )
-
     set({
       ethereum_static_provider,
     })
@@ -82,11 +77,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
         {
           network: 'rinkeby',
           address,
-        },
-      ],
-      user_balances: [
-        {
-          network: 'rinkeby',
           ticker: 'rinkETH',
           balance: new Decimal(balance),
           unit_balance: wei_balance.toString(),

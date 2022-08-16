@@ -10,11 +10,7 @@ export type AuthMethod =
 export type Address = string
 
 export interface AppUserAddress {
-  network: string
   address: string
-}
-
-export interface AppUserBalance {
   network: string
   ticker: string
   balance: Decimal
@@ -25,5 +21,4 @@ export interface AppUser {
   jwt: string
   auth_method: AuthMethod
   user_addresses: AppUserAddress[]
-  user_balances: AppUserBalance[]
 }

@@ -7,7 +7,10 @@ export const client_args: AppConfig = {
     ethereum: {
       chain: process.env.NEXT_PUBLIC_ETHEREUM_CHAIN_NAME || '',
       chain_id: process.env.NEXT_PUBLIC_ETHEREUM_CHAIN_ID || '',
-      network_id: parseInt(process.env.NEXT_PUBLIC_ETHEREUM_NETWORK_ID || '4'), // TODO: check value
+      network_id: parseInt(process.env.NEXT_PUBLIC_ETHEREUM_NETWORK_ID || '4'),
+    },
+    solana: {
+      rpc: process.env.NEXT_PUBLIC_SOLANA_RPC_ENDPOINT || '',
     },
   },
   services: {

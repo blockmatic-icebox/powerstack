@@ -1,7 +1,7 @@
-import { ethers } from 'ethers'
+import Decimal from 'decimal.js'
 import { AppGraphQL } from '../graphql'
 import type { StoreSlice } from '../index'
-import { getNativeTokenBalance } from '../library'
+import { getEthNativeTokenBalance, getSolNativeTokenBalance } from '../library'
 import type { AppUser } from '../types/app-engine'
 
 export type UserState = {
@@ -10,7 +10,8 @@ export type UserState = {
 
 export type UserActions = {
   setUser: (user: AppUser | null) => void
-  fetchUserBalances: () => Promise<void>
+  fetchUserBalances: (user: AppUser) => Promise<AppUser>
+  syncUserBalances: () => void
   createUserAccount: (username: string) => Promise<void>
 }
 
@@ -20,6 +21,14 @@ const defaultUserState: UserState = {
   user: null,
 }
 
+const isEth = (user: AppUser | null) =>
+  user &&
+  (user.auth_method === 'web3_anchor' ||
+    user.auth_method === 'web3_metamask' ||
+    user.auth_method === 'web3_auth')
+
+export const isSol = (user: AppUser | null) => user && user?.auth_method === 'web3_solana'
+
 export const createUserSlice: StoreSlice<User> = (set, get) => ({
   ...defaultUserState,
 
@@ -28,31 +37,51 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
     set({ user })
     if (user) {
       console.log('🤵🏻‍♂️ set new user')
-      set({ user })
-      setTimeout(() => {
+      setTimeout(async () => {
+        // TODO: is it the best place?
         get().initEthers()
-        get().fetchUserBalances()
+        get().initSolana()
+        const updated_user = await get().fetchUserBalances(user)
+        set({ user: updated_user })
       }, 0)
     }
     get().refreshGraphQLClient()
   },
 
-  fetchUserBalances: async () => {
+  syncUserBalances: () => {
     const user = get().user
-    console.log('user', user)
-    if (user?.auth_method === 'web3_auth' || user?.auth_method === 'web3_metamask') {
+    if (user) {
+      setTimeout(async () => {
+        const updated_user = await get().fetchUserBalances(user)
+        set({ user: updated_user })
+      }, 0)
+    }
+  },
+
+  fetchUserBalances: async (user: AppUser) => {
+    if (isEth(user)) {
       const ethereum_static_provider = get().ethereum_static_provider
-      if (!ethereum_static_provider) return
-      const eth_balance = await getNativeTokenBalance(
-        user?.user_addresses[0].address,
-        ethereum_static_provider,
-      )
-      // TODO: why user.balences and user.addresses are splited?
-      console.log({
-        eth_balance,
-        balance: eth_balance.toString(),
+      if (!ethereum_static_provider) return user
+      user?.user_addresses.forEach(async (address) => {
+        const eth_balance = (
+          await getEthNativeTokenBalance(address.address, ethereum_static_provider)
+        ).toString()
+        address.balance = new Decimal(eth_balance)
+        address.unit_balance = eth_balance
       })
     }
+    if (isSol(user)) {
+      const solana_static_provider = get().solana_static_provider
+      if (!solana_static_provider) return user
+      user?.user_addresses.forEach(async (address) => {
+        const balance = (
+          await getSolNativeTokenBalance(address.address, solana_static_provider)
+        ).toString()
+        address.balance = new Decimal(balance)
+        address.unit_balance = balance
+      })
+    }
+    return user
   },
 
   createUserAccount: async (username: string) => {
