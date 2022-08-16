@@ -35,7 +35,6 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
     // TODO: WIP: continue flow @RUBENABIX
     const user: AppUser = {
       user_addresses: [],
-      user_balances: [],
       jwt: token,
       auth_method: login_payload.auth_method,
     }

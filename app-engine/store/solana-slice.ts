@@ -4,9 +4,11 @@ import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
 import bs58 from 'bs58'
+import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 
 export type SolanaState = {
   solana_current_provider: null
+  solana_static_provider: Connection | null
 }
 
 export type SolanaActions = {
@@ -31,6 +33,7 @@ const getProvider = () => {
 
 const defaultSolanaState: SolanaState = {
   solana_current_provider: null,
+  solana_static_provider: null,
 }
 
 export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
@@ -39,23 +42,24 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   // this function is called from session-state.ts when a new session is created
   initSolana: () => {
     console.log('🌞 initializing solana slice ...')
-    // TODO:
+    const solana_static_provider = new Connection(client_args.supported_networks.solana.rpc)
+    set({ solana_static_provider })
     console.log('🌞 solana slice initialized')
   },
   loginWithPhantom: async () => {
     console.log('🌞 login with phantom')
     const solana_provider = getProvider()
     console.log({ solana_provider })
-    // TODO: WIP complete and enable
-    if (!solana_provider) throw new Error('phantom is not installed')
-
+    // TODO: WIP handle error message
+    if (!solana_provider) throw new Error('Phantom is not installed')
     try {
       solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
       const resp = await solana_provider.connect()
+      set({ solana_current_provider: solana_provider })
       const address = resp.publicKey.toString()
       const message = client_args.messages.session_message
       const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
-      const { signature, publicKey } = await solana_provider.signMessage(encoded_message, 'utf8')
+      const { signature } = await solana_provider.signMessage(encoded_message, 'utf8')
       const signed_message = bs58.encode(signature)
       const auth_method: AuthMethod = 'web3_solana'
       const network = 'solana'
@@ -77,11 +81,6 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
           {
             network: 'solana',
             address,
-          },
-        ],
-        user_balances: [
-          {
-            network: 'solana',
             ticker: 'solana',
             balance: new Decimal(0), // TODO: fix me
             unit_balance: '0', // // TODO: fix me

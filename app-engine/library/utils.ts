@@ -3,8 +3,6 @@
 import AnchorLink from 'anchor-link'
 import _ from 'lodash'
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
-import { client_args } from '~/app-config/client-config'
-import { app_engine } from '../index'
 
 export const noop = () => {}
 export const isBrowser = typeof window !== 'undefined'

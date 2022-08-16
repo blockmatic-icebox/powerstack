@@ -24,6 +24,8 @@ export const createEngineSlice: StoreSlice<EngineSlice> = (set, get) => ({
         app_engine_initialized: true,
         app_engine_init_time: new Date(),
       })
+      get().initEthers()
+      get().initSolana()
       console.log('🗂 initialized app_engine state')
     }
   },

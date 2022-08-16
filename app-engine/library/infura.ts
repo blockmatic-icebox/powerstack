@@ -76,14 +76,8 @@ export const getInfuraChains = (infura_api_key: string) => {
 // TODO: review this whole chain_id and network data management
 const supported_infura_network_ids = [1, 137, 80001, 4]
 export const getInfuraChainData = (infura_network_id: number) => {
-  // console.log(
-  //   'getInfuraChainData',
-  //   infura_network_id,
-  //   app_engine.getState().build_flags.infura_chains,
-  // )
   if (_.isUndefined(_.find(supported_infura_network_ids, (id) => id === infura_network_id)))
     throw `unsupported infura network id ${infura_network_id}`
-
   const chain_data = getInfuraChains('d1113d056f834c6192955c2b26a14cc1').filter(
     ({ network_id }) => network_id === infura_network_id,
   )

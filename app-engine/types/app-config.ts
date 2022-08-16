@@ -27,9 +27,24 @@ export interface AppMessages {
   session_message: string
 }
 
+// ethereum network config
+type EthNetwork = {
+  chain: string
+  chain_id: string
+  network_id: number // same as infura network_id
+}
+
+type SolanaNetwork = {
+  rpc: string
+}
+
 // global application configuration based on env
 export interface AppConfig {
   app_name: string
+  supported_networks: {
+    ethereum: EthNetwork
+    solana: SolanaNetwork
+  }
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags
