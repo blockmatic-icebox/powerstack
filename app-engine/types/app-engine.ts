@@ -22,3 +22,9 @@ export interface AppUser {
   auth_method: AuthMethod
   user_addresses: AppUserAddress[]
 }
+
+export interface AppNetwork {
+  chain_id: string
+  chain_name: string
+  rpc_url: string
+}
