@@ -3,13 +3,13 @@ import { useAppEngine } from '~/app-engine/index'
 import { useEffect } from 'react'
 import { Container } from '~/app-view/components/layout/index'
 import '~/app-engine'
-import { habitat } from '~/app-engine/library/habitat'
+import { exec_env } from '~/app-engine/library/exec_env'
 
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
 //       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm .
 //       hydration its not necessary at the moment.
 
-if (habitat.is_browser) useAppEngine.getState().initializeAppEngine()
+if (exec_env.is_browser) useAppEngine.getState().initializeAppEngine()
 
 function MyApp({ Component, pageProps }: AppProps) {
   const engine = useAppEngine()

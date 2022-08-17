@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export const habitat = (() => {
+export const exec_env = (() => {
   const is_browser = typeof window !== 'undefined'
   const user_agent = is_browser ? _.get(window, 'navigator.userAgent') : ''
   const is_android = /(Android)/i.test(user_agent)

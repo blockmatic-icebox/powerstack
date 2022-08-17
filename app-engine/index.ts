@@ -12,7 +12,7 @@ import { createEngineSlice, EngineState, EngineActions } from './store/engine-sl
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
-import { habitat } from './library/habitat'
+import { exec_env } from './library/exec_env'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -60,7 +60,7 @@ export const app_engine = createVanillaStore<AppEngine>(
 const useAppEngineBare = create(app_engine)
 
 // devtools https://github.com/beerose/simple-zustand-devtools
-if (habitat.is_browser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
+if (exec_env.is_browser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
 
 // typescrpt selector hooks: https://bit.ly/3fbBHfo
 export const useAppEngine = createSelectorHooks(useAppEngineBare)
