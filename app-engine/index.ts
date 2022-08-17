@@ -4,7 +4,6 @@ import create from 'zustand'
 import { createSessionSlice, SessionState, SessionActions } from './store/session-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
-import { isBrowser } from './library'
 import { ViewActions, ViewState, createViewSlice } from './store/view-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
@@ -13,6 +12,7 @@ import { createEngineSlice, EngineState, EngineActions } from './store/engine-sl
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
+import { exec_env } from './library/exec-env'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -60,7 +60,7 @@ export const app_engine = createVanillaStore<AppEngine>(
 const useAppEngineBare = create(app_engine)
 
 // devtools https://github.com/beerose/simple-zustand-devtools
-if (isBrowser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
+if (exec_env.is_browser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
 
 // typescrpt selector hooks: https://bit.ly/3fbBHfo
 export const useAppEngine = createSelectorHooks(useAppEngineBare)

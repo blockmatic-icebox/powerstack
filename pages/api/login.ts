@@ -1,29 +1,8 @@
-import { ethers } from 'ethers'
 import { NextApiRequest, NextApiResponse } from 'next'
-import nacl from 'tweetnacl'
-import { auth_service } from '~/app-engine/services/jwt-auth-service'
+import { auth_service } from '~/app-engine/services/jwt-auth'
 import { CreateSessionProps } from '~/app-engine/store/session-slice'
-import { Address, AppUser } from '~/app-engine/types/app-engine'
+import { AppUser } from '~/app-engine/types/app-engine'
 import { withSessionRoute } from '~/app-server/session'
-
-// interface SignatureValidatorParams {
-//   address: Address
-//   message: string
-//   signed_message: any
-// }
-
-// const verifySolanaMessageSignature = async ({address, message, signed_message}:SignatureValidatorParams) =>{
-//   nacl.sign.detached.verify(message, signed_message, address)
-//  return true
-// }
-// const verifyEthereumMessageSignature = async ({
-//   address,
-//   message,
-//   signed_message,
-// }: SignatureValidatorParams) => {
-//     const signer_address = await ethers.utils.verifyMessage(message, signed_message)
-//   return signer_address !== address
-// }
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   const login_payload = (await req.body) as CreateSessionProps

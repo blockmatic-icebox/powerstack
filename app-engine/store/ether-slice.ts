@@ -1,11 +1,11 @@
 import { ethers, providers } from 'ethers'
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
-import { ethereum } from '../library'
-import { getInfuraChainData } from '../library/infura'
+import { getInfuraChainData } from '../services/infura'
 import Decimal from 'decimal.js'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
+import { exec_env } from '../library/exec-env'
 import { web3auth_chain_config } from '../static/web3auth-chains'
 
 export type EtherState = {
@@ -29,9 +29,10 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   ...defaultEtherState,
 
   initEthers: () => {
-    console.log('💎 initializing ether-state ...')
+    console.log('🇪🇹 initializing ether-state ...')
     // TODO: improve multichain support
     const ethereum_chain_data = getInfuraChainData(web3auth_chain_config.rinkeby.networkId)
+
     const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
       ethereum_chain_data.rpc_url,
       {
@@ -42,20 +43,20 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     set({
       ethereum_static_provider,
     })
-    console.log('💎 ether state initialized')
+    console.log('🇪🇹 ether state initialized')
   },
   loginWithMetamask: async () => {
     console.log('🇪🇹 login with metamask')
-    if (!ethereum) throw new Error('Please install the metamask extension to login')
-    await ethereum.request({ method: 'eth_requestAccounts' })
-    const provider = new ethers.providers.Web3Provider(ethereum)
-    const infura_network_id = parseInt(ethereum.networkVersion)
+    if (!exec_env.ethereum) throw new Error('Please install the metamask extension to login')
+    await exec_env.ethereum.request({ method: 'eth_requestAccounts' })
+    const provider = new ethers.providers.Web3Provider(exec_env.ethereum)
+    const infura_network_id = parseInt(exec_env.ethereum.networkVersion)
     const network = getInfuraChainData(infura_network_id).name
     const signer = provider.getSigner()
     const address = await signer.getAddress()
     const wei_balance = await provider.getBalance(address)
     const balance = ethers.utils.formatEther(wei_balance)
-    // const chain_id = ethereum.chainId // TODO: is it neccessary?
+    // const chain_id = exec_env.ethereum.chainId // TODO: is it neccessary?
     const message = client_args.messages.session_message
     const signed_message = await signer.signMessage(message)
     console.log('🇪🇹 logging in with metamask...')
@@ -97,6 +98,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     return signed_message
   },
   mintOnEvm: async () => {
-    console.log('🌞 mint on Evm using Pinata')
+    console.log('🇪🇹 mint on Evm using Pinata')
   },
 })
