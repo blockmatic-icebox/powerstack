@@ -6,6 +6,7 @@ import { getInfuraChainData } from '../library/infura'
 import Decimal from 'decimal.js'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
+import { web3auth_chain_config } from '../static/web3auth-chains'
 
 export type EtherState = {
   ethereum_static_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -29,9 +30,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
 
   initEthers: () => {
     console.log('💎 initializing ether-state ...')
-    const ethereum_chain_data = getInfuraChainData(
-      client_args.supported_networks.ethereum.network_id,
-    )
+    // TODO: improve multichain support
+    const ethereum_chain_data = getInfuraChainData(web3auth_chain_config.rinkeby.networkId)
     const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
       ethereum_chain_data.rpc_url,
       {

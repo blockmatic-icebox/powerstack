@@ -41,10 +41,6 @@ type SolanaNetwork = {
 // global application configuration based on env
 export interface AppConfig {
   app_name: string
-  supported_networks: {
-    ethereum: EthNetwork
-    solana: SolanaNetwork
-  }
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags

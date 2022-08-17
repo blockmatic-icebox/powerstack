@@ -5,6 +5,7 @@ import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
 import bs58 from 'bs58'
 import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
+import { web3auth_chain_config } from '../static/web3auth-chains'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -42,7 +43,8 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   // this function is called from session-state.ts when a new session is created
   initSolana: () => {
     console.log('🌞 initializing solana slice ...')
-    const solana_static_provider = new Connection(client_args.supported_networks.solana.rpc)
+    // TODO: improve multichain support
+    const solana_static_provider = new Connection(web3auth_chain_config.solana.rpcTarget)
     set({ solana_static_provider })
     console.log('🌞 solana slice initialized')
   },
