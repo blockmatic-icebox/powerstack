@@ -55,12 +55,16 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
   },
 
   destroySession: async () => {
+    // TODO: WIP please complete it
     console.log('🍪 destroy cookie session')
     try {
       await fetchJson('/api/logout', {
         method: 'POST',
       })
       console.log('🍪 cookie session destroyed!')
+      const user = get().user
+      if (!user) return
+      if (user.auth_method === 'web3_auth') get().web3authLogout()
       get().setUser(null)
     } catch (error) {
       console.error('An unexpected error happened:', error)

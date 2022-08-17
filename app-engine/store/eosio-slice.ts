@@ -24,7 +24,7 @@ export interface EosioState {
 export type EosioActions = {
   initEosio: () => void
   loginWithAnchor: () => Promise<void>
-  logout: () => void
+  logoutEosio: () => void
   setSessionToken: (token: string) => void
   setAccount: (account: string) => void
 }
@@ -83,14 +83,14 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       await get().setAccount(account)
     } catch (error) {
-      get().logout()
+      get().logoutEosio()
       throw error
     }
   },
   // TODO: is it requered?
   setAccount: () => {},
   // clear account state and reset auth on logout
-  logout: async () => {
+  logoutEosio: async () => {
     // await get().anchorLink?.removeSession('100xapp')
     // get().setSessionToken('')
     // set(eosioAuthDefaultState)
