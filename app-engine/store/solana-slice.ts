@@ -55,6 +55,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
     try {
       solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
       const resp = await solana_provider.connect()
+      console.log({ solana_provider })
       set({ solana_current_provider: solana_provider })
       const address = resp.publicKey.toString()
       const message = client_args.messages.session_message

@@ -18,7 +18,7 @@ const LoginBackground = styled('div', {
 })
 
 const Home: NextPage = () => {
-  const { destroySession, user, fetchUserBalances } = useAppEngine()
+  const { user, fetchUserBalances } = useAppEngine()
   return (
     <LoginBackground>
       <Header />
@@ -41,12 +41,7 @@ const Home: NextPage = () => {
               </ul>
             </>
           )}
-
           <WalletLogin />
-
-          <div>
-            <Button onClick={destroySession}>log out</Button>
-          </div>
         </Container>
       </MainContent>
       <Footer />
