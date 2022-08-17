@@ -1,7 +1,7 @@
 import type { CustomChainConfig } from '@web3auth/base'
 
 export const web3auth_chain_config = {
-  mainnet: {
+  eth: {
     displayName: 'Ethereum Mainnet',
     chainNamespace: 'eip155',
     chainId: '0x1',
@@ -14,8 +14,8 @@ export const web3auth_chain_config = {
     displayName: 'Rinkeby Testnet',
     chainNamespace: 'eip155',
     chainId: '0x4',
-    rpcTarget: `https://mainnet.infura.io/v3/776218ac4734478c90191dde8cae483c`,
-    blockExplorer: 'https://etherscan.io/',
+    rpcTarget: `https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`,
+    blockExplorer: 'https://rinkeby.etherscan.io/',
     ticker: 'ETH',
     tickerName: 'Ethereum',
   } as CustomChainConfig,
@@ -37,4 +37,13 @@ export const web3auth_chain_config = {
     ticker: 'matic',
     tickerName: 'Matic',
   } as CustomChainConfig,
+  mumbai: {
+    chainNamespace: 'eip155',
+    rpcTarget: 'https://matic-testnet-archive-rpc.bwarelabs.com',
+    blockExplorer: 'https://mumbai.polygonscan.com/',
+    chainId: '0x13881', // '80001'
+    displayName: 'Polygon Testnet',
+    ticker: 'matic',
+    tickerName: 'Matic',
+  },
 } as const
