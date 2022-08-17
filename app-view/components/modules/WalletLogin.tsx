@@ -61,12 +61,17 @@ const ButtonGroup = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   paddingTop: '$small',
-  
 })
 
 export const WalletLogin = () => {
-  const { user, loginWithAnchor, loginWithPhantom, loginWithMetamask, web3authLogin } =
-    useAppEngine()
+  const {
+    user,
+    loginWithAnchor,
+    loginWithPhantom,
+    loginWithMetamask,
+    web3authLogin,
+    destroySession,
+  } = useAppEngine()
   const location = useLocation()
   const default_user_address = user?.user_addresses[0].address
 
@@ -74,60 +79,71 @@ export const WalletLogin = () => {
     <Card>
       <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
       <p>Address: {default_user_address ? default_user_address : 'wallet not connected'}</p>
-      <LoginButton onClick={loginWithPhantom} variant="panthom">
-        <PhantonIcon />
-        Login with Phantom
-      </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={loginWithAnchor} variant="anchor">
-        <AnchorIcon />
-        Login with Anchor
-      </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={loginWithMetamask} variant="metamask">
-        <MetamaskIcon />
-        Login with Metamask
-      </LoginButton>
-      <LoginButton css={{ mb: '$small' }} onClick={web3authLogin} variant="metamask">
-        Login with Web3Auth
-      </LoginButton>
 
-      <Separator>Or use social web2 logins without wallet</Separator>
+      {user ? (
+        <>
+          <LoginButton css={{ mb: '$small' }} onClick={destroySession} variant="metamask">
+            Log out
+          </LoginButton>
+        </>
+      ) : (
+        <>
+          <LoginButton onClick={loginWithPhantom} variant="panthom">
+            <PhantonIcon />
+            Login with Phantom
+          </LoginButton>
+          <LoginButton css={{ mb: '$small' }} onClick={loginWithAnchor} variant="anchor">
+            <AnchorIcon />
+            Login with Anchor
+          </LoginButton>
+          <LoginButton css={{ mb: '$small' }} onClick={loginWithMetamask} variant="metamask">
+            <MetamaskIcon />
+            Login with Metamask
+          </LoginButton>
+          <LoginButton css={{ mb: '$small' }} onClick={web3authLogin} variant="metamask">
+            Login with Web3Auth
+          </LoginButton>
 
-      <ButtonGroup>
-        <LoginButton
-          css={{ mb: '$small' }}
-          onClick={() => {
-            window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
-          }}
-          variant="metamask"
-          role="button"
-        >
-          <TwitterIcon />
-        </LoginButton>
-        <Button
-          css={{ mb: '$small' }}
-          onClick={() => { }}
-          variant="metamask"
-          aria-label="Login with Github"
-        >
-          <GhLoginIcon />
-        </Button>
-        <Button
-          css={{ mb: '$small' }}
-          onClick={() => { }}
-          variant="metamask"
-          aria-label="Login with Gitlab"
-        >
-          <GitlabIcon />
-        </Button>
-        <Button
-          css={{ mb: '$small' }}
-          onClick={() => { }}
-          variant="metamask"
-          aria-label="Login with BitBucket"
-        >
-          <BitbucketIcon />
-        </Button>
-      </ButtonGroup>
+          <Separator>Or use social web2 logins without wallet</Separator>
+
+          <ButtonGroup>
+            <LoginButton
+              css={{ mb: '$small' }}
+              onClick={() => {
+                window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
+              }}
+              variant="metamask"
+              role="button"
+            >
+              <TwitterIcon />
+            </LoginButton>
+            <Button
+              css={{ mb: '$small' }}
+              onClick={() => {}}
+              variant="metamask"
+              aria-label="Login with Github"
+            >
+              <GhLoginIcon />
+            </Button>
+            <Button
+              css={{ mb: '$small' }}
+              onClick={() => {}}
+              variant="metamask"
+              aria-label="Login with Gitlab"
+            >
+              <GitlabIcon />
+            </Button>
+            <Button
+              css={{ mb: '$small' }}
+              onClick={() => {}}
+              variant="metamask"
+              aria-label="Login with BitBucket"
+            >
+              <BitbucketIcon />
+            </Button>
+          </ButtonGroup>
+        </>
+      )}
     </Card>
   )
 }
