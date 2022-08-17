@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { auth_service } from '~/app-engine/services/jwt-auth'
+import { auth_service } from '~/app-server/jwt-auth'
 import { CreateSessionProps } from '~/app-engine/store/session-slice'
 import { AppUser } from '~/app-engine/types/app-engine'
 import { withSessionRoute } from '~/app-server/session'
@@ -10,8 +10,6 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('login_route', login_payload)
     const { token, error } = await auth_service.login(login_payload)
     if (error || !token) return res.status(500).json({ message: (error as Error).message })
-    console.log({ token, error })
-    // TODO: WIP: continue flow @RUBENABIX
     const user: AppUser = {
       user_addresses: [],
       jwt: token,

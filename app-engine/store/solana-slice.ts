@@ -4,8 +4,9 @@ import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
 import bs58 from 'bs58'
-import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
+import { Connection } from '@solana/web3.js'
 import { web3auth_chain_config } from '../static/web3auth-chains'
+import { getPhantomProvider } from '../library/solana'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -19,18 +20,6 @@ export type SolanaActions = {
 }
 
 export type SolanaStore = SolanaState & SolanaActions
-
-const getProvider = () => {
-  if ('phantom' in window) {
-    const provider = window.phantom?.solana
-
-    if (provider?.isPhantom) {
-      return provider
-    }
-  }
-  alert('Please install phantom')
-  window.open('https://phantom.app/', '_blank')
-}
 
 const defaultSolanaState: SolanaState = {
   solana_current_provider: null,
@@ -50,7 +39,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   },
   loginWithPhantom: async () => {
     console.log('🌞 login with phantom')
-    const solana_provider = getProvider()
+    const solana_provider = getPhantomProvider()
     console.log({ solana_provider })
     // TODO: WIP handle error message
     if (!solana_provider) throw new Error('Phantom is not installed')

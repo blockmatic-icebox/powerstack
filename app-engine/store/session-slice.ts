@@ -1,6 +1,6 @@
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
-import { AuthResponse } from '../services/jwt-auth'
+import { AuthResponse } from '../../app-server/jwt-auth'
 import { AuthMethod } from '../types/app-engine'
 
 export interface SessionState {}

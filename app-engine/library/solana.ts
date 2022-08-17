@@ -11,3 +11,15 @@ export const getSolNativeTokenBalance = async (user_address: string, provider: C
   console.log({ user_address }, `${native_token_balance} / ${LAMPORTS_PER_SOL} SOL`)
   return native_token_balance
 }
+
+export const getPhantomProvider = () => {
+  if ('phantom' in window) {
+    const provider = window.phantom?.solana
+
+    if (provider?.isPhantom) {
+      return provider
+    }
+  }
+  alert('Please install phantom')
+  window.open('https://phantom.app/', '_blank')
+}

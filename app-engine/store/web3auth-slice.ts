@@ -123,10 +123,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     console.log('🔑 user logged in')
   },
   web3authLogout: async () => {
-    const { web3auth } = get()
-    if (web3auth) {
-      await web3auth.logout()
-    }
+    await get().web3auth?.logout()
   },
   web3authGetUserInfo: async () => {},
   web3authGetAccounts: async () => {},

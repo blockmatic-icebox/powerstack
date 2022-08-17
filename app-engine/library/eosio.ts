@@ -1,5 +1,3 @@
-// This file is exclusively for Utilty functions
-// These fucntions must be pure functions and perform simple tasks
 import AnchorLink from 'anchor-link'
 
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'

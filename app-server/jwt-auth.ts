@@ -1,9 +1,7 @@
 import { client_args } from '~/app-config/client-config'
-import { fetchJson } from '../library/fetch'
-import { CreateSessionProps } from '../store/session-slice'
-import { AuthMethod } from '../types/app-engine'
-
-// const login_auth_api_url = 'https://powerstack-auth-atgjsg75cq-uc.a.run.app'
+import { fetchJson } from '../app-engine/library/fetch'
+import { CreateSessionProps } from '../app-engine/store/session-slice'
+import { AuthMethod } from '../app-engine/types/app-engine'
 
 export type AuthResponse = {
   token: string | null
