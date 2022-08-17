@@ -3,8 +3,8 @@ import AnchorLink, { PublicKey } from 'anchor-link'
 // import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
 import { client_args } from '~/app-config/client-config'
-import { newAnchorLink } from '../library'
 import { SignedTransactionType } from '@greymass/eosio'
+import { newAnchorLink } from '../library/eosio'
 
 export enum EOSIOAuthType {
   ANCHOR,

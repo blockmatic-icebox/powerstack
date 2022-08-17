@@ -1,5 +1,6 @@
 import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 import Decimal from 'decimal.js'
+import _ from 'lodash'
 
 // TODO: improve type
 export const isSol = (network: string) => network === 'solana'

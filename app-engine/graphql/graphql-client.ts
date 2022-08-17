@@ -2,7 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
-import { isBrowser } from '../library'
+import { habitat } from '../library/habitat'
 
 export const createApolloClient = (jwt?: {}) => {
   // TODO: fix me @RUBENBIX
@@ -15,7 +15,7 @@ export const createApolloClient = (jwt?: {}) => {
         'x-hasura-user-role': 'anon',
       }
 
-  const wsLink = isBrowser
+  const wsLink = habitat.is_browser
     ? new GraphQLWsLink(
         createClient({
           url: `wss://${apollo_base_url}`,
@@ -32,7 +32,7 @@ export const createApolloClient = (jwt?: {}) => {
   })
 
   const link =
-    isBrowser && wsLink != null
+    habitat.is_browser && wsLink != null
       ? split(
           ({ query }) => {
             const def = getMainDefinition(query)
