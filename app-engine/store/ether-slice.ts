@@ -5,9 +5,7 @@ import { getInfuraChainData } from '../services/infura'
 import Decimal from 'decimal.js'
 import { client_args } from '~/app-config/client-config'
 import { AuthMethod } from '../types/app-engine'
-
-import { exec_env } from '../library/exec_env'
-
+import { exec_env } from '../library/exec-env'
 import { web3auth_chain_config } from '../static/web3auth-chains'
 
 export type EtherState = {

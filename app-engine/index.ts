@@ -12,7 +12,7 @@ import { createEngineSlice, EngineState, EngineActions } from './store/engine-sl
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
-import { exec_env } from './library/exec_env'
+import { exec_env } from './library/exec-env'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &

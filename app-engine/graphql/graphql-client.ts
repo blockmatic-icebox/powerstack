@@ -2,7 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
-import { exec_env } from '../library/exec_env'
+import { exec_env } from '../library/exec-env'
 
 export const createApolloClient = (jwt?: {}) => {
   // TODO: fix me @RUBENBIX
