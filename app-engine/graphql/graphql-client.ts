@@ -34,7 +34,7 @@ const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Res
 
 export const createApolloClient = (jwt?: {}) => {
   // TODO: fix me @RUBENBIX
-  const apollo_base_url = 'powerstack-hasura-panslbmhpa-uc.a.run.app/v1/graphql'
+  const apollo_base_url = 'api.powerstack.xyz/v1/graphql'
   const headers = jwt
     ? {
         Authorization: `Bearer ${jwt}`,
