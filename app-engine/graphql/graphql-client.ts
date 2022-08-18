@@ -38,6 +38,7 @@ export const createApolloClient = (jwt?: {}) => {
   const headers = jwt
     ? {
         Authorization: `Bearer ${jwt}`,
+        'x-hasura-user-role': 'user',
       }
     : {
         'x-hasura-user-role': 'anon',
