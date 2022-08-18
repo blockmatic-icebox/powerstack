@@ -1,11 +1,18 @@
 import { styled } from '../app-view/styles/stitches.config'
-import { GetServerSidePropsContext, NextPage } from 'next'
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetServerSidePropsResult,
+  InferGetServerSidePropsType,
+  NextPage,
+} from 'next'
 import { Container, Footer, Header } from '~/app-view/components/layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
 import { AppGraphQL, createApolloClient } from '~/app-engine/graphql'
+import { Accounts } from '~/app-engine/graphql/generated-sdk'
 
 const MainContent = styled('div', {
   minHeight: '75vh',
@@ -26,12 +33,22 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-const ssrHandler = async ({ req }: GetServerSidePropsContext) => {
+const ssrHandler = async ({
+  req,
+}: GetServerSidePropsContext): Promise<GetServerSidePropsResult<AccountSSRProps>> => {
   const user = req.session.user
-  if (!user) return { user: null }
+  if (!user)
+    return {
+      props: {
+        user: null,
+      },
+    }
   const apollo_client = createApolloClient(user.jwt)
 
-  const result = apollo_client.query<AppGraphQL.AccountsQuery, AppGraphQL.AccountsQueryVariables>({
+  const result = await apollo_client.query<
+    AppGraphQL.AccountsQuery,
+    AppGraphQL.AccountsQueryVariables
+  >({
     query: AppGraphQL.AccountsDocument,
     variables: {
       where: {
@@ -40,15 +57,22 @@ const ssrHandler = async ({ req }: GetServerSidePropsContext) => {
     },
   })
 
+  console.log('result')
+
   return {
     props: {
-      user: {},
+      user: result.data.accounts[0],
     },
   }
 }
-// export const getServerSideProps = withSessionSsr(ssrHandler)
 
-const Home: NextPage = () => {
+interface AccountSSRProps {
+  user: Accounts | null
+}
+
+export const getServerSideProps: GetServerSideProps = withSessionSsr<AccountSSRProps>(ssrHandler)
+
+const Home: NextPage<AccountSSRProps> = ({ user }) => {
   const { createUserAccount } = useAppEngine()
   const [username, setUsername] = useState('')
   return (
@@ -56,6 +80,7 @@ const Home: NextPage = () => {
       <Header />
       <MainContent>
         <Container>
+          <pre>{JSON.stringify({ user })}</pre>
           <Input
             name="username"
             value={username}

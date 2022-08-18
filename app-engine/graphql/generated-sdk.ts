@@ -52,7 +52,18 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "accounts" */
 export type Accounts = {
   account_id: Scalars['uuid']
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
   username: Scalars['String']
+}
+
+/** columns and relationships of "accounts" */
+export type AccountsAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
 }
 
 /** Boolean expression to filter rows from the table "accounts". All fields are combined with a logical 'AND'. */
@@ -61,6 +72,7 @@ export type Accounts_Bool_Exp = {
   _not?: InputMaybe<Accounts_Bool_Exp>
   _or?: InputMaybe<Array<Accounts_Bool_Exp>>
   account_id?: InputMaybe<Uuid_Comparison_Exp>
+  addresses?: InputMaybe<Addresses_Bool_Exp>
   username?: InputMaybe<String_Comparison_Exp>
 }
 
@@ -94,6 +106,7 @@ export type Accounts_On_Conflict = {
 /** Ordering options when selecting data from "accounts". */
 export type Accounts_Order_By = {
   account_id?: InputMaybe<Order_By>
+  addresses_aggregate?: InputMaybe<Addresses_Aggregate_Order_By>
   username?: InputMaybe<Order_By>
 }
 
@@ -122,6 +135,61 @@ export enum Accounts_Update_Column {
   AccountId = 'account_id',
   /** column name */
   Username = 'username',
+}
+
+/** columns and relationships of "addresses" */
+export type Addresses = {
+  account_id: Scalars['uuid']
+  address: Scalars['String']
+  network: Scalars['String']
+}
+
+/** order by aggregate values of table "addresses" */
+export type Addresses_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>
+  max?: InputMaybe<Addresses_Max_Order_By>
+  min?: InputMaybe<Addresses_Min_Order_By>
+}
+
+/** Boolean expression to filter rows from the table "addresses". All fields are combined with a logical 'AND'. */
+export type Addresses_Bool_Exp = {
+  _and?: InputMaybe<Array<Addresses_Bool_Exp>>
+  _not?: InputMaybe<Addresses_Bool_Exp>
+  _or?: InputMaybe<Array<Addresses_Bool_Exp>>
+  account_id?: InputMaybe<Uuid_Comparison_Exp>
+  address?: InputMaybe<String_Comparison_Exp>
+  network?: InputMaybe<String_Comparison_Exp>
+}
+
+/** order by max() on columns of table "addresses" */
+export type Addresses_Max_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** order by min() on columns of table "addresses" */
+export type Addresses_Min_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** Ordering options when selecting data from "addresses". */
+export type Addresses_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** select columns of table "addresses" */
+export enum Addresses_Select_Column {
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  Address = 'address',
+  /** column name */
+  Network = 'network',
 }
 
 /** mutation root */
@@ -181,6 +249,10 @@ export type Query_Root = {
   accounts: Array<Accounts>
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
+  /** fetch data from the table: "addresses" using primary key columns */
+  addresses_by_pk?: Maybe<Addresses>
 }
 
 export type Query_RootAccountsArgs = {
@@ -195,11 +267,28 @@ export type Query_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid']
 }
 
+export type Query_RootAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
+}
+
+export type Query_RootAddresses_By_PkArgs = {
+  address: Scalars['String']
+  network: Scalars['String']
+}
+
 export type Subscription_Root = {
   /** fetch data from the table: "accounts" */
   accounts: Array<Accounts>
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
+  /** fetch data from the table: "addresses" using primary key columns */
+  addresses_by_pk?: Maybe<Addresses>
 }
 
 export type Subscription_RootAccountsArgs = {
@@ -212,6 +301,19 @@ export type Subscription_RootAccountsArgs = {
 
 export type Subscription_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid']
+}
+
+export type Subscription_RootAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
+}
+
+export type Subscription_RootAddresses_By_PkArgs = {
+  address: Scalars['String']
+  network: Scalars['String']
 }
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
@@ -237,7 +339,13 @@ export type AccountsQueryVariables = Exact<{
   where?: InputMaybe<Accounts_Bool_Exp>
 }>
 
-export type AccountsQuery = { accounts: Array<{ account_id: any; username: string }> }
+export type AccountsQuery = {
+  accounts: Array<{
+    account_id: any
+    username: string
+    addresses: Array<{ account_id: any; address: string; network: string }>
+  }>
+}
 
 export const CreateUsernameDocument = gql`
   mutation CreateUsername($username: String) {
@@ -288,6 +396,11 @@ export const AccountsDocument = gql`
     accounts(where: $where) {
       account_id
       username
+      addresses {
+        account_id
+        address
+        network
+      }
     }
   }
 `
