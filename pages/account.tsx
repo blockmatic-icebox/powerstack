@@ -57,7 +57,7 @@ const ssrHandler = async ({
     },
   })
 
-  console.log('result')
+  console.log('result', result)
 
   return {
     props: {
