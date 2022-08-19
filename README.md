@@ -61,8 +61,8 @@ In the current setup Zustand only runs on the browser, this is important to unde
 
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
-Endpoint: https://api.powerstack.xyz/v1/graphql
-Explorer: https://explorer.powerstack.xyz
+- Endpoint: https://api.powerstack.xyz/v1/graphql
+- Explorer: https://explorer.powerstack.xyz
 
 #### GraphQL Development Flow
 
