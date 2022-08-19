@@ -1,7 +1,7 @@
 import { AppNetwork } from '../types/app-engine'
 
 /*  NOTE:
-We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and EOSIO for staters.
+We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and Antilope for staters.
 
 Ethereum networks have two identifiers, a network ID and a chain ID. Although they often have the same value, they have different uses.
 

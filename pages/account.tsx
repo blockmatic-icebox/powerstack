@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
 import { AppGraphQL, createApolloClient } from '~/app-engine/graphql'
 import { Accounts } from '~/app-engine/graphql/generated-sdk'
+import { app_logger } from '~/app-engine/library/logger'
 
 const MainContent = styled('div', {
   minHeight: '75vh',

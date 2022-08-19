@@ -4,7 +4,7 @@ export const app_args: AppArguments = {
   app_name: process.env.NEXT_APP_NAME || '',
   contracts: {},
   services: {
-    eosio: {
+    antilope: {
       eos_chain_id: process.env.NEXT_EOS_CHAIN_ID || '',
       chain_rpc: process.env.NEXT_PUBLIC_EOS_API_HOST || '',
     },

@@ -4,36 +4,33 @@ import AnchorLink, { PublicKey } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
 import { SignedTransactionType } from '@greymass/eosio'
-import { newAnchorLink } from '../library/eosio'
+import { newAnchorLink } from '../library/antilope'
 import { app_logger } from '../library/logger'
 
-export enum EOSIOAuthType {
+export enum AntilopeAuthType {
   ANCHOR,
 }
 
-export interface EosioState {
+export interface AntilopeState {
   anchorLink?: AnchorLink
   account: string
   authed: boolean
   token: string
-  authType?: EOSIOAuthType
+  authType?: AntilopeAuthType
   cred_id?: string
   pub_key?: PublicKey
-  eosio_current_provider: null
 }
 
-export type EosioActions = {
-  initEosio: () => void
+export type AntilopeActions = {
+  initAntilope: () => void
   loginWithAnchor: () => Promise<void>
-  logoutEosio: () => void
+  logoutAntilope: () => void
   setSessionToken: (token: string) => void
-  setAccount: (account: string) => void
 }
 
-export type EosioSlice = EosioState & EosioActions
+export type AntilopeSlice = AntilopeState & AntilopeActions
 
-const defaultEosioState: EosioState = {
-  eosio_current_provider: null,
+const defaultAntilopeState: AntilopeState = {
   authed: false,
   authType: undefined,
   cred_id: undefined,
@@ -42,8 +39,8 @@ const defaultEosioState: EosioState = {
   account: '',
 }
 
-export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
-  ...defaultEosioState,
+export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
+  ...defaultAntilopeState,
   setSessionToken: () => {},
   loginWithAnchor: async () => {
     app_logger.log('loginWithAnchor')
@@ -79,25 +76,16 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       if (error) throw new Error(error)
 
-      set({ authed: true, authType: EOSIOAuthType.ANCHOR, pub_key, token })
+      set({ authed: true, authType: AntilopeAuthType.ANCHOR, pub_key, token })
       get().setSessionToken(token)
-
-      await get().setAccount(account)
     } catch (error) {
-      get().logoutEosio()
+      get().logoutAntilope()
       throw error
     }
   },
-  // TODO: is it requered?
-  setAccount: () => {},
-  // clear account state and reset auth on logout
-  logoutEosio: async () => {
-    // await get().anchorLink?.removeSession('100xapp')
-    // get().setSessionToken('')
-    // set(eosioAuthDefaultState)
-  },
+  logoutAntilope: async () => {},
 
-  setEOSIOSessionToken: (token: string) => {
+  setAntilopeSessionToken: (token: string) => {
     if (!token) return localStorage.removeItem('bitcash_session')
     // const decoded_token = jwt.decode(token.replace('Bearer ', ''))
 
@@ -110,10 +98,10 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
   },
 
   // this function is called from session-state.ts when a new session is created
-  initEosio: () => {
-    app_logger.log('⚙️ initializing eosio slice ...')
-    // TODO:
-    app_logger.log('⚙️ eosio slice initialized')
+  initAntilope: () => {
+    app_logger.log('⚙️ initializing antilope slice ...')
+
+    app_logger.log('⚙️ antilope slice initialized')
   },
 })
 interface RequestTokenAnchorEOSParams {

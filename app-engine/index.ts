@@ -7,7 +7,7 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { ViewActions, ViewState, createViewSlice } from './store/view-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
-import { createEosioSlice, EosioActions, EosioState } from './store/eosio-slice'
+import { createAntilopeSlice, AntilopeActions, AntilopeState } from './store/antilope-slice'
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
@@ -20,7 +20,7 @@ export type AppState = UserState &
   Web3AuthState &
   SessionState &
   EtherState &
-  EosioState &
+  AntilopeState &
   SolanaState &
   EngineState &
   GraphQLState
@@ -29,7 +29,7 @@ export type AppActions = UserActions &
   Web3AuthActions &
   SessionActions &
   EtherActions &
-  EosioActions &
+  AntilopeActions &
   SolanaActions &
   EngineActions &
   GraphQLActions
@@ -48,7 +48,7 @@ export const app_engine = createVanillaStore<AppEngine>(
     ...createSessionSlice(set, get),
     ...createUserSlice(set, get),
     ...createSolanaSlice(set, get),
-    ...createEosioSlice(set, get),
+    ...createAntilopeSlice(set, get),
     ...createViewSlice(set, get),
     ...createEngineSlice(set, get),
     ...createEtherSlice(set, get),

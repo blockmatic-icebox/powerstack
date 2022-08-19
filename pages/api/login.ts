@@ -3,6 +3,7 @@ import { auth_service } from '~/app-server/jwt-auth'
 import { CreateSessionProps } from '~/app-engine/store/session-slice'
 import { AppUser } from '~/app-engine/types/app-engine'
 import { withSessionRoute } from '~/app-server/session'
+import { app_logger } from '~/app-engine/library/logger'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   const login_payload = (await req.body) as CreateSessionProps
