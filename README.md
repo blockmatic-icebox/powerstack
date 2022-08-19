@@ -97,17 +97,21 @@ graphiql: https://graphiql-online.com
 |   |   ├── solana.ts........................ # solana and phantom wallet utils
 |   |   └── uiux.ts.......................... # utils for better ux
 |   |
-|   ├── services..............................# abstractions for external apis
-|   |   ├── logger.ts.........................# configurable app logger
-|   |   ├── sentry.ts.........................# crash reporting instance
-|   |   └── cloudinary.ts.....................# image optimization and cdn
+|   ├── services............................. # abstractions for external apis
+|   |   ├── logger.ts........................ # configurable app logger
+|   |   ├── sentry.ts........................ # crash reporting instance
+|   |   └── cloudinary.ts.................... # image optimization and cdn
 |   |
-|   └── store.................................# portable vanillajs state machine
-|       ├── a
-|       ├── b
-|       ├── c
-|       ├── d
-|       ├── f
+|   └── store................................ # portable vanillajs state machine
+|       ├── engine-slice.ts.................. # app-engine state flags
+|       ├── eosio-slice.ts................... # eosio and anchor wallet logic
+|       ├── ethers-slice.ts.................. # evm and metamask wallet logic
+|       ├── graphql-slice.ts................. # graphql frontend client instance
+|       ├── network-slice.ts................. # multi-chain and network switching logic
+|       ├── solana-slice.ts.................. # solana and phantom wallet logic
+|       ├── user-slice.ts.................... # app user data and functions
+|       ├── view-slice.ts.................... # app view / ui state
+|       └── web3auth-slice.ts................ # web3auth and torus logic
 |
 ├── app-server ...............................# server side logic
 |
