@@ -74,8 +74,8 @@ graphiql: https://graphiql-online.com
 .
 ├── _docs.....................................# documentation files and media
 ├── _scripts..................................# utility devops scripts
-├── app-config................................# app configuration and env var checks
-|   ├── client-args.ts........................# frontend client config
+├── app-config................................# environment variables and secrets
+|   ├── app-arguments.ts..................... # application arguments
 |   └── server-secrets.ts ................... # server side secrets
 |
 ├── app-engine................................# portable vanillajs core logic ( app engine )
@@ -87,8 +87,15 @@ graphiql: https://graphiql-online.com
 |   |   └── index.ts..........................# main module entry and api exports
 |   |
 |   ├── library...............................# collection of pure utlity functions and objects
-|   |   ├── errors.ts........................ # app-engine error types
-|   |   └── utils.ts..........................# general use utility pure functions
+|   |   ├── encoding.ts...................... # encoding functions
+|   |   ├── eosio.ts......................... # eosio and anchor wallet uitls
+|   |   ├── errors.ts........................ # app-engine error classes
+|   |   ├── ethers.ts........................ # evm utils
+|   |   ├── exec-env.ts...................... # execution environment variables
+|   |   ├── fetch.ts......................... # window fetch wrapper
+|   |   ├── logger.ts........................ # logger object
+|   |   ├── solana.ts........................ # solana and phantom wallet utils
+|   |   └── uiux.ts.......................... # utils for better ux
 |   |
 |   ├── services..............................# abstractions for external apis
 |   |   ├── logger.ts.........................# configurable app logger
