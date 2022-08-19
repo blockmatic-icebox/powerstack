@@ -22,7 +22,7 @@ themes_spinner.start()
 fs.readdirSync(dir).forEach((json) => {
   const theme_key = json.replace(/(-theme\.json|\.json)/, '').replace(/theme/, 'default')
   file_names.push(theme_key)
-  console.log(`🖌️  ${theme_key} theme found!`)
+  app_logger.log(`🖌️  ${theme_key} theme found!`)
 
   themes[theme_key] = require(path.join(dir, json))
 })
@@ -116,7 +116,7 @@ Object.keys(themes).forEach((theme) => {
 })
 
 toolabs_theme_spinner.stop()
-console.log(`
+app_logger.log(`
 ✔️  Toolabs JSON Themes Digested successfully 🪄🎉`)
 const writing_theme_spinner = setSpinner(` %s 〰️ Writting Toolabs JSON Theme for stitches...
 
@@ -143,7 +143,7 @@ file_names.forEach((file) => {
       }
 
       writing_theme_spinner.stop()
-      console.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
+      app_logger.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
     },
   )
 

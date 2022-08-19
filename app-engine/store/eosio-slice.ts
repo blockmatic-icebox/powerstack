@@ -5,6 +5,7 @@ import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
 import { SignedTransactionType } from '@greymass/eosio'
 import { newAnchorLink } from '../library/eosio'
+import { app_logger } from '../library/logger'
 
 export enum EOSIOAuthType {
   ANCHOR,
@@ -45,17 +46,17 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
   ...defaultEosioState,
   setSessionToken: () => {},
   loginWithAnchor: async () => {
-    console.log('loginWithAnchor')
+    app_logger.log('loginWithAnchor')
     try {
       // get().logout() // TODO: fix me @RUBENABIX
       const anchorLink = get().anchorLink || newAnchorLink
 
       if (!get().anchorLink) set({ anchorLink })
 
-      console.log('init wallet login')
+      app_logger.log('init wallet login')
       // Use the anchor-link login method with the chain id to establish a session
       const identity = await anchorLink.login(app_args.app_name)
-      console.log('identity', identity)
+      app_logger.log('identity', identity)
       const pub_key = PublicKey.from(identity.session.publicKey)
       const account = identity.signer.actor.toString()
 
@@ -68,11 +69,11 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
         account,
       }
 
-      console.log(payload)
+      app_logger.log(payload)
 
       const result = await getTokenAnchorEOS(payload)
 
-      console.log({ anchor: result })
+      app_logger.log({ anchor: result })
 
       const { token, error } = result
 
@@ -110,9 +111,9 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
   // this function is called from session-state.ts when a new session is created
   initEosio: () => {
-    console.log('⚙️ initializing eosio slice ...')
+    app_logger.log('⚙️ initializing eosio slice ...')
     // TODO:
-    console.log('⚙️ eosio slice initialized')
+    app_logger.log('⚙️ eosio slice initialized')
   },
 })
 interface RequestTokenAnchorEOSParams {

@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // log the store state on every update
   useEffect(() => {
     if (!useAppEngine.getState())
-      console.log('✓ zustand state updated', JSON.parse(JSON.stringify(engine)))
+      app_logger.log('✓ zustand state updated', JSON.parse(JSON.stringify(engine)))
   }, [engine])
 
   return (

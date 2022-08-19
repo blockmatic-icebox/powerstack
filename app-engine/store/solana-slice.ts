@@ -7,6 +7,7 @@ import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
 import { web3auth_chain_config } from '../static/web3auth-chains'
 import { getPhantomProvider } from '../library/solana'
+import { app_logger } from '../library/logger'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -31,22 +32,22 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
 
   // this function is called from session-state.ts when a new session is created
   initSolana: () => {
-    console.log('🌞 initializing solana slice ...')
+    app_logger.log('🌞 initializing solana slice ...')
     // TODO: improve multichain support
     const solana_static_provider = new Connection(web3auth_chain_config.solana.rpcTarget)
     set({ solana_static_provider })
-    console.log('🌞 solana slice initialized')
+    app_logger.log('🌞 solana slice initialized')
   },
   loginWithPhantom: async () => {
-    console.log('🌞 login with phantom')
+    app_logger.log('🌞 login with phantom')
     const solana_provider = getPhantomProvider()
-    console.log({ solana_provider })
+    app_logger.log({ solana_provider })
     // TODO: WIP handle error message
     if (!solana_provider) throw new Error('Phantom is not installed')
     try {
-      solana_provider.on('connect', () => console.log('🌞 phantom wallet connected!'))
+      solana_provider.on('connect', () => app_logger.log('🌞 phantom wallet connected!'))
       const resp = await solana_provider.connect()
-      console.log({ solana_provider })
+      app_logger.log({ solana_provider })
       set({ solana_current_provider: solana_provider })
       const address = resp.publicKey.toString()
       const message = app_args.messages.session_message
@@ -62,7 +63,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
         auth_method,
         address,
       }
-      console.log('solana input', sessionInput)
+      app_logger.log('solana input', sessionInput)
       const { token, error } = await get().createSession(sessionInput)
       if (error || !token) return // TODO: fix me handle login error
       get().setUser({
@@ -84,6 +85,6 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
     }
   },
   mintOnSolana: async () => {
-    console.log('🌞 mint on solana using bundlr')
+    app_logger.log('🌞 mint on solana using bundlr')
   },
 })

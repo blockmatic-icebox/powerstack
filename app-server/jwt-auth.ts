@@ -30,7 +30,7 @@ const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> =
     })
     return login_response as AuthResponse
   } catch (error) {
-    console.log('error', error)
+    app_logger.log('error', error)
     throw new Error((error as Error).message)
   }
 }

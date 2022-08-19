@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
+import { app_logger } from '../library/logger'
 
 export type Web3AuthState = {
   web3auth: Web3Auth | null
@@ -40,7 +41,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   ...defaultWeb3AuthState,
 
   web3authInit: async () => {
-    console.log('🔑 initializing web3auth ...')
+    app_logger.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
     // TODO: fix me @RUBENABIX
     const client_id =
@@ -61,7 +62,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     })
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
     web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
-      console.log('you are successfully logged in', web3auth_user)
+      app_logger.log('you are successfully logged in', web3auth_user)
       const web3auth_provider = await web3auth.connect()
       if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
       set({ web3auth_provider })
@@ -72,7 +73,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const wei_balance = await ethers_provider.getBalance(address)
       const balance = ethers.utils.formatEther(wei_balance)
       const auth_method: AuthMethod = 'web3_auth'
-      console.log({ address, balance, user_info })
+      app_logger.log({ address, balance, user_info })
       const message = app_args.messages.session_message
       const signed_message = await get().signMessageWithEhters(message)
 
@@ -101,10 +102,10 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       set({ web3auth_user })
     })
 
-    web3auth.on(ADAPTER_EVENTS.CONNECTING, () => console.log('connecting ...'))
+    web3auth.on(ADAPTER_EVENTS.CONNECTING, () => app_logger.log('connecting ...'))
 
     web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
-      console.log('disconnected')
+      app_logger.log('disconnected')
       set({ web3auth_user: null })
     })
 
@@ -113,14 +114,14 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     )
     await web3auth.initModal()
     set({ web3auth: web3auth })
-    console.log(`🔑 web3auth initialized with client_id ${client_id}`)
+    app_logger.log(`🔑 web3auth initialized with client_id ${client_id}`)
   },
   web3authLogin: async () => {
-    console.log('🔑 login with web3auth')
+    app_logger.log('🔑 login with web3auth')
     const { web3auth } = get()
     if (!web3auth) throw new Error('Web3Auth is not initialized')
     await web3auth.connect()
-    console.log('🔑 user logged in')
+    app_logger.log('🔑 user logged in')
   },
   web3authLogout: async () => {
     await get().web3auth?.logout()

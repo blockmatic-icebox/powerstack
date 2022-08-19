@@ -1,4 +1,5 @@
 import { StoreSlice } from '..'
+import { app_logger } from '../library/logger'
 
 export interface EngineState {
   app_engine_initialized: boolean
@@ -18,7 +19,7 @@ export const createEngineSlice: StoreSlice<EngineSlice> = (set, get) => ({
     const { app_engine_initialized, web3authInit } = get()
 
     if (!app_engine_initialized) {
-      console.log('🗂 initializing app_engine state ...')
+      app_logger.log('🗂 initializing app_engine state ...')
       web3authInit()
       set({
         app_engine_initialized: true,
@@ -26,7 +27,7 @@ export const createEngineSlice: StoreSlice<EngineSlice> = (set, get) => ({
       })
       get().initEthers()
       get().initSolana()
-      console.log('🗂 initialized app_engine state')
+      app_logger.log('🗂 initialized app_engine state')
     }
   },
 })

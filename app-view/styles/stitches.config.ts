@@ -3,8 +3,8 @@ import { createStitches } from '@stitches/react'
 import { light_theme } from './themes/light-theme'
 import { dark_theme } from './themes/dark-theme'
 
-// console.log('Light Theme for Stitches\n', light_theme)
-// console.log('Dark Theme for Stitches\n', dark_theme)
+// app_logger.log('Light Theme for Stitches\n', light_theme)
+// app_logger.log('Dark Theme for Stitches\n', dark_theme)
 
 // NOTE: Light theme is default theme if Dark is available.
 const getFontSizes = () => {

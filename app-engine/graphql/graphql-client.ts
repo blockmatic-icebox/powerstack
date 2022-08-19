@@ -3,14 +3,15 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { exec_env } from '../library/exec-env'
+import { app_logger } from '../library/logger'
 
 const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
   const body = JSON.parse(init?.body?.toString() ?? '{}')
-  console.log(`🐭 GraphQL Operation`, JSON.stringify(init, null, 2))
+  app_logger.log(`🐭 GraphQL Operation`, JSON.stringify(init, null, 2))
   const start = Date.now()
-  console.log(`${new Date().toISOString().slice(-13)} 📡 Sending ${body.operationName} request`)
+  app_logger.log(`${new Date().toISOString().slice(-13)} 📡 Sending ${body.operationName} request`)
   const response = await fetch(input, init)
-  console.log(
+  app_logger.log(
     `${new Date().toISOString().slice(-13)} 📡 Received ${body.operationName} response in ${
       Date.now() - start
     }ms`,
@@ -22,7 +23,7 @@ const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Res
     async text() {
       const start = Date.now()
       const result = await response.text()
-      console.log(
+      app_logger.log(
         `${new Date().toISOString().slice(-13)} ⚙️  Read ${body.operationName} response body in ${
           Date.now() - start
         }ms (${result.length} bytes)`,
@@ -44,7 +45,7 @@ export const createApolloClient = (jwt?: {}) => {
         'x-hasura-user-role': 'anon',
       }
 
-  console.log('apollo headers', headers)
+  app_logger.log('apollo headers', headers)
 
   const wsLink = exec_env.is_browser
     ? new GraphQLWsLink(

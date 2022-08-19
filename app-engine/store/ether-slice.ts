@@ -7,6 +7,7 @@ import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
 import { exec_env } from '../library/exec-env'
 import { web3auth_chain_config } from '../static/web3auth-chains'
+import { app_logger } from '../library/logger'
 
 export type EtherState = {
   ethereum_static_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null
@@ -29,7 +30,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   ...defaultEtherState,
 
   initEthers: () => {
-    console.log('🇪🇹 initializing ether-state ...')
+    app_logger.log('🇪🇹 initializing ether-state ...')
     // TODO: improve multichain support
     const ethereum_chain_data = getInfuraChainData(web3auth_chain_config.rinkeby.networkId)
 
@@ -43,10 +44,10 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     set({
       ethereum_static_provider,
     })
-    console.log('🇪🇹 ether state initialized')
+    app_logger.log('🇪🇹 ether state initialized')
   },
   loginWithMetamask: async () => {
-    console.log('🇪🇹 login with metamask')
+    app_logger.log('🇪🇹 login with metamask')
     if (!exec_env.ethereum) throw new Error('Please install the metamask extension to login')
     await exec_env.ethereum.request({ method: 'eth_requestAccounts' })
     const provider = new ethers.providers.Web3Provider(exec_env.ethereum)
@@ -59,7 +60,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     // const chain_id = exec_env.ethereum.chainId // TODO: is it neccessary?
     const message = app_args.messages.session_message
     const signed_message = await signer.signMessage(message)
-    console.log('🇪🇹 logging in with metamask...')
+    app_logger.log('🇪🇹 logging in with metamask...')
     const auth_method: AuthMethod = 'web3_metamask'
     const { token, error } = await get().createSession({
       network,
@@ -68,7 +69,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       signed_message,
       auth_method,
     })
-    console.log('metamask response', { token, error })
+    app_logger.log('metamask response', { token, error })
     if (error || !token) return // TODO: fix me handle login error
     get().setUser({
       username: 'anon', // TODO: fix me,
@@ -86,18 +87,18 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     })
   },
   signMessageWithEhters: async (message: string) => {
-    console.log('🇪🇹 sign message with ethers', message)
+    app_logger.log('🇪🇹 sign message with ethers', message)
     const { web3auth } = get()
     if (!web3auth) throw new Error('web3auth is not initialized')
     const web3auth_provider = await web3auth.connect()
     if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
     const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
     const signer = ethers_provider.getSigner()
-    console.log('🇪🇹 signing message with ethers ...')
+    app_logger.log('🇪🇹 signing message with ethers ...')
     const signed_message = await signer.signMessage(message)
     return signed_message
   },
   mintOnEvm: async () => {
-    console.log('🇪🇹 mint on Evm using Pinata')
+    app_logger.log('🇪🇹 mint on Evm using Pinata')
   },
 })
