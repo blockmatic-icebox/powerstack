@@ -1,13 +1,14 @@
-import { styled } from '../../styles/stitches.config'
+import { styled } from '~/app-view/styles/stitches.config'
 
 export const Sidebar = styled('aside', {
   minHeight: 'auto',
   position: 'relative',
   width: '100%',
   maxWidth: 480,
-  borderRight: '1px solid $gray-scale-100',
+  borderRight: '$neutral-100 1px solid',
+  bg: 'red',
 
   '@medium': {
     minHeight: 'calc(100vh - 82px)',
-  }
+  },
 })

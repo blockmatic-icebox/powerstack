@@ -6,7 +6,7 @@ import {
   InferGetServerSidePropsType,
   NextPage,
 } from 'next'
-import { Container, Footer, Header } from '~/app-view/components/layout'
+import { Container, Footer, Header } from '~/app-view/components/layout/Layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
@@ -57,8 +57,6 @@ const ssrHandler = async ({
       },
     },
   })
-
-  app_logger.log('result', result)
 
   return {
     props: {

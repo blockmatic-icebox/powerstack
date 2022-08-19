@@ -1,6 +1,6 @@
 import { styled } from '../app-view/styles/stitches.config'
 import { NextPage } from 'next'
-import { Container, Footer, Header } from '~/app-view/components/layout'
+import { Container, Footer, Header } from '~/app-view/components/layout/Layout'
 import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
 

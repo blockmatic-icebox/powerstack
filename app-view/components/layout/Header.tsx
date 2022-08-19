@@ -2,7 +2,7 @@ import { styled } from '~/app-view/styles/stitches.config'
 import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
-import { useAppEngine } from '~/app-engine/index'
+import Link from 'next/link'
 
 const linkStyles = {
   color: '$text',
@@ -99,12 +99,14 @@ const Flex2 = styled('div', {
 })
 
 export const Header = () => {
-  // const { login } = useAppEngine()
   return (
     <NavBar>
       <NavContainer>
         <Flex1>
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
+
           <Flex2 as="nav" role="navigation" aria-labelledby="main-nav-title">
             <VisuallyHidden>Main navigation</VisuallyHidden>
             <LanguageButton type="button" aria-label="Language Switcher Icon">
@@ -116,9 +118,10 @@ export const Header = () => {
             >
               <GhLoginIcon />
             </AnchorItem>
-            {/* <LoginButton onClick={login} variant="primary">
-              Login
-            </LoginButton> */}
+
+            <Link href="/login">
+              <LoginButton variant="primary">Login</LoginButton>
+            </Link>
           </Flex2>
         </Flex1>
       </NavContainer>

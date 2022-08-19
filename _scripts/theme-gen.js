@@ -10,7 +10,7 @@ const themes = {}
 
 // NOTE: Mck data simulating an array of themes to read (array TBD)
 // NOTE: Where we fetch our data for our themes
-const dir = path.join(__dirname, '..', 'mock')
+const dir = path.join(__dirname, '..', '_scripts/mock')
 
 // NOTE: Reading how many themes do we have
 const themes_spinner = setSpinner(` %s 👀 for themes...
@@ -22,7 +22,7 @@ themes_spinner.start()
 fs.readdirSync(dir).forEach((json) => {
   const theme_key = json.replace(/(-theme\.json|\.json)/, '').replace(/theme/, 'default')
   file_names.push(theme_key)
-  app_logger.log(`🖌️  ${theme_key} theme found!`)
+  console.log(`🖌️  ${theme_key} theme found!`)
 
   themes[theme_key] = require(path.join(dir, json))
 })
@@ -116,7 +116,7 @@ Object.keys(themes).forEach((theme) => {
 })
 
 toolabs_theme_spinner.stop()
-app_logger.log(`
+console.log(`
 ✔️  Toolabs JSON Themes Digested successfully 🪄🎉`)
 const writing_theme_spinner = setSpinner(` %s 〰️ Writting Toolabs JSON Theme for stitches...
 
@@ -126,7 +126,7 @@ writing_theme_spinner.start()
 
 file_names.forEach((file) => {
   fs.writeFile(
-    `./app/styles/themes/${file !== 'default' ? `${file}-` : ''}theme.ts`,
+    `./app-view/styles/themes/${file !== 'default' ? `${file}-` : ''}theme.ts`,
     `export const ${file !== 'default' ? `${file}_` : ''}theme = ${JSON.stringify(
       new_themes.find((t) => t.name === file),
       null,
@@ -143,7 +143,7 @@ file_names.forEach((file) => {
       }
 
       writing_theme_spinner.stop()
-      app_logger.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
+      console.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
     },
   )
 

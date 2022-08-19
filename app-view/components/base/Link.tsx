@@ -1,6 +1,6 @@
-import { HTMLProps, FC } from 'react';
+import { HTMLProps, FC } from 'react'
 import { styled } from '../../styles/stitches.config'
-import NextLink, { LinkProps } from 'next/link';
+import NextLink, { LinkProps } from 'next/link'
 
 // Note: removing this small hack causes this error:
 // This JSX tag's 'children' prop expects type 'never' which requires multiple children, but only a single child was provided.
@@ -21,18 +21,20 @@ const link_styles: any = {
 
 const StyledLink = styled('a', link_styles)
 
-export const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ href, children, ...props }) => {
+export const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({
+  href,
+  children,
+  ...props
+}) => {
   const internal = /^\/(?!\/)/.test(href)
 
   return internal ? (
     <NextLink href={href} passHref>
-      <StyledLink {...props}>
-        {children}
-      </StyledLink>
+      <StyledLink {...props}>{children}</StyledLink>
     </NextLink>
   ) : (
     <StyledLink href={href} {...props}>
       {children}
     </StyledLink>
-  );
+  )
 }
