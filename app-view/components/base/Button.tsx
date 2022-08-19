@@ -20,7 +20,7 @@ export const Button = styled('button', {
 
   // Custom
   fontSize: '$body',
-  fontFamily: '$semi-bold',
+  fontFamily: 'Inter',
   fontVariantNumeric: 'tabular-nums',
   border: '1px solid none',
   textAlign: 'center',
