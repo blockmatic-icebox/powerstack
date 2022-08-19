@@ -6,7 +6,7 @@ import { exec_env } from '../library/exec-env'
 
 const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
   const body = JSON.parse(init?.body?.toString() ?? '{}')
-  console.log(`🐭 GraphQL Operation`, JSON.stringify(body, null, 2))
+  console.log(`🐭 GraphQL Operation`, JSON.stringify(init, null, 2))
   const start = Date.now()
   console.log(`${new Date().toISOString().slice(-13)} 📡 Sending ${body.operationName} request`)
   const response = await fetch(input, init)
@@ -37,7 +37,7 @@ export const createApolloClient = (jwt?: {}) => {
   const apollo_base_url = 'api.powerstack.xyz/v1/graphql'
   const headers = jwt
     ? {
-        Authorization: `Bearer ${jwt}`,
+        // Authorization: `Bearer ${jwt}`,
         'x-hasura-user-role': 'user',
       }
     : {
@@ -77,6 +77,6 @@ export const createApolloClient = (jwt?: {}) => {
 
   return new ApolloClient({
     link,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({ addTypename: false }),
   })
 }
