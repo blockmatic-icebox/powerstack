@@ -1,6 +1,6 @@
-import { AppConfig } from '../app-engine/types/app-config'
+import { AppArguments } from '../app-engine/types/app-config'
 
-export const client_args: AppConfig = {
+export const app_args: AppArguments = {
   app_name: process.env.NEXT_APP_NAME || '',
   contracts: {},
   services: {

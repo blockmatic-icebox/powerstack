@@ -1,4 +1,4 @@
-import { client_args } from '~/app-config/client-config'
+import { app_args } from '~/app-config/app-arguments'
 import { fetchJson } from '../app-engine/library/fetch'
 import { CreateSessionProps } from '../app-engine/store/session-slice'
 import { AuthMethod } from '../app-engine/types/app-engine'
@@ -22,8 +22,7 @@ const getLoginPath = (auth_method: AuthMethod) => {
 
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
-    const login_auth_api_url =
-      client_args.services.auth_api + getLoginPath(login_payload.auth_method)
+    const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
     const login_response = await fetchJson(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

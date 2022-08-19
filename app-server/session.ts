@@ -1,6 +1,7 @@
 // this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
 import { withIronSessionApiRoute, withIronSessionSsr } from 'iron-session/next'
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextApiHandler } from 'next/types'
+import { server_secrets } from '~/app-config/server-secrets'
 import { AppUser } from '~/app-engine/types/app-engine'
 
 // This is where we specify the typings of req.session.*
@@ -11,11 +12,11 @@ declare module 'iron-session' {
 }
 
 const session_options = {
-  password: 'somepasssdfasdfasdfasdfdsafsdsadfsdafsdafsd', // TODO: get it from ./environment/
+  password: server_secrets.iron_session_password,
   cookieName: 'app-session',
-  // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
+  secure: true,
   cookieOptions: {
-    secure: process.env.NODE_ENV === 'production', // TODO: get it from ./environment/
+    secure: process.env.NODE_ENV === 'production',
   },
 }
 

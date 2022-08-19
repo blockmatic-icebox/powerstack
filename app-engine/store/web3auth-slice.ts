@@ -3,7 +3,7 @@ import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
-import { client_args } from '~/app-config/client-config'
+import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
 
 export type Web3AuthState = {
@@ -73,7 +73,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const balance = ethers.utils.formatEther(wei_balance)
       const auth_method: AuthMethod = 'web3_auth'
       console.log({ address, balance, user_info })
-      const message = client_args.messages.session_message
+      const message = app_args.messages.session_message
       const signed_message = await get().signMessageWithEhters(message)
 
       const { token, error } = await get().createSession({

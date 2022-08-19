@@ -39,7 +39,7 @@ type SolanaNetwork = {
 }
 
 // global application configuration based on env
-export interface AppConfig {
+export interface AppArguments {
   app_name: string
   contracts: AppContracts
   services: AppServices

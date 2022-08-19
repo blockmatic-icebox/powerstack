@@ -2,7 +2,7 @@ import { app_engine, StoreSlice } from '../index'
 import AnchorLink, { PublicKey } from 'anchor-link'
 // import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
-import { client_args } from '~/app-config/client-config'
+import { app_args } from '~/app-config/app-arguments'
 import { SignedTransactionType } from '@greymass/eosio'
 import { newAnchorLink } from '../library/eosio'
 
@@ -54,7 +54,7 @@ export const createEosioSlice: StoreSlice<EosioSlice> = (set, get) => ({
 
       console.log('init wallet login')
       // Use the anchor-link login method with the chain id to establish a session
-      const identity = await anchorLink.login(client_args.app_name)
+      const identity = await anchorLink.login(app_args.app_name)
       console.log('identity', identity)
       const pub_key = PublicKey.from(identity.session.publicKey)
       const account = identity.signer.actor.toString()
@@ -126,7 +126,7 @@ interface RequestTokenAnchorEOSParams {
 }
 
 const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
-  const response = await fetch(`${client_args.services.auth_api}/provider/anchor`, {
+  const response = await fetch(`${app_args.services.auth_api}/provider/anchor`, {
     method: 'POST',
     headers: {
       'Access-Control-Allow-Origin': '*',

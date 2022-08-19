@@ -3,7 +3,7 @@ import type { StoreSlice } from '../index'
 import _ from 'lodash'
 import { getInfuraChainData } from '../services/infura'
 import Decimal from 'decimal.js'
-import { client_args } from '~/app-config/client-config'
+import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
 import { exec_env } from '../library/exec-env'
 import { web3auth_chain_config } from '../static/web3auth-chains'
@@ -57,7 +57,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const wei_balance = await provider.getBalance(address)
     const balance = ethers.utils.formatEther(wei_balance)
     // const chain_id = exec_env.ethereum.chainId // TODO: is it neccessary?
-    const message = client_args.messages.session_message
+    const message = app_args.messages.session_message
     const signed_message = await signer.signMessage(message)
     console.log('🇪🇹 logging in with metamask...')
     const auth_method: AuthMethod = 'web3_metamask'

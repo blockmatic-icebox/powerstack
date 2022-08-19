@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"yarn ssl\" \"next dev -p 3001\"",
+    "ssl": "local-ssl-proxy --source 3000 --target 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "graphql": "env-cmd -f ./app-engine/graphql/.env.codegen graphql-codegen --config ./app-engine/graphql/codegen.yml && eslint --fix ./app-engine/graphql/generated-sdk.ts",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "import-dsm": "node ./_scripts/theme-gen.js",
+    "theme": "node ./_scripts/theme-gen.js",
     "lhci:mobile": "lhci autorun",
     "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
@@ -52,8 +53,10 @@
     "@types/node": "18.6.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "concurrently": "^7.3.0",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
+    "local-ssl-proxy": "^1.3.0",
     "typescript": "4.7.4"
   }
 }

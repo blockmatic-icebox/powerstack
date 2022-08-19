@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
-import { client_args } from '~/app-config/client-config'
+import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
@@ -49,8 +49,8 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       console.log({ solana_provider })
       set({ solana_current_provider: solana_provider })
       const address = resp.publicKey.toString()
-      const message = client_args.messages.session_message
-      const encoded_message = new TextEncoder().encode(client_args.messages.session_message)
+      const message = app_args.messages.session_message
+      const encoded_message = new TextEncoder().encode(app_args.messages.session_message)
       const { signature } = await solana_provider.signMessage(encoded_message, 'utf8')
       const signed_message = bs58.encode(signature)
       const auth_method: AuthMethod = 'web3_solana'
