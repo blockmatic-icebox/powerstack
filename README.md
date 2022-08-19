@@ -127,14 +127,14 @@ See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasu
 |   |   ├── modules.......................... standalone modular components
 |   |   ├── layout........................... structure focused components
 |   |   └── icons
-|   ├── pages................................ standard nextjs page components
+|   |
 |   └── styles............................... stitches configuration
-|       ├── themes........................... theme generated for Stitches to consume
+|       ├── themes........................... generated themes from toolabs dsm
 |       ├── global.ts........................ global styles
-|       ├── index.ts......................... export of stitches and global stylesstitches.config.ts
-|       ├── stitches.config.ts............... stitches config
-|       └── styles.context.ts................ stitches app context
+|       ├── index.ts......................... exports getGeneratedStylesheet
+|       └── stitches.config.ts............... stitches config
 |
+├── pages.................................... standard nextjs page components
 ├── Dockerfile............................... docker container definition
 └── Taskfile.yml............................. utility tasks for docker based dev
 ```
