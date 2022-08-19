@@ -35,20 +35,20 @@ Demo https://powerstack-next.vercel.app/
 
 ## Tech Stack
 
-- NextJS https://nextjs.org
-- Zustand store https://github.com/pmndrs/zustand
-- Stitches styling https://stitches.dev
-- Ethers https://docs.ethers.io/v5
-- Solana Web3 https://solana-labs.github.io/solana-web3.js
-- TweetNaCl.js https://github.com/dchest/tweetnacl-js
-- Eosio Core https://github.com/greymass/eosio-core
-- Decimal.js https://github.com/MikeMcl/decimal.js
-- Iron Session https://github.com/vvo/iron-session
-- Lodash tools https://lodash.com/docs
-- Zod validator https://github.com/colinhacks/zod
-- React-use hooks https://github.com/streamich/react-use
-- Sentry reporting https://sentry.io/
-- Next i18next https://github.com/i18next/next-i18next
+- NextJS [nextjs.org](https://nextjs.org)
+- Zustand store [pmndrs/zustand](https://github.com/pmndrs/zustand)
+- Stitches styling [stitches.dev](https://stitches.dev)
+- Ethers [docs.ethers.io](https://docs.ethers.io/v5)
+- Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
+- TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
+- Eosio Core [greymass/eosio-core](https://github.com/greymass/eosio-core)
+- Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
+- Iron Session [vvo/iron-session](https://github.com/vvo/iron-session)
+- Lodash tools [lodash.com/docs](https://lodash.com/docs)
+- Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
+- React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
+- Sentry reporting [sentry.io/](https://sentry.io/)
+- Next i18next [i18next/next-i18next](https://github.com/i18next/next-i18next)
 
 ## State Management
 
@@ -62,10 +62,17 @@ In the current setup Zustand only runs on the browser, this is important to unde
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
 - endpoint: https://api.powerstack.xyz/v1/graphql
-- graphiql: https://graphiql-online.com
+- explorer: https://explorer.powerstack.xyz
 - voyager: https://voyager.powerstack.xyz
 
 See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasura)
+
+#### GraphQL Development Flow
+
+1. test your query on [explorer.powerstack.xyz](https://explorer.powerstack.xyz).
+2. copy paste the query to `app-engine/graphql/schema.graphql`.
+3. execute `yarn graphql`
+4. utilize the generated sdk and types in zustand and `getServerSideProps`
 
 ### File Structure
 
