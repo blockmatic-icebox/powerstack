@@ -14,22 +14,24 @@ Demo https://powerstack-next.vercel.app/
 
 ## Features
 
-- [ ] Web2 and Web3 authentication ( EVM, Solana, EOSIO, Web3Auth ).
-- [ ] Wallet integration: sign messages and transactions.
-- [ ] Upload to Arweave using Blundr.
-- [ ] Upload to IPFS using Pinata.
-- [ ] GraphQL client with support for multiple indexers.
-- [ ] Portable vanillajs core logic store with Zustand.
-- [ ] Utilities for decimal precision, math and trigonometry in js.
-- [ ] Utilities library for common web2 and web3 tasks.
-- [ ] Lighthouse CI web vitals performance reports.
-- [ ] CSS-in-JS design system Stitches.
-- [ ] Import design tokens from Toolabs Design Manager.
-- [ ] Autogenerate TypeScript types from GraphQL schema.
-- [ ] Crash reporting and web analytics.
-- [ ] Base ui components with forms validation.
-- [ ] Internationalization with i18next.
-- [ ] TypeScript, ESLint, Prettier and Husky for code quality.
+- Web2 and Web3 authentication ( EVM, Solana, EOSIO, Web3Auth ).
+- Wallet integration: sign messages and transactions.
+- Upload to Arweave using Blundr.
+- Upload to IPFS using Pinata.
+- Mint on Solana, EVM and Antilope blockchains.
+- Read account token balances and nfts.
+- GraphQL client with support for multiple indexers.
+- Portable vanillajs core logic store with Zustand.
+- Utilities for decimal precision, math and trigonometry in js.
+- Utilities library for common web2 and web3 tasks.
+- Lighthouse CI web vitals performance reports.
+- CSS-in-JS design system Stitches.
+- Import design tokens from Toolabs Design Manager.
+- Autogenerate TypeScript types from GraphQL schema.
+- Crash reporting and web analytics.
+- Base ui components with forms validation.
+- Internationalization with i18next.
+- TypeScript, ESLint, Prettier and Husky for code quality.
 
 ## Tech Stack
 
@@ -59,14 +61,11 @@ In the current setup Zustand only runs on the browser, this is important to unde
 
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
-more https://github.com/blockmatic/powerstack-hasura
+- endpoint: https://api.powerstack.xyz/v1/graphql
+- graphiql: https://graphiql-online.com
+- voyager: https://voyager.powerstack.xyz
 
-endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql  
-graphiql: https://graphiql-online.com
-
-- https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
-- https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
-- https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/
+See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasura)
 
 ### File Structure
 
@@ -146,9 +145,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Commands
 
-- `dev`: runs your application on `localhost:3000`
-- `build`: creates the production build version
-- `start`: starts a simple server with the build production code
+- `dev`: runs your application on `localhost:3000`.
+- `build`: creates the production build version.
+- `start`: starts a simple server with the build production code.
 
 ## Docker
 
