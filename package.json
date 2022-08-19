@@ -33,6 +33,7 @@
     "auto-zustand-selectors-hook": "^2.0.0",
     "bs58": "^5.0.0",
     "camelcase-keys": "^8.0.1",
+    "cloudinary-build-url": "^0.2.4",
     "decimal.js": "^10.3.1",
     "env-var": "^7.1.1",
     "ethers": "^5.6.9",
