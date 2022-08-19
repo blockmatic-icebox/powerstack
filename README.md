@@ -86,7 +86,7 @@ graphiql: https://graphiql-online.com
 |   |   ├── codegen.yml.......................# codegen configuration
 |   |   └── index.ts..........................# main module entry and api exports
 |   |
-|   ├── library...............................# collection of pure utlity functions and objects
+|   ├── library...............................# pure function utils ( input->output, deterministic, no side effects )
 |   |   ├── encoding.ts...................... # encoding functions
 |   |   ├── eosio.ts......................... # eosio and anchor wallet uitls
 |   |   ├── errors.ts........................ # app-engine error classes
@@ -95,10 +95,11 @@ graphiql: https://graphiql-online.com
 |   |   ├── fetch.ts......................... # window fetch wrapper
 |   |   ├── logger.ts........................ # logger object
 |   |   ├── solana.ts........................ # solana and phantom wallet utils
-|   |   └── uiux.ts.......................... # utils for better ux
+|   |   ├── uiux.ts.......................... # utils for better ux
+|   |   └── web3auth.ts...................... # web3auth utils
 |   |
-|   ├── services............................. # abstractions for external apis
-|   |   ├── logger.ts........................ # configurable app logger
+|   ├── services............................. # abstractions for http apis ( sdks, third party )
+|   |   ├── infura.ts........................ # infura config and client
 |   |   ├── sentry.ts........................ # crash reporting instance
 |   |   └── cloudinary.ts.................... # image optimization and cdn
 |   |
