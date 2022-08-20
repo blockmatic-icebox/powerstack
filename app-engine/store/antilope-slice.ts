@@ -14,7 +14,6 @@ export interface AntilopeState {
   anchorLink?: AnchorLink
   account: string
   authed: boolean
-  token: string
   authType?: AntilopeAuthType
   cred_id?: string
   pub_key?: PublicKey
@@ -34,7 +33,6 @@ const defaultAntilopeState: AntilopeState = {
   authType: undefined,
   cred_id: undefined,
   pub_key: undefined,
-  token: '',
   account: '',
 }
 

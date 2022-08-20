@@ -1,10 +1,13 @@
 import type { StoreSlice } from '../index'
-import { fetchJson } from '../library/fetch'
-import { AuthResponse } from '../../app-server/jwt-auth'
+import { FetchError, fetchJson } from '../library/fetch';
+import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
 import { AuthMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 
-export interface SessionState {}
+export interface SessionState {
+  create_session_error: string
+  token: string
+}
 
 export interface CreateSessionProps {
   address: string
@@ -15,13 +18,16 @@ export interface CreateSessionProps {
 }
 
 export interface SessionActions {
-  createSession: (input: CreateSessionProps) => Promise<AuthResponse>
+  createSession: (input: CreateSessionProps) => Promise<void>
   destroySession: () => Promise<void>
 }
 
 export type SessionSlice = SessionState & SessionActions
 
-const defaultSessionState = {}
+const defaultSessionState = {
+  create_session_error: '',
+  token: ''
+}
 
 export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
   ...defaultSessionState,
@@ -40,18 +46,23 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       signed_message,
       auth_method,
     }
+
     try {
-      // TODO: move to utils please and create fetch api file and fix type
-      const auth_response = (await fetchJson('/api/login', {
+      const { token, error } = await fetchJson<AuthResponse>('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(login_payload),
-      })) as AuthResponse
+      })
       app_logger.log('🍪 cookie session created!')
-      return auth_response
-    } catch (error) {
-      console.error('An unexpected error happened:', error)
-      return { error: error as unknown, token: null }
+
+      // We already know the error, we pass it to the app to know it.
+      if (error || !token) throw error
+
+      set({ token, create_session_error: '' })
+    } catch (error: AuthErrorResponse) {
+      console.error('An unexpected error happened while trying create session:', error)
+
+      set({ create_session_error: error.message, token: '' }
     }
   },
 
@@ -63,9 +74,12 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
         method: 'POST',
       })
       app_logger.log('🍪 cookie session destroyed!')
+
       const user = get().user
+
       if (!user) return
       if (user.auth_method === 'web3_auth') get().web3authLogout()
+      
       get().setUser(null)
     } catch (error) {
       console.error('An unexpected error happened:', error)

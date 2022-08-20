@@ -1,12 +1,13 @@
 import { app_args } from '~/app-config/app-arguments'
 import { app_logger } from '~/app-engine/library/logger'
-import { fetchJson } from '../app-engine/library/fetch'
+import { FetchError, fetchJson } from '../app-engine/library/fetch'
 import { CreateSessionProps } from '../app-engine/store/session-slice'
 import { AuthMethod } from '../app-engine/types/app-engine'
 
+export type AuthErrorResponse = FetchError | Error
 export type AuthResponse = {
-  token: string | null
-  error: unknown // TODO: fix type
+  token: string
+  error: AuthErrorResponse
 }
 
 const getLoginPath = (auth_method: AuthMethod) => {
@@ -24,15 +25,19 @@ const getLoginPath = (auth_method: AuthMethod) => {
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
     const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
-    const login_response = await fetchJson(login_auth_api_url, {
+    const { token, error } = await fetchJson<AuthResponse>(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
-    return login_response as AuthResponse
+
+    if (error || !token) throw error
+
+    return { token, error }
   } catch (error) {
     app_logger.log('error', error)
-    throw new Error((error as Error).message)
+
+    return { token: '', error: new FetchError(error as FetchError) }
   }
 }
 

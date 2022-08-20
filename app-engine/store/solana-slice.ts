@@ -63,11 +63,12 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
         address,
       }
       app_logger.log('solana input', sessionInput)
-      const { token, error } = await get().createSession(sessionInput)
-      if (error || !token) return // TODO: fix me handle login error
+
+      await get().createSession(sessionInput)
+      
       get().setUser({
-        username: 'anon',
-        jwt: token,
+        username: 'anon', // TODO: fix me,
+        jwt: get().token,
         auth_method,
         user_addresses: [
           {

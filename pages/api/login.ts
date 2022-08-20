@@ -4,23 +4,32 @@ import { CreateSessionProps } from '~/app-engine/store/session-slice'
 import { AppUser } from '~/app-engine/types/app-engine'
 import { withSessionRoute } from '~/app-server/session'
 import { app_logger } from '~/app-engine/library/logger'
+import { FetchError } from '~/app-engine/library/fetch'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   const login_payload = (await req.body) as CreateSessionProps
+
   try {
     app_logger.log('login_route', login_payload)
     const { token, error } = await auth_service.login(login_payload)
-    if (error || !token) return res.status(500).json({ message: (error as Error).message })
+
+    // If we get error or no token, then it is an Unauthorized Access
+    if (error || !token) return res.status(401).send({ token, error: error || new Error('Cannot login. Unauthorized access.') })
+
     const user: AppUser = {
       user_addresses: [],
       jwt: token,
       auth_method: login_payload.auth_method,
     }
+
     req.session.user = user
+
     await req.session.save()
+
     res.send({ token, error })
   } catch (error) {
-    res.status(500).json({ message: (error as Error).message })
+    app_logger.log('❌ could not login', error)
+    res.status(500).send({ token: '', error })
   }
 }
 

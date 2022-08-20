@@ -77,17 +77,17 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const message = app_args.messages.session_message
       const signed_message = await get().signMessageWithEhters(message)
 
-      const { token, error } = await get().createSession({
+      await get().createSession({
         message,
-        network: 'rinkeby', // TODO: fix me @RUBENABIX why rinkeby?
+        network: 'rinkeby', // TODO: fix me X@RUBENABIX why rinkeby?
         address,
         signed_message,
         auth_method,
       })
-      if (error || !token) return // TODO: fix me handle login error
+
       get().setUser({
         username: user_info.name,
-        jwt: '',
+        jwt: get().token,
         auth_method,
         user_addresses: [
           {

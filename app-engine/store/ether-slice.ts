@@ -61,18 +61,18 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const signed_message = await signer.signMessage(message)
     app_logger.log('🇪🇹 logging in with metamask...')
     const auth_method: AuthMethod = 'web3_metamask'
-    const { token, error } = await get().createSession({
+    
+    await get().createSession({
       network,
       address,
       message,
       signed_message,
       auth_method,
     })
-    app_logger.log('metamask response', { token, error })
-    if (error || !token) return // TODO: fix me handle login error
+
     get().setUser({
-      username: 'anon',
-      jwt: token,
+      username: 'anon', // TODO: fix me,
+      jwt: get().token,
       auth_method,
       user_addresses: [
         {
