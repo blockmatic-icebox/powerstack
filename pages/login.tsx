@@ -1,7 +1,7 @@
 import { WalletLogin } from '~/app-view/components/modules/WalletLogin'
 import { NextPage } from 'next'
-import { Button } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
+import { Button } from '~/app-view/components/base/Button'
 
 const Home: NextPage = () => {
   const { user, fetchUserBalances } = useAppEngine()

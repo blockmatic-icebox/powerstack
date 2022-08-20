@@ -1,7 +1,7 @@
 import { styled } from '../../styles/stitches.config'
 import { LightModeIcon } from '~/app-view/components/icons/index'
-import { Button } from '~/app-view/components/base/index'
 import { Container } from './Container'
+import { Button } from '../base/Button'
 
 // NOTE: Should be a Link component
 const FooterWrapper = styled('footer', {

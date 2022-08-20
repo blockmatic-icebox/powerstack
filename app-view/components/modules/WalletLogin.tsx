@@ -9,19 +9,10 @@ import {
   GhLoginIcon,
   BitbucketIcon,
 } from '~/app-view/components/icons/index'
-import { Button } from '~/app-view/components/base/index'
 import { Card } from './Card'
 import { useAppEngine } from '~/app-engine/index'
 import { useLocation } from 'react-use'
-
-type LoginOptions = {
-  strategy: 'metamask' | 'phantom' | 'twitter'
-  signed_message?: {
-    signature: string
-    address: string
-    message: string
-  }
-}
+import { Button } from '../base/Button'
 
 const Title = styled('h1', {
   fontSize: '$h-2',
