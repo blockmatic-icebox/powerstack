@@ -2,6 +2,7 @@ import { styled } from '~/app-view/styles/stitches.config'
 import { GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
 import { Button } from '../base/Button'
 import Link from 'next/link'
+import { useAppEngine } from '~/app-engine/index'
 
 const linkStyles = {
   color: '$text',
@@ -76,6 +77,7 @@ const RightMenu = styled('div', {
 })
 
 export const Header = () => {
+  const { setShowLoginModal } = useAppEngine()
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
       <button>menu icon here</button>
@@ -90,10 +92,7 @@ export const Header = () => {
         >
           <GhLoginIcon />
         </AnchorItem>
-
-        <Link href="/login">
-          <LoginButton variant="primary">Login</LoginButton>
-        </Link>
+        <LoginButton variant="primary" onClick={() => setShowLoginModal(true)}>Login</LoginButton>
       </RightMenu>
     </NavBar>
   )

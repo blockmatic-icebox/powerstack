@@ -10,7 +10,7 @@ export const Card = styled('div', {
   py: '$regular',
   transition: 'all 160ms ease-in-out',
   position: 'relative',
-  background: '#fff8',
+  background: '#fff',
   '> button, > hr': {
     width: '100%',
     mb: '$small',
