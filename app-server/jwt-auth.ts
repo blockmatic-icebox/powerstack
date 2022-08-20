@@ -25,11 +25,14 @@ const getLoginPath = (auth_method: AuthMethod) => {
 const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
   try {
     const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
-    const { token, error } = await fetchJson<AuthResponse>(login_auth_api_url, {
+    const login_response = await fetchJson<AuthResponse>(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
+    console.log('login_response', login_response)
+    const { token, error } = login_response
+    console.log({ token, error })
 
     if (error || !token) throw error
 

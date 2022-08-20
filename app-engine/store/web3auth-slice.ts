@@ -1,17 +1,18 @@
 import type { StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
-import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
+import { ADAPTER_EVENTS, CHAIN_NAMESPACES, CustomChainConfig, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { app_args } from '~/app-config/app-arguments'
 import { AuthMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
+import { ChainConfig, ChainKeyConfig, web3auth_chain_config } from '../static/web3auth-chains'
 
 export type Web3AuthState = {
   web3auth: Web3Auth | null
   web3auth_provider: SafeEventEmitterProvider | null
   web3auth_loading: boolean
-  web3auth_chain: string
+  web3auth_chain_config: Partial<ChainConfig>
   web3auth_user: unknown
 }
 
@@ -32,7 +33,12 @@ export type Web3AuthSlice = Web3AuthState & Web3AuthActions
 const defaultWeb3AuthState: Web3AuthState = {
   web3auth: null,
   web3auth_loading: false,
-  web3auth_chain: '',
+  // We set default chain config
+  web3auth_chain_config: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    chainId: '0x4',
+    rpcTarget: 'https://rinkeby.infura.io/v3/d1113d056f834c6192955c2b26a14cc1',
+  },
   web3auth_user: {},
   web3auth_provider: null,
 }
@@ -43,43 +49,55 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   web3authInit: async () => {
     app_logger.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
-    // TODO: fix me @RUBENABIX
-    const client_id =
-      'BCeTdMp4F7vxJyP9pi93aCl2bclncDAUs76Awo74cFzN43pisN_Rmksd4hvQq_85rp9oRQSHXLxtvb2c-mxEyf8' //get().app_engine_config.services.web3auth_client_id,
+    const client_id = app_args.services.web3auth_client_id
+
+    // throughout chain_id env config, we set chain_config 
+    Object.keys(web3auth_chain_config).forEach((config: string) => {
+      if (web3auth_chain_config[config as keyof ChainKeyConfig].chainId !== app_args.services.web3auth_client_id) return
+
+      const chain_config = web3auth_chain_config[config as keyof ChainKeyConfig]
+
+      set({ web3auth_chain_config: chain_config })
+    })
+
     // instantiate and initialize web3auth client
     const web3auth = new Web3Auth({
       clientId: client_id,
-      chainConfig: {
-        chainNamespace: CHAIN_NAMESPACES.EIP155,
-        chainId: '0x4',
-        rpcTarget: 'https://rinkeby.infura.io/v3/d1113d056f834c6192955c2b26a14cc1',
-      },
+      chainConfig: get().web3auth_chain_config as ChainConfig,
       authMode: 'DAPP',
       uiConfig: {
         theme: 'dark',
         loginMethodsOrder: ['google', 'twitter', 'apple', 'email_passwordless'],
       },
     })
+
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
     web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
       app_logger.log('you are successfully logged in', web3auth_user)
       const web3auth_provider = await web3auth.connect()
+
       if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
-      set({ web3auth_provider })
+     
+      set({ web3auth_provider, web3auth })
+
       const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
+      const ethers_network = await ethers_provider.getNetwork()
       const user_info = await web3auth.getUserInfo()
       const signer = ethers_provider.getSigner()
       const address = await signer.getAddress()
       const wei_balance = await ethers_provider.getBalance(address)
       const balance = ethers.utils.formatEther(wei_balance)
       const auth_method: AuthMethod = 'web3_auth'
+
+      // NOTE: user_info.idToken is a JWT token with => wallet: { pub_key, type, curve }[] FYI... save it for user session?
       app_logger.log({ address, balance, user_info })
+
       const message = app_args.messages.session_message
-      const signed_message = await get().signMessageWithEhters(message)
+      const signed_message = await get().signMessageWithEthers(message)
 
       await get().createSession({
         message,
-        network: 'rinkeby', // TODO: fix me X@RUBENABIX why rinkeby?
+        network: ethers_network.name,
         address,
         signed_message,
         auth_method,
@@ -91,9 +109,9 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
         auth_method,
         user_addresses: [
           {
-            network: 'rinkeby',
+            network: ethers_network.name,
             address,
-            ticker: 'rinkETH',
+            ticker: get().web3auth_chain_config.ticker as string,
             balance: new Decimal(balance),
             unit_balance: wei_balance.toString(),
           },

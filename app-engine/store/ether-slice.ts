@@ -16,7 +16,7 @@ export type EtherState = {
 export type EtherActions = {
   initEthers: () => void
   loginWithMetamask: () => Promise<void>
-  signMessageWithEhters: (message: string) => Promise<string>
+  signMessageWithEthers: (message: string) => Promise<string>
   mintOnEvm: () => Promise<void>
 }
 
@@ -85,7 +85,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       ],
     })
   },
-  signMessageWithEhters: async (message: string) => {
+  signMessageWithEthers: async (message: string) => {
     app_logger.log('🇪🇹 sign message with ethers', message)
     const { web3auth } = get()
     if (!web3auth) throw new Error('web3auth is not initialized')

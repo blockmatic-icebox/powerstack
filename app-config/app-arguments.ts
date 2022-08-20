@@ -14,6 +14,7 @@ export const app_args: AppArguments = {
     cloudinary_api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '',
     cloudinary_api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET || '',
     web3auth_client_id: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || '',
+    web3auth_chain_id: process.env.NEXT_PUBLIC_WEB3AUTH_CHAIN_ID || '',
   },
   analytics: {
     google: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || '',

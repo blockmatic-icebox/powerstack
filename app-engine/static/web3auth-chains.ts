@@ -1,10 +1,18 @@
 import type { CustomChainConfig } from '@web3auth/base'
 
-interface ChainConfig extends CustomChainConfig {
+export interface ChainConfig extends CustomChainConfig {
   networkId: number
 }
 
-export const web3auth_chain_config = {
+export type ChainKeyConfig = {
+  readonly ethereum: ChainConfig;
+  readonly rinkeby: ChainConfig;
+  readonly solana: ChainConfig;
+  readonly polygon: ChainConfig;
+  readonly mumbai: ChainConfig;
+}
+
+export const web3auth_chain_config: ChainKeyConfig = {
   ethereum: {
     displayName: 'Ethereum Mainnet',
     chainNamespace: 'eip155',
@@ -14,7 +22,7 @@ export const web3auth_chain_config = {
     ticker: 'ETH',
     tickerName: 'Ethereum',
     networkId: 1,
-  } as ChainConfig,
+  },
   rinkeby: {
     displayName: 'Rinkeby Testnet',
     chainNamespace: 'eip155',
@@ -24,7 +32,7 @@ export const web3auth_chain_config = {
     blockExplorer: 'https://rinkeby.etherscan.io/',
     ticker: 'ETH',
     tickerName: 'Ethereum',
-  } as ChainConfig,
+  },
   solana: {
     chainNamespace: 'solana',
     rpcTarget: 'https://api.testnet.solana.com',
@@ -34,7 +42,7 @@ export const web3auth_chain_config = {
     displayName: 'Solana Mainnet',
     ticker: 'SOL',
     tickerName: 'Solana',
-  } as ChainConfig,
+  },
   polygon: {
     chainNamespace: 'eip155',
     rpcTarget: 'https://polygon-rpc.com',
@@ -44,7 +52,7 @@ export const web3auth_chain_config = {
     ticker: 'matic',
     tickerName: 'Matic',
     networkId: 137,
-  } as ChainConfig,
+  },
   mumbai: {
     chainNamespace: 'eip155',
     rpcTarget: 'https://matic-testnet-archive-rpc.bwarelabs.com',
@@ -54,5 +62,5 @@ export const web3auth_chain_config = {
     ticker: 'matic',
     tickerName: 'Matic',
     networkId: 80001,
-  } as ChainConfig,
-} as const
+  },
+}

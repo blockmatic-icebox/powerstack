@@ -12,6 +12,7 @@ export interface AppServices {
   cloudinary_api_key: string
   cloudinary_api_secret: string
   web3auth_client_id: string
+  web3auth_chain_id: string
   antilope: {
     eos_chain_id: string
     chain_rpc: string

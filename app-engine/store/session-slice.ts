@@ -59,10 +59,10 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       if (error || !token) throw error
 
       set({ token, create_session_error: '' })
-    } catch (error: AuthErrorResponse) {
+    } catch (error) {
       console.error('An unexpected error happened while trying create session:', error)
 
-      set({ create_session_error: error.message, token: '' }
+      set({ create_session_error: (error as AuthErrorResponse).message, token: '' })
     }
   },
 
