@@ -3,7 +3,6 @@ import { LightModeIcon } from '~/app-view/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
 
-// NOTE: Should be a Link component
 const FooterWrapper = styled('footer', {
   textAlign: 'center',
   pb: '$regular',

@@ -1,6 +1,5 @@
-import { app_engine, StoreSlice } from '../index'
+import { StoreSlice } from '../index'
 import AnchorLink, { PublicKey } from 'anchor-link'
-// import * as jwt from 'jsonwebtoken'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
 import { SignedTransactionType } from '@greymass/eosio'

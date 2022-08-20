@@ -18,8 +18,8 @@ export const Layout: React.FC<any> = ({ children }) => {
     <>
       <Header />
       <LayoutGrid>
-        <Sidebar>On the side</Sidebar>
-        <Main>hey hey hey {children}</Main>
+        <Sidebar>Sidebar</Sidebar>
+        <Main>{children}</Main>
       </LayoutGrid>
       <Footer />
     </>

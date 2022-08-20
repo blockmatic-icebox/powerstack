@@ -30,7 +30,6 @@ const defaultSolanaState: SolanaState = {
 export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   ...defaultSolanaState,
 
-  // this function is called from session-state.ts when a new session is created
   initSolana: () => {
     app_logger.log('🌞 initializing solana slice ...')
     // TODO: improve multichain support
@@ -67,7 +66,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       const { token, error } = await get().createSession(sessionInput)
       if (error || !token) return // TODO: fix me handle login error
       get().setUser({
-        username: 'anon', // TODO: fix me,
+        username: 'anon',
         jwt: token,
         auth_method,
         user_addresses: [

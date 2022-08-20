@@ -57,7 +57,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const address = await signer.getAddress()
     const wei_balance = await provider.getBalance(address)
     const balance = ethers.utils.formatEther(wei_balance)
-    // const chain_id = exec_env.ethereum.chainId // TODO: is it neccessary?
     const message = app_args.messages.session_message
     const signed_message = await signer.signMessage(message)
     app_logger.log('🇪🇹 logging in with metamask...')
@@ -72,7 +71,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     app_logger.log('metamask response', { token, error })
     if (error || !token) return // TODO: fix me handle login error
     get().setUser({
-      username: 'anon', // TODO: fix me,
+      username: 'anon',
       jwt: token,
       auth_method,
       user_addresses: [
