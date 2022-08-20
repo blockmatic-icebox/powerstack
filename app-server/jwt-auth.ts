@@ -2,10 +2,14 @@ import { app_args } from '~/app-config/app-arguments'
 import { app_logger } from '~/app-engine/library/logger'
 import { FetchError, fetchJson } from '../app-engine/library/fetch'
 import { CreateSessionProps } from '../app-engine/store/session-slice'
-import { AuthMethod } from '../app-engine/types/app-engine'
+import { AuthMethod, AppUser } from '../app-engine/types/app-engine';
 
 export type AuthErrorResponse = FetchError | Error
 export type AuthResponse = {
+  data: AppUser | null
+  error: AuthErrorResponse
+}
+export type LoginResponse = {
   token: string
   error: AuthErrorResponse
 }
@@ -22,10 +26,10 @@ const getLoginPath = (auth_method: AuthMethod) => {
   }
 }
 
-const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
+const login = async (login_payload: CreateSessionProps): Promise<LoginResponse> => {
   try {
     const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
-    const login_response = await fetchJson<AuthResponse>(login_auth_api_url, {
+    const login_response = await fetchJson<LoginResponse>(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),

@@ -2,7 +2,7 @@ import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
-import { AuthMethod } from '../types/app-engine'
+import { AuthMethod, AppUser } from '../types/app-engine';
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
 import { web3auth_chain_config } from '../static/web3auth-chains'
@@ -66,10 +66,9 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
 
       await get().createSession(sessionInput)
       
+      const user = get().user
       get().setUser({
-        username: 'anon', // TODO: fix me,
-        jwt: get().token,
-        auth_method,
+        ...user as AppUser,
         user_addresses: [
           {
             network: 'solana',

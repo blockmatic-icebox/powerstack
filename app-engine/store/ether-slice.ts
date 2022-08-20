@@ -1,10 +1,10 @@
 import { ethers, providers } from 'ethers'
 import type { StoreSlice } from '../index'
 import _ from 'lodash'
-import { getInfuraChainData } from '../services/infura'
+import { getInfraChainData } from '../services/infura'
 import Decimal from 'decimal.js'
 import { app_args } from '~/app-config/app-arguments'
-import { AuthMethod } from '../types/app-engine'
+import { AuthMethod, AppUser } from '../types/app-engine';
 import { exec_env } from '../library/exec-env'
 import { web3auth_chain_config } from '../static/web3auth-chains'
 import { app_logger } from '../library/logger'
@@ -32,8 +32,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   initEthers: () => {
     app_logger.log('🇪🇹 initializing ether-state ...')
     // TODO: improve multichain support
-    // web3auth_chain_config from env var chain_id
-    const ethereum_chain_data = getInfuraChainData(get().web3auth_chain_config.networkId)
+    const ethereum_chain_data = getInfraChainData('rinkeby')
 
     const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
       ethereum_chain_data.rpc_url,
@@ -55,8 +54,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     await exec_env.ethereum.request({ method: 'eth_requestAccounts' })
 
     const provider = new ethers.providers.Web3Provider(exec_env.ethereum)
-    const infura_network_id = parseInt(exec_env.ethereum.networkVersion)
-    const network = getInfuraChainData(infura_network_id).name
+    const ethers_network = await provider.getNetwork()
+    const network = ethers_network.name
     const signer = provider.getSigner()
     const address = await signer.getAddress()
     const wei_balance = await provider.getBalance(address)
@@ -74,10 +73,9 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       auth_method,
     })
 
+    const user = get().user
     get().setUser({
-      username: 'anon', // TODO: fix me,
-      jwt: get().token,
-      auth_method,
+      ...user as AppUser,
       user_addresses: [
         {
           network,

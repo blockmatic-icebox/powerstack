@@ -6,7 +6,6 @@ import { app_logger } from '../library/logger'
 
 export interface SessionState {
   create_session_error: string
-  token: string
 }
 
 export interface CreateSessionProps {
@@ -26,7 +25,6 @@ export type SessionSlice = SessionState & SessionActions
 
 const defaultSessionState = {
   create_session_error: '',
-  token: ''
 }
 
 export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
@@ -48,7 +46,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
     }
 
     try {
-      const { token, error } = await fetchJson<AuthResponse>('/api/login', {
+      const { data, error } = await fetchJson<AuthResponse>('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(login_payload),
@@ -56,13 +54,13 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       app_logger.log('🍪 cookie session created!')
 
       // We already know the error, we pass it to the app to know it.
-      if (error || !token) throw error
+      if (error || !data) throw error || 'Unauthorized access.'
 
-      set({ token, create_session_error: '' })
+      set({ user: data, create_session_error: '' })
     } catch (error) {
       console.error('An unexpected error happened while trying create session:', error)
 
-      set({ create_session_error: (error as AuthErrorResponse).message, token: '' })
+      set({ create_session_error: (error as AuthErrorResponse).message })
     }
   },
 

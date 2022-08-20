@@ -17,14 +17,16 @@ const LoginPage: NextPage = () => {
       >
         Update balances
       </Button>
-      <pre>{JSON.stringify(user.user_addresses)}</pre>
-      <div>
-        <strong>ERRORS</strong>
-        <pre>{create_session_error}</pre>
-      </div>
+      <pre>{JSON.stringify(user.user_addresses, null, 2)}</pre>
+      {create_session_error && (
+        <code>
+          <strong>ERRORS</strong>
+          <pre>{create_session_error}</pre>
+        </code>
+      )}
       <ul>
         {user.user_addresses.map((address) => (
-          <li key={address.address}>{address.balance?.toString()}</li>
+          <li key={address.address}>Balance: {address.balance?.toString()}</li>
         ))}
       </ul>
     </>

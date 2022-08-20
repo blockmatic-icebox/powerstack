@@ -1,8 +1,37 @@
-import _ from 'lodash'
+import { app_args } from "~/app-config/app-arguments"
+import { ChainConfig, web3auth_chain_config } from "../static/web3auth-chains"
 
-export const getInfuraChains = (infura_api_key: string) => {
-  return [
-    {
+export type InfraChainConfigNativeCurrency = {
+  symbol: string
+  name: string
+  decimals: string
+  contractAddress: string
+  balance: string
+}
+export interface InfraChainConfig {
+  name: string
+  short_name: string
+  chain: string
+  network: string
+  chain_id: number
+  hex_chain_id: string
+  network_id: number
+  rpc_url: string
+  native_currency: InfraChainConfigNativeCurrency
+  chain_config: ChainConfig
+}
+
+export type InfraKeyChainConfig = {
+  readonly ethereum: InfraChainConfig;
+  readonly rinkeby: InfraChainConfig;
+  readonly solana: InfraChainConfig;
+  readonly polygon: InfraChainConfig;
+  readonly mumbai: InfraChainConfig;
+}
+
+export const getInfuraChains = (infura_api_key: string): InfraKeyChainConfig => {
+  return {
+    ethereum: {
       name: 'Ethereum Mainnet',
       short_name: 'eth',
       chain: 'ETH',
@@ -18,8 +47,9 @@ export const getInfuraChains = (infura_api_key: string) => {
         contractAddress: '',
         balance: '',
       },
+      chain_config: web3auth_chain_config.ethereum,
     },
-    {
+    polygon: {
       name: 'Polygon Mainnet',
       short_name: 'MATIC',
       chain: '',
@@ -35,8 +65,9 @@ export const getInfuraChains = (infura_api_key: string) => {
         contractAddress: '',
         balance: '',
       },
+      chain_config: web3auth_chain_config.polygon
     },
-    {
+    mumbai: {
       name: 'Polygon Tesnet',
       short_name: 'Mumbai',
       chain: '',
@@ -52,8 +83,9 @@ export const getInfuraChains = (infura_api_key: string) => {
         contractAddress: '',
         balance: '',
       },
+      chain_config: web3auth_chain_config.mumbai
     },
-    {
+    rinkeby: {
       name: 'Ethereum Rinkeby',
       short_name: 'rin',
       chain: 'ETH',
@@ -69,18 +101,36 @@ export const getInfuraChains = (infura_api_key: string) => {
         contractAddress: '',
         balance: '',
       },
+      chain_config: web3auth_chain_config.rinkeby,
     },
-  ]
+    solana: {
+      name: 'Solana Mainnet',
+      short_name: 'rin',
+      chain: 'ETH',
+      network: 'rinkeby',
+      chain_id: 4,
+      hex_chain_id: '0x4',
+      network_id: 4,
+      rpc_url: 'https://rinkeby.infura.io/v3/' + infura_api_key,
+      native_currency: {
+        symbol: 'ETH',
+        name: 'Ether',
+        decimals: '18',
+        contractAddress: '',
+        balance: '',
+      },
+      chain_config: web3auth_chain_config.rinkeby,
+    },
+  }
 }
 
 // TODO: review this whole chain_id and network data management
-const supported_infura_network_ids = [1, 137, 80001, 4]
-export const getInfuraChainData = (infura_network_id: number) => {
-  if (_.isUndefined(_.find(supported_infura_network_ids, (id) => id === infura_network_id)))
-    throw `unsupported infura network id ${infura_network_id}`
-  const chain_data = getInfuraChains('d1113d056f834c6192955c2b26a14cc1').filter(
-    ({ network_id }) => network_id === infura_network_id,
-  )
+const supported_infura_networks = app_args.features.supported_networks.split(',')
 
-  return chain_data[0]
+export const getInfraChainData = (infura_network: keyof InfraKeyChainConfig) => {
+  if (!Boolean(supported_infura_networks.find((id) => id === infura_network))) throw `Unsupported Infura Network ${infura_network}`
+
+  const chain_data = getInfuraChains(app_args.services.web3auth_infra_api_key)[infura_network as keyof InfraKeyChainConfig]
+
+  return chain_data
 }

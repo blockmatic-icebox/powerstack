@@ -18,7 +18,8 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const user: AppUser = {
       user_addresses: [],
-      jwt: token,
+      // TODO: Do this Bearer on auth instead here.
+      jwt: `Bearer ${token}`,
       auth_method: login_payload.auth_method,
     }
 
@@ -26,10 +27,10 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
 
     await req.session.save()
 
-    res.send({ token, error })
+    res.send({ data: user, error })
   } catch (error) {
     app_logger.log('❌ could not login', error)
-    res.status(500).send({ token: '', error })
+    res.status(500).send({ data: {}, error })
   }
 }
 

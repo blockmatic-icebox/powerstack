@@ -1,10 +1,11 @@
+import { getInfraChainData } from './../services/infura';
 import type { StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES, CustomChainConfig, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { app_args } from '~/app-config/app-arguments'
-import { AuthMethod } from '../types/app-engine'
+import { AuthMethod, AppUser } from '../types/app-engine';
 import { app_logger } from '../library/logger'
 import { ChainConfig, ChainKeyConfig, web3auth_chain_config } from '../static/web3auth-chains'
 
@@ -48,13 +49,10 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     const client_id = app_args.services.web3auth_client_id
 
     // throughout chain_id env config, we set chain_config 
-    Object.keys(web3auth_chain_config).forEach((config: string) => {
-      if (web3auth_chain_config[config as keyof ChainKeyConfig].chainId !== app_args.services.web3auth_client_id) return
+    // Do we want to have a default selected chain_name from env var?
+    const infra_chain_config = getInfraChainData('rinkeby')
 
-      const chain_config = web3auth_chain_config[config as keyof ChainKeyConfig]
-
-      set({ web3auth_chain_config: chain_config })
-    })
+    set({ web3auth_chain_config: infra_chain_config.chain_config })
 
     // instantiate and initialize web3auth client
     const web3auth = new Web3Auth({
@@ -99,10 +97,9 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
         auth_method,
       })
 
+      const user = get().user
       get().setUser({
-        username: user_info.name,
-        jwt: get().token,
-        auth_method,
+        ...user as AppUser,
         user_addresses: [
           {
             network: ethers_network.name,
