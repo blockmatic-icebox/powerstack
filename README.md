@@ -21,7 +21,7 @@ Demo https://powerstack-next.vercel.app/
 - Mint on Solana, EVM and Antilope blockchains.
 - Read account token balances and nfts.
 - GraphQL client with support for multiple indexers.
-- Portable vanillajs core logic store with Zustand.
+- Portable agnostic vanillajs core logic store with Zustand.
 - Utilities for decimal precision, math and trigonometry in js.
 - Utilities library for common web2 and web3 tasks.
 - Lighthouse CI web vitals performance reports.
