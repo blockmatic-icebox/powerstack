@@ -12,7 +12,7 @@ export type Web3AuthState = {
   web3auth: Web3Auth | null
   web3auth_provider: SafeEventEmitterProvider | null
   web3auth_loading: boolean
-  web3auth_chain_config: Partial<ChainConfig>
+  web3auth_chain_config: ChainConfig
   web3auth_user: unknown
 }
 
@@ -34,11 +34,7 @@ const defaultWeb3AuthState: Web3AuthState = {
   web3auth: null,
   web3auth_loading: false,
   // We set default chain config
-  web3auth_chain_config: {
-    chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: '0x4',
-    rpcTarget: 'https://rinkeby.infura.io/v3/d1113d056f834c6192955c2b26a14cc1',
-  },
+  web3auth_chain_config: web3auth_chain_config.rinkeby,
   web3auth_user: {},
   web3auth_provider: null,
 }

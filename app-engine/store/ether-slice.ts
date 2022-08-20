@@ -32,7 +32,8 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   initEthers: () => {
     app_logger.log('🇪🇹 initializing ether-state ...')
     // TODO: improve multichain support
-    const ethereum_chain_data = getInfuraChainData(web3auth_chain_config.rinkeby.networkId)
+    // web3auth_chain_config from env var chain_id
+    const ethereum_chain_data = getInfuraChainData(get().web3auth_chain_config.networkId)
 
     const ethereum_static_provider = new ethers.providers.StaticJsonRpcProvider(
       ethereum_chain_data.rpc_url,
@@ -48,8 +49,11 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
   },
   loginWithMetamask: async () => {
     app_logger.log('🇪🇹 login with metamask')
+
     if (!exec_env.ethereum) throw new Error('Please install the metamask extension to login')
+
     await exec_env.ethereum.request({ method: 'eth_requestAccounts' })
+
     const provider = new ethers.providers.Web3Provider(exec_env.ethereum)
     const infura_network_id = parseInt(exec_env.ethereum.networkVersion)
     const network = getInfuraChainData(infura_network_id).name
@@ -76,9 +80,9 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       auth_method,
       user_addresses: [
         {
-          network: 'rinkeby',
+          network,
           address,
-          ticker: 'rinkETH',
+          ticker: get().web3auth_chain_config.ticker,
           balance: new Decimal(balance),
           unit_balance: wei_balance.toString(),
         },
