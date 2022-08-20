@@ -3,13 +3,8 @@ import { NextPage } from 'next'
 import { useAppEngine } from '~/app-engine'
 import { Button } from '~/app-view/components/base/Button'
 
-<<<<<<< HEAD
 const LoginPage: NextPage = () => {
-  const { user, fetchUserBalances } = useAppEngine()
-=======
-const Home: NextPage = () => {
   const { user, create_session_error, fetchUserBalances } = useAppEngine()
->>>>>>> c79eab0 (impr: web3auth config)
 
   if (!user) return <WalletLogin />
 
