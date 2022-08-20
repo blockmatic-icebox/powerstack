@@ -5,8 +5,7 @@ export const Sidebar = styled('aside', {
   position: 'relative',
   width: '100%',
   maxWidth: 480,
-  borderRight: '$neutral-100 1px solid',
-  bg: 'red',
+  borderRight: 'grey 1px solid',
 
   '@medium': {
     minHeight: 'calc(100vh - 82px)',
