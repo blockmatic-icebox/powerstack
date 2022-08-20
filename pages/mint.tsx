@@ -11,7 +11,7 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-const Home: NextPage = () => {
+const MintPage: NextPage = () => {
   const { mintOnSolana, mintOnEvm } = useAppEngine()
   return (
     <>
@@ -29,4 +29,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default MintPage

@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import '~/app-engine'
 import { exec_env } from '~/app-engine/library/exec-env'
 import { app_logger } from '~/app-engine/library/logger'
-import { Container } from '~/app-view/components/layout/Container'
 import { Layout } from '~/app-view/components/layout/Layout'
 
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.

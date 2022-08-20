@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { useAppEngine } from '~/app-engine'
 import { Button } from '~/app-view/components/base/Button'
 
-const Home: NextPage = () => {
+const LoginPage: NextPage = () => {
   const { user, fetchUserBalances } = useAppEngine()
 
   if (!user) return <WalletLogin />
@@ -27,4 +27,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default LoginPage

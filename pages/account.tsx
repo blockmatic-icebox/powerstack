@@ -13,11 +13,6 @@ import { Accounts } from '~/app-engine/graphql/generated-sdk'
 import { Button } from '~/app-view/components/base/Button'
 import { Input } from '~/app-view/components/base/Input'
 
-const MainContent = styled('div', {
-  minHeight: '75vh',
-  position: 'relative',
-})
-
 const ButtonGroup = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
@@ -62,7 +57,7 @@ interface AccountSSRProps {
 
 export const getServerSideProps: GetServerSideProps = withSessionSsr<AccountSSRProps>(ssrHandler)
 
-const Home: NextPage<AccountSSRProps> = ({ user }) => {
+const AccountPage: NextPage<AccountSSRProps> = ({ user }) => {
   const { createUserAccount } = useAppEngine()
   const [username, setUsername] = useState('')
   return (
@@ -82,4 +77,4 @@ const Home: NextPage<AccountSSRProps> = ({ user }) => {
   )
 }
 
-export default Home
+export default AccountPage
