@@ -39,7 +39,7 @@ const Title = styled('h1', {
 const LoginButton = styled(Button, {
   '& svg': {
     flexShrink: 0,
-    mr: '$regular',
+    m: '$regular',
   },
 })
 
@@ -61,6 +61,10 @@ const ButtonGroup = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   paddingTop: '$small',
+  '& svg': {
+    flexShrink: 0,
+    m: '$regular',
+  },
 })
 
 export const WalletLogin = () => {
