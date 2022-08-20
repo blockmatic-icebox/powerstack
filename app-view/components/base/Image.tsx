@@ -1,22 +1,41 @@
 import NextImage, { ImageProps } from 'next/image'
 import _ from 'lodash'
-import { buildUrl } from 'cloudinary-build-url'
+import { getCloudinaryImage, getCloudinaryVideo } from '~/app-engine/services/cloudinary'
+import { styled } from '~/app-view/styles/stitches.config'
 
-type CustomImageProps = {
+type CustomImageProps = ImageProps & {
   src: string
+  caption?: string
   cloudinary?: boolean
-  props?: any
+  cloudinaryVideo?: boolean
 }
 
-export const Image = ({ src, alt, cloudinary, ...props }: CustomImageProps & ImageProps) => {
+const ImageContainer = styled('div', {
+  width: '100%',
+  height: 'max-content',
+  'img, video': {
+    objectFit: 'cover',
+  }
+})
+const ImageCaption = styled('figcaption', {
+  width: '100%',
+  fontSize: '$smaller',
+  fontWeight: '$bold',
+})
+
+export const Image: React.FC<CustomImageProps> = ({ src, alt = "", caption, cloudinary, cloudinaryVideo, ...props }) => {
   const url = cloudinary
-    ? buildUrl(src, {
-        cloud: {
-          // ToDo: add this from .env
-          cloudName: 'geekli',
-          secure: process.env.NODE_ENV === 'production',
-        },
-      })
+    ? (cloudinaryVideo ? getCloudinaryVideo(src) : getCloudinaryImage(src)).toURL()
     : src
-  return <NextImage src={url} alt={alt} width={1000} height={750} {...props} />
+
+  return (
+    <ImageContainer>
+      <NextImage src={url} alt={alt} width={1000} height={750} {...props} />
+      {caption && (
+        <ImageCaption>
+          {caption}
+        </ImageCaption>
+      )}
+    </ImageContainer>
+  )
 }

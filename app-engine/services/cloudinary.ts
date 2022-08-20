@@ -9,7 +9,9 @@ export type CloudinaryAsset = {
 // Create a Cloudinary instance and set your cloud name.
 const cld = new Cloudinary({
   cloud: {
-    cloudName: 'your-cloud-name-here',
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    apiSecret: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
   },
 })
 
