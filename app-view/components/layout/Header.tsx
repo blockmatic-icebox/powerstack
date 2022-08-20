@@ -1,6 +1,5 @@
 import { styled } from '~/app-view/styles/stitches.config'
-import { BlockmaticIcon, GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
-import { Container } from './Container'
+import { GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
 import { Button } from '../base/Button'
 import Link from 'next/link'
 
@@ -14,9 +13,11 @@ const linkStyles = {
   },
 }
 
-const NavBar = styled('div', {
+const NavBar = styled('nav', {
   display: 'flex',
   backdropFilter: 'saturate(180%) blur(10px)',
+  borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+  justifyContent: 'space-between',
   position: 'sticky',
   py: '$regular',
   top: 0,
@@ -45,21 +46,6 @@ const VisuallyHidden = styled('h2', {
   wordWrap: 'normal',
 })
 
-const Logo = styled(BlockmaticIcon, {
-  height: '21px',
-  width: 'max-content',
-  '@small': {
-    height: '36px',
-  },
-})
-
-const NavContainer = styled(Container, {
-  px: '$small',
-  '@small': {
-    px: '$small',
-  },
-})
-
 const LoginButton = styled(Button, {
   ml: '$large',
   maxWidth: '200px',
@@ -85,46 +71,30 @@ const LanguageButton = styled('button', {
   },
 })
 
-// TODO: rename these components
-const Flex1 = styled('div', {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-})
-const Flex2 = styled('div', {
-  display: 'flex',
-  flex: 1,
-  justifyContent: 'flex-end',
-  alignItems: 'center',
+const RightMenu = styled('div', {
+  display: 'flex'
 })
 
 export const Header = () => {
   return (
-    <NavBar>
-      <NavContainer>
-        <Flex1>
-          <Link href="/">
-            <Logo />
-          </Link>
+    <NavBar role="navigation" aria-labelledby="main-nav-title">
+      <button>menu icon here</button>
+      <RightMenu>
+        <VisuallyHidden>Main navigation</VisuallyHidden>
+        <LanguageButton type="button" aria-label="Language Switcher Icon">
+          <GlobeIcon />
+        </LanguageButton>
+        <AnchorItem
+          aria-label="Go to PowerStack repos"
+          href="https://github.com/blockmatic?q=powerstack"
+        >
+          <GhLoginIcon />
+        </AnchorItem>
 
-          <Flex2 as="nav" role="navigation" aria-labelledby="main-nav-title">
-            <VisuallyHidden>Main navigation</VisuallyHidden>
-            <LanguageButton type="button" aria-label="Language Switcher Icon">
-              <GlobeIcon />
-            </LanguageButton>
-            <AnchorItem
-              aria-label="Go to PowerStack repos"
-              href="https://github.com/blockmatic?q=powerstack"
-            >
-              <GhLoginIcon />
-            </AnchorItem>
-
-            <Link href="/login">
-              <LoginButton variant="primary">Login</LoginButton>
-            </Link>
-          </Flex2>
-        </Flex1>
-      </NavContainer>
+        <Link href="/login">
+          <LoginButton variant="primary">Login</LoginButton>
+        </Link>
+      </RightMenu>
     </NavBar>
   )
 }

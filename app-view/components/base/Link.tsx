@@ -5,13 +5,12 @@ import NextLink, { LinkProps } from 'next/link'
 // Note: removing this small hack causes this error:
 // This JSX tag's 'children' prop expects type 'never' which requires multiple children, but only a single child was provided.
 const link_styles: any = {
-  height: '100%',
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none',
   fontWeight: '$semi-bold',
   color: '$text-body',
-  py: '$regular',
+  my: '$x-small',
   transition: 'color 400ms',
   '&:hover, &:active, &:focus': {
     textDecoration: 'none',
