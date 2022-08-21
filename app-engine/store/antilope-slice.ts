@@ -73,7 +73,7 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
 
       if (error) throw new Error(error)
 
-      set({ authed: true, authType: AntilopeAuthType.ANCHOR, pub_key, token })
+      set({ authed: true, authType: AntilopeAuthType.ANCHOR, pub_key })
       get().setSessionToken(token)
     } catch (error) {
       get().logoutAntilope()
