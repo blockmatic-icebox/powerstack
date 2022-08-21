@@ -4,7 +4,7 @@ import { ADAPTER_EVENTS, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { app_args } from '~/app-config/app-arguments'
-import { AppLoginMethod, AppUser, AppNetwork } from '../types/app-engine'
+import { AppLoginMethod, AppUser } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 import { app_networks } from '../static/app-networks'
 import { CustomChainConfig } from '@web3auth/base'
@@ -64,7 +64,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
 
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
     web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
-      app_logger.log('you are successfully logged in', web3auth_user)
+      app_logger.log('🔑 you are successfully logged in', web3auth_user)
       const web3auth_provider = await web3auth.connect()
 
       if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
@@ -113,12 +113,12 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     web3auth.on(ADAPTER_EVENTS.CONNECTING, () => app_logger.log('connecting ...'))
 
     web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
-      app_logger.log('disconnected')
+      app_logger.log('🔑 web3auth disconnected')
       set({ web3auth_user: null })
     })
 
     web3auth.on(ADAPTER_EVENTS.ERRORED, (error: unknown) =>
-      console.error('some error or user has cancelled login request', error),
+      console.error('🔑 web3auth some error or user has cancelled login request', error),
     )
     await web3auth.initModal()
     set({ web3auth: web3auth })
