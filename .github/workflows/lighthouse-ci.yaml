@@ -1,0 +1,19 @@
+name: Build project and run Lighthouse CI
+on: [push]
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: npm install
+        run: |
+          npm install
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.9.x
+          lhci autorun --config=./lighthouserc-ci.js || echo "LHCI failed!"
