@@ -39,3 +39,5 @@ yarn-error.log*
 
 # local stuff 
 _dev
+
+package-lock.json
