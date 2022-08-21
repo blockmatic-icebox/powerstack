@@ -2,7 +2,6 @@ import { StoreSlice } from '../index'
 import AnchorLink, { PublicKey } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
-import { SignedTransactionType } from '@greymass/eosio'
 import { newAnchorLink } from '../library/antilope'
 import { app_logger } from '../library/logger'
 
@@ -63,18 +62,8 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
         account,
       }
 
-      app_logger.log(payload)
-
-      const result = await getTokenAnchorEOS(payload)
-
-      app_logger.log({ anchor: result })
-
-      const { token, error } = result
-
-      if (error) throw new Error(error)
-
-      set({ authed: true, authType: AntilopeAuthType.ANCHOR, pub_key })
-      get().setSessionToken(token)
+      // const result = await getTokenAnchorEOS(payload)
+      //TODO: call get.createSession()
     } catch (error) {
       get().logoutAntilope()
       throw error
@@ -82,49 +71,10 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
   },
   logoutAntilope: async () => {},
 
-  setAntilopeSessionToken: (token: string) => {
-    if (!token) return localStorage.removeItem('bitcash_session')
-    // const decoded_token = jwt.decode(token.replace('Bearer ', ''))
-
-    // const anchorLink = get().anchorLink || newAnchorLink
-
-    // if (!get().anchorLink) set({ anchorLink })
-
-    // set({ authed: true, authType: decoded_token?.authType, token })
-    // return localStorage.setItem('bitcash_session', token)
-  },
-
   // this function is called from session-state.ts when a new session is created
   initAntilope: () => {
     app_logger.log('⚙️ initializing antilope slice ...')
-
+    // TODO: maybe reconnect Anchor here ? - Gabo
     app_logger.log('⚙️ antilope slice initialized')
   },
 })
-interface RequestTokenAnchorEOSParams {
-  sign_data: {
-    pub_key: PublicKey
-    signature?: string
-    digest?: string
-    signed_trasaction_weauth?: SignedTransactionType
-  }
-  account: string
-}
-
-const getTokenAnchorEOS = async (data: RequestTokenAnchorEOSParams) => {
-  const response = await fetch(`${app_args.services.auth_api}/provider/anchor`, {
-    method: 'POST',
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-
-  return await response.json()
-}
-
-export const powerstackAuthService = {
-  getTokenAnchorEOS,
-}

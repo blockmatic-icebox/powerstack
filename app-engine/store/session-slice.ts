@@ -1,5 +1,5 @@
 import type { StoreSlice } from '../index'
-import { FetchError, fetchJson } from '../library/fetch'
+import { fetchJson } from '../library/fetch'
 import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
 import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
