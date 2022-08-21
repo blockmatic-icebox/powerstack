@@ -37,6 +37,7 @@
     "decimal.js": "^10.4.0",
     "env-var": "^7.1.1",
     "ethers": "^5.7.0",
+    "framer-motion": "^7.2.0",
     "graphql": "^16.6.0",
     "graphql-request": "^4.3.0",
     "graphql-ws": "^5.10.1",
