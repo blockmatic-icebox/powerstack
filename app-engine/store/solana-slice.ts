@@ -2,12 +2,12 @@ import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
-import { AuthMethod, AppUser } from '../types/app-engine';
+import { AppLoginMethod, AppUser } from '../types/app-engine'
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
-import { web3auth_chain_config } from '../static/web3auth-chains'
 import { getPhantomProvider } from '../library/solana'
 import { app_logger } from '../library/logger'
+import { app_networks } from '../static/app-networks'
 
 export type SolanaState = {
   solana_current_provider: null
@@ -33,7 +33,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
   initSolana: () => {
     app_logger.log('🌞 initializing solana slice ...')
     // TODO: improve multichain support
-    const solana_static_provider = new Connection(web3auth_chain_config.solana.rpcTarget)
+    const solana_static_provider = new Connection(app_networks.solana.rpc_target)
     set({ solana_static_provider })
     app_logger.log('🌞 solana slice initialized')
   },
@@ -53,7 +53,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       const encoded_message = new TextEncoder().encode(app_args.messages.session_message)
       const { signature } = await solana_provider.signMessage(encoded_message, 'utf8')
       const signed_message = bs58.encode(signature)
-      const auth_method: AuthMethod = 'web3_solana'
+      const auth_method: AppLoginMethod = 'web3_solana'
       const network = 'solana'
       const sessionInput = {
         network,
@@ -65,10 +65,9 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       app_logger.log('solana input', sessionInput)
 
       await get().createSession(sessionInput)
-      
-      const user = get().user
+
       get().setUser({
-        ...user as AppUser,
+        ...(get().user as AppUser),
         user_addresses: [
           {
             network: 'solana',

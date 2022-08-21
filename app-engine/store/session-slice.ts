@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
-import { FetchError, fetchJson } from '../library/fetch';
+import { FetchError, fetchJson } from '../library/fetch'
 import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
-import { AuthMethod } from '../types/app-engine'
+import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 
 export interface SessionState {
@@ -13,7 +13,7 @@ export interface CreateSessionProps {
   signed_message: string
   network: string
   message: string
-  auth_method: AuthMethod
+  auth_method: AppLoginMethod
 }
 
 export interface SessionActions {
@@ -77,7 +77,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
 
       if (!user) return
       if (user.auth_method === 'web3_auth') get().web3authLogout()
-      
+
       get().setUser(null)
     } catch (error) {
       console.error('An unexpected error happened:', error)

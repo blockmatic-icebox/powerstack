@@ -2,7 +2,7 @@ import { app_args } from '~/app-config/app-arguments'
 import { app_logger } from '~/app-engine/library/logger'
 import { FetchError, fetchJson } from '../app-engine/library/fetch'
 import { CreateSessionProps } from '../app-engine/store/session-slice'
-import { AuthMethod, AppUser } from '../app-engine/types/app-engine';
+import { AppLoginMethod, AppUser } from '../app-engine/types/app-engine'
 
 export type AuthErrorResponse = FetchError | Error
 export type AuthResponse = {
@@ -14,7 +14,7 @@ export type LoginResponse = {
   error: AuthErrorResponse
 }
 
-const getLoginPath = (auth_method: AuthMethod) => {
+const getLoginPath = (auth_method: AppLoginMethod) => {
   switch (auth_method) {
     case 'web3_solana': {
       return '/provider/phantom'
