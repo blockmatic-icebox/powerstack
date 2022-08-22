@@ -1,16 +1,15 @@
 module.exports = {
     ci: {
       collect: {
-        // staticDistDir 
-        startServerCommand: 'npm run start',
         numberOfRuns: 3,
-        url: ['http://localhost:3000']
+        startServerCommand: 'yarn run start',
+        // staticDistDir "./dist/ng-github-lighthouse-ci",
       },
          assert: {
             assertions: {
-              'categories:performance': ['error', {minScore: .8}],
-              'categories:accessibility': ['error', {minScore: .8}],
-              'categories:best-practices': ['error', {minScore: .8}],
+              'categories:performance': ['error', {minScore: .9}],
+              'categories:accessibility': ['error', {minScore: .9}],
+              'categories:best-practices': ['error', {minScore: .9}],
               'categories:seo': ['error', {minScore: .8}],
               'categories:pwa': 'off',
             }  

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:prod":"next build --prod",
     "start": "next start",
     "lint": "next lint",
     "graphql": "env-cmd -f ./app-engine/graphql/.env.codegen graphql-codegen --config ./app-engine/graphql/codegen.yml && eslint --fix ./app-engine/graphql/generated-sdk.ts",

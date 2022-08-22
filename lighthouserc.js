@@ -2,7 +2,7 @@ module.exports = {
     ci: {
       collect: {
         // staticDistDir 
-        startServerCommand: 'npm run start',
+        startServerCommand: 'yarn run start',
         url: ['http://localhost:3000']
       },
          assert: {
