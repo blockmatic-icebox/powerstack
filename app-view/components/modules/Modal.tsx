@@ -45,7 +45,7 @@ const Backdrop: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, on
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{ position: 'relative', zIndex: 1040 }}
+      style={{ position: 'relative', zIndex: 140 }}
     >
       <StyledBackdrop />
       {children}
@@ -120,7 +120,7 @@ export const Modal: React.FC<ModalProps> = ({ handleClose, children, show, width
             initial="hidden"
             animate="visible"
             exit="exit"
-            style={{ position: 'relative', zIndex: 1040 }}
+            style={{ position: 'relative', zIndex: 140 }}
           >
             <StyledModalCard role="dialog" css={{ maxWidth: width || '100%' }}>
               {children}

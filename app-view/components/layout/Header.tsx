@@ -23,7 +23,7 @@ const NavBar = styled('nav', {
   py: '$regular',
   top: 0,
   width: '100%',
-  zIndex: 1000,
+  zIndex: 100,
   '@small': {
     py: '$regular',
   },
@@ -73,7 +73,7 @@ const LanguageButton = styled('button', {
 })
 
 const RightMenu = styled('div', {
-  display: 'flex'
+  display: 'flex',
 })
 
 export const Header = () => {
@@ -92,7 +92,9 @@ export const Header = () => {
         >
           <GhLoginIcon />
         </AnchorItem>
-        <LoginButton variant="primary" onClick={() => setShowLoginModal(true)}>Login</LoginButton>
+        <LoginButton variant="primary" onClick={() => setShowLoginModal(true)}>
+          Login
+        </LoginButton>
       </RightMenu>
     </NavBar>
   )
