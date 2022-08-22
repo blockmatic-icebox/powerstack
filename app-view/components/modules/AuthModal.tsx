@@ -66,7 +66,7 @@ const WalletCard = styled(Card, {
   overflowY: 'auto',
 })
 
-export const WalletLogin = () => {
+export const AuthModal = () => {
   const {
     user,
     loginWithAnchor,
@@ -81,11 +81,7 @@ export const WalletLogin = () => {
   const default_user_address = user?.user_addresses[0].address
 
   return (
-    <Modal
-      handleClose={() => setShowLoginModal(false)}
-      show={show_login_modal}
-      width={544}
-    >
+    <Modal handleClose={() => setShowLoginModal(false)} show={show_login_modal} width={544}>
       <WalletCard>
         <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
         <p>Address: {default_user_address ? default_user_address : 'wallet not connected'}</p>

@@ -1,4 +1,4 @@
-import { WalletLogin } from '~/app-view/components/modules/WalletLogin'
+import { AuthModal } from '~/app-view/components/modules/AuthModal'
 import { NextPage } from 'next'
 import { useAppEngine } from '~/app-engine'
 import { Button } from '~/app-view/components/base/Button'
@@ -6,7 +6,7 @@ import { Button } from '~/app-view/components/base/Button'
 const LoginPage: NextPage = () => {
   const { user, create_session_error, fetchUserBalances } = useAppEngine()
 
-  if (!user) return <WalletLogin />
+  if (!user) return <AuthModal />
 
   return (
     <>

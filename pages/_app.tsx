@@ -5,7 +5,7 @@ import '~/app-engine'
 import { exec_env } from '~/app-engine/library/exec-env'
 import { app_logger } from '~/app-engine/library/logger'
 import { Layout } from '~/app-view/components/layout/Layout'
-import { WalletLogin } from '~/app-view/components/modules/WalletLogin'
+import { AuthModal } from '~/app-view/components/modules/AuthModal'
 
 // NOTE: we are only using zustand on the client side for sharing state between components and ease optimistic ui updates.
 //       we are not doing any hydration of the store from the server as in here. https://bit.ly/3uSGsm .
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <WalletLogin/>
+      <AuthModal />
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -13,7 +13,7 @@ const StyledBackdrop = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   overflowY: 'hidden',
-  zIndex: 1030,
+  zIndex: 130,
 })
 
 const StyledModalCard = styled('div', {
@@ -30,19 +30,15 @@ const StyledModalCard = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: 1031,
+  zIndex: 131,
   transform: 'translateY(-50%)',
   m: '0 auto',
   '@small': {
     padding: '0 $large',
-
-  }
+  },
 })
 
-const Backdrop: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children,
-  onClick,
-}) => {
+const Backdrop: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, onClick }) => {
   return (
     <motion.div
       onClick={onClick}
@@ -51,7 +47,7 @@ const Backdrop: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       exit={{ opacity: 0 }}
       style={{ position: 'relative', zIndex: 1040 }}
     >
-      <StyledBackdrop/>
+      <StyledBackdrop />
       {children}
     </motion.div>
   )
@@ -82,12 +78,7 @@ export interface ModalProps {
   children: React.ReactNode
 }
 
-export const Modal: React.FC<ModalProps> = ({
-  handleClose,
-  children,
-  show,
-  width
-}) => {
+export const Modal: React.FC<ModalProps> = ({ handleClose, children, show, width }) => {
   useEffect(() => {
     const nav_style = document.getElementById('nav-container')?.style
     const body_style = document.body.style
