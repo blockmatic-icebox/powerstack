@@ -57,7 +57,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       chainConfig: get().web3auth_chain_config,
       authMode: 'DAPP',
       uiConfig: {
-        theme: 'dark',
+        theme: 'light',
         loginMethodsOrder: ['google', 'twitter', 'apple', 'email_passwordless'],
       },
     })
