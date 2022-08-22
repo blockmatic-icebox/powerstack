@@ -15,19 +15,6 @@ import { useLocation } from 'react-use'
 import { Button } from '../base/Button'
 import { Modal } from './Modal'
 
-const Title = styled('h1', {
-  fontSize: '$h-2',
-  fontWeight: '$bold',
-  mb: '$large',
-  mt: 0,
-  px: '$small',
-  textAlign: 'center',
-  '@tabletUp': {
-    fontSize: '$h-1',
-    mb: '$x-small',
-  },
-})
-
 const LoginButton = styled(Button, {
   '& svg': {
     flexShrink: 0,
@@ -78,14 +65,10 @@ export const AuthModal = () => {
     show_login_modal,
   } = useAppEngine()
   const location = useLocation()
-  const default_user_address = user?.user_addresses[0].address
 
   return (
     <Modal handleClose={() => setShowLoginModal(false)} show={show_login_modal} width={544}>
       <WalletCard>
-        <Title>Welcome {user ? 'Back' : null} to PowerStack Demo</Title>
-        <p>Address: {default_user_address ? default_user_address : 'wallet not connected'}</p>
-
         {user ? (
           <>
             <LoginButton css={{ mb: '$small' }} onClick={destroySession} variant="metamask">
