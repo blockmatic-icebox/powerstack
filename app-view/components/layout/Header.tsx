@@ -1,8 +1,8 @@
 import { styled } from '~/app-view/styles/stitches.config'
 import { GhLoginIcon, GlobeIcon } from '~/app-view/components/icons/index'
 import { Button } from '../base/Button'
-import Link from 'next/link'
 import { useAppEngine } from '~/app-engine/index'
+import { useState } from 'react'
 
 const linkStyles = {
   color: '$text',
@@ -15,11 +15,14 @@ const linkStyles = {
 }
 
 const NavBar = styled('nav', {
+  alignItems: 'center',
   display: 'flex',
   backdropFilter: 'saturate(180%) blur(10px)',
   borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
   justifyContent: 'space-between',
   position: 'sticky',
+  pl: '$regular',
+  pr: '$x-large',
   py: '$regular',
   top: 0,
   width: '100%',
@@ -76,11 +79,64 @@ const RightMenu = styled('div', {
   display: 'flex',
 })
 
+const MenuButton = styled('button', {
+  bg: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  p: 0,
+  width: 22,
+  transition: 'all 400ms',
+  span: {
+    background: '#000',
+    borderRadius: 4,
+    display: 'block',
+    height: 3,
+    mb: 3,
+    transition: 'all .4s cubic-bezier(.05,.88,.36,.99)',
+    width: 22,
+  },
+  '& span:last-child': {
+    mb: 0,
+    width: 9,
+  },
+  '&:hover span': {
+    boxShadow: '0px 0.5px 1px rgba(0, 0, 0, 0.4)'
+  },
+  '&[data-state=active]': {
+    transform: 'rotateY(180deg)',
+    '& span': {
+      '&:first-child': {
+        marginTop: 5,
+        transform: 'rotate(-45deg)',
+      },
+      '&:nth-child(2)': {
+        marginTop: -6,
+        transform: 'rotate(45deg)',
+      },
+      '&:last-child': {
+        opacity: 0,
+        width: 0,
+      }
+    }
+  }
+})
+
 export const Header = () => {
   const { setShowLoginModal } = useAppEngine()
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
-      <button>menu icon here</button>
+      <MenuButton
+        aria-label={isMenuOpen ? "Open Menu" : "Close Menu"}
+        type="button"
+        data-state={isMenuOpen && "active"}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <span />
+        <span />
+        <span />
+      </MenuButton>
       <RightMenu>
         <VisuallyHidden>Main navigation</VisuallyHidden>
         <LanguageButton type="button" aria-label="Language Switcher Icon">
