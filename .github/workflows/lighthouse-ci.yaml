@@ -14,7 +14,6 @@ jobs:
       - name: yarn install
         run: |
           yarn install
-          yarn run build:prod
       - name: run Lighthouse CI 
         run: |
           yarn install -g @lhci/cli@0.9.x
