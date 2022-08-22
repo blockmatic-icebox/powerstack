@@ -1,7 +1,8 @@
 import { styled } from '~/app-view/styles/stitches.config'
 
 export const Main = styled('main', {
-  m: '$regular',
+  p: '$regular',
   minHeight: 'auto',
   position: 'relative',
+  borderLeft: '1px solid #eeeeee',
 })

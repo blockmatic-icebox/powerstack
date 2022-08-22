@@ -16,14 +16,14 @@ export const LayoutGrid = styled('div', {
 
 export const Layout: React.FC<any> = ({ children }) => {
   return (
-    <LayoutGrid>
-      <Sidebar />
-      <div>
-        <Header />
+    <div>
+      <Header />
+      <LayoutGrid>
+        <Sidebar />
         <Main>
           {children}
         </Main>
-      </div>
-    </LayoutGrid>
+      </LayoutGrid>
+    </div>
   )
 }
