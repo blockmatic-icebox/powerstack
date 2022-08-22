@@ -117,7 +117,7 @@ const BellButton = styled('button', {
   bg: 'transparent',
   border: 'none',
   cursor: 'pointer',
-  p:0,
+  p: 0,
 })
 
 export const Header = () => {
