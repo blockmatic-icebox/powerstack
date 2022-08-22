@@ -1,28 +1,22 @@
 
 name: Lighthouse CI
-on: 
-  push:
-    branches:
-      - lighthouse-ci
-  pull_request:
-      branches: 
-        - lighthouse-ci
-
+on: [push]
 jobs:
   lhci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: yarn install, build
+      - name: yarn install
         run: |
           yarn install
           yarn run build:prod
       - name: run Lighthouse CI 
         run: |
-          yarn install -g @lhci/cli@0.4.x
+          yarn install -g @lhci/cli@0.9.x
           lhci autorun   
+  
