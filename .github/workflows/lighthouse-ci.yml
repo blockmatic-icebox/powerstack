@@ -18,6 +18,6 @@ jobs:
       - name: run Lighthouse CI 
         run: |
           yarn add global && yarn add global @lhci/cli@0.9.x
-          lhci autorun  --config=./lighthouserc-ci.js
+          lhci autorun  --upload.target=temporary-public-storage
         env: 
           LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
