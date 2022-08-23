@@ -23,6 +23,7 @@
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@radix-ui/react-popover": "^1.0.0",
+    "@radix-ui/react-switch": "^1.0.0",
     "@sentry/browser": "^7.11.1",
     "@solana/web3.js": "^1.53.0",
     "@stitches/react": "^1.2.8",

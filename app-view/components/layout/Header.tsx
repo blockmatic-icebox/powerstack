@@ -117,12 +117,11 @@ const BellButton = styled('button', {
   bg: 'transparent',
   border: 'none',
   cursor: 'pointer',
-  p:0,
+  p: 0,
 })
 
 export const Header = () => {
-  const { setShowLoginModal, user } = useAppEngine()
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+  const { setShowLoginModal, user, show_sidebar, setShowSidebar } = useAppEngine()
 
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
@@ -133,10 +132,10 @@ export const Header = () => {
       </LogoContainer>
       <NavContent>
         <MenuButton
-          aria-label={isMenuOpen ? "Open Menu" : "Close Menu"}
+          aria-label={show_sidebar ? "Open Menu" : "Close Menu"}
           type="button"
-          data-state={isMenuOpen && "active"}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          data-state={show_sidebar && "active"}
+          onClick={() => setShowSidebar(!show_sidebar)}
         >
           <span />
           <span />
