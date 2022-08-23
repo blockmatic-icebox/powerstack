@@ -7,6 +7,7 @@ module.exports = {
         url: ['http://localhost:3001'],
       },
          assert: {
+          present: "lighthouse:recommended",
             assertions: {
               'categories:performance': ['error', {minScore: .9}],
               'categories:accessibility': ['error', {minScore: .9}],

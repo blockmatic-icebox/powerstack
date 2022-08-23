@@ -22,6 +22,7 @@
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@lhci/cli": "^0.9.0",
     "@radix-ui/react-popover": "^1.0.0",
     "@radix-ui/react-switch": "^1.0.0",
     "@sentry/browser": "^7.11.1",
