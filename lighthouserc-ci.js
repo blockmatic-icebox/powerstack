@@ -4,7 +4,7 @@ module.exports = {
         numberOfRuns: 3,
         startServerCommand: 'yarn build',
         // staticDistDir "./public",
-        url: ['http://localhost:3000'],
+        url: ['http://localhost:3001'],
       },
          assert: {
             assertions: {
