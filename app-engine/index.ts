@@ -13,6 +13,7 @@ import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-sl
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
 import { exec_env } from './library/exec-env'
+import { app_args } from '../app-config/app-arguments';
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -42,18 +43,29 @@ export type StoreSlice<T> = (set: StoreSetState, get: StoreGetState) => T
 
 //github.com/pmndrs/zustand#using-zustand-without-react
 export const app_engine = createVanillaStore<AppEngine>(
-  // compose all slices into AppState
-  (set, get) => ({
-    ...createWeb3AuthSlice(set, get),
-    ...createSessionSlice(set, get),
-    ...createUserSlice(set, get),
-    ...createSolanaSlice(set, get),
-    ...createAntilopeSlice(set, get),
-    ...createViewSlice(set, get),
-    ...createEngineSlice(set, get),
-    ...createEtherSlice(set, get),
-    ...createGraphQLSlice(set, get),
-  }),
+  // @ts-ignore
+  persist(
+    // compose all slices into AppState
+    (set, get) => ({
+      ...createWeb3AuthSlice(set, get),
+      ...createSessionSlice(set, get),
+      ...createUserSlice(set, get),
+      ...createSolanaSlice(set, get),
+      ...createAntilopeSlice(set, get),
+      ...createViewSlice(set, get),
+      ...createEngineSlice(set, get),
+      ...createEtherSlice(set, get),
+      ...createGraphQLSlice(set, get),
+    }),
+    {
+      // Local Storage prefix
+      name: app_args.app_name,
+      partialize: (state) => ({
+        user: state.user,
+        eosio_trnx_signer: state.eosio_trnx_signer,
+      })
+    }
+  )
 )
 
 // standard zustand store https://github.com/pmndrs/zustand
