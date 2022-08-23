@@ -16,9 +16,10 @@ export type LoginResponse = {
 
 const getLoginPath = (auth_method: AppLoginMethod) => {
   switch (auth_method) {
-    case 'web3_solana': {
+    case 'web3_anchor':
+      return '/provider/anchor'
+    case 'web3_solana':
       return '/provider/phantom'
-    }
     case 'web3_metamask':
     case 'web3_auth':
     default:
