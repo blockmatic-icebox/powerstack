@@ -13,7 +13,7 @@ jobs:
           node-version: 16.x
       - name: yarn install 
         run: |
-          yarn global add @lhci/cli@0.9.x
+          yarn install global add @lhci/cli@0.9.x
       - name: run Lighthouse CI 
         run: |
           yarn global add @lhci/cli@0.9.x
