@@ -1,5 +1,6 @@
 import { CHAIN_NAMESPACES } from '@web3auth/base'
 import { AppNetworks } from '../types/app-engine'
+import { app_args } from '../../app-config/app-arguments'
 
 /*  NOTE:
 We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and Antilope for staters.
@@ -66,4 +67,16 @@ export const app_networks: AppNetworks = {
     ticker_name: 'Matic',
     network_id: 80001,
   },
+  eosio: {
+    // TODO: other for eosio or eosio.token?
+    chain_namespace: CHAIN_NAMESPACES.OTHER,
+    rpc_target: app_args.services.antilope.chain_rpc,
+    block_explorer: 'https://bloks.io/',
+    chain_id: app_args.services.antilope.eos_chain_id,
+    display_name: 'EOS Testnet',
+    ticker: 'EOS',
+    ticker_name: 'EOS',
+    // TODO: same as chan_id? 
+    network_id: 80001,
+  }
 }

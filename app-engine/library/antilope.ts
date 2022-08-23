@@ -1,16 +1,16 @@
-import AnchorLink from 'anchor-link'
+import AnchorLink, { APIClient } from 'anchor-link'
 
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
+import { app_networks } from '../static/app-networks';
 
 export const newAnchorLink = new AnchorLink({
   chains: [
     {
-      // TODO: fix me @RUBENBIX
-      // chainId: app_args.services.antilope.eos_chain_id,
-      // nodeUrl: app_args.services.antilope.chain_rpc,
-      chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-      nodeUrl: 'https://eos.greymass.com',
+      chainId: app_networks.eosio.chain_id,
+      nodeUrl: app_networks.eosio.rpc_target,
     },
   ],
   transport: new AnchorLinkBrowserTransport({}),
 })
+
+export const eosioApi = new APIClient({ url: app_networks.eosio.rpc_target }).v1.chain
