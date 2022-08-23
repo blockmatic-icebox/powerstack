@@ -10,7 +10,7 @@ export const LayoutGrid = styled('div', {
   minHeight: '100vh',
   '@small': {
     display: 'grid',
-    gridTemplateColumns: '300px 1fr',
+    gridTemplateColumns: 'min-content 1fr',
   }
 })
 
