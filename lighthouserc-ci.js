@@ -3,7 +3,7 @@ module.exports = {
       collect: {
         numberOfRuns: 3,
         startServerCommand: 'yarn run start',
-        // staticDistDir "./dist/ng-github-lighthouse-ci",
+        // staticDistDir "./dir/",
         url: ['http://localhost:3000'],
       },
          assert: {
