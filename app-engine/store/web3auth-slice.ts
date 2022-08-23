@@ -1,16 +1,24 @@
 import type { StoreSlice } from '../index'
 import type { Web3Auth } from '@web3auth/web3auth'
-import { ADAPTER_EVENTS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
+import { ADAPTER_EVENTS, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
-import { client_args } from '~/app-config/client-config'
-import { AuthMethod } from '../types/app-engine'
+import { app_args } from '~/app-config/app-arguments'
+import { AppLoginMethod, AppUser } from '../types/app-engine'
+import { app_logger } from '../library/logger'
+import { app_networks } from '../static/app-networks'
+import { CustomChainConfig } from '@web3auth/base'
+import camelcaseKeys from 'camelcase-keys'
+import { AppNetworkName } from '../types/app-engine'
+
+export const appNetworkToChainConfig = (network: AppNetworkName): CustomChainConfig =>
+  camelcaseKeys(app_networks[network])
 
 export type Web3AuthState = {
   web3auth: Web3Auth | null
   web3auth_provider: SafeEventEmitterProvider | null
   web3auth_loading: boolean
-  web3auth_chain: string
+  web3auth_chain_config: CustomChainConfig
   web3auth_user: unknown
 }
 
@@ -31,68 +39,69 @@ export type Web3AuthSlice = Web3AuthState & Web3AuthActions
 const defaultWeb3AuthState: Web3AuthState = {
   web3auth: null,
   web3auth_loading: false,
-  web3auth_chain: '',
-  web3auth_user: {},
+  web3auth_chain_config: appNetworkToChainConfig('rinkeby'), // TODO: review default chain
   web3auth_provider: null,
+  web3auth_user: null,
 }
 
 export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
   ...defaultWeb3AuthState,
 
   web3authInit: async () => {
-    console.log('🔑 initializing web3auth ...')
+    app_logger.log('🔑 initializing web3auth ...')
     const { Web3Auth } = await import('@web3auth/web3auth')
-    // TODO: fix me @RUBENABIX
-    const client_id =
-      'BCeTdMp4F7vxJyP9pi93aCl2bclncDAUs76Awo74cFzN43pisN_Rmksd4hvQq_85rp9oRQSHXLxtvb2c-mxEyf8' //get().app_engine_config.services.web3auth_client_id,
-    // instantiate and initialize web3auth client
+    const client_id = app_args.services.web3auth_client_id
+
     const web3auth = new Web3Auth({
       clientId: client_id,
-      chainConfig: {
-        chainNamespace: CHAIN_NAMESPACES.EIP155,
-        chainId: '0x4',
-        rpcTarget: 'https://rinkeby.infura.io/v3/d1113d056f834c6192955c2b26a14cc1',
-      },
+      chainConfig: get().web3auth_chain_config,
       authMode: 'DAPP',
       uiConfig: {
-        theme: 'dark',
+        theme: 'light',
         loginMethodsOrder: ['google', 'twitter', 'apple', 'email_passwordless'],
       },
     })
+
     // subscribe to ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
     web3auth.on(ADAPTER_EVENTS.CONNECTED, async (web3auth_user: {}) => {
-      console.log('you are successfully logged in', web3auth_user)
+      app_logger.log('🔑 you are successfully logged in', web3auth_user)
       const web3auth_provider = await web3auth.connect()
+
       if (!web3auth_provider) throw new Error('web3auth_provider is not initialized')
-      set({ web3auth_provider })
+
+      set({ web3auth_provider, web3auth })
+
       const ethers_provider = new ethers.providers.Web3Provider(web3auth_provider)
+      const ethers_network = await ethers_provider.getNetwork()
       const user_info = await web3auth.getUserInfo()
       const signer = ethers_provider.getSigner()
       const address = await signer.getAddress()
       const wei_balance = await ethers_provider.getBalance(address)
       const balance = ethers.utils.formatEther(wei_balance)
-      const auth_method: AuthMethod = 'web3_auth'
-      console.log({ address, balance, user_info })
-      const message = client_args.messages.session_message
-      const signed_message = await get().signMessageWithEhters(message)
+      const auth_method: AppLoginMethod = 'web3_auth'
 
-      const { token, error } = await get().createSession({
+      // NOTE: user_info.idToken is a JWT token with => wallet: { pub_key, type, curve }[] FYI... save it for user session?
+      app_logger.log({ address, balance, user_info })
+
+      const message = app_args.messages.session_message
+      const signed_message = await get().signMessageWithEthers(message)
+
+      await get().createSession({
         message,
-        network: 'rinkeby', // TODO: fix me @RUBENABIX why rinkeby?
+        network: ethers_network.name,
         address,
         signed_message,
         auth_method,
       })
-      if (error || !token) return // TODO: fix me handle login error
+
+      const user = get().user
       get().setUser({
-        username: user_info.name,
-        jwt: '',
-        auth_method,
+        ...(user as AppUser),
         user_addresses: [
           {
-            network: 'rinkeby',
+            network: ethers_network.name,
             address,
-            ticker: 'rinkETH',
+            ticker: get().web3auth_chain_config.ticker as string,
             balance: new Decimal(balance),
             unit_balance: wei_balance.toString(),
           },
@@ -101,26 +110,26 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       set({ web3auth_user })
     })
 
-    web3auth.on(ADAPTER_EVENTS.CONNECTING, () => console.log('connecting ...'))
+    web3auth.on(ADAPTER_EVENTS.CONNECTING, () => app_logger.log('connecting ...'))
 
     web3auth.on(ADAPTER_EVENTS.DISCONNECTED, () => {
-      console.log('disconnected')
+      app_logger.log('🔑 web3auth disconnected')
       set({ web3auth_user: null })
     })
 
     web3auth.on(ADAPTER_EVENTS.ERRORED, (error: unknown) =>
-      console.error('some error or user has cancelled login request', error),
+      console.error('🔑 web3auth some error or user has cancelled login request', error),
     )
     await web3auth.initModal()
     set({ web3auth: web3auth })
-    console.log(`🔑 web3auth initialized with client_id ${client_id}`)
+    app_logger.log(`🔑 web3auth initialized with client_id ${client_id}`)
   },
   web3authLogin: async () => {
-    console.log('🔑 login with web3auth')
+    app_logger.log('🔑 login with web3auth')
     const { web3auth } = get()
     if (!web3auth) throw new Error('Web3Auth is not initialized')
     await web3auth.connect()
-    console.log('🔑 user logged in')
+    app_logger.log('🔑 user logged in')
   },
   web3authLogout: async () => {
     await get().web3auth?.logout()

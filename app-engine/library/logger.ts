@@ -1,4 +1,4 @@
 // TODO: add log levels and read it from env
-export const logger = {
+export const app_logger = {
   ...console,
 }

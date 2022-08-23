@@ -14,39 +14,41 @@ Demo https://powerstack-next.vercel.app/
 
 ## Features
 
-- [ ] Web2 and Web3 authentication ( EVM, Solana, EOSIO, Web3Auth ).
-- [ ] Wallet integration: sign messages and transactions.
-- [ ] Upload to Arweave using Blundr.
-- [ ] Upload to IPFS using Pinata.
-- [ ] GraphQL client with support for multiple indexers.
-- [ ] Portable vanillajs core logic store with Zustand.
-- [ ] Utilities for decimal precision, math and trigonometry in js.
-- [ ] Utilities library for common web2 and web3 tasks.
-- [ ] Lighthouse CI web vitals performance reports.
-- [ ] CSS-in-JS design system Stitches.
-- [ ] Import design tokens from Toolabs Design Manager.
-- [ ] Autogenerate TypeScript types from GraphQL schema.
-- [ ] Crash reporting and web analytics.
-- [ ] Base ui components with forms validation.
-- [ ] Internationalization with i18next.
-- [ ] TypeScript, ESLint, Prettier and Husky for code quality.
+- Web2 and Web3 authentication ( EVM, Solana, Antilope, Web3Auth ).
+- Wallet integration: sign messages and transactions.
+- Upload to Arweave using Blundr.
+- Upload to IPFS using Pinata.
+- Mint on Solana, EVM and Antilope blockchains.
+- Read account token balances and nfts.
+- GraphQL client with support for multiple indexers.
+- Portable agnostic vanillajs core logic store with Zustand.
+- Utilities for decimal precision, math and trigonometry in js.
+- Utilities library for common web2 and web3 tasks.
+- Lighthouse CI web vitals performance reports.
+- CSS-in-JS design system Stitches.
+- Import design tokens from Toolabs Design Manager.
+- Autogenerate TypeScript types from GraphQL schema.
+- Crash reporting and web analytics.
+- Base ui components with forms validation.
+- Internationalization with i18next.
+- TypeScript, ESLint, Prettier and Husky for code quality.
 
 ## Tech Stack
 
-- NextJS https://nextjs.org
-- Zustand store https://github.com/pmndrs/zustand
-- Stitches styling https://stitches.dev
-- Ethers https://docs.ethers.io/v5
-- Solana Web3 https://solana-labs.github.io/solana-web3.js
-- TweetNaCl.js https://github.com/dchest/tweetnacl-js
-- Eosio Core https://github.com/greymass/eosio-core
-- Decimal.js https://github.com/MikeMcl/decimal.js
-- Iron Session https://github.com/vvo/iron-session
-- Lodash tools https://lodash.com/docs
-- Zod validator https://github.com/colinhacks/zod
-- React-use hooks https://github.com/streamich/react-use
-- Sentry reporting https://sentry.io/
-- Next i18next https://github.com/i18next/next-i18next
+- NextJS [nextjs.org](https://nextjs.org)
+- Zustand store [pmndrs/zustand](https://github.com/pmndrs/zustand)
+- Stitches styling [stitches.dev](https://stitches.dev)
+- Ethers [docs.ethers.io](https://docs.ethers.io/v5)
+- Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
+- TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
+- Eosio Core [greymass/eosio-core](https://github.com/greymass/eosio-core)
+- Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
+- Iron Session [vvo/iron-session](https://github.com/vvo/iron-session)
+- Lodash tools [lodash.com/docs](https://lodash.com/docs)
+- Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
+- React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
+- Sentry reporting [sentry.io/](https://sentry.io/)
+- Next i18next [i18next/next-i18next](https://github.com/i18next/next-i18next)
 
 ## State Management
 
@@ -59,67 +61,82 @@ In the current setup Zustand only runs on the browser, this is important to unde
 
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
-more https://github.com/blockmatic/powerstack-hasura
+- Endpoint: https://api.powerstack.xyz/v1/graphql
+- Explorer: https://explorer.powerstack.xyz
 
-endpoint: https://powerstack-hasura-atgjsg75cq-uc.a.run.app/v1/graphql  
-graphiql: https://graphiql-online.com
+#### GraphQL Development Flow
 
-- https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/index/
-- https://hasura.io/docs/latest/graphql/core/databases/postgres/queries/query-filters/
-- https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/
+1. test your query on [explorer.powerstack.xyz](https://explorer.powerstack.xyz).
+2. copy paste the query to `app-engine/graphql/schema.graphql`.
+3. execute `yarn graphql`
+4. utilize the generated sdk and types in zustand and `getServerSideProps`
+
+See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasura) for more information.
 
 ### File Structure
 
 ```
 .
-├── _docs.....................................# documentation files and media
-├── _scripts..................................# utility devops scripts
-├── app-config................................# app configuration and env var checks
-|   ├── client-args.ts........................# frontend client config
-|   └── server-secrets.ts ................... # server side secrets
+├── _docs.................................... documentation files and media
+├── _scripts................................. utility devops scripts
+├── app-config............................... environment variables and secrets
+|   ├── app-arguments.ts..................... application arguments
+|   └── server-secrets.ts ................... server side secrets
 |
-├── app-engine................................# portable vanillajs core logic ( app engine )
-|   ├── graphql...............................# graphql module
-|   |   ├── schema.graphql....................# client app schema ( app-engine )
-|   |   ├── generated-sdk.ts..................# autogenerated ts types and graphql apis
-|   |   ├── graphql-client.ts.................# multi-link multi-indexer graphql client
-|   |   ├── codegen.yml.......................# codegen configuration
-|   |   └── index.ts..........................# main module entry and api exports
+├── app-engine............................... portable vanillajs core logic ( app engine )
+|   ├── graphql.............................. graphql module
+|   |   ├── schema.graphql................... client app schema ( app-engine )
+|   |   ├── generated-sdk.ts................. autogenerated ts types and graphql apis
+|   |   ├── graphql-client.ts................ multi-link multi-indexer graphql client
+|   |   ├── codegen.yml...................... codegen configuration
+|   |   └── index.ts......................... main module entry and api exports
 |   |
-|   ├── library...............................# collection of pure utlity functions and objects
-|   |   ├── errors.ts........................ # app-engine error types
-|   |   └── utils.ts..........................# general use utility pure functions
+|   ├── library.............................. pure function utils ( input->output, deterministic, no side effects )
+|   |   ├── encoding.ts...................... encoding functions
+|   |   ├── antilope.ts...................... antilope and anchor wallet uitls
+|   |   ├── errors.ts........................ app-engine error classes
+|   |   ├── ethers.ts........................ evm utils
+|   |   ├── exec-env.ts...................... execution environment variables
+|   |   ├── fetch.ts......................... window fetch wrapper
+|   |   ├── logger.ts........................ logger object
+|   |   ├── solana.ts........................ solana and phantom wallet utils
+|   |   ├── uiux.ts.......................... utils for better ux
+|   |   └── web3auth.ts...................... web3auth utils
 |   |
-|   ├── services..............................# abstractions for external apis
-|   |   ├── logger.ts.........................# configurable app logger
-|   |   ├── sentry.ts.........................# crash reporting instance
-|   |   └── cloudinary.ts.....................# image optimization and cdn
+|   ├── services............................. abstractions for http apis ( sdks, third party )
+|   |   ├── infura.ts........................ infura config and client
+|   |   ├── sentry.ts........................ crash reporting instance
+|   |   └── cloudinary.ts.................... image optimization and cdn
 |   |
-|   └── store.................................# portable vanillajs state machine
-|       ├── a
-|       ├── b
-|       ├── c
-|       ├── d
-|       ├── f
+|   └── store................................ portable vanillajs state machine
+|       ├── engine-slice.ts.................. app-engine state flags
+|       ├── antilope-slice.ts................ antilope and anchor wallet logic
+|       ├── ethers-slice.ts.................. evm and metamask wallet logic
+|       ├── graphql-slice.ts................. graphql frontend client instance
+|       ├── network-slice.ts................. multi-chain and network switching logic
+|       ├── solana-slice.ts.................. solana and phantom wallet logic
+|       ├── user-slice.ts.................... app user data and functions
+|       ├── view-slice.ts.................... app view / ui state
+|       └── web3auth-slice.ts................ web3auth and torus logic
 |
-├── app-server ...............................# server side logic
+├── app-server .............................. server side logic
 |
-├── app-view .................................# presentation logic, jsx, animations
-|   ├── components............................# reactjs components
-|   |   ├── base..............................# default base/primitive components
-|   |   ├── modules...........................# standalone modular components
-|   |   ├── layout............................# structure focused components
+├── app-view ................................ presentation logic, jsx, animations
+|   ├── components........................... reactjs components
+|   |   ├── base............................. default base/primitive components
+|   |   ├── modules.......................... standalone modular components
+|   |   ├── layout........................... structure focused components
 |   |   └── icons
-|   ├── pages.................................# standard nextjs page components
-|   └── styles................................# stitches configuration
-|       ├── themes............................# theme generated for Stitches to consume
-|       ├── global.ts.........................# global styles
-|       ├── index.ts..........................# export of stitches and global stylesstitches.config.ts
-|       ├── stitches.config.ts................# stitches config
-|       └── styles.context.ts.................# stitches app context
+|   |
+|   └── styles............................... stitches configuration
+|       ├── themes........................... generated themes from toolabs dsm
+|       ├── global.ts........................ global styles
+|       ├── index.ts......................... exports getGeneratedStylesheet
+|       └── stitches.config.ts............... stitches config
 |
-├── Dockerfile................................# docker container definition
-└── Taskfile.yml..............................# utility tasks for docker based dev
+├── pages.................................... standard nextjs page components
+├── Dockerfile............................... docker container definition
+└── Taskfile.yml............................. utility tasks for docker based dev
 ```
 
 ## Getting Started
@@ -134,9 +151,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Commands
 
-- `dev`: runs your application on `localhost:3000`
-- `build`: creates the production build version
-- `start`: starts a simple server with the build production code
+- `dev`: runs your application on `localhost:3000`.
+- `build`: creates the production build version.
+- `start`: starts a simple server with the build production code.
 
 ## Docker
 

@@ -1,52 +1,20 @@
-import { WalletLogin } from '~/app-view/components/modules/WalletLogin'
-import { styled } from '../app-view/styles/stitches.config'
 import { NextPage } from 'next'
-import { Container, Footer, Header } from '~/app-view/components/layout'
-import { Button } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
+import { formatAddress } from '~/app-view/library/uiux'
 
-const MainContent = styled('div', {
-  minHeight: '75vh',
-  position: 'relative',
-})
-
-const LoginBackground = styled('div', {
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  width: '100%',
-  minHeight: '100vh',
-})
-
-const Home: NextPage = () => {
-  const { user, fetchUserBalances } = useAppEngine()
+const HomePage: NextPage = () => {
+  const { user } = useAppEngine()
+  const user_data = { ...user, jwt: user?.jwt ? formatAddress(user?.jwt) : 'none' }
   return (
-    <LoginBackground>
-      <Header />
-      <MainContent>
-        <Container>
-          {user && (
-            <>
-              <Button
-                onClick={() => {
-                  fetchUserBalances()
-                }}
-              >
-                Update balances
-              </Button>
-              <pre>{JSON.stringify(user.user_addresses)}</pre>
-              <ul>
-                {user.user_addresses.map((address) => (
-                  <li key={address.address}>{address.balance?.toString()}</li>
-                ))}
-              </ul>
-            </>
-          )}
-          <WalletLogin />
-        </Container>
-      </MainContent>
-      <Footer />
-    </LoginBackground>
+    <>
+      <h2>Home Sweet Home</h2>
+      <br />
+      <hr />
+      <br />
+      <h3>user data: </h3>
+      <pre>{JSON.stringify(user_data, null, 2)}</pre>
+    </>
   )
 }
 
-export default Home
+export default HomePage

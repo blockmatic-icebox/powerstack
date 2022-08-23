@@ -1,11 +1,11 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
+import { GraphQLClient } from 'graphql-request'
+import * as Dom from 'graphql-request/dist/types.dom'
+import gql from 'graphql-tag'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
-const defaultOptions = {} as const
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -52,7 +52,18 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "accounts" */
 export type Accounts = {
   account_id: Scalars['uuid']
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
   username: Scalars['String']
+}
+
+/** columns and relationships of "accounts" */
+export type AccountsAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
 }
 
 /** Boolean expression to filter rows from the table "accounts". All fields are combined with a logical 'AND'. */
@@ -61,6 +72,7 @@ export type Accounts_Bool_Exp = {
   _not?: InputMaybe<Accounts_Bool_Exp>
   _or?: InputMaybe<Array<Accounts_Bool_Exp>>
   account_id?: InputMaybe<Uuid_Comparison_Exp>
+  addresses?: InputMaybe<Addresses_Bool_Exp>
   username?: InputMaybe<String_Comparison_Exp>
 }
 
@@ -94,6 +106,7 @@ export type Accounts_On_Conflict = {
 /** Ordering options when selecting data from "accounts". */
 export type Accounts_Order_By = {
   account_id?: InputMaybe<Order_By>
+  addresses_aggregate?: InputMaybe<Addresses_Aggregate_Order_By>
   username?: InputMaybe<Order_By>
 }
 
@@ -122,6 +135,61 @@ export enum Accounts_Update_Column {
   AccountId = 'account_id',
   /** column name */
   Username = 'username',
+}
+
+/** columns and relationships of "addresses" */
+export type Addresses = {
+  account_id: Scalars['uuid']
+  address: Scalars['String']
+  network: Scalars['String']
+}
+
+/** order by aggregate values of table "addresses" */
+export type Addresses_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>
+  max?: InputMaybe<Addresses_Max_Order_By>
+  min?: InputMaybe<Addresses_Min_Order_By>
+}
+
+/** Boolean expression to filter rows from the table "addresses". All fields are combined with a logical 'AND'. */
+export type Addresses_Bool_Exp = {
+  _and?: InputMaybe<Array<Addresses_Bool_Exp>>
+  _not?: InputMaybe<Addresses_Bool_Exp>
+  _or?: InputMaybe<Array<Addresses_Bool_Exp>>
+  account_id?: InputMaybe<Uuid_Comparison_Exp>
+  address?: InputMaybe<String_Comparison_Exp>
+  network?: InputMaybe<String_Comparison_Exp>
+}
+
+/** order by max() on columns of table "addresses" */
+export type Addresses_Max_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** order by min() on columns of table "addresses" */
+export type Addresses_Min_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** Ordering options when selecting data from "addresses". */
+export type Addresses_Order_By = {
+  account_id?: InputMaybe<Order_By>
+  address?: InputMaybe<Order_By>
+  network?: InputMaybe<Order_By>
+}
+
+/** select columns of table "addresses" */
+export enum Addresses_Select_Column {
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  Address = 'address',
+  /** column name */
+  Network = 'network',
 }
 
 /** mutation root */
@@ -181,6 +249,10 @@ export type Query_Root = {
   accounts: Array<Accounts>
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
+  /** fetch data from the table: "addresses" using primary key columns */
+  addresses_by_pk?: Maybe<Addresses>
 }
 
 export type Query_RootAccountsArgs = {
@@ -195,11 +267,28 @@ export type Query_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid']
 }
 
+export type Query_RootAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
+}
+
+export type Query_RootAddresses_By_PkArgs = {
+  address: Scalars['String']
+  network: Scalars['String']
+}
+
 export type Subscription_Root = {
   /** fetch data from the table: "accounts" */
   accounts: Array<Accounts>
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>
+  /** fetch data from the table: "addresses" */
+  addresses: Array<Addresses>
+  /** fetch data from the table: "addresses" using primary key columns */
+  addresses_by_pk?: Maybe<Addresses>
 }
 
 export type Subscription_RootAccountsArgs = {
@@ -212,6 +301,19 @@ export type Subscription_RootAccountsArgs = {
 
 export type Subscription_RootAccounts_By_PkArgs = {
   account_id: Scalars['uuid']
+}
+
+export type Subscription_RootAddressesArgs = {
+  distinct_on?: InputMaybe<Array<Addresses_Select_Column>>
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+  order_by?: InputMaybe<Array<Addresses_Order_By>>
+  where?: InputMaybe<Addresses_Bool_Exp>
+}
+
+export type Subscription_RootAddresses_By_PkArgs = {
+  address: Scalars['String']
+  network: Scalars['String']
 }
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
@@ -237,7 +339,13 @@ export type AccountsQueryVariables = Exact<{
   where?: InputMaybe<Accounts_Bool_Exp>
 }>
 
-export type AccountsQuery = { accounts: Array<{ account_id: any; username: string }> }
+export type AccountsQuery = {
+  accounts: Array<{
+    account_id: any
+    username: string
+    addresses: Array<{ account_id: any; address: string; network: string }>
+  }>
+}
 
 export const CreateUsernameDocument = gql`
   mutation CreateUsername($username: String) {
@@ -246,80 +354,58 @@ export const CreateUsernameDocument = gql`
     }
   }
 `
-export type CreateUsernameMutationFn = Apollo.MutationFunction<
-  CreateUsernameMutation,
-  CreateUsernameMutationVariables
->
-
-/**
- * __useCreateUsernameMutation__
- *
- * To run a mutation, you first call `useCreateUsernameMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateUsernameMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createUsernameMutation, { data, loading, error }] = useCreateUsernameMutation({
- *   variables: {
- *      username: // value for 'username'
- *   },
- * });
- */
-export function useCreateUsernameMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateUsernameMutation, CreateUsernameMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateUsernameMutation, CreateUsernameMutationVariables>(
-    CreateUsernameDocument,
-    options,
-  )
-}
-export type CreateUsernameMutationHookResult = ReturnType<typeof useCreateUsernameMutation>
-export type CreateUsernameMutationResult = Apollo.MutationResult<CreateUsernameMutation>
-export type CreateUsernameMutationOptions = Apollo.BaseMutationOptions<
-  CreateUsernameMutation,
-  CreateUsernameMutationVariables
->
 export const AccountsDocument = gql`
   query Accounts($where: accounts_bool_exp = {}) {
     accounts(where: $where) {
       account_id
       username
+      addresses {
+        account_id
+        address
+        network
+      }
     }
   }
 `
 
-/**
- * __useAccountsQuery__
- *
- * To run a query within a React component, call `useAccountsQuery` and pass it any options that fit your needs.
- * When your component renders, `useAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useAccountsQuery({
- *   variables: {
- *      where: // value for 'where'
- *   },
- * });
- */
-export function useAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AccountsQuery, AccountsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<AccountsQuery, AccountsQueryVariables>(AccountsDocument, options)
+export type SdkFunctionWrapper = <T>(
+  action: (requestHeaders?: Record<string, string>) => Promise<T>,
+  operationName: string,
+  operationType?: string,
+) => Promise<T>
+
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action()
+
+export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
+  return {
+    CreateUsername(
+      variables?: CreateUsernameMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<CreateUsernameMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<CreateUsernameMutation>(CreateUsernameDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'CreateUsername',
+        'mutation',
+      )
+    },
+    Accounts(
+      variables?: AccountsQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<AccountsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AccountsQuery>(AccountsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'Accounts',
+        'query',
+      )
+    },
+  }
 }
-export function useAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<AccountsQuery, AccountsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<AccountsQuery, AccountsQueryVariables>(AccountsDocument, options)
-}
-export type AccountsQueryHookResult = ReturnType<typeof useAccountsQuery>
-export type AccountsLazyQueryHookResult = ReturnType<typeof useAccountsLazyQuery>
-export type AccountsQueryResult = Apollo.QueryResult<AccountsQuery, AccountsQueryVariables>
+export type Sdk = ReturnType<typeof getSdk>

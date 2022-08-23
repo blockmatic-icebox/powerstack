@@ -20,7 +20,7 @@ export const Button = styled('button', {
 
   // Custom
   fontSize: '$body',
-  fontFamily: '$semi-bold',
+  fontFamily: 'Inter',
   fontVariantNumeric: 'tabular-nums',
   border: '1px solid none',
   textAlign: 'center',
@@ -70,10 +70,10 @@ export const Button = styled('button', {
         },
       },
       primary: {
-        backgroundColor: '$primary',
+        backgroundColor: '$044-bff',
         color: '#FFF',
         '&:hover:not(:disabled)': {
-          backgroundColor: '$primary-600',
+          backgroundColor: '$primary-700',
         },
       },
       panthom: {

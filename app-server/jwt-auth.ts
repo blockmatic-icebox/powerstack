@@ -1,14 +1,20 @@
-import { client_args } from '~/app-config/client-config'
-import { fetchJson } from '../app-engine/library/fetch'
+import { app_args } from '~/app-config/app-arguments'
+import { app_logger } from '~/app-engine/library/logger'
+import { FetchError, fetchJson } from '../app-engine/library/fetch'
 import { CreateSessionProps } from '../app-engine/store/session-slice'
-import { AuthMethod } from '../app-engine/types/app-engine'
+import { AppLoginMethod, AppUser } from '../app-engine/types/app-engine'
 
+export type AuthErrorResponse = FetchError | Error
 export type AuthResponse = {
-  token: string | null
-  error: unknown // TODO: fix type
+  data: AppUser | null
+  error: AuthErrorResponse
+}
+export type LoginResponse = {
+  token: string
+  error: AuthErrorResponse
 }
 
-const getLoginPath = (auth_method: AuthMethod) => {
+const getLoginPath = (auth_method: AppLoginMethod) => {
   switch (auth_method) {
     case 'web3_solana': {
       return '/provider/phantom'
@@ -20,19 +26,25 @@ const getLoginPath = (auth_method: AuthMethod) => {
   }
 }
 
-const login = async (login_payload: CreateSessionProps): Promise<AuthResponse> => {
+const login = async (login_payload: CreateSessionProps): Promise<LoginResponse> => {
   try {
-    const login_auth_api_url =
-      client_args.services.auth_api + getLoginPath(login_payload.auth_method)
-    const login_response = await fetchJson(login_auth_api_url, {
+    const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
+    const login_response = await fetchJson<LoginResponse>(login_auth_api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
-    return login_response as AuthResponse
+    console.log('login_response', login_response)
+    const { token, error } = login_response
+    console.log({ token, error })
+
+    if (error || !token) throw error
+
+    return { token, error }
   } catch (error) {
-    console.log('error', error)
-    throw new Error((error as Error).message)
+    app_logger.log('error', error)
+
+    return { token: '', error: new FetchError(error as FetchError) }
   }
 }
 

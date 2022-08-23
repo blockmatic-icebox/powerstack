@@ -10,7 +10,7 @@ const themes = {}
 
 // NOTE: Mck data simulating an array of themes to read (array TBD)
 // NOTE: Where we fetch our data for our themes
-const dir = path.join(__dirname, '..', 'mock')
+const dir = path.join(__dirname, '..', '_scripts/mock')
 
 // NOTE: Reading how many themes do we have
 const themes_spinner = setSpinner(` %s 👀 for themes...
@@ -126,7 +126,7 @@ writing_theme_spinner.start()
 
 file_names.forEach((file) => {
   fs.writeFile(
-    `./app/styles/themes/${file !== 'default' ? `${file}-` : ''}theme.ts`,
+    `./app-view/styles/themes/${file !== 'default' ? `${file}-` : ''}theme.ts`,
     `export const ${file !== 'default' ? `${file}_` : ''}theme = ${JSON.stringify(
       new_themes.find((t) => t.name === file),
       null,

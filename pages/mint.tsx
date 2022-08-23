@@ -1,20 +1,8 @@
 import { styled } from '../app-view/styles/stitches.config'
 import { NextPage } from 'next'
-import { Container, Footer, Header } from '~/app-view/components/layout'
-import { Button, Input } from '~/app-view/components/base'
 import { useAppEngine } from '~/app-engine'
-
-const MainContent = styled('div', {
-  minHeight: '75vh',
-  position: 'relative',
-})
-
-const LoginBackground = styled('div', {
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  width: '100%',
-  minHeight: '100vh',
-})
+import { Button } from '~/app-view/components/base/Button'
+import { Input } from '~/app-view/components/base/Input'
 
 const ButtonGroup = styled('div', {
   display: 'flex',
@@ -23,28 +11,22 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-const Home: NextPage = () => {
+const MintPage: NextPage = () => {
   const { mintOnSolana, mintOnEvm } = useAppEngine()
   return (
-    <LoginBackground>
-      <Header />
-      <MainContent>
-        <Container>
-          <Input
-            name="asset_url"
-            type="image"
-            alt="Select Image"
-            css={{ maxWidth: 450, width: '100%' }}
-          />
-          <ButtonGroup>
-            <Button onClick={mintOnSolana}>Mint using Blundr and Solana</Button>
-            <Button onClick={mintOnEvm}>Mint using Pinata and EVM</Button>
-          </ButtonGroup>
-        </Container>
-      </MainContent>
-      <Footer />
-    </LoginBackground>
+    <>
+      <Input
+        name="asset_url"
+        type="image"
+        alt="Select Image"
+        css={{ maxWidth: 450, width: '100%' }}
+      />
+      <ButtonGroup>
+        <Button onClick={mintOnSolana}>Mint using Blundr and Solana</Button>
+        <Button onClick={mintOnEvm}>Mint using Pinata and EVM</Button>
+      </ButtonGroup>
+    </>
   )
 }
 
-export default Home
+export default MintPage

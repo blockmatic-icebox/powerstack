@@ -1,6 +1,7 @@
 import { AppGraphQL } from '../graphql'
 import type { StoreSlice } from '../index'
 import { getEthNativeTokenBalance, isEth } from '../library/ethers'
+import { app_logger } from '../library/logger'
 import { getSolNativeTokenBalance, isSol } from '../library/solana'
 import type { AppUser } from '../types/app-engine'
 
@@ -24,7 +25,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   ...defaultUserState,
 
   setUser: (user: AppUser | null) => {
-    console.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
+    app_logger.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
     get().refreshGraphQLClient()
   },
@@ -69,6 +70,6 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
       mutation: AppGraphQL.CreateUsernameDocument,
       variables: { username },
     })
-    console.log('create account result', result)
+    app_logger.log('create account result', result)
   },
 })

@@ -8,5 +8,10 @@ query Accounts($where: accounts_bool_exp = {}) {
   accounts(where: $where) {
     account_id
     username
+    addresses {
+      account_id
+      address
+      network
+    }
   }
 }
