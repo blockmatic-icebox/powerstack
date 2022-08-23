@@ -11,6 +11,10 @@ const settings_link_styles = {
   display: 'flex',
   justifyContent: 'flex-start',
   width: '100%',
+  transition: 'font-weight 200ms',
+  '&:hover': {
+    fontWeight: 'bold'
+  },
   '& svg:first-child': {
     mr: '$small'
   },
@@ -137,7 +141,7 @@ export const ProfilePopover = () => {
       </PopoverButton>
       <StyledContent>
         <ul>
-          <li><SettingsLink href="/settings"><GearSixIcon /> Settings and privacity <CaretDownIcon /></SettingsLink></li>
+          <li><SettingsLink href="/profile/settings"><GearSixIcon /> Settings and privacity <CaretDownIcon /></SettingsLink></li>
           <li>
             <SettingsContainer>
               <SparkleIcon />
