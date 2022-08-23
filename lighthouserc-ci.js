@@ -2,8 +2,8 @@ module.exports = {
     ci: {
       collect: {
         numberOfRuns: 3,
-        startServerCommand: 'yarn run start',
-        // staticDistDir "./dir/",
+        startServerCommand: 'yarn start',
+        // staticDistDir "./public",
         url: ['http://localhost:3000'],
       },
          assert: {
