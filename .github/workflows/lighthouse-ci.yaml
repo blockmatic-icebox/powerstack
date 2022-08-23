@@ -17,5 +17,5 @@ jobs:
       - name: run Lighthouse CI 
         run: |
           yarn global add @lhci/cli@0.9.x
-          lhci autorun --config=./lighthouse-ci.js
+          lhci autorun --config=./lighthouserc-ci.js
   
