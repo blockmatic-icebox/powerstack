@@ -14,10 +14,6 @@ export interface AppServices {
   web3auth_client_id: string
   web3auth_chain_id: string
   web3auth_infra_api_key: string
-  antilope: {
-    eos_chain_id: string
-    chain_rpc: string
-  }
 }
 
 export interface AppAnalytics {

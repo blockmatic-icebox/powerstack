@@ -2,7 +2,7 @@ import { StoreSlice } from '../index'
 import AnchorLink, { ChainId, PermissionLevel } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
-import { eosioApi, newAnchorLink } from '../library/antelope'
+import { antelope_api, newAnchorLink } from '../library/antelope'
 import { app_logger } from '../library/logger'
 import { AppUser } from '../types/app-engine'
 import Decimal from 'decimal.js'
@@ -47,7 +47,7 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       const identity = await anchorLink.login(app_args.app_name)
       const pub_key = identity.session.publicKey.toString()
       const account = identity.signer.actor.toString()
-      const user_balance = eosioApi.get_currency_balance('eosio.token', account)
+      const user_balance = antelope_api.get_currency_balance('eosio.token', account)
 
       await get().createSession({
         // digested transaction from the trnx generated after identifying
