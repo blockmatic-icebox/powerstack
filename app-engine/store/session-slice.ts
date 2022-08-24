@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
 import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
-import { AppLoginMethod } from '../types/app-engine'
+import { AppLoginMethod, AppUser } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 
 export interface SessionState {
@@ -55,7 +55,20 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
 
       if (error || !data) throw error || 'Unauthorized access.'
 
-      set({ user: data, create_session_error: '' })
+      get().setUser({
+        ...data,
+        user_addresses: [
+          {
+            network,
+            address,
+            ticker: network,
+            balance: '0',
+            unit_balance: '0',
+          },
+        ],
+      })
+
+      set({ create_session_error: '' })
     } catch (error) {
       console.error('An unexpected error happened while trying create session:', error)
 

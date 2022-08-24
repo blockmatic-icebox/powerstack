@@ -34,7 +34,14 @@ export interface AppNetwork {
   ticker_name: string
 }
 
-export type AppNetworkName = 'ethereum' | 'rinkeby' | 'solana' | 'polygon' | 'mumbai' | 'eos' | 'wx'
+export type AppNetworkName =
+  | 'ethereum'
+  | 'rinkeby'
+  | 'solana'
+  | 'polygon'
+  | 'mumbai'
+  | 'eos'
+  | 'wax'
 
 // AppNetworks indices must be on AppNetwork type as well
 export type AppNetworks = {
