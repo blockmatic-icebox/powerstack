@@ -2,7 +2,7 @@ import { StoreSlice } from '../index'
 import AnchorLink, { ChainId, PermissionLevel } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
-import { eosioApi, newAnchorLink } from '../library/antilope'
+import { eosioApi, newAnchorLink } from '../library/antelope'
 import { app_logger } from '../library/logger'
 import { AppUser } from '../types/app-engine'
 import Decimal from 'decimal.js'
@@ -35,7 +35,7 @@ const defaultAntelopeState: AntelopeState = {
 export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
   ...defaultAntelopeState,
   loginWithAnchor: async () => {
-    app_logger.log('loginWithAnchor')
+    app_logger.log('🚊 login with anchor')
     set({ web3auth_chain_config: appNetworkToChainConfig('eosio') })
 
     try {
@@ -43,14 +43,10 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       const anchorLink = get().anchorLink || newAnchorLink
 
       if (!get().anchorLink) set({ anchorLink })
-
-      app_logger.log('init wallet login')
       // Use the anchor-link login method with the chain id to establish a session
       const identity = await anchorLink.login(app_args.app_name)
-      app_logger.log('identity', identity)
       const pub_key = identity.session.publicKey.toString()
       const account = identity.signer.actor.toString()
-      // TODO: Multi EOS token contract support?
       const user_balance = eosioApi.get_currency_balance('eosio.token', account)
 
       await get().createSession({
@@ -61,7 +57,6 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
         // signature made from the trnx generated after identifying
         signed_message: identity.signatures.map((sign) => sign.toString())[0],
         auth_method: 'web3_anchor',
-        // TODO: get().web3auth_chain_config.network
         network: 'eos',
       })
 
@@ -95,15 +90,12 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       get().eosio_trnx_signer as PermissionLevel,
       ChainId.from(app_args.services.antilope.eos_chain_id),
     )
-
-    // TODO: Do I want to set default chain config again?
-    // set({ web3auth_chain_config: appNetworkToChainConfig('rinkeby') })
   },
   logoutAntelope: async () => {},
 
   // this function is called from session-state.ts when a new session is created
   initAntelope: async () => {
-    app_logger.log('⚙️ initializing antilope slice ...')
+    app_logger.log('🚊 initializing antelope slice ...')
     // TODO: maybe reconnect Anchor here ? - Gabo
     const anchorLink = get().anchorLink || newAnchorLink
 
@@ -114,6 +106,6 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       get().eosio_trnx_signer,
       ChainId.from(app_args.services.antilope.eos_chain_id),
     )
-    app_logger.log('⚙️ antilope slice initialized')
+    app_logger.log('🚊 antelope slice initialized')
   },
 })
