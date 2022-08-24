@@ -35,17 +35,15 @@ const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promi
   }
 }
 
-export const createApolloClient = () => {
+export const createApolloClient = (jwt?: string) => {
+  // console.log(`create apollo client with jwt = ${jwt}`)
   const apollo_base_url = app_args.services.graphql_api
     .replace('https://', '')
     .replace('http://', '')
 
-  const cookie = getCookie(app_args.session_cookie_name)
-  console.log('cookie', cookie)
-  const jwt = {}
   const headers = jwt
     ? {
-        // Authorization: `Bearer ${jwt}`,
+        Authorization: jwt,
         'x-hasura-user-role': 'user',
       }
     : {

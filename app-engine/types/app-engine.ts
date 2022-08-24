@@ -20,7 +20,7 @@ export interface AppUserAddress {
   address: string
   network: string
   ticker: string
-  balance: Decimal
+  balance: Decimal | string
   unit_balance: string // Eg balane in wei
 }
 export interface AppNetwork {

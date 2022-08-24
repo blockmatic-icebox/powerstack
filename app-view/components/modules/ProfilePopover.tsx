@@ -1,10 +1,15 @@
 import { styled } from '~/app-view/styles/stitches.config'
-import { CaretDownIcon, GearSixIcon, SignOutIcon, SparkleIcon } from '~/app-view/components/icons/index'
+import {
+  CaretDownIcon,
+  GearSixIcon,
+  SignOutIcon,
+  SparkleIcon,
+} from '~/app-view/components/icons/index'
 import { Link } from '../base/Link'
 import Image from 'next/image'
 import { useAppEngine } from '~/app-engine/index'
-import * as Popover from '@radix-ui/react-popover';
-import * as Switch from '@radix-ui/react-switch';
+import * as Popover from '@radix-ui/react-popover'
+import * as Switch from '@radix-ui/react-switch'
 
 const settings_link_styles = {
   alignItems: 'center',
@@ -13,15 +18,15 @@ const settings_link_styles = {
   width: '100%',
   transition: 'font-weight 200ms',
   '&:hover': {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   '& svg:first-child': {
-    mr: '$small'
+    mr: '$small',
   },
   '& svg:last-child:not(:first-child)': {
     ml: '$regular',
     transform: 'rotate(270deg)',
-  }
+  },
 }
 
 const StyledContent = styled(Popover.Content, {
@@ -47,9 +52,9 @@ const StyledContent = styled(Popover.Content, {
     mb: 0,
   },
   '& a': {
-    my: 0
-  }
-});
+    my: 0,
+  },
+})
 
 const PopoverButton = styled(Popover.Trigger, {
   alignItems: 'center',
@@ -108,7 +113,7 @@ const SettingsSwitch = styled(Switch.Root, {
     outline: 'none',
     boxShadow: '0 0 0 2px $neutral-300',
   },
-});
+})
 
 const SettingsThumb = styled(Switch.Thumb, {
   display: 'block',
@@ -124,10 +129,10 @@ const SettingsThumb = styled(Switch.Thumb, {
   '&[data-state="checked"]': {
     transform: 'translateX(22px)',
   },
-});
+})
 
 export const ProfilePopover = () => {
-  const { user, destroySession } = useAppEngine()
+  const { destroySession } = useAppEngine()
 
   return (
     <Popover.Root>
@@ -141,7 +146,11 @@ export const ProfilePopover = () => {
       </PopoverButton>
       <StyledContent>
         <ul>
-          <li><SettingsLink href="/profile/settings"><GearSixIcon /> Settings and privacity <CaretDownIcon /></SettingsLink></li>
+          <li>
+            <SettingsLink href="/profile/settings">
+              <GearSixIcon /> Settings and privacity <CaretDownIcon />
+            </SettingsLink>
+          </li>
           <li>
             <SettingsContainer>
               <SparkleIcon />
@@ -151,7 +160,12 @@ export const ProfilePopover = () => {
               </SettingsSwitch>
             </SettingsContainer>
           </li>
-          <li><SettingsButton type="button" onClick={destroySession}><SignOutIcon />Logout</SettingsButton></li>
+          <li>
+            <SettingsButton type="button" onClick={destroySession}>
+              <SignOutIcon />
+              Logout
+            </SettingsButton>
+          </li>
         </ul>
       </StyledContent>
     </Popover.Root>

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { styled } from '~/app-view/styles/stitches.config'
 import { BlockmaticIcon, BellIcon } from '~/app-view/components/icons/index'
 import { Button } from '../base/Button'
@@ -23,12 +22,6 @@ const VisuallyHidden = styled('h2', {
   height: '1px',
   width: '1px',
   wordWrap: 'normal',
-})
-
-const LoginButton = styled(Button, {
-  ml: '$large',
-  maxWidth: '100%',
-  width: 190,
 })
 
 const RightMenu = styled('div', {
@@ -56,7 +49,7 @@ const MenuButton = styled('button', {
     width: 9,
   },
   '&:hover span': {
-    boxShadow: '0px 0.5px 1px rgba(0, 0, 0, 0.4)'
+    boxShadow: '0px 0.5px 1px rgba(0, 0, 0, 0.4)',
   },
   '&[data-state=active]': {
     transform: 'rotateY(180deg)',
@@ -72,9 +65,9 @@ const MenuButton = styled('button', {
       '&:last-child': {
         opacity: 0,
         width: 0,
-      }
-    }
-  }
+      },
+    },
+  },
 })
 
 const Logo = styled(BlockmaticIcon, {
@@ -121,7 +114,7 @@ const BellButton = styled('button', {
 })
 
 export const Header = () => {
-  const { setShowLoginModal, user, show_sidebar, setShowSidebar } = useAppEngine()
+  const { setShowLoginModal, show_sidebar, setShowSidebar } = useAppEngine()
 
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
@@ -132,29 +125,19 @@ export const Header = () => {
       </LogoContainer>
       <NavContent>
         <MenuButton
-          aria-label={show_sidebar ? "Open Menu" : "Close Menu"}
+          aria-label={show_sidebar ? 'Open Menu' : 'Close Menu'}
           type="button"
-          data-state={show_sidebar && "active"}
+          data-state={show_sidebar && 'active'}
           onClick={() => setShowSidebar(!show_sidebar)}
-        >
-          <span />
-          <span />
-          <span />
-        </MenuButton>
+        />
         <RightMenu>
           <VisuallyHidden>Main navigation</VisuallyHidden>
           <BellButton type="button" aria-label="Notifications">
             <BellIcon />
           </BellButton>
-          {!user ?
-            (
-              <LoginButton variant="primary" onClick={() => setShowLoginModal(true)}>
-                Login
-              </LoginButton>
-            ) : (
-              <ProfilePopover />
-            )
-          }
+
+          <Button onClick={() => setShowLoginModal(true)}>Login</Button>
+          <ProfilePopover />
         </RightMenu>
       </NavContent>
     </NavBar>

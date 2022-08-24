@@ -15,6 +15,9 @@ if (exec_env.is_browser) useAppEngine.getState().initializeAppEngine()
 
 function MyApp({ Component, pageProps }: AppProps) {
   const engine = useAppEngine()
+  console.log('pageProps', JSON.stringify(pageProps))
+
+  if (pageProps.user && !engine.user) engine.setUser(pageProps.user)
 
   // log the store state on every update
   useEffect(() => {

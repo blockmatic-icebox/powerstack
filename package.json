@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"yarn ssl\" \"next dev -p 3001\"",
+    "dev": "next dev",
+    "https": "concurrently \"yarn ssl\" \"next dev -p 3001\"",
     "ssl": "local-ssl-proxy --source 3000 --target 3001",
     "build": "next build",
     "start": "next start",

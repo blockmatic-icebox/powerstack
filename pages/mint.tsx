@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import { useAppEngine } from '~/app-engine'
 import { Button } from '~/app-view/components/base/Button'
 import { Input } from '~/app-view/components/base/Input'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
 
 const ButtonGroup = styled('div', {
   display: 'flex',
@@ -11,7 +12,9 @@ const ButtonGroup = styled('div', {
   paddingTop: '$small',
 })
 
-const MintPage: NextPage = () => {
+export const getServerSideProps = defaultGetServerSideProps
+
+const MintPage: DefaultSsrPage = () => {
   const { mintOnSolana, mintOnEvm } = useAppEngine()
   return (
     <>

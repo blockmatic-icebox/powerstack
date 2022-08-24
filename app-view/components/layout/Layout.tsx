@@ -11,7 +11,7 @@ export const LayoutGrid = styled('div', {
   '@small': {
     display: 'grid',
     gridTemplateColumns: 'min-content 1fr',
-  }
+  },
 })
 
 export const Layout: React.FC<any> = ({ children }) => {
@@ -20,9 +20,7 @@ export const Layout: React.FC<any> = ({ children }) => {
       <Header />
       <LayoutGrid>
         <Sidebar />
-        <Main>
-          {children}
-        </Main>
+        <Main>{children}</Main>
       </LayoutGrid>
     </div>
   )
