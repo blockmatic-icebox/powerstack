@@ -4,8 +4,8 @@ module.exports = {
         numberOfRuns: 5,
         startServerCommand: 'yarn start',
         //  staticDistDir "./pages/",
-        url: ['http://localhost:3001/',
-              'http://localhost:3001/login' 
+        url: ['http://localhost:3000/',
+              'http://localhost:3000/login' 
               ],
       },
          assert: {
@@ -16,10 +16,10 @@ module.exports = {
               'categories:best-practices': ['error', {minScore: .9}],
               'categories:seo': ['error', {minScore: .9}],
               'categories:pwa': 'off',
-            }  
+            },  
         },
-      upload: {
-        target: 'temporary-public-storage',
+        upload: {
+          target: 'temporary-public-storage',
       },
     },
   };
