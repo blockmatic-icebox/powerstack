@@ -3,7 +3,6 @@ module.exports = {
       collect: {
         numberOfRuns: 3,
         startServerCommand: 'yarn start',
-        //  staticDistDir "./pages/",
         url: ['http://localhost:3000/'],
       },
          assert: {
