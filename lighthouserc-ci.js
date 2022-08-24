@@ -1,12 +1,10 @@
 module.exports = {
     ci: {
       collect: {
-        numberOfRuns: 1,
+        numberOfRuns: 3,
         startServerCommand: 'yarn start',
         //  staticDistDir "./pages/",
-        url: ['http://localhost:3000/',
-              'http://localhost:3000/login' 
-              ],
+        url: ['http://localhost:3000/'],
       },
          assert: {
           preset: "lighthouse:recommended",
