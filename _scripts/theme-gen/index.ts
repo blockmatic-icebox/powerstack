@@ -1,24 +1,29 @@
-const fs = require('fs')
-const path = require('path')
+import { ThemeGenThemesDocument } from './graphql/generated-sdk'
+// TODO: Do Types...
+import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+import fetch from 'cross-fetch'
+import fs from 'fs'
+import path from 'path'
+
 const Spinner = require('cli-spinner').Spinner
-//  NOTE: No longer necessary a 3rd param on script... all automated
-// const [file_name] = process.argv.slice(2)
-const file_names = []
+
 const spinner_string = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+console.log('process.env!!!', process.env.THEME_GEN_KEY)
 
 const themes = {}
-
-// NOTE: Mck data simulating an array of themes to read (array TBD)
-// NOTE: Where we fetch our data for our themes
-const dir = path.join(__dirname, '..', '_scripts/mock')
 
 // NOTE: Reading how many themes do we have
 const themes_spinner = setSpinner(` %s 👀 for themes...
  .
-`)
+ `)
 themes_spinner.setSpinnerString(spinner_string).setSpinnerDelay(80)
 themes_spinner.start()
 
+const theme_names = getThemes()
+
+themes_spinner.stop()
+
+// TODO: From here it breaks
 fs.readdirSync(dir).forEach((json) => {
   const theme_key = json.replace(/(-theme\.json|\.json)/, '').replace(/theme/, 'default')
   file_names.push(theme_key)
@@ -146,10 +151,42 @@ file_names.forEach((file) => {
       console.log(`✔️  Stitches file for ${file} theme created successfully 🪄🎉`)
     },
   )
-
-  // TODO: fs.writeFile(`./app/types/${file_name ? `${file_name}_` : ''}-theme.ts`)...
 })
 
-function setSpinner(message) {
+// TODO: From here it is not crashing...
+
+function setSpinner(message: any) {
   return new Spinner(message)
+}
+
+function toolabsClient() {
+  const http_link = new HttpLink({
+    uri: 'https://xdapi.toolabs.com/graphql',
+    headers: {
+      "x-toolabs-token" : process.env.THEME_GEN_KEY
+    },
+    fetch
+  })
+
+  return new ApolloClient({
+    link: http_link,
+    cache: new InMemoryCache({ addTypename: false }),
+  })
+}
+
+async function getThemes() {
+  try {
+    const { data, errors } = await toolabsClient().query({
+      query: ThemeGenThemesDocument,
+    })
+
+    console.log('results toolabs by getting themes =>>>', JSON.stringify(data, null, 2))
+
+    if (errors) throw new Error(JSON.stringify(errors, null, 2))
+
+    return data
+  } catch (error) {
+    console.log('(error as Error).message', (error as Error).message)
+    throw new Error((error as Error).message)
+  }
 }
