@@ -55,18 +55,7 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
 
       if (error || !data) throw error || 'Unauthorized access.'
 
-      get().setUser({
-        ...data,
-        user_addresses: [
-          {
-            network,
-            address,
-            ticker: network,
-            balance: '0',
-            unit_balance: '0',
-          },
-        ],
-      })
+      get().setUser(data)
 
       set({ create_session_error: '' })
     } catch (error) {

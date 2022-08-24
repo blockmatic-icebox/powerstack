@@ -9,7 +9,6 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   const login_payload = (await req.body) as CreateSessionProps
 
   try {
-    app_logger.log('login_route', login_payload)
     const { token, error } = await auth_service.login(login_payload)
 
     // If we get error or no token, then it is an Unauthorized Access
@@ -18,9 +17,16 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
         .status(401)
         .send({ token, error: error || new Error('Cannot login. Unauthorized access.') })
 
-    //
     const user: AppUser = {
-      user_addresses: [],
+      user_addresses: [
+        {
+          network: login_payload.network,
+          address: 'HRXVUmyowUDPku6M8UsoY62NzZUknvJkUCgAq8s6Rdqs', //TODO: make it dynamic. its breaking hydration
+          ticker: login_payload.network,
+          balance: '0',
+          unit_balance: '0',
+        },
+      ],
       jwt: `Bearer ${token}`,
       auth_method: login_payload.auth_method,
     }
