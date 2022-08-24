@@ -67,16 +67,24 @@ export const app_networks: AppNetworks = {
     ticker_name: 'Matic',
     network_id: 80001,
   },
-  eosio: {
-    // TODO: other for eosio or eosio.token?
+  eos: {
     chain_namespace: CHAIN_NAMESPACES.OTHER,
-    rpc_target: app_args.services.antilope.chain_rpc,
+    rpc_target: 'https://eos.blockmatic.io',
     block_explorer: 'https://bloks.io/',
-    chain_id: app_args.services.antilope.eos_chain_id,
-    display_name: 'EOS Testnet',
+    chain_id: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+    display_name: 'EOS',
     ticker: 'EOS',
     ticker_name: 'EOS',
-    // TODO: same as chan_id?
-    network_id: 80001,
+    network_id: 0,
+  },
+  wax: {
+    chain_namespace: CHAIN_NAMESPACES.OTHER,
+    rpc_target: 'https://wax.blockmatic.io',
+    block_explorer: 'https://bloks.io/',
+    chain_id: 'xx',
+    display_name: 'WAX',
+    ticker: 'WAX',
+    ticker_name: 'WAX',
+    network_id: 0,
   },
 }

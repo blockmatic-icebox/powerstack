@@ -6,10 +6,6 @@ export const app_args: AppArguments = {
   supported_networks: process.env.NEXT_PUBLIC_SUPPORTED_NETWORKS?.split(',') || [],
   contracts: {},
   services: {
-    antilope: {
-      eos_chain_id: process.env.NEXT_PUBLIC_EOS_CHAIN_ID || '',
-      chain_rpc: process.env.NEXT_PUBLIC_EOS_API_HOST || '',
-    },
     auth_api: process.env.NEXT_PUBLIC_AUTH_API || '',
     graphql_api: process.env.NEXT_PUBLIC_GRAPHQL_API || '',
     cloudinary_cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || '',
