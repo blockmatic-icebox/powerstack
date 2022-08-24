@@ -80,9 +80,6 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
       const balance = ethers.utils.formatEther(wei_balance)
       const auth_method: AppLoginMethod = 'web3_auth'
 
-      // NOTE: user_info.idToken is a JWT token with => wallet: { pub_key, type, curve }[] FYI... save it for user session?
-      app_logger.log({ address, balance, user_info })
-
       const message = app_args.messages.session_message
       const signed_message = await get().signMessageWithEthers(message)
 
@@ -94,19 +91,6 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
         auth_method,
       })
 
-      const user = get().user
-      get().setUser({
-        ...(user as AppUser),
-        user_addresses: [
-          {
-            network: ethers_network.name,
-            address,
-            ticker: get().web3auth_chain_config.ticker as string,
-            balance: new Decimal(balance),
-            unit_balance: wei_balance.toString(),
-          },
-        ],
-      })
       set({ web3auth_user })
     })
 

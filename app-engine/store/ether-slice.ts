@@ -51,7 +51,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     const balance = ethers.utils.formatEther(wei_balance)
     const message = app_args.messages.session_message
     const signed_message = await signer.signMessage(message)
-    app_logger.log('🇪🇹 logging in with metamask...')
     const auth_method: AppLoginMethod = 'web3_metamask'
 
     await get().createSession({
@@ -60,20 +59,6 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       message,
       signed_message,
       auth_method,
-    })
-
-    const user = get().user
-    get().setUser({
-      ...(user as AppUser),
-      user_addresses: [
-        {
-          network,
-          address,
-          ticker: get().web3auth_chain_config.ticker,
-          balance: new Decimal(balance),
-          unit_balance: wei_balance.toString(),
-        },
-      ],
     })
   },
   signMessageWithEthers: async (message: string) => {
