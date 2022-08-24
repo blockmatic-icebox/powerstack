@@ -1,10 +1,12 @@
 import { styled } from '~/app-view/styles/stitches.config'
 import { useAppEngine } from '~/app-engine/index'
 import { Link } from '../base/Link'
+import { WalletBox } from '../modules/WalletBox'
 
 const SidebarContainer = styled('aside', {
   display: 'none',
   minHeight: 'auto',
+  p: '$small $regular',
   position: 'relative',
   opacity: 0,
   width: 0,
@@ -28,25 +30,7 @@ export const Sidebar = () => {
 
   return (
     <SidebarContainer show={show_sidebar}>
-      <div>
-        <header>
-          <h4>Account</h4>
-        </header>
-        <main>
-          <span>image</span>
-          <div>
-            <p><strong>0x4ffc...bBA</strong></p>
-            <p>Metamask Wallet</p>
-          </div>
-          <div>
-            <button type="button">copy</button>
-            <Link href="#">External Address</Link>
-          </div>
-        </main>
-        <footer>
-          <a href="#">+ Connect new wallet</a>
-        </footer>
-      </div>
+      {user?.user_addresses.map((user_address, idx) => <WalletBox key={idx} address={user_address.address} />)}
       <nav>
         <ul>
           <li><Link disabled={user ? true : false} href="/profile">Profile</Link></li>

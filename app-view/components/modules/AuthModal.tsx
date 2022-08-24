@@ -32,7 +32,7 @@ const Separator = styled('div', {
     content: '""',
     display: 'block',
     height: '1px',
-    backgroundColor: '#E5E7EB',
+    backgroundColor: '$neutral-100',
   },
 })
 
