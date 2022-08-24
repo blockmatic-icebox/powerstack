@@ -6,7 +6,6 @@ import {
   NextPage,
 } from 'next'
 import { getGraphQLSdk } from '~/app-engine/graphql'
-import { Accounts } from '~/app-engine/graphql/generated-sdk'
 import { AppUser } from '~/app-engine/types/app-engine'
 import { withSessionSsr } from './session-hoc'
 
@@ -27,8 +26,6 @@ const defaultSsrHandler = async ({
     },
   })
 
-  console.log('=========================')
-  console.log('wat', JSON.stringify(result.accounts))
   const user_account = result.accounts[0]
   return {
     props: {
