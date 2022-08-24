@@ -1,7 +1,5 @@
 // placeholder for feature flags
-export interface AppFeatureFlags {
-  supported_networks: string
-}
+export interface AppFeatureFlags {}
 
 // smart contract addresses
 export interface AppContracts {}
@@ -33,6 +31,7 @@ export interface AppMessages {
 export interface AppArguments {
   app_name: string
   session_cookie_name: string
+  supported_networks: string[]
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags

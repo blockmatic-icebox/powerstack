@@ -4,6 +4,7 @@ import { Button } from '../base/Button'
 import { Link } from '../base/Link'
 import { useAppEngine } from '~/app-engine/index'
 import { ProfilePopover } from '../modules/ProfilePopover'
+import { app_args } from '~/app-config/app-arguments'
 
 const NavBar = styled('nav', {
   display: 'flex',
@@ -135,7 +136,13 @@ export const Header = () => {
           <BellButton type="button" aria-label="Notifications">
             <BellIcon />
           </BellButton>
-
+          {/* <select style={{ margin: '0 10px' }} name="networks" id="networks">
+            {app_args.supported_networks.map((network: string) => (
+              <option key={network} value="{network}">
+                {network}
+              </option>
+            ))}
+          </select> */}
           <Button onClick={() => setShowLoginModal(true)}>Login</Button>
           <ProfilePopover />
         </RightMenu>

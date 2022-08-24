@@ -3,6 +3,7 @@ import { AppArguments } from '../app-engine/types/app-config'
 export const app_args: AppArguments = {
   app_name: process.env.NEXT_PUBLIC_APP_NAME || '',
   session_cookie_name: process.env.NEXT_PUBLIC_SESSION_COOKIE_NAME || 'app-session',
+  supported_networks: process.env.NEXT_PUBLIC_SUPPORTED_NETWORKS?.split(',') || '',
   contracts: {},
   services: {
     antilope: {
@@ -22,9 +23,7 @@ export const app_args: AppArguments = {
     google: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || '',
     sentry: process.env.NEXT_PUBLIC_SENTRY_DSN || '',
   },
-  features: {
-    supported_networks: process.env.NEXT_PUBLIC_SUPPORTED_NETWORKS || '',
-  },
+  features: {},
   messages: {
     session_message: 'Login to PowerStack dApp',
   },
