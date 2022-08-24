@@ -1,4 +1,4 @@
-import { AppGraphQL } from '../graphql'
+import { AppGraphQL, createApolloClient, getGraphQLSdk } from '../graphql'
 import type { StoreSlice } from '../index'
 import { getEthNativeTokenBalance, isEth } from '../library/ethers'
 import { app_logger } from '../library/logger'
@@ -12,7 +12,7 @@ export type UserState = {
 export type UserActions = {
   setUser: (user: AppUser | null) => void
   fetchUserBalances: () => Promise<void>
-  createUserAccount: (username: string) => Promise<void>
+  createUsername: (username: string) => Promise<void>
 }
 
 export type User = UserState & UserActions
@@ -27,13 +27,12 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   setUser: (user: AppUser | null) => {
     app_logger.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
-    get().refreshGraphQLClient()
   },
   fetchUserBalances: async () => {
     const user = get().user
     if (user) {
       const user_addresses = await Promise.all(
-        user?.user_addresses.map(async (user_address) => {
+        user?.user_addresses?.map(async (user_address) => {
           if (isEth(user_address.network)) {
             const ethereum_static_provider = get().ethereum_static_provider
             if (!ethereum_static_provider) return user_address
@@ -62,14 +61,10 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
     }
   },
 
-  createUserAccount: async (username: string) => {
-    const result = await get().graphql_client.mutate<
-      AppGraphQL.CreateUsernameMutation,
-      AppGraphQL.CreateUsernameMutationVariables
-    >({
-      mutation: AppGraphQL.CreateUsernameDocument,
-      variables: { username },
-    })
+  createUsername: async (username: string) => {
+    const { user } = get()
+    if (!user) return
+    const result = await getGraphQLSdk(user.jwt).CreateUsername({ username })
     app_logger.log('create account result', result)
   },
 })

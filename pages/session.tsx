@@ -4,13 +4,13 @@ import { formatAddress } from '~/app-view/library/uiux'
 
 export const getServerSideProps = defaultGetServerSideProps
 
-const HomePage: DefaultSsrPage = () => {
+const SessionPage: DefaultSsrPage = () => {
   const { user } = useAppEngine()
   const user_data = { ...user, jwt: user?.jwt ? formatAddress(user?.jwt) : 'none' }
 
   return (
     <>
-      <h2>Home Sweet Home</h2>
+      <h2>My Session</h2>
       <br />
       <hr />
       <br />
@@ -20,4 +20,4 @@ const HomePage: DefaultSsrPage = () => {
   )
 }
 
-export default HomePage
+export default SessionPage

@@ -1,7 +1,5 @@
 // placeholder for feature flags
-export interface AppFeatureFlags {
-  supported_networks: string
-}
+export interface AppFeatureFlags {}
 
 // smart contract addresses
 export interface AppContracts {}
@@ -16,10 +14,6 @@ export interface AppServices {
   web3auth_client_id: string
   web3auth_chain_id: string
   web3auth_infra_api_key: string
-  antilope: {
-    eos_chain_id: string
-    chain_rpc: string
-  }
 }
 
 export interface AppAnalytics {
@@ -30,21 +24,10 @@ export interface AppAnalytics {
 export interface AppMessages {
   session_message: string
 }
-
-// ethereum network config
-type EthNetwork = {
-  chain: string
-  chain_id: string
-  network_id: number // same as infura network_id
-}
-
-type SolanaNetwork = {
-  rpc: string
-}
-
-// global application configuration based on env
 export interface AppArguments {
   app_name: string
+  session_cookie_name: string
+  supported_networks: string[]
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags

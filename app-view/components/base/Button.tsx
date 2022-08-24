@@ -84,14 +84,21 @@ export const Button = styled('button', {
         },
       },
       metamask: {
-        backgroundColor: '$neutral-300',
-        color: '#000',
+        backgroundColor: '#F3F4F6',
+        color: '#00033E',
         '&:hover:not(:disabled)': {
           backgroundColor: '$neutral-400',
         },
       },
       anchor: {
         backgroundColor: '#3650A2',
+        color: '#FFF',
+        '&:hover:not(:disabled)': {
+          backgroundColor: '$primary-700',
+        },
+      },
+      web3auth: {
+        backgroundColor: '#000324',
         color: '#FFF',
         '&:hover:not(:disabled)': {
           backgroundColor: '$primary-700',

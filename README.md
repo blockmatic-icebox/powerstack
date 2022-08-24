@@ -14,11 +14,11 @@ Demo https://powerstack-next.vercel.app/
 
 ## Features
 
-- Web2 and Web3 authentication ( EVM, Solana, Antilope, Web3Auth ).
+- Web2 and Web3 authentication ( EVM, Solana, Antelope, Web3Auth ).
 - Wallet integration: sign messages and transactions.
 - Upload to Arweave using Blundr.
 - Upload to IPFS using Pinata.
-- Mint on Solana, EVM and Antilope blockchains.
+- Mint on Solana, EVM and Antelope blockchains.
 - Read account token balances and nfts.
 - GraphQL client with support for multiple indexers.
 - Portable agnostic vanillajs core logic store with Zustand.
@@ -110,9 +110,8 @@ See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasu
 |   |
 |   └── store................................ portable vanillajs state machine
 |       ├── engine-slice.ts.................. app-engine state flags
-|       ├── antilope-slice.ts................ antilope and anchor wallet logic
+|       ├── antelope-slice.ts................ antelope and anchor wallet logic
 |       ├── ethers-slice.ts.................. evm and metamask wallet logic
-|       ├── graphql-slice.ts................. graphql frontend client instance
 |       ├── network-slice.ts................. multi-chain and network switching logic
 |       ├── solana-slice.ts.................. solana and phantom wallet logic
 |       ├── user-slice.ts.................... app user data and functions
@@ -126,7 +125,7 @@ See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasu
 |   |   ├── base............................. default base/primitive components
 |   |   ├── modules.......................... standalone modular components
 |   |   ├── layout........................... structure focused components
-|   |   └── icons
+|   |   └── icons............................ icon svgs in react components
 |   |
 |   └── styles............................... stitches configuration
 |       ├── themes........................... generated themes from toolabs dsm

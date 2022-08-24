@@ -2,8 +2,11 @@ import { AuthModal } from '~/app-view/components/modules/AuthModal'
 import { NextPage } from 'next'
 import { useAppEngine } from '~/app-engine'
 import { Button } from '~/app-view/components/base/Button'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
 
-const LoginPage: NextPage = () => {
+export const getServerSideProps = defaultGetServerSideProps
+
+const LoginPage: DefaultSsrPage = () => {
   const { user, create_session_error, fetchUserBalances } = useAppEngine()
 
   if (!user) return <AuthModal />

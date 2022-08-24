@@ -53,10 +53,11 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       })
       app_logger.log('🍪 cookie session created!')
 
-      // We already know the error, we pass it to the app to know it.
       if (error || !data) throw error || 'Unauthorized access.'
 
-      set({ user: data, create_session_error: '' })
+      get().setUser(data)
+
+      set({ create_session_error: '' })
     } catch (error) {
       console.error('An unexpected error happened while trying create session:', error)
 

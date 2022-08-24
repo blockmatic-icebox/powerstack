@@ -55,28 +55,13 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
       const signed_message = bs58.encode(signature)
       const auth_method: AppLoginMethod = 'web3_solana'
       const network = 'solana'
-      const sessionInput = {
+
+      await get().createSession({
         network,
         message,
         signed_message,
         auth_method,
         address,
-      }
-      app_logger.log('solana input', sessionInput)
-
-      await get().createSession(sessionInput)
-
-      get().setUser({
-        ...(get().user as AppUser),
-        user_addresses: [
-          {
-            network: 'solana',
-            address,
-            ticker: 'solana',
-            balance: new Decimal(0), // TODO: fix me
-            unit_balance: '0', // // TODO: fix me
-          },
-        ],
       })
     } catch (err) {
       console.error(err)

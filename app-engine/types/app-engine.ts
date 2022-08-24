@@ -20,7 +20,7 @@ export interface AppUserAddress {
   address: string
   network: string
   ticker: string
-  balance: Decimal
+  balance: Decimal | string
   unit_balance: string // Eg balane in wei
 }
 export interface AppNetwork {
@@ -34,7 +34,14 @@ export interface AppNetwork {
   ticker_name: string
 }
 
-export type AppNetworkName = 'ethereum' | 'rinkeby' | 'solana' | 'polygon' | 'mumbai' | 'eosio'
+export type AppNetworkName =
+  | 'ethereum'
+  | 'rinkeby'
+  | 'solana'
+  | 'polygon'
+  | 'mumbai'
+  | 'eos'
+  | 'wax'
 
 // AppNetworks indices must be on AppNetwork type as well
 export type AppNetworks = {
@@ -43,5 +50,6 @@ export type AppNetworks = {
   readonly solana: AppNetwork
   readonly polygon: AppNetwork
   readonly mumbai: AppNetwork
-  readonly eosio: AppNetwork
+  readonly eos: AppNetwork
+  readonly wax: AppNetwork
 }

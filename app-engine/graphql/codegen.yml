@@ -9,8 +9,6 @@ generates:
     plugins:
       - 'typescript'
       - 'typescript-operations'
-      # - 'typescript-react-apollo'
-      - 'typescript-graphql-request'
+      - 'typescript-generic-sdk'
     config:
       skipTypename: true
-      withHooks: false
