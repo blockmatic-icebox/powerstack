@@ -5,6 +5,7 @@ import { getMainDefinition } from '@apollo/client/utilities'
 import { exec_env } from '../library/exec-env'
 import { app_logger } from '../library/logger'
 import { app_args } from '~/app-config/app-arguments'
+import { getCookie } from 'cookies-next'
 
 const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
   const body = JSON.parse(init?.body?.toString() ?? '{}')
@@ -34,10 +35,14 @@ const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promi
   }
 }
 
-export const createApolloClient = (jwt?: {}) => {
+export const createApolloClient = () => {
   const apollo_base_url = app_args.services.graphql_api
     .replace('https://', '')
     .replace('http://', '')
+
+  const cookie = getCookie(app_args.session_cookie_name)
+  console.log('cookie', cookie)
+  const jwt = {}
   const headers = jwt
     ? {
         // Authorization: `Bearer ${jwt}`,

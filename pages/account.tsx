@@ -8,10 +8,10 @@ import {
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
-import { AppGraphQL, createApolloClient, graphql_sdk } from '~/app-engine/graphql'
 import { Accounts } from '~/app-engine/graphql/generated-sdk'
 import { Button } from '~/app-view/components/base/Button'
 import { Input } from '~/app-view/components/base/Input'
+import { getGraphQLSdk } from '~/app-engine/graphql'
 
 const ButtonGroup = styled('div', {
   display: 'flex',
@@ -31,7 +31,7 @@ const ssrHandler = async ({
       },
     }
 
-  const result = await graphql_sdk.Accounts({
+  const result = await getGraphQLSdk().Accounts({
     where: {
       username: { _eq: 'gaboesquivel' },
     },

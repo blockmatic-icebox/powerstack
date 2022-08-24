@@ -1,4 +1,4 @@
-import { AppGraphQL } from '../graphql'
+import { AppGraphQL, createApolloClient, getGraphQLSdk } from '../graphql'
 import type { StoreSlice } from '../index'
 import { getEthNativeTokenBalance, isEth } from '../library/ethers'
 import { app_logger } from '../library/logger'
@@ -27,7 +27,6 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   setUser: (user: AppUser | null) => {
     app_logger.log('🤵🏻‍♂️ updating app user', JSON.stringify(user))
     set({ user })
-    get().refreshGraphQLClient()
   },
   fetchUserBalances: async () => {
     const user = get().user
@@ -63,13 +62,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   },
 
   createUserAccount: async (username: string) => {
-    const result = await get().graphql_client.mutate<
-      AppGraphQL.CreateUsernameMutation,
-      AppGraphQL.CreateUsernameMutationVariables
-    >({
-      mutation: AppGraphQL.CreateUsernameDocument,
-      variables: { username },
-    })
+    const result = await getGraphQLSdk().CreateUsername({ username })
     app_logger.log('create account result', result)
   },
 })

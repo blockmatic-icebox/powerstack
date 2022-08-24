@@ -1,6 +1,6 @@
-export * from './graphql-client'
+export * from './apollo-client'
 export * as AppGraphQL from './generated-sdk'
 import { getSdkApollo } from './apollo-requester'
-import { createApolloClient } from './graphql-client'
+import { createApolloClient } from './apollo-client'
 
-export const graphql_sdk = getSdkApollo(createApolloClient())
+export const getGraphQLSdk = () => getSdkApollo(createApolloClient())

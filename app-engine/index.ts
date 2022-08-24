@@ -11,7 +11,6 @@ import { createAntelopeSlice, AntelopeActions, AntelopeState } from './store/ant
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
-import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
 import { exec_env } from './library/exec-env'
 import { app_args } from '../app-config/app-arguments'
 
@@ -23,8 +22,7 @@ export type AppState = UserState &
   EtherState &
   AntelopeState &
   SolanaState &
-  EngineState &
-  GraphQLState
+  EngineState
 export type AppActions = UserActions &
   ViewActions &
   Web3AuthActions &
@@ -32,8 +30,7 @@ export type AppActions = UserActions &
   EtherActions &
   AntelopeActions &
   SolanaActions &
-  EngineActions &
-  GraphQLActions
+  EngineActions
 export type AppEngine = AppState & AppActions
 
 // these types is used within the slices
@@ -55,7 +52,6 @@ export const app_engine = createVanillaStore<AppEngine>(
       ...createViewSlice(set, get),
       ...createEngineSlice(set, get),
       ...createEtherSlice(set, get),
-      ...createGraphQLSlice(set, get),
     }),
     {
       // Local Storage prefix

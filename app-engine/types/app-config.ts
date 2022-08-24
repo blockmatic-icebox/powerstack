@@ -30,21 +30,9 @@ export interface AppAnalytics {
 export interface AppMessages {
   session_message: string
 }
-
-// ethereum network config
-type EthNetwork = {
-  chain: string
-  chain_id: string
-  network_id: number // same as infura network_id
-}
-
-type SolanaNetwork = {
-  rpc: string
-}
-
-// global application configuration based on env
 export interface AppArguments {
   app_name: string
+  session_cookie_name: string
   contracts: AppContracts
   services: AppServices
   features: AppFeatureFlags
