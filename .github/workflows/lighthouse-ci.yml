@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
+      - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
       - name: yarn install
         run: |
           yarn add global @lhci/cli@0.9.x
@@ -18,6 +18,7 @@ jobs:
       - name: run Lighthouse CI 
         run: |
           yarn add global && yarn add global @lhci/cli@0.9.x
-          lhci autorun  --upload.target=temporary-public-storage
+          export CHROME_PATH="$(pwd)/chrome-linux/chrome"
+          yarn run lhci:desktop --upload.target=temporary-public-storage
         env: 
           LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}

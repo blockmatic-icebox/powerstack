@@ -41,3 +41,5 @@ yarn-error.log*
 _dev
 
 package-lock.json
+
+.lighthouseci
