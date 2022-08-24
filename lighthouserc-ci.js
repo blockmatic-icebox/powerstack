@@ -1,7 +1,7 @@
 module.exports = {
     ci: {
       collect: {
-        numberOfRuns: 5,
+        numberOfRuns: 1,
         startServerCommand: 'yarn start',
         //  staticDistDir "./pages/",
         url: ['http://localhost:3000/',
