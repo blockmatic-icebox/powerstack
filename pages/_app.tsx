@@ -15,7 +15,7 @@ if (exec_env.is_browser) useAppEngine.getState().initializeAppEngine()
 
 function MyApp({ Component, pageProps }: AppProps) {
   const engine = useAppEngine()
-  console.log('pageProps', JSON.stringify(pageProps))
+  console.log('pageProps user', JSON.stringify(pageProps.user))
 
   if (pageProps.user && !engine.user) engine.setUser(pageProps.user)
 

@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
 import { fetchJson } from '../library/fetch'
 import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
-import { AppLoginMethod, AppUser } from '../types/app-engine'
+import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 
 export interface SessionState {
