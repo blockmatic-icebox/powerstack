@@ -124,9 +124,9 @@ export const Sidebar = () => {
         </WalletBoxContainer>
         <SidebarNav>
           <ul>
-            <li><SidebarLink active={currentPath === 'profile'} disabled={user ? false : true} href="/profile"><AppsIcon /> Profile</SidebarLink></li>
-            <li><SidebarLink active={currentPath === 'wallet'} disabled={user ? false : true} href="/wallet"><WalletIcon />Wallet</SidebarLink></li>
-            <li><SidebarLink active={currentPath === 'marketplace'} disabled={user ? false : true} href="/marketplace"><CartIcon />Marketplace</SidebarLink></li>
+            <li><SidebarLink active={currentPath === '/profile'} disabled={user ? false : true} href="/profile"><AppsIcon /> Profile</SidebarLink></li>
+            <li><SidebarLink active={currentPath === '/wallet'} disabled={user ? false : true} href="/wallet"><WalletIcon />Wallet</SidebarLink></li>
+            <li><SidebarLink active={currentPath === '/marketplace'} disabled={user ? false : true} href="/marketplace"><CartIcon />Marketplace</SidebarLink></li>
           </ul>
         </SidebarNav>
       </SidebarContent>

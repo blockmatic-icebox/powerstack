@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { formatAddress } from '~/app-view/library/uiux'
+import { useState } from 'react'
+import { copyToClipboard, formatAddress } from '~/app-view/library/uiux'
 import { styled } from '~/app-view/styles/stitches.config'
 import { Link } from '../base/Link'
 import { ArrowUpRight, CopyDocumentIcon } from '../icons'
@@ -59,7 +60,8 @@ const AddressName = styled('p', {
 const AddressActions = styled('div', {
   alignItems: 'flex-start',
   display: 'flex',
-  ml: 'auto'
+  ml: 'auto',
+  position: 'relative',
 })
 
 const CopyButton = styled('button', {
@@ -72,7 +74,33 @@ const CopyButton = styled('button', {
 
 const ExternalLink = styled(Link, { mb: 0, mt: 3 })
 
+const Tooltip = styled('p', {
+  bg: '$neutral-100',
+  borderRadius: '$radius-24',
+  fontSize: 12,
+  ml: '$x-small',
+  my: 0,
+  py: 2,
+  position: 'absolute',
+  textAlign: 'center',
+  width: 180,
+  zIndex: 101
+})
+
 export const WalletBox = ({ address }: WalletBoxProps) => {
+  const [show_tooltip, setShowTooltip] = useState<boolean>(false)
+
+  const copyWalletAddress = () => {
+    if (!address) return
+    copyToClipboard(address)
+    setShowTooltip(true)
+
+    const timeout = setTimeout(() => {
+      setShowTooltip(false)
+      clearTimeout(timeout)
+    }, 2000)
+  }
+
   return (
     <Container>
       <PlaceholderImage>
@@ -89,7 +117,8 @@ export const WalletBox = ({ address }: WalletBoxProps) => {
         <AddressName isActive={true}>Metamask Wallet</AddressName>
       </div>
       <AddressActions>
-        <CopyButton aria-label="Copy Address" type="button"><CopyDocumentIcon /></CopyButton>
+        <CopyButton aria-label="Copy Address" type="button" onClick={copyWalletAddress}><CopyDocumentIcon /></CopyButton>
+        {show_tooltip && <Tooltip>Address copied successfully!</Tooltip>}
         {/* ToDo: add the correct link here */}
         <ExternalLink target="_blank" aria-label="Go to address external link" href="#"><ArrowUpRight /></ExternalLink>
       </AddressActions>
