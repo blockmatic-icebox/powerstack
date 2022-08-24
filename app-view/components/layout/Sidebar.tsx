@@ -2,6 +2,8 @@ import { styled } from '~/app-view/styles/stitches.config'
 import { useAppEngine } from '~/app-engine/index'
 import { Link } from '../base/Link'
 import { WalletBox } from '../modules/WalletBox'
+import { AppsIcon, CartIcon, WalletIcon } from '../icons'
+import { useRouter } from 'next/router';
 
 const SidebarContainer = styled('aside', {
   display: 'none',
@@ -31,8 +33,6 @@ const WalletBoxContainer = styled('div', {
   background: '#fbfbfb',
   borderRadius: '$radius-18',
   p: '$small',
-  minWidth: '100%',
-
 })
 
 const WalletBoxHeader = styled('header', {
@@ -61,9 +61,55 @@ const WalletFooter = styled('footer', {
   }
 })
 
+const SidebarNav = styled('nav', {
+  pt: '$regular',
+  '& ul': {
+    listStyle: 'none',
+    pl: 0
+  }
+})
+
+const SidebarLink = styled(Link, {
+  borderRadius: '$radius-24',
+  fontSize: 14,
+  py: '$x-small',
+  px: '$large',
+  transition: 'color 400ms, background-color 400ms',
+  '&:hover, &:focus': {
+    bg: 'rgba(4, 75, 255, 0.05)',
+    color: '$044-bff'
+  },
+  '& svg': {
+    mr: '$small'
+  },
+  '& svg path': {
+    transition: 'fill 400ms'
+  },
+  '&[disabled]': {
+    bg: '$neutral-200',
+    color: '#000',
+    cursor: 'not-allowed',
+  },
+  variants: {
+    active: {
+      true: {
+        bg: 'rgba(4, 75, 255, 0.05)',
+        color: '$044-bff',
+        fontWeight: 600,
+        '& svg path': {
+          fill: '$044-bff'
+        }
+      }
+    }
+  }
+})
+
 export const Sidebar = () => {
   const { show_sidebar, user } = useAppEngine()
+  const router = useRouter()
+  const currentPath = router.asPath.split('?')[0]
 
+  console.log('currentPath', currentPath)
   return (
     <SidebarContainer show={show_sidebar}>
       <SidebarContent>
@@ -76,13 +122,13 @@ export const Sidebar = () => {
             <button type="button">+ Connect new wallet</button>
           </WalletFooter>
         </WalletBoxContainer>
-        <nav>
+        <SidebarNav>
           <ul>
-            <li><Link disabled={user ? true : false} href="/profile">Profile</Link></li>
-            <li><Link disabled={user ? true : false} href="/wallet">Wallet</Link></li>
-            <li><Link disabled={user ? true : false} href="/marketplace">Marketplace</Link></li>
+            <li><SidebarLink active={currentPath === 'profile'} disabled={user ? false : true} href="/profile"><AppsIcon /> Profile</SidebarLink></li>
+            <li><SidebarLink active={currentPath === 'wallet'} disabled={user ? false : true} href="/wallet"><WalletIcon />Wallet</SidebarLink></li>
+            <li><SidebarLink active={currentPath === 'marketplace'} disabled={user ? false : true} href="/marketplace"><CartIcon />Marketplace</SidebarLink></li>
           </ul>
-        </nav>
+        </SidebarNav>
       </SidebarContent>
     </SidebarContainer>
   )
