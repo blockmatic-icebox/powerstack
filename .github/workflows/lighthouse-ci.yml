@@ -18,6 +18,6 @@ jobs:
       - name: run Lighthouse CI 
         run: |
           yarn add global && yarn add global @lhci/cli@0.9.x
-          yarn run lhci autorun
+          yarn run lhci autorun --config=./lighthouserc-ci.js 
         env: 
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
