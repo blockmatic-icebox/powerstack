@@ -148,7 +148,12 @@ export const ProfilePopover = () => {
         <ul>
           <li>
             <SettingsLink href="/profile/settings">
-              <GearSixIcon /> Settings and privacity <CaretDownIcon />
+              <GearSixIcon /> Settings <CaretDownIcon />
+            </SettingsLink>
+          </li>
+          <li>
+            <SettingsLink href="/session">
+              <GearSixIcon /> Session <CaretDownIcon />
             </SettingsLink>
           </li>
           <li>
