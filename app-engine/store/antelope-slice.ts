@@ -8,32 +8,32 @@ import { AppUser } from '../types/app-engine'
 import Decimal from 'decimal.js'
 import { appNetworkToChainConfig } from './web3auth-slice'
 
-export enum AntilopeAuthType {
+export enum AntelopeAuthType {
   ANCHOR = 'web3_anchor',
   ANTILOPE = 'web3_antilope',
 }
 
-export interface AntilopeState {
+export interface AntelopeState {
   anchorLink?: AnchorLink
   eosio_trnx_signer?: PermissionLevel
 }
 
-export type AntilopeActions = {
-  initAntilope: () => void
+export type AntelopeActions = {
+  initAntelope: () => void
   loginWithAnchor: () => Promise<void>
   logoutWithAnchor: () => Promise<void>
-  logoutAntilope: () => void
+  logoutAntelope: () => void
 }
 
-export type AntilopeSlice = AntilopeState & AntilopeActions
+export type AntelopeSlice = AntelopeState & AntelopeActions
 
-const defaultAntilopeState: AntilopeState = {
+const defaultAntelopeState: AntelopeState = {
   anchorLink: undefined,
   eosio_trnx_signer: undefined,
 }
 
-export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
-  ...defaultAntilopeState,
+export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
+  ...defaultAntelopeState,
   loginWithAnchor: async () => {
     app_logger.log('loginWithAnchor')
     set({ web3auth_chain_config: appNetworkToChainConfig('eosio') })
@@ -62,9 +62,9 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
         signed_message: identity.signatures.map((sign) => sign.toString())[0],
         auth_method: 'web3_anchor',
         // TODO: get().web3auth_chain_config.network
-        network: 'eos'
+        network: 'eos',
       })
-      
+
       const user = get().user
       get().setUser({
         ...(user as AppUser),
@@ -81,7 +81,7 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
         ],
       })
     } catch (error) {
-      get().logoutAntilope()
+      get().logoutAntelope()
       throw error
     }
   },
@@ -90,22 +90,30 @@ export const createAntilopeSlice: StoreSlice<AntilopeSlice> = (set, get) => ({
 
     if (!get().anchorLink) set({ anchorLink })
     // remove current app name session
-    await anchorLink.removeSession(app_args.app_name, get().eosio_trnx_signer as PermissionLevel, ChainId.from(app_args.services.antilope.eos_chain_id))
+    await anchorLink.removeSession(
+      app_args.app_name,
+      get().eosio_trnx_signer as PermissionLevel,
+      ChainId.from(app_args.services.antilope.eos_chain_id),
+    )
 
     // TODO: Do I want to set default chain config again?
     // set({ web3auth_chain_config: appNetworkToChainConfig('rinkeby') })
   },
-  logoutAntilope: async () => {},
+  logoutAntelope: async () => {},
 
   // this function is called from session-state.ts when a new session is created
-  initAntilope: async () => {
+  initAntelope: async () => {
     app_logger.log('⚙️ initializing antilope slice ...')
     // TODO: maybe reconnect Anchor here ? - Gabo
     const anchorLink = get().anchorLink || newAnchorLink
 
     if (!get().anchorLink) set({ anchorLink })
 
-    await anchorLink.restoreSession(app_args.app_name, get().eosio_trnx_signer, ChainId.from(app_args.services.antilope.eos_chain_id))
+    await anchorLink.restoreSession(
+      app_args.app_name,
+      get().eosio_trnx_signer,
+      ChainId.from(app_args.services.antilope.eos_chain_id),
+    )
     app_logger.log('⚙️ antilope slice initialized')
   },
 })

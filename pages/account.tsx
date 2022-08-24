@@ -8,7 +8,7 @@ import {
 import { useAppEngine } from '~/app-engine'
 import { useState } from 'react'
 import { withSessionSsr } from '~/app-server/session'
-import { AppGraphQL, createApolloClient } from '~/app-engine/graphql'
+import { AppGraphQL, createApolloClient, graphql_sdk } from '~/app-engine/graphql'
 import { Accounts } from '~/app-engine/graphql/generated-sdk'
 import { Button } from '~/app-view/components/base/Button'
 import { Input } from '~/app-view/components/base/Input'
@@ -30,23 +30,16 @@ const ssrHandler = async ({
         user: null,
       },
     }
-  const apollo_client = createApolloClient(user.jwt)
 
-  const result = await apollo_client.query<
-    AppGraphQL.AccountsQuery,
-    AppGraphQL.AccountsQueryVariables
-  >({
-    query: AppGraphQL.AccountsDocument,
-    variables: {
-      where: {
-        username: { _eq: 'gaboesquivel' },
-      },
+  const result = await graphql_sdk.Accounts({
+    where: {
+      username: { _eq: 'gaboesquivel' },
     },
   })
 
   return {
     props: {
-      user: result.data.accounts[0],
+      user: result.accounts[0],
     },
   }
 }

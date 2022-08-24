@@ -10,7 +10,8 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       # - 'typescript-react-apollo'
-      - 'typescript-graphql-request'
+      - 'typescript-generic-sdk'
+      #- 'typescript-graphql-request'
     config:
       skipTypename: true
       withHooks: false

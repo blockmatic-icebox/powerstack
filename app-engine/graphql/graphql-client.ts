@@ -4,8 +4,9 @@ import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { exec_env } from '../library/exec-env'
 import { app_logger } from '../library/logger'
+import { app_args } from '~/app-config/app-arguments'
 
-const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
+const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
   const body = JSON.parse(init?.body?.toString() ?? '{}')
   app_logger.log(`🐭 GraphQL Operation`, JSON.stringify(init, null, 2))
   const start = Date.now()
@@ -34,8 +35,9 @@ const loggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Res
 }
 
 export const createApolloClient = (jwt?: {}) => {
-  // TODO: fix me @RUBENBIX
-  const apollo_base_url = 'api.powerstack.xyz/v1/graphql'
+  const apollo_base_url = app_args.services.graphql_api
+    .replace('https://', '')
+    .replace('http://', '')
   const headers = jwt
     ? {
         // Authorization: `Bearer ${jwt}`,
@@ -61,7 +63,7 @@ export const createApolloClient = (jwt?: {}) => {
   const http_link = new HttpLink({
     uri: `https://${apollo_base_url}`,
     headers,
-    fetch: loggingFetch,
+    fetch: apolloLoggingFetch,
   })
 
   const link =

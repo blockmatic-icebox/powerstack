@@ -3,7 +3,7 @@ import { AppNetworks } from '../types/app-engine'
 import { app_args } from '../../app-config/app-arguments'
 
 /*  NOTE:
-We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and Antilope for staters.
+We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and Antelope for staters.
 
 Ethereum networks have two identifiers, a network ID and a chain ID. Although they often have the same value, they have different uses.
 
@@ -76,7 +76,7 @@ export const app_networks: AppNetworks = {
     display_name: 'EOS Testnet',
     ticker: 'EOS',
     ticker_name: 'EOS',
-    // TODO: same as chan_id? 
+    // TODO: same as chan_id?
     network_id: 80001,
-  }
+  },
 }

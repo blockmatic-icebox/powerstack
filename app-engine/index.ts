@@ -7,13 +7,13 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { ViewActions, ViewState, createViewSlice } from './store/view-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
 import { createWeb3AuthSlice, Web3AuthActions, Web3AuthState } from './store/web3auth-slice'
-import { createAntilopeSlice, AntilopeActions, AntilopeState } from './store/antilope-slice'
+import { createAntelopeSlice, AntelopeActions, AntelopeState } from './store/antelope-slice'
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { createGraphQLSlice, GraphQLActions, GraphQLState } from './store/graphql-slice'
 import { exec_env } from './library/exec-env'
-import { app_args } from '../app-config/app-arguments';
+import { app_args } from '../app-config/app-arguments'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -21,7 +21,7 @@ export type AppState = UserState &
   Web3AuthState &
   SessionState &
   EtherState &
-  AntilopeState &
+  AntelopeState &
   SolanaState &
   EngineState &
   GraphQLState
@@ -30,7 +30,7 @@ export type AppActions = UserActions &
   Web3AuthActions &
   SessionActions &
   EtherActions &
-  AntilopeActions &
+  AntelopeActions &
   SolanaActions &
   EngineActions &
   GraphQLActions
@@ -51,7 +51,7 @@ export const app_engine = createVanillaStore<AppEngine>(
       ...createSessionSlice(set, get),
       ...createUserSlice(set, get),
       ...createSolanaSlice(set, get),
-      ...createAntilopeSlice(set, get),
+      ...createAntelopeSlice(set, get),
       ...createViewSlice(set, get),
       ...createEngineSlice(set, get),
       ...createEtherSlice(set, get),
@@ -63,9 +63,9 @@ export const app_engine = createVanillaStore<AppEngine>(
       partialize: (state) => ({
         user: state.user,
         eosio_trnx_signer: state.eosio_trnx_signer,
-      })
-    }
-  )
+      }),
+    },
+  ),
 )
 
 // standard zustand store https://github.com/pmndrs/zustand
