@@ -107,9 +107,8 @@ const SidebarLink = styled(Link, {
 export const Sidebar = () => {
   const { show_sidebar, user } = useAppEngine()
   const router = useRouter()
-  const currentPath = router.asPath.split('?')[0]
+  const current_path = router.asPath.split('?')[0]
 
-  console.log('currentPath', currentPath)
   return (
     <SidebarContainer show={show_sidebar}>
       <SidebarContent>
@@ -124,9 +123,9 @@ export const Sidebar = () => {
         </WalletBoxContainer>
         <SidebarNav>
           <ul>
-            <li><SidebarLink active={currentPath === '/profile'} disabled={user ? false : true} href="/profile"><AppsIcon /> Profile</SidebarLink></li>
-            <li><SidebarLink active={currentPath === '/wallet'} disabled={user ? false : true} href="/wallet"><WalletIcon />Wallet</SidebarLink></li>
-            <li><SidebarLink active={currentPath === '/marketplace'} disabled={user ? false : true} href="/marketplace"><CartIcon />Marketplace</SidebarLink></li>
+            <li><SidebarLink active={current_path === '/profile'} disabled={user ? false : true} href="/profile"><AppsIcon /> Profile</SidebarLink></li>
+            <li><SidebarLink active={current_path === '/wallet'} disabled={user ? false : true} href="/wallet"><WalletIcon />Wallet</SidebarLink></li>
+            <li><SidebarLink active={current_path === '/marketplace'} disabled={user ? false : true} href="/marketplace"><CartIcon />Marketplace</SidebarLink></li>
           </ul>
         </SidebarNav>
       </SidebarContent>
