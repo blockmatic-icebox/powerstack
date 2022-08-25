@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { auth_service } from '~/app-server/jwt-auth'
-import { CreateSessionProps } from '~/app-engine/store/session-slice'
+import { CreateSessionParams } from '~/app-engine/store/session-slice'
 import { withSessionRoute } from '~/app-server/session-hoc'
 import { app_logger } from '~/app-engine/library/logger'
 import { getSessionAppUser } from '~/app-server/session-user'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
-  const login_payload = (await req.body) as CreateSessionProps
+  const login_payload = (await req.body) as CreateSessionParams
 
   try {
     const { token, error } = await auth_service.login(login_payload)

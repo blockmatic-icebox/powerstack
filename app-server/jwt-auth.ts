@@ -1,7 +1,7 @@
 import { app_args } from '~/app-config/app-arguments'
 import { app_logger } from '~/app-engine/library/logger'
 import { FetchError, fetchJson } from '../app-engine/library/fetch'
-import { CreateSessionProps } from '../app-engine/store/session-slice'
+import { CreateSessionParams } from '../app-engine/store/session-slice'
 import { AppLoginMethod, AppUser } from '../app-engine/types/app-engine'
 
 export type AuthErrorResponse = FetchError | Error
@@ -27,7 +27,7 @@ const getLoginPath = (auth_method: AppLoginMethod) => {
   }
 }
 
-const login = async (login_payload: CreateSessionProps): Promise<LoginResponse> => {
+const login = async (login_payload: CreateSessionParams): Promise<LoginResponse> => {
   try {
     const login_auth_api_url = app_args.services.auth_api + getLoginPath(login_payload.auth_method)
     const login_response = await fetchJson<LoginResponse>(login_auth_api_url, {

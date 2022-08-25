@@ -3,12 +3,13 @@ import { fetchJson } from '../library/fetch'
 import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
 import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
+import { auth_server } from '../services/auth-server'
 
 export interface SessionState {
   create_session_error: string
 }
 
-export interface CreateSessionProps {
+export interface CreateSessionParams {
   address: string
   signed_message: string
   network: string
@@ -17,7 +18,7 @@ export interface CreateSessionProps {
 }
 
 export interface SessionActions {
-  createSession: (input: CreateSessionProps) => Promise<void>
+  createSession: (input: CreateSessionParams) => Promise<void>
   destroySession: () => Promise<void>
 }
 
@@ -29,59 +30,31 @@ const defaultSessionState = {
 
 export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
   ...defaultSessionState,
-  createSession: async ({
-    network,
-    address,
-    message,
-    signed_message,
-    auth_method,
-  }: CreateSessionProps) => {
-    app_logger.log('🍪 create cookie session', JSON.stringify({ address, signed_message }))
-    const login_payload: CreateSessionProps = {
-      network,
-      address,
-      message,
-      signed_message,
-      auth_method,
-    }
-
+  createSession: async (create_session_params: CreateSessionParams) => {
+    app_logger.log('🙎🏻‍♂️ create cookie session')
     try {
-      const { data, error } = await fetchJson<AuthResponse>('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(login_payload),
-      })
-      app_logger.log('🍪 cookie session created!')
-
-      if (error || !data) throw error || 'Unauthorized access.'
-
+      const data = await auth_server.login(create_session_params)
       get().setUser(data)
 
       set({ create_session_error: '' })
     } catch (error) {
-      console.error('An unexpected error happened while trying create session:', error)
+      console.error('🙎🏻‍♂️ an unexpected error happened while trying create session:', error)
 
       set({ create_session_error: (error as AuthErrorResponse).message })
     }
   },
 
   destroySession: async () => {
-    // TODO: WIP please complete it
-    app_logger.log('🍪 destroy cookie session')
     try {
-      await fetchJson('/api/logout', {
-        method: 'POST',
-      })
-      app_logger.log('🍪 cookie session destroyed!')
-
+      console.error('🙎🏻‍♂️ logging user out')
       const user = get().user
-
+      await auth_server.logout()
       if (!user) return
       if (user.auth_method === 'web3_auth') get().web3authLogout()
-
       get().setUser(null)
+      console.error('🙎🏻‍♂️ user succesfully logged out')
     } catch (error) {
-      console.error('An unexpected error happened:', error)
+      console.error('🙎🏻‍♂️ an unexpected error happened:', error)
     }
   },
 })
