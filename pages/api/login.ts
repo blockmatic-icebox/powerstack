@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { auth_service } from '~/app-server/jwt-auth'
+import { auth_service } from '~/app-server/session-auth'
 import { CreateSessionParams } from '~/app-engine/store/session-slice'
 import { withSessionRoute } from '~/app-server/session-hoc'
 import { app_logger } from '~/app-engine/library/logger'
@@ -11,7 +11,6 @@ const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { token, error } = await auth_service.login(login_payload)
 
-    // If we get error or no token, then it is an Unauthorized Access
     if (error || !token)
       return res
         .status(401)

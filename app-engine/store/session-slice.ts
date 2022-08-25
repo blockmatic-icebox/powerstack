@@ -1,6 +1,5 @@
 import type { StoreSlice } from '../index'
-import { fetchJson } from '../library/fetch'
-import { AuthErrorResponse, AuthResponse } from '../../app-server/jwt-auth'
+import { AuthErrorResponse } from '../../app-server/session-auth'
 import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 import { auth_server } from '../services/auth-server'
@@ -34,6 +33,8 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
     app_logger.log('🙎🏻‍♂️ create cookie session')
     try {
       const data = await auth_server.login(create_session_params)
+
+      console.log('🙎🏻‍♂️ login server response', data)
       get().setUser(data)
 
       set({ create_session_error: '' })
@@ -50,11 +51,12 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
       const user = get().user
       await auth_server.logout()
       if (!user) return
-      if (user.auth_method === 'web3_auth') get().web3authLogout()
+      // restore this but user user.connected_wallet instead. - Gabo
+      // if (user.auth_method === 'web3_auth') get().web3authLogout()
       get().setUser(null)
-      console.error('🙎🏻‍♂️ user succesfully logged out')
+      console.error('🙎🏻‍♂️ user succesfully logged out')
     } catch (error) {
-      console.error('🙎🏻‍♂️ an unexpected error happened:', error)
+      console.error('🙎🏻‍♂️ an unexpected error happened:', error)
     }
   },
 })

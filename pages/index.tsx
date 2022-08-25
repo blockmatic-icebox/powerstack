@@ -6,7 +6,7 @@ export const getServerSideProps = defaultGetServerSideProps
 
 const HomePage: DefaultSsrPage = () => {
   const { user } = useAppEngine()
-  const user_data = { ...user, jwt: user?.jwt ? formatAddress(user?.jwt) : 'none' }
+  const user_data = { ...user, auth_jwt: user?.auth_jwt ? formatAddress(user?.auth_jwt) : 'none' }
 
   return (
     <>

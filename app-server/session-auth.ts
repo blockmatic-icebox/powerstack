@@ -19,7 +19,7 @@ const getLoginPath = (auth_method: AppLoginMethod) => {
     case 'web3_anchor':
       return '/provider/anchor'
     case 'web3_solana':
-      return '/provider/phantom'
+      return '/provider/solana'
     case 'web3_metamask':
     case 'web3_auth':
     default:

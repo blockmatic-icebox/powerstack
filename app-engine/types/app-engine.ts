@@ -11,10 +11,11 @@ export type AppLoginMethod =
   | 'web3_metamask'
   | 'web3_auth'
 export interface AppUser {
+  account_id: string
+  session_id: string
   username?: string
-  jwt: string
-  auth_method: AppLoginMethod
-  user_addresses: AppUserAddress[]
+  auth_jwt: string
+  addresses: AppUserAddress[]
 }
 export interface AppUserAddress {
   address: string

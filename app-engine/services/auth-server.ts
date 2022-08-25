@@ -1,4 +1,4 @@
-import { AuthResponse } from '~/app-server/jwt-auth'
+import { AuthResponse } from '~/app-server/session-auth'
 import { fetchJson } from '../library/fetch'
 import { app_logger } from '../library/logger'
 import { CreateSessionParams } from '../store/session-slice'
