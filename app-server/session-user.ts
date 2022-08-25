@@ -1,19 +1,15 @@
 import { AppUser } from '~/app-engine/types/app-engine'
+import jwt_decode from 'jwt-decode'
 
 export const getSessionAppUser = async (jwt: string): Promise<AppUser> => {
-  // TODO: get this data from the jwt token coming from the auth server
+  const decoded = jwt_decode(jwt) as any
+  console.log('decoded token', decoded)
   const user: AppUser = {
-    user_addresses: [
-      {
-        network: 'solana',
-        address: 'HRXVUmyowUDPku6M8UsoY62NzZUknvJkUCgAq8s6Rdqs',
-        ticker: 'solana',
-        balance: '0',
-        unit_balance: '0',
-      },
-    ],
-    jwt,
-    auth_method: 'web3_solana',
+    auth_jwt: jwt,
+    session_id: decoded?.user.session_id,
+    username: decoded?.user.username || 'none',
+    account_id: decoded?.user.account_id,
+    addresses: decoded?.user.addresses,
   }
   return user
 }

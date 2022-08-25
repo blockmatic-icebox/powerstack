@@ -20,7 +20,7 @@ const LoginPage: DefaultSsrPage = () => {
       >
         Update balances
       </Button>
-      <pre>{JSON.stringify(user.user_addresses, null, 2)}</pre>
+      <pre>{JSON.stringify(user.addresses, null, 2)}</pre>
       {create_session_error && (
         <code>
           <strong>ERRORS</strong>
@@ -28,7 +28,7 @@ const LoginPage: DefaultSsrPage = () => {
         </code>
       )}
       <ul>
-        {user.user_addresses.map((address) => (
+        {user.addresses.map((address) => (
           <li key={address.address}>Balance: {address.balance?.toString()}</li>
         ))}
       </ul>

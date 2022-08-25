@@ -32,7 +32,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
     const user = get().user
     if (user) {
       const user_addresses = await Promise.all(
-        user?.user_addresses?.map(async (user_address) => {
+        user?.addresses?.map(async (user_address) => {
           if (isEth(user_address.network)) {
             const ethereum_static_provider = get().ethereum_static_provider
             if (!ethereum_static_provider) return user_address
@@ -56,7 +56,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
           return user_address
         }) || [],
       )
-      user.user_addresses = user_addresses
+      user.addresses = user_addresses
       get().setUser(user)
     }
   },
@@ -64,7 +64,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   createUsername: async (username: string) => {
     const { user } = get()
     if (!user) return
-    const result = await getGraphQLSdk(user.jwt).CreateUsername({ username })
+    const result = await getGraphQLSdk(user.auth_jwt).CreateUsername({ username })
     app_logger.log('create account result', result)
   },
 })
