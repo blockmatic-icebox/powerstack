@@ -112,7 +112,7 @@ export const Sidebar = () => {
   console.log('Sidebar user', user)
 
   return (
-    <SidebarContainer show={show_sidebar}>
+    <SidebarContainer show={true}>
       <SidebarContent>
         <WalletBoxContainer>
           <WalletBoxHeader>
@@ -130,7 +130,7 @@ export const Sidebar = () => {
             <li>
               <SidebarLink
                 active={current_path === '/profile'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/profile"
               >
                 <AppsIcon /> Profile
@@ -139,7 +139,7 @@ export const Sidebar = () => {
             <li>
               <SidebarLink
                 active={current_path === '/wallet'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/wallet"
               >
                 <WalletIcon />
@@ -149,7 +149,7 @@ export const Sidebar = () => {
             <li>
               <SidebarLink
                 active={current_path === '/marketplace'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/marketplace"
               >
                 <CartIcon />
