@@ -1,5 +1,4 @@
 import createVanillaStore, { StoreApi } from 'zustand/vanilla'
-import { persist } from 'zustand/middleware'
 import create from 'zustand'
 import { createSessionSlice, SessionState, SessionActions } from './store/session-slice'
 import { createSelectorHooks } from 'auto-zustand-selectors-hook'
@@ -12,7 +11,8 @@ import { createEngineSlice, EngineState, EngineActions } from './store/engine-sl
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { exec_env } from './library/exec-env'
-import { app_args } from '../app-config/app-arguments'
+import { CoinActions, CoinState, createCoinSlice } from './store/coin-slice'
+import { app_logger, safeStringify } from './library/logger'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -22,7 +22,8 @@ export type AppState = UserState &
   EtherState &
   AntelopeState &
   SolanaState &
-  EngineState
+  EngineState &
+  CoinState
 export type AppActions = UserActions &
   ViewActions &
   Web3AuthActions &
@@ -30,7 +31,8 @@ export type AppActions = UserActions &
   EtherActions &
   AntelopeActions &
   SolanaActions &
-  EngineActions
+  EngineActions &
+  CoinActions
 export type AppEngine = AppState & AppActions
 
 // these types is used within the slices
@@ -40,35 +42,25 @@ export type StoreSlice<T> = (set: StoreSetState, get: StoreGetState) => T
 
 //github.com/pmndrs/zustand#using-zustand-without-react
 export const app_engine = createVanillaStore<AppEngine>(
-  // @ts-ignore
-  persist(
-    // compose all slices into AppState
-    (set, get) => ({
-      ...createWeb3AuthSlice(set, get),
-      ...createSessionSlice(set, get),
-      ...createUserSlice(set, get),
-      ...createSolanaSlice(set, get),
-      ...createAntelopeSlice(set, get),
-      ...createViewSlice(set, get),
-      ...createEngineSlice(set, get),
-      ...createEtherSlice(set, get),
-    }),
-    {
-      // Local Storage prefix
-      name: app_args.app_name,
-      partialize: (state) => ({
-        user: state.user,
-        eosio_trnx_signer: state.eosio_trnx_signer,
-      }),
-    },
-  ),
+  // compose all slices into AppState
+  (set, get) => ({
+    ...createWeb3AuthSlice(set, get),
+    ...createSessionSlice(set, get),
+    ...createUserSlice(set, get),
+    ...createSolanaSlice(set, get),
+    ...createAntelopeSlice(set, get),
+    ...createViewSlice(set, get),
+    ...createEngineSlice(set, get),
+    ...createEtherSlice(set, get),
+    ...createCoinSlice(set, get),
+  }),
 )
 
 // standard zustand store https://github.com/pmndrs/zustand
-const useAppEngineBare = create(app_engine)
+const useBoundAppEngine = create(app_engine)
 
 // devtools https://github.com/beerose/simple-zustand-devtools
-if (exec_env.is_browser) mountStoreDevtool('AppEngine', useAppEngineBare as any)
+if (exec_env.is_browser) mountStoreDevtool('AppEngine', useBoundAppEngine as any)
 
 // typescrpt selector hooks: https://bit.ly/3fbBHfo
-export const useAppEngine = createSelectorHooks(useAppEngineBare)
+export const useAppEngine = createSelectorHooks(useBoundAppEngine)
