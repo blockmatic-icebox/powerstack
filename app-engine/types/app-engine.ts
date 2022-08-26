@@ -54,3 +54,10 @@ export type AppNetworks = {
   readonly eos: AppNetwork
   readonly wax: AppNetwork
 }
+
+export interface Coin {
+  name: string
+  ticker: string
+  usd_price: string
+  coingecko_key: string
+}
