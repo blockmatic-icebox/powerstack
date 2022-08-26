@@ -105,11 +105,9 @@ const SidebarLink = styled(Link, {
 })
 
 export const Sidebar = () => {
-  const { show_sidebar, user } = useAppEngine()
+  const { show_sidebar, user, setShowLoginModal, setloginModalMessage } = useAppEngine()
   const router = useRouter()
   const current_path = router.asPath.split('?')[0]
-
-  console.log('Sidebar user', user)
 
   return (
     <SidebarContainer show={true}>
@@ -122,7 +120,10 @@ export const Sidebar = () => {
             <WalletBox key={idx} address={user_address.address} />
           ))}
           <WalletFooter>
-            <button type="button">+ Connect new wallet</button>
+            <button type="button" onClick={() => {
+              setloginModalMessage('Add new wallet')
+              setShowLoginModal(true)
+            }}>+ Connect new wallet</button>
           </WalletFooter>
         </WalletBoxContainer>
         <SidebarNav>

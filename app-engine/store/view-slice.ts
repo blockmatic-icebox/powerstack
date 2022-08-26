@@ -7,12 +7,14 @@ export type ViewState = {
   app_message: string
   app_message_type: AppMessageType
   show_login_modal: boolean
+  login_modal_message: string
 }
 
 export type ViewActions = {
   setShowWallet: (value: boolean) => void
   setShowSidebar: (value: boolean) => void
   setShowLoginModal: (value: boolean) => void
+  setloginModalMessage: (value: string) => void
 }
 
 export type ViewSlice = ViewState & ViewActions
@@ -23,6 +25,7 @@ const defaultUserInterfaceState = {
   app_message: '',
   app_message_type: 'info' as AppMessageType,
   show_login_modal: false,
+  login_modal_message: 'Login'
 }
 
 export const createViewSlice: StoreSlice<ViewSlice> = (set) => ({
@@ -36,4 +39,6 @@ export const createViewSlice: StoreSlice<ViewSlice> = (set) => ({
     set({ app_message, app_message_type }),
 
   setShowLoginModal: (value) => set({ show_login_modal: value }),
+
+  setloginModalMessage: (value) => set({ login_modal_message: value }),
 })
