@@ -502,6 +502,13 @@ export type ThemeGenThemesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ThemeGenThemesQuery = { themes?: Array<{ name: string, variants?: Array<{ name?: string | null, id: string } | null> | null } | null> | null };
 
+export type GetMyThemesQueryVariables = Exact<{
+  themes?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetMyThemesQuery = { colors?: Array<{ hex?: string | null, name?: string | null } | null> | null, gradients?: Array<{ name?: string | null, colors?: Array<{ stop?: number | null, color?: { hex?: string | null } | null } | null> | null } | null> | null, shadows?: Array<{ name?: string | null, layers?: Array<{ x?: number | null, y?: number | null, blur?: number | null, spread?: number | null } | null> | null } | null> | null, borders?: Array<{ name?: string | null, style?: string | null, width?: number | null, color?: { hex?: string | null } | null } | null> | null, radii?: Array<{ name?: string | null, value?: string | null } | null> | null, spaces?: Array<{ name?: string | null, value?: string | null } | null> | null, durations?: Array<{ name?: string | null, value?: string | null } | null> | null, easeCurves?: Array<{ name?: string | null, value?: { x1?: number | null, y1?: number | null, x2?: number | null, y2?: number | null } | null } | null> | null, typefaces?: Array<{ name?: string | null, value?: string | null } | null> | null, textstyles?: Array<{ name?: string | null, fontFamily?: { name?: string | null, value?: string | null } | null } | null> | null, transforms?: Array<{ name?: string | null, value?: string | null, origin?: string | null } | null> | null, texts?: Array<{ name?: string | null, value?: string | null } | null> | null, icons?: Array<{ name?: string | null, svg?: string | null, css?: string | null } | null> | null };
+
 
 export const ThemeGenThemesDocument = gql`
     query ThemeGenThemes {
@@ -514,11 +521,94 @@ export const ThemeGenThemesDocument = gql`
   }
 }
     `;
+export const GetMyThemesDocument = gql`
+    query GetMyThemes($themes: String = "Default") {
+  colors(themeId: $themes) {
+    hex
+    name
+  }
+  gradients(themeId: $themes) {
+    name
+    colors {
+      stop
+      color {
+        hex
+      }
+    }
+  }
+  shadows(themeId: $themes) {
+    name
+    layers {
+      x
+      y
+      blur
+      spread
+    }
+  }
+  borders(themeId: $themes) {
+    name
+    style
+    width
+    color {
+      hex
+    }
+  }
+  radii(themeId: $themes) {
+    name
+    value
+  }
+  spaces(themeId: $themes) {
+    name
+    value
+  }
+  durations(themeId: $themes) {
+    name
+    value
+  }
+  easeCurves(themeId: $themes) {
+    name
+    value {
+      x1
+      y1
+      x2
+      y2
+    }
+  }
+  typefaces(themeId: $themes) {
+    name
+    value
+  }
+  textstyles(themeId: $themes) {
+    name
+    fontFamily {
+      name
+      value
+    }
+  }
+  transforms(themeId: $themes) {
+    name
+    value
+    origin
+  }
+  texts(themeId: $themes) {
+    name
+    value
+  }
+  icons(themeId: $themes) {
+    name
+    svg
+    css
+  }
+}
+    `;
 export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
 export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
     ThemeGenThemes(variables?: ThemeGenThemesQueryVariables, options?: C): Promise<ThemeGenThemesQuery> {
       return requester<ThemeGenThemesQuery, ThemeGenThemesQueryVariables>(ThemeGenThemesDocument, variables, options) as Promise<ThemeGenThemesQuery>;
+    },
+    GetMyThemes(variables?: GetMyThemesQueryVariables, options?: C): Promise<GetMyThemesQuery> {
+      return requester<GetMyThemesQuery, GetMyThemesQueryVariables>(GetMyThemesDocument, variables, options) as Promise<GetMyThemesQuery>;
     }
   };
 }

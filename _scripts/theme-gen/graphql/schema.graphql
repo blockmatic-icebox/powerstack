@@ -1,9 +1,0 @@
-query ThemeGenThemes {
-  themes {
-    name
-    variants {
-      name
-      id
-    }
-  }
-}

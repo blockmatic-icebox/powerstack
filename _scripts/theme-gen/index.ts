@@ -1,4 +1,4 @@
-import { ThemeGenThemesDocument } from './graphql/generated-sdk'
+import * as Toolabs from './graphql/generated-sdk'
 // TODO: Do Types...
 import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
 import fetch from 'cross-fetch'
@@ -7,10 +7,19 @@ import path from 'path'
 
 const Spinner = require('cli-spinner').Spinner
 
-const spinner_string = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
-console.log('process.env!!!', process.env.THEME_GEN_KEY)
+interface ToolabsTheme {
+  name: string
+  theme: {
+    color: Toolabs.Color[]
+    gradients: Toolabs.Gradient[]
+  }
+}
 
-const themes = {}
+const spinner_string = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+const pre_selected_themes = process.env.THEME_GEN_THEMES
+
+// TODO: Interface for themes
+const themes: ToolabsTheme = {}
 
 // NOTE: Reading how many themes do we have
 const themes_spinner = setSpinner(` %s 👀 for themes...
@@ -19,7 +28,15 @@ const themes_spinner = setSpinner(` %s 👀 for themes...
 themes_spinner.setSpinnerString(spinner_string).setSpinnerDelay(80)
 themes_spinner.start()
 
-const theme_names = getThemes()
+(async () => {
+  const { data, error } = await getThemes()
+
+  if (error) throw new Error(error)
+
+  const theme_ids = data.filter(theme => theme.name === 'Color Mode').map(theme => theme.variants)[0]
+
+  themes[]
+})()
 
 themes_spinner.stop()
 
@@ -174,19 +191,24 @@ function toolabsClient() {
   })
 }
 
-async function getThemes() {
+async function getThemes(): Promise<{ data: Toolabs.Theme[]; error: string;  }> {
   try {
-    const { data, errors } = await toolabsClient().query({
-      query: ThemeGenThemesDocument,
+    const { data, errors } = await toolabsClient().query<
+      Toolabs.ThemeGenThemesQuery,
+      Toolabs.ThemeGenThemesQueryVariables
+    >({
+      query: Toolabs.ThemeGenThemesDocument,
     })
 
     console.log('results toolabs by getting themes =>>>', JSON.stringify(data, null, 2))
 
     if (errors) throw new Error(JSON.stringify(errors, null, 2))
 
-    return data
+    return { data: data.themes as Toolabs.Theme[], error: '' }
   } catch (error) {
     console.log('(error as Error).message', (error as Error).message)
-    throw new Error((error as Error).message)
+    return { data: [] as Toolabs.Theme[], error: (error as Error).message }
   }
 }
+
+export { Toolabs }
