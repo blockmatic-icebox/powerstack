@@ -120,10 +120,15 @@ export const Sidebar = () => {
             <WalletBox key={idx} address={user_address.address} />
           ))}
           <WalletFooter>
-            <button type="button" onClick={() => {
-              setloginModalMessage('Add new wallet')
-              setShowLoginModal(true)
-            }}>+ Connect new wallet</button>
+            <button
+              type="button"
+              onClick={() => {
+                setloginModalMessage('Add new wallet')
+                setShowLoginModal(true)
+              }}
+            >
+              + Connect new wallet
+            </button>
           </WalletFooter>
         </WalletBoxContainer>
         <SidebarNav>

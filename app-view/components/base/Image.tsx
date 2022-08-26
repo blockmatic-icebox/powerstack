@@ -15,7 +15,7 @@ const ImageContainer = styled('div', {
   height: 'max-content',
   'img, video': {
     objectFit: 'cover',
-  }
+  },
 })
 const ImageCaption = styled('figcaption', {
   width: '100%',
@@ -23,7 +23,14 @@ const ImageCaption = styled('figcaption', {
   fontWeight: '$bold',
 })
 
-export const Image: React.FC<CustomImageProps> = ({ src, alt = "", caption, cloudinary, cloudinaryVideo, ...props }) => {
+export const Image: React.FC<CustomImageProps> = ({
+  src,
+  alt = '',
+  caption,
+  cloudinary,
+  cloudinaryVideo,
+  ...props
+}) => {
   const url = cloudinary
     ? (cloudinaryVideo ? getCloudinaryVideo(src) : getCloudinaryImage(src)).toURL()
     : src
@@ -31,11 +38,7 @@ export const Image: React.FC<CustomImageProps> = ({ src, alt = "", caption, clou
   return (
     <ImageContainer>
       <NextImage src={url} alt={alt} width={1000} height={750} {...props} />
-      {caption && (
-        <ImageCaption>
-          {caption}
-        </ImageCaption>
-      )}
+      {caption && <ImageCaption>{caption}</ImageCaption>}
     </ImageContainer>
   )
 }

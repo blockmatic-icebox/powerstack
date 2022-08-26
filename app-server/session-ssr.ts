@@ -6,7 +6,6 @@ import {
 } from 'next'
 import { AppState, app_engine } from '~/app-engine'
 import { withSessionSsr } from './session-hoc'
-
 export interface DefaultSessionSsrProps {
   app_engine_server_state: AppState
 }

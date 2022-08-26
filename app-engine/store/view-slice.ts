@@ -25,7 +25,7 @@ const defaultUserInterfaceState = {
   app_message: '',
   app_message_type: 'info' as AppMessageType,
   show_login_modal: false,
-  login_modal_message: 'Login'
+  login_modal_message: 'Login',
 }
 
 export const createViewSlice: StoreSlice<ViewSlice> = (set) => ({

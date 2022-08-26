@@ -1,12 +1,11 @@
 import type { StoreSlice } from '../index'
 import { app_logger } from '../library/logger'
-import { coingeck_client } from '../services/coingecko'
-import { coingecko_key_list } from '../static/coin-list'
+import { coingecko_client } from '../services/coingecko'
+import { coin_list } from '../static/coin-list'
 import { Coin } from '../types/app-engine'
 
 export type CoinState = {
   coins: Coin[]
-  coingecko_prices: any // TODO: remove this, its just for quick demo. create good structures - GAbo
 }
 
 export type CoinActions = {
@@ -16,20 +15,29 @@ export type CoinActions = {
 export type CoinSlice = CoinState & CoinActions
 
 const defaultCoinState: CoinState = {
-  coins: [],
-  coingecko_prices: {},
+  coins: coin_list,
 }
 
-export const createCoinSlice: StoreSlice<CoinSlice> = (set) => ({
+export const createCoinSlice: StoreSlice<CoinSlice> = (set, get) => ({
   ...defaultCoinState,
 
   fetchPrices: async () => {
-    // const response = await coingeck_client.coinList({})
-    const coingecko_prices = await coingeck_client.simplePrice({
-      ids: String(coingecko_key_list),
+    const coingecko_prices = await coingecko_client.simplePrice({
+      ids: String(coin_list.map((coin) => coin.coingecko_key)),
       vs_currencies: 'usd',
     })
-    app_logger.log(' got coingecko prices', coingecko_prices)
-    set({ coingecko_prices })
+    const coins_with_usd_price = get().coins.map(
+      (coin) =>
+        ({
+          ...coin,
+          usd_price:
+            coingecko_prices[coin.coingecko_key]?.usd.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }) || '$0',
+        } as Coin),
+    )
+    // app_logger.log('coins_with_usd_price', coins_with_usd_price)
+    set({ coins: coins_with_usd_price })
   },
 })

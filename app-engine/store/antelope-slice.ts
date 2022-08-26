@@ -88,10 +88,13 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
     if (!get().anchorLink) set({ anchorLink })
     // remove current app name session
     try {
-      const default_permissions = PermissionLevel.from({ actor: Name.from(get().user?.username as string), permission: 'active'})
+      const default_permissions = PermissionLevel.from({
+        actor: Name.from(get().user?.username as string),
+        permission: 'active',
+      })
       await anchorLink.removeSession(
         app_args.app_name,
-        get().eosio_trnx_signer as PermissionLevel || default_permissions,
+        (get().eosio_trnx_signer as PermissionLevel) || default_permissions,
         ChainId.from(app_networks.eos.chain_id),
       )
     } catch (error) {

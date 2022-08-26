@@ -62,7 +62,7 @@
     "@graphql-codegen/typescript-generic-sdk": "^3.0.1",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@types/lodash": "^4.14.184",
-    "@types/node": "18.7.8",
+    "@types/node": "^18.7.13",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "cli-spinner": "^0.2.10",

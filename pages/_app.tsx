@@ -5,7 +5,7 @@ import { AuthModal } from '~/app-view/components/modules/AuthModal'
 import { AppEngineProvider } from '~/app-engine'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log('app_engine_server_state', pageProps.app_engine_server_state)
+  // console.log('app_engine_server_state', pageProps.app_engine_server_state)
   return (
     <AppEngineProvider app_engine_server_state={pageProps.app_engine_server_state}>
       <AuthModal />

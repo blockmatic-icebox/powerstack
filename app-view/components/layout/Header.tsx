@@ -143,10 +143,14 @@ export const Header = () => {
               </option>
             ))}
           </select> */}
-          <Button onClick={() => {
-            setloginModalMessage('Login')
-            setShowLoginModal(true)
-          }}>Login</Button>
+          <Button
+            onClick={() => {
+              setloginModalMessage('Login')
+              setShowLoginModal(true)
+            }}
+          >
+            Login
+          </Button>
           <ProfilePopover />
         </RightMenu>
       </NavContent>

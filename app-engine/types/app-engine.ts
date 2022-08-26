@@ -57,7 +57,7 @@ export type AppNetworks = {
 
 export interface Coin {
   name: string
-  ticker: string
+  symbol: string
   usd_price: string
   coingecko_key: string
 }
