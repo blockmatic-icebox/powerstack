@@ -12,6 +12,8 @@ import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
 import { CoinActions, CoinState, createCoinSlice } from './store/coin-slice'
 import { createContext, useContext } from 'react'
 import { app_logger } from './library/logger'
+import _ from 'lodash'
+import { exec_env } from './library/exec-env'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -63,8 +65,13 @@ export const AppEngineProvider: React.FC<{
   app_engine_server_state?: AppState
 }> = ({ children, app_engine_server_state }) => {
   // hydrate the app_engine with server side props
-  if (app_engine_server_state) app_engine.setState(app_engine_server_state)
-  // if (exec_env.is_browser) useAppEngine.getState().initializeAppEngine()
+  if (app_engine_server_state)
+    app_engine.setState(_.omit(app_engine_server_state, 'app_engine_initialized'))
+  // initialize web3 providers on the browser
+  if (exec_env.is_browser) {
+    const { app_engine_initialized, initializeAppEngine } = app_engine.getState()
+    if (!app_engine_initialized) initializeAppEngine()
+  }
   return <AppEngineContext.Provider value={app_engine}>{children}</AppEngineContext.Provider>
 }
 
