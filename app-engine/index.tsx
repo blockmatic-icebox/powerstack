@@ -1,7 +1,6 @@
 import createVanillaStore, { StoreApi } from 'zustand/vanilla'
-import create from 'zustand'
+import create, { useStore } from 'zustand'
 import { createSessionSlice, SessionState, SessionActions } from './store/session-slice'
-import { createSelectorHooks } from 'auto-zustand-selectors-hook'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { ViewActions, ViewState, createViewSlice } from './store/view-slice'
 import { UserActions, UserState, createUserSlice } from './store/user-slice'
@@ -10,9 +9,9 @@ import { createAntelopeSlice, AntelopeActions, AntelopeState } from './store/ant
 import { createEngineSlice, EngineState, EngineActions } from './store/engine-slice'
 import { createSolanaSlice, SolanaActions, SolanaState } from './store/solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './store/ether-slice'
-import { exec_env } from './library/exec-env'
 import { CoinActions, CoinState, createCoinSlice } from './store/coin-slice'
-import { app_logger, safeStringify } from './library/logger'
+import { createContext, useContext } from 'react'
+import { app_logger } from './library/logger'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &
@@ -40,27 +39,35 @@ export type StoreSetState = StoreApi<AppEngine>['setState']
 export type StoreGetState = StoreApi<AppEngine>['getState']
 export type StoreSlice<T> = (set: StoreSetState, get: StoreGetState) => T
 
-//github.com/pmndrs/zustand#using-zustand-without-react
-export const app_engine = createVanillaStore<AppEngine>(
-  // compose all slices into AppState
-  (set, get) => ({
-    ...createWeb3AuthSlice(set, get),
-    ...createSessionSlice(set, get),
-    ...createUserSlice(set, get),
-    ...createSolanaSlice(set, get),
-    ...createAntelopeSlice(set, get),
-    ...createViewSlice(set, get),
-    ...createEngineSlice(set, get),
-    ...createEtherSlice(set, get),
-    ...createCoinSlice(set, get),
-  }),
-)
+// global app_engine instance
+export type AppEngineApi = StoreApi<AppEngine>
+app_logger.log(`📡 creating app_engine ...`)
+export const app_engine = createVanillaStore<AppEngine>((set, get) => ({
+  ...createWeb3AuthSlice(set, get),
+  ...createSessionSlice(set, get),
+  ...createUserSlice(set, get),
+  ...createSolanaSlice(set, get),
+  ...createAntelopeSlice(set, get),
+  ...createViewSlice(set, get),
+  ...createEngineSlice(set, get),
+  ...createEtherSlice(set, get),
+  ...createCoinSlice(set, get),
+})) as AppEngineApi
 
-// standard zustand store https://github.com/pmndrs/zustand
-const useBoundAppEngine = create(app_engine)
+// Expose the app-engine functionality to react apps
+export const useCreateAppEngine = () => create(app_engine)
+const AppEngineContext = createContext<AppEngineApi>(create(app_engine))
+export const useAppEngine = () => useStore(useContext(AppEngineContext))
+export const AppEngineProvider: React.FC<{
+  children: React.ReactNode
+  app_engine_server_state?: AppState
+}> = ({ children, app_engine_server_state }) => {
+  // hydrate the app_engine with server side props
+  if (app_engine_server_state) app_engine.setState(app_engine_server_state)
+  // if (exec_env.is_browser) useAppEngine.getState().initializeAppEngine()
+  return <AppEngineContext.Provider value={app_engine}>{children}</AppEngineContext.Provider>
+}
 
+// TODO: restore devtools
 // devtools https://github.com/beerose/simple-zustand-devtools
-if (exec_env.is_browser) mountStoreDevtool('AppEngine', useBoundAppEngine as any)
-
-// typescrpt selector hooks: https://bit.ly/3fbBHfo
-export const useAppEngine = createSelectorHooks(useBoundAppEngine)
+//  if (exec_env.is_browser) mountStoreDevtool('AppEngine', useBoundAppEngine as any)
