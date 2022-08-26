@@ -1,0 +1,23 @@
+
+name: Lighthouse CI
+on: [push]
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: yarn install
+        run: |
+          yarn add global @lhci/cli@0.9.x
+          yarn run build
+      - name: run Lighthouse CI 
+        run: |
+          yarn add global && yarn add global @lhci/cli@0.9.x
+          yarn run lhci autorun --config=./lighthouserc-ci.js 
+        env: 
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
