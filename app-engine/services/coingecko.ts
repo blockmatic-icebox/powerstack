@@ -24,8 +24,10 @@ const coins = [
   'snx',
 ]
 
-const getCoinGeckoPrices = async () => {
-  const response = await coingeck_client.simplePrice({ ids: String(coins), vs_currencies: 'usd' })
-  app_logger.log('got coingecko prices', response)
-  return response
+export const coingecko = {
+  simplePrice: async () => {
+    const response = await coingeck_client.simplePrice({ ids: String(coins), vs_currencies: 'usd' })
+    app_logger.log('got coingecko prices', response)
+    return response
+  },
 }
