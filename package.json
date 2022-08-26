@@ -35,6 +35,7 @@
     "bs58": "^5.0.0",
     "camelcase-keys": "^8.0.1",
     "cloudinary-build-url": "^0.2.4",
+    "coingecko-api-v3": "^0.0.13",
     "cookies-next": "^2.1.1",
     "decimal.js": "^10.4.0",
     "env-var": "^7.1.1",

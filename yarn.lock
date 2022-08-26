@@ -3805,6 +3805,11 @@ cloudinary-build-url@^0.2.4:
   dependencies:
     "@cld-apis/utils" "^0.2.0"
 
+coingecko-api-v3@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/coingecko-api-v3/-/coingecko-api-v3-0.0.13.tgz#1db8b34d09286b6f85d3e8ec4612d7bc2b791de3"
+  integrity sha512-vL49LieL0TPhnvLEwEWuOdZqKNxHOjbAtCYu+gzkzdHoZAc3haALc2i1mVlZ8psBigULFsRF7wek9AqTBPZ2EQ==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz"
