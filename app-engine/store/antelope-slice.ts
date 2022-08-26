@@ -1,5 +1,5 @@
 import { StoreSlice } from '../index'
-import AnchorLink, { ChainId, PermissionLevel } from 'anchor-link'
+import AnchorLink, { ChainId, Name, PermissionLevel } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/app-config/app-arguments'
 import { antelope_api, createNewAnchorLink } from '../library/antelope'
@@ -10,7 +10,7 @@ import { appNetworkToChainConfig } from './web3auth-slice'
 import { app_networks } from '../static/app-networks'
 
 export enum AntelopeAuthType {
-  ANCHOR = 'web3_anchor',
+  ANCHOR = 'web3_antelope',
   ANTILOPE = 'web3_antilope',
 }
 
@@ -53,11 +53,12 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       await get().createSession({
         // digested transaction from the trnx generated after identifying
         message: identity.transaction.signingDigest(identity.session.chainId).toString(),
-        // public_key is user_address, or username can be user_address for eosio.
-        address: pub_key,
+        // account is user_address for eosio.
+        address: account,
+        eos_pub_key: pub_key,
         // signature made from the trnx generated after identifying
         signed_message: identity.signatures.map((sign) => sign.toString())[0],
-        auth_method: 'web3_anchor',
+        auth_method: 'web3_antelope',
         network: 'eos',
       })
 
@@ -86,11 +87,16 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
 
     if (!get().anchorLink) set({ anchorLink })
     // remove current app name session
-    await anchorLink.removeSession(
-      app_args.app_name,
-      get().eosio_trnx_signer as PermissionLevel,
-      ChainId.from(app_networks.eos.chain_id),
-    )
+    try {
+      const default_permissions = PermissionLevel.from({ actor: Name.from(get().user?.username as string), permission: 'active'})
+      await anchorLink.removeSession(
+        app_args.app_name,
+        get().eosio_trnx_signer as PermissionLevel || default_permissions,
+        ChainId.from(app_networks.eos.chain_id),
+      )
+    } catch (error) {
+      console.error('[ERROR] Anchor Link - Remove Session:', error)
+    }
   },
   logoutAntelope: async () => {},
 

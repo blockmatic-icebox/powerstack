@@ -14,6 +14,7 @@ export interface CreateSessionParams {
   network: string
   message: string
   auth_method: AppLoginMethod
+  eos_pub_key?: string
 }
 
 export interface SessionActions {

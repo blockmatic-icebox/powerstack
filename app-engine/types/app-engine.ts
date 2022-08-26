@@ -7,7 +7,7 @@ export type URL = string
 export type AppLoginMethod =
   | 'web2_twitter'
   | 'web3_solana'
-  | 'web3_anchor'
+  | 'web3_antelope'
   | 'web3_metamask'
   | 'web3_auth'
 export interface AppUser {

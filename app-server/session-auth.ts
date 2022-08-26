@@ -16,8 +16,8 @@ export type LoginResponse = {
 
 const getLoginPath = (auth_method: AppLoginMethod) => {
   switch (auth_method) {
-    case 'web3_anchor':
-      return '/provider/anchor'
+    case 'web3_antelope':
+      return '/provider/antelope'
     case 'web3_solana':
       return '/provider/solana'
     case 'web3_metamask':
