@@ -13,7 +13,6 @@ module.exports = {
               'categories:best-practices': ['error', {minScore: .9}],
               'categories:seo': ['error', {minScore: .9}],
               'categories:pwa': 'off',
-              'apple-touch-icon': 'off',
             },  
         },
         upload: {
