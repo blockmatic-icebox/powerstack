@@ -6,6 +6,7 @@ import { Coin } from '../types/app-engine'
 
 export type CoinState = {
   coins: Coin[]
+  coingecko_prices: any // TODO: remove this, its just for quick demo. create good structures - GAbo
 }
 
 export type CoinActions = {
@@ -16,6 +17,7 @@ export type CoinSlice = CoinState & CoinActions
 
 const defaultCoinState: CoinState = {
   coins: [],
+  coingecko_prices: {},
 }
 
 export const createCoinSlice: StoreSlice<CoinSlice> = (set) => ({
@@ -23,10 +25,11 @@ export const createCoinSlice: StoreSlice<CoinSlice> = (set) => ({
 
   fetchPrices: async () => {
     // const response = await coingeck_client.coinList({})
-    const response = await coingeck_client.simplePrice({
+    const coingecko_prices = await coingeck_client.simplePrice({
       ids: String(coingecko_key_list),
       vs_currencies: 'usd',
     })
-    app_logger.log(' got coingecko prices', response)
+    app_logger.log(' got coingecko prices', coingecko_prices)
+    set({ coingecko_prices })
   },
 })
