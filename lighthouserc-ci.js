@@ -6,7 +6,7 @@ module.exports = {
         url: ['http://localhost:3000/'],
       },
          assert: {
-          preset: "lighthouse:recommended",
+          preset:  "lighthouse:no-pwa",
             assertions: {
               'categories:performance': ['error', {minScore: .9}],
               'categories:accessibility': ['error', {minScore: .9}],
