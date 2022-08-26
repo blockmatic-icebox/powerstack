@@ -64,7 +64,7 @@ export const createAntelopeSlice: StoreSlice<AntelopeSlice> = (set, get) => ({
       const user = get().user
       get().setUser({
         ...(user as AppUser),
-        user_addresses: [
+        addresses: [
           {
             // TODO: get().web3auth_chain_config
             network: 'eos',

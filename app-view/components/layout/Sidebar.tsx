@@ -118,7 +118,7 @@ export const Sidebar = () => {
           <WalletBoxHeader>
             <WalletBoxTitle>Account</WalletBoxTitle>
           </WalletBoxHeader>
-          {user?.user_addresses?.map((user_address, idx) => (
+          {user?.addresses?.map((user_address, idx) => (
             <WalletBox key={idx} address={user_address.address} />
           ))}
           <WalletFooter>
