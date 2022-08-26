@@ -19,9 +19,9 @@ export const defaultGetServerSideProps: GetServerSideProps =
   req,
 }: GetServerSidePropsContext): Promise<GetServerSidePropsResult<DefaultSessionSsrProps>> => {
 
-  const app_engine = createAppEngine()
+  const app_engine = createAppEngine(req.session.user?.session_id)
   await app_engine.fetchPrices() 
-  
+
   return {
     props: {
       user: req.session.user || null,
