@@ -11,7 +11,7 @@ import {
   BitbucketIcon,
 } from '~/app-view/components/icons/index'
 import { Card } from './Card'
-import { useAppEngine } from '~/app-engine/index'
+import { useAppEngine } from '~/app-view/hooks/useAppEngine'
 import { useLocation } from 'react-use'
 import { Button } from '../base/Button'
 import { Modal } from './Modal'
@@ -80,9 +80,13 @@ export const AuthModal = () => {
   const location = useLocation()
 
   return (
-    <Modal handleClose={() => setShowLoginModal(false)} show={show_login_modal && !user} width={544}>
+    <Modal
+      handleClose={() => setShowLoginModal(false)}
+      show={show_login_modal && !user}
+      width={544}
+    >
       <WalletCard>
-      <Title>Login</Title>
+        <Title>Login</Title>
         <LoginButton css={{ mb: '$small' }} onClick={loginWithPhantom} variant="panthom">
           <PhantonIcon />
           Login with Phantom
@@ -96,7 +100,7 @@ export const AuthModal = () => {
           Login with Anchor
         </LoginButton>
         <LoginButton css={{ mb: '$small' }} onClick={web3authLogin} variant="web3auth">
-        <Web3authIcon />
+          <Web3authIcon />
           Login with Web3Auth
         </LoginButton>
 

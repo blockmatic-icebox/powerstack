@@ -7,7 +7,7 @@ import {
 } from '~/app-view/components/icons/index'
 import { Link } from '../base/Link'
 import Image from 'next/image'
-import { useAppEngine } from '~/app-engine/index'
+import { useAppEngine } from '~/app-view/hooks/useAppEngine'
 import * as Popover from '@radix-ui/react-popover'
 import * as Switch from '@radix-ui/react-switch'
 

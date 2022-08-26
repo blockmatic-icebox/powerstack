@@ -1,5 +1,5 @@
 import { styled } from '~/app-view/styles/stitches.config'
-import { useAppEngine } from '~/app-engine/index'
+import { useAppEngine } from '~/app-view/hooks/useAppEngine'
 import { Link } from '../base/Link'
 import { WalletBox } from '../modules/WalletBox'
 import { AppsIcon, CartIcon, WalletIcon } from '../icons'

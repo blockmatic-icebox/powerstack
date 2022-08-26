@@ -2,9 +2,9 @@ import { styled } from '~/app-view/styles/stitches.config'
 import { BlockmaticIcon, BellIcon } from '~/app-view/components/icons/index'
 import { Button } from '../base/Button'
 import { Link } from '../base/Link'
-import { useAppEngine } from '~/app-engine/index'
+
 import { ProfilePopover } from '../modules/ProfilePopover'
-import { app_args } from '~/app-config/app-arguments'
+import { useAppEngine } from '~/app-view/hooks/useAppEngine'
 
 const NavBar = styled('nav', {
   display: 'flex',
