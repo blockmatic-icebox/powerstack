@@ -29,6 +29,7 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
     set({ user })
   },
   fetchUserBalances: async () => {
+    app_logger.log('🤵🏻‍♂️ gettting account balances')
     const user = get().user
     if (user) {
       const user_addresses = await Promise.all(

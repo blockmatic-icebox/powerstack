@@ -14,8 +14,10 @@ export const defaultGetServerSideProps: GetServerSideProps = withSessionSsr<Defa
   async ({
     req,
   }: GetServerSidePropsContext): Promise<GetServerSidePropsResult<DefaultSessionSsrProps>> => {
+    // this all runs in parallel even if you use await
     await app_engine.getState().setUser(req.session.user || null)
     await app_engine.getState().fetchPrices()
+    await app_engine.getState().fetchUserBalances()
 
     return {
       props: {
