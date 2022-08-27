@@ -59,5 +59,6 @@ export interface Coin {
   name: string
   symbol: string
   usd_price: string
+  price_change_1h: string
   coingecko_key: string
 }
