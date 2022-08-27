@@ -154,6 +154,16 @@ export const Sidebar = () => {
             </li>
             <li>
               <SidebarLink
+                active={current_path === '/mint'}
+                // disabled={user ? false : true}
+                href="/mint"
+              >
+                <WalletIcon />
+                Mint
+              </SidebarLink>
+            </li>
+            <li>
+              <SidebarLink
                 active={current_path === '/marketplace'}
                 // disabled={user ? false : true}
                 href="/marketplace"
