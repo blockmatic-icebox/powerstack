@@ -15,6 +15,7 @@ import { useAppEngine } from '~/app-engine/index'
 import { useLocation } from 'react-use'
 import { Button } from '../base/Button'
 import { Modal } from './Modal'
+import { app_args } from '~/app-config/app-arguments'
 
 const Title = styled('h1', {
   fontSize: '$h-2',
@@ -80,6 +81,11 @@ export const AuthModal = () => {
   } = useAppEngine()
   const location = useLocation()
 
+  const loginWithTwitter = () => {
+    console.log(`${app_args.services.auth_api}/provider/twitter?redirect_uri=${location.href}`)
+    window.location.href = `${app_args.services.auth_api}/provider/twitter?redirect_uri=${location.href}`
+  }
+
   return (
     <Modal
       handleClose={() => setShowLoginModal(false)}
@@ -110,9 +116,7 @@ export const AuthModal = () => {
         <ButtonGroup>
           <LoginButton
             css={{ m: '$xx-small' }}
-            onClick={() => {
-              window.location.href = `https://powerstack-auth-atgjsg75cq-uc.a.run.app/provider/twitter?redirect_uri=${location.href}`
-            }}
+            onClick={loginWithTwitter}
             variant="metamask"
             role="button"
           >

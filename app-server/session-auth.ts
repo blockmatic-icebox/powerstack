@@ -16,6 +16,8 @@ export type LoginResponse = {
 
 const getLoginPath = (auth_method: AppLoginMethod) => {
   switch (auth_method) {
+    case 'web2_twitter':
+      return '/provider/twitter'
     case 'web3_antelope':
       return '/provider/antelope'
     case 'web3_solana':
