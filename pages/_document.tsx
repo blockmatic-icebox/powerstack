@@ -8,6 +8,8 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getGeneratedStylesheet() }} />
+          <title>Blockmatic</title>
+          <meta name="description" content="Blockmatic"></meta>
         </Head>
         <body>
           <Main />
