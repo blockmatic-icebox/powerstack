@@ -42,6 +42,7 @@
     "env-var": "^7.1.1",
     "ethers": "^5.7.0",
     "framer-motion": "^7.2.0",
+    "global": "^4.4.0",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.10.1",
     "iron-session": "^6.1.3",
