@@ -46,8 +46,7 @@ const FormLabel = styled('label', {
   p: 0,
 })
 
-
-export const FormTextarea = styled('textarea', {
+const FormTextarea = styled('textarea', {
   backgroundColor: 'transparent',
   border: '1px solid $neutral-100',
   display: 'block',
@@ -81,6 +80,22 @@ const ProfileTabs = styled(Tabs.List, {
 
 const FormStatusMessage = styled('p', { color: '$error' })
 
+const Title = styled('h2', {
+  fontSize: 24,
+  mb: '$large',
+  mt: 0,
+})
+
+const TabContent = styled(Tabs.Content, {
+  py: '$large'
+})
+
+const Badge = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+
+})
+
 const FormSchema = z.object({
   username: z.string({ required_error: "This field is required", }).min(1, { message: "Username can't be empty" }),
   email: z
@@ -89,7 +104,6 @@ const FormSchema = z.object({
     .min(1, { message: "Email or username can't be empty" }),
   bio: z.string({ required_error: "This field is required", }),
 })
-
 type FormSchemaType = z.infer<typeof FormSchema>;
 
 const Profle: DefaultSsrPage = () => {
@@ -107,14 +121,15 @@ const Profle: DefaultSsrPage = () => {
 
   return (
     <Tabs.Root defaultValue="profile" orientation="vertical">
+      <Title>Profile Configuration</Title>
       <ProfileTabs aria-label="Profile Tabs">
         <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
         <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
         <Tabs.Trigger value="security">Security</Tabs.Trigger>
       </ProfileTabs>
-      <Tabs.Content value="profile">
+      <TabContent value="profile">
         {/* profile badge */}
-        <div>
+        <Badge>
           <ProfileBadgeImage>
             <Image
               src="/logo-icon.png"
@@ -128,7 +143,7 @@ const Profle: DefaultSsrPage = () => {
             <p>Select one of your NFTs as your profile picture</p>
             <Link href="#">Change profile NFT</Link>
           </div>
-        </div>
+        </Badge>
         <h3>Account Details</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
@@ -164,13 +179,13 @@ const Profle: DefaultSsrPage = () => {
             Save Changes
           </button>
         </form>
-      </Tabs.Content>
-      <Tabs.Content value="notifications">
+      </TabContent>
+      <TabContent value="notifications">
         <h1>Notifications</h1>
-      </Tabs.Content>
-      <Tabs.Content value="security">
+      </TabContent>
+      <TabContent value="security">
         <h1>Security</h1>
-      </Tabs.Content>
+      </TabContent>
     </Tabs.Root>
   )
 }
