@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16
+      - run: mkdir /tmp/artifacts
+      - name: Run lighthouse use Node.js 16
         uses: actions/setup-node@v3
         with:
+          outputDirectory: /tmp/artifacts
           node-version: 16
       - name: yarn install
         run: |
@@ -20,3 +22,8 @@ jobs:
           yarn run lhci autorun --config=./lighthouserc-ci.js 
         env: 
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
