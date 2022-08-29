@@ -18,6 +18,9 @@ const HomePage: DefaultSsrPage = () => {
       <pre>{JSON.stringify(user_data, null, 2)}</pre>
       <h3>coins ssr: </h3>
       <pre>{JSON.stringify(coins, null, 2)}</pre>
+      <hr />
+      <br />
+      <>testing....</>
     </>
   )
 }
