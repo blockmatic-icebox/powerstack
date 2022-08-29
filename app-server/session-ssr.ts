@@ -17,6 +17,7 @@ export const defaultGetServerSideProps: GetServerSideProps = withSessionSsr<Defa
     // this all runs in parallel even if you use await
     await app_engine.getState().setUser(req.session.user || null)
     await app_engine.getState().fetchPrices()
+    console.log('user', await app_engine.getState().user)
     await app_engine.getState().fetchUserBalances()
 
     return {

@@ -1,4 +1,4 @@
-import { AppGraphQL, createApolloClient, getGraphQLSdk } from '../graphql'
+import { getGraphQLSdk } from '../graphql'
 import type { StoreSlice } from '../index'
 import { getEthNativeTokenBalance, isEth } from '../library/ethers'
 import { app_logger } from '../library/logger'
@@ -30,36 +30,6 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   },
   fetchUserBalances: async () => {
     app_logger.log('🤵🏻‍♂️ gettting account balances')
-    const user = get().user
-    if (user) {
-      const user_addresses = await Promise.all(
-        user?.addresses?.map(async (user_address) => {
-          if (isEth(user_address.network)) {
-            const ethereum_static_provider = get().ethereum_static_provider
-            if (!ethereum_static_provider) return user_address
-            const balance = await getEthNativeTokenBalance(
-              user_address.address,
-              ethereum_static_provider,
-            )
-            const unit_balance = balance.toString()
-            return { ...user_address, balance, unit_balance }
-          }
-          if (isSol(user_address.network)) {
-            const solana_static_provider = get().solana_static_provider
-            if (!solana_static_provider) return user_address
-            const balance = await getSolNativeTokenBalance(
-              user_address.address,
-              solana_static_provider,
-            )
-            const unit_balance = balance.toString()
-            return { ...user_address, balance, unit_balance }
-          }
-          return user_address
-        }) || [],
-      )
-      user.addresses = user_addresses
-      get().setUser(user)
-    }
   },
 
   createUsername: async (username: string) => {
