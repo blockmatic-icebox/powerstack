@@ -60,6 +60,25 @@ export const FormTextarea = styled('textarea', {
   },
 })
 
+const ProfileTabs = styled(Tabs.List, {
+  borderBottom: '1px solid #E7E9ED',
+  '& button': {
+    bg: 'transparent',
+    border: 'none',
+    borderBottom: '2px solid transparent',
+    cursor: 'pointer',
+    fontSize: 16,
+    px: '$small',
+    pb: '$small',
+    transition: 'border 400ms',
+    '&[data-state="active"]': {
+      borderBottomColor: '$044-bff',
+      color: '$044-bff',
+      fontWeight: 700,
+    }
+  }
+})
+
 const FormStatusMessage = styled('p', { color: '$error' })
 
 const FormSchema = z.object({
@@ -88,11 +107,11 @@ const Profle: DefaultSsrPage = () => {
 
   return (
     <Tabs.Root defaultValue="profile" orientation="vertical">
-      <Tabs.List aria-label="Profile Tabs">
+      <ProfileTabs aria-label="Profile Tabs">
         <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
         <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
         <Tabs.Trigger value="security">Security</Tabs.Trigger>
-      </Tabs.List>
+      </ProfileTabs>
       <Tabs.Content value="profile">
         {/* profile badge */}
         <div>
