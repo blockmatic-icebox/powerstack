@@ -105,24 +105,30 @@ const SidebarLink = styled(Link, {
 })
 
 export const Sidebar = () => {
-  const { show_sidebar, user } = useAppEngine()
+  const { show_sidebar, user, setShowLoginModal, setloginModalMessage } = useAppEngine()
   const router = useRouter()
   const current_path = router.asPath.split('?')[0]
 
-  console.log('Sidebar user', user)
-
   return (
-    <SidebarContainer show={show_sidebar}>
+    <SidebarContainer show={true}>
       <SidebarContent>
         <WalletBoxContainer>
           <WalletBoxHeader>
             <WalletBoxTitle>Account</WalletBoxTitle>
           </WalletBoxHeader>
-          {user?.user_addresses?.map((user_address, idx) => (
+          {user?.addresses?.map((user_address, idx) => (
             <WalletBox key={idx} address={user_address.address} />
           ))}
           <WalletFooter>
-            <button type="button">+ Connect new wallet</button>
+            <button
+              type="button"
+              onClick={() => {
+                setloginModalMessage('Add new wallet')
+                setShowLoginModal(true)
+              }}
+            >
+              + Connect new wallet
+            </button>
           </WalletFooter>
         </WalletBoxContainer>
         <SidebarNav>
@@ -130,7 +136,7 @@ export const Sidebar = () => {
             <li>
               <SidebarLink
                 active={current_path === '/profile'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/profile"
               >
                 <AppsIcon /> Profile
@@ -139,7 +145,7 @@ export const Sidebar = () => {
             <li>
               <SidebarLink
                 active={current_path === '/wallet'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/wallet"
               >
                 <WalletIcon />
@@ -148,8 +154,18 @@ export const Sidebar = () => {
             </li>
             <li>
               <SidebarLink
+                active={current_path === '/mint'}
+                // disabled={user ? false : true}
+                href="/mint"
+              >
+                <WalletIcon />
+                Mint
+              </SidebarLink>
+            </li>
+            <li>
+              <SidebarLink
                 active={current_path === '/marketplace'}
-                disabled={user ? false : true}
+                // disabled={user ? false : true}
                 href="/marketplace"
               >
                 <CartIcon />

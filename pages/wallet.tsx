@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import * as Tabs from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs'
 
 const Wallet: NextPage = () => {
   return (
@@ -33,7 +33,9 @@ const Wallet: NextPage = () => {
                 <p>9,500 USDT</p>
                 <p>1,00 US$</p>
                 <p>-0,01 %</p>
-                <button type="button" onClick={() => console.log('💼 start transfer')}>Transfer Now</button>
+                <button type="button" onClick={() => console.log('💼 start transfer')}>
+                  Transfer Now
+                </button>
               </div>
             </main>
           </div>

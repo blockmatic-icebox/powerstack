@@ -14,8 +14,8 @@ const ButtonGroup = styled('div', {
 
 export const getServerSideProps = defaultGetServerSideProps
 
-const AccountPage: DefaultSsrPage = ({ user }) => {
-  const { createUsername } = useAppEngine()
+const AccountPage: DefaultSsrPage = () => {
+  const { createUsername, user } = useAppEngine()
   const [username, setUsername] = useState('')
   return (
     <>

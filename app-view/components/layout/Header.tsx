@@ -115,7 +115,7 @@ const BellButton = styled('button', {
 })
 
 export const Header = () => {
-  const { setShowLoginModal, show_sidebar, setShowSidebar } = useAppEngine()
+  const { setShowLoginModal, show_sidebar, setShowSidebar, setloginModalMessage } = useAppEngine()
 
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
@@ -143,7 +143,14 @@ export const Header = () => {
               </option>
             ))}
           </select> */}
-          <Button onClick={() => setShowLoginModal(true)}>Login</Button>
+          <Button
+            onClick={() => {
+              setloginModalMessage('Login')
+              setShowLoginModal(true)
+            }}
+          >
+            Login
+          </Button>
           <ProfilePopover />
         </RightMenu>
       </NavContent>

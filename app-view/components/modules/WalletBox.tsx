@@ -19,7 +19,7 @@ const Container = styled('div', {
 
 const PlaceholderImage = styled('div', {
   flexShrink: 0,
-  mr: '$x-small'
+  mr: '$x-small',
 })
 
 const Address = styled('p', {
@@ -45,16 +45,16 @@ const AddressName = styled('p', {
     isActive: {
       true: {
         '&:before': {
-          bg: '$success'
-        }
+          bg: '$success',
+        },
       },
       false: {
         '&:before': {
-          bg: '$error'
-        }
-      }
-    }
-  }
+          bg: '$error',
+        },
+      },
+    },
+  },
 })
 
 const AddressActions = styled('div', {
@@ -84,7 +84,7 @@ const Tooltip = styled('p', {
   position: 'absolute',
   textAlign: 'center',
   width: 180,
-  zIndex: 101
+  zIndex: 101,
 })
 
 export const WalletBox = ({ address }: WalletBoxProps) => {
@@ -117,10 +117,14 @@ export const WalletBox = ({ address }: WalletBoxProps) => {
         <AddressName isActive={true}>Metamask Wallet</AddressName>
       </div>
       <AddressActions>
-        <CopyButton aria-label="Copy Address" type="button" onClick={copyWalletAddress}><CopyDocumentIcon /></CopyButton>
+        <CopyButton aria-label="Copy Address" type="button" onClick={copyWalletAddress}>
+          <CopyDocumentIcon />
+        </CopyButton>
         {show_tooltip && <Tooltip>Address copied successfully!</Tooltip>}
         {/* ToDo: add the correct link here */}
-        <ExternalLink target="_blank" aria-label="Go to address external link" href="#"><ArrowUpRight /></ExternalLink>
+        <ExternalLink target="_blank" aria-label="Go to address external link" href="#">
+          <ArrowUpRight />
+        </ExternalLink>
       </AddressActions>
     </Container>
   )

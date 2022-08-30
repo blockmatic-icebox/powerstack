@@ -7,14 +7,15 @@ export type URL = string
 export type AppLoginMethod =
   | 'web2_twitter'
   | 'web3_solana'
-  | 'web3_anchor'
+  | 'web3_antelope'
   | 'web3_metamask'
   | 'web3_auth'
 export interface AppUser {
+  account_id: string
+  session_id: string
   username?: string
-  jwt: string
-  auth_method: AppLoginMethod
-  user_addresses: AppUserAddress[]
+  auth_jwt: string
+  addresses: AppUserAddress[]
 }
 export interface AppUserAddress {
   address: string
@@ -52,4 +53,12 @@ export type AppNetworks = {
   readonly mumbai: AppNetwork
   readonly eos: AppNetwork
   readonly wax: AppNetwork
+}
+
+export interface Coin {
+  name: string
+  symbol: string
+  usd_price: string
+  price_change_1h: string
+  coingecko_key: string
 }

@@ -76,13 +76,18 @@ export const AuthModal = () => {
     web3authLogin,
     setShowLoginModal,
     show_login_modal,
+    login_modal_message,
   } = useAppEngine()
   const location = useLocation()
 
   return (
-    <Modal handleClose={() => setShowLoginModal(false)} show={show_login_modal && !user} width={544}>
+    <Modal
+      handleClose={() => setShowLoginModal(false)}
+      show={show_login_modal && !user}
+      width={544}
+    >
       <WalletCard>
-      <Title>Login</Title>
+        <Title>{login_modal_message || 'Login'}</Title>
         <LoginButton css={{ mb: '$small' }} onClick={loginWithPhantom} variant="panthom">
           <PhantonIcon />
           Login with Phantom
@@ -96,7 +101,7 @@ export const AuthModal = () => {
           Login with Anchor
         </LoginButton>
         <LoginButton css={{ mb: '$small' }} onClick={web3authLogin} variant="web3auth">
-        <Web3authIcon />
+          <Web3authIcon />
           Login with Web3Auth
         </LoginButton>
 

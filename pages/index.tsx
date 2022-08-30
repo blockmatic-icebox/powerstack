@@ -5,17 +5,19 @@ import { formatAddress } from '~/app-view/library/uiux'
 export const getServerSideProps = defaultGetServerSideProps
 
 const HomePage: DefaultSsrPage = () => {
-  const { user } = useAppEngine()
-  const user_data = { ...user, jwt: user?.jwt ? formatAddress(user?.jwt) : 'none' }
+  const { user, coins } = useAppEngine()
+  const user_data = { ...user, auth_jwt: user?.auth_jwt ? formatAddress(user?.auth_jwt) : 'none' }
 
   return (
     <>
-      <h2>Home Sweet Home</h2>
+      <h2>Home Sweet SSR Home</h2>
       <br />
       <hr />
       <br />
-      <h3>user data: </h3>
+      <h3>user data ssr: </h3>
       <pre>{JSON.stringify(user_data, null, 2)}</pre>
+      <h3>coins ssr: </h3>
+      <pre>{JSON.stringify(coins, null, 2)}</pre>
     </>
   )
 }
