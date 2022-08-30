@@ -7,27 +7,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@master
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
         with:
-          ref: ${{ github.ref }}
-      
-      - name: Use Node.js 16
-        uses: actions/setup-node@v3
+          accessToken: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          urls: 'https://www.foo.software,https://www.foo.software/contact'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
         with:
-          node-version: 16
-      
-      - name: Install dependencies
-        run: |
-          yarn add global @lhci/cli@0.9.x
-          yarn run build
-
-      - name: Run Audit Lighthouse
-        run: |
-          yarn add global && yarn add global @lhci/cli@0.9.x
-          yarn lhci autorun --config=./lighthouserc-ci.js 
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
-     
-      - uses: actions/upload-artifact@master
-        with:
-          name: report
-          path: './report'
+          name: Lighthouse reports
+          path: ${{ github.workspace }}/tmp/artifacts
