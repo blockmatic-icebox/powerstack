@@ -5,31 +5,29 @@ jobs:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: mkdir -p /tmp/artifacts
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      
       - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          outputDirectory: /tmp/artifacts
-      - name: yarn install, build
+      
+      - name: Install dependencies
         run: |
           yarn add global @lhci/cli@0.9.x
           yarn run build
+
       - name: Run audit Lighthouse desktop 
         run: |
           yarn lhci:desktop
-          yarn run lhci autorun --config=./lighthouserc-ci.js 
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
+          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
       - name: Run audit Lighthouse mobile 
         run: |
           yarn lhci:mobile
-          yarn run lhci autorun --config=./lighthouserc-ci.js 
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
-      - name: Upload artifacts
-        uses: actions/upload-artifact@master
-        with:
-          name: Lighthouse reports
-          path: /tmp/artifacts
+          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
+      
