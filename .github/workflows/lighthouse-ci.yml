@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.ref }}
       
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -20,14 +20,14 @@ jobs:
           yarn add global @lhci/cli@0.9.x
           yarn run build
 
-      - name: Run audit Lighthouse desktop 
+      - name: Run Audit Lighthouse
         run: |
-          yarn lhci:desktop
+          yarn add global && yarn add global @lhci/cli@0.9.x
+          yarn lhci autorun --config=./lighthouserc-ci.js 
         env:
           LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
-      - name: Run audit Lighthouse mobile 
-        run: |
-          yarn lhci:mobile
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
-      
+     
+      - uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: './report'
