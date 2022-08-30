@@ -90,7 +90,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
         signed_message,
         auth_method,
       })
-
+      await get().fetchUserBalances()
       set({ web3auth_user })
     })
 
