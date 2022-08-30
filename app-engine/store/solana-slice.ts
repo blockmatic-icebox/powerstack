@@ -16,6 +16,7 @@ export type SolanaState = {
 
 export type SolanaActions = {
   initSolana: () => void
+  initSolanaProvider: () => void
   loginWithPhantom: () => Promise<void>
   mintOnSolana: () => Promise<void>
 }
@@ -36,6 +37,9 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
     const solana_static_provider = new Connection(app_networks.solana.rpc_target)
     set({ solana_static_provider })
     app_logger.log('🌞 solana slice initialized')
+  },
+  initSolanaProvider: () => {
+    if (!get().solana_static_provider) get().initSolana()
   },
   loginWithPhantom: async () => {
     app_logger.log('🌞 login with phantom')
@@ -63,6 +67,7 @@ export const createSolanaSlice: StoreSlice<SolanaStore> = (set, get) => ({
         auth_method,
         address,
       })
+      await get().fetchUserBalances()
     } catch (err) {
       console.error(err)
     }

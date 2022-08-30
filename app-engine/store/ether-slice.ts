@@ -14,6 +14,7 @@ export type EtherState = {
 
 export type EtherActions = {
   initEthers: () => void
+  initEtherProvider: () => void
   loginWithMetamask: () => Promise<void>
   signMessageWithEthers: (message: string) => Promise<string>
   mintOnEvm: () => Promise<void>
@@ -38,6 +39,9 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
     set({ ethereum_static_provider })
     app_logger.log('🇪🇹 ether state initialized')
   },
+  initEtherProvider: () => {
+    if (!get().ethereum_static_provider) get().initEthers()
+  },
   loginWithMetamask: async () => {
     app_logger.log('🇪🇹 login with metamask')
     if (!exec_env.ethereum) throw new Error('Please install the metamask extension to login')
@@ -60,6 +64,7 @@ export const createEtherSlice: StoreSlice<EtherStore> = (set, get) => ({
       signed_message,
       auth_method,
     })
+    await get().fetchUserBalances()
   },
   signMessageWithEthers: async (message: string) => {
     app_logger.log('🇪🇹 sign message with ethers', message)

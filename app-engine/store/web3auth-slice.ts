@@ -116,7 +116,7 @@ export const createWeb3AuthSlice: StoreSlice<Web3AuthSlice> = (set, get) => ({
     app_logger.log('🔑 user logged in')
   },
   web3authLogout: async () => {
-    await get().web3auth?.logout()
+    if (get().web3auth_user) await get().web3auth?.logout()
   },
   web3authGetUserInfo: async () => {},
   web3authGetAccounts: async () => {},

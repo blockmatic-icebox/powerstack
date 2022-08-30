@@ -30,6 +30,44 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   },
   fetchUserBalances: async () => {
     app_logger.log('🤵🏻‍♂️ gettting account balances')
+    const user = get().user
+    console.log('#######', { user })
+    if (user) {
+      const user_addresses = await Promise.all(
+        user?.addresses?.map(async (user_address) => {
+          console.log(' %%%%%%%%%%%%%%%%%%%% user_address', {
+            isEth: isEth(user_address.network),
+            isSol: isSol(user_address.network),
+          })
+          if (isEth(user_address.network)) {
+            get().initEtherProvider()
+            let ethereum_static_provider = get().ethereum_static_provider
+            if (!ethereum_static_provider) return user_address
+            const balance = await getEthNativeTokenBalance(
+              user_address.address,
+              ethereum_static_provider,
+            )
+            const unit_balance = balance.toString()
+            return { ...user_address, balance, unit_balance }
+          }
+          if (isSol(user_address.network)) {
+            get().initSolanaProvider()
+            const solana_static_provider = get().solana_static_provider
+            if (!solana_static_provider) return user_address
+            const balance = await getSolNativeTokenBalance(
+              user_address.address,
+              solana_static_provider,
+            )
+            const unit_balance = balance.toString()
+            return { ...user_address, balance, unit_balance }
+          }
+          return user_address
+        }) || [],
+      )
+      console.log('&&&&&&&&&&&&&&&&&&&&&', user_addresses)
+      user.addresses = user_addresses
+      get().setUser(user)
+    }
   },
 
   createUsername: async (username: string) => {
