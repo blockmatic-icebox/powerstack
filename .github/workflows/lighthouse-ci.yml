@@ -7,15 +7,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@master
-        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+        run: mkdir -p /tmp/artifacts
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
           accessToken: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          outputDirectory: /tmp/artifacts
           urls: 'https://www.foo.software,https://www.foo.software/contact'
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
           name: Lighthouse reports
-          path: ${{ github.workspace }}/tmp/artifacts
+          path: /tmp/artifacts
