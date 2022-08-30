@@ -3,6 +3,7 @@ WORKDIR /usr/src/app
 COPY package.json .
 COPY yarn*.lock .
 RUN yarn --ignore-optional --frozen-lockfile install
+RUN yarn add -D @swc/cli @swc/core
 COPY . .
 RUN yarn build
 
