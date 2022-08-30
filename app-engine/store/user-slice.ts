@@ -31,14 +31,9 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
   fetchUserBalances: async () => {
     app_logger.log('🤵🏻‍♂️ gettting account balances')
     const user = get().user
-    console.log('#######', { user })
     if (user) {
       const user_addresses = await Promise.all(
         user?.addresses?.map(async (user_address) => {
-          console.log(' %%%%%%%%%%%%%%%%%%%% user_address', {
-            isEth: isEth(user_address.network),
-            isSol: isSol(user_address.network),
-          })
           if (isEth(user_address.network)) {
             get().initEtherProvider()
             let ethereum_static_provider = get().ethereum_static_provider
@@ -64,7 +59,6 @@ export const createUserSlice: StoreSlice<User> = (set, get) => ({
           return user_address
         }) || [],
       )
-      console.log('&&&&&&&&&&&&&&&&&&&&&', user_addresses)
       user.addresses = user_addresses
       get().setUser(user)
     }

@@ -116,10 +116,10 @@ export const Sidebar = () => {
           <WalletBoxHeader>
             <WalletBoxTitle>Account</WalletBoxTitle>
           </WalletBoxHeader>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-          {/* {user?.addresses?.map((user_address, idx) => (
+          {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+          {user?.addresses?.map((user_address, idx) => (
             <WalletBox key={idx} address={user_address.address} />
-          ))} */}
+          ))}
           <WalletFooter>
             <button
               type="button"
