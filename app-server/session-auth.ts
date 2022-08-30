@@ -35,10 +35,7 @@ const login = async (login_payload: CreateSessionParams): Promise<LoginResponse>
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login_payload),
     })
-    console.log('login_response', login_response)
     const { token, error } = login_response
-    console.log({ token, error })
-
     if (error || !token) throw error
 
     return { token, error }
