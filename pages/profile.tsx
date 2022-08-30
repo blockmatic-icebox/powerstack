@@ -40,9 +40,10 @@ const FormInput = styled(Input, {
 })
 
 const FormLabel = styled('label', {
+  color: '#404467',
   fontSize: 14,
-  left: 24,
-  m: 0,
+  mb: '$x-small',
+  mt: 0,
   p: 0,
 })
 
@@ -53,6 +54,7 @@ const FormTextarea = styled('textarea', {
   fontSize: 16,
   fontWeight: 600,
   p: '$x-small $regular',
+  minHeight: 140,
   width: '100%',
   '&:hover, &:focus': {
     outline: 'none',
@@ -93,7 +95,43 @@ const TabContent = styled(Tabs.Content, {
 const Badge = styled('div', {
   alignItems: 'center',
   display: 'flex',
+  columnGap: '$small',
+  mb: '$large',
+  '& h3': {
+    mb: '$xxx-small',
+    mt: 0,
+  },
+  '& p': {
+    mb: '$xxx-small',
+    mt: 0,
+  },
+  '& a': {
+    color: '$044-bff',
+    mt: 0,
+  }
+})
 
+const FormTitle = styled('h3', {
+  borderBottom: '1px solid #E7E9ED',
+  fontSize: 24,
+  fontWeight: 600,
+  pb: '$regular',
+  mb: '$regular'
+})
+
+const StyledForm = styled('form', {
+  maxWidth: 465,
+})
+
+const SaveButton = styled('button', {
+  bg: '$044-bff',
+  border: 'none',
+  borderRadius: '$radius-14',
+  color: 'white',
+  cursor: 'pointer',
+  fontSize: 16,
+  fontWeight: 600,
+  p: '$small $regular',
 })
 
 const FormSchema = z.object({
@@ -104,6 +142,7 @@ const FormSchema = z.object({
     .min(1, { message: "Email or username can't be empty" }),
   bio: z.string({ required_error: "This field is required", }),
 })
+
 type FormSchemaType = z.infer<typeof FormSchema>;
 
 const Profle: DefaultSsrPage = () => {
@@ -144,8 +183,8 @@ const Profle: DefaultSsrPage = () => {
             <Link href="#">Change profile NFT</Link>
           </div>
         </Badge>
-        <h3>Account Details</h3>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <FormTitle>Account Details</FormTitle>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
             <FormLabel htmlFor="username">User Name</FormLabel>
             <FormInput
@@ -166,19 +205,19 @@ const Profle: DefaultSsrPage = () => {
           </InputGroup>
           <InputGroup>
             <FormLabel htmlFor="bio">Bio</FormLabel>
-            <FormInput
+            <FormTextarea
               id="bio"
               {...register("bio")}
             />
             {errors.bio && <FormStatusMessage>{errors.bio.message}</FormStatusMessage>}
           </InputGroup>
-          <button
-            type="button"
+          <SaveButton
+            type="submit"
             disabled={isSubmitting}
           >
             Save Changes
-          </button>
-        </form>
+          </SaveButton>
+        </StyledForm>
       </TabContent>
       <TabContent value="notifications">
         <h1>Notifications</h1>
