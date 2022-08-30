@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@master
       - run: mkdir /tmp/artifacts
       - name: Run Lighthouse
-        uses: ronnythedev/powerstack-next
+        uses: ronnythedev/powerstack-next@main
         with:
           outputDirectory: /tmp/artifacts
           urls: 'http://localhost:3000'
