@@ -1,5 +1,5 @@
-export const light_theme = {
-  "name": "light",
+export const dark_theme = {
+  "name": "dark",
   "theme": {
     "colors": {
       "primary": "#485a3d",

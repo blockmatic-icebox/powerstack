@@ -507,7 +507,7 @@ export type GetMyThemesQueryVariables = Exact<{
 }>;
 
 
-export type GetMyThemesQuery = { colors?: Array<{ hex?: string | null, name?: string | null } | null> | null, gradients?: Array<{ name?: string | null, colors?: Array<{ stop?: number | null, color?: { hex?: string | null } | null } | null> | null } | null> | null, shadows?: Array<{ name?: string | null, layers?: Array<{ x?: number | null, y?: number | null, blur?: number | null, spread?: number | null } | null> | null } | null> | null, borders?: Array<{ name?: string | null, style?: string | null, width?: number | null, color?: { hex?: string | null } | null } | null> | null, radii?: Array<{ name?: string | null, value?: string | null } | null> | null, spaces?: Array<{ name?: string | null, value?: string | null } | null> | null, durations?: Array<{ name?: string | null, value?: string | null } | null> | null, easeCurves?: Array<{ name?: string | null, value?: { x1?: number | null, y1?: number | null, x2?: number | null, y2?: number | null } | null } | null> | null, typefaces?: Array<{ name?: string | null, value?: string | null } | null> | null, textstyles?: Array<{ name?: string | null, fontFamily?: { name?: string | null, value?: string | null } | null } | null> | null, transforms?: Array<{ name?: string | null, value?: string | null, origin?: string | null } | null> | null, texts?: Array<{ name?: string | null, value?: string | null } | null> | null, icons?: Array<{ name?: string | null, svg?: string | null, css?: string | null } | null> | null };
+export type GetMyThemesQuery = { colors?: Array<{ hex?: string | null, name?: string | null } | null> | null, gradients?: Array<{ name?: string | null, colors?: Array<{ stop?: number | null, color?: { hex?: string | null } | null } | null> | null } | null> | null, shadows?: Array<{ name?: string | null, layers?: Array<{ x?: number | null, y?: number | null, blur?: number | null, spread?: number | null , color?: Color} | null> | null } | null> | null, borders?: Array<{ name?: string | null, style?: string | null, width?: number | null, color?: { hex?: string | null } | null } | null> | null, radii?: Array<{ name?: string | null, value?: string | null } | null> | null, spaces?: Array<{ name?: string | null, value?: string | null } | null> | null, durations?: Array<{ name?: string | null, value?: string | null } | null> | null, easeCurves?: Array<{ name?: string | null, value?: { x1?: number | null, y1?: number | null, x2?: number | null, y2?: number | null } | null } | null> | null, typefaces?: Array<{ name?: string | null, value?: string | null } | null> | null, textstyles?: Array<{ name?: string | null, fontFamily?: { name?: string | null, value?: string | null } | null } | null> | null, transforms?: Array<{ name?: string | null, value?: string | null, origin?: string | null } | null> | null, texts?: Array<{ name?: string | null, value?: string | null } | null> | null, icons?: Array<{ name?: string | null, svg?: string | null, css?: string | null } | null> | null };
 
 
 export const ThemeGenThemesDocument = gql`
@@ -543,6 +543,9 @@ export const GetMyThemesDocument = gql`
       y
       blur
       spread
+      color {
+        hex
+      }
     }
   }
   borders(themeId: $themes) {
