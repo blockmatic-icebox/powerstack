@@ -10,18 +10,24 @@ jobs:
       - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          accessToken: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          outputDirectory: /tmp/artifacts
           node-version: 16
-      - name: yarn install
+          outputDirectory: /tmp/artifacts
+      - name: yarn install, build
         run: |
           yarn add global @lhci/cli@0.9.x
           yarn run build
-      - name: run Lighthouse CI 
+      - name: Run audit Lighthouse desktop 
         run: |
-          yarn add global && yarn add global @lhci/cli@0.9.x
+          yarn lhci:desktop
           yarn run lhci autorun --config=./lighthouserc-ci.js 
-        
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
+      - name: Run audit Lighthouse mobile 
+        run: |
+          yarn lhci:mobile
+          yarn run lhci autorun --config=./lighthouserc-ci.js 
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
