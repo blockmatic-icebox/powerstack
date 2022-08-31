@@ -25,11 +25,8 @@ jobs:
       - name: Build website
         run: yarn run build
 
-      - name: Start server for lighthouse
-        run: sudo yarn run start-server-for-lighthouse
-      
-      - name: Run Lighthouse
-        run: yarn run lighthouse
+      - name: Start server and run Lighthouse
+        run: sudo yarn run lighthouse
       
       # - name: Upload artifacts
       #   uses: actions/upload-artifact@master
