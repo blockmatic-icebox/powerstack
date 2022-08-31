@@ -39,6 +39,8 @@ themes_spinner.start();
     const theme_name = fetched_themes?.find(t => t?.id === theme)?.name ?? 'default'
   
     if (error) throw new Error(error)
+
+    console.log(`\n ✔️  ${theme_name} Theme Found! Preparing it for for digestion ... `)
     
     processTheme({
       name: theme_name.toLowerCase(),
@@ -49,8 +51,9 @@ themes_spinner.start();
 
 
 themes_spinner.stop();
-console.log('\n\n')
-const toolabs_theme_spinner = setSpinner(` %s 〰️ Processing Toolabs JSON Themes...`)
+console.log('\n') // new-line
+
+const toolabs_theme_spinner = setSpinner(` %s 〰️ Processing Toolabs JSON Themes ...`)
 toolabs_theme_spinner.setSpinnerString(spinner_string)
 toolabs_theme_spinner.start()
 
@@ -58,7 +61,7 @@ toolabs_theme_spinner.start()
 
 
 // Functions Starts Here //
-
+// TODO: Make library dir... 
 
 
 function setSpinner(message: any) {
@@ -118,7 +121,6 @@ async function getThemeById(theme_id: string): Promise<{ data: Toolabs.GetMyThem
 
     return { data: data as Toolabs.GetMyThemesQuery, error: '' }
   } catch (error) {
-    console.log('(error as Error).message', (error as Error).message)
     return { data: {} as Toolabs.GetMyThemesQuery, error: (error as Error).message }
   }
 }
@@ -209,7 +211,7 @@ function processTheme(theme: ToolabsTheme) {
         break
       case 'icons':
         const pre_icons = theme_object[t_key] as Toolabs.Icon[]
-        console.log('pre_icons', pre_icons)
+
         pre_icons.forEach(icon => {
           const normalized_name = icon.name?.replace(' ', '-') as string
           const formatted_name = normalized_name.toLowerCase().split('-')[0] as string
@@ -237,7 +239,10 @@ export default ${react_name}`
     // @ts-ignore
     if (Object.keys(new_theme.theme[key]).length === 0) delete new_theme.theme[key]
   })
-  console.log(JSON.stringify(new_theme, null, 2))
+
+  toolabs_theme_spinner.stop()
+  console.log(` ✔️  Toolabs ${theme.name} Theme Digested successfully. Preparing for Writing 📝`)
+
   generateTheme(new_theme, icons)
 }
 
@@ -251,10 +256,7 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
     })
   }
 
-  toolabs_theme_spinner.stop()
-  console.log(`
-  ✔️  Toolabs JSON Themes Digested successfully 🪄🎉`)
-  const writing_theme_spinner = setSpinner(` %s 〰️ Writting Toolabs JSON ${name} Theme for stitches...`)
+  const writing_theme_spinner = setSpinner(` %s 〰️ Writing Toolabs ${name.toUpperCase()} Theme for Stitches 📝🪡 `)
   writing_theme_spinner.setSpinnerString(spinner_string)
   writing_theme_spinner.start()
 
@@ -269,25 +271,27 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
       if (err) {
         console.error(err)
         writing_theme_spinner.stop()
-        throw new Error(
-          `
-          ❌ There was problem trying to creating the file 💔. Check if values are valid.`,
-          )
-        }
-
-        writing_theme_spinner.stop()
-      console.log(`✔️  Stitches file for ${name} theme created successfully 🪄🎉`)
+        console.log('\n') // new-line
+        throw new Error(` ❌ There was problem trying to creating the file 💔. Check if values are valid.`)
+      }
+      
+      writing_theme_spinner.stop()
+      console.log(` ✔️  Stitches file for ${name.toUpperCase()} theme created successfully 🪡🪄🎉`)
+      console.log('\n') // new-line
     },
-  )
-
-  writing_theme_spinner.stop()
-
-  // We create files if we found icons
+    )
+    
+    const icons_spinner = setSpinner(` %s 👀 for Icons...`)
+    icons_spinner.setSpinnerString(spinner_string)
+    icons_spinner.start();
+    
+    // We create files if we found icons
   if (icons.length !== 0) {
-    console.log('\n\n')
-    const writting_icons_spinner = setSpinner('%s 〰️ Icons Found! Generating Icon React Files 🔥...')
-    writting_icons_spinner.setSpinnerString(spinner_string)
-    writting_icons_spinner.start()
+    console.log('\n') // new-line
+    icons_spinner.stop()
+    const writing_icons_spinner = setSpinner(` %s 〰️ Icons Found! Generating Icon React Files for ${name.toUpperCase()} theme 🔥`)
+    writing_icons_spinner.setSpinnerString(spinner_string)
+    writing_icons_spinner.start()
 
     icons.forEach(({ id, svg }) => {
       fs.writeFile(
@@ -296,15 +300,13 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
         (err) => {
           if (err) {
             console.error(err)
-            writting_icons_spinner.stop()
-            throw new Error(
-              `
-              ❌ There was problem trying to creating the Icon File 💔. Check if values are valid.`,
-              )
-            }
-    
-            writting_icons_spinner.stop()
-          console.log(`✔️ ${id} created successfully 🪄🎉`)
+            writing_icons_spinner.stop()
+            console.log('\n') // new-line
+            throw new Error(` ❌ There was problem trying to creating the Icon File 💔. Check if values are valid.`)
+          }
+          
+          writing_icons_spinner.stop()
+          console.log(` 🎨 ${id} created successfully for ${name.toUpperCase()} theme 📦`)
         },
         )
     })
@@ -315,19 +317,21 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
       (err) => {
         if (err) {
           console.error(err)
-          writting_icons_spinner.stop()
-          throw new Error(
-            `
-            ❌ There was problem trying to creating the file 💔. Check if values are valid.`,
-          )
+          writing_icons_spinner.stop()
+          console.log('\n') // new-line
+          throw new Error(` ❌ There was problem trying to creating the file 💔. Check if values are valid.`)
         }
 
-        writting_icons_spinner.stop()
-        console.log(`✔️  Stitches file for ${name} theme created successfully 🪄🎉`)
+        writing_icons_spinner.stop()
+        console.log(` ✔️  Icons for ${name.toUpperCase()} theme created successfully 🪄🎉`)
       },
     )
-    writting_icons_spinner.stop()
+  } else {
+    icons_spinner.stop()
+    console.log(` ⚠️ No Icons Found for ${name.toUpperCase()} theme.`)
   }
+
+  console.log('\n') // new-line
 }
 
 export { Toolabs }
