@@ -8,15 +8,15 @@ import { light_theme } from './themes/light-theme'
 // NOTE: Light theme is default theme if Dark is available.
 const getFontSizes = () => {
   let fontSizes: any = {}
-  for (const property in light_theme.theme.typeStyles) {
-    const tempFontSize: string = light_theme.theme.typeStyles[property as keyof object]['fontSize']
+  for (const property in light_theme.theme.textstyles) {
+    const tempFontSize: string = light_theme.theme.textstyles[property as keyof object]['fontSize']
     fontSizes[property as keyof object] = tempFontSize
   }
   return fontSizes
 }
 
 export const { styled, globalCss, getCssText, config } = createStitches({
-  // TODO: To redefine typeStyles... not supported
+  // TODO: To test typeStyles redefinition... textstyles
   // @ts-ignore
   theme: {
     // NOTE: Light theme is default theme if Dark is available
