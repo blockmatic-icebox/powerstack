@@ -26,26 +26,25 @@ jobs:
         run: |
           yarn add global && yarn add global @lhci/cli@0.9.x
           yarn run lhci autorun --config=./lighthouserc-ci.js 
-      
-      # - name: Upload artifacts
-      #   uses: actions/upload-artifact@master
-      #   with:
-      #     name: Lighthouse reports
-      #     path: /tmp/artifacts
 
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v5
         with:
-          script: | 
-          
-            const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js');
-            const lighthouseOutputs = {
-              manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-              links: ${{ steps.lighthouse_audit.outputs.links }}
-            };
-            const comment = lighthouseCommentMaker({ lighthouseOutputs });
-            core.setOutput("comment", comment);
+          script: |
+            console.log("steps.lighthouse_audit", ${{ steps.lighthouse_audit }})
+            console.log("steps.lighthouse_audit.outputs", ${{ steps.lighthouse_audit.outputs }})
+            console.log("steps.lighthouse_audit.outputs.manifest", ${{ steps.lighthouse_audit.outputs.manifest }})
+            console.log("steps.lighthouse_audit.outputs.links", ${{ steps.lighthouse_audit.outputs.links }})
+          # script: | 
+          #   const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js');
+          #   const lighthouseOutputs = {
+          #     manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
+          #     links: ${{ steps.lighthouse_audit.outputs.links }}
+          #   };
+          #   const comment = lighthouseCommentMaker({ lighthouseOutputs });
+          #   core.setOutput("comment", comment);
+
       - name: Add Lighthouse stats as comment
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2.0.0
