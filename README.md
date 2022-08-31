@@ -100,7 +100,7 @@ See [theme generator](_scripts\theme-gen\index.ts) for tech details.
 
 ### File Structure
 
-```bash
+```
 .
 ├── _docs.................................... documentation files and media
 ├── _scripts................................. utility devops scripts
