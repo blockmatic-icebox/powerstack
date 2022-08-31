@@ -1,9 +1,9 @@
 module.exports = {
   ci: {
     collect: {
-      numberOfRuns: 1,
-      startServerCommand: 'yarn run start -p 3000',
-      url: ['http://localhost:3000'],
+      numberOfRuns: 3,
+      startServerCommand: 'sudo yarn run start -p 8080',
+      url: ['http://localhost:8080'],
     },
     upload: {
       //target: 'temporary-public-storage',
