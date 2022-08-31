@@ -6,6 +6,7 @@ import {
 } from 'next'
 import { AppState, app_engine } from '~/app-engine'
 import { withSessionSsr } from './session-hoc'
+import circularJSON from 'circular-json'
 export interface DefaultSessionSsrProps {
   app_engine_server_state: AppState
 }
@@ -18,10 +19,9 @@ export const defaultGetServerSideProps: GetServerSideProps = withSessionSsr<Defa
     await app_engine.getState().setUser(req.session.user || null)
     await app_engine.getState().fetchPrices()
     await app_engine.getState().fetchUserBalances()
-
     return {
       props: {
-        app_engine_server_state: JSON.parse(JSON.stringify(app_engine.getState())),
+        app_engine_server_state: JSON.parse(circularJSON.stringify(app_engine.getState())),
       },
     }
   },

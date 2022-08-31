@@ -36,7 +36,6 @@ const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promi
 }
 
 export const createApolloClient = (jwt?: string) => {
-  // console.log(`create apollo client with jwt = ${jwt}`)
   const apollo_base_url = app_args.services.graphql_api
     .replace('https://', '')
     .replace('http://', '')

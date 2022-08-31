@@ -17,9 +17,6 @@ const settings_link_styles = {
   justifyContent: 'flex-start',
   width: '100%',
   transition: 'font-weight 200ms',
-  '&:hover': {
-    fontWeight: 'bold',
-  },
   '& svg:first-child': {
     mr: '$small',
   },
