@@ -7,6 +7,7 @@ import { Input } from '~/app-view/components/base/Input'
 import { z } from 'zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { TabOptions } from '~/app-view/components/layout/Tab'
 
 export const getServerSideProps = defaultGetServerSideProps
 
@@ -61,24 +62,6 @@ const FormTextarea = styled('textarea', {
   },
 })
 
-const ProfileTabs = styled(Tabs.List, {
-  borderBottom: '1px solid #E7E9ED',
-  '& button': {
-    bg: 'transparent',
-    border: 'none',
-    borderBottom: '2px solid transparent',
-    cursor: 'pointer',
-    fontSize: 16,
-    px: '$small',
-    pb: '$small',
-    transition: 'border 400ms',
-    '&[data-state="active"]': {
-      borderBottomColor: '$044-bff',
-      color: '$044-bff',
-      fontWeight: 700,
-    }
-  }
-})
 
 const FormStatusMessage = styled('p', { color: '$error' })
 
@@ -143,6 +126,12 @@ const FormSchema = z.object({
   bio: z.string({ required_error: "This field is required", }),
 })
 
+const Tab = styled(Tabs.Trigger, {
+  px: '$small',
+  pb: '$small',
+  fontWeight: 700,
+})
+
 type FormSchemaType = z.infer<typeof FormSchema>;
 
 const Profle: DefaultSsrPage = () => {
@@ -161,11 +150,11 @@ const Profle: DefaultSsrPage = () => {
   return (
     <Tabs.Root defaultValue="profile" orientation="vertical">
       <Title>Profile Configuration</Title>
-      <ProfileTabs aria-label="Profile Tabs">
-        <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
-        <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
-        <Tabs.Trigger value="security">Security</Tabs.Trigger>
-      </ProfileTabs>
+      <TabOptions aria-label="Profile Tabs" css={{borderBottom: '1px solid #E7E9ED'}}>
+        <Tab value="profile">Profile</Tab>
+        <Tab value="notifications">Notifications</Tab>
+        <Tab value="security">Security</Tab>
+      </TabOptions>
       <TabContent value="profile">
         {/* profile badge */}
         <Badge>
