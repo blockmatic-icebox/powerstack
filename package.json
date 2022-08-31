@@ -13,8 +13,7 @@
     "graphql": "env-cmd -f ./app-engine/graphql/.env.codegen graphql-codegen --config ./app-engine/graphql/codegen.yml && eslint --fix ./app-engine/graphql/generated-sdk.ts",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "theme": "node ./_scripts/theme-gen.js",
-    "lhci:mobile": "lhci autorun",
-    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
+    "lighthouse": "lhci autorun --config=./lighthouserc-ci.js"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

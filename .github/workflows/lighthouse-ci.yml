@@ -17,12 +17,13 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Install lighthouse globally
+        run: yarn add global @lhci/cli@0.9.x
       
       - name: Run Lighthouse
-        run: |
-          yarn add global @lhci/cli@0.9.x
-          yarn run lhci autorun --config=./lighthouserc-ci.js
+        run: yarn run lighthouse
       
       # - name: Upload artifacts
       #   uses: actions/upload-artifact@master
