@@ -22,11 +22,11 @@ jobs:
       - name: Install lighthouse globally
         run: yarn add global @lhci/cli@0.9.x
 
-      - name: Build website
-        run: yarn run build
+      # - name: Build website
+      #   run: yarn run build
 
-      - name: Start server and run Lighthouse
-        run: sudo yarn run lighthouse
+      - name: Run Lighthouse
+        run: yarn run lighthouse
       
       # - name: Upload artifacts
       #   uses: actions/upload-artifact@master
