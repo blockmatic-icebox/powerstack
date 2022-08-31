@@ -6,12 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: mkdir /tmp/artifacts
+        run: mkdir /tmp/artifacts
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: yarn install
+      
       - name: Run Lighthouse
-        uses: ronnythedev/powerstack-next@main
+        run: |
+          yarn add global @lhci/cli@0.9.x
+          yarn run lhci autorun --config=./lighthouserc-ci.js
         with:
           outputDirectory: /tmp/artifacts
-          urls: 'http://localhost:3000'
       
       - name: Upload artifacts
         uses: actions/upload-artifact@master
@@ -26,7 +36,7 @@ jobs:
       #     temporaryPublicStorage: true
       #   run: |
       #     yarn add global && yarn add global @lhci/cli@0.9.x
-      #     yarn run lhci autorun --config=./lighthouserc-ci.js 
+      #     yarn run lhci autorun --config=./lighthouserc-ci.js
 
       # - name: Format lighthouse score
       #   id: format_lighthouse_score
