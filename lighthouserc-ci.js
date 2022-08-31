@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       numberOfRuns: 1,
-      startServerCommand: 'yarn start',
+      //startServerCommand: 'yarn run start-server-lighthouse',
       url: ['http://localhost:3000'],
     },
     upload: {

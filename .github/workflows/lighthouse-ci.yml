@@ -21,6 +21,9 @@ jobs:
 
       - name: Install lighthouse globally
         run: yarn add global @lhci/cli@0.9.x
+
+      - name: Start server for lighthouse
+        run: sudo yarn run start-server-for-lighthouse
       
       - name: Run Lighthouse
         run: yarn run lighthouse
