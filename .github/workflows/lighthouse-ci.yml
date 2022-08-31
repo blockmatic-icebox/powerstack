@@ -23,14 +23,12 @@ jobs:
         run: |
           yarn add global @lhci/cli@0.9.x
           yarn run lhci autorun --config=./lighthouserc-ci.js
-        with:
-          outputDirectory: /tmp/artifacts
       
-      - name: Upload artifacts
-        uses: actions/upload-artifact@master
-        with:
-          name: Lighthouse reports
-          path: /tmp/artifacts
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: Lighthouse reports
+      #     path: /tmp/artifacts
       
       # - name: run Lighthouse CI
       #   id: lighthouse_audit

@@ -6,7 +6,8 @@ module.exports = {
       url: ['http://localhost:3000/'],
     },
     upload: {
-      target: 'temporary-public-storage',
+      //target: 'temporary-public-storage',
+      target: '/tmp/artifacts',
     },
   },
 }
