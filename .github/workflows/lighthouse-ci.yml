@@ -5,7 +5,10 @@ jobs:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout repo
+        uses: actions/checkout@master
+        
+      - name: Create local directory for report
         run: mkdir /tmp/artifacts
       
       - name: Install Node.js
