@@ -35,7 +35,7 @@ themes_spinner.start();
   const fetched_themes: Toolabs.Maybe<Toolabs.Maybe<Toolabs.ThemeState>[]> = data.filter(theme => theme.name.toLowerCase().match(/^(color mode|theme color mode|colors|modes)$/)).map(theme => theme.variants)[0] || []
   
   selected_themes.split(',').forEach(async theme => {
-    const { data, error } = await getThemeById(theme)
+    const { data, error } = await getThemeById(`Default,${theme}`)
     const theme_name = fetched_themes?.find(t => t?.id === theme)?.name ?? 'default'
   
     if (error) throw new Error(error)
@@ -226,7 +226,8 @@ const ${react_name}: React.FC = (props) => (
   ${icon.svg?.replace('xmlns=\"http://www.w3.org/2000/svg\"', '{ ...props }')}
 )
 
-export default ${react_name}`
+export default ${react_name}
+`
           } as Toolabs.Icon)
         })
         break
