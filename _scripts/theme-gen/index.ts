@@ -253,7 +253,7 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
   if (icons.length !== 0) {
     icons.forEach(icon => {
       index_icon_file += `export { default as ${icon.id} } from './${icon.id}'
-      `
+`
     })
   }
 
