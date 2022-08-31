@@ -7,14 +7,8 @@ import path from 'path'
 
 import { Spinner } from 'cli-spinner'
 
-type TypeStyles = Toolabs.Maybe<{
-  fontFamily: string
-  fontSize: string
-  lineHeight: string
-  letterSpacing: string
-}>
-type Theme = Toolabs.Maybe<Toolabs.GetMyThemesQuery> & {
-  typeStyles: TypeStyles
+type Theme = Toolabs.GetMyThemesQuery & {
+  textStyles?: Toolabs.TextStyle[]
 }
 type ThemeKey = keyof Theme
 
@@ -137,31 +131,29 @@ function processTheme(theme: ToolabsTheme) {
   const icons: Toolabs.Icon[] = []
   const new_theme: ToolabsTheme = {
     name: theme.name,
-    theme: {
-      typeStyles: {} as TypeStyles,
-    },
+    theme: {},
   }
   const theme_object: Theme = theme.theme
 
   Object.keys(theme_object).forEach((t_key) => {
     // @ts-ignore
-    new_theme.theme[t_key as keyof ThemeKey] = {} as any
-    console.log('t_key', t_key)
+    new_theme.theme[t_key as keyof ThemeKey] = {} as Theme
+
     switch (t_key) {
-      case 'typeStyles':
+      case 'textstyles':
         let typeStyleLabel = ''
 
         // @ts-ignore
-        theme_object[t_key as ThemeKey]!.forEach((typeStyle: any) => {
+        theme_object[t_key as ThemeKey]!.forEach((typeStyle: Toolabs.TextStyle) => {
           Object.keys(typeStyle).forEach((style) => {
             if (style === 'name') {
-              typeStyleLabel = typeStyle[style]
+              typeStyleLabel = normalizeKeyName(typeStyle.name as string)
             } else {
               // @ts-ignore
-              new_theme.theme.typeStyles[typeStyleLabel] = {
+              new_theme.theme.textstyles[typeStyleLabel] = {
                 // @ts-ignore
-                ...new_theme.theme.typeStyles[typeStyleLabel],
-                [style]: typeStyle[style],
+                ...new_theme.theme.textstyles[typeStyleLabel],
+                [style as keyof Toolabs.TextStyle]: typeStyle[style as keyof Toolabs.TextStyle],
               }
             }
           })
@@ -170,7 +162,7 @@ function processTheme(theme: ToolabsTheme) {
       case 'easeCurves': {
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme[t_key as ThemeKey][prop.name] = prop.curve
+          new_theme.theme[t_key as ThemeKey][prop.name] = `cubic-bezier(${prop?.value?.x1}, ${prop?.value?.y1}, ${prop?.value?.x2}, ${prop?.value?.y2})`
         })
         break
       }
@@ -197,7 +189,7 @@ function processTheme(theme: ToolabsTheme) {
         // @ts-ignore
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme[t_key as ThemeKey][normalizeKeyName(prop.name)] = `linear-gradient(${prop?.colors?.map(c => `${c?.color.hex} ${c?.stop}%`).join(', ')})`
+          new_theme.theme['colors' as ThemeKey][`${normalizeKeyName(prop.name)}-gradient`] = `linear-gradient(${prop?.colors?.map(c => `${c?.color.hex} ${c?.stop}%`).join(', ')})`
         })
         break
       case 'colors':

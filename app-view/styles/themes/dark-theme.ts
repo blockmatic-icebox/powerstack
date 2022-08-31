@@ -27,10 +27,8 @@ export const dark_theme = {
       "help": "#5f59b7",
       "primary-300": "#79a45f",
       "primary-700": "#1d2319",
-      "primary-blue": "#044bff"
-    },
-    "gradients": {
-      "login": "linear-gradient(#ffffff 15%, #f9f9fb 30%)"
+      "primary-blue": "#044bff",
+      "login-gradient": "linear-gradient(#ffffff 15%, #f9f9fb 30%)"
     },
     "shadows": {
       "drop-shadow-1": "2px 2px 0px 0px #0000000a, 0px 4px 8px 0px #00000014",
@@ -66,6 +64,72 @@ export const dark_theme = {
       "slow": "360ms",
       "x-slow": "540ms"
     },
-    "easeCurves": {}
+    "easeCurves": {
+      "in-out-quint": "cubic-bezier(0.86, 0, 0.07, 1)",
+      "out-quint": "cubic-bezier(0.23, 1, 0.32, 1)",
+      "in-sine": "cubic-bezier(0.47, 0, 0.745, 0.715)"
+    },
+    "textstyles": {
+      "display-1": {
+        "fontFamilyName": "Gilroy-ExtraBold",
+        "fontSize": "48px",
+        "lineHeight": "58px",
+        "letterSpacing": "0.1em"
+      },
+      "display-2": {
+        "fontFamilyName": "Gilroy-ExtraBold",
+        "fontSize": "40px",
+        "lineHeight": "48px",
+        "letterSpacing": "0.1em"
+      },
+      "h1": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "33px",
+        "lineHeight": "40px",
+        "letterSpacing": "0.1em"
+      },
+      "h2": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "28px",
+        "lineHeight": "34px",
+        "letterSpacing": "0.1em"
+      },
+      "h3": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "23px",
+        "lineHeight": "28px",
+        "letterSpacing": "0.1em"
+      },
+      "h4": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "19px",
+        "lineHeight": "23px",
+        "letterSpacing": "0.1em"
+      },
+      "h5": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "16px",
+        "lineHeight": "19px",
+        "letterSpacing": "0.1em"
+      },
+      "body": {
+        "fontFamilyName": "Gilroy-Bold",
+        "fontSize": "16px",
+        "lineHeight": "19px",
+        "letterSpacing": "0.1em"
+      },
+      "small": {
+        "fontFamilyName": "Gilroy-SemiBold",
+        "fontSize": "13px",
+        "lineHeight": "16px",
+        "letterSpacing": "0.1em"
+      },
+      "x-small": {
+        "fontFamilyName": "Gilroy-SemiBold",
+        "fontSize": "11px",
+        "lineHeight": "13px",
+        "letterSpacing": "0.1em"
+      }
+    }
   }
 }
