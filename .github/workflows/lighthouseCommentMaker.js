@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 /**
  * @typedef {Object} Summary
@@ -31,25 +31,31 @@ const emojiScore = (/** @type { number } */ score) =>
 const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) =>
   `| ${emojiScore(score)} ${label} | ${formatScore(score)} |`
 
+const fs = require('fs')
+
 function makeComment() {
-  let info = require('../../manifest.json')
+  if (fs.existsSync('../../manifest.json')) {
+    let info = require('../../manifest.json')
 
-  const summary = info[0].summary
+    const summary = info[0].summary
 
-  const comment = `## ⚡️🏠 Lighthouse report
+    const comment = `## ⚡️🏠 Lighthouse report
+  
+     We ran Lighthouse against the changes and produced this summary:
+  
+     | Category | Score |
+     | -------- | ----- |
+     ${scoreRow('Performance', summary.performance)}
+     ${scoreRow('Accessibility', summary.accessibility)}
+     ${scoreRow('Best practices', summary['best-practices'])}
+     ${scoreRow('SEO', summary.seo)}
+     ${scoreRow('PWA', summary.pwa)}
+     `
 
-   We ran Lighthouse against the changes and produced this summary:
+    return comment
+  }
 
-   | Category | Score |
-   | -------- | ----- |
-   ${scoreRow('Performance', summary.performance)}
-   ${scoreRow('Accessibility', summary.accessibility)}
-   ${scoreRow('Best practices', summary['best-practices'])}
-   ${scoreRow('SEO', summary.seo)}
-   ${scoreRow('PWA', summary.pwa)}
-   `
-
-  return comment
+  return ''
 }
 
 module.exports = () => {
