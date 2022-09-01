@@ -4,7 +4,6 @@ import { Button } from '../base/Button'
 import { Link } from '../base/Link'
 import { useAppEngine } from '~/app-engine/index'
 import { ProfilePopover } from '../modules/ProfilePopover'
-import { app_args } from '~/app-config/app-arguments'
 
 const NavBar = styled('nav', {
   display: 'flex',

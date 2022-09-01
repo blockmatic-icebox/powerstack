@@ -3,7 +3,6 @@ import * as Toolabs from './graphql/generated-sdk'
 import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
 import fetch from 'cross-fetch'
 import fs from 'fs'
-import path from 'path'
 
 import { Spinner } from 'cli-spinner'
 
@@ -33,15 +32,15 @@ themes_spinner.start();
 
   // Any possible match for the Light/Dark Themes names...
   const fetched_themes: Toolabs.Maybe<Toolabs.Maybe<Toolabs.ThemeState>[]> = data.filter(theme => theme.name.toLowerCase().match(/^(color mode|theme color mode|colors|modes)$/)).map(theme => theme.variants)[0] || []
-  
+
   selected_themes.split(',').forEach(async theme => {
     const { data, error } = await getThemeById(`Default,${theme}`)
     const theme_name = fetched_themes?.find(t => t?.id === theme)?.name ?? 'default'
-  
+
     if (error) throw new Error(error)
 
     console.log(`\n ✔️  ${theme_name} Theme Found! Preparing it for for digestion ... `)
-    
+
     processTheme({
       name: theme_name.toLowerCase(),
       theme: data as Theme,
@@ -61,7 +60,7 @@ toolabs_theme_spinner.start()
 
 
 // Functions Starts Here //
-// TODO: Make library dir... 
+// TODO: Make library dir...
 
 
 function setSpinner(message: any) {
@@ -114,7 +113,7 @@ async function getThemeById(theme_id: string): Promise<{ data: Toolabs.GetMyThem
         themes: theme_id
       }
     })
-    
+
     // console.log(`results toolabs by getting ${theme_id} theme =>>>`, JSON.stringify(data, null, 2))
 
     if (error) throw new Error(JSON.stringify(error, null, 2))
@@ -133,7 +132,10 @@ function processTheme(theme: ToolabsTheme) {
   const icons: Toolabs.Icon[] = []
   const new_theme: ToolabsTheme = {
     name: theme.name,
-    theme: {},
+    theme: {
+      // @ts-ignore
+      space: {}
+    },
   }
   const theme_object: Theme = theme.theme
 
@@ -202,11 +204,17 @@ function processTheme(theme: ToolabsTheme) {
         })
         break
       case 'radii':
-      case 'spaces':
         // @ts-ignore
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
           new_theme.theme[t_key as ThemeKey][prop.name.toLowerCase().replace(' ', '-')] = `${prop.value ?? 0}px`
+        })
+        break
+      case 'spaces':
+        // @ts-ignore
+        theme_object[t_key]!.forEach((prop) => {
+          // @ts-ignore
+          new_theme.theme['space'][prop.name.toLowerCase().replace(' ', '-')] = `${prop.value ?? 0}px`
         })
         break
       case 'icons':
@@ -216,7 +224,7 @@ function processTheme(theme: ToolabsTheme) {
           const normalized_name = icon.name?.replace(' ', '-') as string
           const formatted_name = normalized_name.toLowerCase().split('-')[0] as string
           const react_name = `${formatted_name?.substring(0, 1).toUpperCase()}${formatted_name?.substring(1, formatted_name.length)}Icon`
-          
+
           icons.push({
             id: react_name,
             name: normalized_name,
@@ -275,17 +283,17 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
         console.log('\n') // new-line
         throw new Error(` ❌ There was problem trying to creating the file 💔. Check if values are valid.`)
       }
-      
+
       writing_theme_spinner.stop()
       console.log(` ✔️  Stitches file for ${name.toUpperCase()} theme created successfully 🪡🪄🎉`)
       console.log('\n') // new-line
     },
     )
-    
+
     const icons_spinner = setSpinner(` %s 👀 for Icons...`)
     icons_spinner.setSpinnerString(spinner_string)
     icons_spinner.start();
-    
+
     // We create files if we found icons
   if (icons.length !== 0) {
     console.log('\n') // new-line
@@ -305,13 +313,13 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
             console.log('\n') // new-line
             throw new Error(` ❌ There was problem trying to creating the Icon File 💔. Check if values are valid.`)
           }
-          
+
           writing_icons_spinner.stop()
           console.log(` 🎨 ${id} created successfully for ${name.toUpperCase()} theme 📦`)
         },
         )
     })
-    
+
     fs.writeFile(
       `./app-view/components/icons/index.ts`,
       index_icon_file,

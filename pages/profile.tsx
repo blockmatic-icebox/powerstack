@@ -89,7 +89,7 @@ const Badge = styled('div', {
     mt: 0,
   },
   '& a': {
-    color: '$044-bff',
+    color: '$primary-blue',
     mt: 0,
   }
 })
@@ -107,7 +107,7 @@ const StyledForm = styled('form', {
 })
 
 const SaveButton = styled('button', {
-  bg: '$044-bff',
+  bg: '$primary-blue',
   border: 'none',
   borderRadius: '$radius-14',
   color: 'white',

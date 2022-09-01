@@ -10,8 +10,8 @@ export const TabOptions = styled(Tabs.List, {
     fontSize: 16,
     transition: 'border 400ms',
     '&[data-state="active"]': {
-      borderBottomColor: '$044-bff',
-      color: '$044-bff',
+      borderBottomColor: '$primary-blue',
+      color: '$primary-blue',
     }
   }
 })

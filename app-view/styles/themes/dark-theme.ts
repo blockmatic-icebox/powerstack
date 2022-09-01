@@ -1,6 +1,18 @@
 export const dark_theme = {
   "name": "dark",
   "theme": {
+    "space": {
+      "none": "0px",
+      "xx-small": "9px",
+      "x-small": "14px",
+      "small": "21px",
+      "regular": "32px",
+      "large": "48px",
+      "x-large": "72px",
+      "xx-large": "108px",
+      "xxx-small": "6px",
+      "xxx-large": "162px"
+    },
     "colors": {
       "primary": "#00023e",
       "shadow-layer-1": "#00000014",
@@ -43,18 +55,6 @@ export const dark_theme = {
       "radius-40": "40px",
       "radius-24": "24px",
       "radius-14": "14px"
-    },
-    "spaces": {
-      "none": "0px",
-      "xx-small": "9px",
-      "x-small": "14px",
-      "small": "21px",
-      "regular": "32px",
-      "large": "48px",
-      "x-large": "72px",
-      "xx-large": "108px",
-      "xxx-small": "6px",
-      "xxx-large": "162px"
     },
     "durations": {
       "instant": "0ms",
