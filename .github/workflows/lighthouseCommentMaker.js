@@ -31,36 +31,25 @@ const emojiScore = (/** @type { number } */ score) =>
 const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) =>
   `| ${emojiScore(score)} ${label} | ${formatScore(score)} |`
 
-const fs = require('fs')
-const path = require('path')
-
 function makeComment() {
-  //let rawInfo = fs.readFileSync(path.resolve(__dirname, '../../manifest.json'))
-  //let info = require('../../manifest.json')
+  let info = require('../../manifest.json')
 
-  //console.log('lighthouseOutputs', JSON.stringify(info))
+  const summary = info[0].summary
 
-  //   const summary = info[0].summary
-  //   const link = lighthouseOutputs.manifest[0].url
+  const comment = `## ⚡️🏠 Lighthouse report
 
-  //   const comment = `## ⚡️🏠 Lighthouse report
+   We ran Lighthouse against the changes and produced this summary:
 
-  //  We ran Lighthouse against the changes and produced this summary:
+   | Category | Score |
+   | -------- | ----- |
+   ${scoreRow('Performance', summary.performance)}
+   ${scoreRow('Accessibility', summary.accessibility)}
+   ${scoreRow('Best practices', summary['best-practices'])}
+   ${scoreRow('SEO', summary.seo)}
+   ${scoreRow('PWA', summary.pwa)}
+   `
 
-  //  | Category | Score |
-  //  | -------- | ----- |
-  //  ${scoreRow('Performance', summary.performance)}
-  //  ${scoreRow('Accessibility', summary.accessibility)}
-  //  ${scoreRow('Best practices', summary['best-practices'])}
-  //  ${scoreRow('SEO', summary.seo)}
-  //  ${scoreRow('PWA', summary.pwa)}
-
-  //  *Lighthouse ran against [${link}](${link})*
-  //  `
-
-  //return comment
-
-  return 'finished'
+  return comment
 }
 
 module.exports = () => {
