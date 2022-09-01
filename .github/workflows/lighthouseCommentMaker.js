@@ -36,9 +36,9 @@ const path = require('path')
 
 function makeComment() {
   //let rawInfo = fs.readFileSync(path.resolve(__dirname, '../../manifest.json'))
-  let info = require('../../manifest.json')
+  //let info = require('../../manifest.json')
 
-  console.log('lighthouseOutputs', JSON.stringify(info))
+  //console.log('lighthouseOutputs', JSON.stringify(info))
 
   //   const summary = info[0].summary
   //   const link = lighthouseOutputs.manifest[0].url
