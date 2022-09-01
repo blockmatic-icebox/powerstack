@@ -33,6 +33,8 @@ Demo <https://powerstack-next.vercel.app/>
 - Base ui components with forms validation.
 - Internationalization with i18next.
 - TypeScript, ESLint, Prettier and Husky for code quality.
+- Read coin prices from CoinGecko API.
+- Docker support and Taskfile.
 
 ## Tech Stack
 
