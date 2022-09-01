@@ -1,44 +1,40 @@
 import { NextPage } from 'next'
 import * as Tabs from '@radix-ui/react-tabs'
+import { TabOptions } from '~/app-view/components/layout/Tab'
+import { styled } from '~/app-view/styles/stitches.config'
+
+const Tab = styled(Tabs.Trigger, {
+  pb: '$xx-small',
+  fontWeight: 600,
+  color: '$neutral',
+})
+
+const Card = styled('div', {
+  backgroundColor: '$neutral-100',
+  p: '$small',
+  borderRadius: '$radius-14',
+  marginBottom: '$medium'
+})
+
+const H3 = styled('h3', {
+  mt: '$xxx-small',
+  fontWeight: 800,
+})
 
 const Wallet: NextPage = () => {
   return (
-    // <h1>You should have your money here 💰</h1>
-    <div>
+    <>
       <Tabs.Root defaultValue="tokens" orientation="vertical">
-        <Tabs.List aria-label="Wallet Tabs">
-          <Tabs.Trigger value="tokens">Tokens</Tabs.Trigger>
-          <Tabs.Trigger value="nft-assets">NFTs assets</Tabs.Trigger>
-        </Tabs.List>
+        <TabOptions css={{marginBottom: '$large', maxWidth: 'fit-content'}}>
+          <Tab value="tokens" css={{marginRight: '$small'}}>Tokens</Tab>
+          <Tab value="nft-assets">NFTs assets</Tab>
+        </TabOptions>
         <Tabs.Content value="tokens">
-          <div>
+          <Card>
             <p>Total balance</p>
-            <h3>10,000 US$</h3>
-          </div>
-          <div>
-            <header>
-              <p>Cryptocurrency</p>
-              <p>Balance</p>
-              <p>Price</p>
-              <p>1h Change</p>
-              <p>Send</p>
-            </header>
-            <main>
-              <div>
-                <span>Image</span>
-                <div>
-                  <h4>Tether</h4>
-                  <span>USDT</span>
-                </div>
-                <p>9,500 USDT</p>
-                <p>1,00 US$</p>
-                <p>-0,01 %</p>
-                <button type="button" onClick={() => console.log('💼 start transfer')}>
-                  Transfer Now
-                </button>
-              </div>
-            </main>
-          </div>
+            <H3>10,000 US$</H3>
+          </Card>
+          {/* adds table  */}
         </Tabs.Content>
         <Tabs.Content value="nft-assets">
           <div>
@@ -53,7 +49,7 @@ const Wallet: NextPage = () => {
           </div>
         </Tabs.Content>
       </Tabs.Root>
-    </div>
+    </>
   )
 }
 

@@ -3,7 +3,6 @@ import jwt_decode from 'jwt-decode'
 
 export const getSessionAppUser = async (jwt: string): Promise<AppUser> => {
   const decoded = jwt_decode(jwt) as any
-  console.log('decoded token', decoded)
   const user: AppUser = {
     auth_jwt: jwt,
     session_id: decoded?.user.session_id,
