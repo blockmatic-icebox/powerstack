@@ -31,18 +31,13 @@ jobs:
         id: format_lighthouse_score
         uses: actions/github-script@v5
         with:
-          script: |
-            console.log("test", ${{ steps.lighthouse_audit.outputs.manifest[0].summary.performance }})
-            console.log("test2", ${{ steps.lighthouse_audit.outputs.manifest[0].url }})
-            
-          # script: | 
-          #   const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js');
-          #   const lighthouseOutputs = {
-          #     manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-          #     links: ${{ steps.lighthouse_audit.outputs.links }}
-          #   };
-          #   const comment = lighthouseCommentMaker({ lighthouseOutputs });
-          #   core.setOutput("comment", comment);
+          script: | 
+            const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js');
+            const lighthouseOutputs = {
+              manifest: ${{ steps.lighthouse_audit.outputs.manifest }}
+            };
+            const comment = lighthouseCommentMaker({ lighthouseOutputs });
+            core.setOutput("comment", comment);
 
       - name: Add Lighthouse stats as comment
         id: comment_to_pr

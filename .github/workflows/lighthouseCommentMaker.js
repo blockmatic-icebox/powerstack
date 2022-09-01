@@ -35,12 +35,14 @@ const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) 
  * @param {LighthouseOutputs} lighthouseOutputs
  */
 function makeComment(lighthouseOutputs) {
-  const { summary } = lighthouseOutputs.manifest[0]
-  const [[testedUrl, reportUrl]] = Object.entries(lighthouseOutputs.links)
+  console.log('lighthouseOutputs', JSON.stringify(lighthouseOutputs))
+
+  const summary = lighthouseOutputs.manifest[0].summary
+  const link = lighthouseOutputs.manifest[0].url
 
   const comment = `## ⚡️🏠 Lighthouse report
  
- We ran Lighthouse against the changes and produced this [report](${reportUrl}). Here's the summary:
+ We ran Lighthouse against the changes and produced this summary:
  
  | Category | Score |
  | -------- | ----- |
@@ -50,7 +52,7 @@ function makeComment(lighthouseOutputs) {
  ${scoreRow('SEO', summary.seo)}
  ${scoreRow('PWA', summary.pwa)}
  
- *Lighthouse ran against [${testedUrl}](${testedUrl})*
+ *Lighthouse ran against [${link}](${link})*
  `
 
   return comment
