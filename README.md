@@ -53,10 +53,13 @@ Demo <https://powerstack-next.vercel.app/>
 
 ## State Management
 
-Core logic in presentation components is general problem in react, the solution is zustand, a portable agnostic store in vanillajs.
-By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
+Core logic in presentation components is a general problem in react, the solution is zustand, a portable agnostic store in vanillajs. By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
 
-In the current setup Zustand only runs on the browser, this is important to understand, if you need server side rendering you have to write a query in [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props), Currently we dont have synchronization server/client, you get an empty store on the server. dont use zustand inside `getServerSideProps`. We are explorating ways to sync them, right now we prefer to keep it simple.
+We use a Zustand based JavaScript Core Engine both on the server within [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props) for server side rendering and on the browser to provide the UX posible while keeping state management simple and contained.
+
+We hydrate the App Engine Zustand Store from the server in `_app.tsx` in order to prevent server/client render mistmatches.
+
+The app-engine is fully portable and be reused on any client ( vuejs, cli, react native ) and could be wrapped on npm package sdk.
 
 ### GraphQL Client
 
