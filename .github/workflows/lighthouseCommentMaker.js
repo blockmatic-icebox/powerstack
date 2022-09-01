@@ -31,15 +31,12 @@ const emojiScore = (/** @type { number } */ score) =>
 const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) =>
   `| ${emojiScore(score)} ${label} | ${formatScore(score)} |`
 
-const fs = require('fs')
-
 function makeComment() {
-  if (fs.existsSync('../../manifest.json')) {
-    let info = require('../../manifest.json')
+  let info = require('../../manifest.json')
 
-    const summary = info[0].summary
+  const summary = info[0].summary
 
-    const comment = `## ⚡️🏠 Lighthouse report
+  const comment = `## ⚡️🏠 Lighthouse report
   
      We ran Lighthouse against the changes and produced this summary:
   
@@ -52,10 +49,7 @@ function makeComment() {
      ${scoreRow('PWA', summary.pwa)}
      `
 
-    return comment
-  }
-
-  return ''
+  return comment
 }
 
 module.exports = () => {
