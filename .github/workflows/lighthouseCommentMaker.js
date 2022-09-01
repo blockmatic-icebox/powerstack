@@ -31,8 +31,11 @@ const emojiScore = (/** @type { number } */ score) =>
 const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) =>
   `| ${emojiScore(score)} ${label} | ${formatScore(score)} |`
 
+const fs = require('fs')
+const path = require('path')
+
 function makeComment() {
-  const info = '../manifest.json'
+  const info = fs.readFileSync(path.resolve(__dirname, '../manifest.json'))
   console.log('lighthouseOutputs', JSON.stringify(info))
 
   //   const summary = info[0].summary
