@@ -20,9 +20,7 @@ module.exports = {
       //   },
     },
     upload: {
-      //target: 'temporary-public-storage',
-      target: 'filesystem',
-      output: '/tmp/artifacts',
+      target: 'temporary-public-storage',
     },
   },
 }
