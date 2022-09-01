@@ -31,33 +31,33 @@ const emojiScore = (/** @type { number } */ score) =>
 const scoreRow = (/** @type { string } */ label, /** @type { number } */ score) =>
   `| ${emojiScore(score)} ${label} | ${formatScore(score)} |`
 
-/**
- * @param {LighthouseOutputs} lighthouseOutputs
- */
-function makeComment(lighthouseOutputs) {
-  console.log('lighthouseOutputs', JSON.stringify(lighthouseOutputs))
+function makeComment() {
+  const info = '../manifest.json'
+  console.log('lighthouseOutputs', JSON.stringify(info))
 
-  const summary = lighthouseOutputs.manifest[0].summary
-  const link = lighthouseOutputs.manifest[0].url
+  //   const summary = info[0].summary
+  //   const link = lighthouseOutputs.manifest[0].url
 
-  const comment = `## ⚡️🏠 Lighthouse report
- 
- We ran Lighthouse against the changes and produced this summary:
- 
- | Category | Score |
- | -------- | ----- |
- ${scoreRow('Performance', summary.performance)}
- ${scoreRow('Accessibility', summary.accessibility)}
- ${scoreRow('Best practices', summary['best-practices'])}
- ${scoreRow('SEO', summary.seo)}
- ${scoreRow('PWA', summary.pwa)}
- 
- *Lighthouse ran against [${link}](${link})*
- `
+  //   const comment = `## ⚡️🏠 Lighthouse report
 
-  return comment
+  //  We ran Lighthouse against the changes and produced this summary:
+
+  //  | Category | Score |
+  //  | -------- | ----- |
+  //  ${scoreRow('Performance', summary.performance)}
+  //  ${scoreRow('Accessibility', summary.accessibility)}
+  //  ${scoreRow('Best practices', summary['best-practices'])}
+  //  ${scoreRow('SEO', summary.seo)}
+  //  ${scoreRow('PWA', summary.pwa)}
+
+  //  *Lighthouse ran against [${link}](${link})*
+  //  `
+
+  //return comment
+
+  return 'finished'
 }
 
-module.exports = ({ lighthouseOutputs }) => {
-  return makeComment(lighthouseOutputs)
+module.exports = () => {
+  return makeComment()
 }

@@ -33,10 +33,7 @@ jobs:
         with:
           script: | 
             const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js');
-            const lighthouseOutputs = {
-              manifest: ${{ steps.lighthouse_audit.outputs.manifest }}
-            };
-            const comment = lighthouseCommentMaker({ lighthouseOutputs });
+            const comment = lighthouseCommentMaker();
             core.setOutput("comment", comment);
 
       - name: Add Lighthouse stats as comment
