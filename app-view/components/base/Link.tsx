@@ -22,13 +22,14 @@ const StyledLink = styled('a', link_styles)
 
 export const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({
   href,
+  locale,
   children,
   ...props
 }) => {
   const internal = /^\/(?!\/)/.test(href)
 
   return internal ? (
-    <NextLink href={href} passHref>
+    <NextLink href={href} passHref locale={locale}>
       <StyledLink {...props}>{children}</StyledLink>
     </NextLink>
   ) : (
