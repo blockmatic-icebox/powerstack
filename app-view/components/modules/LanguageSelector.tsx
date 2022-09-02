@@ -8,6 +8,7 @@ const LanguageSelectorComponent = styled('section', {
   borderBottom: '1px solid #ccc3',
   height: 'auto',
   justifyContent: 'space-evenly',
+  flexWrap: 'wrap',
 
   'a': {
     width: 100,
@@ -28,6 +29,7 @@ export const LanguageSelector = () => {
   console.log('currentPath', router.locale)
   return (
     <LanguageSelectorComponent>
+      <h3 style={{ width: '100%' }}>Select Lang</h3>
       {langs.map(l => (
         <Link href={router.asPath} locale={l} style={{ borderBottomColor: l === router.locale ? '#ccc8' : undefined }}>
           {l}
