@@ -26,12 +26,24 @@ export const createCoinSlice: StoreSlice<CoinSlice> = (set, get) => ({
       ids: String(coin_list.map((coin) => coin.coingecko_key)),
       vs_currencies: 'usd',
     })
+
+    const coingecko_price_change_stats = await coingecko_client.coinMarket({
+      ids: String(coin_list.map((coin) => coin.coingecko_key)),
+      vs_currency: 'usd',
+      price_change_percentage: '1h',
+    })
     const coins_with_usd_price = get().coins.map(
       (coin) =>
         ({
           ...coin,
           usd_price:
             coingecko_prices[coin.coingecko_key]?.usd.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }) || '$0',
+
+        price_change_1h:
+        coingecko_price_change_stats[coin.coingecko_key]?.usd.toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',
             }) || '$0',
