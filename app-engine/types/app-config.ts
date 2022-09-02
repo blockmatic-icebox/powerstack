@@ -14,6 +14,8 @@ export interface AppServices {
   web3auth_client_id: string
   web3auth_chain_id: string
   web3auth_infra_api_key: string
+  datocms_api_token: string
+  datocms_preview_secret: string
 }
 
 export interface AppAnalytics {

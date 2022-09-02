@@ -85,3 +85,19 @@ export const createApolloClient = (jwt?: string) => {
     cache: new InMemoryCache({ addTypename: false }),
   })
 }
+
+// Creating a different client for DatoCMS requests for more independency and not cause much overload
+export const createDatoCMSApolloClient = () => {
+  const http_link = new HttpLink({
+    uri: 'https://graphql.datocms.com/',
+    headers: {
+      Authorization: `Bearer ${app_args.services.datocms_api_token}`,
+    },
+    fetch: apolloLoggingFetch,
+  })
+
+  return new ApolloClient({
+    link: http_link,
+    cache: new InMemoryCache({ addTypename: false }),
+  })
+}

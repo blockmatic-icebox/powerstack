@@ -1,6 +1,7 @@
 export * from './apollo-client'
 export * as AppGraphQL from './generated-sdk'
-import { getSdkApollo } from './apollo-requester'
-import { createApolloClient } from './apollo-client'
+import { getGenericSdkApollo, getDatoCMSSdkApollo } from './apollo-requester'
+import { createApolloClient, createDatoCMSApolloClient } from './apollo-client'
 
-export const getGraphQLSdk = (jwt: string) => getSdkApollo(createApolloClient(jwt))
+export const getGraphQLSdk = (jwt: string) => getGenericSdkApollo(createApolloClient(jwt))
+export const getGraphQLDatoCMSSdk = () => getDatoCMSSdkApollo(createDatoCMSApolloClient())
