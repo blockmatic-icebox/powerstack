@@ -10,8 +10,11 @@ jobs:
       - name: Set GITHUB_SHA env var
         run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
 
-      - name: Test GITHUB_PR
-        run: echo ${{ github.event.number }}
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+
+      - name: test PR
+        run: echo "Your PR is ${PR}"
 
       - name: Capture Vercel URL
         id: vercel_preview_url
