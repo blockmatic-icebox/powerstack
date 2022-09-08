@@ -7,6 +7,7 @@ jobs:
     steps:
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
+          number: 52
           message: |
             Release ${{ github.sha }} to <https://pr-${{ github.event.number }}.example.com>
 
