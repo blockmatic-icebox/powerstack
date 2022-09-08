@@ -11,13 +11,10 @@ jobs:
         run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
 
       - name: Set GITHUB_PR env var
-        run: echo "GITHUB_PR=$(echo $GITHUB_PR)" >> $GITHUB_ENV
+        run: echo "GITHUB_PR=${PR_URL##*/}"
 
-      - name: Set PR_NUM env var
-        run: PR_NUM=${PR_URL##*/}
-
-      - name: Test PR Number
-        run: echo $PR_NUM
+      - name: Test GITHUB_PR
+        run: echo $GITHUB_PR
 
       - name: Capture Vercel URL
         id: vercel_preview_url
