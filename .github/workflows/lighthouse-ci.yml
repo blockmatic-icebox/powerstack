@@ -15,6 +15,9 @@ jobs:
           message: |
             Running Lighthouse audit...
 
+      - name: github.event.issue.number
+        run: echo ${{ github.event.issue.number }}
+
       - uses: actions/checkout@v2
 
       - name: Set env
