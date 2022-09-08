@@ -78,6 +78,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
+          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           number: 52
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
