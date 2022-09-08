@@ -1,7 +1,7 @@
 name: Vercel Preview URL Lighthouse Audit
 on: push
 jobs:
-  generate_lighthouse_audit:
+  Generate Lighthouse Audit:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
