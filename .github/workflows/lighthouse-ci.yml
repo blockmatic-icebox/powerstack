@@ -31,7 +31,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
           deployment-url: ${{ steps.vercel_preview_url.outputs.preview_url }}
-          timeout: 10 # Wait for 10 seconds before failing
+          timeout: 180 # Wait for x seconds before failing
 
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
