@@ -70,7 +70,9 @@ jobs:
       - name: Add report to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
-          number: 52
+          number: ${{ github.event.issue.number }}
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
