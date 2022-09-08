@@ -82,8 +82,6 @@ jobs:
       - name: Add report to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           number: ${{ steps.findPr.outputs.pr }}
