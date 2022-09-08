@@ -13,7 +13,7 @@ const Card = styled('div', {
   backgroundColor: '$neutral-100',
   p: '$small',
   borderRadius: '$radius-14',
-  marginBottom: '$medium'
+  marginBottom: '$medium',
 })
 
 const H3 = styled('h3', {
@@ -25,8 +25,10 @@ const Wallet: NextPage = () => {
   return (
     <>
       <Tabs.Root defaultValue="tokens" orientation="vertical">
-        <TabOptions css={{marginBottom: '$large', maxWidth: 'fit-content'}}>
-          <Tab value="tokens" css={{marginRight: '$small'}}>Tokens</Tab>
+        <TabOptions css={{ marginBottom: '$large', maxWidth: 'fit-content' }}>
+          <Tab value="tokens" css={{ marginRight: '$small' }}>
+            Tokens
+          </Tab>
           <Tab value="nft-assets">NFTs assets</Tab>
         </TabOptions>
         <Tabs.Content value="tokens">

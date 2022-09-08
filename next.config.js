@@ -17,7 +17,7 @@ const nextConfig = {
     locales: ['en_US', 'es', 'fr_CA', 'pt_BR'],
     // As always, en_US is our default lang
     defaultLocale: 'en_US',
-  } 
+  },
 }
 
 module.exports = nextConfig

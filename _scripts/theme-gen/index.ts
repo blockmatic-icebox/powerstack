@@ -1,6 +1,6 @@
 import * as Toolabs from './graphql/generated-sdk'
 // TODO: Do Types...
-import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client'
 import fetch from 'cross-fetch'
 import fs from 'fs'
 
@@ -22,20 +22,25 @@ const selected_themes = process.env.THEME_GEN_THEMES ?? 'Default'
 // NOTE: Reading how many themes do we have
 const themes_spinner = setSpinner(` %s 👀 for themes...`)
 themes_spinner.setSpinnerString(spinner_string)
-themes_spinner.start();
+themes_spinner.start()
 
 // Looking for theme Color Modes if any
-(async () => {
+;(async () => {
   const { data, error } = await getThemes()
 
   if (error) throw new Error(error)
 
   // Any possible match for the Light/Dark Themes names...
-  const fetched_themes: Toolabs.Maybe<Toolabs.Maybe<Toolabs.ThemeState>[]> = data.filter(theme => theme.name.toLowerCase().match(/^(color mode|theme color mode|colors|modes)$/)).map(theme => theme.variants)[0] || []
+  const fetched_themes: Toolabs.Maybe<Toolabs.Maybe<Toolabs.ThemeState>[]> =
+    data
+      .filter((theme) =>
+        theme.name.toLowerCase().match(/^(color mode|theme color mode|colors|modes)$/),
+      )
+      .map((theme) => theme.variants)[0] || []
 
-  selected_themes.split(',').forEach(async theme => {
+  selected_themes.split(',').forEach(async (theme) => {
     const { data, error } = await getThemeById(`Default,${theme}`)
-    const theme_name = fetched_themes?.find(t => t?.id === theme)?.name ?? 'default'
+    const theme_name = fetched_themes?.find((t) => t?.id === theme)?.name ?? 'default'
 
     if (error) throw new Error(error)
 
@@ -46,22 +51,17 @@ themes_spinner.start();
       theme: data as Theme,
     })
   })
-})();
+})()
 
-
-themes_spinner.stop();
+themes_spinner.stop()
 console.log('\n') // new-line
 
 const toolabs_theme_spinner = setSpinner(` %s 〰️ Processing Toolabs JSON Themes ...`)
 toolabs_theme_spinner.setSpinnerString(spinner_string)
 toolabs_theme_spinner.start()
 
-
-
-
 // Functions Starts Here //
 // TODO: Make library dir...
-
 
 function setSpinner(message: any) {
   return new Spinner(message)
@@ -71,9 +71,9 @@ function toolabsClient() {
   const http_link = new HttpLink({
     uri: 'https://xdapi.toolabs.com/graphql',
     headers: {
-      "x-toolabs-token" : process.env.THEME_GEN_KEY
+      'x-toolabs-token': process.env.THEME_GEN_KEY,
     },
-    fetch
+    fetch,
   })
 
   return new ApolloClient({
@@ -82,7 +82,7 @@ function toolabsClient() {
   })
 }
 
-async function getThemes(): Promise<{ data: Toolabs.Theme[]; error: string;  }> {
+async function getThemes(): Promise<{ data: Toolabs.Theme[]; error: string }> {
   try {
     const { data, error } = await toolabsClient().query<
       Toolabs.ThemeGenThemesQuery,
@@ -102,7 +102,9 @@ async function getThemes(): Promise<{ data: Toolabs.Theme[]; error: string;  }> 
   }
 }
 
-async function getThemeById(theme_id: string): Promise<{ data: Toolabs.GetMyThemesQuery; error: string; }> {
+async function getThemeById(
+  theme_id: string,
+): Promise<{ data: Toolabs.GetMyThemesQuery; error: string }> {
   try {
     const { data, error } = await toolabsClient().query<
       Toolabs.GetMyThemesQuery,
@@ -110,8 +112,8 @@ async function getThemeById(theme_id: string): Promise<{ data: Toolabs.GetMyThem
     >({
       query: Toolabs.GetMyThemesDocument,
       variables: {
-        themes: theme_id
-      }
+        themes: theme_id,
+      },
     })
 
     // console.log(`results toolabs by getting ${theme_id} theme =>>>`, JSON.stringify(data, null, 2))
@@ -134,7 +136,7 @@ function processTheme(theme: ToolabsTheme) {
     name: theme.name,
     theme: {
       // @ts-ignore
-      space: {}
+      space: {},
     },
   }
   const theme_object: Theme = theme.theme
@@ -166,7 +168,9 @@ function processTheme(theme: ToolabsTheme) {
       case 'easeCurves': {
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme[t_key as ThemeKey][prop.name] = `cubic-bezier(${prop?.value?.x1}, ${prop?.value?.y1}, ${prop?.value?.x2}, ${prop?.value?.y2})`
+          new_theme.theme[t_key as ThemeKey][
+            prop.name
+          ] = `cubic-bezier(${prop?.value?.x1}, ${prop?.value?.y1}, ${prop?.value?.x2}, ${prop?.value?.y2})`
         })
         break
       }
@@ -186,14 +190,20 @@ function processTheme(theme: ToolabsTheme) {
       case 'shadows':
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme.shadows[normalizeKeyName(prop.name)] = `${prop?.layers.map(l => `${l?.x}px ${l?.y}px ${l?.blur}px ${l?.spread}px ${l?.color.hex}`).join(', ')}`
+          new_theme.theme.shadows[normalizeKeyName(prop.name)] = `${prop?.layers
+            .map((l) => `${l?.x}px ${l?.y}px ${l?.blur}px ${l?.spread}px ${l?.color.hex}`)
+            .join(', ')}`
         })
         break
       case 'gradients':
         // @ts-ignore
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme['colors' as ThemeKey][`${normalizeKeyName(prop.name)}-gradient`] = `linear-gradient(${prop?.colors?.map(c => `${c?.color.hex} ${c?.stop}%`).join(', ')})`
+          new_theme.theme['colors' as ThemeKey][
+            `${normalizeKeyName(prop.name)}-gradient`
+          ] = `linear-gradient(${prop?.colors
+            ?.map((c) => `${c?.color.hex} ${c?.stop}%`)
+            .join(', ')})`
         })
         break
       case 'colors':
@@ -207,23 +217,29 @@ function processTheme(theme: ToolabsTheme) {
         // @ts-ignore
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme[t_key as ThemeKey][prop.name.toLowerCase().replace(' ', '-')] = `${prop.value ?? 0}px`
+          new_theme.theme[t_key as ThemeKey][prop.name.toLowerCase().replace(' ', '-')] = `${
+            prop.value ?? 0
+          }px`
         })
         break
       case 'spaces':
         // @ts-ignore
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
-          new_theme.theme['space'][prop.name.toLowerCase().replace(' ', '-')] = `${prop.value ?? 0}px`
+          new_theme.theme['space'][prop.name.toLowerCase().replace(' ', '-')] = `${
+            prop.value ?? 0
+          }px`
         })
         break
       case 'icons':
         const pre_icons = theme_object[t_key] as Toolabs.Icon[]
 
-        pre_icons.forEach(icon => {
+        pre_icons.forEach((icon) => {
           const normalized_name = icon.name?.replace(' ', '-') as string
           const formatted_name = normalized_name.toLowerCase().split('-')[0] as string
-          const react_name = `${formatted_name?.substring(0, 1).toUpperCase()}${formatted_name?.substring(1, formatted_name.length)}Icon`
+          const react_name = `${formatted_name
+            ?.substring(0, 1)
+            .toUpperCase()}${formatted_name?.substring(1, formatted_name.length)}Icon`
 
           icons.push({
             id: react_name,
@@ -231,11 +247,11 @@ function processTheme(theme: ToolabsTheme) {
             svg: `import * as React from 'react'
 
 const ${react_name}: React.FC = (props) => (
-  ${icon.svg?.replace('xmlns=\"http://www.w3.org/2000/svg\"', '{ ...props }')}
+  ${icon.svg?.replace('xmlns="http://www.w3.org/2000/svg"', '{ ...props }')}
 )
 
 export default ${react_name}
-`
+`,
           } as Toolabs.Icon)
         })
         break
@@ -259,13 +275,15 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
   // We verify if icons added
   let index_icon_file = ''
   if (icons.length !== 0) {
-    icons.forEach(icon => {
+    icons.forEach((icon) => {
       index_icon_file += `export { default as ${icon.id} } from './${icon.id}'
 `
     })
   }
 
-  const writing_theme_spinner = setSpinner(` %s 〰️ Writing Toolabs ${name.toUpperCase()} Theme for Stitches 📝🪡 `)
+  const writing_theme_spinner = setSpinner(
+    ` %s 〰️ Writing Toolabs ${name.toUpperCase()} Theme for Stitches 📝🪡 `,
+  )
   writing_theme_spinner.setSpinnerString(spinner_string)
   writing_theme_spinner.start()
 
@@ -281,60 +299,60 @@ function generateTheme({ name, theme }: ToolabsTheme, icons: Toolabs.Icon[]) {
         console.error(err)
         writing_theme_spinner.stop()
         console.log('\n') // new-line
-        throw new Error(` ❌ There was problem trying to creating the file 💔. Check if values are valid.`)
+        throw new Error(
+          ` ❌ There was problem trying to creating the file 💔. Check if values are valid.`,
+        )
       }
 
       writing_theme_spinner.stop()
       console.log(` ✔️  Stitches file for ${name.toUpperCase()} theme created successfully 🪡🪄🎉`)
       console.log('\n') // new-line
     },
-    )
+  )
 
-    const icons_spinner = setSpinner(` %s 👀 for Icons...`)
-    icons_spinner.setSpinnerString(spinner_string)
-    icons_spinner.start();
+  const icons_spinner = setSpinner(` %s 👀 for Icons...`)
+  icons_spinner.setSpinnerString(spinner_string)
+  icons_spinner.start()
 
-    // We create files if we found icons
+  // We create files if we found icons
   if (icons.length !== 0) {
     console.log('\n') // new-line
     icons_spinner.stop()
-    const writing_icons_spinner = setSpinner(` %s 〰️ Icons Found! Generating Icon React Files for ${name.toUpperCase()} theme 🔥`)
+    const writing_icons_spinner = setSpinner(
+      ` %s 〰️ Icons Found! Generating Icon React Files for ${name.toUpperCase()} theme 🔥`,
+    )
     writing_icons_spinner.setSpinnerString(spinner_string)
     writing_icons_spinner.start()
 
     icons.forEach(({ id, svg }) => {
-      fs.writeFile(
-        `./app-view/components/icons/${id}.tsx`,
-        svg as string,
-        (err) => {
-          if (err) {
-            console.error(err)
-            writing_icons_spinner.stop()
-            console.log('\n') // new-line
-            throw new Error(` ❌ There was problem trying to creating the Icon File 💔. Check if values are valid.`)
-          }
-
-          writing_icons_spinner.stop()
-          console.log(` 🎨 ${id} created successfully for ${name.toUpperCase()} theme 📦`)
-        },
-        )
-    })
-
-    fs.writeFile(
-      `./app-view/components/icons/index.ts`,
-      index_icon_file,
-      (err) => {
+      fs.writeFile(`./app-view/components/icons/${id}.tsx`, svg as string, (err) => {
         if (err) {
           console.error(err)
           writing_icons_spinner.stop()
           console.log('\n') // new-line
-          throw new Error(` ❌ There was problem trying to creating the file 💔. Check if values are valid.`)
+          throw new Error(
+            ` ❌ There was problem trying to creating the Icon File 💔. Check if values are valid.`,
+          )
         }
 
         writing_icons_spinner.stop()
-        console.log(` ✔️  Icons for ${name.toUpperCase()} theme created successfully 🪄🎉`)
-      },
-    )
+        console.log(` 🎨 ${id} created successfully for ${name.toUpperCase()} theme 📦`)
+      })
+    })
+
+    fs.writeFile(`./app-view/components/icons/index.ts`, index_icon_file, (err) => {
+      if (err) {
+        console.error(err)
+        writing_icons_spinner.stop()
+        console.log('\n') // new-line
+        throw new Error(
+          ` ❌ There was problem trying to creating the file 💔. Check if values are valid.`,
+        )
+      }
+
+      writing_icons_spinner.stop()
+      console.log(` ✔️  Icons for ${name.toUpperCase()} theme created successfully 🪄🎉`)
+    })
   } else {
     icons_spinner.stop()
     console.log(` ⚠️ No Icons Found for ${name.toUpperCase()} theme.`)

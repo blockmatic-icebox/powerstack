@@ -12,6 +12,6 @@ export const TabOptions = styled(Tabs.List, {
     '&[data-state="active"]': {
       borderBottomColor: '$primary-blue',
       color: '$primary-blue',
-    }
-  }
+    },
+  },
 })
