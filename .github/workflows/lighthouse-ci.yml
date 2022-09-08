@@ -54,7 +54,8 @@ jobs:
                 `*Lighthouse ran on [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
              core.setOutput("comment", comment);
-      - name: Add comment to PR
+
+      - name: Add report to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
