@@ -1,5 +1,9 @@
-import * as Toolabs from './graphql/generated-sdk'
+// @ts-nocheck
+
 // TODO: Do Types...
+
+import * as Toolabs from './graphql/generated-sdk'
+
 import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client'
 import fetch from 'cross-fetch'
 import fs from 'fs'
@@ -169,6 +173,7 @@ function processTheme(theme: ToolabsTheme) {
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
           new_theme.theme[t_key as ThemeKey][
+            // @ts-ignore
             prop.name
           ] = `cubic-bezier(${prop?.value?.x1}, ${prop?.value?.y1}, ${prop?.value?.x2}, ${prop?.value?.y2})`
         })
