@@ -12,6 +12,8 @@ jobs:
 
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
+        with:
+          state: open
 
       - name: test PR
         run: echo "Your PR is ${PR}"
