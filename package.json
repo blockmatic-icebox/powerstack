@@ -4,8 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:ts": "concurrently \"yarn ts:watch\" \"sleep 1 && yarn dev\"",
+    "ts": "tsc --noEmit --incremental",
+    "ts:watch": "yarn ts --watch",
     "compose": "env-cmd -f .env.compose next dev",
     "https": "concurrently \"yarn ssl\" \"next dev -p 3001\"",
+    "https:ts": "concurrently \"yarn ssl\" \"next dev -p 3001\" \"yarn ts:watch\" ",
     "ssl": "local-ssl-proxy --source 3000 --target 3001",
     "build": "next build",
     "start": "next start",
