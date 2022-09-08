@@ -6,7 +6,7 @@ NextJS application starter for rapid development of multi-chain applications.
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
-Demo https://powerstack-next.vercel.app/
+Demo <https://powerstack-next.vercel.app/>
 
 ## Architecture
 
@@ -27,11 +27,14 @@ Demo https://powerstack-next.vercel.app/
 - Lighthouse CI web vitals performance reports.
 - CSS-in-JS design system Stitches.
 - Import design tokens from Toolabs Design Manager.
+- Autogenerate Icons as React Components from Toolabs Design Manager.
 - Autogenerate TypeScript types from GraphQL schema.
 - Crash reporting and web analytics.
 - Base ui components with forms validation.
 - Internationalization with i18next.
 - TypeScript, ESLint, Prettier and Husky for code quality.
+- Read coin prices from CoinGecko API.
+- Docker support and Taskfile.
 
 ## Tech Stack
 
@@ -52,17 +55,20 @@ Demo https://powerstack-next.vercel.app/
 
 ## State Management
 
-Core logic in presentation components is general problem in react, the solution is zustand, a portable agnostic store in vanillajs.
-By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
+Core logic in presentation components is a general problem in react, the solution is zustand, a portable agnostic store in vanillajs. By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
 
-In the current setup Zustand only runs on the browser, this is important to understand, if you need server side rendering you have to write a query in [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props), Currently we dont have synchronization server/client, you get an empty store on the server. dont use zustand inside `getServerSideProps`. We are explorating ways to sync them, right now we prefer to keep it simple.
+We use a Zustand based JavaScript Core Engine both on the server within [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props) for server side rendering and on the browser to provide the UX posible while keeping state management simple and contained.
+
+We hydrate the App Engine Zustand Store from the server in `_app.tsx` in order to prevent server/client render mistmatches.
+
+The app-engine is fully portable and be reused on any client ( vuejs, cli, react native ) and could be wrapped on npm package sdk.
 
 ### GraphQL Client
 
 PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
 
-- Endpoint: https://api.powerstack.xyz/v1/graphql
-- Explorer: https://explorer.powerstack.xyz
+- Endpoint: <https://api.powerstack.xyz/v1/graphql>
+- Explorer: <https://explorer.powerstack.xyz>
 
 #### GraphQL Development Flow
 
@@ -72,6 +78,30 @@ PowerStack leverages open source Hasura GraphQL engine in conjunction with Graph
 4. utilize the generated sdk and types in zustand and `getServerSideProps`
 
 See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasura) for more information.
+
+### Toolabs Design System
+
+To increase the power of our stack, it consists of an auto-generator of themes, brought by the [Toolabs Design Tool](https://app.toolabs.com/#/). The script obtains the tokens declared in the tool through its GraphQL Client and passing the access key as an environment variable.
+
+If it finds iconography, it will auto-generate the icons and create an index to consume them. These are ready to receive React Properties.
+
+See [theme generator](_scripts\theme-gen\index.ts) for tech details.
+
+### Toolabs Development Flow
+
+1. Go to the Design Toolabs tool of your project.
+2. Verify your access key in the GraphQL API tab.
+3. Copy the key and paste it as `THEME_GEN_KEY` in `.env.development.`
+   1. **OPTIONAL:** You can specify which theme to subtract by passing themes IDs as `THEME_GEN_THEMES` with comma `,` separated.
+4. Run `yarn theme` to auto-generate themes.
+
+#### Toolabs Development Flow Step 1 & 2
+
+![Toolabs Step 1 & 2](https://res.cloudinary.com/andler-dev/image/upload/v1661974228/powerstack-instructions/toolabs-step-1-2_al7qbj.png)
+
+#### Toolabs Development Flow Optional Step
+
+![Toolabs Optional Step](https://res.cloudinary.com/andler-dev/image/upload/v1661974228/powerstack-instructions/toolabs-step-optional_shtz3i.png)
 
 ### File Structure
 
@@ -156,7 +186,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Docker
 
-```
+```bash
 # Build the image
 docker build -t powerstack-next:local .
 
@@ -206,10 +236,6 @@ Blockmatic is building a robust ecosystem of people and tools for the developmen
 [3.1]: http://i.imgur.com/0o48UoR.png 'github icon with padding'
 
 <!-- icons without padding -->
-
-[1.2]: http://i.imgur.com/wWzX9uB.png 'twitter icon without padding'
-[2.2]: http://i.imgur.com/fep1WsG.png 'facebook icon without padding'
-[3.2]: http://i.imgur.com/9I6NRUm.png 'github icon without padding'
 
 <!-- links to your social media accounts -->
 <!-- update these accordingly -->

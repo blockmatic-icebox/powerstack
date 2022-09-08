@@ -53,7 +53,7 @@ const WalletFooter = styled('footer', {
   '& button': {
     bg: 'transparent',
     border: 'none',
-    color: '$044-bff',
+    color: '$primary-blue',
     cursor: 'pointer',
     fontSize: 12,
     fontWeight: 500,
@@ -77,7 +77,7 @@ const SidebarLink = styled(Link, {
   transition: 'color 400ms, background-color 400ms',
   '&:hover, &:focus': {
     bg: 'rgba(4, 75, 255, 0.05)',
-    color: '$044-bff',
+    color: '$primary-blue',
   },
   '& svg': {
     mr: '$small',
@@ -94,10 +94,10 @@ const SidebarLink = styled(Link, {
     active: {
       true: {
         bg: 'rgba(4, 75, 255, 0.05)',
-        color: '$044-bff',
+        color: '$primary-blue',
         fontWeight: 600,
         '& svg path': {
-          fill: '$044-bff',
+          fill: '$primary-blue',
         },
       },
     },
@@ -116,6 +116,7 @@ export const Sidebar = () => {
           <WalletBoxHeader>
             <WalletBoxTitle>Account</WalletBoxTitle>
           </WalletBoxHeader>
+          {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
           {user?.addresses?.map((user_address, idx) => (
             <WalletBox key={idx} address={user_address.address} />
           ))}

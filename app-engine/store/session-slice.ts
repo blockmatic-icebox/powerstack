@@ -1,8 +1,8 @@
 import type { StoreSlice } from '../index'
-import { AuthErrorResponse } from '../../app-server/session-auth'
 import { AppLoginMethod } from '../types/app-engine'
 import { app_logger } from '../library/logger'
 import { auth_server } from '../services/auth-server'
+import { AuthErrorResponse } from '~/app-server/session-auth'
 
 export interface SessionState {
   create_session_error: string
@@ -48,14 +48,14 @@ export const createSessionSlice: StoreSlice<SessionSlice> = (set, get) => ({
 
   destroySession: async () => {
     try {
-      console.error('🙎🏻‍♂️ logging user out')
+      console.log('🙎🏻‍♂️ logging user out')
       const user = get().user
       await auth_server.logout()
       if (!user) return
       // restore this but user user.connected_wallet instead. - Gabo
-      // if (user.auth_method === 'web3_auth') get().web3authLogout()
+      get().web3authLogout()
       get().setUser(null)
-      console.error('🙎🏻‍♂️ user succesfully logged out')
+      console.log('🙎🏻‍♂️ user succesfully logged out')
     } catch (error) {
       console.error('🙎🏻‍♂️ an unexpected error happened:', error)
     }

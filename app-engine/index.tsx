@@ -43,27 +43,35 @@ export type StoreSlice<T> = (set: StoreSetState, get: StoreGetState) => T
 
 // global app_engine instance
 export type AppEngineApi = StoreApi<AppEngine>
-app_logger.log(`📡 creating app_engine ...`)
-export const app_engine = createVanillaStore<AppEngine>((set, get) => ({
-  ...createWeb3AuthSlice(set, get),
-  ...createSessionSlice(set, get),
-  ...createUserSlice(set, get),
-  ...createSolanaSlice(set, get),
-  ...createAntelopeSlice(set, get),
-  ...createViewSlice(set, get),
-  ...createEngineSlice(set, get),
-  ...createEtherSlice(set, get),
-  ...createCoinSlice(set, get),
-})) as AppEngineApi
+
+// singleton in the browser. on the server you always get a new store.
+export const createVanillaEngine = () => {
+  if (exec_env.is_browser && window.app_engine) return window.app_engine
+  app_logger.log(`📡 creating app_engine ...`)
+  const app_engine = createVanillaStore<AppEngine>((set, get) => ({
+    ...createWeb3AuthSlice(set, get),
+    ...createSessionSlice(set, get),
+    ...createUserSlice(set, get),
+    ...createSolanaSlice(set, get),
+    ...createAntelopeSlice(set, get),
+    ...createViewSlice(set, get),
+    ...createEngineSlice(set, get),
+    ...createEtherSlice(set, get),
+    ...createCoinSlice(set, get),
+  })) as AppEngineApi
+  if (exec_env.is_browser) window.app_engine = app_engine
+  return app_engine
+}
 
 // Expose the app-engine functionality to react apps
-export const useCreateAppEngine = () => create(app_engine)
-const AppEngineContext = createContext<AppEngineApi>(create(app_engine))
+export const useCreateAppEngine = () => create(createVanillaEngine())
+const AppEngineContext = createContext<AppEngineApi>(create(createVanillaEngine()))
 export const useAppEngine = () => useStore(useContext(AppEngineContext))
 export const AppEngineProvider: React.FC<{
   children: React.ReactNode
   app_engine_server_state?: AppState
 }> = ({ children, app_engine_server_state }) => {
+  const app_engine = createVanillaEngine()
   // hydrate the app_engine with server side props
   if (app_engine_server_state)
     app_engine.setState(_.omit(app_engine_server_state, 'app_engine_initialized'))

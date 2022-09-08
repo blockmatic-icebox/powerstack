@@ -17,14 +17,14 @@ import { Button } from '../base/Button'
 import { Modal } from './Modal'
 
 const Title = styled('h1', {
-  fontSize: '$h-2',
+  fontSize: '$h2',
   fontWeight: '$bold',
   mb: '$large',
   mt: 0,
   px: '$small',
   textAlign: 'center',
   '@tabletUp': {
-    fontSize: '$h-1',
+    fontSize: '$h1',
     mb: '$x-small',
   },
 })

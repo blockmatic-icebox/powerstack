@@ -4,15 +4,16 @@ import Image from 'next/image'
 import { styled } from '~/app-view/styles/stitches.config'
 import { Link } from '~/app-view/components/base/Link'
 import { Input } from '~/app-view/components/base/Input'
-import { z } from 'zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { TabOptions } from '~/app-view/components/layout/Tab'
 
 export const getServerSideProps = defaultGetServerSideProps
 
 const ProfileBadgeImage = styled('div', {
   size: 100,
-  position: 'relative'
+  position: 'relative',
 })
 
 const InputGroup = styled('div', {
@@ -23,7 +24,7 @@ const InputGroup = styled('div', {
   position: 'relative',
   '@small': {
     mb: '$large',
-  }
+  },
 })
 
 const FormInput = styled(Input, {
@@ -40,20 +41,21 @@ const FormInput = styled(Input, {
 })
 
 const FormLabel = styled('label', {
+  color: '#404467',
   fontSize: 14,
-  left: 24,
-  m: 0,
+  mb: '$x-small',
+  mt: 0,
   p: 0,
 })
 
-
-export const FormTextarea = styled('textarea', {
+const FormTextarea = styled('textarea', {
   backgroundColor: 'transparent',
   border: '1px solid $neutral-100',
   display: 'block',
   fontSize: 16,
   fontWeight: 600,
   p: '$x-small $regular',
+  minHeight: 140,
   width: '100%',
   '&:hover, &:focus': {
     outline: 'none',
@@ -62,16 +64,76 @@ export const FormTextarea = styled('textarea', {
 
 const FormStatusMessage = styled('p', { color: '$error' })
 
-const FormSchema = z.object({
-  username: z.string({ required_error: "This field is required", }).min(1, { message: "Username can't be empty" }),
-  email: z
-    .string({ required_error: "This field is required", })
-    .email({ message: "Invalid email" })
-    .min(1, { message: "Email or username can't be empty" }),
-  bio: z.string({ required_error: "This field is required", }),
+const Title = styled('h2', {
+  fontSize: 24,
+  mb: '$large',
+  mt: 0,
 })
 
-type FormSchemaType = z.infer<typeof FormSchema>;
+const TabContent = styled(Tabs.Content, {
+  py: '$large',
+})
+
+const Badge = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  columnGap: '$small',
+  mb: '$large',
+  '& h3': {
+    mb: '$xxx-small',
+    mt: 0,
+  },
+  '& p': {
+    mb: '$xxx-small',
+    mt: 0,
+  },
+  '& a': {
+    color: '$primary-blue',
+    mt: 0,
+  },
+})
+
+const FormTitle = styled('h3', {
+  borderBottom: '1px solid #E7E9ED',
+  fontSize: 24,
+  fontWeight: 600,
+  pb: '$regular',
+  mb: '$regular',
+})
+
+const StyledForm = styled('form', {
+  maxWidth: 465,
+})
+
+const SaveButton = styled('button', {
+  bg: '$primary-blue',
+  border: 'none',
+  borderRadius: '$radius-14',
+  color: 'white',
+  cursor: 'pointer',
+  fontSize: 16,
+  fontWeight: 600,
+  p: '$small $regular',
+})
+
+const FormSchema = z.object({
+  username: z
+    .string({ required_error: 'This field is required' })
+    .min(1, { message: "Username can't be empty" }),
+  email: z
+    .string({ required_error: 'This field is required' })
+    .email({ message: 'Invalid email' })
+    .min(1, { message: "Email or username can't be empty" }),
+  bio: z.string({ required_error: 'This field is required' }),
+})
+
+const Tab = styled(Tabs.Trigger, {
+  px: '$small',
+  pb: '$small',
+  fontWeight: 700,
+})
+
+type FormSchemaType = z.infer<typeof FormSchema>
 
 const Profle: DefaultSsrPage = () => {
   const {
@@ -88,14 +150,15 @@ const Profle: DefaultSsrPage = () => {
 
   return (
     <Tabs.Root defaultValue="profile" orientation="vertical">
-      <Tabs.List aria-label="Profile Tabs">
-        <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
-        <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
-        <Tabs.Trigger value="security">Security</Tabs.Trigger>
-      </Tabs.List>
-      <Tabs.Content value="profile">
+      <Title>Profile Configuration</Title>
+      <TabOptions aria-label="Profile Tabs" css={{ borderBottom: '1px solid #E7E9ED' }}>
+        <Tab value="profile">Profile</Tab>
+        <Tab value="notifications">Notifications</Tab>
+        <Tab value="security">Security</Tab>
+      </TabOptions>
+      <TabContent value="profile">
         {/* profile badge */}
-        <div>
+        <Badge>
           <ProfileBadgeImage>
             <Image
               src="/logo-icon.png"
@@ -109,49 +172,35 @@ const Profle: DefaultSsrPage = () => {
             <p>Select one of your NFTs as your profile picture</p>
             <Link href="#">Change profile NFT</Link>
           </div>
-        </div>
-        <h3>Account Details</h3>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        </Badge>
+        <FormTitle>Account Details</FormTitle>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
             <FormLabel htmlFor="username">User Name</FormLabel>
-            <FormInput
-              id="username"
-              type="text"
-              {...register("username")}
-            />
+            <FormInput id="username" type="text" {...register('username')} />
             {errors.username && <FormStatusMessage>{errors.username.message}</FormStatusMessage>}
           </InputGroup>
           <InputGroup>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <FormInput
-              id="email"
-              type="email"
-              {...register("email")}
-            />
+            <FormInput id="email" type="email" {...register('email')} />
             {errors.email && <FormStatusMessage>{errors.email.message}</FormStatusMessage>}
           </InputGroup>
           <InputGroup>
             <FormLabel htmlFor="bio">Bio</FormLabel>
-            <FormInput
-              id="bio"
-              {...register("bio")}
-            />
+            <FormTextarea id="bio" {...register('bio')} />
             {errors.bio && <FormStatusMessage>{errors.bio.message}</FormStatusMessage>}
           </InputGroup>
-          <button
-            type="button"
-            disabled={isSubmitting}
-          >
+          <SaveButton type="submit" disabled={isSubmitting}>
             Save Changes
-          </button>
-        </form>
-      </Tabs.Content>
-      <Tabs.Content value="notifications">
+          </SaveButton>
+        </StyledForm>
+      </TabContent>
+      <TabContent value="notifications">
         <h1>Notifications</h1>
-      </Tabs.Content>
-      <Tabs.Content value="security">
+      </TabContent>
+      <TabContent value="security">
         <h1>Security</h1>
-      </Tabs.Content>
+      </TabContent>
     </Tabs.Root>
   )
 }

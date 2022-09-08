@@ -70,7 +70,7 @@ export const Button = styled('button', {
         },
       },
       primary: {
-        backgroundColor: '$044-bff',
+        backgroundColor: '$primary-blue',
         color: '#FFF',
         '&:hover:not(:disabled)': {
           backgroundColor: '$primary-700',

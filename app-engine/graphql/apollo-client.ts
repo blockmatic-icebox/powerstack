@@ -1,4 +1,4 @@
-import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client'
+import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, split } from '@apollo/client'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
@@ -36,7 +36,6 @@ const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promi
 }
 
 export const createApolloClient = (jwt?: string) => {
-  // console.log(`create apollo client with jwt = ${jwt}`)
   const apollo_base_url = app_args.services.graphql_api
     .replace('https://', '')
     .replace('http://', '')
@@ -83,6 +82,22 @@ export const createApolloClient = (jwt?: string) => {
 
   return new ApolloClient({
     link,
+    cache: new InMemoryCache({ addTypename: false }),
+  })
+}
+
+// Creating a different client for DatoCMS requests for more independency and not cause much overload
+export const createDatoCMSApolloClient = () => {
+  const http_link = new HttpLink({
+    uri: 'https://graphql.datocms.com/',
+    headers: {
+      Authorization: `Bearer ${app_args.services.datocms_api_token}`,
+    },
+    fetch: apolloLoggingFetch,
+  })
+
+  return new ApolloClient({
+    link: http_link,
     cache: new InMemoryCache({ addTypename: false }),
   })
 }
