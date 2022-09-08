@@ -15,10 +15,6 @@ jobs:
           message: |
             Running Lighthouse audit...
 
-      - name: Debug Vercel URL
-        id: debug_preview_url
-        run: echo '${{ secrets.VERCEL_TOKEN }}'
-
       - name: Capture Vercel URL
         id: vercel_preview_url
         uses: zentered/vercel-preview-url@v1.0.0
@@ -27,6 +23,15 @@ jobs:
         with:
           vercel_team_id: 'team_2b2sAtsGvmJrVpaHsBqigXVu'
           vercel_project_id: 'prj_oRkgj6YBJ2hfDswwwu8mmVA12Ahv'
+
+      - name: Wait for Vercel deployment
+        uses: UnlyEd/github-action-await-vercel@v1.2.14
+        id: await-vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: ${{ steps.vercel_preview_url.outputs.preview_url }}
+          timeout: 10 # Wait for 10 seconds before failing
 
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
