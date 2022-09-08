@@ -20,10 +20,10 @@ jobs:
         env:
           PR: ${{ steps.findPr.outputs.pr }}
 
-      - uses: 8BitJonny/gh-get-current-pr@2.1.1
-        id: PR
+      # - uses: 8BitJonny/gh-get-current-pr@2.1.1
+      #   id: PR
 
-      - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
+      # - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
 
       - name: Capture Vercel URL
         id: vercel_preview_url
@@ -86,6 +86,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-          number: 52
+          number: ${{ steps.findPr.outputs.pr }}
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
