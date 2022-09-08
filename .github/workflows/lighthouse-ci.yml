@@ -1,9 +1,6 @@
 name: Vercel Preview URL Lighthouse Audit
-
 on:
-  issue_comment:
-    types: [edited]
-
+  push
 jobs:
   generate_lighthouse_audit:
     timeout-minutes: 30
@@ -11,27 +8,31 @@ jobs:
     steps:
       - name: Add comment to PR
         id: loading_comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
-            Running Lighthouse audit...
-      - name: Capture Vercel preview URL
+            Running Lighthouse audit... powerstack
+      
+      - name: Capturevercel-preview-url
         id: vercel_preview_url
-        uses: aaron-binary/vercel-preview-url-action@v0.0.3
-        with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      - uses: actions/checkout@v2
+        uses: zentered/vercel-preview-url@v1.0.0
+        env:  
+            VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Get URL
+        run: echo "https://${{ steps.vercel_preview_url.outputs.preview_url }}"
+        
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
-        uses: treosh/lighthouse-ci-action@v3
+        uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
+             https://${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
           temporaryPublicStorage: true
+
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v3
@@ -60,7 +61,7 @@ jobs:
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
