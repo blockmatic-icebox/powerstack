@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # TODO: see if we can get the github sha value from github.event object
-      - name: Set env
+      - name: Set GITHUB_SHA env var
         run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
 
       - name: Capture Vercel URL
