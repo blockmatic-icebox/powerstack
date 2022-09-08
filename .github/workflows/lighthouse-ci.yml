@@ -15,8 +15,15 @@ jobs:
         with:
           state: open
 
-      - name: test PR
-        run: echo "Your PR is ${PR}"
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+
+      - uses: 8BitJonny/gh-get-current-pr@2.1.1
+        id: PR
+
+      - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
 
       - name: Capture Vercel URL
         id: vercel_preview_url
