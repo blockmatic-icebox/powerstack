@@ -5,32 +5,10 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          number: 52
-          message: |
-            Release ${{ github.sha }} to <https://pr-${{ github.event.number }}.example.com>
-
-      - name: Add comment to PR
-        id: loading_comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@v2.0.0
-        with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
-          number: 52
-          header: lighthouse
-          message: |
-            Running Lighthouse audit...
-
-      - name: github.event.issue.number
-        run: echo ${{ github.event.issue.number }}
-
       - uses: actions/checkout@v2
-
+      # TODO: see if we can get the github sha value from github.event object
       - name: Set env
         run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
-
-      - name: Test
-        run: echo $GITHUB_SHA
 
       - name: Capture Vercel URL
         id: vercel_preview_url
@@ -90,8 +68,6 @@ jobs:
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
           number: ${{ github.event.issue.number }}
-          header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
