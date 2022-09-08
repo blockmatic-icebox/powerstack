@@ -11,12 +11,12 @@ import { LanguageSelector } from '~/app-view/components/modules/LanguageSelector
 interface HomePageProps {
   app_engine_server_state: AppState
   page_content: {
-    pageSection1?: string | null
+    pageSection1: string | null
     metadata: {
-      title?: string | null
-      description?: string | null
-      twitterCard?: string | null
-      image?: { url: string } | null
+      title: string | null
+      description: string | null
+      twitterCard: string | null
+      image: { url: string } | null
     } | null
   }
 }
