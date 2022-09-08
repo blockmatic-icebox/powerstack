@@ -10,6 +10,9 @@ jobs:
       - name: Set GITHUB_SHA env var
         run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
 
+      - name: Set GITHUB_PR env var
+        run: echo "GITHUB_PR=$(echo $GITHUB_PR)" >> $GITHUB_ENV
+
       - name: Capture Vercel URL
         id: vercel_preview_url
         uses: zentered/vercel-preview-url@v1.0.0
@@ -68,6 +71,6 @@ jobs:
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          number: ${{ github.event.issue.number }}
+          number: ${{ github.event.number }}
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
