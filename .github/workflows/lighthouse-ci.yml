@@ -24,6 +24,9 @@ jobs:
         uses: zentered/vercel-preview-url@v1.0.0
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          vercel_team_id: 'team_2b2sAtsGvmJrVpaHsBqigXVu'
+          vercel_project_id: 'prj_oRkgj6YBJ2hfDswwwu8mmVA12Ahv'
 
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
