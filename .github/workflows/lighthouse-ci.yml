@@ -13,6 +13,12 @@ jobs:
       - name: Set GITHUB_PR env var
         run: echo "GITHUB_PR=$(echo $GITHUB_PR)" >> $GITHUB_ENV
 
+      - name: Set PR_NUM env var
+        run: PR_NUM=${PR_URL##*/}
+
+      - name: Test PR Number
+        run: echo $PR_NUM
+
       - name: Capture Vercel URL
         id: vercel_preview_url
         uses: zentered/vercel-preview-url@v1.0.0
