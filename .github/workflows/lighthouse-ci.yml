@@ -5,6 +5,11 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
+      - uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            Release ${{ github.sha }} to <https://pr-${{ github.event.number }}.example.com>
+
       - name: Add comment to PR
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2.0.0
