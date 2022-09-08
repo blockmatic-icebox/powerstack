@@ -15,19 +15,13 @@ jobs:
           message: |
             Running Lighthouse audit...
 
-      - name: Declare Github variables
-        id: vars
-        shell: bash
-        run: |
-          echo "##[set-output name=github_branch;]$(echo ${GITHUB_REF#refs/heads/})"
-          echo "::set-output name=github_sha_short::$(git rev-parse --short HEAD)"
-          echo "::set-output name=github_sha::$(git rev-parse HEAD)"
+      - uses: actions/checkout@v2
 
-      - name: test step
-        run: |
-          echo "Branch: ${{ steps.vars.outputs.github_branch }}"
-          echo "Sha: ${{ steps.vars.outputs.github_sha }}"
-          echo "Sha short: ${{ steps.vars.outputs.github_sha_short }}"
+      - name: Set env
+        run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
+
+      - name: Test
+        run: echo $GITHUB_SHA
 
       - name: Capture Vercel URL
         id: vercel_preview_url
@@ -51,7 +45,7 @@ jobs:
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v9
         env:
-          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ steps.vars.outputs.github_sha }}
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: $GITHUB_SHA
         with:
           urls: |
             https://${{ steps.vercel_preview_url.outputs.preview_url }}
