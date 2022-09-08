@@ -15,6 +15,10 @@ jobs:
           message: |
             Running Lighthouse audit...
 
+      - name: Debug Vercel URL
+        id: debug_preview_url
+        run: echo '${{ secrets.VERCEL_TOKEN }}'
+
       - name: Capture Vercel URL
         id: vercel_preview_url
         uses: zentered/vercel-preview-url@v1.0.0
