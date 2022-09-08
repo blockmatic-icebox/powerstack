@@ -10,7 +10,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
-          number: ${{ github.event.issue.number }}
+          number: 52
           header: lighthouse
           message: |
             Running Lighthouse audit...
