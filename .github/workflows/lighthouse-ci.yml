@@ -73,6 +73,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         with:
-          number: ${{ github.event.issue.number }}
+          number: ${{ github.event.number }}
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
