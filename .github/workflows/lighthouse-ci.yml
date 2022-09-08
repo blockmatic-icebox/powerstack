@@ -1,6 +1,5 @@
 name: Vercel Preview URL Lighthouse Audit
-on:
-  push
+on: push
 jobs:
   generate_lighthouse_audit:
     timeout-minutes: 30
@@ -14,22 +13,22 @@ jobs:
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
-            Running Lighthouse audit... powerstack
-      
+            Running Lighthouse audit...
+
       - name: Capturevercel-preview-url
         id: vercel_preview_url
         uses: zentered/vercel-preview-url@v1.0.0
-        env:  
-            VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       - name: Get URL
         run: echo "https://${{ steps.vercel_preview_url.outputs.preview_url }}"
-        
+
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-             https://${{ steps.vercel_preview_url.outputs.preview_url }}
+            https://${{ steps.vercel_preview_url.outputs.preview_url }}
           uploadArtifacts: true
           temporaryPublicStorage: true
 
@@ -56,7 +55,7 @@ jobs:
                 ' ',
                 `*Lighthouse ran on [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
-             core.setOutput("comment", comment); 
+             core.setOutput("comment", comment);
       - name: Add comment to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
