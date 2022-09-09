@@ -1,9 +1,28 @@
 name: Vercel Preview URL Lighthouse Audit
-on: push
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '**'
+
 jobs:
   generate_lighthouse_audit:
     timeout-minutes: 30
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Get number of CPU cores
+        uses: SimenB/github-actions-cpu-cores@v1
+        id: cpu-cores
+      - name: run tests
+        run: npx jest --max-workers ${{ steps.cpu-cores.outputs.count }}
+
     steps:
       - uses: actions/checkout@v2
       # TODO: see if we can get the github sha value from github.event object
