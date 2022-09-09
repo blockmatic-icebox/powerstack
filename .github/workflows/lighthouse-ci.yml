@@ -20,10 +20,9 @@ jobs:
       - name: Get number of CPU cores
         uses: SimenB/github-actions-cpu-cores@v1
         id: cpu-cores
-      - name: run tests
-        run: npx jest --max-workers ${{ steps.cpu-cores.outputs.count }}
+      - name: Print number of cores
+        run: echo ${{ steps.cpu-cores.outputs.count }}
 
-    steps:
       - uses: actions/checkout@v2
       # TODO: see if we can get the github sha value from github.event object
       - name: Set GITHUB_SHA env var
