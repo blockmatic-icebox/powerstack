@@ -5,15 +5,25 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - name: Add comment to PR
-        id: loading_comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@v2.0.0
+      - uses: actions/checkout@v2
+      # TODO: see if we can get the github sha value from github.event object
+      - name: Set GITHUB_SHA env var
+        run: echo "GITHUB_SHA=$(echo $GITHUB_SHA)" >> $GITHUB_ENV
+
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
         with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
-          number: ${{ github.event.issue.number }}
-          header: lighthouse
-          message: |
-            Running Lighthouse audit...
+          state: open
+
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+
+      # - uses: 8BitJonny/gh-get-current-pr@2.1.1
+      #   id: PR
+
+      # - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
 
       - name: Capture Vercel URL
         id: vercel_preview_url
@@ -31,11 +41,13 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         with:
           deployment-url: ${{ steps.vercel_preview_url.outputs.preview_url }}
-          timeout: 10 # Wait for 10 seconds before failing
+          timeout: 180 # Wait for x seconds before failing
 
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v9
+        env:
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: $GITHUB_SHA
         with:
           urls: |
             https://${{ steps.vercel_preview_url.outputs.preview_url }}
@@ -71,8 +83,7 @@ jobs:
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN}}
-          number: ${{ github.event.issue.number }}
-          header: lighthouse
+          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          number: ${{ steps.findPr.outputs.pr }}
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
