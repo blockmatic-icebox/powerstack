@@ -1,13 +1,13 @@
 name: Vercel Preview URL Lighthouse Audit
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - '**'
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '**'
+# on: push
 
 jobs:
   lhci:
