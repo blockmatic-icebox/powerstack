@@ -24,10 +24,6 @@ const VisuallyHidden = styled('h2', {
   wordWrap: 'normal',
 })
 
-const RightMenu = styled('div', {
-  display: 'flex',
-})
-
 const MenuButton = styled('button', {
   bg: 'transparent',
   border: 'none',
@@ -81,29 +77,40 @@ const Logo = styled(BlockmaticIcon, {
 const LogoContainer = styled('div', {
   flex: '1 1 300px',
   maxWidth: 300,
-  px: '$regular',
+  '@small': {
+    px: '$regular',
+  }
 })
 
 const NavContent = styled('div', {
   alignItems: 'center',
   borderBottom: '1px solid #eeeeee',
   borderLeft: '1px solid #eeeeee',
-  display: 'flex',
+  display: 'none',
   flex: 1,
   justifyContent: 'space-between',
   pl: '$regular',
   pr: '$x-large',
   py: '$regular',
   '@small': {
+    display: 'flex',
     py: '$regular',
   },
+  '&[data-active=true]': {
+    display: 'block',
+    position: 'absolute',
+    top: '100%',
+    width: '100%',
+  }
 })
 
 const LogoLink = styled(Link, {
-  borderBottom: '1px solid #eeeeee',
   height: '100%',
   my: 0,
   py: '$regular',
+  '@small': {
+    borderBottom: '1px solid #eeeeee',
+  }
 })
 
 const BellButton = styled('button', {
@@ -113,45 +120,51 @@ const BellButton = styled('button', {
   p: 0,
 })
 
+const NavActions = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  flex: 1,
+  justifyContent: 'space-between',
+  px: '$small',
+  '@small': {
+    px: 0,
+  }
+})
+
 export const Header = () => {
-  const { setShowLoginModal, show_sidebar, setShowSidebar, setloginModalMessage } = useAppEngine()
+  const { setShowLoginModal, show_submenu, setShowSubmenu, setloginModalMessage } = useAppEngine()
 
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
-      <LogoContainer>
-        <LogoLink href="/">
-          <Logo />
-        </LogoLink>
-      </LogoContainer>
-      <NavContent>
+      <NavActions>
+        <LogoContainer>
+          <LogoLink href="/">
+            <Logo />
+          </LogoLink>
+        </LogoContainer>
         <MenuButton
-          aria-label={show_sidebar ? 'Open Menu' : 'Close Menu'}
+          aria-label={show_submenu ? 'Open Menu' : 'Close Menu'}
           type="button"
-          data-state={show_sidebar && 'active'}
-          onClick={() => setShowSidebar(!show_sidebar)}
-        />
-        <RightMenu>
-          <VisuallyHidden>Main navigation</VisuallyHidden>
-          <BellButton type="button" aria-label="Notifications">
-            <BellIcon />
-          </BellButton>
-          {/* <select style={{ margin: '0 10px' }} name="networks" id="networks">
-            {app_args.supported_networks.map((network: string) => (
-              <option key={network} value="{network}">
-                {network}
-              </option>
-            ))}
-          </select> */}
-          <Button
-            onClick={() => {
-              setloginModalMessage('Login')
-              setShowLoginModal(true)
-            }}
-          >
-            Login
-          </Button>
-          <ProfilePopover />
-        </RightMenu>
+          data-state={show_submenu && 'active'}
+          onClick={() => setShowSubmenu(!show_submenu)}
+        >
+          <span aria-hidden="true"/><span aria-hidden="true"/><span aria-hidden="true"/>
+        </MenuButton>
+      </NavActions>
+      <NavContent data-active={show_submenu}>
+        <VisuallyHidden>Main navigation</VisuallyHidden>
+        <BellButton type="button" aria-label="Notifications">
+          <BellIcon />
+        </BellButton>
+        <Button
+          onClick={() => {
+            setloginModalMessage('Login')
+            setShowLoginModal(true)
+          }}
+        >
+          Login
+        </Button>
+        <ProfilePopover />
       </NavContent>
     </NavBar>
   )

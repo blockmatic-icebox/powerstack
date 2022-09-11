@@ -30,4 +30,8 @@ export const global_css = `
   button:focus {
     outline: none;
   }
+
+  pre {
+    overflow-y: auto;
+  }
 `
