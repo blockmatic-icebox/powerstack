@@ -64,6 +64,9 @@ const MenuButton = styled('button', {
       },
     },
   },
+  '@small': {
+    display: 'none',
+  }
 })
 
 const Logo = styled(BlockmaticIcon, {
@@ -74,16 +77,10 @@ const Logo = styled(BlockmaticIcon, {
   },
 })
 
-const LogoContainer = styled('div', {
-  flex: '1 1 300px',
-  maxWidth: 300,
-  '@small': {
-    px: '$regular',
-  }
-})
-
+// ToDo: this has just needed styles since we don't have the design yet
 const NavContent = styled('div', {
   alignItems: 'center',
+  bg: 'white',
   borderBottom: '1px solid #eeeeee',
   borderLeft: '1px solid #eeeeee',
   display: 'none',
@@ -94,11 +91,17 @@ const NavContent = styled('div', {
   py: '$regular',
   '@small': {
     display: 'flex',
+    justifyContent: 'flex-end',
     py: '$regular',
   },
   '&[data-active=true]': {
-    display: 'block',
+    alignItems: 'flex-end',
+    boxShadow: '0px 8px 16px 0px #00000014, 4px 4px 4px 0px #0000000a',
+    display: 'flex',
+    flexDirection: 'column',
+    px: '$small',
     position: 'absolute',
+    rowGap: '$regular',
     top: '100%',
     width: '100%',
   }
@@ -127,7 +130,9 @@ const NavActions = styled('div', {
   justifyContent: 'space-between',
   px: '$small',
   '@small': {
-    px: 0,
+    flex: '1 1 300px',
+    maxWidth: 300,
+    px: '$regular',
   }
 })
 
@@ -137,11 +142,11 @@ export const Header = () => {
   return (
     <NavBar role="navigation" aria-labelledby="main-nav-title">
       <NavActions>
-        <LogoContainer>
+        <div>
           <LogoLink href="/">
             <Logo />
           </LogoLink>
-        </LogoContainer>
+        </div>
         <MenuButton
           aria-label={show_submenu ? 'Open Menu' : 'Close Menu'}
           type="button"

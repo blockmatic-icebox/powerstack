@@ -2,6 +2,8 @@ import { styled } from '~/app-view/styles/stitches.config'
 import * as Tabs from '@radix-ui/react-tabs'
 
 export const TabOptions = styled(Tabs.List, {
+  display: 'flex',
+  overflowX: 'auto',
   '& button': {
     bg: 'transparent',
     border: 'none',
