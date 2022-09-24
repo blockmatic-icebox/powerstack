@@ -7,14 +7,12 @@ on:
   pull_request:
     branches:
       - '**'
+# on: push
 
 jobs:
-  generate_lighthouse_audit:
+  lhci:
     timeout-minutes: 30
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get number of CPU cores
