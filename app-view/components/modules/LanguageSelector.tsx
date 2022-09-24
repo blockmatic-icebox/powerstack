@@ -30,8 +30,9 @@ export const LanguageSelector = () => {
   return (
     <LanguageSelectorComponent>
       <h3 style={{ width: '100%' }}>Select Lang</h3>
-      {langs.map((l) => (
+      {langs.map((l, i) => (
         <Link
+          key={i}
           href={router.asPath}
           locale={l}
           style={{ borderBottomColor: l === router.locale ? '#ccc8' : undefined }}
