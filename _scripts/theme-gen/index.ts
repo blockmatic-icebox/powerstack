@@ -1,9 +1,6 @@
 // @ts-nocheck
-
-// TODO: Do Types...
-
 import * as Toolabs from './graphql/generated-sdk'
-
+// TODO: Do Types...
 import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client'
 import fetch from 'cross-fetch'
 import fs from 'fs'
@@ -141,8 +138,13 @@ function processTheme(theme: ToolabsTheme) {
     theme: {
       // @ts-ignore
       space: {},
+      letterSpacings: {},
+      lineHeights: {},
+      fontSizes: {},
+      fonts: {}
     },
   }
+  const textstyles = {}
   const theme_object: Theme = theme.theme
 
   Object.keys(theme_object).forEach((t_key) => {
@@ -159,11 +161,15 @@ function processTheme(theme: ToolabsTheme) {
             if (style === 'name') {
               typeStyleLabel = normalizeKeyName(typeStyle.name as string)
             } else {
+              const style_key = style as keyof Toolabs.TextStyle
               // @ts-ignore
-              new_theme.theme.textstyles[typeStyleLabel] = {
+              textstyles[typeStyleLabel] = {
                 // @ts-ignore
-                ...new_theme.theme.textstyles[typeStyleLabel],
-                [style as keyof Toolabs.TextStyle]: typeStyle[style as keyof Toolabs.TextStyle],
+                ...textstyles[typeStyleLabel],
+                [style_key === 'fontFamilyName' ? 'fontFamily' : style_key]:
+                  style_key === 'fontFamilyName'
+                    ? `'${typeStyle[style as keyof Toolabs.TextStyle]}', sans-serif`
+                    : typeStyle[style as keyof Toolabs.TextStyle],
               }
             }
           })
@@ -173,7 +179,6 @@ function processTheme(theme: ToolabsTheme) {
         theme_object[t_key]!.forEach((prop) => {
           // @ts-ignore
           new_theme.theme[t_key as ThemeKey][
-            // @ts-ignore
             prop.name
           ] = `cubic-bezier(${prop?.value?.x1}, ${prop?.value?.y1}, ${prop?.value?.x2}, ${prop?.value?.y2})`
         })
@@ -250,9 +255,21 @@ function processTheme(theme: ToolabsTheme) {
             id: react_name,
             name: normalized_name,
             svg: `import * as React from 'react'
+import type { Token } from '@stitches/react/types/theme'
 
-const ${react_name}: React.FC = (props) => (
-  ${icon.svg?.replace('xmlns="http://www.w3.org/2000/svg"', '{ ...props }')}
+const ${react_name}: React.FC<React.SVGProps<SVGSVGElement & { color?: Token<any, string, "colors", ""> | string }>> = ({ color = '${theme_object.colors?.find(c => normalizeKeyName(c?.name) === 'text')?.hex ?? '#050505'}',...props }) => (
+  ${icon.svg?.replace('xmlns="http://www.w3.org/2000/svg"', '{ ...props }')
+    .replace(/fill="none"/g, 'fill={\'none\'}')
+    .replace(/stroke="none"/g, 'stroke={\'none\'}')
+    .replace(/(fill="#.*"|fill="black"|fill="white")/g, 'fill={color as string}')
+    .replace(/(stroke="#.*"|stroke="black"|stroke="white")/g, 'stroke={color as string}')
+    .replace(/stroke-width/g, 'strokeWidth')
+    .replace(/stroke-linecap/g, 'strokeLinecap')
+    .replace(/stop-color/g, 'stopColor')
+    .replace(/fill-rule/g, 'fillRule')
+    .replace(/clip-rule/g, 'clipRule')
+    .replace(/clip-path/g, 'clipPath')
+  }
 )
 
 export default ${react_name}
@@ -263,6 +280,15 @@ export default ${react_name}
       default:
         break
     }
+  })
+
+  Object.keys(textstyles).forEach((key) => {
+    const style = textstyles[key]
+
+    new_theme.theme.fonts[key] = style.fontFamily
+    new_theme.theme.letterSpacings[key] = style.letterSpacing
+    new_theme.theme.lineHeights[key] = `${(parseInt(style.lineHeight, 10) / parseInt(style.fontSize, 10)).toFixed(3)}`
+    new_theme.theme.fontSizes[key] = `${0.0625 * parseInt(style.fontSize, 10)}rem`
   })
 
   Object.keys(new_theme.theme).forEach((key) => {

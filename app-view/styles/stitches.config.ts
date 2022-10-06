@@ -5,16 +5,6 @@ import { light_theme } from './themes/light-theme'
 // app_logger.log('Light Theme for Stitches\n', light_theme)
 // app_logger.log('Dark Theme for Stitches\n', dark_theme)
 
-// NOTE: Light theme is default theme if Dark is available.
-const getFontSizes = () => {
-  let fontSizes: any = {}
-  for (const property in light_theme.theme.textstyles) {
-    const tempFontSize: string = light_theme.theme.textstyles[property as keyof object]['fontSize']
-    fontSizes[property as keyof object] = tempFontSize
-  }
-  return fontSizes
-}
-
 export const { styled, globalCss, getCssText, config } = createStitches({
   // TODO: To test typeStyles redefinition... textstyles
   // @ts-ignore
@@ -31,7 +21,6 @@ export const { styled, globalCss, getCssText, config } = createStitches({
       heading: 700,
       bold: 700,
     },
-    fontSizes: getFontSizes(),
   },
   media: {
     'x-small': '(min-width: 425px)',
@@ -122,6 +111,48 @@ export const globalStyles = globalCss({
   body: {
     fontFamily: '$semi-bold',
     margin: 0,
+  },
+  h1: {
+    fontFamily: '$h1',
+    fontSize: '$h1',
+    letterSpacing: '$h1',
+    fontWeight: '$heading',
+    lineHeight: '$h1',
+  },
+  h2: {
+    fontFamily: '$h2',
+    fontSize: '$h2',
+    letterSpacing: '$h2',
+    fontWeight: '$heading',
+    lineHeight: '$h2',
+  },
+  h3: {
+    fontFamily: '$h3',
+    fontSize: '$h3',
+    letterSpacing: '$h3',
+    fontWeight: '$heading',
+    lineHeight: '$h3',
+  },
+  h4: {
+    fontFamily: '$h4',
+    fontSize: '$h4',
+    letterSpacing: '$h4',
+    fontWeight: '$heading',
+    lineHeight: '$h4',
+  },
+  h5: {
+    fontFamily: '$h5',
+    fontSize: '$h5',
+    letterSpacing: '$h5',
+    fontWeight: '$heading',
+    lineHeight: '$h5',
+  },
+  p: {
+    fontFamily: '$body',
+    fontSize: '$body',
+    letterSpacing: '$body',
+    fontWeight: '$body',
+    lineHeight: '$body',
   },
   '*, *::before, *::after': {
     boxSizing: 'border-box',
