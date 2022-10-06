@@ -7,8 +7,6 @@ import { light_theme } from './themes/light-theme'
 // app_logger.log('Dark Theme for Stitches\n', dark_theme)
 
 export const { theme: stitches_theme, styled, globalCss, getCssText, config } = createStitches({
-  // TODO: To test typeStyles redefinition... textstyles
-  // @ts-ignore
   theme: {
     // NOTE: Light theme is default theme if Dark is available
     ...light_theme.theme,
@@ -91,8 +89,8 @@ export const { theme: stitches_theme, styled, globalCss, getCssText, config } = 
 
 // Styled Icon Helper: Set sizes equally, if an icon has rectangle dimensions, use regular styled...
 // ADD MORE SIZES IF REQUIRED TO THE TYPE
-// @ts-ignore
 export const styledIcon = (
+  // @ts-ignore
   component: React.ComponentType<{ color?: Stitches.Token<any, string, 'colors', ''> }>,
   size: 'small' | 'medium',
 ) =>
