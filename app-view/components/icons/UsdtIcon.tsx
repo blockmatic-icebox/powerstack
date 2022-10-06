@@ -1,7 +1,7 @@
 import * as React from 'react'
 import type { Token } from '@stitches/react/types/theme'
 
-const UsdtIcon: React.FC<React.SVGProps<SVGSVGElement & { color?: Token<any, string, "colors", ""> | string }>> = ({ color = '#000505',...props }) => (
+const UsdtIcon: React.FC<React.SVGProps<SVGSVGElement & { color?: Token<any, string, "colors", ""> | string }>> = ({ color = '#fefefe',...props }) => (
   <svg width="42" height="42" viewBox="0 0 42 42" fill={'none'} { ...props }>
   <g id="Grupo 43878">
     <path id="Elipse 1541" d="M21 42C32.598 42 42 32.598 42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 32.598 9.40202 42 21 42Z" fill={color as string} />

@@ -269,6 +269,8 @@ const ${react_name}: React.FC<React.SVGProps<SVGSVGElement & { color?: Token<any
     .replace(/fill-rule/g, 'fillRule')
     .replace(/clip-rule/g, 'clipRule')
     .replace(/clip-path/g, 'clipPath')
+    .replace(/xlink:href/g, 'xlinkHref')
+    .replace('xmlns:xlink="http://www.w3.org/1999/xlink"', '')
   }
 )
 
