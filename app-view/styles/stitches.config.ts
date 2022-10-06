@@ -1,3 +1,4 @@
+import type * as React from 'react'
 import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
 import { light_theme } from './themes/light-theme'
@@ -5,7 +6,7 @@ import { light_theme } from './themes/light-theme'
 // app_logger.log('Light Theme for Stitches\n', light_theme)
 // app_logger.log('Dark Theme for Stitches\n', dark_theme)
 
-export const { styled, globalCss, getCssText, config } = createStitches({
+export const { theme: stitches_theme, styled, globalCss, getCssText, config } = createStitches({
   // TODO: To test typeStyles redefinition... textstyles
   // @ts-ignore
   theme: {
@@ -13,8 +14,8 @@ export const { styled, globalCss, getCssText, config } = createStitches({
     ...light_theme.theme,
     sizes: {
       container: '78.5rem',
-      iconSmall: '1.375rem',
-      iconMedium: '2.75rem',
+      'icon-small': '1.375rem',
+      'icon-medium': '2.75rem',
     },
     fontWeights: {
       body: 400,
@@ -87,6 +88,17 @@ export const { styled, globalCss, getCssText, config } = createStitches({
     }),
   },
 })
+
+// Styled Icon Helper: Set sizes equally, if an icon has rectangle dimensions, use regular styled...
+// ADD MORE SIZES IF REQUIRED TO THE TYPE
+// @ts-ignore
+export const styledIcon = (
+  component: React.ComponentType<{ color?: Stitches.Token<any, string, 'colors', ''> }>,
+  size: 'small' | 'medium',
+) =>
+  styled(component, {
+    size: `$icon-${size}`,
+  })
 
 export type CSS = Stitches.CSS<typeof config>
 
