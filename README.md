@@ -168,6 +168,63 @@ See [theme generator](_scripts\theme-gen\index.ts) for tech details.
 └── Taskfile.yml............................. utility tasks for docker based dev
 ```
 
+## JavaScript Code Conventions
+
+- snake_case variable and attribute names
+- camelCase functions
+- PascalCase for all react components. eg. AddUser.tsx
+- camelCase for hooks files. eg. useSubscription.tsx
+- lowercase with dash separator for package folders and names. eg. render-webgl-utils
+- avoid default export [default is bad](https://basarat.gitbook.io/typescript/main-1/defaultisbad)
+
+```ts
+const hello_message = 'hello'
+export function saySomething() {
+  const some_value = 'fren'
+  console.log(`${hello_message} ${some_value}`)
+}
+```
+
+## ReactJS Conventions
+
+- declare component with function keyword
+- use const for methods
+- place code in the following order
+  - function component declaration
+  - styled components
+  - typescript types
+  - getServerSideProps
+
+Eg.
+
+```tsx
+
+export function MyReactComponent({my_component_param}: MyReactComponetParams) {
+
+  const myMethod = () => console.log(my_component_param)
+
+  return (
+      <StyledContent>
+          A new world awaits. <br /> be the first to discover it.
+          <button onClick={myMethod}>log my param</button>
+      </StyledContent>
+    </Popover.Root>
+  )
+}
+
+const StyledContent = styled(Popover.Content, {
+  background: '#1F2027',
+  borderRadius: 30,
+  mt: '$regular',
+  p: '$large $regular 60px',
+})
+
+export interface MyReactComponetParams {
+  my_component_param: boolean
+}
+
+```
+
 ## Getting Started
 
 First, run the development server:
