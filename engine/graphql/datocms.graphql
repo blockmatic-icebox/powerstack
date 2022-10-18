@@ -1,0 +1,13 @@
+query HomeLocales($locale: SiteLocale = en_US) {
+  home(locale: $locale) {
+    pageSection1(markdown: true)
+    metadata {
+      title
+      description
+      image {
+        url
+      }
+      twitterCard
+    }
+  }
+}
