@@ -1,13 +1,13 @@
-import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 import * as Tabs from '@radix-ui/react-tabs'
 import Image from 'next/image'
-import { styled } from '~/app-view/styles/stitches.config'
-import { Link } from '~/app-view/components/base/Link'
-import { Input } from '~/app-view/components/base/Input'
+import { styled } from '~/ui/styles/stitches.config'
+import { Link } from '~/ui/components/base/Link'
+import { Input } from '~/ui/components/base/Input'
 import { z } from 'zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { TabOptions } from '~/app-view/components/layout/Tab'
+import { TabOptions } from '~/ui/components/layout/Tab'
 
 export const getServerSideProps = defaultGetServerSideProps
 

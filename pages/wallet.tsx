@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import * as Tabs from '@radix-ui/react-tabs'
-import { TabOptions } from '~/app-view/components/layout/Tab'
-import { styled } from '~/app-view/styles/stitches.config'
+import { TabOptions } from '~/ui/components/layout/Tab'
+import { styled } from '~/ui/styles/stitches.config'
 
 const Tab = styled(Tabs.Trigger, {
   pb: '$xx-small',
