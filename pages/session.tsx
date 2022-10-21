@@ -1,6 +1,6 @@
-import { useAppEngine } from '~/app-engine'
-import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
-import { formatAddress } from '~/app-view/library/uiux'
+import { useAppEngine } from '~/engine'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
+import { formatAddress } from '~/ui/library/uiux'
 
 export const getServerSideProps = defaultGetServerSideProps
 

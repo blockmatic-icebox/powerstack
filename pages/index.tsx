@@ -1,12 +1,12 @@
 import type { GetServerSidePropsContext, NextPage, PreviewData } from 'next'
 import type { ParsedUrlQuery } from 'querystring'
-import { AppState, useAppEngine } from '~/app-engine'
-import { getGraphQLDatoCMSSdk } from '~/app-engine/graphql'
-import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
-import { formatAddress } from '~/app-view/library/uiux'
-import * as DatoCMS from '~/app-engine/graphql/generated-datocms-sdk'
-import { Input } from '~/app-view/components/base/Input'
-import { LanguageSelector } from '~/app-view/components/modules/LanguageSelector'
+import { AppState, useAppEngine } from '~/engine'
+import { getGraphQLDatoCMSSdk } from '~/engine/graphql'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
+import { formatAddress } from '~/ui/library/uiux'
+import * as DatoCMS from '~/engine/graphql/generated-datocms-sdk'
+import { Input } from '~/ui/components/base/Input'
+import { LanguageSelector } from '~/ui/components/modules/LanguageSelector'
 
 interface HomePageProps {
   app_engine_server_state: AppState

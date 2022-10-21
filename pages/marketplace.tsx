@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { defaultGetServerSideProps, DefaultSsrPage } from '~/app-server/session-ssr'
+import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 
 export const getServerSideProps = defaultGetServerSideProps
 

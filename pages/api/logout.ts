@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { withSessionRoute } from '~/app-server/session-hoc'
+import { withSessionRoute } from '~/server/session-hoc'
 
 const logout_route = (req: NextApiRequest, res: NextApiResponse<{ success: boolean }>) => {
   req.session.destroy()

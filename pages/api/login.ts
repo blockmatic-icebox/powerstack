@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { auth_service } from '~/app-server/session-auth'
-import { CreateSessionParams } from '~/app-engine/store/session-slice'
-import { withSessionRoute } from '~/app-server/session-hoc'
-import { app_logger } from '~/app-engine/library/logger'
-import { getSessionAppUser } from '~/app-server/session-user'
+import { auth_service } from '~/server/session-auth'
+import { CreateSessionParams } from '~/engine/store/session-slice'
+import { withSessionRoute } from '~/server/session-hoc'
+import { app_logger } from '~/engine/library/logger'
+import { getSessionAppUser } from '~/server/session-user'
 
 const login_route = async (req: NextApiRequest, res: NextApiResponse) => {
   const login_payload = (await req.body) as CreateSessionParams
