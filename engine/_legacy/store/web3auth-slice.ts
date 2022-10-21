@@ -4,12 +4,12 @@ import { ADAPTER_EVENTS, SafeEventEmitterProvider } from '@web3auth/base'
 import { ethers } from 'ethers'
 import Decimal from 'decimal.js'
 import { app_args } from '~/engine/_legacy/config/app.config'
-import { AppLoginMethod, AppUser } from '../_legacy/types/engine.type'
-import { app_logger } from '../_legacy/library/logger.lib'
-import { app_networks } from '../static/app-networks'
+import { AppLoginMethod, AppUser } from '../types/engine.type'
+import { app_logger } from '../library/logger.lib'
+import { app_networks } from '../../static/app-networks'
 import { CustomChainConfig } from '@web3auth/base'
 import camelcaseKeys from 'camelcase-keys'
-import { AppNetworkName } from '../_legacy/types/engine.type'
+import { AppNetworkName } from '../types/engine.type'
 
 export const appNetworkToChainConfig = (network: AppNetworkName): CustomChainConfig =>
   camelcaseKeys(app_networks[network])

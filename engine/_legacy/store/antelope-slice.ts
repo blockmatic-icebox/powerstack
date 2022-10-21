@@ -2,12 +2,12 @@ import { StoreSlice } from './index'
 import AnchorLink, { ChainId, Name, PermissionLevel } from 'anchor-link'
 import _ from 'lodash'
 import { app_args } from '~/engine/_legacy/config/app.config'
-import { antelope_api, createNewAnchorLink } from '../_legacy/library/antelope.lib'
-import { app_logger } from '../_legacy/library/logger.lib'
-import { AppUser } from '../_legacy/types/engine.type'
+import { antelope_api, createNewAnchorLink } from '../library/antelope.lib'
+import { app_logger } from '../library/logger.lib'
+import { AppUser } from '../types/engine.type'
 import Decimal from 'decimal.js'
 import { appNetworkToChainConfig } from './web3auth-slice'
-import { app_networks } from '../static/app-networks'
+import { app_networks } from '../../static/app-networks'
 
 export enum AntelopeAuthType {
   ANCHOR = 'web3_antelope',

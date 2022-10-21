@@ -11,7 +11,7 @@ import {
   BitbucketIcon,
 } from '~/ui/icons/index'
 import { Card } from './Card'
-import { useAppEngine } from '~/engine/store/index'
+import { useAppEngine } from '~/engine/_legacy/store/index'
 import { useLocation } from 'react-use'
 import { Button } from '../base/Button'
 import { Modal } from './Modal'

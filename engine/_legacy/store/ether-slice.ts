@@ -3,10 +3,10 @@ import type { StoreSlice } from './index'
 import _ from 'lodash'
 import Decimal from 'decimal.js'
 import { app_args } from '~/engine/_legacy/config/app.config'
-import { AppLoginMethod, AppUser } from '../_legacy/types/engine.type'
-import { exec_env } from '../_legacy/library/exec-env.lib'
-import { app_logger } from '../_legacy/library/logger.lib'
-import { app_networks } from '../static/app-networks'
+import { AppLoginMethod, AppUser } from '../types/engine.type'
+import { exec_env } from '../library/exec-env.lib'
+import { app_logger } from '../library/logger.lib'
+import { app_networks } from '../../static/app-networks'
 
 export type EtherState = {
   ethereum_static_provider: providers.Web3Provider | providers.StaticJsonRpcProvider | null

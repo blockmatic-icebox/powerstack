@@ -1,6 +1,6 @@
 import type { GetServerSidePropsContext, NextPage, PreviewData } from 'next'
 import type { ParsedUrlQuery } from 'querystring'
-import { AppState, useAppEngine } from '~/engine/store'
+import { AppState, useAppEngine } from '~/engine/_legacy/store'
 import { getGraphQLDatoCMSSdk } from '~/engine/graphql'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 import { formatAddress } from '~/ui/library/uiux'

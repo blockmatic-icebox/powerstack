@@ -2,12 +2,12 @@ import type { StoreSlice } from './index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
 import { app_args } from '~/engine/_legacy/config/app.config'
-import { AppLoginMethod, AppUser } from '../_legacy/types/engine.type'
+import { AppLoginMethod, AppUser } from '../types/engine.type'
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
-import { getPhantomProvider } from '../_legacy/library/solana.lib'
-import { app_logger } from '../_legacy/library/logger.lib'
-import { app_networks } from '../static/app-networks'
+import { getPhantomProvider } from '../library/solana.lib'
+import { app_logger } from '../library/logger.lib'
+import { app_networks } from '../../static/app-networks'
 
 export type SolanaState = {
   solana_current_provider: null

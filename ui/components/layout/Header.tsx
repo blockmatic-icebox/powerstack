@@ -2,7 +2,7 @@ import { styled } from '~/ui/styles/stitches.config'
 import { BlockmaticIcon, BellIcon } from '~/ui/icons/index'
 import { Button } from '../base/Button'
 import { Link } from '../base/Link'
-import { useAppEngine } from '~/engine/store/index'
+import { useAppEngine } from '~/engine/_legacy/store/index'
 import { ProfilePopover } from '../modules/ProfilePopover'
 
 const NavBar = styled('nav', {

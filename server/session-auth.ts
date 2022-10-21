@@ -1,7 +1,7 @@
 import { app_args } from '~/engine/_legacy/config/app.config'
 import { app_logger } from '~/engine/_legacy/library/logger.lib'
 import { FetchError, fetchJson } from '../engine/_legacy/library/fetch.lib'
-import { CreateSessionParams } from '../engine/store/session-slice'
+import { CreateSessionParams } from '../engine/_legacy/store/session-slice'
 import { AppLoginMethod, AppUser } from '../engine/_legacy/types/engine.type'
 
 export type AuthErrorResponse = FetchError | Error

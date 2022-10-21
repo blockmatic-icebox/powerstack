@@ -1,7 +1,7 @@
 import { AuthResponse } from '~/server/session-auth'
 import { fetchJson } from '../library/fetch.lib'
 import { app_logger } from '../library/logger.lib'
-import { CreateSessionParams } from '../../store/session-slice'
+import { CreateSessionParams } from '../store/session-slice'
 
 export const auth_server = {
   login: async (login_payload: CreateSessionParams) => {

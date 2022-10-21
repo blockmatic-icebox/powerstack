@@ -11,9 +11,9 @@ import { createSolanaSlice, SolanaActions, SolanaState } from './solana-slice'
 import { createEtherSlice, EtherActions, EtherState } from './ether-slice'
 import { CoinActions, CoinState, createCoinSlice } from './coin-slice'
 import { createContext, useContext } from 'react'
-import { app_logger } from '../_legacy/library/logger.lib'
+import { app_logger } from '../library/logger.lib'
 import _ from 'lodash'
-import { exec_env } from '../_legacy/library/exec-env.lib'
+import { exec_env } from '../library/exec-env.lib'
 
 // typescript slicing: https://bit.ly/3qgvLbn
 export type AppState = UserState &

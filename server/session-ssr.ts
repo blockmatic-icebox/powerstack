@@ -4,7 +4,7 @@ import {
   GetServerSidePropsResult,
   NextPage,
 } from 'next'
-import { AppState, createVanillaEngine } from '~/engine/store'
+import { AppState, createVanillaEngine } from '~/engine/_legacy/store'
 import { withSessionSsr } from './session-hoc'
 import circularJSON from 'circular-json'
 export interface DefaultSessionSsrProps {

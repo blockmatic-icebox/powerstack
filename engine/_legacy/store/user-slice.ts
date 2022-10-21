@@ -1,9 +1,9 @@
-import { getGraphQLSdk } from '../graphql'
+import { getGraphQLSdk } from '../../graphql'
 import type { StoreSlice } from './index'
-import { getEthNativeTokenBalance, isEth } from '../_legacy/library/ethers.lib'
-import { app_logger } from '../_legacy/library/logger.lib'
-import { getSolNativeTokenBalance, isSol } from '../_legacy/library/solana.lib'
-import type { AppUser } from '../_legacy/types/engine.type'
+import { getEthNativeTokenBalance, isEth } from '../library/ethers.lib'
+import { app_logger } from '../library/logger.lib'
+import { getSolNativeTokenBalance, isSol } from '../library/solana.lib'
+import type { AppUser } from '../types/engine.type'
 
 export type UserState = {
   user: AppUser | null
