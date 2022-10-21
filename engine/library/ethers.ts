@@ -2,7 +2,7 @@ import Decimal from 'decimal.js'
 import { ethers } from 'ethers'
 import _ from 'lodash'
 import { Address } from '../types/app-engine'
-import { app_logger } from './logger'
+import { app_logger } from './logger.lib'
 
 // TODO: improve type
 export const isEth = (network: string) =>

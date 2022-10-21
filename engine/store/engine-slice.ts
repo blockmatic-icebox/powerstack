@@ -1,5 +1,5 @@
 import { StoreSlice } from '..'
-import { app_logger } from '../library/logger'
+import { app_logger } from '../library/logger.lib'
 
 export interface EngineState {
   app_engine_initialized: boolean

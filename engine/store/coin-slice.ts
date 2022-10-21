@@ -1,5 +1,5 @@
 import type { StoreSlice } from '../index'
-import { app_logger } from '../library/logger'
+import { app_logger } from '../library/logger.lib'
 import { coingecko_client } from '../services/coingecko'
 import { coin_list } from '../static/coin-list'
 import { Coin } from '../types/app-engine'

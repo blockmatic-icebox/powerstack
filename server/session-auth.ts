@@ -1,6 +1,6 @@
 import { app_args } from '~/engine/config/app.config'
-import { app_logger } from '~/engine/library/logger'
-import { FetchError, fetchJson } from '../engine/library/fetch'
+import { app_logger } from '~/engine/library/logger.lib'
+import { FetchError, fetchJson } from '../engine/library/fetch.lib'
 import { CreateSessionParams } from '../engine/store/session-slice'
 import { AppLoginMethod, AppUser } from '../engine/types/app-engine'
 

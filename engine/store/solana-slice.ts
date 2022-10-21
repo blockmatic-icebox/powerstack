@@ -5,8 +5,8 @@ import { app_args } from '~/engine/config/app.config'
 import { AppLoginMethod, AppUser } from '../types/app-engine'
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'
-import { getPhantomProvider } from '../library/solana'
-import { app_logger } from '../library/logger'
+import { getPhantomProvider } from '../library/solana.lib'
+import { app_logger } from '../library/logger.lib'
 import { app_networks } from '../static/app-networks'
 
 export type SolanaState = {

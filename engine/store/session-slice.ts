@@ -1,6 +1,6 @@
 import type { StoreSlice } from '../index'
 import { AppLoginMethod } from '../types/app-engine'
-import { app_logger } from '../library/logger'
+import { app_logger } from '../library/logger.lib'
 import { auth_server } from '../services/auth-server'
 import { AuthErrorResponse } from '~/server/session-auth'
 
