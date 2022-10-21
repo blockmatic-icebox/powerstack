@@ -1,7 +1,7 @@
 import AnchorLink, { APIClient } from 'anchor-link'
 
 import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
-import { app_networks } from '../static/app-networks'
+import { app_networks } from '../../static/app-networks'
 
 export const createNewAnchorLink = () =>
   new AnchorLink({

@@ -1,4 +1,4 @@
-import { AppEngineApi } from '..'
+import { AppEngineApi } from '../store'
 
 export {}
 

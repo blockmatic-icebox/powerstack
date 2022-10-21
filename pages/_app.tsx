@@ -1,7 +1,7 @@
-import '~/engine'
+import '~/engine/store'
 import type { AppProps } from 'next/app'
 import { Layout } from '~/ui/components/layout/Layout'
-import { AppEngineProvider } from '~/engine'
+import { AppEngineProvider } from '~/engine/store'
 import { AuthModal } from '~/ui/components/modules/AuthModal'
 
 function MyApp({ Component, pageProps }: AppProps) {

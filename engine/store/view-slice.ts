@@ -1,4 +1,4 @@
-import type { StoreSlice } from '../index'
+import type { StoreSlice } from './index'
 
 export type AppMessageType = 'alert' | 'warn' | 'info'
 export type ViewState = {

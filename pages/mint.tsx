@@ -1,6 +1,6 @@
 import { styled } from '../ui/styles/stitches.config'
 import { NextPage } from 'next'
-import { useAppEngine } from '~/engine'
+import { useAppEngine } from '~/engine/store'
 import { Button } from '~/ui/components/base/Button'
 import { Input } from '~/ui/components/base/Input'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'

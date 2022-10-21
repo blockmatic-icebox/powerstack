@@ -1,6 +1,6 @@
 import NextImage, { ImageProps } from 'next/image'
 import _ from 'lodash'
-import { getCloudinaryImage, getCloudinaryVideo } from '~/engine/services/cloudinary'
+import { getCloudinaryImage, getCloudinaryVideo } from '~/engine/_legacy/services/cloudinary.service'
 import { styled } from '~/ui/styles/stitches.config'
 
 type CustomImageProps = ImageProps & {

@@ -1,11 +1,11 @@
 import { ethers, providers } from 'ethers'
-import type { StoreSlice } from '../index'
+import type { StoreSlice } from './index'
 import _ from 'lodash'
 import Decimal from 'decimal.js'
-import { app_args } from '~/engine/config/app.config'
+import { app_args } from '~/engine/_legacy/config/app.config'
 import { AppLoginMethod, AppUser } from '../types/app-engine'
-import { exec_env } from '../library/exec-env.lib'
-import { app_logger } from '../library/logger.lib'
+import { exec_env } from '../_legacy/library/exec-env.lib'
+import { app_logger } from '../_legacy/library/logger.lib'
 import { app_networks } from '../static/app-networks'
 
 export type EtherState = {

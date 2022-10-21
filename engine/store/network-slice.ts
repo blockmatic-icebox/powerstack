@@ -1,4 +1,4 @@
-import type { StoreSlice } from '../index'
+import type { StoreSlice } from './index'
 
 export type NetworkState = {
   current_evm_network: null

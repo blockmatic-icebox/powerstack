@@ -1,6 +1,6 @@
 import { AuthModal } from '~/ui/components/modules/AuthModal'
 import { NextPage } from 'next'
-import { useAppEngine } from '~/engine'
+import { useAppEngine } from '~/engine/store'
 import { Button } from '~/ui/components/base/Button'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 

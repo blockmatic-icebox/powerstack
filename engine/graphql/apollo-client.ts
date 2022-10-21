@@ -2,9 +2,9 @@ import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, split } from '@apoll
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
-import { exec_env } from '../library/exec-env.lib'
-import { app_logger } from '../library/logger.lib'
-import { app_args } from '~/engine/config/app.config'
+import { exec_env } from '../_legacy/library/exec-env.lib'
+import { app_logger } from '../_legacy/library/logger.lib'
+import { app_args } from '~/engine/_legacy/config/app.config'
 import { getCookie } from 'cookies-next'
 
 const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {

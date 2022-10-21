@@ -1,4 +1,4 @@
-import { useAppEngine } from '~/engine'
+import { useAppEngine } from '~/engine/store'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 import { formatAddress } from '~/ui/library/uiux'
 
