@@ -1,6 +1,6 @@
 import { getGraphQLSdk } from '../graphql'
 import type { StoreSlice } from '../index'
-import { getEthNativeTokenBalance, isEth } from '../library/ethers'
+import { getEthNativeTokenBalance, isEth } from '../library/ethers.lib'
 import { app_logger } from '../library/logger.lib'
 import { getSolNativeTokenBalance, isSol } from '../library/solana.lib'
 import type { AppUser } from '../types/app-engine'
