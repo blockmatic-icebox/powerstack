@@ -1,7 +1,7 @@
 import type { StoreSlice } from '../index'
 import Decimal from 'decimal.js'
 import _ from 'lodash'
-import { app_args } from '~/engine/config/app-config'
+import { app_args } from '~/engine/config/app.config'
 import { AppLoginMethod, AppUser } from '../types/app-engine'
 import bs58 from 'bs58'
 import { Connection } from '@solana/web3.js'

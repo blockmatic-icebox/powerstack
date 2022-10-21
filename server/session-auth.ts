@@ -1,4 +1,4 @@
-import { app_args } from '~/engine/config/app-config'
+import { app_args } from '~/engine/config/app.config'
 import { app_logger } from '~/engine/library/logger'
 import { FetchError, fetchJson } from '../engine/library/fetch'
 import { CreateSessionParams } from '../engine/store/session-slice'
