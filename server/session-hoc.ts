@@ -3,7 +3,7 @@ import { withIronSessionApiRoute, withIronSessionSsr } from 'iron-session/next'
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextApiHandler } from 'next/types'
 import { app_args } from '~/engine/_legacy/config/app.config'
 import { server_secrets } from '~/engine/_legacy/config/server.config'
-import { AppUser } from '~/engine/types/app-engine'
+import { AppUser } from '~/engine/_legacy/types/engine.type'
 
 // This is where we specify the typings of req.session.*
 declare module 'iron-session' {

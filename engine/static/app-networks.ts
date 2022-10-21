@@ -1,5 +1,5 @@
 import { CHAIN_NAMESPACES } from '@web3auth/base'
-import { AppNetworks } from '../types/app-engine'
+import { AppNetworks } from '../_legacy/types/engine.type'
 import { app_args } from '../_legacy/config/app.config'
 
 /*  NOTE:

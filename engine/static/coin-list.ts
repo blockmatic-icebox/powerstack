@@ -1,4 +1,4 @@
-import { Coin } from '../types/app-engine'
+import { Coin } from '../_legacy/types/engine.type'
 
 export const coin_list: Coin[] = [
   {
