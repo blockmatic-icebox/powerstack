@@ -1,4 +1,4 @@
-import { AppArguments } from '../types/app-config'
+import { AppArguments } from './app-config.types'
 
 export const app_args: AppArguments = {
   app_name: process.env.NEXT_PUBLIC_APP_NAME || '',
