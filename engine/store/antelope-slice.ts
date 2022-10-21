@@ -1,7 +1,7 @@
 import { StoreSlice } from '../index'
 import AnchorLink, { ChainId, Name, PermissionLevel } from 'anchor-link'
 import _ from 'lodash'
-import { app_args } from '~/engine/config/app-arguments'
+import { app_args } from '~/engine/config/app-config'
 import { antelope_api, createNewAnchorLink } from '../library/antelope'
 import { app_logger } from '../library/logger'
 import { AppUser } from '../types/app-engine'

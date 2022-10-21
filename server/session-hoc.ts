@@ -1,7 +1,7 @@
 // this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
 import { withIronSessionApiRoute, withIronSessionSsr } from 'iron-session/next'
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextApiHandler } from 'next/types'
-import { app_args } from '~/engine/config/app-arguments'
+import { app_args } from '~/engine/config/app-config'
 import { server_secrets } from '~/engine/config/server-secrets'
 import { AppUser } from '~/engine/types/app-engine'
 

@@ -1,6 +1,6 @@
 import { CHAIN_NAMESPACES } from '@web3auth/base'
 import { AppNetworks } from '../types/app-engine'
-import { app_args } from '../config/app-arguments'
+import { app_args } from '../config/app-config'
 
 /*  NOTE:
 We need to handle attributes form all type of chains under AppNetwork strucutre. Solana, EVM and Antelope for staters.

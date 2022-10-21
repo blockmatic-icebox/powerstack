@@ -4,7 +4,7 @@ import { createClient } from 'graphql-ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { exec_env } from '../library/exec-env'
 import { app_logger } from '../library/logger'
-import { app_args } from '~/engine/config/app-arguments'
+import { app_args } from '~/engine/config/app-config'
 import { getCookie } from 'cookies-next'
 
 const apolloLoggingFetch = async (input: RequestInfo, init?: RequestInit): Promise<Response> => {
