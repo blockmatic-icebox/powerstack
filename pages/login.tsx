@@ -1,7 +1,8 @@
-import { AuthModal } from '~/ui/components/modules/AuthModal'
+import { AuthModal } from '~/ui/_legacy/components/shared/AuthWizard/components/AuthModal'
 import { NextPage } from 'next'
-import { useAppEngine } from '~/engine'
-import { Button } from '~/ui/components/base/Button'
+import { useAppEngine } from '~/engine/_legacy/store'
+import { CreateSessionParams } from '~/engine/_legacy/store/session-slice'
+import { Button } from '~/ui/_legacy/components/base/Button'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 
 export const getServerSideProps = defaultGetServerSideProps

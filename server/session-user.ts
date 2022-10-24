@@ -1,4 +1,4 @@
-import { AppUser } from '~/engine/types/app-engine'
+import { AppUser } from '~/engine/_legacy/types/engine.type'
 import jwt_decode from 'jwt-decode'
 
 export const getSessionAppUser = async (jwt: string): Promise<AppUser> => {
