@@ -4,7 +4,7 @@ import {
   GearSixIcon,
   SignOutIcon,
   SparkleIcon,
-} from '~/ui/icons/index'
+} from '~/ui/components/icons/index'
 import { Link } from '../base/Link'
 import Image from 'next/image'
 import { useAppEngine } from '~/engine/_legacy/store/index'

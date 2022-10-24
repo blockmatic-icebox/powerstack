@@ -9,7 +9,7 @@ import {
   GitlabIcon,
   GhLoginIcon,
   BitbucketIcon,
-} from '~/ui/icons/index'
+} from '~/ui/components/icons/index'
 import { Card } from './Card'
 import { useAppEngine } from '~/engine/_legacy/store/index'
 import { useLocation } from 'react-use'

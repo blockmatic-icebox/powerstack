@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { copyToClipboard, formatAddress } from '~/ui/library/uiux'
 import { styled } from '~/ui/styles/stitches.config'
 import { Link } from '../base/Link'
-import { ArrowUpRight, CopyDocumentIcon } from '../../icons'
+import { ArrowUpRight, CopyDocumentIcon } from '../icons'
 
 type WalletBoxProps = {
   address: string

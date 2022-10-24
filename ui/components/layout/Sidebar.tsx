@@ -2,7 +2,7 @@ import { styled } from '~/ui/styles/stitches.config'
 import { useAppEngine } from '~/engine/_legacy/store/index'
 import { Link } from '../base/Link'
 import { WalletBox } from '../modules/WalletBox'
-import { AppsIcon, CartIcon, WalletIcon } from '../../icons'
+import { AppsIcon, CartIcon, WalletIcon } from '../icons'
 import { useRouter } from 'next/router'
 
 const SidebarContainer = styled('aside', {
