@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { auth_service } from '~/server/session-auth'
+import { auth_service } from '~/server/session-auth.server'
 import { CreateSessionParams } from '~/engine/_legacy/store/session-slice'
 import { withSessionRoute } from '~/server/session-hoc'
 import { app_logger } from '~/engine/_legacy/library/logger.lib'
