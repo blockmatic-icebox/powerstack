@@ -3,7 +3,7 @@ import { BlockmaticIcon, BellIcon } from '~/ui/_legacy/components/icons/index'
 import { Button } from '../base/Button'
 import { Link } from '../base/Link'
 import { useAppEngine } from '~/engine/_legacy/store/index'
-import { ProfilePopover } from '../modules/ProfilePopover'
+import { ProfilePopover } from '../shared/AuthWizard/components/ProfilePopover'
 
 const NavBar = styled('nav', {
   display: 'flex',

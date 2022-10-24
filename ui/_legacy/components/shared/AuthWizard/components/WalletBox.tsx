@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { copyToClipboard, formatAddress } from '~/ui/_legacy/library/uiux'
 import { styled } from '~/ui/_legacy/styles/stitches.config'
-import { Link } from '../base/Link'
-import { ArrowUpRight, CopyDocumentIcon } from '../icons'
+import { Link } from '../../../base/Link'
+import { ArrowUpRight, CopyDocumentIcon } from '../../../icons'
 
 type WalletBoxProps = {
   address: string

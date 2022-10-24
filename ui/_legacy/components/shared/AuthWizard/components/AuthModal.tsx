@@ -1,4 +1,4 @@
-import { styled } from '../../styles/stitches.config'
+import { styled } from '../../../../styles/stitches.config'
 import _ from 'lodash'
 import {
   AnchorIcon,
@@ -13,7 +13,7 @@ import {
 import { Card } from './Card'
 import { useAppEngine } from '~/engine/_legacy/store/index'
 import { useLocation } from 'react-use'
-import { Button } from '../base/Button'
+import { Button } from '../../../base/Button'
 import { Modal } from './Modal'
 
 const Title = styled('h1', {

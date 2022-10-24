@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect } from 'react'
-import { styled } from '../../styles/stitches.config'
+import { styled } from '../../../../styles/stitches.config'
 
 const StyledBackdrop = styled('div', {
   backgroundColor: '#00000099',

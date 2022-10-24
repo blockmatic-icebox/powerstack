@@ -1,7 +1,7 @@
 import { styled } from '~/ui/_legacy/styles/stitches.config'
 import { useAppEngine } from '~/engine/_legacy/store/index'
 import { Link } from '../base/Link'
-import { WalletBox } from '../modules/WalletBox'
+import { WalletBox } from '../shared/AuthWizard/components/WalletBox'
 import { AppsIcon, CartIcon, WalletIcon } from '../icons'
 import { useRouter } from 'next/router'
 

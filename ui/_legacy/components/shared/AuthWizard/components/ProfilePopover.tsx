@@ -5,7 +5,7 @@ import {
   SignOutIcon,
   SparkleIcon,
 } from '~/ui/_legacy/components/icons/index'
-import { Link } from '../base/Link'
+import { Link } from '../../../base/Link'
 import Image from 'next/image'
 import { useAppEngine } from '~/engine/_legacy/store/index'
 import * as Popover from '@radix-ui/react-popover'

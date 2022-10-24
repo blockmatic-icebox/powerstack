@@ -1,4 +1,4 @@
-import { AuthModal } from '~/ui/_legacy/components/modules/AuthModal'
+import { AuthModal } from '~/ui/_legacy/components/shared/AuthWizard/components/AuthModal'
 import { NextPage } from 'next'
 import { useAppEngine } from '~/engine/_legacy/store'
 import { CreateSessionParams } from '~/engine/_legacy/store/session-slice'
