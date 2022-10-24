@@ -1,5 +1,5 @@
 import { styled } from '../../styles/stitches.config'
-import { LightModeIcon } from '~/ui/components/icons/index'
+import { LightModeIcon } from '~/ui/_legacy/components/icons/index'
 import { Container } from './Container'
 import { Button } from '../base/Button'
 

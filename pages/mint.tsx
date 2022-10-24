@@ -1,8 +1,8 @@
-import { styled } from '../ui/styles/stitches.config'
+import { styled } from '../ui/_legacy/styles/stitches.config'
 import { NextPage } from 'next'
 import { useAppEngine } from '~/engine/_legacy/store'
-import { Button } from '~/ui/components/base/Button'
-import { Input } from '~/ui/components/base/Input'
+import { Button } from '~/ui/_legacy/components/base/Button'
+import { Input } from '~/ui/_legacy/components/base/Input'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
 
 const ButtonGroup = styled('div', {

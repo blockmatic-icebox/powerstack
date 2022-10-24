@@ -1,10 +1,10 @@
-import { styled } from '~/ui/styles/stitches.config'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
 import {
   CaretDownIcon,
   GearSixIcon,
   SignOutIcon,
   SparkleIcon,
-} from '~/ui/components/icons/index'
+} from '~/ui/_legacy/components/icons/index'
 import { Link } from '../base/Link'
 import Image from 'next/image'
 import { useAppEngine } from '~/engine/_legacy/store/index'

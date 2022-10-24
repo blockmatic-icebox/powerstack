@@ -1,4 +1,4 @@
-import { styled } from '~/ui/styles/stitches.config'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
 import * as Tabs from '@radix-ui/react-tabs'
 
 export const TabOptions = styled(Tabs.List, {

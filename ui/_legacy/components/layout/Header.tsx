@@ -1,5 +1,5 @@
-import { styled } from '~/ui/styles/stitches.config'
-import { BlockmaticIcon, BellIcon } from '~/ui/components/icons/index'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
+import { BlockmaticIcon, BellIcon } from '~/ui/_legacy/components/icons/index'
 import { Button } from '../base/Button'
 import { Link } from '../base/Link'
 import { useAppEngine } from '~/engine/_legacy/store/index'

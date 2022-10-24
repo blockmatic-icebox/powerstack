@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { Link } from '~/ui/components/base/Link'
-import { styled } from '~/ui/styles/stitches.config'
+import { Link } from '~/ui/_legacy/components/base/Link'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
 
 const LanguageSelectorComponent = styled('section', {
   width: '100%',

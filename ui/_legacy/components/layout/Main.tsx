@@ -1,4 +1,4 @@
-import { styled } from '~/ui/styles/stitches.config'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
 
 export const Main = styled('main', {
   p: '$regular',

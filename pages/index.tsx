@@ -3,10 +3,10 @@ import type { ParsedUrlQuery } from 'querystring'
 import { AppState, useAppEngine } from '~/engine/_legacy/store'
 import { getGraphQLDatoCMSSdk } from '~/engine/graphql'
 import { defaultGetServerSideProps, DefaultSsrPage } from '~/server/session-ssr'
-import { formatAddress } from '~/ui/library/uiux'
+import { formatAddress } from '~/ui/_legacy/library/uiux'
 import * as DatoCMS from '~/engine/graphql/generated-datocms-sdk'
-import { Input } from '~/ui/components/base/Input'
-import { LanguageSelector } from '~/ui/components/modules/LanguageSelector'
+import { Input } from '~/ui/_legacy/components/base/Input'
+import { LanguageSelector } from '~/ui/_legacy/components/modules/LanguageSelector'
 
 interface HomePageProps {
   app_engine_server_state: AppState

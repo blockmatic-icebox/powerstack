@@ -2,7 +2,7 @@ import React from 'react'
 import { Header } from './Header'
 import { Main } from './Main'
 import { Sidebar } from './Sidebar'
-import { styled } from '~/ui/styles/stitches.config'
+import { styled } from '~/ui/_legacy/styles/stitches.config'
 
 export const LayoutGrid = styled('div', {
   boxSizing: 'border-box',

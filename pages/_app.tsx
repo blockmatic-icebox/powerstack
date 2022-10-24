@@ -1,8 +1,8 @@
 import '~/engine/_legacy/store'
 import type { AppProps } from 'next/app'
-import { Layout } from '~/ui/components/layout/Layout'
+import { Layout } from '~/ui/_legacy/components/layout/Layout'
 import { AppEngineProvider } from '~/engine/_legacy/store/'
-import { AuthModal } from '~/ui/components/modules/AuthModal'
+import { AuthModal } from '~/ui/_legacy/components/modules/AuthModal'
 
 function MyApp({ Component, pageProps }: AppProps) {
   // console.log('app_engine_server_state', pageProps.app_engine_server_state)
