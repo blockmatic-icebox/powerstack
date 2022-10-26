@@ -1,3 +1,4 @@
+import '../ui/styles/globals.css'
 import '~/engine/_legacy/store'
 import type { AppProps } from 'next/app'
 import { Layout } from '~/ui/_legacy/components/layout/Layout'
