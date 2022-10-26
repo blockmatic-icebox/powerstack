@@ -39,7 +39,6 @@ Demo <https://powerstack-next.vercel.app/>
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
 - Sentry reporting [sentry.io/](https://sentry.io/)
-- Next i18next [i18next/next-i18next](https://github.com/i18next/next-i18next)
 
 ### File Structure
 
