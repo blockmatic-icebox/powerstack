@@ -8,39 +8,27 @@ _Disclaimer: This is a work in progress. Will be finalized soon._
 
 Demo <https://powerstack-next.vercel.app/>
 
-## Architecture
-
-![](./_docs/mvvm-architecture.png)
-
 ## Features
 
 - Web2 and Web3 authentication ( EVM, Solana, Antelope, Web3Auth ).
-- Wallet integration: sign messages and transactions.
-- Upload to Arweave using Blundr.
-- Upload to IPFS using Pinata.
-- Mint on Solana, EVM and Antelope blockchains.
+- Read blockchain state, sign messages and transactions.
 - Read account token balances and nfts.
-- GraphQL client with support for multiple indexers.
-- Portable agnostic vanillajs core logic store with Zustand.
-- Utilities for decimal precision, math and trigonometry in js.
-- Utilities library for common web2 and web3 tasks.
-- Lighthouse CI web vitals performance reports.
-- CSS-in-JS design system Stitches.
-- Import design tokens from Toolabs Design Manager.
-- Autogenerate Icons as React Components from Toolabs Design Manager.
-- Autogenerate TypeScript types from GraphQL schema.
-- Crash reporting and web analytics.
-- Base ui components with forms validation.
-- Internationalization with i18next.
-- TypeScript, ESLint, Prettier and Husky for code quality.
-- Read coin prices from CoinGecko API.
+- Read token prices and market data.
+- Next 13 optimized architecture and best practices.
+- Semantic, idiomatic, functional and declarative codestyle.
+- Utility first CSS with TailwindUI components.
+- Upload files to Arweave using Blundr.
+- Upload files to IPFS using Pinata.
+- Utilities for decimal precision and math.
+- Internationalization.
+- Integration with DatoCMS.
+- TypeScript, ESLint, Prettier and hooks for code quality.
 - Docker support and Taskfile.
 
 ## Tech Stack
 
 - NextJS [nextjs.org](https://nextjs.org)
-- Zustand store [pmndrs/zustand](https://github.com/pmndrs/zustand)
-- Stitches styling [stitches.dev](https://stitches.dev)
+- TailwindCSS [tailwindcss.com](https://tailwindcss.com)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
@@ -53,135 +41,67 @@ Demo <https://powerstack-next.vercel.app/>
 - Sentry reporting [sentry.io/](https://sentry.io/)
 - Next i18next [i18next/next-i18next](https://github.com/i18next/next-i18next)
 
-## State Management
-
-Core logic in presentation components is a general problem in react, the solution is zustand, a portable agnostic store in vanillajs. By putting all core logic on zustand store we prevent render logic hell (no complicated useEffect functions) and we remove duplication and reduce complexity.
-
-We use a Zustand based JavaScript Core Engine both on the server within [getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props) for server side rendering and on the browser to provide the UX posible while keeping state management simple and contained.
-
-We hydrate the App Engine Zustand Store from the server in `_app.tsx` in order to prevent server/client render mistmatches.
-
-The app-engine is fully portable and be reused on any client ( vuejs, cli, react native ) and could be wrapped on npm package sdk.
-
-### GraphQL Client
-
-PowerStack leverages open source Hasura GraphQL engine in conjunction with GraphQL codegen to genere common typescript types generated from the graph schema. We love prisma and we use it on nodejs services, however for client applications we prefer to keep a single form of data fetching and prevent duplicated types for the data structures.
-
-- Endpoint: <https://api.powerstack.xyz/v1/graphql>
-- Explorer: <https://explorer.powerstack.xyz>
-
-#### GraphQL Development Flow
-
-1. test your query on [explorer.powerstack.xyz](https://explorer.powerstack.xyz).
-2. copy paste the query to `app-engine/graphql/schema.graphql`.
-3. execute `yarn graphql`
-4. utilize the generated sdk and types in zustand and `getServerSideProps`
-
-See [blockmatic/powerstack-hasura](https://github.com/blockmatic/powerstack-hasura) for more information.
-
-### Toolabs Design System
-
-To increase the power of our stack, it consists of an auto-generator of themes, brought by the [Toolabs Design Tool](https://app.toolabs.com/#/). The script obtains the tokens declared in the tool through its GraphQL Client and passing the access key as an environment variable.
-
-If it finds iconography, it will auto-generate the icons and create an index to consume them. These are ready to receive React Properties.
-
-See [theme generator](_scripts\theme-gen\index.ts) for tech details.
-
-### Toolabs Development Flow
-
-1. Go to the Design Toolabs tool of your project.
-2. Verify your access key in the GraphQL API tab.
-3. Copy the key and paste it as `THEME_GEN_KEY` in `.env.development.`
-   1. **OPTIONAL:** You can specify which theme to subtract by passing themes IDs as `THEME_GEN_THEMES` with comma `,` separated.
-4. Run `yarn theme` to auto-generate themes.
-
-#### Toolabs Development Flow Step 1 & 2
-
-![Toolabs Step 1 & 2](https://res.cloudinary.com/andler-dev/image/upload/v1661974228/powerstack-instructions/toolabs-step-1-2_al7qbj.png)
-
-#### Toolabs Development Flow Optional Step
-
-![Toolabs Optional Step](https://res.cloudinary.com/andler-dev/image/upload/v1661974228/powerstack-instructions/toolabs-step-optional_shtz3i.png)
-
 ### File Structure
 
 ```
 .
-├── _docs.................................... documentation files and media
-├── _scripts................................. utility devops scripts
-├── app-config............................... environment variables and secrets
-|   ├── app-arguments.ts..................... application arguments
-|   └── server-secrets.ts ................... server side secrets
-|
-├── app-engine............................... portable vanillajs core logic ( app engine )
-|   ├── graphql.............................. graphql module
-|   |   ├── schema.graphql................... client app schema ( app-engine )
-|   |   ├── generated-sdk.ts................. autogenerated ts types and graphql apis
-|   |   ├── graphql-client.ts................ multi-link multi-indexer graphql client
-|   |   ├── codegen.yml...................... codegen configuration
-|   |   └── index.ts......................... main module entry and api exports
-|   |
-|   ├── library.............................. pure function utils ( input->output, deterministic, no side effects )
-|   |   ├── encoding.ts...................... encoding functions
-|   |   ├── antilope.ts...................... antilope and anchor wallet uitls
-|   |   ├── errors.ts........................ app-engine error classes
-|   |   ├── ethers.ts........................ evm utils
-|   |   ├── exec-env.ts...................... execution environment variables
-|   |   ├── fetch.ts......................... window fetch wrapper
-|   |   ├── logger.ts........................ logger object
-|   |   ├── solana.ts........................ solana and phantom wallet utils
-|   |   ├── uiux.ts.......................... utils for better ux
-|   |   └── web3auth.ts...................... web3auth utils
-|   |
-|   ├── services............................. abstractions for http apis ( sdks, third party )
-|   |   ├── infura.ts........................ infura config and client
-|   |   ├── sentry.ts........................ crash reporting instance
-|   |   └── cloudinary.ts.................... image optimization and cdn
-|   |
-|   └── store................................ portable vanillajs state machine
-|       ├── engine-slice.ts.................. app-engine state flags
-|       ├── antelope-slice.ts................ antelope and anchor wallet logic
-|       ├── ethers-slice.ts.................. evm and metamask wallet logic
-|       ├── network-slice.ts................. multi-chain and network switching logic
-|       ├── solana-slice.ts.................. solana and phantom wallet logic
-|       ├── user-slice.ts.................... app user data and functions
-|       ├── view-slice.ts.................... app view / ui state
-|       └── web3auth-slice.ts................ web3auth and torus logic
-|
-├── app-server .............................. server side logic
-|
-├── app-view ................................ presentation logic, jsx, animations
-|   ├── components........................... reactjs components
-|   |   ├── base............................. default base/primitive components
-|   |   ├── modules.......................... standalone modular components
-|   |   ├── layout........................... structure focused components
-|   |   └── icons............................ icon svgs in react components
-|   |
-|   └── styles............................... stitches configuration
-|       ├── themes........................... generated themes from toolabs dsm
-|       ├── global.ts........................ global styles
-|       ├── index.ts......................... exports getGeneratedStylesheet
-|       └── stitches.config.ts............... stitches config
-|
-├── pages.................................... standard nextjs page components
-├── Dockerfile............................... docker container definition
-└── Taskfile.yml............................. utility tasks for docker based dev
+├── config .............................. environment variables and secrets
+│   ├── client
+│   └── server
+├── context ............................. global react context
+├── graphql ............................. genql generated sdk
+│   └── generated
+├── lib ................................. utility pure functions
+│   ├── encoding
+│   ├── logger
+│   ├── platform
+│   ├── ssr
+│   └── utils
+├── pages ............................... nextjs routes
+│   └── [account]
+├── public .............................. nextjs public
+│   ├── fonts
+│   └── images
+├── services ............................ stateless services
+│   ├── auth                              to interact with apis
+│   ├── media                             and crypto wallets
+│   ├── price
+│   ├── search
+│   ├── solana
+│   └── user
+├── types ............................... global typescript types
+└── ui .................................. ui react components
+    ├── components
+    │   └── shared-example
+    │       ├── index.ts
+    │       ├── shared-example.components.tsx
+    │       ├── shared-example.tests.tsx
+    │       └── shared-example.types.ts
+    ├── layouts
+    │   └── main-layout
+    │       ├── index.ts
+    │       └── main-layout.components.tsx
+    ├── styles
+    │   └── globals.css
+    └── views
+        └── home
+            └── home-example
+                ├── home-example.components.tsx
+                └── index.ts
 ```
 
 ## JavaScript Code Conventions
 
-- snake_case variable and attribute names
-- camelCase functions
-- PascalCase for all react components. eg. AddUser.tsx
-- camelCase for hooks files. eg. useSubscription.tsx
-- lowercase with dash separator for package folders and names. eg. render-webgl-utils
+- naming variables: boolean should be named using auxiliary verbs such as `does`, `has`, `is` and `should`. For example, Button uses `isDisabled`, `isLoading`, etc.
+- composition: break down components into smaller parts with minimal props to keep complexity low, and compose them together.
+- filenames: create folders with and index, lowercase with dash separator for dirs and names `components/auth-wizard`, and five the following extensions each file acordingly `.config.ts`, `.component.tsx`, `.test.ts`, `.context.tsx`, `.type.ts`, `.hook.ts`
 - avoid default export [default is bad](https://basarat.gitbook.io/typescript/main-1/defaultisbad)
 
 ```ts
-const hello_message = 'hello'
+const helloMessage = 'hello'
 export function saySomething() {
-  const some_value = 'fren'
-  console.log(`${hello_message} ${some_value}`)
+  const someValue = 'fren'
+  console.log(`${helloMessage} ${someValue}`)
 }
 ```
 
@@ -199,28 +119,21 @@ Eg.
 
 ```tsx
 
-export function MyReactComponent({my_component_param}: MyReactComponetParams) {
+export function MyReactComponent({myParam}: MyReactComponetParams) {
 
-  const myMethod = () => console.log(my_component_param)
+  const myMethod = () => console.log(myParam)
 
   return (
-      <StyledContent>
+      <div className="md:flex bg-slate-100 ">
           A new world awaits. <br /> be the first to discover it.
-          <button onClick={myMethod}>log my param</button>
-      </StyledContent>
+          <button onClick={myMethod}>let's goo!</button>
+      </div>
     </Popover.Root>
   )
 }
 
-const StyledContent = styled(Popover.Content, {
-  background: '#1F2027',
-  borderRadius: 30,
-  mt: '$regular',
-  p: '$large $regular 60px',
-})
-
 export interface MyReactComponetParams {
-  my_component_param: boolean
+  myParam: boolean
 }
 
 ```
