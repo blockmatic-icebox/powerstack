@@ -1,12 +1,12 @@
 import '~/ui/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { MainLayout } from '~/ui/layouts/main-layout'
+import { GlobalLayout } from '~/ui/layouts/global-layout.components'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MainLayout>
+    <GlobalLayout>
       <Component {...pageProps} />
-    </MainLayout>
+    </GlobalLayout>
   )
 }
 
