@@ -1,19 +1,12 @@
-import '../ui/styles/globals.css'
-import '~/engine/_legacy/store'
+import '~/ui/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Layout } from '~/ui/_legacy/components/layout/Layout'
-import { AppEngineProvider } from '~/engine/_legacy/store/'
-import { AuthModal } from '~/ui/_legacy/components/shared/AuthWizard/components/AuthModal'
+import { MainLayout } from '~/ui/layouts/main-layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // console.log('app_engine_server_state', pageProps.app_engine_server_state)
   return (
-    <AppEngineProvider app_engine_server_state={pageProps.app_engine_server_state}>
-      <AuthModal />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AppEngineProvider>
+    <MainLayout>
+      <Component {...pageProps} />
+    </MainLayout>
   )
 }
 

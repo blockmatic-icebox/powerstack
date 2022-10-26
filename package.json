@@ -75,7 +75,7 @@
     "@types/cli-spinner": "^0.2.1",
     "@types/lodash": "^4.14.184",
     "@types/node": "^18.7.14",
-    "@types/react": "18.0.17",
+    "@types/react": "^18.0.23",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.12",
     "cli-spinner": "^0.2.10",
