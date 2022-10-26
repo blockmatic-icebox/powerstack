@@ -74,6 +74,7 @@ Demo <https://powerstack-next.vercel.app/>
     ├── components
     │   └── shared-example
     │       ├── index.ts
+    │       ├── shared-example.context.tsx
     │       ├── shared-example.components.tsx
     │       ├── shared-example.tests.tsx
     │       └── shared-example.types.ts
@@ -118,24 +119,20 @@ export function saySomething() {
 Eg.
 
 ```tsx
-
-export function MyReactComponent({myParam}: MyReactComponetParams) {
-
+export function MyReactComponent({ myParam }: MyReactComponetParams) {
   const myMethod = () => console.log(myParam)
 
   return (
-      <div className="md:flex bg-slate-100 ">
-          A new world awaits. <br /> be the first to discover it.
-          <button onClick={myMethod}>let's goo!</button>
-      </div>
-    </Popover.Root>
+    <div className="md:flex bg-slate-100 ">
+      A new world awaits. <br /> be the first to discover it.
+      <button onClick={myMethod}>let's goo!</button>
+    </div>
   )
 }
 
 export interface MyReactComponetParams {
   myParam: boolean
 }
-
 ```
 
 ## Getting Started
