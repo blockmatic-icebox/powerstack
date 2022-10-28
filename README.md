@@ -29,6 +29,7 @@ Demo <https://powerstack-next.vercel.app/>
 
 - NextJS [nextjs.org](https://nextjs.org)
 - TailwindCSS [tailwindcss.com](https://tailwindcss.com)
+- CVA [https://github.com/joe-bell/cva](https://github.com/joe-bell/cva)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
