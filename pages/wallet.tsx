@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-export default function Wallet({ children }: { children: ReactNode }) {
+export default function Wallet() {
   return (
    <div>
         <div>Wallet</div>
