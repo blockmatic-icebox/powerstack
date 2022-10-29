@@ -4,7 +4,7 @@ import { GlobalLayout } from '~/ui/layouts/global-layout.components'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <GlobalLayout>
+    <GlobalLayout> 
       <Component {...pageProps} />
     </GlobalLayout>
   )
