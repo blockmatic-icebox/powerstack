@@ -1,17 +1,19 @@
-import {SidebarLink} from '~/ui/layouts/sidebar/sidebar-link.component';
+import { SidebarLink } from "./sidebar-link.component"
 
-const sidebarLinks = [  
+
+const sidebarLinks = [
+  
   {
     text: 'Account',
     href: '/'
   },
   {
-    text: 'Profile',
-    href: '/profile'
+  text: 'Profile',
+  href: '/profile'
   },
   {
-    text: 'Wallet',
-    href: '/wallet'
+  text: 'Wallet',
+  href: '/wallet'
   },
   {
     text: 'Marketplace',
@@ -23,10 +25,10 @@ export function Sidebar(){
  return (
      <div className="flex flex-col flex-grow mt-5"> 
       <nav className="flex-1 px-2 pb-4 space-y-1">
-        <ul>
+        <ol>
         {sidebarLinks.map((props) => <SidebarLink {...props}/>)}
-        </ul>
-        </nav>
+        </ol>  
+      </nav>
       </div>
   )
 }
