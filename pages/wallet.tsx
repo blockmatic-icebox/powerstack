@@ -30,7 +30,7 @@ export default function Wallet() {
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
+              <table className="min-w-full">
                 <thead className="bg-gray-50">
                   <tr>
                     <th
@@ -68,9 +68,9 @@ export default function Wallet() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white">
                   {crypto.map((coin) => (
-                    <tr key={coin.name}>
+                    <tr className="border-b-2 border-b-gray-100" key={coin.name}>
                       <td className="py-4 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-6">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 w-10 h-10">
