@@ -26,7 +26,7 @@ export function Sidebar(){
      <div className="flex flex-col flex-grow mt-5"> 
       <nav className="flex-1 px-2 pb-4 space-y-1">
         <ol>
-        {sidebarLinks.map((props) => <SidebarLink {...props}/>)}
+          {sidebarLinks.map((props) => <SidebarLink {...props}/>)}
         </ol>  
       </nav>
       </div>
