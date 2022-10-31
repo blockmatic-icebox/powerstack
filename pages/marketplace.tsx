@@ -1,5 +1,9 @@
+import React from "react";
+
 export default function Marketplace() {
   return (
-    <p>marketplace</p>
+    <div>
+      <h2>Marketplace</h2>
+    </div>
   )
 }

@@ -18,7 +18,7 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
     </div>
     <div className="flex flex-col flex-1 md:pl-64">  
       <Header/>
-      <Main/>
+      <Main>{children}</Main>
     </div>
   </div> 
   )}
