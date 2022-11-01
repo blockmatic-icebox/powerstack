@@ -8,12 +8,12 @@ const sidebarLinks = [
     href: '/'
   },
   {
-  text: 'Profile',
-  href: '/profile'
+    text: 'Profile',
+    href: '/profile'
   },
   {
-  text: 'Wallet',
-  href: '/wallet'
+    text: 'Wallet',
+    href: '/wallet'
   },
   {
     text: 'Marketplace',
@@ -26,7 +26,7 @@ export function Sidebar(){
      <div className="flex flex-col flex-grow mt-5"> 
       <nav className="flex-1 px-2 pb-4 space-y-1">
         <ol>
-          {sidebarLinks.map((props) => <SidebarLink {...props}/>)}
+          {sidebarLinks.map((props, idx) => <SidebarLink {...props} key={idx} />)}
         </ol>  
       </nav>
       </div>
