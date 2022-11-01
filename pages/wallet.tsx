@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import Image from 'next/image'
+
 const crypto = [
   {
     name: 'Tether',
@@ -17,7 +20,7 @@ const crypto = [
   },
 ]
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -27,8 +30,12 @@ const tabs = [
 ]
 
 export default function Wallet() {
+
+  const [currentTab, setCurrentTab] = useState('active');
+
   return (
     <div>
+      <h1 className="text-2xl font-bold text-gray-900">Your wallet</h1>
       <div>
         <div className="sm:hidden">
           <label htmlFor="tabs" className="sr-only">
@@ -37,8 +44,9 @@ export default function Wallet() {
           {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
           <select
             id="tabs"
+            onClick={() => setCurrentTab('active')}
             name="tabs"
-            className="block w-full py-2 pl-3 pr-10 text-base border-gray-300 rounded-md focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            className="block w-full py-2 pl-3 pr-10 text-base border-gray-300 rounded-md focus:border-blue-600 focus:outline-none focus:ring-blue-600 sm:text-sm"
             defaultValue=""
           >
             {tabs.map((tab) => (
@@ -48,32 +56,30 @@ export default function Wallet() {
         </div>
         <div className="hidden sm:block">
           <div className="border-b border-gray-200">
-            <nav className="flex -mb-px space-x-8" aria-label="Tabs">
+            <nav className="flex mt-6 -mb-px space-x-8" aria-label="Tabs">
               {tabs.map((tab) => (
-                <a
+                <button
                   key={tab.name}
-                  href={tab.href}
                   className={classNames(
                     tab.current
-                      ? 'border-indigo-500 text-indigo-600'
+                      ? 'border-blue-600 text-blue-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                    'whitespace-nowrap font-sans py-4 px-1 border-b-2 font-medium text-sm',
+                    'whitespace-nowrap font-sans py-2 px-1 font-inter border-b-2 font-semibold text-lg',
                   )}
                   aria-current={tab.current ? 'page' : undefined}
                 >
                   {tab.name}
-                </a>
+                </button>
               ))}
             </nav>
           </div>
         </div>
       </div>
-      <h1 className="font-sans text-xl font-bold text-gray-900">Your wallet</h1>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
-          <div className="px-4 py-6 bg-gray-50 sm:flex-auto">
-            <h2 className="font-sans text-xl font-medium text-gray-900">Total balance</h2>
-            <p className="mt-2 font-sans text-3xl font-bold text-gray-700">10.000 US$</p>
+          <div className="px-4 py-6 mt-7 bg-gray-50 sm:flex-auto">
+            <h2 className="text-xl text-gray-900 font-inter">Total balance</h2>
+            <p className="mt-2 font-sans text-3xl font-bold text-gray-700 font-inter">10.000 US$</p>
           </div>
         </div>
         <div className="flex flex-col mt-8">
@@ -85,70 +91,69 @@ export default function Wallet() {
                     <tr>
                       <th
                         scope="col"
-                        className="py-3.5 pl-4 pr-3 text-left text-sm font-sans font-semibold text-gray-900 sm:pl-6"
+                        className="py-4 pl-4 pr-3 text-sm text-left text-gray-900 sm:pl-6 font-inter"
                       >
                         Cryptocurrency
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-sans font-semibold text-gray-900"
+                        className="px-3 py-4 text-sm text-left text-gray-900 font-inter"
                       >
                         Balance
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-sans font-semibold text-gray-900"
+                        className="px-3 py-4 text-sm text-left text-gray-900 font-inter"
                       >
                         Price
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-sans font-semibold text-gray-900"
+                        className="px-3 py-4 text-sm text-left text-gray-900 font-inter"
                       >
                         1h Change
                       </th>
                       <th
                         scope="col"
-                        className="px-3 py-3.5 text-left text-sm font-sans font-semibold text-gray-900"
+                        className="px-3 py-4 font-sans text-sm text-left text-gray-900 font-inter"
                       >
                         Send
-                      </th>
-                      <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                        <span className="sr-only">Edit</span>
                       </th>
                     </tr>
                   </thead>
                   <tbody className="bg-white">
                     {crypto.map((coin) => (
                       <tr className="border-b-2 border-b-gray-100" key={coin.name}>
-                        <td className="py-4 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-6">
+                        <td className="py-4 pl-6 pr-3 text-sm whitespace-nowrap sm:pl-6">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 w-10 h-10">
-                              <img className="w-10 h-10 rounded-full" src={coin.icon} alt="" />
+                              <Image className="w-10 h-10 rounded-full" src={coin.icon} alt="cryto icon" />
                             </div>
                             <div className="ml-4">
-                              <div className="font-sans font-bold text-gray-900">{coin.name}</div>
-                              <div className="font-sans text-xs text-gray-400">
+                              <div className="font-sans font-bold text-gray-900 font-inter">
+                                {coin.name}
+                              </div>
+                              <div className="font-sans text-xs text-gray-400 font-inter">
                                 {coin.abbreviation}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          <div className="font-sans font-bold text-blue-600">{coin.balance}</div>
+                          <div className="font-bold text-blue-600 font-inter">{coin.balance}</div>
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          <span className="inline-flex px-2 font-sans text-xs font-bold leading-5">
+                          <span className="inline-flex text-xs font-semibold leading-5 font-inter">
                             {coin.price}
                           </span>
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          <span className="inline-flex px-2 font-sans text-xs font-bold leading-5 text-red-500">
+                          <span className="inline-flex text-xs font-bold leading-5 text-red-500 font-inter">
                             {coin.change}
                           </span>
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          <a href="#" className="font-sans font-bold text-blue-600">
+                          <a href="#" className="font-bold text-blue-600 font-inter">
                             Transfer Now
                           </a>
                         </td>
