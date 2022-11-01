@@ -9,8 +9,8 @@ module.exports = {
     theme: {
       extend: {},
       fontFamily: {
-      'inter': ['Inter']
-    },
+        inter: ['Inter']
+      },
     },
     plugins: [
       require('@tailwindcss/forms'),
