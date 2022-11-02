@@ -1,12 +1,12 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Listbox, Menu, Transition } from '@headlessui/react'
-import BlockmaticIcon from '~/ui/icons/BlockmaticIcon'
+import BlockmaticIcon from '~/ui/icons/blockmaticIcon'
 import { Blockmatic } from '~/ui/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
 import MenuIcon from '~/ui/icons/menuIcon'
 import CloseIcon from '~/ui/icons/closeIcon'
-import BellIcon from '~/ui/icons/BellIcon'
+import BellIcon from '~/ui/icons/bellIcon'
 // import { SidebarLink } from "./sidebar-link.component"
 
 const user = {
