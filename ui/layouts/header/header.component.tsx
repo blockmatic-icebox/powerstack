@@ -1,13 +1,12 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Listbox, Menu, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import BlockmaticIcon from '~/ui/icons/BlockmaticIcon'
 import { Blockmatic } from '~/ui/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
 import MenuIcon from '~/ui/icons/menuIcon'
 import CloseIcon from '~/ui/icons/closeIcon'
+import BellIcon from '~/ui/icons/BellIcon'
 // import { SidebarLink } from "./sidebar-link.component"
 
 const user = {
@@ -16,12 +15,6 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
-const navigation = [
-  { name: 'Account', href: '/', current: true },
-  { name: 'Profile', href: '/profile', current: false },
-  { name: 'Wallet', href: '/wallet', current: false },
-  { name: 'Marketplace', href: '/marketplace', current: false },
-]
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -32,7 +25,6 @@ const userNavigation = [
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
-
 
 
 export function Header() {
@@ -54,6 +46,7 @@ export function Header() {
                   </div>
                   <div className="flex justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
                   </div>
+                  
                   <div className="flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md hover:bg-white hover:bg-opacity-75 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200">
@@ -65,19 +58,20 @@ export function Header() {
                       )}
                     </Disclosure.Button>
                   </div>
-                  <div className="hidden lg:ml-4 lg:block">
+                    {/* TODO: popover component - Profile dropdown */}
+                  <div className="hidden lg:ml-4 md:block md:mr-4">
                     <div className="flex items-center">
                       <button
                         type="button"
-                        className="flex-shrink-0 p-1 text-gray-200 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                        className="flex-shrink-0 p-1 text-gray-500 rounded-full hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-100 focus:ring-offset-2"
                       >
                         <span className="sr-only">View notifications</span>
-                        <BellIcon className="w-6 h-6" aria-hidden="true" />
+                        <BellIcon />
                       </button>
-                      {/* TODO: popover component - Profile dropdown */}
+                    
                       <Menu as="div" className="relative flex-shrink-0 ml-3">
                         <div>
-                          <Menu.Button className="flex text-sm text-white rounded-full bg- focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ">
+                          <Menu.Button className="flex text-sm text-white rounded-full bg- focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
                             <span className="sr-only">Open user menu</span>
                             <img className="w-8 h-8 rounded-full" src={user.imageUrl} alt="" />
                           </Menu.Button>
@@ -114,8 +108,7 @@ export function Header() {
                   </div>
                 </div>
               </div>
-
-              <Disclosure.Panel className="lg:hidden">    
+              <Disclosure.Panel className="md:hidden">    
                 <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="px-2 mt-3 space-y-1">
                   <Sidebar />
