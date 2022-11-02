@@ -1,7 +1,7 @@
 import {Fragment, useState} from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { SparkleLight } from '~/ui/icons';
+import { CheckIcon} from '@heroicons/react/20/solid';
+import { MagnifyingGlassIcon, SparkleLight } from '~/ui/icons';
 
 const coins = [
   { id: 1, name: 'Ethereum' },
@@ -10,14 +10,11 @@ const coins = [
   { id: 4, name: 'EOS' },
 ]
 
-
 export function SearchBar() {
   const [selected, setSelected] = useState(coins[3])
  
   return (
-    // content
   <div className = "hidden bg-gray-100 rounded-l-lg lg:ml-2 md:block rounded-r-xl" >
-      {/* search */ }
       < div className = "flex w-full" >
           <label
               htmlFor="search"
@@ -26,30 +23,25 @@ export function SearchBar() {
           </label>
           <div className="relative flex text-black focus-within:text-gray-600">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <MagnifyingGlassIcon className="w-5 h-5" aria-hidden="true" />
+              <MagnifyingGlassIcon  />
               </div>
                 <input
                 id="search"
                 className="block w-64 py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 bg-gray-100 border-r rounded-l-lg"
                 placeholder="Search by Address / Txn Hash"
-                // type="search"
                 name="search"
                 />
-
       </div>
-      {/* coins */}
       <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
               <>
                 <div className="relative w-32 mt-1">
-                  {/* box network */}
-                  <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left sm:text-sm">
+                  <Listbox.Button className="relative w-full pl-3 pr-10 text-left sm:text-sm">
                     <span className="block truncate">{selected.name}</span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                       <SparkleLight />
                     </span>
                   </Listbox.Button>
-
                   <Transition
                     show={open}
                     as={Fragment}
@@ -57,7 +49,6 @@ export function SearchBar() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    {/* box coins */}
                     <Listbox.Options className="absolute z-10 w-48 py-1 mt-1 overflow-auto text-base bg-white rounded-lg shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       {coins.map((coin) => (
                         <Listbox.Option
