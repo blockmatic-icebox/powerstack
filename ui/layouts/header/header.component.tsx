@@ -27,21 +27,24 @@ export function Header() {
  
   return (
     <div className="min-h-full">
-      <div className="bg-white sm:border-b sm:border-indigo-400 sm:border-opacity-25">
+      <div className="pt-1 bg-white h-30 sm:border-b sm:border-gray-400 sm:border-opacity-25">
         <Disclosure as="nav" className="">
           {({ open }) => (
             <>
-              <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">  
-                <div className="relative flex items-center justify-between h-16 mt-0">         
-                  <div className="flex items-center px-2 lg:px-0">
+              <div className="flex h-24 max-w-full sm:px-2 lg:px-3">  
+                <div className="flex items-center justify-between w-full px-1 mt-0">         
+                  <div className="flex items-center justify-between px-0 lg:px-4">
                     <div className="flex space-x-2 md:hidden">
                       <BlockmaticIcon />
                       <Blockmatic />
                     </div>
-                     <SearchBar />
+                    <SearchBar />
+                    <div className="flex flex-1 px-2 lg:ml-6 lg:justify-end">
+                
                   </div>
-                  <div className="flex justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
+                   
                   </div>
+                  
                   
                   <div className="flex md:hidden">
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md hover:bg-white hover:bg-opacity-75 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200">
