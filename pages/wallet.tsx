@@ -20,6 +20,34 @@ const crypto = [
   },
 ]
 
+const nfts = [
+  {
+    id: 1,
+    name: 'Bored Ape Yacht Club',
+    href: '#',
+    nftCreator: 'YugaLabs',
+    imageSrc: 'http://placekitten.com/290/290',
+    imageAlt: 'image alt.',
+  },
+  {
+    id: 2,
+    name: 'CryptoPunk #260 - CryptoPunks ',
+    href: '#',
+    nftCreator: 'MarbleCard',
+    imageSrc: 'http://placekitten.com/290/290',
+    imageAlt: 'image alt',
+  },
+  {
+    id: 3,
+    name: 'Doodle #4358',
+    href: '#',
+    nftCreator: 'Doodle',
+    imageSrc: 'http://placekitten.com/290/290',
+    imageAlt: 'image alt',
+  },
+  // More products...
+]
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
@@ -192,10 +220,27 @@ export default function Wallet() {
         </div>
       )}
       {currentTab === 1 && (
-        <>
-          <h2>test</h2>
-          <h2>test</h2>
-        </>
+        <div className="p-3 bg-white">
+          <div className="px-4 py-8 mx-auto overflow-hidden max-w-7xl sm:py-12 sm:px-3 lg:px-4">
+            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+              {nfts.map((nft) => (
+                <a key={nft.id} href={nft.href} className="text-sm group">
+                  <div className="w-full overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
+                    <Image
+                      src={nft.imageSrc}
+                      alt={nft.imageAlt}
+                      width={290}
+                      height={290}
+                      className="object-cover object-center w-full h-full"
+                    />
+                  </div>
+                  <p className="mt-4 text-gray-500">{nft.availability}</p>
+                  <h3 className="font-bold text-gray-900">{nft.name}</h3>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )
