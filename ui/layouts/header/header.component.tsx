@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Blockmatic, CloseIcon, BlockmaticIcon, MenuIcon, BellIcon} from '~/ui/icons'
+import { Blockmatic, BlockmaticIcon, MenuIcon, BellIcon} from '~/ui/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
+import XcloseIcon from '~/ui/icons/XcloseIcon'
 
 //ToDo: change later is for testing
 const user = {
@@ -50,7 +51,7 @@ export function Header() {
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md hover:bg-white hover:bg-opacity-75 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
-                        <CloseIcon />
+                        <XcloseIcon />
                       ) : (
                         <MenuIcon />
                       )}
