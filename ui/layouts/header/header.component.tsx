@@ -27,12 +27,12 @@ export function Header() {
  
   return (
     <div className="min-h-full">
-      <div className="bg-white sm:border-b sm:border-indigo-300 sm:border-opacity-25">
+      <div className="bg-white sm:border-b sm:border-indigo-400 sm:border-opacity-25">
         <Disclosure as="nav" className="">
           {({ open }) => (
             <>
               <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">  
-                <div className="relative flex items-center justify-between h-16 ">         
+                <div className="relative flex items-center justify-between h-16 mt-0">         
                   <div className="flex items-center px-2 lg:px-0">
                     <div className="flex space-x-2 md:hidden">
                       <BlockmaticIcon />
