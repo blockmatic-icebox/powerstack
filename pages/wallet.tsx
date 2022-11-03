@@ -8,7 +8,7 @@ const crypto = [
     balance: '9,500 USDT',
     price: '1,00 US$',
     change: '-0.01%',
-    icon: 'https://via.placeholder.com/150',
+    icon: 'http://placekitten.com/200/200',
   },
   {
     name: 'Solana',
@@ -16,7 +16,7 @@ const crypto = [
     balance: '500 SOL',
     price: '2,00 US$',
     change: '-0.03%',
-    icon: 'https://via.placeholder.com/150',
+    icon: 'http://placekitten.com/200/200',
   },
 ]
 
@@ -36,7 +36,7 @@ export default function Wallet() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-gray-900">Your wallet</h1>
-      <div>
+      <div className="flex items-center content-center justify-between">
         <div className="sm:hidden">
           <label htmlFor="tabs" className="sr-only">
             Select a tab
@@ -57,33 +57,47 @@ export default function Wallet() {
           </select>
         </div>
         <div className="hidden sm:block">
-          <div className="border-b border-gray-200">
-            <nav className="flex mt-6 -mb-px space-x-8" aria-label="Tabs">
-              {tabs.map((tab, idx) => (
-                <button
-                  key={tab.name}
-                  onClick={() => setCurrentTab(idx)}
-                  className={classNames(
-                    idx === currentTab
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                    'whitespace-nowrap font-sans py-2 px-1 font-inter border-b-2 font-semibold text-lg',
-                  )}
-                  aria-current={idx === currentTab ? 'page' : undefined}
-                >
-                  {tab.name}
-                </button>
-              ))}
-            </nav>
-          </div>
+          <nav className="flex mt-6 -mb-px space-x-8" aria-label="Tabs">
+            {tabs.map((tab, idx) => (
+              <button
+                key={tab.name}
+                onClick={() => setCurrentTab(idx)}
+                className={classNames(
+                  idx === currentTab
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  'whitespace-nowrap font-sans py-2 px-1 font-inter border-b-2 font-semibold text-lg',
+                )}
+                aria-current={idx === currentTab ? 'page' : undefined}
+              >
+                {tab.name}
+              </button>
+            ))}
+          </nav>
         </div>
+        {currentTab === 1 && (
+          <div>
+            <select
+              id="cryptoType"
+              name="cryptoType"
+              className="h-10 px-12 font-bold text-center text-blue-600 border-blue-600 rounded-full focus:border-blue-600 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              defaultValue={0}
+            >
+              {crypto.map((coin) => (
+                <option key={coin.name}>{coin.name}</option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
       {currentTab === 0 && (
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="px-4 py-6 mt-7 bg-gray-50 sm:flex-auto">
               <h2 className="text-xl text-gray-900 font-inter">Total balance</h2>
-              <p className="mt-2 font-sans text-3xl font-bold text-gray-700 font-inter">10.000 US$</p>
+              <p className="mt-2 font-sans text-3xl font-bold text-gray-700 font-inter">
+                10.000 US$
+              </p>
             </div>
           </div>
           <div className="flex flex-col mt-8">
