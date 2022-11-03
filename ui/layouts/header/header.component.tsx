@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Blockmatic, BlockmaticIcon, MenuIcon, BellIcon} from '~/ui/icons'
+import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon} from '~/ui/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
 import XcloseIcon from '~/ui/icons/XcloseIcon'
@@ -53,7 +53,7 @@ export function Header() {
                       {open ? (
                         <XcloseIcon />
                       ) : (
-                        <MenuIcon />
+                        <MenuIcons />
                       )}
                     </Disclosure.Button>
                   </div>
