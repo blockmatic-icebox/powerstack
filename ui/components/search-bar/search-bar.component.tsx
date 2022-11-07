@@ -3,13 +3,6 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
 import { MagnifyingGlassIcon, SparkleLight } from '~/ui/icons';
 
-const coins = [
-  { id: 0, name: 'Network' },
-  { id: 1, name: 'Ethereum' },
-  { id: 2, name: 'Solana' },
-  { id: 3, name: 'Polygon' },
-  { id: 4, name: 'EOS' },
-]
 
 export function SearchBar() {
   const [selected, setSelected] = useState(coins[0])
@@ -37,9 +30,9 @@ export function SearchBar() {
           {({ open }) => (
             <>
               <div className="relative w-32 mt-1">
-                <Listbox.Button className="relative w-full pl-4 pr-10 text-left ">
+                <Listbox.Button className="w-full pl-4 text-left">
                   <span className="block truncate">{selected.name}</span>
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <SparkleLight />
                   </span>
                 </Listbox.Button>
@@ -92,6 +85,14 @@ export function SearchBar() {
 
   )
 }
+
+const coins = [
+  { id: 0, name: 'Network' },
+  { id: 1, name: 'Ethereum' },
+  { id: 2, name: 'Solana' },
+  { id: 3, name: 'Polygon' },
+  { id: 4, name: 'EOS' },
+]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
