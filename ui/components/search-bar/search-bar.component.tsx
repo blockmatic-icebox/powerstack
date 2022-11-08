@@ -8,7 +8,7 @@ export function SearchBar() {
   const [selected, setSelected] = useState(coins[0])
 
   return (
-    <div className="hidden rounded-l-lg bg-slate-100 lg:ml-2 md:block rounded-r-xl" >
+    <div className="hidden rounded-l-lg bg-gray-50 lg:ml-2 md:block rounded-r-xl" >
       <div className="flex w-full" >
         <label
           htmlFor="search"
@@ -21,7 +21,7 @@ export function SearchBar() {
           </div>
           <input
             id="search"
-            className="block w-64 py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 border-r rounded-l-lg bg-slate-100"
+            className="block w-64 py-2 pl-10 pr-3 leading-5 text-black placeholder-gray-500 border-r rounded-l-lg bg-gray-50"
             placeholder="Search by Address / Txn Hash"
             name="search"
           />
@@ -29,7 +29,7 @@ export function SearchBar() {
         <Listbox value={selected} onChange={setSelected}>
           {({ open }) => (
             <>
-              <div className="relative w-32 mt-1">
+              <div className="relative w-32 mt-2">
                 <Listbox.Button className="w-full pl-4 text-left">
                   <span className="block truncate">{selected.name}</span>
                   <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
