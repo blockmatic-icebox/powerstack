@@ -9,6 +9,7 @@ export function SearchBar() {
 
   return (
     <div className="hidden rounded-l-lg bg-gray-50 lg:ml-2 md:block rounded-r-xl" >
+      <form>
       <div className="flex w-full" >
         <label
           htmlFor="search"
@@ -81,8 +82,8 @@ export function SearchBar() {
           )}
         </Listbox>
       </div>
+      </form>
     </div>
-
   )
 }
 

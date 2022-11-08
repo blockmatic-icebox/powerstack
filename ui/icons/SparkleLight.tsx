@@ -4,7 +4,7 @@ const SparkleLight = () => (
         height="20" 
         viewBox="0 0 20 20" 
         fill="none" 
-        xmlns="http://www.w3.org/2000/svg">
+        >
             <g filter="url(#filter0_d_872_1067)">
             <path d="M13.75 4.5L10 8.25L6.25 4.5" stroke="#282A30" strokeLinecap="round" strokeLinejoin="round"/>
             </g>
