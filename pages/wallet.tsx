@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
+import { CryptoSelect } from '~/ui/components/crypto-select';
 
 const crypto = [
   {
@@ -8,7 +9,7 @@ const crypto = [
     balance: '9,500 USDT',
     price: '1,00 US$',
     change: '-0.01%',
-    icon: 'http://placekitten.com/200/200',
+    icon: '/SolanaLogo.png',
   },
   {
     name: 'Solana',
@@ -16,7 +17,7 @@ const crypto = [
     balance: '500 SOL',
     price: '2,00 US$',
     change: '-0.03%',
-    icon: 'http://placekitten.com/200/200',
+    icon: '/SolanaLogo.png',
   },
 ]
 
@@ -26,7 +27,8 @@ const nfts = [
     name: 'Bored Ape Yacht Club',
     href: '#',
     nftCreator: 'YugaLabs',
-    imageSrc: 'http://placekitten.com/290/290',
+    nftCreatorIcon: '/SolanaLogo.png',
+    imageSrc: '/NFT1.png',
     imageAlt: 'image alt.',
   },
   {
@@ -34,7 +36,8 @@ const nfts = [
     name: 'CryptoPunk #260 - CryptoPunks ',
     href: '#',
     nftCreator: 'MarbleCard',
-    imageSrc: 'http://placekitten.com/290/290',
+    nftCreatorIcon: '/SolanaLogo.png',
+    imageSrc: '/NFT1.png',
     imageAlt: 'image alt',
   },
   {
@@ -42,7 +45,8 @@ const nfts = [
     name: 'Doodle #4358',
     href: '#',
     nftCreator: 'Doodle',
-    imageSrc: 'http://placekitten.com/290/290',
+    nftCreatorIcon: '/SolanaLogo.png',
+    imageSrc: '/NFT1.png',
     imageAlt: 'image alt',
   },
   // More products...
@@ -103,20 +107,7 @@ export default function Wallet() {
             ))}
           </nav>
         </div>
-        {currentTab === 1 && (
-          <div>
-            <select
-              id="cryptoType"
-              name="cryptoType"
-              className="h-10 px-12 font-bold text-center text-blue-600 border-blue-600 rounded-full focus:border-blue-600 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              defaultValue={0}
-            >
-              {crypto.map((coin) => (
-                <option key={coin.name}>{coin.name}</option>
-              ))}
-            </select>
-          </div>
-        )}
+        {currentTab === 1 && <CryptoSelect />}
       </div>
       {currentTab === 0 && (
         <div className="px-4 sm:px-6 lg:px-8">
@@ -221,10 +212,14 @@ export default function Wallet() {
       )}
       {currentTab === 1 && (
         <div className="p-3 bg-white">
-          <div className="px-4 py-8 mx-auto overflow-hidden max-w-7xl sm:py-12 sm:px-3 lg:px-4">
+          <div className="px-4 py-8 mx-auto max-w-7xl sm:py-12 sm:px-3 lg:px-4">
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
               {nfts.map((nft) => (
-                <a key={nft.id} href={nft.href} className="text-sm group">
+                <a
+                  key={nft.id}
+                  href={nft.href}
+                  className="p-6 text-sm border border-gray-200 rounded-lg"
+                >
                   <div className="w-full overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
                     <Image
                       src={nft.imageSrc}
@@ -234,8 +229,21 @@ export default function Wallet() {
                       className="object-cover object-center w-full h-full"
                     />
                   </div>
-                  <p className="mt-4 text-gray-500">{nft.availability}</p>
-                  <h3 className="font-bold text-gray-900">{nft.name}</h3>
+                  <div className="flex mt-5">
+                    <div>
+                      <Image
+                        src={nft.nftCreatorIcon}
+                        alt=""
+                        width={200}
+                        height={200}
+                        className="w-8 mt-5 mr-4 rounded-full"
+                      />
+                    </div>
+                    <div>
+                      <p className="mt-4 text-gray-500">{nft.nftCreator}</p>
+                      <h3 className="font-bold text-gray-900">{nft.name}</h3>
+                    </div>
+                  </div>
                 </a>
               ))}
             </div>
