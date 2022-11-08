@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
-import { MagnifyingGlassIcon, SparkleLight } from '~/ui/icons';
+import { CaretDown, CaretRight, MagnifyingGlassIcon } from '~/ui/icons';
 
 
 export function SearchBar() {
@@ -29,11 +29,11 @@ export function SearchBar() {
         <Listbox value={selected} onChange={setSelected}>
           {({ open }) => (
             <>
-              <div className="relative w-32 mt-2">
+              <div className="relative w-32 m-1">
                 <Listbox.Button className="w-full pl-4 text-left">
                   <span className="block truncate">{selected.name}</span>
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <SparkleLight />
+                  <span className="absolute right-0 items-center pt-1 pr-4 pointer-events-none inset-y-1 ">
+                    <CaretDown />
                   </span>
                 </Listbox.Button>
                 <Transition

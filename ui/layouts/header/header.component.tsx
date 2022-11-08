@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, SparkleLight } from '~/ui/icons'
+import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/ui/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
 import XcloseIcon from '~/ui/icons/XcloseIcon'
@@ -49,11 +49,11 @@ export function Header() {
                           <Menu.Button className="grid grid-cols-3 p-1 mt-2 mb-2">
                             <span className="sr-only">Open user menu</span>                       
                             <Image
-                            className="h-10 rounded-full w-9"
+                            className="h-10 w-9"
                             src={defaultImage}
                             width={37}
                             height={40}
-                            alt="avatar"
+                            alt="user"
                           />
                             <div className="min-w-0 col-span-2">
                               <a href="#" className="focus:outline-none">
@@ -63,7 +63,7 @@ export function Header() {
                               </a>
                             </div>
                             <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                              <SparkleLight />
+                              <CaretDown />
                             </span>
                           </Menu.Button>
                         </div>
@@ -87,9 +87,7 @@ export function Header() {
                                       'block py-2 px-4 text-sm text-gray-700'
                                     )}
                                   >
-                                    {/* icon */}
-                                    {item.name}
-                                    {/* {icon} */}
+                                      {item.name}
                                   </a>
                                 )}
                               </Menu.Item>
@@ -99,7 +97,6 @@ export function Header() {
                       </Menu>
                     </div>
                   </div>
-
                 </div>
               </div>
               <Disclosure.Panel className="md:hidden">
