@@ -19,7 +19,10 @@
   "dependencies": {
     "@blockmatic/prettier-config": "^2.1.0",
     "@cloudinary/url-gen": "^1.8.6",
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
     "@hookform/resolvers": "^2.9.10",
+    "@tailwindcss/forms": "^0.5.3",
     "cloudinary-build-url": "^0.2.4",
     "framer-motion": "^7.6.1",
     "lodash": "^4.17.21",
