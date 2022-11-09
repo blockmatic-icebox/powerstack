@@ -6,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <meta name="description" content="Blockmatic"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
