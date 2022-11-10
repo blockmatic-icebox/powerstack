@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export function Header() {
   const defaultImage = '/images/user.png'
-  
+
   return (
     <div className="min-h-full">
       <div className="pt-1 bg-white h-30 sm:border-b sm:border-gray-400 sm:border-opacity-25 lg:pr-7">
@@ -47,7 +47,7 @@ export function Header() {
                       <Menu as="div" className="relative flex-shrink-0 ml-3h-11">
                         <div className='flex items-center justify-between border border-gray-100 rounded-full w-44 h-11'>
                           <Menu.Button className="grid grid-cols-3 p-1 mt-2 mb-2">
-                            <span className="sr-only">Open user menu</span>                       
+                            <span className="sr-only">Open user menu</span>
                             <Image
                             className="h-10 w-9"
                             src={defaultImage}

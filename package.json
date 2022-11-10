@@ -24,6 +24,7 @@
     "@hookform/resolvers": "^2.9.10",
     "@tailwindcss/forms": "^0.5.3",
     "cloudinary-build-url": "^0.2.4",
+    "clsx": "^1.2.1",
     "framer-motion": "^7.6.1",
     "lodash": "^4.17.21",
     "next": "13.0.0",
@@ -35,6 +36,9 @@
     "zod": "^3.19.1"
   },
   "devDependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
+    "@tailwindcss/forms": "^0.5.3",
     "@types/lodash": "^4.14.186",
     "@types/node": "^18.11.6",
     "@types/react": "^18.0.23",
