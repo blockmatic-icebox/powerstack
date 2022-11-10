@@ -1,5 +1,5 @@
 import React from 'react'
-import { Blockmatic, BlockmaticIcon } from '../icons'
+import { Blockmatic, BlockmaticIcon } from '../../icons'
 import { Header } from './header'
 import { Main } from './main-layout/main.component'
 import { Sidebar } from './sidebar'

@@ -1,9 +1,9 @@
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/ui/icons'
+import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/icons'
 import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
 import { Sidebar } from '../sidebar'
-import XcloseIcon from '~/ui/icons/XcloseIcon'
+import XcloseIcon from '~/icons/XcloseIcon'
 import Image from 'next/image'
 
 export function Header() {

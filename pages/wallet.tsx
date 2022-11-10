@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
-import { CryptoSelect } from '~/ui/components/crypto-select';
+import { CryptoSelect } from '~/components/crypto-select';
 import clsx from 'clsx'
 
 const crypto = [

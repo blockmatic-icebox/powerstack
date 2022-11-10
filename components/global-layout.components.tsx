@@ -1,7 +1,7 @@
 import { Header } from "./header/header.component";
 import { Main } from "./main-layout/main.component";
 import { Sidebar } from "./sidebar/sidebar.component";
-import {Blockmatic, BlockmaticIcon} from '~/ui/icons';
+import {Blockmatic, BlockmaticIcon} from '~/icons';
 
 export function GlobalLayout({ children }: { children: React.ReactNode }) {
     return (
