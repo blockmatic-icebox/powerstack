@@ -3,7 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import type { selectedType } from './crypto-select.type'
-
+import clsx from 'clsx'
 
 const crypto = [
   {
@@ -24,10 +24,6 @@ const crypto = [
   },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export function CryptoSelect() {
   const [selected, setSelected] = useState<selectedType>()
 
@@ -44,7 +40,9 @@ export function CryptoSelect() {
                   </span>
                 </span>
               ) : (
-                <p className="px-2 ml-3 text-sm font-bold text-blue-600 md:text-base font-inter">Filter By Network</p>
+                <p className="px-2 ml-3 text-sm font-bold text-blue-600 md:text-base font-inter">
+                  Filter By Network
+                </p>
               )}
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
                 <ChevronDownIcon className="w-5 h-5 text-blue-600" aria-hidden="true" />
@@ -63,7 +61,7 @@ export function CryptoSelect() {
                   <Listbox.Option
                     key={coin.name}
                     className={({ active }) =>
-                      classNames(
+                      clsx(
                         active ? 'text-white bg-indigo-600' : 'text-gray-900',
                         'relative cursor-default select-none py-2 pl-3 pr-9',
                       )
@@ -81,7 +79,7 @@ export function CryptoSelect() {
                             className="flex-shrink-0 w-6 h-6 rounded-full"
                           />
                           <span
-                            className={classNames(
+                            className={clsx(
                               selected ? 'font-semibold' : 'font-normal',
                               'ml-3 block truncate',
                             )}
@@ -92,7 +90,7 @@ export function CryptoSelect() {
 
                         {selected ? (
                           <span
-                            className={classNames(
+                            className={clsx(
                               active ? 'text-white' : 'text-indigo-600',
                               'absolute inset-y-0 right-0 flex items-center pr-4',
                             )}

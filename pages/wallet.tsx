@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
 import { CryptoSelect } from '~/ui/components/crypto-select';
+import clsx from 'clsx'
 
 const crypto = [
   {
@@ -52,10 +53,6 @@ const nfts = [
   // More products...
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 const tabs = [
   { name: 'Tokens', href: '#', current: true },
   { name: 'NFTs assets', href: '#', current: false },
@@ -94,7 +91,7 @@ export default function Wallet() {
               <button
                 key={tab.name}
                 onClick={() => setCurrentTab(idx)}
-                className={classNames(
+                className={clsx(
                   idx === currentTab
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
