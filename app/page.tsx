@@ -1,6 +1,5 @@
 import { GlobalLayout } from "~/components/global-layout.components";
 
-
 export default function Home() {
   return (
     <div>
