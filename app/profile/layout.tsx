@@ -1,3 +1,5 @@
+import { GlobalLayout } from "~/components/global-layout.components"
+
 export default function ProfileLayout({
     children,
   }: {
@@ -5,7 +7,9 @@ export default function ProfileLayout({
   }) {
     return (
       <div>     
+        <GlobalLayout>
           {children}
+        </GlobalLayout>
       </div>
     )
   }
