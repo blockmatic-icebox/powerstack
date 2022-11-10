@@ -1,7 +1,9 @@
+"use client";
 import React, { useState } from 'react';
 import Image from 'next/image'
-import { CryptoSelect } from '~/components/crypto-select';
+import { CryptoSelect } from '~/components/crypto-select/crypto-select.components';
 import clsx from 'clsx'
+
 
 const crypto = [
   {

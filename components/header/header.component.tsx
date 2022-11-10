@@ -1,5 +1,5 @@
 'use client'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/icons'
 import XcloseIcon from '~/icons/XcloseIcon'
