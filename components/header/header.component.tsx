@@ -1,10 +1,11 @@
-import { Fragment, useState } from 'react'
+'use client'
+import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/ui/icons'
-import { SearchBar } from '~/ui/components/search-bar/search-bar.component'
-import { Sidebar } from '../sidebar'
-import XcloseIcon from '~/ui/icons/XcloseIcon'
+import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/icons'
+import XcloseIcon from '~/icons/XcloseIcon'
 import Image from 'next/image'
+import { Sidebar } from '../sidebar/sidebar.component'
+import SearchBar from '../search-bar/search-bar.component'
 
 export function Header() {
   const defaultImage = '/images/user.png'
