@@ -29,7 +29,8 @@ Demo <https://powerstack-next.vercel.app/>
 
 - NextJS [nextjs.org](https://nextjs.org)
 - TailwindCSS [tailwindcss.com](https://tailwindcss.com)
-- CVA [https://github.com/joe-bell/cva](https://github.com/joe-bell/cva)
+- Variant Based Components(CVA) [joe-bell/cva](https://github.com/joe-bell/cva)
+- Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
@@ -57,7 +58,7 @@ Demo <https://powerstack-next.vercel.app/>
 │   ├── platform
 │   ├── ssr
 │   └── utils
-├── pages ............................... nextjs routes
+├── app ............................... nextjs routes
 │   └── [account]
 ├── public .............................. nextjs public
 │   ├── fonts
@@ -70,25 +71,24 @@ Demo <https://powerstack-next.vercel.app/>
 │   ├── solana
 │   └── user
 ├── types ............................... global typescript types
-└── ui .................................. ui react components
-    ├── components
-    │   └── shared-example
-    │       ├── index.ts
-    │       ├── shared-example.context.tsx
-    │       ├── shared-example.components.tsx
-    │       ├── shared-example.tests.tsx
-    │       └── shared-example.types.ts
-    ├── layouts
-    │   └── main-layout
-    │       ├── index.ts
-    │       └── main-layout.components.tsx
-    ├── styles
-    │   └── globals.css
-    └── views
-        └── home
-            └── home-example
-                ├── home-example.components.tsx
-                └── index.ts
+├── components
+│   └── shared-example
+│       ├── index.ts
+│       ├── shared-example.context.tsx
+│       ├── shared-example.components.tsx
+│       ├── shared-example.tests.tsx
+│       └── shared-example.types.ts
+├── layouts
+│   └── main-layout
+│       ├── index.ts
+│       └── main-layout.components.tsx
+├── styles
+│   └── globals.css
+└── views
+    └── home
+        └── home-example
+            ├── home-example.components.tsx
+            └── index.ts
 ```
 
 ## JavaScript Code Conventions
