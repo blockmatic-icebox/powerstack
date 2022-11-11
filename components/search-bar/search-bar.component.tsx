@@ -1,23 +1,36 @@
 import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/20/solid';
-import { CaretDown, CaretRight, MagnifyingGlassIcon } from '~/icons';
-
+import { CaretDown, MagnifyingGlassIcon } from '~/icons';
+import clsx from 'clsx';
+import Image from 'next/image';
+import type { selectedType } from './search-bar.type';
 
 const coins = [
-  { id: 0, name: 'Network' },
-  { id: 1, name: 'Ethereum' },
-  { id: 2, name: 'Solana' },
-  { id: 3, name: 'Polygon' },
-  { id: 4, name: 'EOS' },
+  { 
+    id: 1, 
+    name: 'Ethereum',
+    nftCreatorIcon: '/EthereumLogo.png',
+  },
+  { 
+    id: 2, 
+    name: 'Solana' ,
+    nftCreatorIcon: '/SolanaLogo.png',
+  },
+  { 
+    id: 3, 
+    name: 'Polygon',
+    nftCreatorIcon: '/PolygonLogo.png',
+   },
+  { 
+    id: 4, 
+    name: 'EOS',
+    nftCreatorIcon: '/EosLogo.png',
+   },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function SearchBar() {
-  const [selected, setSelected] = useState(coins[0])
+  const [selected, setSelected] = useState<selectedType>()
 
   return (
     <div className="hidden rounded-l-lg bg-gray-50 lg:ml-2 md:block rounded-r-xl" >
@@ -44,11 +57,20 @@ export default function SearchBar() {
             <>
               <div className="relative w-32 m-1">
                 <Listbox.Button className="w-full pl-4 text-left">
-                  <span className="block truncate">{selected.name}</span>
+                  {selected? (
+                  <span className="block truncate">
+                    {selected.name}
+                    </span>
+                ):(
+                  <p className="ext-sm md:text-base font-inter">
+                  Network
+                </p>
+                )} 
                   <span className="absolute right-0 items-center pt-1 pr-4 pointer-events-none inset-y-1 ">
                     <CaretDown />
                   </span>
                 </Listbox.Button>
+                
                 <Transition
                   show={open}
                   as={Fragment}
@@ -56,12 +78,12 @@ export default function SearchBar() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Listbox.Options className="absolute z-10 w-48 py-1 mt-1 overflow-auto text-base bg-white rounded-lg shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                  <Listbox.Options className="absolute z-10 px-2 py-2 pt-6 mt-3 overflow-auto text-base bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm w-52">
                     {coins.map((coin) => (
                       <Listbox.Option
                         key={coin.id}
                         className={({ active }) =>
-                          classNames(
+                          clsx(
                             active ? 'text-black bg-gray-100' : 'text-black',
                             'relative cursor-default select-none py-2 pl-3 pr-9 m-1'
                           )
@@ -70,12 +92,23 @@ export default function SearchBar() {
                       >
                         {({ selected, active }) => (
                           <>
-                            <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
+                          <div className="flex ">
+                            <div className="flex-shrink-0 w-10 h-7">
+                                <Image
+                                  className="rounded-full h-7 w-7"
+                                  width={26}
+                                  height={26}
+                                  src={coin.nftCreatorIcon}
+                                  alt="cryto icon"
+                                />
+                              </div>
+                            <span className={clsx(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
                               {coin.name}
                             </span>
+                            </div>
                             {selected ? (
                               <span
-                                className={classNames(
+                                className={clsx(
                                   active ? 'text-white' : 'text-black',
                                   'absolute inset-y-0 right-0 flex items-center pr-4'
                                 )}
