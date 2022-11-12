@@ -26,4 +26,3 @@ export function GlobalLayout({ children }: { children: React.ReactNode }) {
     </div>
     )
   }
-  
