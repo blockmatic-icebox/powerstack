@@ -1,1 +1,1 @@
-export * from './crypto-select.components'
+export * from './crypto-select.component'
