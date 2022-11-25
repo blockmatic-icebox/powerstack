@@ -1,17 +1,16 @@
-"use client";
-import React, { useState } from 'react';
+'use client'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
 const tabs = [
   { name: 'Profile', href: '#', current: true },
   { name: 'Notifications', href: '#', current: false },
-  { name: 'Security', href: '#', current: false }
+  { name: 'Security', href: '#', current: false },
 ]
 
 export default function Profile() {
-
-  const [currentTab, setCurrentTab] = useState<number>(0);
+  const [currentTab, setCurrentTab] = useState<number>(0)
   const defaultImage = '/images/image10.png'
 
   return (
@@ -72,7 +71,9 @@ export default function Profile() {
             <div className="space-y-2 text-center sm:text-left">
               <div className="space-y-0.5">
                 <p className="text-xl font-bold text-[#1A2141]">{username.name}</p>
-                <p className="font-medium text-[#1A2141]">Select one of your NFTs as your profile picture</p>
+                <p className="font-medium text-[#1A2141]">
+                  Select one of your NFTs as your profile picture
+                </p>
               </div>
               <button className="text-sm text-[#044BFF]">Change profile NFT</button>
             </div>
@@ -91,9 +92,17 @@ export default function Profile() {
             <h2 className="py-4 text-base text-[#404467] font-inter">Email</h2>
             <input type="email" className="box-content rounded-lg w-96 border-1 text-[#111F40]" />
             <h2 className="pt-4 text-base text-[#404467] font-inter">Bio</h2>
-            <input type="text" className="box-content h-32 p-4 rounded-lg w-96 border-1 text-[#111F40]" />
+            <input
+              type="text"
+              className="box-content h-32 p-4 rounded-lg w-96 border-1 text-[#111F40]"
+            />
           </div>
-          <button type="button" className="px-6 py-4 text-sm text-white bg-[#044BFF] rounded-2xl font-inter">Save Changes</button>
+          <button
+            type="button"
+            className="px-6 py-4 text-sm text-white bg-[#044BFF] rounded-2xl font-inter"
+          >
+            Save Changes
+          </button>
         </div>
       )}
     </div>

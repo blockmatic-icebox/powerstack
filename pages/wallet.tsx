@@ -1,10 +1,8 @@
-"use client";
-import React, { useState } from 'react';
+'use client'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import { CryptoSelect } from '~/components/crypto-select/crypto-select.components';
+import { CryptoSelect } from '~/components/crypto-select'
 import clsx from 'clsx'
-
-
 
 const crypto = [
   {
@@ -62,8 +60,7 @@ const tabs = [
 ]
 
 export default function Wallet() {
-
-  const [currentTab, setCurrentTab] = useState<number>(0);
+  const [currentTab, setCurrentTab] = useState<number>(0)
 
   return (
     <div>

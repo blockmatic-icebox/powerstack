@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: { appDir: true },
   images: {
     domains: process.env.NEXT_PUBLIC_IMAGES_DOMAIN ? [process.env.NEXT_PUBLIC_IMAGES_DOMAIN] : [],
   },

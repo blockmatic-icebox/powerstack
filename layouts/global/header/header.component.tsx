@@ -4,8 +4,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Blockmatic, BlockmaticIcon, MenuIcons, BellIcon, CaretRight, CaretDown } from '~/icons'
 import XcloseIcon from '~/icons/XcloseIcon'
 import Image from 'next/image'
-import { Sidebar } from '../sidebar/sidebar.component'
-import SearchBar from '../search-bar/search-bar.component'
+import { Sidebar } from '../sidebar'
+import { SearchBar } from '../search-bar'
 
 export function Header() {
   const defaultImage = '/images/user.png'
@@ -28,11 +28,7 @@ export function Header() {
                   <div className="flex md:hidden">
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md hover:bg-white hover:bg-opacity-75 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200">
                       <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XcloseIcon />
-                      ) : (
-                        <MenuIcons />
-                      )}
+                      {open ? <XcloseIcon /> : <MenuIcons />}
                     </Disclosure.Button>
                   </div>
                   <div className="hidden lg:ml-4 md:block md:mr-4">
@@ -46,16 +42,16 @@ export function Header() {
                       </button>
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative flex-shrink-0 ml-3h-11">
-                        <div className='flex items-center justify-between border border-gray-100 rounded-full w-44 h-11'>
+                        <div className="flex items-center justify-between border border-gray-100 rounded-full w-44 h-11">
                           <Menu.Button className="grid grid-cols-3 p-1 mt-2 mb-2">
                             <span className="sr-only">Open user menu</span>
                             <Image
-                            className="h-10 w-9"
-                            src={defaultImage}
-                            width={37}
-                            height={40}
-                            alt="user"
-                          />
+                              className="h-10 w-9"
+                              src={defaultImage}
+                              width={37}
+                              height={40}
+                              alt="user"
+                            />
                             <div className="min-w-0 col-span-2">
                               <a href="#" className="focus:outline-none">
                                 <span className="absolute inset-1" aria-hidden="true" />
@@ -85,10 +81,10 @@ export function Header() {
                                     href={item.href}
                                     className={classNames(
                                       active ? 'bg-gray-100' : '',
-                                      'block py-2 px-4 text-sm text-gray-700'
+                                      'block py-2 px-4 text-sm text-gray-700',
                                     )}
                                   >
-                                      {item.name}
+                                    {item.name}
                                   </a>
                                 )}
                               </Menu.Item>
