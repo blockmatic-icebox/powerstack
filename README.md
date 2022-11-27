@@ -107,6 +107,14 @@ export function saySomething() {
 
 - Receive an object, return an object (RORO). [Elegant patterns in modern JavaScript: RORO](https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/)
 
+```
+most functions will receive an object and many of them return an object too.
+
+Like any pattern, RORO should be seen as just another tool in our tool box. We use it in places where it adds value by making a list of parameters more clear and flexible and by making a return value more expressive.
+
+If you’re writing a function that will only ever need to receive a single parameter, then receiving an object is overkill. Likewise, if you’re writing a function that can communicate a clear and intuitive response to the caller by returning a simple value, there is no need to return an object.
+```
+
 ```ts
 // types/services.type.ts
 export interface ServiceParams {
@@ -129,15 +137,13 @@ export async function getAccounts({ account, limit = 15, offset = 0 }: GetAccoun
       }
     : null
 
-  const accounts = await getGraphQLSdk()
+  return getGraphQLSdk()
     .chain.query.accounts({
       where,
       limit,
       offset,
     })
     .get({ ...everything })
-
-  return { accounts }
 }
 ```
 
