@@ -14,8 +14,6 @@ Demo <https://powerstack-next.vercel.app/>
 - Read blockchain state, sign messages and transactions.
 - Read account token balances and nfts.
 - Read token prices and market data.
-- Next 13 optimized architecture and best practices.
-- Semantic, idiomatic, functional and declarative codestyle.
 - Utility first CSS with TailwindUI components.
 - Upload files to Arweave using Blundr.
 - Upload files to IPFS using Pinata.
@@ -23,6 +21,7 @@ Demo <https://powerstack-next.vercel.app/>
 - Internationalization.
 - Integration with DatoCMS.
 - TypeScript, ESLint, Prettier and hooks for code quality.
+- Idiomatic, functional and declarative codestyle.
 - Docker support and Taskfile.
 
 ## Tech Stack
@@ -103,6 +102,42 @@ const helloMessage = 'hello'
 export function saySomething() {
   const someValue = 'fren'
   console.log(`${helloMessage} ${someValue}`)
+}
+```
+
+- Receive an object, return an object (RORO). [Elegant patterns in modern JavaScript: RORO](https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/)
+
+```ts
+// types/services.type.ts
+export interface ServiceParams {
+  limit?: number
+  offset?: number
+}
+
+// services/account/account.type.ts
+export interface GetAccountsParams extends ServiceParams {
+  account?: string
+}
+
+// services/account/account.service.ts
+export async function getAccounts({ account, limit = 15, offset = 0 }: GetAccountsParams) {
+  const where = account
+    ? {
+        account: {
+          _eq: account,
+        },
+      }
+    : null
+
+  const accounts = await getGraphQLSdk()
+    .chain.query.accounts({
+      where,
+      limit,
+      offset,
+    })
+    .get({ ...everything })
+
+  return { accounts }
 }
 ```
 
