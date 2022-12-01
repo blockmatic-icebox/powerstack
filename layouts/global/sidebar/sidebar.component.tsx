@@ -1,4 +1,6 @@
 import { SidebarLink } from './sidebar-link.component'
+import { Blockmatic, BlockmaticIcon } from '~/icons'
+
 
 const sidebarLinks = [
   {
@@ -21,8 +23,14 @@ const sidebarLinks = [
 
 export function Sidebar() {
   return (
-    <div className="flex flex-col flex-grow mt-5">
-      <nav className="flex-1 px-2 pb-4 space-y-1">
+    <div>
+      <div className="flex mx-3 my-8">
+        <div className="mr-2">
+          <BlockmaticIcon />
+        </div>
+        <Blockmatic />
+      </div>
+      <nav>
         <ol>
           {sidebarLinks.map((props, idx) => (
             <SidebarLink {...props} key={idx} />
