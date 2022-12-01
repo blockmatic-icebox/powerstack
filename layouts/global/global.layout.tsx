@@ -4,12 +4,12 @@ import { Sidebar } from '~/layouts/global/sidebar'
 
 export function GlobalLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Header />
-
-      <Sidebar />
-
-      <Main>{children}</Main>
-    </>
+    <div className="flex">
+      <Sidebar/>
+      <div className="flex-1">
+        <Header/>
+        <Main>{children}</Main>
+      </div>
+    </div>
   )
 }
