@@ -38,6 +38,7 @@ Demo <https://powerstack-next.vercel.app/>
 - Iron Session [vvo/iron-session](https://github.com/vvo/iron-session)
 - Lodash tools [lodash.com/docs](https://lodash.com/docs)
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
+- React Hook Form [react-hook-form.com](https://react-hook-form.com/)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
 - Sentry reporting [sentry.io/](https://sentry.io/)
 
@@ -45,19 +46,20 @@ Demo <https://powerstack-next.vercel.app/>
 
 ```
 .
-├── config .............................. environment variables and secrets
-│   ├── client
-│   └── server
-├── context ............................. global react context
-├── graphql ............................. genql generated sdk
-│   └── generated
+├── config .............................. environment variables
+│   ├── client .......................... client side vars
+│   └── server .......................... server side secrets
+├── context ............................. shared state
+│   └── global.context.ts
+├── icons ............................... svg icons as components
+├── hooks ............................... global react hooks
 ├── lib ................................. utility pure functions
 │   ├── encoding
 │   ├── logger
 │   ├── platform
 │   ├── ssr
 │   └── utils
-├── app ............................... nextjs routes
+├── pages ............................... nextjs routes
 │   └── [account]
 ├── public .............................. nextjs public
 │   ├── fonts
@@ -65,32 +67,47 @@ Demo <https://powerstack-next.vercel.app/>
 ├── services ............................ stateless services
 │   ├── auth                              to interact with apis
 │   ├── media                             and crypto wallets
-│   ├── price
-│   ├── search
+│   ├── events ( webgl event handlers )
+│   ├── sentry
 │   ├── solana
-│   └── user
+│   └── wardrobe
 ├── types ............................... global typescript types
-├── components
-│   └── shared-example
+├── components .......................... shared components
+│   └── example
 │       ├── index.ts
-│       ├── shared-example.context.tsx
-│       ├── shared-example.components.tsx
-│       ├── shared-example.tests.tsx
-│       └── shared-example.types.ts
-├── layouts
+│       ├── example.context.tsx
+│       ├── example.component.tsx
+│       ├── example.test.tsx
+│       └── example.type.ts
+├── layouts ............................. structural components
 │   └── main-layout
 │       ├── index.ts
-│       └── main-layout.components.tsx
-├── styles
+│       └── main-layout.component.tsx
+├── styles .............................. css styles
 │   └── globals.css
-└── views
+└── views ............................... components for specific views
     └── home
         └── home-example
-            ├── home-example.components.tsx
+            ├── home-example.component.tsx
             └── index.ts
 ```
 
-## JavaScript Code Conventions
+## Coding Style Best Practices
+
+Follow a semantic, idiomatic, functional and declarative codestyle, using Modern JavaScript features and TypeScript.
+React is declarative, you declare you component structure and React and NextJS take care of handling the DOM changes require, it is possible to write imperative code but that is not recommended.
+Code should use correct semantics and meaningful naming, and be autoexplanatory, when you read your code outloud it should sound like plain english as much as possible.
+
+Declarative programming is like describing the picture, where imperative programming is the instruction for painting that picture. Declarative programming makes code:
+
+**more readable:** Program that are easier to read because it hides the lower level detail. In declarative programming we don't even know about the lower level details of the system.
+
+**easier to reason about:** the code we write is easier to reason about because it is much abstracted and we describe the solution instead of procedure.
+
+Follow Single Responsibility Principle, create small components that do one thing well, avoid big components.
+Favor composability over big objects, leverage pure functions and keep state simple and flat, avoid deeply nested objects.
+
+## JavaScript Conventions
 
 - naming variables: boolean should be named using auxiliary verbs such as `does`, `has`, `is` and `should`. For example, Button uses `isDisabled`, `isLoading`, etc.
 - composition: break down components into smaller parts with minimal props to keep complexity low, and compose them together.
@@ -173,6 +190,32 @@ export interface MyReactComponetParams {
   myParam: boolean
 }
 ```
+
+## Styling
+
+We are going to leverage TailwindCSS as css framework for our React components.
+Following its Utility First approach to develop faster with high quality.
+
+This is great interview with TailwindCSS founder, they cover the https://open.spotify.com/episode/2NCNJ3AqEjALX2xza3JKkE?si=ZbnuQrwOT-C4agFxC6yTjg
+
+- maximizes the use of creative power in functionality; not creating class names and css structures.
+- reduces of cognitive effort by not having to think about classes and hierarchies, changing or returning to the project is all the same.
+- element changes are localized and you don't worry about breaking other things.
+- the default theme is very good and simple to customize it to create your own design system.
+- it is very intuitive. even without knowing the framework you can read the code and understand what is happening with relative ease
+  the development experience is much better by not having to change files.
+- tailwindui is great and the community is huge, you can copy paste any project and use it on your own without creating frankensteins
+- you can use it in combination with emmet, since it only uses className.
+- it enforce css based on constraints through theme and design tokens.
+- in 3.1 there is a feature called arbitrary variants that makes it even more flexible.
+- it gives you better performance, really good with ssr ( nextjs/remix ).
+- it removes the problems associated with preprocessors such as large bundles.
+- it is relatively less complex than styled components (you need to know more about javascript).
+
+_Note: the current code uses nextjs built-in css modules, tailwind is already setup and we are migrating progressively._
+
+Its possible to write variant based component using https://github.com/joe-bell/cva
+Watch this for a tailwindcss + cva demo https://www.youtube.com/watch?v=T-Zv73yZ_QI&ab_channel=Vercel
 
 ## Getting Started
 
