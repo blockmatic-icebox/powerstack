@@ -65,12 +65,12 @@ Demo <https://powerstack-next.vercel.app/>
 │   ├── fonts
 │   └── images
 ├── services ............................ stateless services
-│   ├── auth                              to interact with apis
+│   ├── web3auth                          to interact with apis
 │   ├── media                             and crypto wallets
-│   ├── events ( webgl event handlers )
+│   ├── events 
 │   ├── sentry
 │   ├── solana
-│   └── wardrobe
+│   └── evm
 ├── types ............................... global typescript types
 ├── components .......................... shared components
 │   └── example
