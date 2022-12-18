@@ -212,8 +212,6 @@ This is great interview with TailwindCSS founder, they cover the https://open.sp
 - it removes the problems associated with preprocessors such as large bundles.
 - it is relatively less complex than styled components (you need to know more about javascript).
 
-_Note: the current code uses nextjs built-in css modules, tailwind is already setup and we are migrating progressively._
-
 Its possible to write variant based component using https://github.com/joe-bell/cva
 Watch this for a tailwindcss + cva demo https://www.youtube.com/watch?v=T-Zv73yZ_QI&ab_channel=Vercel
 
