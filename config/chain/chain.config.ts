@@ -19,4 +19,24 @@ export const chainConfig = {
     ticker: 'sol',
     tickerName: 'solana',
   } as CustomChainConfig,
+  polygon: {
+    chainNamespace: 'eip155',
+    chainId: '0x89', // hex of 137, polygon mainnet
+    rpcTarget: 'https://rpc.ankr.com/polygon',
+    // Avoid using public rpcTarget in production.
+    // Use services like Infura, Quicknode etc
+    displayName: 'Polygon Mainnet',
+    blockExplorer: 'https://polygonscan.com',
+    ticker: 'MATIC',
+    tickerName: 'Matic',
+  } as CustomChainConfig,
+  mumbai: {
+    chainNamespace: 'eip155',
+    chainId: '0x13881', // hex of 80001, polygon testnet
+    rpcTarget: 'https://rpc.ankr.com/polygon_mumbai',
+    displayName: 'Polygon Mainnet',
+    blockExplorer: 'https://mumbai.polygonscan.com/',
+    ticker: 'MATIC',
+    tickerName: 'Matic',
+  } as CustomChainConfig,
 } as const
