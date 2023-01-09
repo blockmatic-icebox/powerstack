@@ -35,6 +35,7 @@ Demo <https://powerstack-next.vercel.app/>
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
 - Eosio Core [greymass/eosio-core](https://github.com/greymass/eosio-core)
 - Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
+- GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
 - Iron Session [vvo/iron-session](https://github.com/vvo/iron-session)
 - Lodash tools [lodash.com/docs](https://lodash.com/docs)
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
@@ -67,7 +68,7 @@ Demo <https://powerstack-next.vercel.app/>
 ├── services ............................ stateless services
 │   ├── web3auth                          to interact with apis
 │   ├── media                             and crypto wallets
-│   ├── events 
+│   ├── events
 │   ├── sentry
 │   ├── solana
 │   └── evm
