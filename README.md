@@ -28,7 +28,7 @@ Demo <https://powerstack-next.vercel.app/>
 
 - NextJS [nextjs.org](https://nextjs.org)
 - TailwindCSS [tailwindcss.com](https://tailwindcss.com)
-- Variant Based Components(CVA) [joe-bell/cva](https://github.com/joe-bell/cva)
+- Windstitch Component Variants [vinpac/windstitch](https://github.com/vinpac/windstitch)
 - Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
