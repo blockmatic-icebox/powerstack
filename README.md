@@ -231,7 +231,7 @@ Use Arrays instead of Maps.
 We are going to leverage TailwindCSS as css framework for our React components.
 Following its Utility First approach to develop faster with high quality.
 
-This is great interview with TailwindCSS founder, they cover the https://open.spotify.com/episode/2NCNJ3AqEjALX2xza3JKkE?si=ZbnuQrwOT-C4agFxC6yTjg
+This is a [great interview with TailwindCSS founder](https://open.spotify.com/episode/2NCNJ3AqEjALX2xza3JKkE?si=ZbnuQrwOT-C4agFxC6yTjg).  
 
 - maximizes the use of creative power in functionality; not creating class names and css structures.
 - reduces of cognitive effort by not having to think about classes and hierarchies, changing or returning to the project is all the same.
