@@ -172,6 +172,7 @@ If you’re writing a function that will only ever need to receive a single para
   - styled components
   - typescript types
   - getServerSideProps
+- use ternaries rather than && in jsx
 
 Eg.
 
