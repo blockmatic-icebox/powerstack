@@ -4,7 +4,11 @@ NextJS application starter for rapid development of multi-chain applications.
 
 ⚡️ [PowerStack: a powerful fullstack development framework](https://powerstack.xyz).
 
-_Disclaimer: This is a work in progress. Will be finalized soon._
+<img width="892" alt="image" src="https://user-images.githubusercontent.com/391270/218875724-35571654-5576-4e61-835f-e6aa325f4cc9.png">
+
+
+
+_ This is a work in progress._
 
 Demo <https://powerstack-next.vercel.app/>
 
