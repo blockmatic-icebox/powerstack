@@ -130,17 +130,6 @@ export function saySomething() {
 - Receive an object, return an object (RORO). [Elegant patterns in modern JavaScript: RORO](https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/)
 
 ```ts
-// types/services.type.ts
-export interface ServiceParams {
-  limit?: number
-  offset?: number
-}
-
-// services/account/account.type.ts
-export interface GetAccountsParams extends ServiceParams {
-  account?: string
-}
-
 // services/account/account.service.ts
 export async function getAccounts({ account, limit = 15, offset = 0 }: GetAccountsParams) {
   const where = account
@@ -158,6 +147,17 @@ export async function getAccounts({ account, limit = 15, offset = 0 }: GetAccoun
       offset,
     })
     .get({ ...everything })
+}
+
+// types/services.type.ts
+export interface ServiceParams {
+  limit?: number
+  offset?: number
+}
+
+// services/account/account.type.ts
+export interface GetAccountsParams extends ServiceParams {
+  account?: string
 }
 ```
 
