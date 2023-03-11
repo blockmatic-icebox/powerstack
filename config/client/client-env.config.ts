@@ -1,5 +1,3 @@
-import { logger } from '~/lib/logger'
-
 export const clientEnv = {
   debug: process.env.NODE_ENV !== 'production',
   services: {
@@ -20,5 +18,8 @@ export const clientEnv = {
   },
   features: {
     someFeature: Boolean(process.env.NEXT_PUBLIC_FEATURE_WEBGL) || false,
+  },
+  flow: {
+    niftoryApiKey: process.env.NEXT_PUBLIC_NIFTORY_API_KEY || '',
   },
 }

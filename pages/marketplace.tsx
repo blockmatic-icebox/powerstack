@@ -1,9 +1,7 @@
 import React from 'react'
 
+import { SidebarLayout } from '~/layouts/sidebar'
+
 export default function Marketplace() {
-  return (
-    <div>
-      <h2>Marketplace</h2>
-    </div>
-  )
+  return <SidebarLayout main={<h2>Marketplace</h2>} sidebar={<h2>Sidebar</h2>} />
 }

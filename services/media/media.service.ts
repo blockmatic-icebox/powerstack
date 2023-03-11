@@ -1,5 +1,6 @@
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen'
 import { quality } from '@cloudinary/url-gen/actions/delivery'
+
 import { clientEnv } from '~/config/client'
 
 // Create a Cloudinary instance and set your cloud name.

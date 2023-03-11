@@ -4,14 +4,12 @@ module.exports = {
     './layouts/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './ui/**/*.{js,ts,jsx,tsx}',
-    '/ui/_legacy/components/**/*.{js,ts,jsx,tsx}',
+    './icons/**/*.{js,ts,jsx,tsx}',
+    './views/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
-    fontFamily: {
-      inter: ['Inter'],
-    },
+    fontFamily: {},
   },
   plugins: [require('@tailwindcss/forms')],
 }

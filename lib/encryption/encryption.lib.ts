@@ -1,4 +1,4 @@
-import { createDecipheriv, createCipheriv, randomBytes } from 'crypto'
+import { createCipheriv, createDecipheriv, randomBytes } from 'crypto'
 
 const algorithm = 'aes-256-cbc'
 const key = '9314214900ed961a9f15688e0e2f26f3c5afa8dd56afb8c527602548e53d1883'

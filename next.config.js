@@ -12,12 +12,6 @@ const nextConfig = {
     })
     return config
   },
-  i18n: {
-    // Initial supported locales for American Region. Locales MUST match with DatoCMS.SiteLocale
-    locales: ['en_US', 'es', 'fr_CA', 'pt_BR'],
-    // As always, en_US is our default lang
-    defaultLocale: 'en_US',
-  },
 }
 
 module.exports = nextConfig

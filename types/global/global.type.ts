@@ -5,7 +5,6 @@ declare global {
     web3auth: Web3AuthCore
     ethereum: any
     VConsole?: any
-    prisma: any
     phantom?: any
     dataLayer?: object[] // google analytics
   }

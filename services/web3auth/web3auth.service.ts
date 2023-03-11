@@ -1,11 +1,12 @@
 import { ADAPTER_EVENTS, WALLET_ADAPTERS } from '@web3auth/base'
-import { logger } from '~/lib/logger/logger.lib'
-import { clientEnv } from '~/config/client/client-env.config'
-import { chainConfig } from '~/config/chain/chain.config'
-import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { Web3AuthCore } from '@web3auth/core'
-import { SolanaWallet } from '@web3auth/solana-provider'
+import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { PhantomAdapter } from '@web3auth/phantom-adapter'
+import { SolanaWallet } from '@web3auth/solana-provider'
+
+import { chainConfig } from '~/config/chain/chain.config'
+import { clientEnv } from '~/config/client/client-env.config'
+import { logger } from '~/lib/logger/logger.lib'
 
 function subscribeToWeb3AuthEvents() {
   const web3auth = window.web3auth!

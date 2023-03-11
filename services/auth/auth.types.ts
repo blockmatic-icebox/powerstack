@@ -20,9 +20,3 @@ export interface CreateSessionParams {
   eos_pub_key?: string
   token?: string
 }
-
-declare module 'iron-session' {
-  interface IronSessionData {
-    user?: {}
-  }
-}

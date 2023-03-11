@@ -1,6 +1,8 @@
 import jwtDecode from 'jwt-decode'
+
 import { fetchJson } from '~/lib/fetch'
 import { logger } from '~/lib/logger'
+
 import { AuthResponse, CreateSessionParams } from './auth.types'
 
 export async function login(login_payload: CreateSessionParams) {
