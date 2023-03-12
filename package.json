@@ -1,6 +1,6 @@
 {
-  "name": "powerstack-app",
-  "version": "0.1.0",
+  "name": "powerstack-next",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -48,6 +48,7 @@
     "react-use": "^17.4.0",
     "tailwind-merge": "^1.10.0",
     "tailwindcss": "^3.2.7",
+    "windstitch": "^0.3.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

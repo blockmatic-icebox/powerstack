@@ -1,5 +1,6 @@
 import { RootLayout } from '~/layouts/root'
+import { HomeView } from '~/views/home'
 
-export default function Home() {
-  return <RootLayout main={<h2>Homepage</h2>} />
+export default function HomePage() {
+  return <RootLayout main={<HomeView />} />
 }
