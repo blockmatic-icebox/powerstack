@@ -1,0 +1,45 @@
+version: '3'
+
+dotenv: ['.env']
+silent: true
+
+tasks:
+  console:
+    cmds:
+      - hasura console --project $HASURA_DIR
+
+  boot:
+    cmds:
+      - docker-compose up -d --build
+      - sleep 60
+      - task migrate
+
+  reboot:
+    cmds:
+      - task down
+      - task boot
+
+  seed:
+    cmds:
+      - hasura seeds apply --project $HASURA_DIR
+
+  up:
+    cmds:
+      - docker-compose up -d --build
+
+  down:
+    cmds:
+      - docker-compose down -v --remove-orphans
+
+  migrate:
+    cmds:
+      - hasura migrate apply --project $HASURA_DIR
+      - hasura metadata apply --project $HASURA_DIR
+
+  reload:
+    cmds:
+      - task down 
+      - docker-compose up -d postgres
+      - sleep 5 
+      - docker-compose up -d --build 
+      - docker-compose logs -f hasura

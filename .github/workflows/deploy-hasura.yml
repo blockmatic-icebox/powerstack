@@ -1,0 +1,26 @@
+# deploy-back.yml
+name: Deploy to production
+
+on:
+  push:
+    paths:
+    - 'apps/hasura/**'
+
+jobs:
+  deployment-job:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v2
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          # ...
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          source: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ env.PACKAGE_VERSION }}
+          project_id: ${{ env.PROJECT_ID }}
+          region: ${{ env.RUN_REGION }}
+          tag: ${{ env.PACKAGE_VERSION }}

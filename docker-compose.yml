@@ -1,0 +1,78 @@
+version: "3.5"
+
+services:
+  postgres:
+    container_name: powerstack-postgres
+    image: postgres:14.5
+    volumes:
+      - pg-data:/var/lib/postgresql/data-powerstack # it avoids conflicts with other volumens
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: powerstack
+    command: -p 5432
+
+  apollo:
+    container_name: powerstack-apollo
+    image: powerstack-apollo:local
+    ports:
+      - "${APOLLO_SERVICE_PORT}:${APOLLO_SERVICE_PORT}"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      PORT: ${APOLLO_SERVICE_PORT}
+
+  hasura:
+    container_name: powerstack-hasura
+    image: powerstack-hasura:local
+    ports:
+      - "${HASURA_GRAPHQL_SERVER_PORT}:${HASURA_GRAPHQL_SERVER_PORT}"
+    depends_on:
+      - postgres
+      - apollo
+    links:
+      - apollo
+    restart: always
+    environment:
+      # https://hasura.io/docs/1.0/graphql/core/deployment/graphql-engine-flags/reference.html
+      HASURA_GRAPHQL_DATABASE_URL: postgres://user:pass@postgres:5432/powerstack?sslmode=disable
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_SERVER_PORT: ${HASURA_GRAPHQL_SERVER_PORT}
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_CORS_DOMAIN: "*"
+      HASURA_CUSTOM_REMOTE_SCHEMA_URL: ${HASURA_CUSTOM_REMOTE_SCHEMA_URL}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anon
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+
+  auth:
+    container_name: powerstack-auth
+    image: powerstack-auth:local
+    ports:
+      - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      DATABASE_URL: postgres://user:pass@postgres:5432/powerstack?sslmode=disable
+      PORT: ${AUTH_SERVICE_PORT}
+      SERVER_SECRET: ${AUTH_SERVER_SECRET}
+      HOSTNAME: "0.0.0.0"
+      JWT_SECRET: ${AUTH_JWT_SECRET}
+      JWT_TOKEN_EXPIRATION: ${AUTH_JWT_TOKEN_EXPIRATION}
+      TWITTER_CONSUMER_KEY: ${AUTH_TWITTER_CONSUMER_KEY}
+      TWITTER_CONSUMER_SECRET: ${AUTH_TWITTER_CONSUMER_SECRET}
+      TWITTER_CALLBACK: ${AUTH_TWITTER_CALLBACK}
+      TWITTER_CLIENT_ID: ${AUTH_TWITTER_CLIENT_ID}
+      TWITTER_CLIENT_SECRET: ${AUTH_TWITTER_CLIENT_SECRET}
+
+volumes:
+  pg-data:
+
+networks:
+  default:
+    name: powerstack

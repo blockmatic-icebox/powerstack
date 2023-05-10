@@ -5,7 +5,7 @@ Application starters for rapid development of multi-chain applications
 
 <img width="892" alt="image" src="https://697788980-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZ9TDrZUmPgINqUrCxxId%2Fuploads%2Fae1Zeh49ADF1WWrQ5PIW%2Fimage.png?alt=media&token=daf2165f-f530-4f4e-875b-b6d936012a10">
 
-<img width="892" alt="image" src="./PowerStack-Architecture.png">
+<img width="892" alt="image" src="./Architecture.png">
 
 _ This is a work in progress._
 
