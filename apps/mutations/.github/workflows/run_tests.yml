@@ -1,0 +1,67 @@
+name: Run Tests for Modified Files
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled]
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: changeme
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+          cache: 'yarn'
+
+      # Cache libraries
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: .yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Get list of modified files
+        id: modified-files
+        run: |
+          echo "::set-output name=files::$(git diff --name-only HEAD^ HEAD | grep '\.test\.ts$' | paste -sd ',' -)"
+
+      - name: Run Jest tests for modified files
+        if: steps.modified-files.outputs.files != ''
+        run: yarn test --findRelatedTests ${{ steps.modified-files.outputs.files }}
+        env:
+          TEST_DB_USERNAME: postgres
+          TEST_DB_PASSWORD: changeme
+          TEST_DB_NAME: testdb
+          TEST_DB_HOST: localhost
+          TEST_DB_PORT: 5432
+          GENERATE_SOURCEMAP: false
+          NODE_OPTIONS: --max_old_space_size=4096
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -1,0 +1,45 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJs"
+    }
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "views/trade/components/components/most-visited/most-visited.component.jsx",
+    "views/marketplace/components/table-top-creators/table-top-creators.components.jsx",
+    "views/trade/trade-chart/trade-chart.component.jsx",
+    "views/collections/table/tableCollections.jsx",
+    "views/tables/pnl-table.jsx",
+    "views/home/fireworks/confetti.component.jsx"
+  ],
+  "exclude": ["node_modules", "__tools"]
+}

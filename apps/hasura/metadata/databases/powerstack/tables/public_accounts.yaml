@@ -1,0 +1,47 @@
+table:
+  schema: public
+  name: accounts
+array_relationships:
+  - name: addresses
+    using:
+      foreign_key_constraint_on:
+        column: account_id
+        table:
+          schema: public
+          name: addresses
+insert_permissions:
+  - role: anon
+    permission:
+      check: {}
+      columns:
+        - username
+        - account_id
+      backend_only: false
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - username
+        - account_id
+      backend_only: false
+select_permissions:
+  - role: anon
+    permission:
+      columns:
+        - account_id
+        - username
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - username
+        - account_id
+      filter: {}
+update_permissions:
+  - role: anon
+    permission:
+      columns:
+        - username
+        - account_id
+      filter: {}
+      check: null

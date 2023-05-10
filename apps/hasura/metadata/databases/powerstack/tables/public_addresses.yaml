@@ -1,0 +1,18 @@
+table:
+  schema: public
+  name: addresses
+select_permissions:
+  - role: anon
+    permission:
+      columns:
+        - address
+        - network
+        - account_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - address
+        - network
+        - account_id
+      filter: {}

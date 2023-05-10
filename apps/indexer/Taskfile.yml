@@ -1,0 +1,33 @@
+version: '3'
+
+dotenv: ['.env']
+silent: true
+
+tasks:
+  build:
+    cmds:
+      - docker build -t powerstack-voyager:local .
+
+  run:
+    cmds:
+      - docker run --name powerstack-voyager --env-file .env -p 3307:3307 -d powerstack-voyager:local
+
+  id:
+    cmds:
+      - docker ps -aqf "name=^powerstack-voyager$"
+
+  stop:
+    cmds:
+      - docker stop powerstack-voyager
+
+  start:
+    cmds:
+      - docker start powerstack-voyager
+
+  restart:
+    cmds:
+      - docker restart powerstack-voyager
+
+  kill:
+    cmds:
+      - docker kill powerstack-voyager
