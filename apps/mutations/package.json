@@ -1,5 +1,6 @@
 {
   "name": "fastify-prisma-nexus-graphql-jest",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "yarn -s clean && yarn -s generate &&  tsc",
@@ -12,10 +13,7 @@
     "format": "npx prettier --write './**/*.{ts,md}'",
     "generate:nexus": "ts-node --transpile-only src/schema",
     "generate:prisma": "prisma generate",
-    "generate": "yarn -s generate:prisma && yarn -s generate:nexus",
-    "migrate:deploy": "prisma migrate deploy",
-    "migrate:dev": "prisma migrate dev --skip-seed",
-    "migrate:reset": "prisma migrate reset",
+    "generate": "yarn  generate:prisma && yarn generate:nexus",
     "start": "node dist/src/index",
     "generate:secret": "ts-node src/secretGenerator",
     "test": "yarn -s build && jest --detectOpenHandles --coverage --runTestsByPath $npm_config_file",

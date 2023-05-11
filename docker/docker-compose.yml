@@ -1,0 +1,110 @@
+version: "3.5"
+
+services:
+  postgres:
+    container_name: powerstack-postgres
+    image: postgres:14.5
+    volumes:
+      - pgdata:/var/lib/postgresql/data-powerstack # it avoids conflicts with other volumens
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: powerstack
+    command: -p 5432
+
+  mutations:
+    container_name: powerstack-mutations
+    image: powerstack-mutations:local
+    build: ../apps/mutations
+    ports:
+      - "${MUTATIONS_SERVICE_PORT}:${MUTATIONS_SERVICE_PORT}"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      PORT: ${MUTATIONS_SERVICE_PORT}
+      DATABASE_URL: ${DATABASE_URL}
+      ENABLE_REQUEST_LOGGING: "true"
+      HOST: localhost
+      JWT_SECRET: super-secret
+      CONSOLE_EXPORTER: "true"
+      SENTRY_DSN: https://something.ingest.sentry.io/your-id
+      SENTRY_DEBUG: "true"
+      SERVICE_NAME: mutations  
+      NODE_ENV: development
+      SESSION_SECRET: 62b67a2b8b2fc235lkasjoiawjowiut029uf7de7e0f3b26629
+      USE_HTTPS: "false"
+      # Exit the server after generating the Nexus schema
+      NEXUS_SHOULD_EXIT_AFTER_REFLECTION: "false"
+
+  hasura:
+    container_name: powerstack-hasura
+    build: ../apps/hasura
+    image: powerstack-hasura:local
+    ports:
+      - "${HASURA_GRAPHQL_SERVER_PORT}:${HASURA_GRAPHQL_SERVER_PORT}"
+    depends_on:
+      - postgres
+      - mutations
+    links:
+      - mutations
+    restart: always
+    environment:
+      # https://hasura.io/docs/1.0/graphql/core/deployment/graphql-engine-flags/reference.html
+      HASURA_GRAPHQL_DATABASE_URL: ${DATABASE_URL}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_SERVER_PORT: ${HASURA_GRAPHQL_SERVER_PORT}
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_CUSTOM_REMOTE_SCHEMA_URL: ${HASURA_CUSTOM_REMOTE_SCHEMA_URL}
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_CORS_DOMAIN: "*"
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anon
+      HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: naming_convention
+      HASURA_GRAPHQL_DEFAULT_NAMING_CONVENTION: graphql-default
+
+  # auth:
+  #   container_name: powerstack-auth
+  #   image: powerstack-auth:local
+  #   ports:
+  #     - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
+  #   depends_on:
+  #     - postgres
+  #   restart: always
+  #   environment:
+  #     DATABASE_URL: postgres://user:pass@postgres:5432/powerstack?sslmode=disable
+  #     PORT: ${AUTH_SERVICE_PORT}
+  #     SERVER_SECRET: ${AUTH_SERVER_SECRET}
+  #     HOSTNAME: "0.0.0.0"
+  #     JWT_SECRET: ${AUTH_JWT_SECRET}
+  #     JWT_TOKEN_EXPIRATION: ${AUTH_JWT_TOKEN_EXPIRATION}
+  #     TWITTER_CONSUMER_KEY: ${AUTH_TWITTER_CONSUMER_KEY}
+  #     TWITTER_CONSUMER_SECRET: ${AUTH_TWITTER_CONSUMER_SECRET}
+  #     TWITTER_CALLBACK: ${AUTH_TWITTER_CALLBACK}
+  #     TWITTER_CLIENT_ID: ${AUTH_TWITTER_CLIENT_ID}
+  #     TWITTER_CLIENT_SECRET: ${AUTH_TWITTER_CLIENT_SECRET}
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  pgadmin:
+
+networks:
+  default:
+    name: powerstack
