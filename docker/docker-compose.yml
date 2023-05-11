@@ -2,54 +2,54 @@ version: "3.5"
 
 services:
   postgres:
-    container_name: powerstack-postgres
+    container_name: postgres
     image: postgres:14.5
     volumes:
-      - pgdata:/var/lib/postgresql/data-powerstack # it avoids conflicts with other volumens
+      - pgdata:/var/lib/postgresql/data-main # it avoids conflicts with other volumens
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
-      POSTGRES_DB: powerstack
+      POSTGRES_DB: main
     command: -p 5432
 
-  mutations:
-    container_name: powerstack-mutations
-    image: powerstack-mutations:local
-    build: ../apps/mutations
-    ports:
-      - "${MUTATIONS_SERVICE_PORT}:${MUTATIONS_SERVICE_PORT}"
-    depends_on:
-      - postgres
-    restart: always
-    environment:
-      PORT: ${MUTATIONS_SERVICE_PORT}
-      DATABASE_URL: ${DATABASE_URL}
-      ENABLE_REQUEST_LOGGING: "true"
-      HOST: localhost
-      JWT_SECRET: super-secret
-      CONSOLE_EXPORTER: "true"
-      SENTRY_DSN: https://something.ingest.sentry.io/your-id
-      SENTRY_DEBUG: "true"
-      SERVICE_NAME: mutations  
-      NODE_ENV: development
-      SESSION_SECRET: 62b67a2b8b2fc235lkasjoiawjowiut029uf7de7e0f3b26629
-      USE_HTTPS: "false"
-      # Exit the server after generating the Nexus schema
-      NEXUS_SHOULD_EXIT_AFTER_REFLECTION: "false"
+  # mutations:
+  #   container_name: mutations
+  #   image: mutations:local
+  #   build: ../apps/mutations
+  #   ports:
+  #     - "${MUTATIONS_SERVICE_PORT}:${MUTATIONS_SERVICE_PORT}"
+  #   depends_on:
+  #     - postgres
+  #   restart: always
+  #   environment:
+  #     PORT: ${MUTATIONS_SERVICE_PORT}
+  #     DATABASE_URL: ${DATABASE_URL}
+  #     ENABLE_REQUEST_LOGGING: "true"
+  #     HOST: localhost
+  #     JWT_SECRET: super-secret
+  #     CONSOLE_EXPORTER: "true"
+  #     SENTRY_DSN: https://something.ingest.sentry.io/your-id
+  #     SENTRY_DEBUG: "true"
+  #     SERVICE_NAME: mutations  
+  #     NODE_ENV: development
+  #     SESSION_SECRET: 62b67a2b8b2fc235lkasjoiawjowiut029uf7de7e0f3b26629
+  #     USE_HTTPS: "false"
+  #     # Exit the server after generating the Nexus schema
+  #     NEXUS_SHOULD_EXIT_AFTER_REFLECTION: "false"
 
   hasura:
-    container_name: powerstack-hasura
+    container_name: hasura
     build: ../apps/hasura
-    image: powerstack-hasura:local
+    image: hasura:local
     ports:
       - "${HASURA_GRAPHQL_SERVER_PORT}:${HASURA_GRAPHQL_SERVER_PORT}"
     depends_on:
       - postgres
-      - mutations
-    links:
-      - mutations
+    #   - mutations
+    # links:
+    #   - mutations
     restart: always
     environment:
       # https://hasura.io/docs/1.0/graphql/core/deployment/graphql-engine-flags/reference.html
@@ -57,7 +57,7 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_SERVER_PORT: ${HASURA_GRAPHQL_SERVER_PORT}
       HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
-      HASURA_CUSTOM_REMOTE_SCHEMA_URL: ${HASURA_CUSTOM_REMOTE_SCHEMA_URL}
+      # HASURA_CUSTOM_REMOTE_SCHEMA_URL: ${HASURA_CUSTOM_REMOTE_SCHEMA_URL}
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
@@ -67,15 +67,15 @@ services:
       HASURA_GRAPHQL_DEFAULT_NAMING_CONVENTION: graphql-default
 
   # auth:
-  #   container_name: powerstack-auth
-  #   image: powerstack-auth:local
+  #   container_name: auth
+  #   image: auth:local
   #   ports:
   #     - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
   #   depends_on:
   #     - postgres
   #   restart: always
   #   environment:
-  #     DATABASE_URL: postgres://user:pass@postgres:5432/powerstack?sslmode=disable
+  #     DATABASE_URL: postgres://user:pass@postgres:5432/main?sslmode=disable
   #     PORT: ${AUTH_SERVICE_PORT}
   #     SERVER_SECRET: ${AUTH_SERVER_SECRET}
   #     HOSTNAME: "0.0.0.0"
