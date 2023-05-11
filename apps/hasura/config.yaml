@@ -3,4 +3,4 @@ endpoint: http://localhost:3300
 metadata_directory: metadata
 actions:
   kind: synchronous
-  handler_webhook_baseurl: http://localhost:3000
+  handler_webhook_baseurl: http://localhost:3333

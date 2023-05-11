@@ -27,15 +27,7 @@ Hasura service is responsible for
 - [Postgres JSON and JSONB type support on GraphQL](https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/)
 - [Authentication with JWT](https://hasura.io/docs/latest/auth/authentication/jwt/)
 - [Access Control](https://hasura.io/docs/latest/auth/authorization/index/)
-## Getting Started
 
-```
-git clone git@github.com:blockmatic/powerstack-hasura.git
-cd powerstack-hasura
-cp .env-sample .env # and edit the environment variables
-task build
-task run
-```
 
 Ref [Hasura Environment Variables](https://hasura.io/docs/latest/graphql/core/hasura-cli/config-reference/#environment-variables)
 
@@ -46,32 +38,8 @@ Ref [Hasura Environment Variables](https://hasura.io/docs/latest/graphql/core/ha
 ├── metadata/ ........................................... hasura metadata
 ├── migrations/ ......................................... hasura migrations
 ├── config.yaml.......................................... hasura config
-├── taskfile.yaml........................................ dev tasks config
 └── .env ................................................ environment variables ([ hasura variables] )
 ```
-
-## Docker
-
-```
-# Build the image
-docker build -t powerstack-hasura:local .
-
-# Start a container
-docker run --name powerstack-hasura --env-file .env -p 3300:3300 -d powerstack-hasura:local
-
-# Get container ID
-docker ps -aqf "name=^powerstack-hasura$"
-
-# Print app output
-docker logs -f powerstack-hasura
-
-# Stop, start, restart, kill
-docker stop powerstack-hasura
-docker start powerstack-hasura
-docker restart powerstack-hasura
-docker kill powerstack-hasura
-```
-
 ## Database Migrations
 
 [Hasura Database Migrations](https://hasura.io/docs/latest/graphql/core/migrations/index) enable a rock-solid deployment.

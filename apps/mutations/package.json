@@ -1,5 +1,5 @@
 {
-  "name": "fastify-prisma-nexus-graphql-jest",
+  "name": "mutations",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
