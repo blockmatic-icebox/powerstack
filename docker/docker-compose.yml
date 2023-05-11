@@ -87,6 +87,16 @@ services:
   #     TWITTER_CLIENT_ID: ${AUTH_TWITTER_CLIENT_ID}
   #     TWITTER_CLIENT_SECRET: ${AUTH_TWITTER_CLIENT_SECRET}
 
+  indexer:
+    container_name: indexer
+    image: indexer:local
+    build: ../apps/indexer
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      DATABASE_URL: postgres://user:pass@postgres:5432/powerstack?sslmode=disable
+
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4

@@ -1,11 +1,11 @@
-FROM node:16 as builder
+FROM node:19.6.1-alpine as builder
 WORKDIR /usr/src/app
-RUN yarn --ignore-optional global add typescript
 COPY package.json .
 COPY yarn*.lock .
-RUN yarn --ignore-optional --frozen-lockfile install
+RUN yarn global add prisma typescript
+RUN yarn install --dev
 COPY . .
-RUN npx prisma generate
+RUN prisma generate
 RUN yarn build
 
 # this breaks prisma 

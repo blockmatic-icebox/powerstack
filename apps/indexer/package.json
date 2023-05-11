@@ -1,5 +1,5 @@
 {
-  "name": "powerstack-node",
+  "name": "indexer",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "build": "tsc -b",
     "lint": "eslint --ignore-path .gitignore \"**/*.+(js|ts|tsx)\"",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "prisma-gen": "prisma db pull && prisma generate"
+    "gen": "prisma db pull && prisma generate"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
