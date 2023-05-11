@@ -5,7 +5,7 @@ COPY yarn*.lock .
 RUN yarn global add prisma prisma-erd-generator nexus-prisma
 RUN yarn install --dev
 COPY . .
-RUN yarn generate
+RUN yarn gen
 RUN yarn build
 
 # this breaks prisma 

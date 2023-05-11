@@ -18,64 +18,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id              String           @id @default(uuid())
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  email           String           @unique
-  password        String           @db.VarChar(100)
-  name            String?
-  firstName       String?
-  lastName        String?
-  middleName      String?
-  userTasks       UserTask[]
-  comments        Comment[]
+model accounts {
+  account_id String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username   String
+  addresses  addresses[]
 }
 
-model TaskRole {
-  id        String     @id @default(uuid())
-  role      String     @unique // assignee, creator, reviewer
-  userTasks UserTask[]
-}
+model addresses {
+  address    String
+  network    String
+  account_id String   @db.Uuid
+  accounts   accounts @relation(fields: [account_id], references: [account_id], onUpdate: Restrict)
 
-model UserTask {
-  id          String    @id @default(uuid())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  createdById String // User id of the user who created this record
-  userId      String?
-  user        User?     @relation(fields: [userId], references: [id])
-  taskId      String?
-  task        Task?     @relation(fields: [taskId], references: [id])
-  taskRole    TaskRole? @relation(fields: [taskRoleId], references: [id])
-  taskRoleId  String?
-}
-
-model Task {
-  id           String       @id @default(uuid())
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-  createdById  String
-  title        String
-  notes        String?
-  dueDate      DateTime?
-  priority     String?
-  status       String
-  subtasks     Task[]       @relation("Task")
-  parentTask   Task?        @relation("Task", fields: [parentTaskId], references: [id])
-  parentTaskId String?
-  comments     Comment[]
-  userTasks    UserTask[]
-}
-
-model Comment {
-  id                 String            @id @default(cuid()) // Unique identifier for the comment
-  text               String // Text content of the comment
-  author             User?             @relation(fields: [authorId], references: [id]) // User who authored the comment
-  authorId           String? // Foreign key to the author of the comment
-  createdAt          DateTime          @default(now()) // Timestamp for when the comment was created
-  createdById        String // User id of the user who created this record
-  updatedAt          DateTime          @updatedAt // Timestamp for when the comment was created
-  task               Task?             @relation(fields: [taskId], references: [id]) // Task associated with the comment, if any
-  taskId             String? // Foreign key to the task associated with the comment, if any
+  @@id([address, network])
 }

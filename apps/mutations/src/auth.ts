@@ -2,7 +2,6 @@ import { FastifyRequest } from 'fastify';
 import fastifyPassport from '@fastify/passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcryptjs';
-import { User } from './schema/types';
 import { Context } from './context';
 import { findUserByEmail, findUserById } from './utils/userHelpers';
 import { IncomingMessage } from 'http';

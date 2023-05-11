@@ -1,4 +1,5 @@
 # The Ultimate High-Performance TypeScript Server Starter 🏎️ 
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node.js-%3E%3D%2019.6.1-brightgreen.svg)](https://nodejs.org/)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nimatra/Fastify-Prisma-Nexus-Jest-Starter/Run%20Tests%20for%20Modified%20Files)](https://github.com/nimatra/Fastify-Prisma-Nexus-Jest-Starter/actions)
@@ -31,8 +32,7 @@ Follow these simple steps to set up the project:
 3. Install dependencies: `yarn install` or `npm install` 🧩
 4. Set up environment variables by creating a `.env` file in the project root, based on the provided `.env.example` file. 🔑
 5. Update the `prisma/schema.prisma` file with your database connection details. 🗃️
-6. Run database migrations: `yarn migrate:dev` or `npm run migrate:dev` 🚧
-7. Start the development server: `yarn dev` or `npm run dev` 🚀
+6. Start the development server: `yarn dev` or `npm run dev` 🚀
 
 💡 Bonus: You can use the included Docker Compose file in `/dockers/db-compose.yml` to quickly set up a local PostgreSQL database. 🐳
 
@@ -46,10 +46,6 @@ This boilerplate comes packed with a variety of features to help you kickstart y
 ### 🔐 Authentication
 
 The project includes built-in authentication using [Fastify](https://www.fastify.io/), [Passport](http://www.passportjs.org/), and [bcryptjs](https://www.npmjs.com/package/bcryptjs). You can easily integrate your preferred authentication provider or extend the current implementation to suit your needs.
-
-### 🗃️ Migration
-
-Effortlessly manage your database schema using [Prisma migrations](https://www.prisma.io/docs/guides/database/developing-with-prisma-migrate). This boilerplate includes scripts for running, resetting, and deploying migrations, ensuring that your database schema remains in sync with your code.
 
 ### 🛠️ Others
 - [Pino](https://getpino.io/) for logging 📝

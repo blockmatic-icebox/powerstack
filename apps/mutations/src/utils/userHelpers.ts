@@ -1,6 +1,5 @@
 import { FastifyRequest } from "fastify";
 import { Context } from "../context";
-import { User } from "../schema/types";
 
 // Create an authentication function for Mercurius context
 export const getUserId = async (request: FastifyRequest): Promise<string | undefined> => {
@@ -16,8 +15,8 @@ export const getUserIdFromContext = async (context: Context): Promise<String | u
 
 
 // Create an authentication function for Mercurius context
-export async function getUser(request: FastifyRequest): Promise<User | undefined> {
-  const userId = request.session.get('userId');
+export async function getUser(request: FastifyRequest): Promise<{} | undefined> {
+  const userId = 0 // request.session.get('userId');
   if (!userId) {
     return undefined;
   }

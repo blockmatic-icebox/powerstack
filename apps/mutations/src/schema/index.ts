@@ -9,8 +9,6 @@ import * as comment from './comment'
 import * as task from './task'
 import * as user from './user'
 import * as path from 'path'
-import * as userTask from './userTask'
-import * as taskRole from './taskRole'
 
 export const DateTime = asNexusMethod(DateTimeResolver, 'date')
 export const IDConnect = inputObjectType({
