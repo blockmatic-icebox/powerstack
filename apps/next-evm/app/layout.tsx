@@ -9,13 +9,10 @@ import { NextAuthProvider } from "~/app/provider"
 
 import "~/styles/globals.css"
 
-
-
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
         <body
           className={cn(
             "bg-background min-h-screen font-sans antialiased",
