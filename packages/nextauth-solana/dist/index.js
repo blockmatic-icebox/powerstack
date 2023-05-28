@@ -29,13 +29,25 @@ __export(src_exports, {
   solanaAuthProvider: () => solanaAuthProvider
 });
 module.exports = __toCommonJS(src_exports);
+var import_bs58 = __toESM(require("bs58"));
 var import_credentials = __toESM(require("next-auth/providers/credentials"));
+var import_tweetnacl = __toESM(require("tweetnacl"));
 var solanaAuthProvider = (0, import_credentials.default)({
   name: "solana",
   id: "solana",
   credentials: {},
   async authorize(credentials) {
-    return { id: credentials.address || "" };
+    const signedMessage = credentials.signedMessage;
+    const message = credentials.message;
+    const address = credentials.address;
+    const isValidSignature = import_tweetnacl.default.sign.detached.verify(
+      new TextEncoder().encode(message),
+      import_bs58.default.decode(signedMessage),
+      import_bs58.default.decode(address)
+    );
+    if (!isValidSignature)
+      return null;
+    return { id: address };
   }
 });
 // Annotate the CommonJS export names for ESM import in node:
