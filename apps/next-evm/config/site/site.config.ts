@@ -1,9 +1,9 @@
 
 
 export const siteConfig = {
-  name: "NextJS Antelope App",
+  name: "NextJS EVM App",
   description:
-    "NextJS Antelope App",
+    "NextJS EVM App",
   mainNav: [
     {
       title: "Home",
