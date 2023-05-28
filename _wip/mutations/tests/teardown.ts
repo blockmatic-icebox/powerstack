@@ -13,7 +13,6 @@ export async function closeDatabase(prisma: PrismaClient) {
   await prisma.$disconnect();
 }
 
-
 export default async function tearDown() {
   await closeServer(server);
   await closeDatabase(prisma);

@@ -1,12 +1,14 @@
-import { FastifyInstance, FastifyPluginAsync } from 'fastify';
-import logger from '../utils/logger';
+import { FastifyInstance, FastifyPluginAsync } from "fastify";
+import logger from "../utils/logger";
 
-export const statusPlugin: FastifyPluginAsync = async (fastify: FastifyInstance) => {
+export const statusPlugin: FastifyPluginAsync = async (
+  fastify: FastifyInstance
+) => {
   // Define the health check function(s)
-  fastify.get('/health', async (_request, reply) => {
+  fastify.get("/health", async (_request, reply) => {
     // Perform any necessary health checks
     // Return 'true' if everything is healthy, otherwise an error object or 'false'
-    reply.send({ status: 'OK' });
+    reply.send({ status: "OK" });
   });
 
   // Handle server shutdown gracefully
@@ -16,10 +18,10 @@ export const statusPlugin: FastifyPluginAsync = async (fastify: FastifyInstance)
     process.exit(0);
   };
 
-  process.on('SIGINT', handleShutdown);
-  process.on('SIGTERM', handleShutdown);
+  process.on("SIGINT", handleShutdown);
+  process.on("SIGTERM", handleShutdown);
 
-  fastify.addHook('onClose', async (instance) => {
+  fastify.addHook("onClose", async (instance) => {
     // Perform any additional cleanup actions here
   });
 };

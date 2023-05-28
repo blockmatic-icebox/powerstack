@@ -2,21 +2,25 @@ import { FastifyRequest } from "fastify";
 import { Context } from "../context";
 
 // Create an authentication function for Mercurius context
-export const getUserId = async (request: FastifyRequest): Promise<string | undefined> => {
+export const getUserId = async (
+  request: FastifyRequest
+): Promise<string | undefined> => {
   const user = await getUser(request);
   return user?.id || undefined;
 };
 
 // Create an authentication function for Mercurius context
-export const getUserIdFromContext = async (context: Context): Promise<String | undefined> => {
-
+export const getUserIdFromContext = async (
+  context: Context
+): Promise<String | undefined> => {
   return context.user?.id || undefined;
 };
 
-
 // Create an authentication function for Mercurius context
-export async function getUser(request: FastifyRequest): Promise<{} | undefined> {
-  const userId = 0 // request.session.get('userId');
+export async function getUser(
+  request: FastifyRequest
+): Promise<{} | undefined> {
+  const userId = 0; // request.session.get('userId');
   if (!userId) {
     return undefined;
   }
@@ -29,10 +33,13 @@ export async function getUser(request: FastifyRequest): Promise<{} | undefined> 
   const user = await findUserById(context, userId as any);
 
   return user as any;
-};
+}
 
 // Helper function to find a user by email
-export const findUserByEmail = async (context: Context, email: string): Promise<User | undefined> => {
+export const findUserByEmail = async (
+  context: Context,
+  email: string
+): Promise<User | undefined> => {
   return context.prisma.user.findUnique({
     where: {
       email: email,
@@ -41,7 +48,10 @@ export const findUserByEmail = async (context: Context, email: string): Promise<
 };
 
 // Helper function to find a user by id
-export const findUserById = async (context: Context, id: string): Promise<User | undefined> => {
+export const findUserById = async (
+  context: Context,
+  id: string
+): Promise<User | undefined> => {
   return context.prisma.user.findUnique({
     where: {
       id: id,

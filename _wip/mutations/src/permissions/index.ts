@@ -1,10 +1,7 @@
-import { shield } from 'graphql-shield'
+import { shield } from "graphql-shield";
 
 export const permissions = shield({
-  Query: {
-  },
-  Mutation: {
-  },
-  Product: {
-  },
-})
+  Query: {},
+  Mutation: {},
+  Product: {},
+});

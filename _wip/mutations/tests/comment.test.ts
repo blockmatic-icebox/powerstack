@@ -1,13 +1,13 @@
-import { gql } from 'graphql-request';
-import { client } from './base';
-import { describe, test } from '@jest/globals';
-import logger from '../src/utils/logger';
-import { comments } from './seed';
+import { gql } from "graphql-request";
+import { client } from "./base";
+import { describe, test } from "@jest/globals";
+import logger from "../src/utils/logger";
+import { comments } from "./seed";
 
-describe('Comment', () => {
-  let commentId = '';
+describe("Comment", () => {
+  let commentId = "";
 
-  test('createComment', async () => {
+  test("createComment", async () => {
     const createCommentMutation = gql`
       mutation createComment($data: CommentInput!) {
         createComment(data: $data) {
@@ -29,15 +29,18 @@ describe('Comment', () => {
     delete variables.data.id;
 
     try {
-      const response: any = await client.request(createCommentMutation, variables);
-      expect(response.createComment).toHaveProperty('id');
+      const response: any = await client.request(
+        createCommentMutation,
+        variables
+      );
+      expect(response.createComment).toHaveProperty("id");
       expect(response.createComment.text).toBe(comments[0].text);
       expect(response.createComment.author.id).toBe(comments[0].author.id);
       expect(response.createComment.task.id).toBe(comments[0].task.id);
       commentId = response.createComment.id;
     } catch (error) {
       logger.error({
-        message: 'Error creating comment',
+        message: "Error creating comment",
         error,
         variables,
       });
@@ -45,7 +48,7 @@ describe('Comment', () => {
     }
   });
 
-  test('getComments', async () => {
+  test("getComments", async () => {
     const getCommentsQuery = gql`
       query getComments {
         comments {
@@ -67,14 +70,14 @@ describe('Comment', () => {
       expect(response.comments.length).toBeGreaterThan(0);
     } catch (error) {
       logger.error({
-        message: 'Error getting comments',
+        message: "Error getting comments",
         error,
       });
       throw error;
     }
   });
 
-  test('updateComment', async () => {
+  test("updateComment", async () => {
     const updateCommentMutation = gql`
       mutation updateComment($id: String!, $data: CommentInput!) {
         updateComment(id: $id, data: $data) {
@@ -97,14 +100,17 @@ describe('Comment', () => {
     delete variables.data.id;
 
     try {
-      const response: any = await client.request(updateCommentMutation, variables);
-      expect(response.updateComment).toHaveProperty('id');
+      const response: any = await client.request(
+        updateCommentMutation,
+        variables
+      );
+      expect(response.updateComment).toHaveProperty("id");
       expect(response.updateComment.text).toBe(comments[1].text);
       expect(response.updateComment.author.id).toBe(comments[1].author.id);
       expect(response.updateComment.task.id).toBe(comments[1].task.id);
     } catch (error) {
       logger.error({
-        message: 'Error updating comment',
+        message: "Error updating comment",
         error,
         variables,
       });
@@ -112,7 +118,7 @@ describe('Comment', () => {
     }
   });
 
-  test('deleteComment', async () => {
+  test("deleteComment", async () => {
     const deleteCommentMutation = gql`
       mutation deleteComment($id: String!) {
         deleteComment(id: $id) {
@@ -126,12 +132,15 @@ describe('Comment', () => {
     };
 
     try {
-      const response: any = await client.request(deleteCommentMutation, variables);
-      expect(response.deleteComment).toHaveProperty('id');
+      const response: any = await client.request(
+        deleteCommentMutation,
+        variables
+      );
+      expect(response.deleteComment).toHaveProperty("id");
       expect(response.deleteComment.id).toBe(commentId);
     } catch (error) {
       logger.error({
-        message: 'Error deleting comment',
+        message: "Error deleting comment",
         error,
         variables,
       });

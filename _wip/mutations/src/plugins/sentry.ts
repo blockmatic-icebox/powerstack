@@ -1,6 +1,6 @@
-import fp from 'fastify-plugin'
-import { FastifyPluginAsync } from 'fastify'
-import * as Sentry from '@sentry/node'
+import fp from "fastify-plugin";
+import { FastifyPluginAsync } from "fastify";
+import * as Sentry from "@sentry/node";
 
 const shutdownPlugin: FastifyPluginAsync = fp(async (server, options) => {
   Sentry.init({
@@ -10,19 +10,19 @@ const shutdownPlugin: FastifyPluginAsync = fp(async (server, options) => {
     integrations: [new Sentry.Integrations.Http({ tracing: true })],
     debug: !!process.env.SENTRY_DEBUG,
     tracesSampleRate: 1,
-  })
+  });
 
-  server.addHook('onError', (request, reply, error, done) => {
+  server.addHook("onError", (request, reply, error, done) => {
     Sentry.withScope((scope) => {
       scope.setTags({
-        path: request?.raw.url ?? 'Not available',
-      })
+        path: request?.raw.url ?? "Not available",
+      });
       scope.setExtras({
-        'request ID': request?.id,
-      })
-      Sentry.captureException(error)
-    })
-  })
-})
+        "request ID": request?.id,
+      });
+      Sentry.captureException(error);
+    });
+  });
+});
 
-export default shutdownPlugin
+export default shutdownPlugin;

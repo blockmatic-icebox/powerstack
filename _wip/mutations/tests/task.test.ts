@@ -1,11 +1,11 @@
-import { expect } from '@jest/globals';
-import { gql } from 'graphql-request';
-import { client } from './base';
-import { describe, test } from '@jest/globals';
-import logger from '../src/utils/logger';
-import { tasksSeed } from './seed';
+import { expect } from "@jest/globals";
+import { gql } from "graphql-request";
+import { client } from "./base";
+import { describe, test } from "@jest/globals";
+import logger from "../src/utils/logger";
+import { tasksSeed } from "./seed";
 
-describe('Task API tests', () => {
+describe("Task API tests", () => {
   const createTaskMutation = gql`
     mutation CreateTask($data: TaskInput!) {
       createTask(data: $data) {
@@ -37,7 +37,7 @@ describe('Task API tests', () => {
     }
   `;
 
-  test('Create a new task', async () => {
+  test("Create a new task", async () => {
     const variables: any = {
       data: tasksSeed[0],
     };
@@ -48,7 +48,7 @@ describe('Task API tests', () => {
       expect(response.createTask.title).toBe(variables.data.title);
     } catch (error) {
       logger.error({
-        message: 'Error creating user',
+        message: "Error creating user",
         error,
         variables,
       });
@@ -56,21 +56,21 @@ describe('Task API tests', () => {
     }
   });
 
-  test('Get all tasks', async () => {
+  test("Get all tasks", async () => {
     try {
       const response: any = await client.request(getAllTasksQuery);
       expect(response.tasks.length).toBeGreaterThan(0);
     } catch (error) {
       logger.error({
-        message: 'Error creating user',
+        message: "Error creating user",
         error,
       });
       throw error;
     }
   });
 
-  test('Get task by ID', async () => {
-    const taskId = '1';
+  test("Get task by ID", async () => {
+    const taskId = "1";
 
     const variables = {
       id: taskId,
@@ -80,7 +80,7 @@ describe('Task API tests', () => {
       expect(response.taskById.id).toBe(taskId);
     } catch (error) {
       logger.error({
-        message: 'Error creating user',
+        message: "Error creating user",
         error,
         variables,
       });
