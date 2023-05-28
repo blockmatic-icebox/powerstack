@@ -26,13 +26,13 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  evmAuthProvider: () => evmAuthProvider
+  solanaAuthProvider: () => solanaAuthProvider
 });
 module.exports = __toCommonJS(src_exports);
 var import_credentials = __toESM(require("next-auth/providers/credentials"));
-var evmAuthProvider = (0, import_credentials.default)({
-  name: "evm",
-  id: "evm",
+var solanaAuthProvider = (0, import_credentials.default)({
+  name: "solana",
+  id: "solana",
   credentials: {},
   async authorize(credentials) {
     return { id: credentials.address || "" };
@@ -40,5 +40,5 @@ var evmAuthProvider = (0, import_credentials.default)({
 });
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  evmAuthProvider
+  solanaAuthProvider
 });

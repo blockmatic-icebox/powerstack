@@ -1,9 +1,9 @@
 
 import CredentialsProvider from "next-auth/providers/credentials"
 
-export const evmAuthProvider = CredentialsProvider({
-  name: "evm",
-  id: "evm",
+export const solanaAuthProvider = CredentialsProvider({
+  name: "solana",
+  id: "solana",
   credentials: {},
   async authorize(credentials: any) {
     //   Crendtials sent
