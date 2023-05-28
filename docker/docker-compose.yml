@@ -66,31 +66,12 @@ services:
       HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: naming_convention
       HASURA_GRAPHQL_DEFAULT_NAMING_CONVENTION: graphql-default
 
-  # auth:
-  #   container_name: auth
-  #   image: auth:local
-  #   ports:
-  #     - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
-  #   depends_on:
-  #     - postgres
-  #   restart: always
-  #   environment:
-  #     DATABASE_URL: postgres://user:pass@postgres:5432/main?sslmode=disable
-  #     PORT: ${AUTH_SERVICE_PORT}
-  #     SERVER_SECRET: ${AUTH_SERVER_SECRET}
-  #     HOSTNAME: "0.0.0.0"
-  #     JWT_SECRET: ${AUTH_JWT_SECRET}
-  #     JWT_TOKEN_EXPIRATION: ${AUTH_JWT_TOKEN_EXPIRATION}
-  #     TWITTER_CONSUMER_KEY: ${AUTH_TWITTER_CONSUMER_KEY}
-  #     TWITTER_CONSUMER_SECRET: ${AUTH_TWITTER_CONSUMER_SECRET}
-  #     TWITTER_CALLBACK: ${AUTH_TWITTER_CALLBACK}
-  #     TWITTER_CLIENT_ID: ${AUTH_TWITTER_CLIENT_ID}
-  #     TWITTER_CLIENT_SECRET: ${AUTH_TWITTER_CLIENT_SECRET}
-
   indexer:
     container_name: indexer
     image: indexer:local
-    build: ../apps/indexer
+    build:
+      context: ..
+      dockerfile: apps/indexer/Dockerfile
     depends_on:
       - postgres
     restart: always

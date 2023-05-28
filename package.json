@@ -1,9 +1,10 @@
 {
   "private": true,
+  "name": "powerstack",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
+    "build": "turbo build --no-daemon",
+    "dev": "turbo dev --no-daemon --parallel",
+    "lint": "turbo lint --no-daemon",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -12,10 +13,14 @@
     "prettier": "^2.5.1",
     "turbo": "^1.9.5"
   },
-  "name": "mono",
   "packageManager": "yarn@1.22.19",
   "workspaces": [
     "apps/*",
-    "packages/*"
-  ]
+    "packages/*",
+    "contracts/*"
+  ],
+  "dependencies": {
+    "eosio-core": "^0.0.2",
+    "next-auth": "^4.22.1"
+  }
 }
