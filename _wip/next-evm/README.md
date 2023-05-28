@@ -1,1 +1,0 @@
-# NextJS EVM Starter

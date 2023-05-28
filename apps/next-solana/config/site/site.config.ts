@@ -1,9 +1,9 @@
 
 
 export const siteConfig = {
-  name: "NextJS EVM App",
+  name: "NextJS Solana App",
   description:
-    "NextJS EVM App",
+    "NextJS Solana App",
   mainNav: [
     {
       title: "Home",

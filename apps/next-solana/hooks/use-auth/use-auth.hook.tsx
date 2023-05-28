@@ -1,50 +1,37 @@
-"use client"
+import bs58 from 'bs58'
+import { signIn as nextAuthSignIn, signOut, useSession } from 'next-auth/react'
 
-import {
-  signIn as nextAuthSignIn,
-  signOut as nextAuthSignOut,
-  useSession,
-} from "next-auth/react"
-import { useEffectOnce } from "react-use"
-
-import { chainConfig } from "~/config/chain"
-import { clientEnv } from "~/config/client"
+import { clientEnv } from '~/config/client'
+import { fetchJson } from '~/lib/fetch'
+import { getPhatomProvider } from '~/lib/wallet'
 
 export function useAuth() {
-  const { data: session, status } = useSession()
-  const signInWithPhantom = async () => {
+  const { data: session } = useSession()
 
+  const signIn = async () => {
+    const provider = getPhatomProvider()
+    const resp = await provider.request({ method: 'connect' })
+    const encodedMessage = new TextEncoder().encode(clientEnv.loginMessage)
 
-    // return nextAuthSignIn("solana", {
-    //   redirect: false,
-    //   signature: signature.toString(),
-    //   trxDigest: trxDigest.toString(),
-    //   account,
-    //   pubKey,
-    //   json: true,
-    // })
+    const { signature } = await provider.signMessage(encodedMessage, 'utf8')
+    const signedMessage = bs58.encode(signature)
+
+    const address = resp.publicKey.toString()
+    const { csrfToken }: { csrfToken: string } = await fetchJson('/api/auth/csrf')
+
+    return nextAuthSignIn('solana', {
+      redirect: false,
+      signedMessage,
+      message: clientEnv.loginMessage,
+      address,
+      csrfToken,
+      json: true,
+    })
   }
-
-  const signOutWithPhantom = async () => {
-    console.log("signing out")
-    if (!session) return
-  
-    nextAuthSignOut()
-  }
-
-  // restore anchor session on loa
-  const restoreSession = async () => {
-    
-  }
-
-  // restore sessoin on mount
-  useEffectOnce(() => {
-    restoreSession()
-  })
 
   return {
     session,
-    signIn: signInWithPhantom,
-    signOut: signOutWithPhantom,
+    signIn,
+    signOut: () => signOut({ redirect: false }),
   }
 }
