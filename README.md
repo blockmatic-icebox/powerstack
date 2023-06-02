@@ -15,7 +15,7 @@ _ This is a work in progress._
 - Read blockchain state, sign messages and transactions.
 - Read account token balances and nfts.
 - Read token prices and market data.
-- Utility first CSS with TailwindUI components.
+- Utility first CSS with TailwindCSS components.
 - Upload files to Arweave using Blundr.
 - Upload files to IPFS using Pinata.
 - Utilities for decimal precision and math.
@@ -26,22 +26,23 @@ _ This is a work in progress._
 
 ## Tech Stack
 
+- Turbo Monorepo [https://turbo.build/repo/docs/handbook](https://turbo.build/repo/docs/handbook)
 - NextJS [nextjs.org](https://nextjs.org)
+- Next Auth [https://next-auth.js.org](https://next-auth.js.org/)
+- GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
 - TailwindCSS [tailwindcss.com](https://tailwindcss.com)
-- Windstitch Component Variants [vinpac/windstitch](https://github.com/vinpac/windstitch)
+- Class Variance Authority [https://cva.style](https://cva.style)
 - Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
-- Eosio Core [greymass/eosio-core](https://github.com/greymass/eosio-core)
+- Wharfkit [wharfkit/antelope](https://github.com/wharfkit/antelope)
 - Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
-- GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
-- Iron Session [vvo/iron-session](https://github.com/vvo/iron-session)
 - Lodash tools [lodash.com/docs](https://lodash.com/docs)
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
-- React Hook Form [react-hook-form.com](https://react-hook-form.com/)
+- React Hook Form [react-hook-form.com](https://react-hook-form.com)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
-- Sentry reporting [sentry.io/](https://sentry.io/)
+- Sentry [sentry.io/](https://sentry.io/)
 
 ## What's inside?
 
