@@ -1,28 +1,27 @@
 export default {
   scalars: [
-    4, 5, 15, 19, 25, 26, 36, 40, 49, 60, 61, 62, 66, 68, 79, 90, 102, 110, 111,
-    112, 116, 117, 125, 134, 142, 143, 153, 157, 159, 165, 178, 182, 189, 190,
-    191,
+    4, 5, 15, 19, 25, 26, 36, 40, 49, 60, 61, 62, 66, 68, 79, 90, 102, 110, 111, 112, 116, 117, 125, 134, 142, 143, 153,
+    157, 159, 165, 178, 182, 189, 190, 191,
   ],
   types: {
     BoardPhase: {
       boards: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
@@ -38,7 +37,7 @@ export default {
       count: [
         112,
         {
-          columns: [15, "[BoardPhaseSelectColumn!]"],
+          columns: [15, '[BoardPhaseSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -127,20 +126,20 @@ export default {
       boards: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
@@ -156,7 +155,7 @@ export default {
       count: [
         112,
         {
-          columns: [36, "[BoardTypeSelectColumn!]"],
+          columns: [36, '[BoardTypeSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -250,20 +249,20 @@ export default {
       boards: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
@@ -271,40 +270,40 @@ export default {
       childBoardsRelAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       child_boards_rel: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       comments: [
         70,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsAggregate: [
         71,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
@@ -340,7 +339,7 @@ export default {
       count: [
         112,
         {
-          columns: [60, "[BoardsSelectColumn!]"],
+          columns: [60, '[BoardsSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -623,7 +622,7 @@ export default {
       count: [
         112,
         {
-          columns: [90, "[CommentsSelectColumn!]"],
+          columns: [90, '[CommentsSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -941,20 +940,20 @@ export default {
       comments: [
         70,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsAggregate: [
         71,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
@@ -987,7 +986,7 @@ export default {
       count: [
         112,
         {
-          columns: [134, "[UserActivitySelectColumn!]"],
+          columns: [134, '[UserActivitySelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -1095,7 +1094,7 @@ export default {
       count: [
         112,
         {
-          columns: [153, "[UserActivityTypeSelectColumn!]"],
+          columns: [153, '[UserActivityTypeSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -1194,7 +1193,7 @@ export default {
       count: [
         112,
         {
-          columns: [178, "[UserSelectColumn!]"],
+          columns: [178, '[UserSelectColumn!]'],
           distinct: [68],
         },
       ],
@@ -1364,183 +1363,183 @@ export default {
       boardPhase: [
         0,
         {
-          distinctOn: [15, "[BoardPhaseSelectColumn!]"],
+          distinctOn: [15, '[BoardPhaseSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [13, "[BoardPhaseOrderBy!]"],
+          orderBy: [13, '[BoardPhaseOrderBy!]'],
           where: [3],
         },
       ],
       boardPhaseAggregate: [
         1,
         {
-          distinctOn: [15, "[BoardPhaseSelectColumn!]"],
+          distinctOn: [15, '[BoardPhaseSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [13, "[BoardPhaseOrderBy!]"],
+          orderBy: [13, '[BoardPhaseOrderBy!]'],
           where: [3],
         },
       ],
       boardPhaseByPk: [
         0,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       boardType: [
         21,
         {
-          distinctOn: [36, "[BoardTypeSelectColumn!]"],
+          distinctOn: [36, '[BoardTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [34, "[BoardTypeOrderBy!]"],
+          orderBy: [34, '[BoardTypeOrderBy!]'],
           where: [24],
         },
       ],
       boardTypeAggregate: [
         22,
         {
-          distinctOn: [36, "[BoardTypeSelectColumn!]"],
+          distinctOn: [36, '[BoardTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [34, "[BoardTypeOrderBy!]"],
+          orderBy: [34, '[BoardTypeOrderBy!]'],
           where: [24],
         },
       ],
       boardTypeByPk: [
         21,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       boards: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsByPk: [
         42,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       comments: [
         70,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsAggregate: [
         71,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsByPk: [
         70,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       user: [
         120,
         {
-          distinctOn: [178, "[UserSelectColumn!]"],
+          distinctOn: [178, '[UserSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [175, "[UserOrderBy!]"],
+          orderBy: [175, '[UserOrderBy!]'],
           where: [164],
         },
       ],
       userActivity: [
         121,
         {
-          distinctOn: [134, "[UserActivitySelectColumn!]"],
+          distinctOn: [134, '[UserActivitySelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [132, "[UserActivityOrderBy!]"],
+          orderBy: [132, '[UserActivityOrderBy!]'],
           where: [124],
         },
       ],
       userActivityAggregate: [
         122,
         {
-          distinctOn: [134, "[UserActivitySelectColumn!]"],
+          distinctOn: [134, '[UserActivitySelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [132, "[UserActivityOrderBy!]"],
+          orderBy: [132, '[UserActivityOrderBy!]'],
           where: [124],
         },
       ],
       userActivityByPk: [
         121,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       userActivityType: [
         138,
         {
-          distinctOn: [153, "[UserActivityTypeSelectColumn!]"],
+          distinctOn: [153, '[UserActivityTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [151, "[UserActivityTypeOrderBy!]"],
+          orderBy: [151, '[UserActivityTypeOrderBy!]'],
           where: [141],
         },
       ],
       userActivityTypeAggregate: [
         139,
         {
-          distinctOn: [153, "[UserActivityTypeSelectColumn!]"],
+          distinctOn: [153, '[UserActivityTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [151, "[UserActivityTypeOrderBy!]"],
+          orderBy: [151, '[UserActivityTypeOrderBy!]'],
           where: [141],
         },
       ],
       userActivityTypeByPk: [
         138,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       userAggregate: [
         161,
         {
-          distinctOn: [178, "[UserSelectColumn!]"],
+          distinctOn: [178, '[UserSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [175, "[UserOrderBy!]"],
+          orderBy: [175, '[UserOrderBy!]'],
           where: [164],
         },
       ],
       userByPk: [
         120,
         {
-          account: [117, "String!"],
+          account: [117, 'String!'],
         },
       ],
       __typename: [117],
@@ -1549,182 +1548,182 @@ export default {
       deleteBoardPhase: [
         10,
         {
-          where: [3, "BoardPhaseBoolExp!"],
+          where: [3, 'BoardPhaseBoolExp!'],
         },
       ],
       deleteBoardPhaseByPk: [
         0,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       deleteBoardType: [
         31,
         {
-          where: [24, "BoardTypeBoolExp!"],
+          where: [24, 'BoardTypeBoolExp!'],
         },
       ],
       deleteBoardTypeByPk: [
         21,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       deleteBoards: [
         55,
         {
-          where: [48, "BoardsBoolExp!"],
+          where: [48, 'BoardsBoolExp!'],
         },
       ],
       deleteBoardsByPk: [
         42,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       deleteComments: [
         86,
         {
-          where: [78, "CommentsBoolExp!"],
+          where: [78, 'CommentsBoolExp!'],
         },
       ],
       deleteCommentsByPk: [
         70,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       deleteUser: [
         172,
         {
-          where: [164, "UserBoolExp!"],
+          where: [164, 'UserBoolExp!'],
         },
       ],
       deleteUserActivity: [
         129,
         {
-          where: [124, "UserActivityBoolExp!"],
+          where: [124, 'UserActivityBoolExp!'],
         },
       ],
       deleteUserActivityByPk: [
         121,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       deleteUserActivityType: [
         148,
         {
-          where: [141, "UserActivityTypeBoolExp!"],
+          where: [141, 'UserActivityTypeBoolExp!'],
         },
       ],
       deleteUserActivityTypeByPk: [
         138,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       deleteUserByPk: [
         120,
         {
-          account: [117, "String!"],
+          account: [117, 'String!'],
         },
       ],
       insertBoardPhase: [
         10,
         {
-          objects: [7, "[BoardPhaseInsertInput!]!"],
+          objects: [7, '[BoardPhaseInsertInput!]!'],
           onConflict: [12],
         },
       ],
       insertBoardPhaseOne: [
         0,
         {
-          object: [7, "BoardPhaseInsertInput!"],
+          object: [7, 'BoardPhaseInsertInput!'],
           onConflict: [12],
         },
       ],
       insertBoardType: [
         31,
         {
-          objects: [28, "[BoardTypeInsertInput!]!"],
+          objects: [28, '[BoardTypeInsertInput!]!'],
           onConflict: [33],
         },
       ],
       insertBoardTypeOne: [
         21,
         {
-          object: [28, "BoardTypeInsertInput!"],
+          object: [28, 'BoardTypeInsertInput!'],
           onConflict: [33],
         },
       ],
       insertBoards: [
         55,
         {
-          objects: [50, "[BoardsInsertInput!]!"],
+          objects: [50, '[BoardsInsertInput!]!'],
           onConflict: [57],
         },
       ],
       insertBoardsOne: [
         42,
         {
-          object: [50, "BoardsInsertInput!"],
+          object: [50, 'BoardsInsertInput!'],
           onConflict: [57],
         },
       ],
       insertComments: [
         86,
         {
-          objects: [81, "[CommentsInsertInput!]!"],
+          objects: [81, '[CommentsInsertInput!]!'],
           onConflict: [87],
         },
       ],
       insertCommentsOne: [
         70,
         {
-          object: [81, "CommentsInsertInput!"],
+          object: [81, 'CommentsInsertInput!'],
           onConflict: [87],
         },
       ],
       insertUser: [
         172,
         {
-          objects: [169, "[UserInsertInput!]!"],
+          objects: [169, '[UserInsertInput!]!'],
           onConflict: [174],
         },
       ],
       insertUserActivity: [
         129,
         {
-          objects: [126, "[UserActivityInsertInput!]!"],
+          objects: [126, '[UserActivityInsertInput!]!'],
           onConflict: [131],
         },
       ],
       insertUserActivityOne: [
         121,
         {
-          object: [126, "UserActivityInsertInput!"],
+          object: [126, 'UserActivityInsertInput!'],
           onConflict: [131],
         },
       ],
       insertUserActivityType: [
         148,
         {
-          objects: [145, "[UserActivityTypeInsertInput!]!"],
+          objects: [145, '[UserActivityTypeInsertInput!]!'],
           onConflict: [150],
         },
       ],
       insertUserActivityTypeOne: [
         138,
         {
-          object: [145, "UserActivityTypeInsertInput!"],
+          object: [145, 'UserActivityTypeInsertInput!'],
           onConflict: [150],
         },
       ],
       insertUserOne: [
         120,
         {
-          object: [169, "UserInsertInput!"],
+          object: [169, 'UserInsertInput!'],
           onConflict: [174],
         },
       ],
@@ -1732,60 +1731,60 @@ export default {
         10,
         {
           _set: [16],
-          where: [3, "BoardPhaseBoolExp!"],
+          where: [3, 'BoardPhaseBoolExp!'],
         },
       ],
       updateBoardPhaseByPk: [
         0,
         {
           _set: [16],
-          pkColumns: [14, "BoardPhasePkColumnsInput!"],
+          pkColumns: [14, 'BoardPhasePkColumnsInput!'],
         },
       ],
       updateBoardPhaseMany: [
         10,
         {
-          updates: [20, "[BoardPhaseUpdates!]!"],
+          updates: [20, '[BoardPhaseUpdates!]!'],
         },
       ],
       updateBoardType: [
         31,
         {
           _set: [37],
-          where: [24, "BoardTypeBoolExp!"],
+          where: [24, 'BoardTypeBoolExp!'],
         },
       ],
       updateBoardTypeByPk: [
         21,
         {
           _set: [37],
-          pkColumns: [35, "BoardTypePkColumnsInput!"],
+          pkColumns: [35, 'BoardTypePkColumnsInput!'],
         },
       ],
       updateBoardTypeMany: [
         31,
         {
-          updates: [41, "[BoardTypeUpdates!]!"],
+          updates: [41, '[BoardTypeUpdates!]!'],
         },
       ],
       updateBoards: [
         55,
         {
           _set: [63],
-          where: [48, "BoardsBoolExp!"],
+          where: [48, 'BoardsBoolExp!'],
         },
       ],
       updateBoardsByPk: [
         42,
         {
           _set: [63],
-          pkColumns: [59, "BoardsPkColumnsInput!"],
+          pkColumns: [59, 'BoardsPkColumnsInput!'],
         },
       ],
       updateBoardsMany: [
         55,
         {
-          updates: [67, "[BoardsUpdates!]!"],
+          updates: [67, '[BoardsUpdates!]!'],
         },
       ],
       updateComments: [
@@ -1793,7 +1792,7 @@ export default {
         {
           _inc: [80],
           _set: [91],
-          where: [78, "CommentsBoolExp!"],
+          where: [78, 'CommentsBoolExp!'],
         },
       ],
       updateCommentsByPk: [
@@ -1801,13 +1800,13 @@ export default {
         {
           _inc: [80],
           _set: [91],
-          pkColumns: [89, "CommentsPkColumnsInput!"],
+          pkColumns: [89, 'CommentsPkColumnsInput!'],
         },
       ],
       updateCommentsMany: [
         86,
         {
-          updates: [103, "[CommentsUpdates!]!"],
+          updates: [103, '[CommentsUpdates!]!'],
         },
       ],
       updateUser: [
@@ -1819,47 +1818,47 @@ export default {
           _deleteKey: [168],
           _prepend: [177],
           _set: [179],
-          where: [164, "UserBoolExp!"],
+          where: [164, 'UserBoolExp!'],
         },
       ],
       updateUserActivity: [
         129,
         {
           _set: [135],
-          where: [124, "UserActivityBoolExp!"],
+          where: [124, 'UserActivityBoolExp!'],
         },
       ],
       updateUserActivityByPk: [
         121,
         {
           _set: [135],
-          pkColumns: [133, "UserActivityPkColumnsInput!"],
+          pkColumns: [133, 'UserActivityPkColumnsInput!'],
         },
       ],
       updateUserActivityMany: [
         129,
         {
-          updates: [160, "[UserActivityUpdates!]!"],
+          updates: [160, '[UserActivityUpdates!]!'],
         },
       ],
       updateUserActivityType: [
         148,
         {
           _set: [154],
-          where: [141, "UserActivityTypeBoolExp!"],
+          where: [141, 'UserActivityTypeBoolExp!'],
         },
       ],
       updateUserActivityTypeByPk: [
         138,
         {
           _set: [154],
-          pkColumns: [152, "UserActivityTypePkColumnsInput!"],
+          pkColumns: [152, 'UserActivityTypePkColumnsInput!'],
         },
       ],
       updateUserActivityTypeMany: [
         148,
         {
-          updates: [158, "[UserActivityTypeUpdates!]!"],
+          updates: [158, '[UserActivityTypeUpdates!]!'],
         },
       ],
       updateUserByPk: [
@@ -1871,13 +1870,13 @@ export default {
           _deleteKey: [168],
           _prepend: [177],
           _set: [179],
-          pkColumns: [176, "UserPkColumnsInput!"],
+          pkColumns: [176, 'UserPkColumnsInput!'],
         },
       ],
       updateUserMany: [
         172,
         {
-          updates: [183, "[UserUpdates!]!"],
+          updates: [183, '[UserUpdates!]!'],
         },
       ],
       __typename: [117],
@@ -1886,238 +1885,238 @@ export default {
       boardPhase: [
         0,
         {
-          distinctOn: [15, "[BoardPhaseSelectColumn!]"],
+          distinctOn: [15, '[BoardPhaseSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [13, "[BoardPhaseOrderBy!]"],
+          orderBy: [13, '[BoardPhaseOrderBy!]'],
           where: [3],
         },
       ],
       boardPhaseAggregate: [
         1,
         {
-          distinctOn: [15, "[BoardPhaseSelectColumn!]"],
+          distinctOn: [15, '[BoardPhaseSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [13, "[BoardPhaseOrderBy!]"],
+          orderBy: [13, '[BoardPhaseOrderBy!]'],
           where: [3],
         },
       ],
       boardPhaseByPk: [
         0,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       boardPhaseStream: [
         0,
         {
-          batchSize: [112, "Int!"],
-          cursor: [17, "[BoardPhaseStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [17, '[BoardPhaseStreamCursorInput]!'],
           where: [3],
         },
       ],
       boardType: [
         21,
         {
-          distinctOn: [36, "[BoardTypeSelectColumn!]"],
+          distinctOn: [36, '[BoardTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [34, "[BoardTypeOrderBy!]"],
+          orderBy: [34, '[BoardTypeOrderBy!]'],
           where: [24],
         },
       ],
       boardTypeAggregate: [
         22,
         {
-          distinctOn: [36, "[BoardTypeSelectColumn!]"],
+          distinctOn: [36, '[BoardTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [34, "[BoardTypeOrderBy!]"],
+          orderBy: [34, '[BoardTypeOrderBy!]'],
           where: [24],
         },
       ],
       boardTypeByPk: [
         21,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       boardTypeStream: [
         21,
         {
-          batchSize: [112, "Int!"],
-          cursor: [38, "[BoardTypeStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [38, '[BoardTypeStreamCursorInput]!'],
           where: [24],
         },
       ],
       boards: [
         42,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsAggregate: [
         43,
         {
-          distinctOn: [60, "[BoardsSelectColumn!]"],
+          distinctOn: [60, '[BoardsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [58, "[BoardsOrderBy!]"],
+          orderBy: [58, '[BoardsOrderBy!]'],
           where: [48],
         },
       ],
       boardsByPk: [
         42,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       boardsStream: [
         42,
         {
-          batchSize: [112, "Int!"],
-          cursor: [64, "[BoardsStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [64, '[BoardsStreamCursorInput]!'],
           where: [48],
         },
       ],
       comments: [
         70,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsAggregate: [
         71,
         {
-          distinctOn: [90, "[CommentsSelectColumn!]"],
+          distinctOn: [90, '[CommentsSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [88, "[CommentsOrderBy!]"],
+          orderBy: [88, '[CommentsOrderBy!]'],
           where: [78],
         },
       ],
       commentsByPk: [
         70,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       commentsStream: [
         70,
         {
-          batchSize: [112, "Int!"],
-          cursor: [98, "[CommentsStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [98, '[CommentsStreamCursorInput]!'],
           where: [78],
         },
       ],
       user: [
         120,
         {
-          distinctOn: [178, "[UserSelectColumn!]"],
+          distinctOn: [178, '[UserSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [175, "[UserOrderBy!]"],
+          orderBy: [175, '[UserOrderBy!]'],
           where: [164],
         },
       ],
       userActivity: [
         121,
         {
-          distinctOn: [134, "[UserActivitySelectColumn!]"],
+          distinctOn: [134, '[UserActivitySelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [132, "[UserActivityOrderBy!]"],
+          orderBy: [132, '[UserActivityOrderBy!]'],
           where: [124],
         },
       ],
       userActivityAggregate: [
         122,
         {
-          distinctOn: [134, "[UserActivitySelectColumn!]"],
+          distinctOn: [134, '[UserActivitySelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [132, "[UserActivityOrderBy!]"],
+          orderBy: [132, '[UserActivityOrderBy!]'],
           where: [124],
         },
       ],
       userActivityByPk: [
         121,
         {
-          id: [191, "uuid!"],
+          id: [191, 'uuid!'],
         },
       ],
       userActivityStream: [
         121,
         {
-          batchSize: [112, "Int!"],
-          cursor: [136, "[UserActivityStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [136, '[UserActivityStreamCursorInput]!'],
           where: [124],
         },
       ],
       userActivityType: [
         138,
         {
-          distinctOn: [153, "[UserActivityTypeSelectColumn!]"],
+          distinctOn: [153, '[UserActivityTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [151, "[UserActivityTypeOrderBy!]"],
+          orderBy: [151, '[UserActivityTypeOrderBy!]'],
           where: [141],
         },
       ],
       userActivityTypeAggregate: [
         139,
         {
-          distinctOn: [153, "[UserActivityTypeSelectColumn!]"],
+          distinctOn: [153, '[UserActivityTypeSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [151, "[UserActivityTypeOrderBy!]"],
+          orderBy: [151, '[UserActivityTypeOrderBy!]'],
           where: [141],
         },
       ],
       userActivityTypeByPk: [
         138,
         {
-          value: [117, "String!"],
+          value: [117, 'String!'],
         },
       ],
       userActivityTypeStream: [
         138,
         {
-          batchSize: [112, "Int!"],
-          cursor: [155, "[UserActivityTypeStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [155, '[UserActivityTypeStreamCursorInput]!'],
           where: [141],
         },
       ],
       userAggregate: [
         161,
         {
-          distinctOn: [178, "[UserSelectColumn!]"],
+          distinctOn: [178, '[UserSelectColumn!]'],
           limit: [112],
           offset: [112],
-          orderBy: [175, "[UserOrderBy!]"],
+          orderBy: [175, '[UserOrderBy!]'],
           where: [164],
         },
       ],
       userByPk: [
         120,
         {
-          account: [117, "String!"],
+          account: [117, 'String!'],
         },
       ],
       userStream: [
         120,
         {
-          batchSize: [112, "Int!"],
-          cursor: [180, "[UserStreamCursorInput]!"],
+          batchSize: [112, 'Int!'],
+          cursor: [180, '[UserStreamCursorInput]!'],
           where: [164],
         },
       ],

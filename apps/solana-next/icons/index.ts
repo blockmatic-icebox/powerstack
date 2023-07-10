@@ -1,1 +1,1 @@
-export * from "./antelope.icon"
+export * from './antelope.icon'

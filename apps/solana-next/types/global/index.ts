@@ -1,1 +1,1 @@
-export * from "./global.type"
+export * from './global.type'

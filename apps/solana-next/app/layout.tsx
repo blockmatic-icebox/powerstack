@@ -1,27 +1,22 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import { siteConfig } from "~/config/site/site.config"
-import { cn } from "~/lib/chadcn-utils"
-import { fontSans } from "~/lib/fonts"
-import { SiteHeader } from "~/components/site-header"
-import { ThemeProvider } from "~/components/theme-provider"
-import { NextAuthProvider } from "~/app/provider"
+import { siteConfig } from '~/config/site/site.config'
+import { cn } from '~/lib/chadcn-utils'
+import { fontSans } from '~/lib/fonts'
+import { SiteHeader } from '~/components/site-header'
+import { ThemeProvider } from '~/components/theme-provider'
+import { NextAuthProvider } from '~/app/provider'
 
-import "~/styles/globals.css"
+import '~/styles/globals.css'
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <body
-          className={cn(
-            "bg-background min-h-screen font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+        <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
           <NextAuthProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <div className="relative flex flex-col min-h-screen">
+              <div className="relative flex min-h-screen flex-col">
                 <SiteHeader />
                 <div className="flex-1">{children}</div>
               </div>
@@ -40,13 +35,13 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 

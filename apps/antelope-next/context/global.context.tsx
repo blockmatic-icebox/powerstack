@@ -1,11 +1,8 @@
-import React from "react"
+import React from 'react'
 
 export const GlobalContext = React.createContext<GlobalState>({ user: null })
 
-export const GlobalContextProvider = ({
-  children,
-  ...value
-}: GlobalContextProviderProps) => {
+export const GlobalContextProvider = ({ children, ...value }: GlobalContextProviderProps) => {
   return <GlobalContext.Provider value={{}}>{children}</GlobalContext.Provider>
 }
 

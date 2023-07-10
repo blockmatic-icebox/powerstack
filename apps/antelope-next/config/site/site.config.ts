@@ -1,20 +1,20 @@
 export const siteConfig = {
-  name: "NextJS Antelope App",
-  description: "NextJS Antelope App",
+  name: 'NextJS Antelope App',
+  description: 'NextJS Antelope App',
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: 'Home',
+      href: '/',
     },
     {
-      title: "Wallet",
-      href: "/",
+      title: 'Wallet',
+      href: '/',
     },
   ],
   links: {
-    twitter: "https://twitter.com/blockmatic",
-    github: "https://github.com/blockmatic",
-    docs: "https://powerstack.xyz",
+    twitter: 'https://twitter.com/blockmatic',
+    github: 'https://github.com/blockmatic',
+    docs: 'https://powerstack.xyz',
   },
 }
 

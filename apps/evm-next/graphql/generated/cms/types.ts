@@ -1,8 +1,7 @@
 export default {
   scalars: [
-    2, 5, 7, 9, 11, 14, 17, 18, 20, 23, 25, 29, 30, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 59, 61,
-    63, 64, 66, 67, 73, 77, 80, 98, 103, 104, 108, 114,
+    2, 5, 7, 9, 11, 14, 17, 18, 20, 23, 25, 29, 30, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+    51, 52, 53, 54, 55, 56, 58, 59, 61, 63, 64, 66, 67, 73, 77, 80, 98, 103, 104, 108, 114,
   ],
   types: {
     ArticleModelContentField: {
@@ -253,7 +252,7 @@ export default {
         80,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       author: [80],
@@ -261,9 +260,9 @@ export default {
       blurUpThumb: [
         80,
         {
-          punch: [29, "Float!"],
-          size: [58, "Int!"],
-          quality: [58, "Int!"],
+          punch: [29, 'Float!'],
+          size: [58, 'Int!'],
+          quality: [58, 'Int!'],
           imgixParams: [33],
         },
       ],
@@ -274,7 +273,7 @@ export default {
         17,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       exifInfo: [17],
@@ -283,7 +282,7 @@ export default {
         115,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       format: [80],
@@ -298,7 +297,7 @@ export default {
           imgixParams: [33],
           sizes: [80],
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       size: [59],
@@ -309,7 +308,7 @@ export default {
         80,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       url: [
@@ -329,7 +328,7 @@ export default {
         80,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       author: [80],
@@ -337,9 +336,9 @@ export default {
       blurUpThumb: [
         80,
         {
-          punch: [29, "Float!"],
-          size: [58, "Int!"],
-          quality: [58, "Int!"],
+          punch: [29, 'Float!'],
+          size: [58, 'Int!'],
+          quality: [58, 'Int!'],
           imgixParams: [33],
         },
       ],
@@ -350,7 +349,7 @@ export default {
         17,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       exifInfo: [17],
@@ -359,7 +358,7 @@ export default {
         115,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       format: [80],
@@ -374,7 +373,7 @@ export default {
           imgixParams: [33],
           sizes: [80],
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       size: [59],
@@ -385,7 +384,7 @@ export default {
         80,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       url: [
@@ -646,7 +645,7 @@ export default {
         {
           locale: [77],
           filter: [1],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       _allAuthorsMeta: [
@@ -654,7 +653,7 @@ export default {
         {
           locale: [77],
           filter: [4],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       _allCategoriesMeta: [
@@ -662,7 +661,7 @@ export default {
         {
           locale: [77],
           filter: [10],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       _allEventsMeta: [
@@ -670,7 +669,7 @@ export default {
         {
           locale: [77],
           filter: [22],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       _allUploadsMeta: [
@@ -684,107 +683,107 @@ export default {
         76,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       allArticles: [
         3,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           skip: [59],
           first: [59],
           filter: [1],
-          orderBy: [2, "[ArticleModelOrderBy]"],
+          orderBy: [2, '[ArticleModelOrderBy]'],
         },
       ],
       allAuthors: [
         6,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           skip: [59],
           first: [59],
           filter: [4],
-          orderBy: [5, "[AuthorModelOrderBy]"],
+          orderBy: [5, '[AuthorModelOrderBy]'],
         },
       ],
       allCategories: [
         12,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           skip: [59],
           first: [59],
           filter: [10],
-          orderBy: [11, "[CategoryModelOrderBy]"],
+          orderBy: [11, '[CategoryModelOrderBy]'],
         },
       ],
       allEvents: [
         24,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           skip: [59],
           first: [59],
           filter: [22],
-          orderBy: [23, "[EventModelOrderBy]"],
+          orderBy: [23, '[EventModelOrderBy]'],
         },
       ],
       allUploads: [
         26,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           skip: [59],
           first: [59],
           filter: [95],
-          orderBy: [103, "[UploadOrderBy]"],
+          orderBy: [103, '[UploadOrderBy]'],
         },
       ],
       article: [
         3,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           filter: [1],
-          orderBy: [2, "[ArticleModelOrderBy]"],
+          orderBy: [2, '[ArticleModelOrderBy]'],
         },
       ],
       author: [
         6,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           filter: [4],
-          orderBy: [5, "[AuthorModelOrderBy]"],
+          orderBy: [5, '[AuthorModelOrderBy]'],
         },
       ],
       category: [
         12,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           filter: [10],
-          orderBy: [11, "[CategoryModelOrderBy]"],
+          orderBy: [11, '[CategoryModelOrderBy]'],
         },
       ],
       event: [
         24,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           filter: [22],
-          orderBy: [23, "[EventModelOrderBy]"],
+          orderBy: [23, '[EventModelOrderBy]'],
         },
       ],
       upload: [
         26,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
           filter: [95],
-          orderBy: [103, "[UploadOrderBy]"],
+          orderBy: [103, '[UploadOrderBy]'],
         },
       ],
       __typename: [80],
@@ -846,14 +845,14 @@ export default {
       faviconMetaTags: [
         84,
         {
-          variants: [25, "[FaviconType]"],
+          variants: [25, '[FaviconType]'],
         },
       ],
       globalSeo: [
         32,
         {
           locale: [77],
-          fallbackLocales: [77, "[SiteLocale!]"],
+          fallbackLocales: [77, '[SiteLocale!]'],
         },
       ],
       locales: [77],

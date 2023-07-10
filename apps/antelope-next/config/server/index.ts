@@ -1,1 +1,1 @@
-export * from "./server-env.config"
+export * from './server-env.config'

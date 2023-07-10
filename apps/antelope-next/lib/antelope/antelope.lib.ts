@@ -1,7 +1,7 @@
-import AnchorLink, { APIClient } from "anchor-link"
-import AnchorLinkBrowserTransport from "anchor-link-browser-transport"
+import AnchorLink, { APIClient } from 'anchor-link'
+import AnchorLinkBrowserTransport from 'anchor-link-browser-transport'
 
-import { chainConfig } from "~/config/chain"
+import { chainConfig } from '~/config/chain'
 
 export const createNewAnchorLink = () =>
   new AnchorLink({

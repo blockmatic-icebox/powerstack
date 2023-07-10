@@ -1,13 +1,7 @@
-export function AntelopeIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+export function AntelopeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg height="25px" viewBox="0 0 3159 584" version="1.1" {...props}>
-      <g
-        id="Page-1"
-        stroke="none"
-        strokeWidth={1}
-        fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Page-1" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
         <g id="Antelope" fill="currentcolor" fillRule="nonzero">
           <g id="Group">
             <path

@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextApiRequest, NextApiResponse } from 'next'
 
 /*
   This endpoint is for the Web Previews DatoCMS plugin:
@@ -12,24 +12,21 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 const findUrlForItem = ({ item, itemType }: any) => {
   switch (itemType.attributes.api_key) {
-    case "blog":
+    case 'blog':
       return `/blog/${item.attributes.slug}`
     default:
       return null
   }
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // setup CORS permissions
-  res.setHeader("Access-Control-Allow-Origin", "*")
-  res.setHeader("Access-Control-Allow-Methods", "POST")
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
   // This will allow OPTIONS request
-  if (req.method === "OPTIONS") {
+  if (req.method === 'OPTIONS') {
     return res.status(200).json({ success: true })
   }
 
@@ -47,14 +44,12 @@ export default async function handler(
 
   const previewLinks = [
     {
-      label: "Published version",
+      label: 'Published version',
       url: `${baseUrl}${url}`,
     },
     {
-      label: "Draft version",
-      url: `${baseUrl}/api/preview?redirect=${url}&secret=${
-        process.env.NEXT_EXAMPLE_CMS_DATOCMS_PREVIEW_SECRET || ""
-      }`,
+      label: 'Draft version',
+      url: `${baseUrl}/api/preview?redirect=${url}&secret=${process.env.NEXT_EXAMPLE_CMS_DATOCMS_PREVIEW_SECRET || ''}`,
     },
   ]
 

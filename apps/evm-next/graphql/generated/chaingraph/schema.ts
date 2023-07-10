@@ -15,36 +15,36 @@ export type Scalars = {
 
 /** columns and relationships of "actions" */
 export interface actions {
-  account_disk_deltas: Scalars["jsonb"] | null
-  account_ram_deltas: Scalars["jsonb"] | null
-  action: Scalars["String"]
-  action_ordinal: Scalars["Int"]
-  authorization: Scalars["jsonb"]
-  chain: Scalars["String"]
-  console: Scalars["String"] | null
-  context_free: Scalars["Boolean"] | null
-  contract: Scalars["String"]
-  data: Scalars["jsonb"]
-  global_sequence: Scalars["String"]
-  receipt: Scalars["jsonb"] | null
-  receiver: Scalars["String"] | null
+  account_disk_deltas: Scalars['jsonb'] | null
+  account_ram_deltas: Scalars['jsonb'] | null
+  action: Scalars['String']
+  action_ordinal: Scalars['Int']
+  authorization: Scalars['jsonb']
+  chain: Scalars['String']
+  console: Scalars['String'] | null
+  context_free: Scalars['Boolean'] | null
+  contract: Scalars['String']
+  data: Scalars['jsonb']
+  global_sequence: Scalars['String']
+  receipt: Scalars['jsonb'] | null
+  receiver: Scalars['String'] | null
   /** An object relationship */
   transaction: transactions | null
-  transaction_id: Scalars["String"]
-  __typename: "actions"
+  transaction_id: Scalars['String']
+  __typename: 'actions'
 }
 
 /** aggregated selection of "actions" */
 export interface actions_aggregate {
   aggregate: actions_aggregate_fields | null
   nodes: actions[]
-  __typename: "actions_aggregate"
+  __typename: 'actions_aggregate'
 }
 
 /** aggregate fields of "actions" */
 export interface actions_aggregate_fields {
   avg: actions_avg_fields | null
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: actions_max_fields | null
   min: actions_min_fields | null
   stddev: actions_stddev_fields | null
@@ -54,151 +54,151 @@ export interface actions_aggregate_fields {
   var_pop: actions_var_pop_fields | null
   var_samp: actions_var_samp_fields | null
   variance: actions_variance_fields | null
-  __typename: "actions_aggregate_fields"
+  __typename: 'actions_aggregate_fields'
 }
 
 /** aggregate avg on columns */
 export interface actions_avg_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_avg_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_avg_fields'
 }
 
 /** unique or primary key constraints on table "actions" */
-export type actions_constraint = "actions_pkey"
+export type actions_constraint = 'actions_pkey'
 
 /** aggregate max on columns */
 export interface actions_max_fields {
-  action: Scalars["String"] | null
-  action_ordinal: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  console: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  global_sequence: Scalars["String"] | null
-  receiver: Scalars["String"] | null
-  transaction_id: Scalars["String"] | null
-  __typename: "actions_max_fields"
+  action: Scalars['String'] | null
+  action_ordinal: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  console: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  global_sequence: Scalars['String'] | null
+  receiver: Scalars['String'] | null
+  transaction_id: Scalars['String'] | null
+  __typename: 'actions_max_fields'
 }
 
 /** aggregate min on columns */
 export interface actions_min_fields {
-  action: Scalars["String"] | null
-  action_ordinal: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  console: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  global_sequence: Scalars["String"] | null
-  receiver: Scalars["String"] | null
-  transaction_id: Scalars["String"] | null
-  __typename: "actions_min_fields"
+  action: Scalars['String'] | null
+  action_ordinal: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  console: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  global_sequence: Scalars['String'] | null
+  receiver: Scalars['String'] | null
+  transaction_id: Scalars['String'] | null
+  __typename: 'actions_min_fields'
 }
 
 /** response of any mutation on the table "actions" */
 export interface actions_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: actions[]
-  __typename: "actions_mutation_response"
+  __typename: 'actions_mutation_response'
 }
 
 /** select columns of table "actions" */
 export type actions_select_column =
-  | "account_disk_deltas"
-  | "account_ram_deltas"
-  | "action"
-  | "action_ordinal"
-  | "authorization"
-  | "chain"
-  | "console"
-  | "context_free"
-  | "contract"
-  | "data"
-  | "global_sequence"
-  | "receipt"
-  | "receiver"
-  | "transaction_id"
+  | 'account_disk_deltas'
+  | 'account_ram_deltas'
+  | 'action'
+  | 'action_ordinal'
+  | 'authorization'
+  | 'chain'
+  | 'console'
+  | 'context_free'
+  | 'contract'
+  | 'data'
+  | 'global_sequence'
+  | 'receipt'
+  | 'receiver'
+  | 'transaction_id'
 
 /** aggregate stddev on columns */
 export interface actions_stddev_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_stddev_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_stddev_fields'
 }
 
 /** aggregate stddev_pop on columns */
 export interface actions_stddev_pop_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_stddev_pop_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_stddev_pop_fields'
 }
 
 /** aggregate stddev_samp on columns */
 export interface actions_stddev_samp_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_stddev_samp_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_stddev_samp_fields'
 }
 
 /** aggregate sum on columns */
 export interface actions_sum_fields {
-  action_ordinal: Scalars["Int"] | null
-  __typename: "actions_sum_fields"
+  action_ordinal: Scalars['Int'] | null
+  __typename: 'actions_sum_fields'
 }
 
 /** update columns of table "actions" */
 export type actions_update_column =
-  | "account_disk_deltas"
-  | "account_ram_deltas"
-  | "action"
-  | "action_ordinal"
-  | "authorization"
-  | "chain"
-  | "console"
-  | "context_free"
-  | "contract"
-  | "data"
-  | "global_sequence"
-  | "receipt"
-  | "receiver"
-  | "transaction_id"
+  | 'account_disk_deltas'
+  | 'account_ram_deltas'
+  | 'action'
+  | 'action_ordinal'
+  | 'authorization'
+  | 'chain'
+  | 'console'
+  | 'context_free'
+  | 'contract'
+  | 'data'
+  | 'global_sequence'
+  | 'receipt'
+  | 'receiver'
+  | 'transaction_id'
 
 /** aggregate var_pop on columns */
 export interface actions_var_pop_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_var_pop_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_var_pop_fields'
 }
 
 /** aggregate var_samp on columns */
 export interface actions_var_samp_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_var_samp_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_var_samp_fields'
 }
 
 /** aggregate variance on columns */
 export interface actions_variance_fields {
-  action_ordinal: Scalars["Float"] | null
-  __typename: "actions_variance_fields"
+  action_ordinal: Scalars['Float'] | null
+  __typename: 'actions_variance_fields'
 }
 
 /** columns and relationships of "api_users" */
 export interface api_users {
-  account: Scalars["String"]
-  api_key: Scalars["String"]
-  created_at: Scalars["timestamptz"] | null
-  domain_names: Scalars["String"] | null
-  id: Scalars["Int"]
-  updated_at: Scalars["timestamptz"] | null
-  __typename: "api_users"
+  account: Scalars['String']
+  api_key: Scalars['String']
+  created_at: Scalars['timestamptz'] | null
+  domain_names: Scalars['String'] | null
+  id: Scalars['Int']
+  updated_at: Scalars['timestamptz'] | null
+  __typename: 'api_users'
 }
 
 /** aggregated selection of "api_users" */
 export interface api_users_aggregate {
   aggregate: api_users_aggregate_fields | null
   nodes: api_users[]
-  __typename: "api_users_aggregate"
+  __typename: 'api_users_aggregate'
 }
 
 /** aggregate fields of "api_users" */
 export interface api_users_aggregate_fields {
   avg: api_users_avg_fields | null
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: api_users_max_fields | null
   min: api_users_min_fields | null
   stddev: api_users_stddev_fields | null
@@ -208,132 +208,120 @@ export interface api_users_aggregate_fields {
   var_pop: api_users_var_pop_fields | null
   var_samp: api_users_var_samp_fields | null
   variance: api_users_variance_fields | null
-  __typename: "api_users_aggregate_fields"
+  __typename: 'api_users_aggregate_fields'
 }
 
 /** aggregate avg on columns */
 export interface api_users_avg_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_avg_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_avg_fields'
 }
 
 /** unique or primary key constraints on table "api_users" */
-export type api_users_constraint = "api_users_api_key_key" | "api_users_pkey"
+export type api_users_constraint = 'api_users_api_key_key' | 'api_users_pkey'
 
 /** aggregate max on columns */
 export interface api_users_max_fields {
-  account: Scalars["String"] | null
-  api_key: Scalars["String"] | null
-  created_at: Scalars["timestamptz"] | null
-  domain_names: Scalars["String"] | null
-  id: Scalars["Int"] | null
-  updated_at: Scalars["timestamptz"] | null
-  __typename: "api_users_max_fields"
+  account: Scalars['String'] | null
+  api_key: Scalars['String'] | null
+  created_at: Scalars['timestamptz'] | null
+  domain_names: Scalars['String'] | null
+  id: Scalars['Int'] | null
+  updated_at: Scalars['timestamptz'] | null
+  __typename: 'api_users_max_fields'
 }
 
 /** aggregate min on columns */
 export interface api_users_min_fields {
-  account: Scalars["String"] | null
-  api_key: Scalars["String"] | null
-  created_at: Scalars["timestamptz"] | null
-  domain_names: Scalars["String"] | null
-  id: Scalars["Int"] | null
-  updated_at: Scalars["timestamptz"] | null
-  __typename: "api_users_min_fields"
+  account: Scalars['String'] | null
+  api_key: Scalars['String'] | null
+  created_at: Scalars['timestamptz'] | null
+  domain_names: Scalars['String'] | null
+  id: Scalars['Int'] | null
+  updated_at: Scalars['timestamptz'] | null
+  __typename: 'api_users_min_fields'
 }
 
 /** response of any mutation on the table "api_users" */
 export interface api_users_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: api_users[]
-  __typename: "api_users_mutation_response"
+  __typename: 'api_users_mutation_response'
 }
 
 /** select columns of table "api_users" */
-export type api_users_select_column =
-  | "account"
-  | "api_key"
-  | "created_at"
-  | "domain_names"
-  | "id"
-  | "updated_at"
+export type api_users_select_column = 'account' | 'api_key' | 'created_at' | 'domain_names' | 'id' | 'updated_at'
 
 /** aggregate stddev on columns */
 export interface api_users_stddev_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_stddev_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_stddev_fields'
 }
 
 /** aggregate stddev_pop on columns */
 export interface api_users_stddev_pop_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_stddev_pop_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_stddev_pop_fields'
 }
 
 /** aggregate stddev_samp on columns */
 export interface api_users_stddev_samp_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_stddev_samp_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_stddev_samp_fields'
 }
 
 /** aggregate sum on columns */
 export interface api_users_sum_fields {
-  id: Scalars["Int"] | null
-  __typename: "api_users_sum_fields"
+  id: Scalars['Int'] | null
+  __typename: 'api_users_sum_fields'
 }
 
 /** update columns of table "api_users" */
-export type api_users_update_column =
-  | "account"
-  | "api_key"
-  | "created_at"
-  | "domain_names"
-  | "id"
-  | "updated_at"
+export type api_users_update_column = 'account' | 'api_key' | 'created_at' | 'domain_names' | 'id' | 'updated_at'
 
 /** aggregate var_pop on columns */
 export interface api_users_var_pop_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_var_pop_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_var_pop_fields'
 }
 
 /** aggregate var_samp on columns */
 export interface api_users_var_samp_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_var_samp_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_var_samp_fields'
 }
 
 /** aggregate variance on columns */
 export interface api_users_variance_fields {
-  id: Scalars["Float"] | null
-  __typename: "api_users_variance_fields"
+  id: Scalars['Float'] | null
+  __typename: 'api_users_variance_fields'
 }
 
 /** columns and relationships of "blocks" */
 export interface blocks {
-  block_id: Scalars["String"] | null
-  block_num: Scalars["Int"]
-  chain: Scalars["String"]
+  block_id: Scalars['String'] | null
+  block_num: Scalars['Int']
+  chain: Scalars['String']
   /** An object relationship */
   chian: chains
-  producer: Scalars["String"]
-  timestamp: Scalars["timestamptz"]
-  __typename: "blocks"
+  producer: Scalars['String']
+  timestamp: Scalars['timestamptz']
+  __typename: 'blocks'
 }
 
 /** aggregated selection of "blocks" */
 export interface blocks_aggregate {
   aggregate: blocks_aggregate_fields | null
   nodes: blocks[]
-  __typename: "blocks_aggregate"
+  __typename: 'blocks_aggregate'
 }
 
 /** aggregate fields of "blocks" */
 export interface blocks_aggregate_fields {
   avg: blocks_avg_fields | null
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: blocks_max_fields | null
   min: blocks_min_fields | null
   stddev: blocks_stddev_fields | null
@@ -343,103 +331,93 @@ export interface blocks_aggregate_fields {
   var_pop: blocks_var_pop_fields | null
   var_samp: blocks_var_samp_fields | null
   variance: blocks_variance_fields | null
-  __typename: "blocks_aggregate_fields"
+  __typename: 'blocks_aggregate_fields'
 }
 
 /** aggregate avg on columns */
 export interface blocks_avg_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_avg_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_avg_fields'
 }
 
 /** unique or primary key constraints on table "blocks" */
-export type blocks_constraint = "blocks_block_id_key" | "blocks_pkey"
+export type blocks_constraint = 'blocks_block_id_key' | 'blocks_pkey'
 
 /** aggregate max on columns */
 export interface blocks_max_fields {
-  block_id: Scalars["String"] | null
-  block_num: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  producer: Scalars["String"] | null
-  timestamp: Scalars["timestamptz"] | null
-  __typename: "blocks_max_fields"
+  block_id: Scalars['String'] | null
+  block_num: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  producer: Scalars['String'] | null
+  timestamp: Scalars['timestamptz'] | null
+  __typename: 'blocks_max_fields'
 }
 
 /** aggregate min on columns */
 export interface blocks_min_fields {
-  block_id: Scalars["String"] | null
-  block_num: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  producer: Scalars["String"] | null
-  timestamp: Scalars["timestamptz"] | null
-  __typename: "blocks_min_fields"
+  block_id: Scalars['String'] | null
+  block_num: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  producer: Scalars['String'] | null
+  timestamp: Scalars['timestamptz'] | null
+  __typename: 'blocks_min_fields'
 }
 
 /** response of any mutation on the table "blocks" */
 export interface blocks_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: blocks[]
-  __typename: "blocks_mutation_response"
+  __typename: 'blocks_mutation_response'
 }
 
 /** select columns of table "blocks" */
-export type blocks_select_column =
-  | "block_id"
-  | "block_num"
-  | "chain"
-  | "producer"
-  | "timestamp"
+export type blocks_select_column = 'block_id' | 'block_num' | 'chain' | 'producer' | 'timestamp'
 
 /** aggregate stddev on columns */
 export interface blocks_stddev_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_stddev_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_stddev_fields'
 }
 
 /** aggregate stddev_pop on columns */
 export interface blocks_stddev_pop_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_stddev_pop_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_stddev_pop_fields'
 }
 
 /** aggregate stddev_samp on columns */
 export interface blocks_stddev_samp_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_stddev_samp_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_stddev_samp_fields'
 }
 
 /** aggregate sum on columns */
 export interface blocks_sum_fields {
-  block_num: Scalars["Int"] | null
-  __typename: "blocks_sum_fields"
+  block_num: Scalars['Int'] | null
+  __typename: 'blocks_sum_fields'
 }
 
 /** update columns of table "blocks" */
-export type blocks_update_column =
-  | "block_id"
-  | "block_num"
-  | "chain"
-  | "producer"
-  | "timestamp"
+export type blocks_update_column = 'block_id' | 'block_num' | 'chain' | 'producer' | 'timestamp'
 
 /** aggregate var_pop on columns */
 export interface blocks_var_pop_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_var_pop_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_var_pop_fields'
 }
 
 /** aggregate var_samp on columns */
 export interface blocks_var_samp_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_var_samp_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_var_samp_fields'
 }
 
 /** aggregate variance on columns */
 export interface blocks_variance_fields {
-  block_num: Scalars["Float"] | null
-  __typename: "blocks_variance_fields"
+  block_num: Scalars['Float'] | null
+  __typename: 'blocks_variance_fields'
 }
 
 /** columns and relationships of "chains" */
@@ -448,204 +426,186 @@ export interface chains {
   blocks: blocks[]
   /** An aggregate relationship */
   blocks_aggregate: blocks_aggregate
-  chain_id: Scalars["String"]
-  chain_name: Scalars["String"]
-  rpc_endpoint: Scalars["String"]
+  chain_id: Scalars['String']
+  chain_name: Scalars['String']
+  rpc_endpoint: Scalars['String']
   /** fetch data from the table: "table_rows" */
   table_rows: table_rows[]
   /** fetch aggregated fields from the table: "table_rows" */
   table_rows_aggregate: table_rows_aggregate
-  __typename: "chains"
+  __typename: 'chains'
 }
 
 /** aggregated selection of "chains" */
 export interface chains_aggregate {
   aggregate: chains_aggregate_fields | null
   nodes: chains[]
-  __typename: "chains_aggregate"
+  __typename: 'chains_aggregate'
 }
 
 /** aggregate fields of "chains" */
 export interface chains_aggregate_fields {
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: chains_max_fields | null
   min: chains_min_fields | null
-  __typename: "chains_aggregate_fields"
+  __typename: 'chains_aggregate_fields'
 }
 
 /** unique or primary key constraints on table "chains" */
-export type chains_constraint = "chains_pkey"
+export type chains_constraint = 'chains_pkey'
 
 /** aggregate max on columns */
 export interface chains_max_fields {
-  chain_id: Scalars["String"] | null
-  chain_name: Scalars["String"] | null
-  rpc_endpoint: Scalars["String"] | null
-  __typename: "chains_max_fields"
+  chain_id: Scalars['String'] | null
+  chain_name: Scalars['String'] | null
+  rpc_endpoint: Scalars['String'] | null
+  __typename: 'chains_max_fields'
 }
 
 /** aggregate min on columns */
 export interface chains_min_fields {
-  chain_id: Scalars["String"] | null
-  chain_name: Scalars["String"] | null
-  rpc_endpoint: Scalars["String"] | null
-  __typename: "chains_min_fields"
+  chain_id: Scalars['String'] | null
+  chain_name: Scalars['String'] | null
+  rpc_endpoint: Scalars['String'] | null
+  __typename: 'chains_min_fields'
 }
 
 /** response of any mutation on the table "chains" */
 export interface chains_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: chains[]
-  __typename: "chains_mutation_response"
+  __typename: 'chains_mutation_response'
 }
 
 /** select columns of table "chains" */
-export type chains_select_column = "chain_id" | "chain_name" | "rpc_endpoint"
+export type chains_select_column = 'chain_id' | 'chain_name' | 'rpc_endpoint'
 
 /** update columns of table "chains" */
-export type chains_update_column = "chain_id" | "chain_name" | "rpc_endpoint"
+export type chains_update_column = 'chain_id' | 'chain_name' | 'rpc_endpoint'
 
 /** ordering argument of a cursor */
-export type cursor_ordering = "ASC" | "DESC"
+export type cursor_ordering = 'ASC' | 'DESC'
 
 /** columns and relationships of "manifests" */
 export interface manifests {
-  app_id: Scalars["uuid"]
-  app_name: Scalars["String"]
-  description: Scalars["String"]
-  url: Scalars["String"]
-  __typename: "manifests"
+  app_id: Scalars['uuid']
+  app_name: Scalars['String']
+  description: Scalars['String']
+  url: Scalars['String']
+  __typename: 'manifests'
 }
 
 /** aggregated selection of "manifests" */
 export interface manifests_aggregate {
   aggregate: manifests_aggregate_fields | null
   nodes: manifests[]
-  __typename: "manifests_aggregate"
+  __typename: 'manifests_aggregate'
 }
 
 /** aggregate fields of "manifests" */
 export interface manifests_aggregate_fields {
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: manifests_max_fields | null
   min: manifests_min_fields | null
-  __typename: "manifests_aggregate_fields"
+  __typename: 'manifests_aggregate_fields'
 }
 
 /** unique or primary key constraints on table "manifests" */
-export type manifests_constraint = "manifests_pkey"
+export type manifests_constraint = 'manifests_pkey'
 
 /** aggregate max on columns */
 export interface manifests_max_fields {
-  app_id: Scalars["uuid"] | null
-  app_name: Scalars["String"] | null
-  description: Scalars["String"] | null
-  url: Scalars["String"] | null
-  __typename: "manifests_max_fields"
+  app_id: Scalars['uuid'] | null
+  app_name: Scalars['String'] | null
+  description: Scalars['String'] | null
+  url: Scalars['String'] | null
+  __typename: 'manifests_max_fields'
 }
 
 /** aggregate min on columns */
 export interface manifests_min_fields {
-  app_id: Scalars["uuid"] | null
-  app_name: Scalars["String"] | null
-  description: Scalars["String"] | null
-  url: Scalars["String"] | null
-  __typename: "manifests_min_fields"
+  app_id: Scalars['uuid'] | null
+  app_name: Scalars['String'] | null
+  description: Scalars['String'] | null
+  url: Scalars['String'] | null
+  __typename: 'manifests_min_fields'
 }
 
 /** response of any mutation on the table "manifests" */
 export interface manifests_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: manifests[]
-  __typename: "manifests_mutation_response"
+  __typename: 'manifests_mutation_response'
 }
 
 /** select columns of table "manifests" */
-export type manifests_select_column =
-  | "app_id"
-  | "app_name"
-  | "description"
-  | "url"
+export type manifests_select_column = 'app_id' | 'app_name' | 'description' | 'url'
 
 /** update columns of table "manifests" */
-export type manifests_update_column =
-  | "app_id"
-  | "app_name"
-  | "description"
-  | "url"
+export type manifests_update_column = 'app_id' | 'app_name' | 'description' | 'url'
 
 /** columns and relationships of "mappings" */
 export interface mappings {
-  abi: Scalars["jsonb"] | null
-  chain: Scalars["String"]
-  contract: Scalars["String"]
-  contract_type: Scalars["String"] | null
-  tables: Scalars["jsonb"] | null
-  __typename: "mappings"
+  abi: Scalars['jsonb'] | null
+  chain: Scalars['String']
+  contract: Scalars['String']
+  contract_type: Scalars['String'] | null
+  tables: Scalars['jsonb'] | null
+  __typename: 'mappings'
 }
 
 /** aggregated selection of "mappings" */
 export interface mappings_aggregate {
   aggregate: mappings_aggregate_fields | null
   nodes: mappings[]
-  __typename: "mappings_aggregate"
+  __typename: 'mappings_aggregate'
 }
 
 /** aggregate fields of "mappings" */
 export interface mappings_aggregate_fields {
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: mappings_max_fields | null
   min: mappings_min_fields | null
-  __typename: "mappings_aggregate_fields"
+  __typename: 'mappings_aggregate_fields'
 }
 
 /** unique or primary key constraints on table "mappings" */
-export type mappings_constraint = "mappings_pkey"
+export type mappings_constraint = 'mappings_pkey'
 
 /** aggregate max on columns */
 export interface mappings_max_fields {
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  contract_type: Scalars["String"] | null
-  __typename: "mappings_max_fields"
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  contract_type: Scalars['String'] | null
+  __typename: 'mappings_max_fields'
 }
 
 /** aggregate min on columns */
 export interface mappings_min_fields {
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  contract_type: Scalars["String"] | null
-  __typename: "mappings_min_fields"
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  contract_type: Scalars['String'] | null
+  __typename: 'mappings_min_fields'
 }
 
 /** response of any mutation on the table "mappings" */
 export interface mappings_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: mappings[]
-  __typename: "mappings_mutation_response"
+  __typename: 'mappings_mutation_response'
 }
 
 /** select columns of table "mappings" */
-export type mappings_select_column =
-  | "abi"
-  | "chain"
-  | "contract"
-  | "contract_type"
-  | "tables"
+export type mappings_select_column = 'abi' | 'chain' | 'contract' | 'contract_type' | 'tables'
 
 /** update columns of table "mappings" */
-export type mappings_update_column =
-  | "abi"
-  | "chain"
-  | "contract"
-  | "contract_type"
-  | "tables"
+export type mappings_update_column = 'abi' | 'chain' | 'contract' | 'contract_type' | 'tables'
 
 /** mutation root */
 export interface mutation_root {
@@ -775,17 +735,11 @@ export interface mutation_root {
   update_whitelists_by_pk: whitelists | null
   /** update multiples rows of table: "whitelists" */
   update_whitelists_many: (whitelists_mutation_response | null)[] | null
-  __typename: "mutation_root"
+  __typename: 'mutation_root'
 }
 
 /** column ordering options */
-export type order_by =
-  | "asc"
-  | "asc_nulls_first"
-  | "asc_nulls_last"
-  | "desc"
-  | "desc_nulls_first"
-  | "desc_nulls_last"
+export type order_by = 'asc' | 'asc_nulls_first' | 'asc_nulls_last' | 'desc' | 'desc_nulls_first' | 'desc_nulls_last'
 
 export interface query_root {
   /** fetch data from the table: "actions" */
@@ -842,7 +796,7 @@ export interface query_root {
   whitelists_aggregate: whitelists_aggregate
   /** fetch data from the table: "whitelists" using primary key columns */
   whitelists_by_pk: whitelists | null
-  __typename: "query_root"
+  __typename: 'query_root'
 }
 
 export interface subscription_root {
@@ -918,107 +872,95 @@ export interface subscription_root {
   whitelists_by_pk: whitelists | null
   /** fetch data from the table in a streaming manner: "whitelists" */
   whitelists_stream: whitelists[]
-  __typename: "subscription_root"
+  __typename: 'subscription_root'
 }
 
 /** columns and relationships of "table_rows" */
 export interface table_rows {
-  chain: Scalars["String"]
-  contract: Scalars["String"]
-  data: Scalars["jsonb"]
-  primary_key: Scalars["String"]
-  scope: Scalars["String"]
-  table: Scalars["String"]
-  __typename: "table_rows"
+  chain: Scalars['String']
+  contract: Scalars['String']
+  data: Scalars['jsonb']
+  primary_key: Scalars['String']
+  scope: Scalars['String']
+  table: Scalars['String']
+  __typename: 'table_rows'
 }
 
 /** aggregated selection of "table_rows" */
 export interface table_rows_aggregate {
   aggregate: table_rows_aggregate_fields | null
   nodes: table_rows[]
-  __typename: "table_rows_aggregate"
+  __typename: 'table_rows_aggregate'
 }
 
 /** aggregate fields of "table_rows" */
 export interface table_rows_aggregate_fields {
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: table_rows_max_fields | null
   min: table_rows_min_fields | null
-  __typename: "table_rows_aggregate_fields"
+  __typename: 'table_rows_aggregate_fields'
 }
 
 /** unique or primary key constraints on table "table_rows" */
-export type table_rows_constraint = "tables_pkey"
+export type table_rows_constraint = 'tables_pkey'
 
 /** aggregate max on columns */
 export interface table_rows_max_fields {
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  primary_key: Scalars["String"] | null
-  scope: Scalars["String"] | null
-  table: Scalars["String"] | null
-  __typename: "table_rows_max_fields"
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  primary_key: Scalars['String'] | null
+  scope: Scalars['String'] | null
+  table: Scalars['String'] | null
+  __typename: 'table_rows_max_fields'
 }
 
 /** aggregate min on columns */
 export interface table_rows_min_fields {
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  primary_key: Scalars["String"] | null
-  scope: Scalars["String"] | null
-  table: Scalars["String"] | null
-  __typename: "table_rows_min_fields"
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  primary_key: Scalars['String'] | null
+  scope: Scalars['String'] | null
+  table: Scalars['String'] | null
+  __typename: 'table_rows_min_fields'
 }
 
 /** response of any mutation on the table "table_rows" */
 export interface table_rows_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: table_rows[]
-  __typename: "table_rows_mutation_response"
+  __typename: 'table_rows_mutation_response'
 }
 
 /** select columns of table "table_rows" */
-export type table_rows_select_column =
-  | "chain"
-  | "contract"
-  | "data"
-  | "primary_key"
-  | "scope"
-  | "table"
+export type table_rows_select_column = 'chain' | 'contract' | 'data' | 'primary_key' | 'scope' | 'table'
 
 /** update columns of table "table_rows" */
-export type table_rows_update_column =
-  | "chain"
-  | "contract"
-  | "data"
-  | "primary_key"
-  | "scope"
-  | "table"
+export type table_rows_update_column = 'chain' | 'contract' | 'data' | 'primary_key' | 'scope' | 'table'
 
 /** columns and relationships of "transactions" */
 export interface transactions {
-  block_num: Scalars["Int"]
-  chain: Scalars["String"]
-  cpu_usage_us: Scalars["Int"] | null
-  net_usage: Scalars["Int"] | null
-  net_usage_words: Scalars["Int"] | null
-  transaction_id: Scalars["String"]
-  __typename: "transactions"
+  block_num: Scalars['Int']
+  chain: Scalars['String']
+  cpu_usage_us: Scalars['Int'] | null
+  net_usage: Scalars['Int'] | null
+  net_usage_words: Scalars['Int'] | null
+  transaction_id: Scalars['String']
+  __typename: 'transactions'
 }
 
 /** aggregated selection of "transactions" */
 export interface transactions_aggregate {
   aggregate: transactions_aggregate_fields | null
   nodes: transactions[]
-  __typename: "transactions_aggregate"
+  __typename: 'transactions_aggregate'
 }
 
 /** aggregate fields of "transactions" */
 export interface transactions_aggregate_fields {
   avg: transactions_avg_fields | null
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: transactions_max_fields | null
   min: transactions_min_fields | null
   stddev: transactions_stddev_fields | null
@@ -1028,158 +970,158 @@ export interface transactions_aggregate_fields {
   var_pop: transactions_var_pop_fields | null
   var_samp: transactions_var_samp_fields | null
   variance: transactions_variance_fields | null
-  __typename: "transactions_aggregate_fields"
+  __typename: 'transactions_aggregate_fields'
 }
 
 /** aggregate avg on columns */
 export interface transactions_avg_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_avg_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_avg_fields'
 }
 
 /** unique or primary key constraints on table "transactions" */
-export type transactions_constraint = "transactions_pkey"
+export type transactions_constraint = 'transactions_pkey'
 
 /** aggregate max on columns */
 export interface transactions_max_fields {
-  block_num: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  cpu_usage_us: Scalars["Int"] | null
-  net_usage: Scalars["Int"] | null
-  net_usage_words: Scalars["Int"] | null
-  transaction_id: Scalars["String"] | null
-  __typename: "transactions_max_fields"
+  block_num: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  cpu_usage_us: Scalars['Int'] | null
+  net_usage: Scalars['Int'] | null
+  net_usage_words: Scalars['Int'] | null
+  transaction_id: Scalars['String'] | null
+  __typename: 'transactions_max_fields'
 }
 
 /** aggregate min on columns */
 export interface transactions_min_fields {
-  block_num: Scalars["Int"] | null
-  chain: Scalars["String"] | null
-  cpu_usage_us: Scalars["Int"] | null
-  net_usage: Scalars["Int"] | null
-  net_usage_words: Scalars["Int"] | null
-  transaction_id: Scalars["String"] | null
-  __typename: "transactions_min_fields"
+  block_num: Scalars['Int'] | null
+  chain: Scalars['String'] | null
+  cpu_usage_us: Scalars['Int'] | null
+  net_usage: Scalars['Int'] | null
+  net_usage_words: Scalars['Int'] | null
+  transaction_id: Scalars['String'] | null
+  __typename: 'transactions_min_fields'
 }
 
 /** response of any mutation on the table "transactions" */
 export interface transactions_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: transactions[]
-  __typename: "transactions_mutation_response"
+  __typename: 'transactions_mutation_response'
 }
 
 /** select columns of table "transactions" */
 export type transactions_select_column =
-  | "block_num"
-  | "chain"
-  | "cpu_usage_us"
-  | "net_usage"
-  | "net_usage_words"
-  | "transaction_id"
+  | 'block_num'
+  | 'chain'
+  | 'cpu_usage_us'
+  | 'net_usage'
+  | 'net_usage_words'
+  | 'transaction_id'
 
 /** aggregate stddev on columns */
 export interface transactions_stddev_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_stddev_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_stddev_fields'
 }
 
 /** aggregate stddev_pop on columns */
 export interface transactions_stddev_pop_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_stddev_pop_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_stddev_pop_fields'
 }
 
 /** aggregate stddev_samp on columns */
 export interface transactions_stddev_samp_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_stddev_samp_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_stddev_samp_fields'
 }
 
 /** aggregate sum on columns */
 export interface transactions_sum_fields {
-  block_num: Scalars["Int"] | null
-  cpu_usage_us: Scalars["Int"] | null
-  net_usage: Scalars["Int"] | null
-  net_usage_words: Scalars["Int"] | null
-  __typename: "transactions_sum_fields"
+  block_num: Scalars['Int'] | null
+  cpu_usage_us: Scalars['Int'] | null
+  net_usage: Scalars['Int'] | null
+  net_usage_words: Scalars['Int'] | null
+  __typename: 'transactions_sum_fields'
 }
 
 /** update columns of table "transactions" */
 export type transactions_update_column =
-  | "block_num"
-  | "chain"
-  | "cpu_usage_us"
-  | "net_usage"
-  | "net_usage_words"
-  | "transaction_id"
+  | 'block_num'
+  | 'chain'
+  | 'cpu_usage_us'
+  | 'net_usage'
+  | 'net_usage_words'
+  | 'transaction_id'
 
 /** aggregate var_pop on columns */
 export interface transactions_var_pop_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_var_pop_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_var_pop_fields'
 }
 
 /** aggregate var_samp on columns */
 export interface transactions_var_samp_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_var_samp_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_var_samp_fields'
 }
 
 /** aggregate variance on columns */
 export interface transactions_variance_fields {
-  block_num: Scalars["Float"] | null
-  cpu_usage_us: Scalars["Float"] | null
-  net_usage: Scalars["Float"] | null
-  net_usage_words: Scalars["Float"] | null
-  __typename: "transactions_variance_fields"
+  block_num: Scalars['Float'] | null
+  cpu_usage_us: Scalars['Float'] | null
+  net_usage: Scalars['Float'] | null
+  net_usage_words: Scalars['Float'] | null
+  __typename: 'transactions_variance_fields'
 }
 
 /** columns and relationships of "whitelists" */
 export interface whitelists {
-  actions: Scalars["jsonb"]
-  app_id: Scalars["uuid"]
-  chain: Scalars["String"]
-  contract: Scalars["String"]
-  history_ready: Scalars["Boolean"]
+  actions: Scalars['jsonb']
+  app_id: Scalars['uuid']
+  chain: Scalars['String']
+  contract: Scalars['String']
+  history_ready: Scalars['Boolean']
   /** An object relationship */
   manifest: manifests
-  start_block: Scalars["Int"]
-  tables: Scalars["jsonb"]
-  __typename: "whitelists"
+  start_block: Scalars['Int']
+  tables: Scalars['jsonb']
+  __typename: 'whitelists'
 }
 
 /** aggregated selection of "whitelists" */
 export interface whitelists_aggregate {
   aggregate: whitelists_aggregate_fields | null
   nodes: whitelists[]
-  __typename: "whitelists_aggregate"
+  __typename: 'whitelists_aggregate'
 }
 
 /** aggregate fields of "whitelists" */
 export interface whitelists_aggregate_fields {
   avg: whitelists_avg_fields | null
-  count: Scalars["Int"]
+  count: Scalars['Int']
   max: whitelists_max_fields | null
   min: whitelists_min_fields | null
   stddev: whitelists_stddev_fields | null
@@ -1189,105 +1131,105 @@ export interface whitelists_aggregate_fields {
   var_pop: whitelists_var_pop_fields | null
   var_samp: whitelists_var_samp_fields | null
   variance: whitelists_variance_fields | null
-  __typename: "whitelists_aggregate_fields"
+  __typename: 'whitelists_aggregate_fields'
 }
 
 /** aggregate avg on columns */
 export interface whitelists_avg_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_avg_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_avg_fields'
 }
 
 /** unique or primary key constraints on table "whitelists" */
-export type whitelists_constraint = "whitelists_pkey"
+export type whitelists_constraint = 'whitelists_pkey'
 
 /** aggregate max on columns */
 export interface whitelists_max_fields {
-  app_id: Scalars["uuid"] | null
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  start_block: Scalars["Int"] | null
-  __typename: "whitelists_max_fields"
+  app_id: Scalars['uuid'] | null
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  start_block: Scalars['Int'] | null
+  __typename: 'whitelists_max_fields'
 }
 
 /** aggregate min on columns */
 export interface whitelists_min_fields {
-  app_id: Scalars["uuid"] | null
-  chain: Scalars["String"] | null
-  contract: Scalars["String"] | null
-  start_block: Scalars["Int"] | null
-  __typename: "whitelists_min_fields"
+  app_id: Scalars['uuid'] | null
+  chain: Scalars['String'] | null
+  contract: Scalars['String'] | null
+  start_block: Scalars['Int'] | null
+  __typename: 'whitelists_min_fields'
 }
 
 /** response of any mutation on the table "whitelists" */
 export interface whitelists_mutation_response {
   /** number of rows affected by the mutation */
-  affected_rows: Scalars["Int"]
+  affected_rows: Scalars['Int']
   /** data from the rows affected by the mutation */
   returning: whitelists[]
-  __typename: "whitelists_mutation_response"
+  __typename: 'whitelists_mutation_response'
 }
 
 /** select columns of table "whitelists" */
 export type whitelists_select_column =
-  | "actions"
-  | "app_id"
-  | "chain"
-  | "contract"
-  | "history_ready"
-  | "start_block"
-  | "tables"
+  | 'actions'
+  | 'app_id'
+  | 'chain'
+  | 'contract'
+  | 'history_ready'
+  | 'start_block'
+  | 'tables'
 
 /** aggregate stddev on columns */
 export interface whitelists_stddev_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_stddev_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_stddev_fields'
 }
 
 /** aggregate stddev_pop on columns */
 export interface whitelists_stddev_pop_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_stddev_pop_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_stddev_pop_fields'
 }
 
 /** aggregate stddev_samp on columns */
 export interface whitelists_stddev_samp_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_stddev_samp_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_stddev_samp_fields'
 }
 
 /** aggregate sum on columns */
 export interface whitelists_sum_fields {
-  start_block: Scalars["Int"] | null
-  __typename: "whitelists_sum_fields"
+  start_block: Scalars['Int'] | null
+  __typename: 'whitelists_sum_fields'
 }
 
 /** update columns of table "whitelists" */
 export type whitelists_update_column =
-  | "actions"
-  | "app_id"
-  | "chain"
-  | "contract"
-  | "history_ready"
-  | "start_block"
-  | "tables"
+  | 'actions'
+  | 'app_id'
+  | 'chain'
+  | 'contract'
+  | 'history_ready'
+  | 'start_block'
+  | 'tables'
 
 /** aggregate var_pop on columns */
 export interface whitelists_var_pop_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_var_pop_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_var_pop_fields'
 }
 
 /** aggregate var_samp on columns */
 export interface whitelists_var_samp_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_var_samp_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_var_samp_fields'
 }
 
 /** aggregate variance on columns */
 export interface whitelists_variance_fields {
-  start_block: Scalars["Float"] | null
-  __typename: "whitelists_variance_fields"
+  start_block: Scalars['Float'] | null
+  __typename: 'whitelists_variance_fields'
 }
 
 export type Query = query_root
@@ -1296,61 +1238,61 @@ export type Subscription = subscription_root
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export interface Boolean_comparison_exp {
-  _eq?: Scalars["Boolean"] | null
-  _gt?: Scalars["Boolean"] | null
-  _gte?: Scalars["Boolean"] | null
-  _in?: Scalars["Boolean"][] | null
-  _is_null?: Scalars["Boolean"] | null
-  _lt?: Scalars["Boolean"] | null
-  _lte?: Scalars["Boolean"] | null
-  _neq?: Scalars["Boolean"] | null
-  _nin?: Scalars["Boolean"][] | null
+  _eq?: Scalars['Boolean'] | null
+  _gt?: Scalars['Boolean'] | null
+  _gte?: Scalars['Boolean'] | null
+  _in?: Scalars['Boolean'][] | null
+  _is_null?: Scalars['Boolean'] | null
+  _lt?: Scalars['Boolean'] | null
+  _lte?: Scalars['Boolean'] | null
+  _neq?: Scalars['Boolean'] | null
+  _nin?: Scalars['Boolean'][] | null
 }
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export interface Int_comparison_exp {
-  _eq?: Scalars["Int"] | null
-  _gt?: Scalars["Int"] | null
-  _gte?: Scalars["Int"] | null
-  _in?: Scalars["Int"][] | null
-  _is_null?: Scalars["Boolean"] | null
-  _lt?: Scalars["Int"] | null
-  _lte?: Scalars["Int"] | null
-  _neq?: Scalars["Int"] | null
-  _nin?: Scalars["Int"][] | null
+  _eq?: Scalars['Int'] | null
+  _gt?: Scalars['Int'] | null
+  _gte?: Scalars['Int'] | null
+  _in?: Scalars['Int'][] | null
+  _is_null?: Scalars['Boolean'] | null
+  _lt?: Scalars['Int'] | null
+  _lte?: Scalars['Int'] | null
+  _neq?: Scalars['Int'] | null
+  _nin?: Scalars['Int'][] | null
 }
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export interface String_comparison_exp {
-  _eq?: Scalars["String"] | null
-  _gt?: Scalars["String"] | null
-  _gte?: Scalars["String"] | null
+  _eq?: Scalars['String'] | null
+  _gt?: Scalars['String'] | null
+  _gte?: Scalars['String'] | null
   /** does the column match the given case-insensitive pattern */
-  _ilike?: Scalars["String"] | null
-  _in?: Scalars["String"][] | null
+  _ilike?: Scalars['String'] | null
+  _in?: Scalars['String'][] | null
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Scalars["String"] | null
-  _is_null?: Scalars["Boolean"] | null
+  _iregex?: Scalars['String'] | null
+  _is_null?: Scalars['Boolean'] | null
   /** does the column match the given pattern */
-  _like?: Scalars["String"] | null
-  _lt?: Scalars["String"] | null
-  _lte?: Scalars["String"] | null
-  _neq?: Scalars["String"] | null
+  _like?: Scalars['String'] | null
+  _lt?: Scalars['String'] | null
+  _lte?: Scalars['String'] | null
+  _neq?: Scalars['String'] | null
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Scalars["String"] | null
-  _nin?: Scalars["String"][] | null
+  _nilike?: Scalars['String'] | null
+  _nin?: Scalars['String'][] | null
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Scalars["String"] | null
+  _niregex?: Scalars['String'] | null
   /** does the column NOT match the given pattern */
-  _nlike?: Scalars["String"] | null
+  _nlike?: Scalars['String'] | null
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Scalars["String"] | null
+  _nregex?: Scalars['String'] | null
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Scalars["String"] | null
+  _nsimilar?: Scalars['String'] | null
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Scalars["String"] | null
+  _regex?: Scalars['String'] | null
   /** does the column match the given SQL regular expression */
-  _similar?: Scalars["String"] | null
+  _similar?: Scalars['String'] | null
 }
 
 /** columns and relationships of "actions" */
@@ -1359,7 +1301,7 @@ export interface actionsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -1368,7 +1310,7 @@ export interface actionsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -1379,7 +1321,7 @@ export interface actionsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -1392,7 +1334,7 @@ export interface actionsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -1402,7 +1344,7 @@ export interface actionsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -1430,7 +1372,7 @@ export interface actions_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: actions_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -1450,11 +1392,11 @@ export interface actions_aggregate_fieldsGenqlSelection {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export interface actions_append_input {
-  account_disk_deltas?: Scalars["jsonb"] | null
-  account_ram_deltas?: Scalars["jsonb"] | null
-  authorization?: Scalars["jsonb"] | null
-  data?: Scalars["jsonb"] | null
-  receipt?: Scalars["jsonb"] | null
+  account_disk_deltas?: Scalars['jsonb'] | null
+  account_ram_deltas?: Scalars['jsonb'] | null
+  authorization?: Scalars['jsonb'] | null
+  data?: Scalars['jsonb'] | null
+  receipt?: Scalars['jsonb'] | null
 }
 
 /** aggregate avg on columns */
@@ -1488,53 +1430,53 @@ export interface actions_bool_exp {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export interface actions_delete_at_path_input {
-  account_disk_deltas?: Scalars["String"][] | null
-  account_ram_deltas?: Scalars["String"][] | null
-  authorization?: Scalars["String"][] | null
-  data?: Scalars["String"][] | null
-  receipt?: Scalars["String"][] | null
+  account_disk_deltas?: Scalars['String'][] | null
+  account_ram_deltas?: Scalars['String'][] | null
+  authorization?: Scalars['String'][] | null
+  data?: Scalars['String'][] | null
+  receipt?: Scalars['String'][] | null
 }
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export interface actions_delete_elem_input {
-  account_disk_deltas?: Scalars["Int"] | null
-  account_ram_deltas?: Scalars["Int"] | null
-  authorization?: Scalars["Int"] | null
-  data?: Scalars["Int"] | null
-  receipt?: Scalars["Int"] | null
+  account_disk_deltas?: Scalars['Int'] | null
+  account_ram_deltas?: Scalars['Int'] | null
+  authorization?: Scalars['Int'] | null
+  data?: Scalars['Int'] | null
+  receipt?: Scalars['Int'] | null
 }
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export interface actions_delete_key_input {
-  account_disk_deltas?: Scalars["String"] | null
-  account_ram_deltas?: Scalars["String"] | null
-  authorization?: Scalars["String"] | null
-  data?: Scalars["String"] | null
-  receipt?: Scalars["String"] | null
+  account_disk_deltas?: Scalars['String'] | null
+  account_ram_deltas?: Scalars['String'] | null
+  authorization?: Scalars['String'] | null
+  data?: Scalars['String'] | null
+  receipt?: Scalars['String'] | null
 }
 
 /** input type for incrementing numeric columns in table "actions" */
 export interface actions_inc_input {
-  action_ordinal?: Scalars["Int"] | null
+  action_ordinal?: Scalars['Int'] | null
 }
 
 /** input type for inserting data into table "actions" */
 export interface actions_insert_input {
-  account_disk_deltas?: Scalars["jsonb"] | null
-  account_ram_deltas?: Scalars["jsonb"] | null
-  action?: Scalars["String"] | null
-  action_ordinal?: Scalars["Int"] | null
-  authorization?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  console?: Scalars["String"] | null
-  context_free?: Scalars["Boolean"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  global_sequence?: Scalars["String"] | null
-  receipt?: Scalars["jsonb"] | null
-  receiver?: Scalars["String"] | null
+  account_disk_deltas?: Scalars['jsonb'] | null
+  account_ram_deltas?: Scalars['jsonb'] | null
+  action?: Scalars['String'] | null
+  action_ordinal?: Scalars['Int'] | null
+  authorization?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  console?: Scalars['String'] | null
+  context_free?: Scalars['Boolean'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  global_sequence?: Scalars['String'] | null
+  receipt?: Scalars['jsonb'] | null
+  receiver?: Scalars['String'] | null
   transaction?: transactions_obj_rel_insert_input | null
-  transaction_id?: Scalars["String"] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate max on columns */
@@ -1603,35 +1545,35 @@ export interface actions_order_by {
 
 /** primary key columns input for table: actions */
 export interface actions_pk_columns_input {
-  chain?: Scalars["String"]
-  global_sequence?: Scalars["String"]
+  chain?: Scalars['String']
+  global_sequence?: Scalars['String']
 }
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export interface actions_prepend_input {
-  account_disk_deltas?: Scalars["jsonb"] | null
-  account_ram_deltas?: Scalars["jsonb"] | null
-  authorization?: Scalars["jsonb"] | null
-  data?: Scalars["jsonb"] | null
-  receipt?: Scalars["jsonb"] | null
+  account_disk_deltas?: Scalars['jsonb'] | null
+  account_ram_deltas?: Scalars['jsonb'] | null
+  authorization?: Scalars['jsonb'] | null
+  data?: Scalars['jsonb'] | null
+  receipt?: Scalars['jsonb'] | null
 }
 
 /** input type for updating data in table "actions" */
 export interface actions_set_input {
-  account_disk_deltas?: Scalars["jsonb"] | null
-  account_ram_deltas?: Scalars["jsonb"] | null
-  action?: Scalars["String"] | null
-  action_ordinal?: Scalars["Int"] | null
-  authorization?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  console?: Scalars["String"] | null
-  context_free?: Scalars["Boolean"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  global_sequence?: Scalars["String"] | null
-  receipt?: Scalars["jsonb"] | null
-  receiver?: Scalars["String"] | null
-  transaction_id?: Scalars["String"] | null
+  account_disk_deltas?: Scalars['jsonb'] | null
+  account_ram_deltas?: Scalars['jsonb'] | null
+  action?: Scalars['String'] | null
+  action_ordinal?: Scalars['Int'] | null
+  authorization?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  console?: Scalars['String'] | null
+  context_free?: Scalars['Boolean'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  global_sequence?: Scalars['String'] | null
+  receipt?: Scalars['jsonb'] | null
+  receiver?: Scalars['String'] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate stddev on columns */
@@ -1665,20 +1607,20 @@ export interface actions_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface actions_stream_cursor_value_input {
-  account_disk_deltas?: Scalars["jsonb"] | null
-  account_ram_deltas?: Scalars["jsonb"] | null
-  action?: Scalars["String"] | null
-  action_ordinal?: Scalars["Int"] | null
-  authorization?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  console?: Scalars["String"] | null
-  context_free?: Scalars["Boolean"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  global_sequence?: Scalars["String"] | null
-  receipt?: Scalars["jsonb"] | null
-  receiver?: Scalars["String"] | null
-  transaction_id?: Scalars["String"] | null
+  account_disk_deltas?: Scalars['jsonb'] | null
+  account_ram_deltas?: Scalars['jsonb'] | null
+  action?: Scalars['String'] | null
+  action_ordinal?: Scalars['Int'] | null
+  authorization?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  console?: Scalars['String'] | null
+  context_free?: Scalars['Boolean'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  global_sequence?: Scalars['String'] | null
+  receipt?: Scalars['jsonb'] | null
+  receiver?: Scalars['String'] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate sum on columns */
@@ -1754,7 +1696,7 @@ export interface api_users_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: api_users_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -1794,17 +1736,17 @@ export interface api_users_bool_exp {
 
 /** input type for incrementing numeric columns in table "api_users" */
 export interface api_users_inc_input {
-  id?: Scalars["Int"] | null
+  id?: Scalars['Int'] | null
 }
 
 /** input type for inserting data into table "api_users" */
 export interface api_users_insert_input {
-  account?: Scalars["String"] | null
-  api_key?: Scalars["String"] | null
-  created_at?: Scalars["timestamptz"] | null
-  domain_names?: Scalars["String"] | null
-  id?: Scalars["Int"] | null
-  updated_at?: Scalars["timestamptz"] | null
+  account?: Scalars['String'] | null
+  api_key?: Scalars['String'] | null
+  created_at?: Scalars['timestamptz'] | null
+  domain_names?: Scalars['String'] | null
+  id?: Scalars['Int'] | null
+  updated_at?: Scalars['timestamptz'] | null
 }
 
 /** aggregate max on columns */
@@ -1860,17 +1802,17 @@ export interface api_users_order_by {
 
 /** primary key columns input for table: api_users */
 export interface api_users_pk_columns_input {
-  id?: Scalars["Int"]
+  id?: Scalars['Int']
 }
 
 /** input type for updating data in table "api_users" */
 export interface api_users_set_input {
-  account?: Scalars["String"] | null
-  api_key?: Scalars["String"] | null
-  created_at?: Scalars["timestamptz"] | null
-  domain_names?: Scalars["String"] | null
-  id?: Scalars["Int"] | null
-  updated_at?: Scalars["timestamptz"] | null
+  account?: Scalars['String'] | null
+  api_key?: Scalars['String'] | null
+  created_at?: Scalars['timestamptz'] | null
+  domain_names?: Scalars['String'] | null
+  id?: Scalars['Int'] | null
+  updated_at?: Scalars['timestamptz'] | null
 }
 
 /** aggregate stddev on columns */
@@ -1904,12 +1846,12 @@ export interface api_users_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface api_users_stream_cursor_value_input {
-  account?: Scalars["String"] | null
-  api_key?: Scalars["String"] | null
-  created_at?: Scalars["timestamptz"] | null
-  domain_names?: Scalars["String"] | null
-  id?: Scalars["Int"] | null
-  updated_at?: Scalars["timestamptz"] | null
+  account?: Scalars['String'] | null
+  api_key?: Scalars['String'] | null
+  created_at?: Scalars['timestamptz'] | null
+  domain_names?: Scalars['String'] | null
+  id?: Scalars['Int'] | null
+  updated_at?: Scalars['timestamptz'] | null
 }
 
 /** aggregate sum on columns */
@@ -1975,7 +1917,7 @@ export interface blocks_aggregate_bool_exp {
 
 export interface blocks_aggregate_bool_exp_count {
   arguments?: blocks_select_column[] | null
-  distinct?: Scalars["Boolean"] | null
+  distinct?: Scalars['Boolean'] | null
   filter?: blocks_bool_exp | null
   predicate?: Int_comparison_exp
 }
@@ -1987,7 +1929,7 @@ export interface blocks_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: blocks_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -2054,17 +1996,17 @@ export interface blocks_bool_exp {
 
 /** input type for incrementing numeric columns in table "blocks" */
 export interface blocks_inc_input {
-  block_num?: Scalars["Int"] | null
+  block_num?: Scalars['Int'] | null
 }
 
 /** input type for inserting data into table "blocks" */
 export interface blocks_insert_input {
-  block_id?: Scalars["String"] | null
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
+  block_id?: Scalars['String'] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
   chian?: chains_obj_rel_insert_input | null
-  producer?: Scalars["String"] | null
-  timestamp?: Scalars["timestamptz"] | null
+  producer?: Scalars['String'] | null
+  timestamp?: Scalars['timestamptz'] | null
 }
 
 /** aggregate max on columns */
@@ -2136,17 +2078,17 @@ export interface blocks_order_by {
 
 /** primary key columns input for table: blocks */
 export interface blocks_pk_columns_input {
-  block_num?: Scalars["Int"]
-  chain?: Scalars["String"]
+  block_num?: Scalars['Int']
+  chain?: Scalars['String']
 }
 
 /** input type for updating data in table "blocks" */
 export interface blocks_set_input {
-  block_id?: Scalars["String"] | null
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
-  producer?: Scalars["String"] | null
-  timestamp?: Scalars["timestamptz"] | null
+  block_id?: Scalars['String'] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
+  producer?: Scalars['String'] | null
+  timestamp?: Scalars['timestamptz'] | null
 }
 
 /** aggregate stddev on columns */
@@ -2195,11 +2137,11 @@ export interface blocks_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface blocks_stream_cursor_value_input {
-  block_id?: Scalars["String"] | null
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
-  producer?: Scalars["String"] | null
-  timestamp?: Scalars["timestamptz"] | null
+  block_id?: Scalars['String'] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
+  producer?: Scalars['String'] | null
+  timestamp?: Scalars['timestamptz'] | null
 }
 
 /** aggregate sum on columns */
@@ -2266,9 +2208,9 @@ export interface chainsGenqlSelection {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -2281,9 +2223,9 @@ export interface chainsGenqlSelection {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -2299,9 +2241,9 @@ export interface chainsGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -2314,9 +2256,9 @@ export interface chainsGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -2341,7 +2283,7 @@ export interface chains_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: chains_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -2369,9 +2311,9 @@ export interface chains_bool_exp {
 /** input type for inserting data into table "chains" */
 export interface chains_insert_input {
   blocks?: blocks_arr_rel_insert_input | null
-  chain_id?: Scalars["String"] | null
-  chain_name?: Scalars["String"] | null
-  rpc_endpoint?: Scalars["String"] | null
+  chain_id?: Scalars['String'] | null
+  chain_name?: Scalars['String'] | null
+  rpc_endpoint?: Scalars['String'] | null
   table_rows?: table_rows_arr_rel_insert_input | null
 }
 
@@ -2428,14 +2370,14 @@ export interface chains_order_by {
 
 /** primary key columns input for table: chains */
 export interface chains_pk_columns_input {
-  chain_name?: Scalars["String"]
+  chain_name?: Scalars['String']
 }
 
 /** input type for updating data in table "chains" */
 export interface chains_set_input {
-  chain_id?: Scalars["String"] | null
-  chain_name?: Scalars["String"] | null
-  rpc_endpoint?: Scalars["String"] | null
+  chain_id?: Scalars['String'] | null
+  chain_name?: Scalars['String'] | null
+  rpc_endpoint?: Scalars['String'] | null
 }
 
 /** Streaming cursor of the table "chains" */
@@ -2448,9 +2390,9 @@ export interface chains_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface chains_stream_cursor_value_input {
-  chain_id?: Scalars["String"] | null
-  chain_name?: Scalars["String"] | null
-  rpc_endpoint?: Scalars["String"] | null
+  chain_id?: Scalars['String'] | null
+  chain_name?: Scalars['String'] | null
+  rpc_endpoint?: Scalars['String'] | null
 }
 
 export interface chains_updates {
@@ -2467,24 +2409,24 @@ export interface jsonb_cast_exp {
 export interface jsonb_comparison_exp {
   _cast?: jsonb_cast_exp | null
   /** is the column contained in the given json value */
-  _contained_in?: Scalars["jsonb"] | null
+  _contained_in?: Scalars['jsonb'] | null
   /** does the column contain the given json value at the top level */
-  _contains?: Scalars["jsonb"] | null
-  _eq?: Scalars["jsonb"] | null
-  _gt?: Scalars["jsonb"] | null
-  _gte?: Scalars["jsonb"] | null
+  _contains?: Scalars['jsonb'] | null
+  _eq?: Scalars['jsonb'] | null
+  _gt?: Scalars['jsonb'] | null
+  _gte?: Scalars['jsonb'] | null
   /** does the string exist as a top-level key in the column */
-  _has_key?: Scalars["String"] | null
+  _has_key?: Scalars['String'] | null
   /** do all of these strings exist as top-level keys in the column */
-  _has_keys_all?: Scalars["String"][] | null
+  _has_keys_all?: Scalars['String'][] | null
   /** do any of these strings exist as top-level keys in the column */
-  _has_keys_any?: Scalars["String"][] | null
-  _in?: Scalars["jsonb"][] | null
-  _is_null?: Scalars["Boolean"] | null
-  _lt?: Scalars["jsonb"] | null
-  _lte?: Scalars["jsonb"] | null
-  _neq?: Scalars["jsonb"] | null
-  _nin?: Scalars["jsonb"][] | null
+  _has_keys_any?: Scalars['String'][] | null
+  _in?: Scalars['jsonb'][] | null
+  _is_null?: Scalars['Boolean'] | null
+  _lt?: Scalars['jsonb'] | null
+  _lte?: Scalars['jsonb'] | null
+  _neq?: Scalars['jsonb'] | null
+  _nin?: Scalars['jsonb'][] | null
 }
 
 /** columns and relationships of "manifests" */
@@ -2511,7 +2453,7 @@ export interface manifests_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: manifests_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -2535,10 +2477,10 @@ export interface manifests_bool_exp {
 
 /** input type for inserting data into table "manifests" */
 export interface manifests_insert_input {
-  app_id?: Scalars["uuid"] | null
-  app_name?: Scalars["String"] | null
-  description?: Scalars["String"] | null
-  url?: Scalars["String"] | null
+  app_id?: Scalars['uuid'] | null
+  app_name?: Scalars['String'] | null
+  description?: Scalars['String'] | null
+  url?: Scalars['String'] | null
 }
 
 /** aggregate max on columns */
@@ -2595,15 +2537,15 @@ export interface manifests_order_by {
 
 /** primary key columns input for table: manifests */
 export interface manifests_pk_columns_input {
-  app_id?: Scalars["uuid"]
+  app_id?: Scalars['uuid']
 }
 
 /** input type for updating data in table "manifests" */
 export interface manifests_set_input {
-  app_id?: Scalars["uuid"] | null
-  app_name?: Scalars["String"] | null
-  description?: Scalars["String"] | null
-  url?: Scalars["String"] | null
+  app_id?: Scalars['uuid'] | null
+  app_name?: Scalars['String'] | null
+  description?: Scalars['String'] | null
+  url?: Scalars['String'] | null
 }
 
 /** Streaming cursor of the table "manifests" */
@@ -2616,10 +2558,10 @@ export interface manifests_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface manifests_stream_cursor_value_input {
-  app_id?: Scalars["uuid"] | null
-  app_name?: Scalars["String"] | null
-  description?: Scalars["String"] | null
-  url?: Scalars["String"] | null
+  app_id?: Scalars['uuid'] | null
+  app_name?: Scalars['String'] | null
+  description?: Scalars['String'] | null
+  url?: Scalars['String'] | null
 }
 
 export interface manifests_updates {
@@ -2634,7 +2576,7 @@ export interface mappingsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -2646,7 +2588,7 @@ export interface mappingsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -2669,7 +2611,7 @@ export interface mappings_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: mappings_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -2682,8 +2624,8 @@ export interface mappings_aggregate_fieldsGenqlSelection {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export interface mappings_append_input {
-  abi?: Scalars["jsonb"] | null
-  tables?: Scalars["jsonb"] | null
+  abi?: Scalars['jsonb'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** Boolean expression to filter rows from the table "mappings". All fields are combined with a logical 'AND'. */
@@ -2700,29 +2642,29 @@ export interface mappings_bool_exp {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export interface mappings_delete_at_path_input {
-  abi?: Scalars["String"][] | null
-  tables?: Scalars["String"][] | null
+  abi?: Scalars['String'][] | null
+  tables?: Scalars['String'][] | null
 }
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export interface mappings_delete_elem_input {
-  abi?: Scalars["Int"] | null
-  tables?: Scalars["Int"] | null
+  abi?: Scalars['Int'] | null
+  tables?: Scalars['Int'] | null
 }
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export interface mappings_delete_key_input {
-  abi?: Scalars["String"] | null
-  tables?: Scalars["String"] | null
+  abi?: Scalars['String'] | null
+  tables?: Scalars['String'] | null
 }
 
 /** input type for inserting data into table "mappings" */
 export interface mappings_insert_input {
-  abi?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  contract_type?: Scalars["String"] | null
-  tables?: Scalars["jsonb"] | null
+  abi?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  contract_type?: Scalars['String'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** aggregate max on columns */
@@ -2771,23 +2713,23 @@ export interface mappings_order_by {
 
 /** primary key columns input for table: mappings */
 export interface mappings_pk_columns_input {
-  chain?: Scalars["String"]
-  contract?: Scalars["String"]
+  chain?: Scalars['String']
+  contract?: Scalars['String']
 }
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export interface mappings_prepend_input {
-  abi?: Scalars["jsonb"] | null
-  tables?: Scalars["jsonb"] | null
+  abi?: Scalars['jsonb'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** input type for updating data in table "mappings" */
 export interface mappings_set_input {
-  abi?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  contract_type?: Scalars["String"] | null
-  tables?: Scalars["jsonb"] | null
+  abi?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  contract_type?: Scalars['String'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** Streaming cursor of the table "mappings" */
@@ -2800,11 +2742,11 @@ export interface mappings_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface mappings_stream_cursor_value_input {
-  abi?: Scalars["jsonb"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  contract_type?: Scalars["String"] | null
-  tables?: Scalars["jsonb"] | null
+  abi?: Scalars['jsonb'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  contract_type?: Scalars['String'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 export interface mappings_updates {
@@ -2834,7 +2776,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "actions" */
   delete_actions_by_pk?: actionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; global_sequence: Scalars["String"] }
+    __args: { chain: Scalars['String']; global_sequence: Scalars['String'] }
   }
   /** delete data from the table: "api_users" */
   delete_api_users?: api_users_mutation_responseGenqlSelection & {
@@ -2845,7 +2787,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "api_users" */
   delete_api_users_by_pk?: api_usersGenqlSelection & {
-    __args: { id: Scalars["Int"] }
+    __args: { id: Scalars['Int'] }
   }
   /** delete data from the table: "blocks" */
   delete_blocks?: blocks_mutation_responseGenqlSelection & {
@@ -2856,7 +2798,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "blocks" */
   delete_blocks_by_pk?: blocksGenqlSelection & {
-    __args: { block_num: Scalars["Int"]; chain: Scalars["String"] }
+    __args: { block_num: Scalars['Int']; chain: Scalars['String'] }
   }
   /** delete data from the table: "chains" */
   delete_chains?: chains_mutation_responseGenqlSelection & {
@@ -2867,7 +2809,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "chains" */
   delete_chains_by_pk?: chainsGenqlSelection & {
-    __args: { chain_name: Scalars["String"] }
+    __args: { chain_name: Scalars['String'] }
   }
   /** delete data from the table: "manifests" */
   delete_manifests?: manifests_mutation_responseGenqlSelection & {
@@ -2878,7 +2820,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "manifests" */
   delete_manifests_by_pk?: manifestsGenqlSelection & {
-    __args: { app_id: Scalars["uuid"] }
+    __args: { app_id: Scalars['uuid'] }
   }
   /** delete data from the table: "mappings" */
   delete_mappings?: mappings_mutation_responseGenqlSelection & {
@@ -2889,7 +2831,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "mappings" */
   delete_mappings_by_pk?: mappingsGenqlSelection & {
-    __args: { chain: Scalars["String"]; contract: Scalars["String"] }
+    __args: { chain: Scalars['String']; contract: Scalars['String'] }
   }
   /** delete data from the table: "table_rows" */
   delete_table_rows?: table_rows_mutation_responseGenqlSelection & {
@@ -2901,11 +2843,11 @@ export interface mutation_rootGenqlSelection {
   /** delete single row from the table: "table_rows" */
   delete_table_rows_by_pk?: table_rowsGenqlSelection & {
     __args: {
-      chain: Scalars["String"]
-      contract: Scalars["String"]
-      primary_key: Scalars["String"]
-      scope: Scalars["String"]
-      table: Scalars["String"]
+      chain: Scalars['String']
+      contract: Scalars['String']
+      primary_key: Scalars['String']
+      scope: Scalars['String']
+      table: Scalars['String']
     }
   }
   /** delete data from the table: "transactions" */
@@ -2917,7 +2859,7 @@ export interface mutation_rootGenqlSelection {
   }
   /** delete single row from the table: "transactions" */
   delete_transactions_by_pk?: transactionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; transaction_id: Scalars["String"] }
+    __args: { chain: Scalars['String']; transaction_id: Scalars['String'] }
   }
   /** delete data from the table: "whitelists" */
   delete_whitelists?: whitelists_mutation_responseGenqlSelection & {
@@ -2929,9 +2871,9 @@ export interface mutation_rootGenqlSelection {
   /** delete single row from the table: "whitelists" */
   delete_whitelists_by_pk?: whitelistsGenqlSelection & {
     __args: {
-      app_id: Scalars["uuid"]
-      chain: Scalars["String"]
-      contract: Scalars["String"]
+      app_id: Scalars['uuid']
+      chain: Scalars['String']
+      contract: Scalars['String']
     }
   }
   /** insert data into the table: "actions" */
@@ -3423,9 +3365,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: actions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: actions_order_by[] | null
       /** filter the rows returned */
@@ -3438,9 +3380,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: actions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: actions_order_by[] | null
       /** filter the rows returned */
@@ -3449,7 +3391,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "actions" using primary key columns */
   actions_by_pk?: actionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; global_sequence: Scalars["String"] }
+    __args: { chain: Scalars['String']; global_sequence: Scalars['String'] }
   }
   /** fetch data from the table: "api_users" */
   api_users?: api_usersGenqlSelection & {
@@ -3457,9 +3399,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: api_users_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: api_users_order_by[] | null
       /** filter the rows returned */
@@ -3472,9 +3414,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: api_users_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: api_users_order_by[] | null
       /** filter the rows returned */
@@ -3482,16 +3424,16 @@ export interface query_rootGenqlSelection {
     }
   }
   /** fetch data from the table: "api_users" using primary key columns */
-  api_users_by_pk?: api_usersGenqlSelection & { __args: { id: Scalars["Int"] } }
+  api_users_by_pk?: api_usersGenqlSelection & { __args: { id: Scalars['Int'] } }
   /** An array relationship */
   blocks?: blocksGenqlSelection & {
     __args?: {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -3504,9 +3446,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -3515,7 +3457,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "blocks" using primary key columns */
   blocks_by_pk?: blocksGenqlSelection & {
-    __args: { block_num: Scalars["Int"]; chain: Scalars["String"] }
+    __args: { block_num: Scalars['Int']; chain: Scalars['String'] }
   }
   /** fetch data from the table: "chains" */
   chains?: chainsGenqlSelection & {
@@ -3523,9 +3465,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: chains_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: chains_order_by[] | null
       /** filter the rows returned */
@@ -3538,9 +3480,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: chains_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: chains_order_by[] | null
       /** filter the rows returned */
@@ -3549,7 +3491,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "chains" using primary key columns */
   chains_by_pk?: chainsGenqlSelection & {
-    __args: { chain_name: Scalars["String"] }
+    __args: { chain_name: Scalars['String'] }
   }
   /** fetch data from the table: "manifests" */
   manifests?: manifestsGenqlSelection & {
@@ -3557,9 +3499,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: manifests_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: manifests_order_by[] | null
       /** filter the rows returned */
@@ -3572,9 +3514,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: manifests_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: manifests_order_by[] | null
       /** filter the rows returned */
@@ -3583,7 +3525,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "manifests" using primary key columns */
   manifests_by_pk?: manifestsGenqlSelection & {
-    __args: { app_id: Scalars["uuid"] }
+    __args: { app_id: Scalars['uuid'] }
   }
   /** fetch data from the table: "mappings" */
   mappings?: mappingsGenqlSelection & {
@@ -3591,9 +3533,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: mappings_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: mappings_order_by[] | null
       /** filter the rows returned */
@@ -3606,9 +3548,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: mappings_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: mappings_order_by[] | null
       /** filter the rows returned */
@@ -3617,7 +3559,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "mappings" using primary key columns */
   mappings_by_pk?: mappingsGenqlSelection & {
-    __args: { chain: Scalars["String"]; contract: Scalars["String"] }
+    __args: { chain: Scalars['String']; contract: Scalars['String'] }
   }
   /** fetch data from the table: "table_rows" */
   table_rows?: table_rowsGenqlSelection & {
@@ -3625,9 +3567,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -3640,9 +3582,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -3652,11 +3594,11 @@ export interface query_rootGenqlSelection {
   /** fetch data from the table: "table_rows" using primary key columns */
   table_rows_by_pk?: table_rowsGenqlSelection & {
     __args: {
-      chain: Scalars["String"]
-      contract: Scalars["String"]
-      primary_key: Scalars["String"]
-      scope: Scalars["String"]
-      table: Scalars["String"]
+      chain: Scalars['String']
+      contract: Scalars['String']
+      primary_key: Scalars['String']
+      scope: Scalars['String']
+      table: Scalars['String']
     }
   }
   /** fetch data from the table: "transactions" */
@@ -3665,9 +3607,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: transactions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: transactions_order_by[] | null
       /** filter the rows returned */
@@ -3680,9 +3622,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: transactions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: transactions_order_by[] | null
       /** filter the rows returned */
@@ -3691,7 +3633,7 @@ export interface query_rootGenqlSelection {
   }
   /** fetch data from the table: "transactions" using primary key columns */
   transactions_by_pk?: transactionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; transaction_id: Scalars["String"] }
+    __args: { chain: Scalars['String']; transaction_id: Scalars['String'] }
   }
   /** fetch data from the table: "whitelists" */
   whitelists?: whitelistsGenqlSelection & {
@@ -3699,9 +3641,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: whitelists_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: whitelists_order_by[] | null
       /** filter the rows returned */
@@ -3714,9 +3656,9 @@ export interface query_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: whitelists_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: whitelists_order_by[] | null
       /** filter the rows returned */
@@ -3726,9 +3668,9 @@ export interface query_rootGenqlSelection {
   /** fetch data from the table: "whitelists" using primary key columns */
   whitelists_by_pk?: whitelistsGenqlSelection & {
     __args: {
-      app_id: Scalars["uuid"]
-      chain: Scalars["String"]
-      contract: Scalars["String"]
+      app_id: Scalars['uuid']
+      chain: Scalars['String']
+      contract: Scalars['String']
     }
   }
   __typename?: boolean | number
@@ -3742,9 +3684,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: actions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: actions_order_by[] | null
       /** filter the rows returned */
@@ -3757,9 +3699,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: actions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: actions_order_by[] | null
       /** filter the rows returned */
@@ -3768,13 +3710,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "actions" using primary key columns */
   actions_by_pk?: actionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; global_sequence: Scalars["String"] }
+    __args: { chain: Scalars['String']; global_sequence: Scalars['String'] }
   }
   /** fetch data from the table in a streaming manner: "actions" */
   actions_stream?: actionsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (actions_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -3787,9 +3729,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: api_users_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: api_users_order_by[] | null
       /** filter the rows returned */
@@ -3802,9 +3744,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: api_users_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: api_users_order_by[] | null
       /** filter the rows returned */
@@ -3812,12 +3754,12 @@ export interface subscription_rootGenqlSelection {
     }
   }
   /** fetch data from the table: "api_users" using primary key columns */
-  api_users_by_pk?: api_usersGenqlSelection & { __args: { id: Scalars["Int"] } }
+  api_users_by_pk?: api_usersGenqlSelection & { __args: { id: Scalars['Int'] } }
   /** fetch data from the table in a streaming manner: "api_users" */
   api_users_stream?: api_usersGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (api_users_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -3830,9 +3772,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -3845,9 +3787,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: blocks_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: blocks_order_by[] | null
       /** filter the rows returned */
@@ -3856,13 +3798,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "blocks" using primary key columns */
   blocks_by_pk?: blocksGenqlSelection & {
-    __args: { block_num: Scalars["Int"]; chain: Scalars["String"] }
+    __args: { block_num: Scalars['Int']; chain: Scalars['String'] }
   }
   /** fetch data from the table in a streaming manner: "blocks" */
   blocks_stream?: blocksGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (blocks_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -3875,9 +3817,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: chains_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: chains_order_by[] | null
       /** filter the rows returned */
@@ -3890,9 +3832,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: chains_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: chains_order_by[] | null
       /** filter the rows returned */
@@ -3901,13 +3843,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "chains" using primary key columns */
   chains_by_pk?: chainsGenqlSelection & {
-    __args: { chain_name: Scalars["String"] }
+    __args: { chain_name: Scalars['String'] }
   }
   /** fetch data from the table in a streaming manner: "chains" */
   chains_stream?: chainsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (chains_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -3920,9 +3862,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: manifests_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: manifests_order_by[] | null
       /** filter the rows returned */
@@ -3935,9 +3877,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: manifests_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: manifests_order_by[] | null
       /** filter the rows returned */
@@ -3946,13 +3888,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "manifests" using primary key columns */
   manifests_by_pk?: manifestsGenqlSelection & {
-    __args: { app_id: Scalars["uuid"] }
+    __args: { app_id: Scalars['uuid'] }
   }
   /** fetch data from the table in a streaming manner: "manifests" */
   manifests_stream?: manifestsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (manifests_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -3965,9 +3907,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: mappings_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: mappings_order_by[] | null
       /** filter the rows returned */
@@ -3980,9 +3922,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: mappings_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: mappings_order_by[] | null
       /** filter the rows returned */
@@ -3991,13 +3933,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "mappings" using primary key columns */
   mappings_by_pk?: mappingsGenqlSelection & {
-    __args: { chain: Scalars["String"]; contract: Scalars["String"] }
+    __args: { chain: Scalars['String']; contract: Scalars['String'] }
   }
   /** fetch data from the table in a streaming manner: "mappings" */
   mappings_stream?: mappingsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (mappings_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -4010,9 +3952,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -4025,9 +3967,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: table_rows_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: table_rows_order_by[] | null
       /** filter the rows returned */
@@ -4037,18 +3979,18 @@ export interface subscription_rootGenqlSelection {
   /** fetch data from the table: "table_rows" using primary key columns */
   table_rows_by_pk?: table_rowsGenqlSelection & {
     __args: {
-      chain: Scalars["String"]
-      contract: Scalars["String"]
-      primary_key: Scalars["String"]
-      scope: Scalars["String"]
-      table: Scalars["String"]
+      chain: Scalars['String']
+      contract: Scalars['String']
+      primary_key: Scalars['String']
+      scope: Scalars['String']
+      table: Scalars['String']
     }
   }
   /** fetch data from the table in a streaming manner: "table_rows" */
   table_rows_stream?: table_rowsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (table_rows_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -4061,9 +4003,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: transactions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: transactions_order_by[] | null
       /** filter the rows returned */
@@ -4076,9 +4018,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: transactions_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: transactions_order_by[] | null
       /** filter the rows returned */
@@ -4087,13 +4029,13 @@ export interface subscription_rootGenqlSelection {
   }
   /** fetch data from the table: "transactions" using primary key columns */
   transactions_by_pk?: transactionsGenqlSelection & {
-    __args: { chain: Scalars["String"]; transaction_id: Scalars["String"] }
+    __args: { chain: Scalars['String']; transaction_id: Scalars['String'] }
   }
   /** fetch data from the table in a streaming manner: "transactions" */
   transactions_stream?: transactionsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (transactions_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -4106,9 +4048,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: whitelists_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: whitelists_order_by[] | null
       /** filter the rows returned */
@@ -4121,9 +4063,9 @@ export interface subscription_rootGenqlSelection {
       /** distinct select on columns */
       distinct_on?: whitelists_select_column[] | null
       /** limit the number of rows returned */
-      limit?: Scalars["Int"] | null
+      limit?: Scalars['Int'] | null
       /** skip the first n rows. Use only with order_by */
-      offset?: Scalars["Int"] | null
+      offset?: Scalars['Int'] | null
       /** sort the rows by one or more columns */
       order_by?: whitelists_order_by[] | null
       /** filter the rows returned */
@@ -4133,16 +4075,16 @@ export interface subscription_rootGenqlSelection {
   /** fetch data from the table: "whitelists" using primary key columns */
   whitelists_by_pk?: whitelistsGenqlSelection & {
     __args: {
-      app_id: Scalars["uuid"]
-      chain: Scalars["String"]
-      contract: Scalars["String"]
+      app_id: Scalars['uuid']
+      chain: Scalars['String']
+      contract: Scalars['String']
     }
   }
   /** fetch data from the table in a streaming manner: "whitelists" */
   whitelists_stream?: whitelistsGenqlSelection & {
     __args: {
       /** maximum number of rows returned in a single batch */
-      batch_size: Scalars["Int"]
+      batch_size: Scalars['Int']
       /** cursor to stream the results returned by the query */
       cursor: (whitelists_stream_cursor_input | null)[]
       /** filter the rows returned */
@@ -4161,7 +4103,7 @@ export interface table_rowsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -4187,7 +4129,7 @@ export interface table_rows_aggregate_bool_exp {
 
 export interface table_rows_aggregate_bool_exp_count {
   arguments?: table_rows_select_column[] | null
-  distinct?: Scalars["Boolean"] | null
+  distinct?: Scalars['Boolean'] | null
   filter?: table_rows_bool_exp | null
   predicate?: Int_comparison_exp
 }
@@ -4198,7 +4140,7 @@ export interface table_rows_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: table_rows_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -4218,7 +4160,7 @@ export interface table_rows_aggregate_order_by {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export interface table_rows_append_input {
-  data?: Scalars["jsonb"] | null
+  data?: Scalars['jsonb'] | null
 }
 
 /** input type for inserting array relation for remote table "table_rows" */
@@ -4243,27 +4185,27 @@ export interface table_rows_bool_exp {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export interface table_rows_delete_at_path_input {
-  data?: Scalars["String"][] | null
+  data?: Scalars['String'][] | null
 }
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export interface table_rows_delete_elem_input {
-  data?: Scalars["Int"] | null
+  data?: Scalars['Int'] | null
 }
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export interface table_rows_delete_key_input {
-  data?: Scalars["String"] | null
+  data?: Scalars['String'] | null
 }
 
 /** input type for inserting data into table "table_rows" */
 export interface table_rows_insert_input {
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  primary_key?: Scalars["String"] | null
-  scope?: Scalars["String"] | null
-  table?: Scalars["String"] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  primary_key?: Scalars['String'] | null
+  scope?: Scalars['String'] | null
+  table?: Scalars['String'] | null
 }
 
 /** aggregate max on columns */
@@ -4335,26 +4277,26 @@ export interface table_rows_order_by {
 
 /** primary key columns input for table: table_rows */
 export interface table_rows_pk_columns_input {
-  chain?: Scalars["String"]
-  contract?: Scalars["String"]
-  primary_key?: Scalars["String"]
-  scope?: Scalars["String"]
-  table?: Scalars["String"]
+  chain?: Scalars['String']
+  contract?: Scalars['String']
+  primary_key?: Scalars['String']
+  scope?: Scalars['String']
+  table?: Scalars['String']
 }
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export interface table_rows_prepend_input {
-  data?: Scalars["jsonb"] | null
+  data?: Scalars['jsonb'] | null
 }
 
 /** input type for updating data in table "table_rows" */
 export interface table_rows_set_input {
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  primary_key?: Scalars["String"] | null
-  scope?: Scalars["String"] | null
-  table?: Scalars["String"] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  primary_key?: Scalars['String'] | null
+  scope?: Scalars['String'] | null
+  table?: Scalars['String'] | null
 }
 
 /** Streaming cursor of the table "table_rows" */
@@ -4367,12 +4309,12 @@ export interface table_rows_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface table_rows_stream_cursor_value_input {
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  data?: Scalars["jsonb"] | null
-  primary_key?: Scalars["String"] | null
-  scope?: Scalars["String"] | null
-  table?: Scalars["String"] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  data?: Scalars['jsonb'] | null
+  primary_key?: Scalars['String'] | null
+  scope?: Scalars['String'] | null
+  table?: Scalars['String'] | null
 }
 
 export interface table_rows_updates {
@@ -4393,15 +4335,15 @@ export interface table_rows_updates {
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export interface timestamptz_comparison_exp {
-  _eq?: Scalars["timestamptz"] | null
-  _gt?: Scalars["timestamptz"] | null
-  _gte?: Scalars["timestamptz"] | null
-  _in?: Scalars["timestamptz"][] | null
-  _is_null?: Scalars["Boolean"] | null
-  _lt?: Scalars["timestamptz"] | null
-  _lte?: Scalars["timestamptz"] | null
-  _neq?: Scalars["timestamptz"] | null
-  _nin?: Scalars["timestamptz"][] | null
+  _eq?: Scalars['timestamptz'] | null
+  _gt?: Scalars['timestamptz'] | null
+  _gte?: Scalars['timestamptz'] | null
+  _in?: Scalars['timestamptz'][] | null
+  _is_null?: Scalars['Boolean'] | null
+  _lt?: Scalars['timestamptz'] | null
+  _lte?: Scalars['timestamptz'] | null
+  _neq?: Scalars['timestamptz'] | null
+  _nin?: Scalars['timestamptz'][] | null
 }
 
 /** columns and relationships of "transactions" */
@@ -4431,7 +4373,7 @@ export interface transactions_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: transactions_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -4474,20 +4416,20 @@ export interface transactions_bool_exp {
 
 /** input type for incrementing numeric columns in table "transactions" */
 export interface transactions_inc_input {
-  block_num?: Scalars["Int"] | null
-  cpu_usage_us?: Scalars["Int"] | null
-  net_usage?: Scalars["Int"] | null
-  net_usage_words?: Scalars["Int"] | null
+  block_num?: Scalars['Int'] | null
+  cpu_usage_us?: Scalars['Int'] | null
+  net_usage?: Scalars['Int'] | null
+  net_usage_words?: Scalars['Int'] | null
 }
 
 /** input type for inserting data into table "transactions" */
 export interface transactions_insert_input {
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
-  cpu_usage_us?: Scalars["Int"] | null
-  net_usage?: Scalars["Int"] | null
-  net_usage_words?: Scalars["Int"] | null
-  transaction_id?: Scalars["String"] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
+  cpu_usage_us?: Scalars['Int'] | null
+  net_usage?: Scalars['Int'] | null
+  net_usage_words?: Scalars['Int'] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate max on columns */
@@ -4550,18 +4492,18 @@ export interface transactions_order_by {
 
 /** primary key columns input for table: transactions */
 export interface transactions_pk_columns_input {
-  chain?: Scalars["String"]
-  transaction_id?: Scalars["String"]
+  chain?: Scalars['String']
+  transaction_id?: Scalars['String']
 }
 
 /** input type for updating data in table "transactions" */
 export interface transactions_set_input {
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
-  cpu_usage_us?: Scalars["Int"] | null
-  net_usage?: Scalars["Int"] | null
-  net_usage_words?: Scalars["Int"] | null
-  transaction_id?: Scalars["String"] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
+  cpu_usage_us?: Scalars['Int'] | null
+  net_usage?: Scalars['Int'] | null
+  net_usage_words?: Scalars['Int'] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate stddev on columns */
@@ -4604,12 +4546,12 @@ export interface transactions_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface transactions_stream_cursor_value_input {
-  block_num?: Scalars["Int"] | null
-  chain?: Scalars["String"] | null
-  cpu_usage_us?: Scalars["Int"] | null
-  net_usage?: Scalars["Int"] | null
-  net_usage_words?: Scalars["Int"] | null
-  transaction_id?: Scalars["String"] | null
+  block_num?: Scalars['Int'] | null
+  chain?: Scalars['String'] | null
+  cpu_usage_us?: Scalars['Int'] | null
+  net_usage?: Scalars['Int'] | null
+  net_usage_words?: Scalars['Int'] | null
+  transaction_id?: Scalars['String'] | null
 }
 
 /** aggregate sum on columns */
@@ -4662,15 +4604,15 @@ export interface transactions_variance_fieldsGenqlSelection {
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export interface uuid_comparison_exp {
-  _eq?: Scalars["uuid"] | null
-  _gt?: Scalars["uuid"] | null
-  _gte?: Scalars["uuid"] | null
-  _in?: Scalars["uuid"][] | null
-  _is_null?: Scalars["Boolean"] | null
-  _lt?: Scalars["uuid"] | null
-  _lte?: Scalars["uuid"] | null
-  _neq?: Scalars["uuid"] | null
-  _nin?: Scalars["uuid"][] | null
+  _eq?: Scalars['uuid'] | null
+  _gt?: Scalars['uuid'] | null
+  _gte?: Scalars['uuid'] | null
+  _in?: Scalars['uuid'][] | null
+  _is_null?: Scalars['Boolean'] | null
+  _lt?: Scalars['uuid'] | null
+  _lte?: Scalars['uuid'] | null
+  _neq?: Scalars['uuid'] | null
+  _nin?: Scalars['uuid'][] | null
 }
 
 /** columns and relationships of "whitelists" */
@@ -4679,7 +4621,7 @@ export interface whitelistsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -4695,7 +4637,7 @@ export interface whitelistsGenqlSelection {
     | {
         __args: {
           /** JSON select path */
-          path?: Scalars["String"] | null
+          path?: Scalars['String'] | null
         }
       }
     | boolean
@@ -4719,7 +4661,7 @@ export interface whitelists_aggregate_fieldsGenqlSelection {
     | {
         __args: {
           columns?: whitelists_select_column[] | null
-          distinct?: Scalars["Boolean"] | null
+          distinct?: Scalars['Boolean'] | null
         }
       }
     | boolean
@@ -4739,8 +4681,8 @@ export interface whitelists_aggregate_fieldsGenqlSelection {
 
 /** append existing jsonb value of filtered columns with new jsonb value */
 export interface whitelists_append_input {
-  actions?: Scalars["jsonb"] | null
-  tables?: Scalars["jsonb"] | null
+  actions?: Scalars['jsonb'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** aggregate avg on columns */
@@ -4767,37 +4709,37 @@ export interface whitelists_bool_exp {
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export interface whitelists_delete_at_path_input {
-  actions?: Scalars["String"][] | null
-  tables?: Scalars["String"][] | null
+  actions?: Scalars['String'][] | null
+  tables?: Scalars['String'][] | null
 }
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export interface whitelists_delete_elem_input {
-  actions?: Scalars["Int"] | null
-  tables?: Scalars["Int"] | null
+  actions?: Scalars['Int'] | null
+  tables?: Scalars['Int'] | null
 }
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export interface whitelists_delete_key_input {
-  actions?: Scalars["String"] | null
-  tables?: Scalars["String"] | null
+  actions?: Scalars['String'] | null
+  tables?: Scalars['String'] | null
 }
 
 /** input type for incrementing numeric columns in table "whitelists" */
 export interface whitelists_inc_input {
-  start_block?: Scalars["Int"] | null
+  start_block?: Scalars['Int'] | null
 }
 
 /** input type for inserting data into table "whitelists" */
 export interface whitelists_insert_input {
-  actions?: Scalars["jsonb"] | null
-  app_id?: Scalars["uuid"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  history_ready?: Scalars["Boolean"] | null
+  actions?: Scalars['jsonb'] | null
+  app_id?: Scalars['uuid'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  history_ready?: Scalars['Boolean'] | null
   manifest?: manifests_obj_rel_insert_input | null
-  start_block?: Scalars["Int"] | null
-  tables?: Scalars["jsonb"] | null
+  start_block?: Scalars['Int'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** aggregate max on columns */
@@ -4851,26 +4793,26 @@ export interface whitelists_order_by {
 
 /** primary key columns input for table: whitelists */
 export interface whitelists_pk_columns_input {
-  app_id?: Scalars["uuid"]
-  chain?: Scalars["String"]
-  contract?: Scalars["String"]
+  app_id?: Scalars['uuid']
+  chain?: Scalars['String']
+  contract?: Scalars['String']
 }
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export interface whitelists_prepend_input {
-  actions?: Scalars["jsonb"] | null
-  tables?: Scalars["jsonb"] | null
+  actions?: Scalars['jsonb'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** input type for updating data in table "whitelists" */
 export interface whitelists_set_input {
-  actions?: Scalars["jsonb"] | null
-  app_id?: Scalars["uuid"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  history_ready?: Scalars["Boolean"] | null
-  start_block?: Scalars["Int"] | null
-  tables?: Scalars["jsonb"] | null
+  actions?: Scalars['jsonb'] | null
+  app_id?: Scalars['uuid'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  history_ready?: Scalars['Boolean'] | null
+  start_block?: Scalars['Int'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** aggregate stddev on columns */
@@ -4904,13 +4846,13 @@ export interface whitelists_stream_cursor_input {
 
 /** Initial value of the column from where the streaming should start */
 export interface whitelists_stream_cursor_value_input {
-  actions?: Scalars["jsonb"] | null
-  app_id?: Scalars["uuid"] | null
-  chain?: Scalars["String"] | null
-  contract?: Scalars["String"] | null
-  history_ready?: Scalars["Boolean"] | null
-  start_block?: Scalars["Int"] | null
-  tables?: Scalars["jsonb"] | null
+  actions?: Scalars['jsonb'] | null
+  app_id?: Scalars['uuid'] | null
+  chain?: Scalars['String'] | null
+  contract?: Scalars['String'] | null
+  history_ready?: Scalars['Boolean'] | null
+  start_block?: Scalars['Int'] | null
+  tables?: Scalars['jsonb'] | null
 }
 
 /** aggregate sum on columns */
@@ -4963,1195 +4905,836 @@ export type QueryGenqlSelection = query_rootGenqlSelection
 export type MutationGenqlSelection = mutation_rootGenqlSelection
 export type SubscriptionGenqlSelection = subscription_rootGenqlSelection
 
-const actions_possibleTypes: string[] = ["actions"]
-export const isactions = (
-  obj?: { __typename?: any } | null
-): obj is actions => {
+const actions_possibleTypes: string[] = ['actions']
+export const isactions = (obj?: { __typename?: any } | null): obj is actions => {
   if (!obj?.__typename) throw new Error('__typename is missing in "isactions"')
   return actions_possibleTypes.includes(obj.__typename)
 }
 
-const actions_aggregate_possibleTypes: string[] = ["actions_aggregate"]
-export const isactions_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is actions_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_aggregate"')
+const actions_aggregate_possibleTypes: string[] = ['actions_aggregate']
+export const isactions_aggregate = (obj?: { __typename?: any } | null): obj is actions_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_aggregate"')
   return actions_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const actions_aggregate_fields_possibleTypes: string[] = [
-  "actions_aggregate_fields",
-]
-export const isactions_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_aggregate_fields"')
+const actions_aggregate_fields_possibleTypes: string[] = ['actions_aggregate_fields']
+export const isactions_aggregate_fields = (obj?: { __typename?: any } | null): obj is actions_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_aggregate_fields"')
   return actions_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_avg_fields_possibleTypes: string[] = ["actions_avg_fields"]
-export const isactions_avg_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_avg_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_avg_fields"')
+const actions_avg_fields_possibleTypes: string[] = ['actions_avg_fields']
+export const isactions_avg_fields = (obj?: { __typename?: any } | null): obj is actions_avg_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_avg_fields"')
   return actions_avg_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_max_fields_possibleTypes: string[] = ["actions_max_fields"]
-export const isactions_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_max_fields"')
+const actions_max_fields_possibleTypes: string[] = ['actions_max_fields']
+export const isactions_max_fields = (obj?: { __typename?: any } | null): obj is actions_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_max_fields"')
   return actions_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_min_fields_possibleTypes: string[] = ["actions_min_fields"]
-export const isactions_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_min_fields"')
+const actions_min_fields_possibleTypes: string[] = ['actions_min_fields']
+export const isactions_min_fields = (obj?: { __typename?: any } | null): obj is actions_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_min_fields"')
   return actions_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_mutation_response_possibleTypes: string[] = [
-  "actions_mutation_response",
-]
-export const isactions_mutation_response = (
-  obj?: { __typename?: any } | null
-): obj is actions_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_mutation_response"')
+const actions_mutation_response_possibleTypes: string[] = ['actions_mutation_response']
+export const isactions_mutation_response = (obj?: { __typename?: any } | null): obj is actions_mutation_response => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_mutation_response"')
   return actions_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const actions_stddev_fields_possibleTypes: string[] = ["actions_stddev_fields"]
-export const isactions_stddev_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_stddev_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_stddev_fields"')
+const actions_stddev_fields_possibleTypes: string[] = ['actions_stddev_fields']
+export const isactions_stddev_fields = (obj?: { __typename?: any } | null): obj is actions_stddev_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_stddev_fields"')
   return actions_stddev_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_stddev_pop_fields_possibleTypes: string[] = [
-  "actions_stddev_pop_fields",
-]
-export const isactions_stddev_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_stddev_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_stddev_pop_fields"')
+const actions_stddev_pop_fields_possibleTypes: string[] = ['actions_stddev_pop_fields']
+export const isactions_stddev_pop_fields = (obj?: { __typename?: any } | null): obj is actions_stddev_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_stddev_pop_fields"')
   return actions_stddev_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_stddev_samp_fields_possibleTypes: string[] = [
-  "actions_stddev_samp_fields",
-]
-export const isactions_stddev_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_stddev_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_stddev_samp_fields"')
+const actions_stddev_samp_fields_possibleTypes: string[] = ['actions_stddev_samp_fields']
+export const isactions_stddev_samp_fields = (obj?: { __typename?: any } | null): obj is actions_stddev_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_stddev_samp_fields"')
   return actions_stddev_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_sum_fields_possibleTypes: string[] = ["actions_sum_fields"]
-export const isactions_sum_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_sum_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_sum_fields"')
+const actions_sum_fields_possibleTypes: string[] = ['actions_sum_fields']
+export const isactions_sum_fields = (obj?: { __typename?: any } | null): obj is actions_sum_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_sum_fields"')
   return actions_sum_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_var_pop_fields_possibleTypes: string[] = [
-  "actions_var_pop_fields",
-]
-export const isactions_var_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_var_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_var_pop_fields"')
+const actions_var_pop_fields_possibleTypes: string[] = ['actions_var_pop_fields']
+export const isactions_var_pop_fields = (obj?: { __typename?: any } | null): obj is actions_var_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_var_pop_fields"')
   return actions_var_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_var_samp_fields_possibleTypes: string[] = [
-  "actions_var_samp_fields",
-]
-export const isactions_var_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_var_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_var_samp_fields"')
+const actions_var_samp_fields_possibleTypes: string[] = ['actions_var_samp_fields']
+export const isactions_var_samp_fields = (obj?: { __typename?: any } | null): obj is actions_var_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_var_samp_fields"')
   return actions_var_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const actions_variance_fields_possibleTypes: string[] = [
-  "actions_variance_fields",
-]
-export const isactions_variance_fields = (
-  obj?: { __typename?: any } | null
-): obj is actions_variance_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isactions_variance_fields"')
+const actions_variance_fields_possibleTypes: string[] = ['actions_variance_fields']
+export const isactions_variance_fields = (obj?: { __typename?: any } | null): obj is actions_variance_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isactions_variance_fields"')
   return actions_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_possibleTypes: string[] = ["api_users"]
-export const isapi_users = (
-  obj?: { __typename?: any } | null
-): obj is api_users => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users"')
+const api_users_possibleTypes: string[] = ['api_users']
+export const isapi_users = (obj?: { __typename?: any } | null): obj is api_users => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users"')
   return api_users_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_aggregate_possibleTypes: string[] = ["api_users_aggregate"]
-export const isapi_users_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is api_users_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_aggregate"')
+const api_users_aggregate_possibleTypes: string[] = ['api_users_aggregate']
+export const isapi_users_aggregate = (obj?: { __typename?: any } | null): obj is api_users_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_aggregate"')
   return api_users_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_aggregate_fields_possibleTypes: string[] = [
-  "api_users_aggregate_fields",
-]
-export const isapi_users_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_aggregate_fields"')
+const api_users_aggregate_fields_possibleTypes: string[] = ['api_users_aggregate_fields']
+export const isapi_users_aggregate_fields = (obj?: { __typename?: any } | null): obj is api_users_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_aggregate_fields"')
   return api_users_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_avg_fields_possibleTypes: string[] = ["api_users_avg_fields"]
-export const isapi_users_avg_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_avg_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_avg_fields"')
+const api_users_avg_fields_possibleTypes: string[] = ['api_users_avg_fields']
+export const isapi_users_avg_fields = (obj?: { __typename?: any } | null): obj is api_users_avg_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_avg_fields"')
   return api_users_avg_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_max_fields_possibleTypes: string[] = ["api_users_max_fields"]
-export const isapi_users_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_max_fields"')
+const api_users_max_fields_possibleTypes: string[] = ['api_users_max_fields']
+export const isapi_users_max_fields = (obj?: { __typename?: any } | null): obj is api_users_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_max_fields"')
   return api_users_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_min_fields_possibleTypes: string[] = ["api_users_min_fields"]
-export const isapi_users_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_min_fields"')
+const api_users_min_fields_possibleTypes: string[] = ['api_users_min_fields']
+export const isapi_users_min_fields = (obj?: { __typename?: any } | null): obj is api_users_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_min_fields"')
   return api_users_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_mutation_response_possibleTypes: string[] = [
-  "api_users_mutation_response",
-]
+const api_users_mutation_response_possibleTypes: string[] = ['api_users_mutation_response']
 export const isapi_users_mutation_response = (
   obj?: { __typename?: any } | null
 ): obj is api_users_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_mutation_response"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_mutation_response"')
   return api_users_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_stddev_fields_possibleTypes: string[] = [
-  "api_users_stddev_fields",
-]
-export const isapi_users_stddev_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_stddev_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_stddev_fields"')
+const api_users_stddev_fields_possibleTypes: string[] = ['api_users_stddev_fields']
+export const isapi_users_stddev_fields = (obj?: { __typename?: any } | null): obj is api_users_stddev_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_stddev_fields"')
   return api_users_stddev_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_stddev_pop_fields_possibleTypes: string[] = [
-  "api_users_stddev_pop_fields",
-]
+const api_users_stddev_pop_fields_possibleTypes: string[] = ['api_users_stddev_pop_fields']
 export const isapi_users_stddev_pop_fields = (
   obj?: { __typename?: any } | null
 ): obj is api_users_stddev_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_stddev_pop_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_stddev_pop_fields"')
   return api_users_stddev_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_stddev_samp_fields_possibleTypes: string[] = [
-  "api_users_stddev_samp_fields",
-]
+const api_users_stddev_samp_fields_possibleTypes: string[] = ['api_users_stddev_samp_fields']
 export const isapi_users_stddev_samp_fields = (
   obj?: { __typename?: any } | null
 ): obj is api_users_stddev_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_stddev_samp_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_stddev_samp_fields"')
   return api_users_stddev_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_sum_fields_possibleTypes: string[] = ["api_users_sum_fields"]
-export const isapi_users_sum_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_sum_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_sum_fields"')
+const api_users_sum_fields_possibleTypes: string[] = ['api_users_sum_fields']
+export const isapi_users_sum_fields = (obj?: { __typename?: any } | null): obj is api_users_sum_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_sum_fields"')
   return api_users_sum_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_var_pop_fields_possibleTypes: string[] = [
-  "api_users_var_pop_fields",
-]
-export const isapi_users_var_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_var_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_var_pop_fields"')
+const api_users_var_pop_fields_possibleTypes: string[] = ['api_users_var_pop_fields']
+export const isapi_users_var_pop_fields = (obj?: { __typename?: any } | null): obj is api_users_var_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_var_pop_fields"')
   return api_users_var_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_var_samp_fields_possibleTypes: string[] = [
-  "api_users_var_samp_fields",
-]
-export const isapi_users_var_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_var_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_var_samp_fields"')
+const api_users_var_samp_fields_possibleTypes: string[] = ['api_users_var_samp_fields']
+export const isapi_users_var_samp_fields = (obj?: { __typename?: any } | null): obj is api_users_var_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_var_samp_fields"')
   return api_users_var_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const api_users_variance_fields_possibleTypes: string[] = [
-  "api_users_variance_fields",
-]
-export const isapi_users_variance_fields = (
-  obj?: { __typename?: any } | null
-): obj is api_users_variance_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isapi_users_variance_fields"')
+const api_users_variance_fields_possibleTypes: string[] = ['api_users_variance_fields']
+export const isapi_users_variance_fields = (obj?: { __typename?: any } | null): obj is api_users_variance_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isapi_users_variance_fields"')
   return api_users_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_possibleTypes: string[] = ["blocks"]
+const blocks_possibleTypes: string[] = ['blocks']
 export const isblocks = (obj?: { __typename?: any } | null): obj is blocks => {
   if (!obj?.__typename) throw new Error('__typename is missing in "isblocks"')
   return blocks_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_aggregate_possibleTypes: string[] = ["blocks_aggregate"]
-export const isblocks_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is blocks_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_aggregate"')
+const blocks_aggregate_possibleTypes: string[] = ['blocks_aggregate']
+export const isblocks_aggregate = (obj?: { __typename?: any } | null): obj is blocks_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_aggregate"')
   return blocks_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_aggregate_fields_possibleTypes: string[] = [
-  "blocks_aggregate_fields",
-]
-export const isblocks_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_aggregate_fields"')
+const blocks_aggregate_fields_possibleTypes: string[] = ['blocks_aggregate_fields']
+export const isblocks_aggregate_fields = (obj?: { __typename?: any } | null): obj is blocks_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_aggregate_fields"')
   return blocks_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_avg_fields_possibleTypes: string[] = ["blocks_avg_fields"]
-export const isblocks_avg_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_avg_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_avg_fields"')
+const blocks_avg_fields_possibleTypes: string[] = ['blocks_avg_fields']
+export const isblocks_avg_fields = (obj?: { __typename?: any } | null): obj is blocks_avg_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_avg_fields"')
   return blocks_avg_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_max_fields_possibleTypes: string[] = ["blocks_max_fields"]
-export const isblocks_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_max_fields"')
+const blocks_max_fields_possibleTypes: string[] = ['blocks_max_fields']
+export const isblocks_max_fields = (obj?: { __typename?: any } | null): obj is blocks_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_max_fields"')
   return blocks_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_min_fields_possibleTypes: string[] = ["blocks_min_fields"]
-export const isblocks_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_min_fields"')
+const blocks_min_fields_possibleTypes: string[] = ['blocks_min_fields']
+export const isblocks_min_fields = (obj?: { __typename?: any } | null): obj is blocks_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_min_fields"')
   return blocks_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_mutation_response_possibleTypes: string[] = [
-  "blocks_mutation_response",
-]
-export const isblocks_mutation_response = (
-  obj?: { __typename?: any } | null
-): obj is blocks_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_mutation_response"')
+const blocks_mutation_response_possibleTypes: string[] = ['blocks_mutation_response']
+export const isblocks_mutation_response = (obj?: { __typename?: any } | null): obj is blocks_mutation_response => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_mutation_response"')
   return blocks_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_stddev_fields_possibleTypes: string[] = ["blocks_stddev_fields"]
-export const isblocks_stddev_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_stddev_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_stddev_fields"')
+const blocks_stddev_fields_possibleTypes: string[] = ['blocks_stddev_fields']
+export const isblocks_stddev_fields = (obj?: { __typename?: any } | null): obj is blocks_stddev_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_stddev_fields"')
   return blocks_stddev_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_stddev_pop_fields_possibleTypes: string[] = [
-  "blocks_stddev_pop_fields",
-]
-export const isblocks_stddev_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_stddev_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_stddev_pop_fields"')
+const blocks_stddev_pop_fields_possibleTypes: string[] = ['blocks_stddev_pop_fields']
+export const isblocks_stddev_pop_fields = (obj?: { __typename?: any } | null): obj is blocks_stddev_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_stddev_pop_fields"')
   return blocks_stddev_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_stddev_samp_fields_possibleTypes: string[] = [
-  "blocks_stddev_samp_fields",
-]
-export const isblocks_stddev_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_stddev_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_stddev_samp_fields"')
+const blocks_stddev_samp_fields_possibleTypes: string[] = ['blocks_stddev_samp_fields']
+export const isblocks_stddev_samp_fields = (obj?: { __typename?: any } | null): obj is blocks_stddev_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_stddev_samp_fields"')
   return blocks_stddev_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_sum_fields_possibleTypes: string[] = ["blocks_sum_fields"]
-export const isblocks_sum_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_sum_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_sum_fields"')
+const blocks_sum_fields_possibleTypes: string[] = ['blocks_sum_fields']
+export const isblocks_sum_fields = (obj?: { __typename?: any } | null): obj is blocks_sum_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_sum_fields"')
   return blocks_sum_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_var_pop_fields_possibleTypes: string[] = ["blocks_var_pop_fields"]
-export const isblocks_var_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_var_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_var_pop_fields"')
+const blocks_var_pop_fields_possibleTypes: string[] = ['blocks_var_pop_fields']
+export const isblocks_var_pop_fields = (obj?: { __typename?: any } | null): obj is blocks_var_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_var_pop_fields"')
   return blocks_var_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_var_samp_fields_possibleTypes: string[] = [
-  "blocks_var_samp_fields",
-]
-export const isblocks_var_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_var_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_var_samp_fields"')
+const blocks_var_samp_fields_possibleTypes: string[] = ['blocks_var_samp_fields']
+export const isblocks_var_samp_fields = (obj?: { __typename?: any } | null): obj is blocks_var_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_var_samp_fields"')
   return blocks_var_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const blocks_variance_fields_possibleTypes: string[] = [
-  "blocks_variance_fields",
-]
-export const isblocks_variance_fields = (
-  obj?: { __typename?: any } | null
-): obj is blocks_variance_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isblocks_variance_fields"')
+const blocks_variance_fields_possibleTypes: string[] = ['blocks_variance_fields']
+export const isblocks_variance_fields = (obj?: { __typename?: any } | null): obj is blocks_variance_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isblocks_variance_fields"')
   return blocks_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
-const chains_possibleTypes: string[] = ["chains"]
+const chains_possibleTypes: string[] = ['chains']
 export const ischains = (obj?: { __typename?: any } | null): obj is chains => {
   if (!obj?.__typename) throw new Error('__typename is missing in "ischains"')
   return chains_possibleTypes.includes(obj.__typename)
 }
 
-const chains_aggregate_possibleTypes: string[] = ["chains_aggregate"]
-export const ischains_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is chains_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ischains_aggregate"')
+const chains_aggregate_possibleTypes: string[] = ['chains_aggregate']
+export const ischains_aggregate = (obj?: { __typename?: any } | null): obj is chains_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ischains_aggregate"')
   return chains_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const chains_aggregate_fields_possibleTypes: string[] = [
-  "chains_aggregate_fields",
-]
-export const ischains_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is chains_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ischains_aggregate_fields"')
+const chains_aggregate_fields_possibleTypes: string[] = ['chains_aggregate_fields']
+export const ischains_aggregate_fields = (obj?: { __typename?: any } | null): obj is chains_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ischains_aggregate_fields"')
   return chains_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const chains_max_fields_possibleTypes: string[] = ["chains_max_fields"]
-export const ischains_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is chains_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ischains_max_fields"')
+const chains_max_fields_possibleTypes: string[] = ['chains_max_fields']
+export const ischains_max_fields = (obj?: { __typename?: any } | null): obj is chains_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ischains_max_fields"')
   return chains_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const chains_min_fields_possibleTypes: string[] = ["chains_min_fields"]
-export const ischains_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is chains_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ischains_min_fields"')
+const chains_min_fields_possibleTypes: string[] = ['chains_min_fields']
+export const ischains_min_fields = (obj?: { __typename?: any } | null): obj is chains_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ischains_min_fields"')
   return chains_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const chains_mutation_response_possibleTypes: string[] = [
-  "chains_mutation_response",
-]
-export const ischains_mutation_response = (
-  obj?: { __typename?: any } | null
-): obj is chains_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ischains_mutation_response"')
+const chains_mutation_response_possibleTypes: string[] = ['chains_mutation_response']
+export const ischains_mutation_response = (obj?: { __typename?: any } | null): obj is chains_mutation_response => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ischains_mutation_response"')
   return chains_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_possibleTypes: string[] = ["manifests"]
-export const ismanifests = (
-  obj?: { __typename?: any } | null
-): obj is manifests => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests"')
+const manifests_possibleTypes: string[] = ['manifests']
+export const ismanifests = (obj?: { __typename?: any } | null): obj is manifests => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests"')
   return manifests_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_aggregate_possibleTypes: string[] = ["manifests_aggregate"]
-export const ismanifests_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is manifests_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests_aggregate"')
+const manifests_aggregate_possibleTypes: string[] = ['manifests_aggregate']
+export const ismanifests_aggregate = (obj?: { __typename?: any } | null): obj is manifests_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests_aggregate"')
   return manifests_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_aggregate_fields_possibleTypes: string[] = [
-  "manifests_aggregate_fields",
-]
-export const ismanifests_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is manifests_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests_aggregate_fields"')
+const manifests_aggregate_fields_possibleTypes: string[] = ['manifests_aggregate_fields']
+export const ismanifests_aggregate_fields = (obj?: { __typename?: any } | null): obj is manifests_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests_aggregate_fields"')
   return manifests_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_max_fields_possibleTypes: string[] = ["manifests_max_fields"]
-export const ismanifests_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is manifests_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests_max_fields"')
+const manifests_max_fields_possibleTypes: string[] = ['manifests_max_fields']
+export const ismanifests_max_fields = (obj?: { __typename?: any } | null): obj is manifests_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests_max_fields"')
   return manifests_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_min_fields_possibleTypes: string[] = ["manifests_min_fields"]
-export const ismanifests_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is manifests_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests_min_fields"')
+const manifests_min_fields_possibleTypes: string[] = ['manifests_min_fields']
+export const ismanifests_min_fields = (obj?: { __typename?: any } | null): obj is manifests_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests_min_fields"')
   return manifests_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const manifests_mutation_response_possibleTypes: string[] = [
-  "manifests_mutation_response",
-]
+const manifests_mutation_response_possibleTypes: string[] = ['manifests_mutation_response']
 export const ismanifests_mutation_response = (
   obj?: { __typename?: any } | null
 ): obj is manifests_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismanifests_mutation_response"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismanifests_mutation_response"')
   return manifests_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_possibleTypes: string[] = ["mappings"]
-export const ismappings = (
-  obj?: { __typename?: any } | null
-): obj is mappings => {
+const mappings_possibleTypes: string[] = ['mappings']
+export const ismappings = (obj?: { __typename?: any } | null): obj is mappings => {
   if (!obj?.__typename) throw new Error('__typename is missing in "ismappings"')
   return mappings_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_aggregate_possibleTypes: string[] = ["mappings_aggregate"]
-export const ismappings_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is mappings_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismappings_aggregate"')
+const mappings_aggregate_possibleTypes: string[] = ['mappings_aggregate']
+export const ismappings_aggregate = (obj?: { __typename?: any } | null): obj is mappings_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismappings_aggregate"')
   return mappings_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_aggregate_fields_possibleTypes: string[] = [
-  "mappings_aggregate_fields",
-]
-export const ismappings_aggregate_fields = (
-  obj?: { __typename?: any } | null
-): obj is mappings_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismappings_aggregate_fields"')
+const mappings_aggregate_fields_possibleTypes: string[] = ['mappings_aggregate_fields']
+export const ismappings_aggregate_fields = (obj?: { __typename?: any } | null): obj is mappings_aggregate_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismappings_aggregate_fields"')
   return mappings_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_max_fields_possibleTypes: string[] = ["mappings_max_fields"]
-export const ismappings_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is mappings_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismappings_max_fields"')
+const mappings_max_fields_possibleTypes: string[] = ['mappings_max_fields']
+export const ismappings_max_fields = (obj?: { __typename?: any } | null): obj is mappings_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismappings_max_fields"')
   return mappings_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_min_fields_possibleTypes: string[] = ["mappings_min_fields"]
-export const ismappings_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is mappings_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismappings_min_fields"')
+const mappings_min_fields_possibleTypes: string[] = ['mappings_min_fields']
+export const ismappings_min_fields = (obj?: { __typename?: any } | null): obj is mappings_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismappings_min_fields"')
   return mappings_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const mappings_mutation_response_possibleTypes: string[] = [
-  "mappings_mutation_response",
-]
-export const ismappings_mutation_response = (
-  obj?: { __typename?: any } | null
-): obj is mappings_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismappings_mutation_response"')
+const mappings_mutation_response_possibleTypes: string[] = ['mappings_mutation_response']
+export const ismappings_mutation_response = (obj?: { __typename?: any } | null): obj is mappings_mutation_response => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismappings_mutation_response"')
   return mappings_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const mutation_root_possibleTypes: string[] = ["mutation_root"]
-export const ismutation_root = (
-  obj?: { __typename?: any } | null
-): obj is mutation_root => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "ismutation_root"')
+const mutation_root_possibleTypes: string[] = ['mutation_root']
+export const ismutation_root = (obj?: { __typename?: any } | null): obj is mutation_root => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "ismutation_root"')
   return mutation_root_possibleTypes.includes(obj.__typename)
 }
 
-const query_root_possibleTypes: string[] = ["query_root"]
-export const isquery_root = (
-  obj?: { __typename?: any } | null
-): obj is query_root => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "isquery_root"')
+const query_root_possibleTypes: string[] = ['query_root']
+export const isquery_root = (obj?: { __typename?: any } | null): obj is query_root => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isquery_root"')
   return query_root_possibleTypes.includes(obj.__typename)
 }
 
-const subscription_root_possibleTypes: string[] = ["subscription_root"]
-export const issubscription_root = (
-  obj?: { __typename?: any } | null
-): obj is subscription_root => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "issubscription_root"')
+const subscription_root_possibleTypes: string[] = ['subscription_root']
+export const issubscription_root = (obj?: { __typename?: any } | null): obj is subscription_root => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "issubscription_root"')
   return subscription_root_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_possibleTypes: string[] = ["table_rows"]
-export const istable_rows = (
-  obj?: { __typename?: any } | null
-): obj is table_rows => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows"')
+const table_rows_possibleTypes: string[] = ['table_rows']
+export const istable_rows = (obj?: { __typename?: any } | null): obj is table_rows => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows"')
   return table_rows_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_aggregate_possibleTypes: string[] = ["table_rows_aggregate"]
-export const istable_rows_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is table_rows_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows_aggregate"')
+const table_rows_aggregate_possibleTypes: string[] = ['table_rows_aggregate']
+export const istable_rows_aggregate = (obj?: { __typename?: any } | null): obj is table_rows_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows_aggregate"')
   return table_rows_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_aggregate_fields_possibleTypes: string[] = [
-  "table_rows_aggregate_fields",
-]
+const table_rows_aggregate_fields_possibleTypes: string[] = ['table_rows_aggregate_fields']
 export const istable_rows_aggregate_fields = (
   obj?: { __typename?: any } | null
 ): obj is table_rows_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows_aggregate_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows_aggregate_fields"')
   return table_rows_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_max_fields_possibleTypes: string[] = ["table_rows_max_fields"]
-export const istable_rows_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is table_rows_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows_max_fields"')
+const table_rows_max_fields_possibleTypes: string[] = ['table_rows_max_fields']
+export const istable_rows_max_fields = (obj?: { __typename?: any } | null): obj is table_rows_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows_max_fields"')
   return table_rows_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_min_fields_possibleTypes: string[] = ["table_rows_min_fields"]
-export const istable_rows_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is table_rows_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows_min_fields"')
+const table_rows_min_fields_possibleTypes: string[] = ['table_rows_min_fields']
+export const istable_rows_min_fields = (obj?: { __typename?: any } | null): obj is table_rows_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows_min_fields"')
   return table_rows_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const table_rows_mutation_response_possibleTypes: string[] = [
-  "table_rows_mutation_response",
-]
+const table_rows_mutation_response_possibleTypes: string[] = ['table_rows_mutation_response']
 export const istable_rows_mutation_response = (
   obj?: { __typename?: any } | null
 ): obj is table_rows_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istable_rows_mutation_response"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "istable_rows_mutation_response"')
   return table_rows_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_possibleTypes: string[] = ["transactions"]
-export const istransactions = (
-  obj?: { __typename?: any } | null
-): obj is transactions => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions"')
+const transactions_possibleTypes: string[] = ['transactions']
+export const istransactions = (obj?: { __typename?: any } | null): obj is transactions => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions"')
   return transactions_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_aggregate_possibleTypes: string[] = [
-  "transactions_aggregate",
-]
-export const istransactions_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is transactions_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_aggregate"')
+const transactions_aggregate_possibleTypes: string[] = ['transactions_aggregate']
+export const istransactions_aggregate = (obj?: { __typename?: any } | null): obj is transactions_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_aggregate"')
   return transactions_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_aggregate_fields_possibleTypes: string[] = [
-  "transactions_aggregate_fields",
-]
+const transactions_aggregate_fields_possibleTypes: string[] = ['transactions_aggregate_fields']
 export const istransactions_aggregate_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error(
-      '__typename is missing in "istransactions_aggregate_fields"'
-    )
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_aggregate_fields"')
   return transactions_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_avg_fields_possibleTypes: string[] = [
-  "transactions_avg_fields",
-]
-export const istransactions_avg_fields = (
-  obj?: { __typename?: any } | null
-): obj is transactions_avg_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_avg_fields"')
+const transactions_avg_fields_possibleTypes: string[] = ['transactions_avg_fields']
+export const istransactions_avg_fields = (obj?: { __typename?: any } | null): obj is transactions_avg_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_avg_fields"')
   return transactions_avg_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_max_fields_possibleTypes: string[] = [
-  "transactions_max_fields",
-]
-export const istransactions_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is transactions_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_max_fields"')
+const transactions_max_fields_possibleTypes: string[] = ['transactions_max_fields']
+export const istransactions_max_fields = (obj?: { __typename?: any } | null): obj is transactions_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_max_fields"')
   return transactions_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_min_fields_possibleTypes: string[] = [
-  "transactions_min_fields",
-]
-export const istransactions_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is transactions_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_min_fields"')
+const transactions_min_fields_possibleTypes: string[] = ['transactions_min_fields']
+export const istransactions_min_fields = (obj?: { __typename?: any } | null): obj is transactions_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_min_fields"')
   return transactions_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_mutation_response_possibleTypes: string[] = [
-  "transactions_mutation_response",
-]
+const transactions_mutation_response_possibleTypes: string[] = ['transactions_mutation_response']
 export const istransactions_mutation_response = (
   obj?: { __typename?: any } | null
 ): obj is transactions_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error(
-      '__typename is missing in "istransactions_mutation_response"'
-    )
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_mutation_response"')
   return transactions_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_stddev_fields_possibleTypes: string[] = [
-  "transactions_stddev_fields",
-]
-export const istransactions_stddev_fields = (
-  obj?: { __typename?: any } | null
-): obj is transactions_stddev_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_stddev_fields"')
+const transactions_stddev_fields_possibleTypes: string[] = ['transactions_stddev_fields']
+export const istransactions_stddev_fields = (obj?: { __typename?: any } | null): obj is transactions_stddev_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_stddev_fields"')
   return transactions_stddev_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_stddev_pop_fields_possibleTypes: string[] = [
-  "transactions_stddev_pop_fields",
-]
+const transactions_stddev_pop_fields_possibleTypes: string[] = ['transactions_stddev_pop_fields']
 export const istransactions_stddev_pop_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_stddev_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error(
-      '__typename is missing in "istransactions_stddev_pop_fields"'
-    )
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_stddev_pop_fields"')
   return transactions_stddev_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_stddev_samp_fields_possibleTypes: string[] = [
-  "transactions_stddev_samp_fields",
-]
+const transactions_stddev_samp_fields_possibleTypes: string[] = ['transactions_stddev_samp_fields']
 export const istransactions_stddev_samp_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_stddev_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error(
-      '__typename is missing in "istransactions_stddev_samp_fields"'
-    )
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_stddev_samp_fields"')
   return transactions_stddev_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_sum_fields_possibleTypes: string[] = [
-  "transactions_sum_fields",
-]
-export const istransactions_sum_fields = (
-  obj?: { __typename?: any } | null
-): obj is transactions_sum_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_sum_fields"')
+const transactions_sum_fields_possibleTypes: string[] = ['transactions_sum_fields']
+export const istransactions_sum_fields = (obj?: { __typename?: any } | null): obj is transactions_sum_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_sum_fields"')
   return transactions_sum_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_var_pop_fields_possibleTypes: string[] = [
-  "transactions_var_pop_fields",
-]
+const transactions_var_pop_fields_possibleTypes: string[] = ['transactions_var_pop_fields']
 export const istransactions_var_pop_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_var_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_var_pop_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_var_pop_fields"')
   return transactions_var_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_var_samp_fields_possibleTypes: string[] = [
-  "transactions_var_samp_fields",
-]
+const transactions_var_samp_fields_possibleTypes: string[] = ['transactions_var_samp_fields']
 export const istransactions_var_samp_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_var_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_var_samp_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_var_samp_fields"')
   return transactions_var_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const transactions_variance_fields_possibleTypes: string[] = [
-  "transactions_variance_fields",
-]
+const transactions_variance_fields_possibleTypes: string[] = ['transactions_variance_fields']
 export const istransactions_variance_fields = (
   obj?: { __typename?: any } | null
 ): obj is transactions_variance_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "istransactions_variance_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "istransactions_variance_fields"')
   return transactions_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_possibleTypes: string[] = ["whitelists"]
-export const iswhitelists = (
-  obj?: { __typename?: any } | null
-): obj is whitelists => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists"')
+const whitelists_possibleTypes: string[] = ['whitelists']
+export const iswhitelists = (obj?: { __typename?: any } | null): obj is whitelists => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists"')
   return whitelists_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_aggregate_possibleTypes: string[] = ["whitelists_aggregate"]
-export const iswhitelists_aggregate = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_aggregate => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_aggregate"')
+const whitelists_aggregate_possibleTypes: string[] = ['whitelists_aggregate']
+export const iswhitelists_aggregate = (obj?: { __typename?: any } | null): obj is whitelists_aggregate => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_aggregate"')
   return whitelists_aggregate_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_aggregate_fields_possibleTypes: string[] = [
-  "whitelists_aggregate_fields",
-]
+const whitelists_aggregate_fields_possibleTypes: string[] = ['whitelists_aggregate_fields']
 export const iswhitelists_aggregate_fields = (
   obj?: { __typename?: any } | null
 ): obj is whitelists_aggregate_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_aggregate_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_aggregate_fields"')
   return whitelists_aggregate_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_avg_fields_possibleTypes: string[] = ["whitelists_avg_fields"]
-export const iswhitelists_avg_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_avg_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_avg_fields"')
+const whitelists_avg_fields_possibleTypes: string[] = ['whitelists_avg_fields']
+export const iswhitelists_avg_fields = (obj?: { __typename?: any } | null): obj is whitelists_avg_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_avg_fields"')
   return whitelists_avg_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_max_fields_possibleTypes: string[] = ["whitelists_max_fields"]
-export const iswhitelists_max_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_max_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_max_fields"')
+const whitelists_max_fields_possibleTypes: string[] = ['whitelists_max_fields']
+export const iswhitelists_max_fields = (obj?: { __typename?: any } | null): obj is whitelists_max_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_max_fields"')
   return whitelists_max_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_min_fields_possibleTypes: string[] = ["whitelists_min_fields"]
-export const iswhitelists_min_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_min_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_min_fields"')
+const whitelists_min_fields_possibleTypes: string[] = ['whitelists_min_fields']
+export const iswhitelists_min_fields = (obj?: { __typename?: any } | null): obj is whitelists_min_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_min_fields"')
   return whitelists_min_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_mutation_response_possibleTypes: string[] = [
-  "whitelists_mutation_response",
-]
+const whitelists_mutation_response_possibleTypes: string[] = ['whitelists_mutation_response']
 export const iswhitelists_mutation_response = (
   obj?: { __typename?: any } | null
 ): obj is whitelists_mutation_response => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_mutation_response"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_mutation_response"')
   return whitelists_mutation_response_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_stddev_fields_possibleTypes: string[] = [
-  "whitelists_stddev_fields",
-]
-export const iswhitelists_stddev_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_stddev_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_stddev_fields"')
+const whitelists_stddev_fields_possibleTypes: string[] = ['whitelists_stddev_fields']
+export const iswhitelists_stddev_fields = (obj?: { __typename?: any } | null): obj is whitelists_stddev_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_stddev_fields"')
   return whitelists_stddev_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_stddev_pop_fields_possibleTypes: string[] = [
-  "whitelists_stddev_pop_fields",
-]
+const whitelists_stddev_pop_fields_possibleTypes: string[] = ['whitelists_stddev_pop_fields']
 export const iswhitelists_stddev_pop_fields = (
   obj?: { __typename?: any } | null
 ): obj is whitelists_stddev_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_stddev_pop_fields"')
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_stddev_pop_fields"')
   return whitelists_stddev_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_stddev_samp_fields_possibleTypes: string[] = [
-  "whitelists_stddev_samp_fields",
-]
+const whitelists_stddev_samp_fields_possibleTypes: string[] = ['whitelists_stddev_samp_fields']
 export const iswhitelists_stddev_samp_fields = (
   obj?: { __typename?: any } | null
 ): obj is whitelists_stddev_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error(
-      '__typename is missing in "iswhitelists_stddev_samp_fields"'
-    )
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_stddev_samp_fields"')
   return whitelists_stddev_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_sum_fields_possibleTypes: string[] = ["whitelists_sum_fields"]
-export const iswhitelists_sum_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_sum_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_sum_fields"')
+const whitelists_sum_fields_possibleTypes: string[] = ['whitelists_sum_fields']
+export const iswhitelists_sum_fields = (obj?: { __typename?: any } | null): obj is whitelists_sum_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_sum_fields"')
   return whitelists_sum_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_var_pop_fields_possibleTypes: string[] = [
-  "whitelists_var_pop_fields",
-]
-export const iswhitelists_var_pop_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_var_pop_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_var_pop_fields"')
+const whitelists_var_pop_fields_possibleTypes: string[] = ['whitelists_var_pop_fields']
+export const iswhitelists_var_pop_fields = (obj?: { __typename?: any } | null): obj is whitelists_var_pop_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_var_pop_fields"')
   return whitelists_var_pop_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_var_samp_fields_possibleTypes: string[] = [
-  "whitelists_var_samp_fields",
-]
-export const iswhitelists_var_samp_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_var_samp_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_var_samp_fields"')
+const whitelists_var_samp_fields_possibleTypes: string[] = ['whitelists_var_samp_fields']
+export const iswhitelists_var_samp_fields = (obj?: { __typename?: any } | null): obj is whitelists_var_samp_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_var_samp_fields"')
   return whitelists_var_samp_fields_possibleTypes.includes(obj.__typename)
 }
 
-const whitelists_variance_fields_possibleTypes: string[] = [
-  "whitelists_variance_fields",
-]
-export const iswhitelists_variance_fields = (
-  obj?: { __typename?: any } | null
-): obj is whitelists_variance_fields => {
-  if (!obj?.__typename)
-    throw new Error('__typename is missing in "iswhitelists_variance_fields"')
+const whitelists_variance_fields_possibleTypes: string[] = ['whitelists_variance_fields']
+export const iswhitelists_variance_fields = (obj?: { __typename?: any } | null): obj is whitelists_variance_fields => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "iswhitelists_variance_fields"')
   return whitelists_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
 export const enumActionsConstraint = {
-  actions_pkey: "actions_pkey" as const,
+  actions_pkey: 'actions_pkey' as const,
 }
 
 export const enumActionsSelectColumn = {
-  account_disk_deltas: "account_disk_deltas" as const,
-  account_ram_deltas: "account_ram_deltas" as const,
-  action: "action" as const,
-  action_ordinal: "action_ordinal" as const,
-  authorization: "authorization" as const,
-  chain: "chain" as const,
-  console: "console" as const,
-  context_free: "context_free" as const,
-  contract: "contract" as const,
-  data: "data" as const,
-  global_sequence: "global_sequence" as const,
-  receipt: "receipt" as const,
-  receiver: "receiver" as const,
-  transaction_id: "transaction_id" as const,
+  account_disk_deltas: 'account_disk_deltas' as const,
+  account_ram_deltas: 'account_ram_deltas' as const,
+  action: 'action' as const,
+  action_ordinal: 'action_ordinal' as const,
+  authorization: 'authorization' as const,
+  chain: 'chain' as const,
+  console: 'console' as const,
+  context_free: 'context_free' as const,
+  contract: 'contract' as const,
+  data: 'data' as const,
+  global_sequence: 'global_sequence' as const,
+  receipt: 'receipt' as const,
+  receiver: 'receiver' as const,
+  transaction_id: 'transaction_id' as const,
 }
 
 export const enumActionsUpdateColumn = {
-  account_disk_deltas: "account_disk_deltas" as const,
-  account_ram_deltas: "account_ram_deltas" as const,
-  action: "action" as const,
-  action_ordinal: "action_ordinal" as const,
-  authorization: "authorization" as const,
-  chain: "chain" as const,
-  console: "console" as const,
-  context_free: "context_free" as const,
-  contract: "contract" as const,
-  data: "data" as const,
-  global_sequence: "global_sequence" as const,
-  receipt: "receipt" as const,
-  receiver: "receiver" as const,
-  transaction_id: "transaction_id" as const,
+  account_disk_deltas: 'account_disk_deltas' as const,
+  account_ram_deltas: 'account_ram_deltas' as const,
+  action: 'action' as const,
+  action_ordinal: 'action_ordinal' as const,
+  authorization: 'authorization' as const,
+  chain: 'chain' as const,
+  console: 'console' as const,
+  context_free: 'context_free' as const,
+  contract: 'contract' as const,
+  data: 'data' as const,
+  global_sequence: 'global_sequence' as const,
+  receipt: 'receipt' as const,
+  receiver: 'receiver' as const,
+  transaction_id: 'transaction_id' as const,
 }
 
 export const enumApiUsersConstraint = {
-  api_users_api_key_key: "api_users_api_key_key" as const,
-  api_users_pkey: "api_users_pkey" as const,
+  api_users_api_key_key: 'api_users_api_key_key' as const,
+  api_users_pkey: 'api_users_pkey' as const,
 }
 
 export const enumApiUsersSelectColumn = {
-  account: "account" as const,
-  api_key: "api_key" as const,
-  created_at: "created_at" as const,
-  domain_names: "domain_names" as const,
-  id: "id" as const,
-  updated_at: "updated_at" as const,
+  account: 'account' as const,
+  api_key: 'api_key' as const,
+  created_at: 'created_at' as const,
+  domain_names: 'domain_names' as const,
+  id: 'id' as const,
+  updated_at: 'updated_at' as const,
 }
 
 export const enumApiUsersUpdateColumn = {
-  account: "account" as const,
-  api_key: "api_key" as const,
-  created_at: "created_at" as const,
-  domain_names: "domain_names" as const,
-  id: "id" as const,
-  updated_at: "updated_at" as const,
+  account: 'account' as const,
+  api_key: 'api_key' as const,
+  created_at: 'created_at' as const,
+  domain_names: 'domain_names' as const,
+  id: 'id' as const,
+  updated_at: 'updated_at' as const,
 }
 
 export const enumBlocksConstraint = {
-  blocks_block_id_key: "blocks_block_id_key" as const,
-  blocks_pkey: "blocks_pkey" as const,
+  blocks_block_id_key: 'blocks_block_id_key' as const,
+  blocks_pkey: 'blocks_pkey' as const,
 }
 
 export const enumBlocksSelectColumn = {
-  block_id: "block_id" as const,
-  block_num: "block_num" as const,
-  chain: "chain" as const,
-  producer: "producer" as const,
-  timestamp: "timestamp" as const,
+  block_id: 'block_id' as const,
+  block_num: 'block_num' as const,
+  chain: 'chain' as const,
+  producer: 'producer' as const,
+  timestamp: 'timestamp' as const,
 }
 
 export const enumBlocksUpdateColumn = {
-  block_id: "block_id" as const,
-  block_num: "block_num" as const,
-  chain: "chain" as const,
-  producer: "producer" as const,
-  timestamp: "timestamp" as const,
+  block_id: 'block_id' as const,
+  block_num: 'block_num' as const,
+  chain: 'chain' as const,
+  producer: 'producer' as const,
+  timestamp: 'timestamp' as const,
 }
 
 export const enumChainsConstraint = {
-  chains_pkey: "chains_pkey" as const,
+  chains_pkey: 'chains_pkey' as const,
 }
 
 export const enumChainsSelectColumn = {
-  chain_id: "chain_id" as const,
-  chain_name: "chain_name" as const,
-  rpc_endpoint: "rpc_endpoint" as const,
+  chain_id: 'chain_id' as const,
+  chain_name: 'chain_name' as const,
+  rpc_endpoint: 'rpc_endpoint' as const,
 }
 
 export const enumChainsUpdateColumn = {
-  chain_id: "chain_id" as const,
-  chain_name: "chain_name" as const,
-  rpc_endpoint: "rpc_endpoint" as const,
+  chain_id: 'chain_id' as const,
+  chain_name: 'chain_name' as const,
+  rpc_endpoint: 'rpc_endpoint' as const,
 }
 
 export const enumCursorOrdering = {
-  ASC: "ASC" as const,
-  DESC: "DESC" as const,
+  ASC: 'ASC' as const,
+  DESC: 'DESC' as const,
 }
 
 export const enumManifestsConstraint = {
-  manifests_pkey: "manifests_pkey" as const,
+  manifests_pkey: 'manifests_pkey' as const,
 }
 
 export const enumManifestsSelectColumn = {
-  app_id: "app_id" as const,
-  app_name: "app_name" as const,
-  description: "description" as const,
-  url: "url" as const,
+  app_id: 'app_id' as const,
+  app_name: 'app_name' as const,
+  description: 'description' as const,
+  url: 'url' as const,
 }
 
 export const enumManifestsUpdateColumn = {
-  app_id: "app_id" as const,
-  app_name: "app_name" as const,
-  description: "description" as const,
-  url: "url" as const,
+  app_id: 'app_id' as const,
+  app_name: 'app_name' as const,
+  description: 'description' as const,
+  url: 'url' as const,
 }
 
 export const enumMappingsConstraint = {
-  mappings_pkey: "mappings_pkey" as const,
+  mappings_pkey: 'mappings_pkey' as const,
 }
 
 export const enumMappingsSelectColumn = {
-  abi: "abi" as const,
-  chain: "chain" as const,
-  contract: "contract" as const,
-  contract_type: "contract_type" as const,
-  tables: "tables" as const,
+  abi: 'abi' as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  contract_type: 'contract_type' as const,
+  tables: 'tables' as const,
 }
 
 export const enumMappingsUpdateColumn = {
-  abi: "abi" as const,
-  chain: "chain" as const,
-  contract: "contract" as const,
-  contract_type: "contract_type" as const,
-  tables: "tables" as const,
+  abi: 'abi' as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  contract_type: 'contract_type' as const,
+  tables: 'tables' as const,
 }
 
 export const enumOrderBy = {
-  asc: "asc" as const,
-  asc_nulls_first: "asc_nulls_first" as const,
-  asc_nulls_last: "asc_nulls_last" as const,
-  desc: "desc" as const,
-  desc_nulls_first: "desc_nulls_first" as const,
-  desc_nulls_last: "desc_nulls_last" as const,
+  asc: 'asc' as const,
+  asc_nulls_first: 'asc_nulls_first' as const,
+  asc_nulls_last: 'asc_nulls_last' as const,
+  desc: 'desc' as const,
+  desc_nulls_first: 'desc_nulls_first' as const,
+  desc_nulls_last: 'desc_nulls_last' as const,
 }
 
 export const enumTableRowsConstraint = {
-  tables_pkey: "tables_pkey" as const,
+  tables_pkey: 'tables_pkey' as const,
 }
 
 export const enumTableRowsSelectColumn = {
-  chain: "chain" as const,
-  contract: "contract" as const,
-  data: "data" as const,
-  primary_key: "primary_key" as const,
-  scope: "scope" as const,
-  table: "table" as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  data: 'data' as const,
+  primary_key: 'primary_key' as const,
+  scope: 'scope' as const,
+  table: 'table' as const,
 }
 
 export const enumTableRowsUpdateColumn = {
-  chain: "chain" as const,
-  contract: "contract" as const,
-  data: "data" as const,
-  primary_key: "primary_key" as const,
-  scope: "scope" as const,
-  table: "table" as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  data: 'data' as const,
+  primary_key: 'primary_key' as const,
+  scope: 'scope' as const,
+  table: 'table' as const,
 }
 
 export const enumTransactionsConstraint = {
-  transactions_pkey: "transactions_pkey" as const,
+  transactions_pkey: 'transactions_pkey' as const,
 }
 
 export const enumTransactionsSelectColumn = {
-  block_num: "block_num" as const,
-  chain: "chain" as const,
-  cpu_usage_us: "cpu_usage_us" as const,
-  net_usage: "net_usage" as const,
-  net_usage_words: "net_usage_words" as const,
-  transaction_id: "transaction_id" as const,
+  block_num: 'block_num' as const,
+  chain: 'chain' as const,
+  cpu_usage_us: 'cpu_usage_us' as const,
+  net_usage: 'net_usage' as const,
+  net_usage_words: 'net_usage_words' as const,
+  transaction_id: 'transaction_id' as const,
 }
 
 export const enumTransactionsUpdateColumn = {
-  block_num: "block_num" as const,
-  chain: "chain" as const,
-  cpu_usage_us: "cpu_usage_us" as const,
-  net_usage: "net_usage" as const,
-  net_usage_words: "net_usage_words" as const,
-  transaction_id: "transaction_id" as const,
+  block_num: 'block_num' as const,
+  chain: 'chain' as const,
+  cpu_usage_us: 'cpu_usage_us' as const,
+  net_usage: 'net_usage' as const,
+  net_usage_words: 'net_usage_words' as const,
+  transaction_id: 'transaction_id' as const,
 }
 
 export const enumWhitelistsConstraint = {
-  whitelists_pkey: "whitelists_pkey" as const,
+  whitelists_pkey: 'whitelists_pkey' as const,
 }
 
 export const enumWhitelistsSelectColumn = {
-  actions: "actions" as const,
-  app_id: "app_id" as const,
-  chain: "chain" as const,
-  contract: "contract" as const,
-  history_ready: "history_ready" as const,
-  start_block: "start_block" as const,
-  tables: "tables" as const,
+  actions: 'actions' as const,
+  app_id: 'app_id' as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  history_ready: 'history_ready' as const,
+  start_block: 'start_block' as const,
+  tables: 'tables' as const,
 }
 
 export const enumWhitelistsUpdateColumn = {
-  actions: "actions" as const,
-  app_id: "app_id" as const,
-  chain: "chain" as const,
-  contract: "contract" as const,
-  history_ready: "history_ready" as const,
-  start_block: "start_block" as const,
-  tables: "tables" as const,
+  actions: 'actions' as const,
+  app_id: 'app_id' as const,
+  chain: 'chain' as const,
+  contract: 'contract' as const,
+  history_ready: 'history_ready' as const,
+  start_block: 'start_block' as const,
+  tables: 'tables' as const,
 }

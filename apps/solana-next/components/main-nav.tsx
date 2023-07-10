@@ -1,8 +1,8 @@
-import * as React from "react"
-import Link from "next/link"
-import { AntelopeIcon } from "~/icons"
+import * as React from 'react'
+import Link from 'next/link'
+import { AntelopeIcon } from '~/icons'
 
-import { cn } from "~/lib/chadcn-utils"
+import { cn } from '~/lib/chadcn-utils'
 
 export function MainNav({ items }: MainNavProps) {
   return (
@@ -20,8 +20,8 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "text-muted-foreground flex items-center text-lg font-semibold sm:text-sm",
-                    item.disabled && "cursor-not-allowed opacity-80"
+                    'flex items-center text-lg font-semibold text-muted-foreground sm:text-sm',
+                    item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                 >
                   {item.title}

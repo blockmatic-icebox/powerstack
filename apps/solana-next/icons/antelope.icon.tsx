@@ -1,4 +1,4 @@
-export function AntelopeIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+export function AntelopeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg height={35} viewBox="0 0 2568 643" xmlSpace="preserve">
       <rect className="st0" width={2568} height={643} />

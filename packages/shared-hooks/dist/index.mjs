@@ -13,15 +13,20 @@ function toSlug(str) {
 }
 
 // src/useIsomorphicLayoutEffect.tsx
-import * as React from "react";
-var useIsomorphicLayoutEffect = typeof window !== "undefined" ? React.useLayoutEffect : () => {
+import {
+  useLayoutEffect
+} from "react";
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : () => {
 };
 
 // src/usePrevious.tsx
-import * as React2 from "react";
+import {
+  useEffect,
+  useRef
+} from "react";
 function usePrevious(value) {
-  const ref = React2.useRef(value);
-  React2.useEffect(() => {
+  const ref = useRef(value);
+  useEffect(() => {
     ref.current = value;
   }, [value]);
   return ref.current;

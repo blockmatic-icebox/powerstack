@@ -6,11 +6,9 @@ export class GenqlError extends Error {
    */
   data?: any
   constructor(errors: any[], data: any) {
-    let message = Array.isArray(errors)
-      ? errors.map((x) => x?.message || "").join("\n")
-      : ""
+    let message = Array.isArray(errors) ? errors.map((x) => x?.message || '').join('\n') : ''
     if (!message) {
-      message = "GraphQL error"
+      message = 'GraphQL error'
     }
     super(message)
     this.errors = errors

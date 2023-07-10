@@ -1,5 +1,5 @@
-import * as Sentry from "@sentry/browser"
-import type { Span, Transaction } from "@sentry/types"
+import * as Sentry from '@sentry/browser'
+import type { Span, Transaction } from '@sentry/types'
 
 export const CatchExceptionSentry = (error: Error) => {
   Sentry.captureException(error)
@@ -22,10 +22,7 @@ export const CreateCustomTransaction = (name: string) => {
   return transaction
 }
 
-export const CreateTransationSpan = (
-  transaction: Transaction,
-  spanAttr: any
-) => {
+export const CreateTransationSpan = (transaction: Transaction, spanAttr: any) => {
   const span = transaction.startChild({ ...spanAttr })
   return span
 }

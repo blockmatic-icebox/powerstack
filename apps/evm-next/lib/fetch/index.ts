@@ -1,1 +1,1 @@
-export * from "./fetch.lib"
+export * from './fetch.lib'

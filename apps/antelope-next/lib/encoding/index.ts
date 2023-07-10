@@ -1,1 +1,1 @@
-export * from "./encoding.lib"
+export * from './encoding.lib'

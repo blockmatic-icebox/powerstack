@@ -1,22 +1,16 @@
 // @ts-nocheck
 
-import { createFetcher, type BatchOptions } from "./fetcher"
-import {
-  generateGraphqlOperation,
-  type GraphqlOperation,
-} from "./generateGraphqlOperation"
-import type { ExecutionResult, LinkedType } from "./types"
+import { createFetcher, type BatchOptions } from './fetcher'
+import { generateGraphqlOperation, type GraphqlOperation } from './generateGraphqlOperation'
+import type { ExecutionResult, LinkedType } from './types'
 
-export type Headers =
-  | HeadersInit
-  | (() => HeadersInit)
-  | (() => Promise<HeadersInit>)
+export type Headers = HeadersInit | (() => HeadersInit) | (() => Promise<HeadersInit>)
 
 export type BaseFetcher = (
   operation: GraphqlOperation | GraphqlOperation[]
 ) => Promise<ExecutionResult | ExecutionResult[]>
 
-export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
+export type ClientOptions = Omit<RequestInit, 'body' | 'headers'> & {
   url?: string
   batch?: BatchOptions | boolean
   fetcher?: BaseFetcher
@@ -42,22 +36,18 @@ export const createClient = ({
 
   if (queryRoot) {
     client.query = (request: any) => {
-      if (!queryRoot) throw new Error("queryRoot argument is missing")
+      if (!queryRoot) throw new Error('queryRoot argument is missing')
 
-      const resultPromise = fetcher(
-        generateGraphqlOperation("query", queryRoot, request)
-      )
+      const resultPromise = fetcher(generateGraphqlOperation('query', queryRoot, request))
 
       return resultPromise
     }
   }
   if (mutationRoot) {
     client.mutation = (request: any) => {
-      if (!mutationRoot) throw new Error("mutationRoot argument is missing")
+      if (!mutationRoot) throw new Error('mutationRoot argument is missing')
 
-      const resultPromise = fetcher(
-        generateGraphqlOperation("mutation", mutationRoot, request)
-      )
+      const resultPromise = fetcher(generateGraphqlOperation('mutation', mutationRoot, request))
 
       return resultPromise
     }

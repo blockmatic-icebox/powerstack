@@ -1,1 +1,1 @@
-export * from "./antelope.lib"
+export * from './antelope.lib'

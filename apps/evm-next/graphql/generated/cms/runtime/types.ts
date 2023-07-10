@@ -9,10 +9,7 @@ export interface ArgMap<keyType = number> {
   [arg: string]: [keyType, string] | [keyType] | undefined
 }
 
-export type CompressedField<keyType = number> = [
-  type: keyType,
-  args?: ArgMap<keyType>
-]
+export type CompressedField<keyType = number> = [type: keyType, args?: ArgMap<keyType>]
 
 export interface CompressedFieldMap<keyType = number> {
   [field: string]: CompressedField<keyType> | undefined

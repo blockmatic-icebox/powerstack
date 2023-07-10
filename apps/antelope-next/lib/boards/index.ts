@@ -1,1 +1,1 @@
-export * from "./boards.lib"
+export * from './boards.lib'

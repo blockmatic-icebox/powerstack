@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { GenqlError } from "./error"
-import type { GraphqlOperation } from "./generateGraphqlOperation"
+import { GenqlError } from './error'
+import type { GraphqlOperation } from './generateGraphqlOperation'
 
 type Variables = Record<string, any>
 
@@ -20,9 +20,7 @@ type Result = {
   data: Record<string, any>
   errors: Array<QueryError>
 }
-type Fetcher = (
-  batchedQuery: GraphqlOperation | Array<GraphqlOperation>
-) => Promise<Array<Result>>
+type Fetcher = (batchedQuery: GraphqlOperation | Array<GraphqlOperation>) => Promise<Array<Result>>
 type Options = {
   batchInterval?: number
   shouldBatch?: boolean
@@ -58,7 +56,7 @@ function dispatchQueueBatch(client: QueryBatcher, queue: Queue): void {
       queue[0].resolve(responses)
       return
     } else if (responses.length !== queue.length) {
-      throw new Error("response length did not match query length")
+      throw new Error('response length did not match query length')
     }
 
     for (let i = 0; i < queue.length; i++) {
@@ -84,10 +82,7 @@ function dispatchQueue(client: QueryBatcher, options: Options): void {
 
   if (maxBatchSize > 0 && maxBatchSize < queue.length) {
     for (let i = 0; i < queue.length / maxBatchSize; i++) {
-      dispatchQueueBatch(
-        client,
-        queue.slice(i * maxBatchSize, (i + 1) * maxBatchSize)
-      )
+      dispatchQueueBatch(client, queue.slice(i * maxBatchSize, (i + 1) * maxBatchSize))
     }
   } else {
     dispatchQueueBatch(client, queue)
@@ -122,10 +117,7 @@ export class QueryBatcher {
   _options: Options
   _queue: Queue
 
-  constructor(
-    fetcher: Fetcher,
-    { batchInterval = 6, shouldBatch = true, maxBatchSize = 0 }: Options = {}
-  ) {
+  constructor(fetcher: Fetcher, { batchInterval = 6, shouldBatch = true, maxBatchSize = 0 }: Options = {}) {
     this.fetcher = fetcher
     this._options = {
       batchInterval,
@@ -158,12 +150,7 @@ export class QueryBatcher {
    *      console.log(human);
    *    });
    */
-  fetch(
-    query: string,
-    variables?: Variables,
-    operationName?: string,
-    overrides: Options = {}
-  ): Promise<Result> {
+  fetch(query: string, variables?: Variables, operationName?: string, overrides: Options = {}): Promise<Result> {
     const request: GraphqlOperation = {
       query,
     }
@@ -218,12 +205,7 @@ export class QueryBatcher {
    *      console.log(human);
    *    });
    */
-  forceFetch(
-    query: string,
-    variables?: Variables,
-    operationName?: string,
-    overrides: Options = {}
-  ): Promise<Result> {
+  forceFetch(query: string, variables?: Variables, operationName?: string, overrides: Options = {}): Promise<Result> {
     const request: GraphqlOperation = {
       query,
     }

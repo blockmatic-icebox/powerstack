@@ -6,9 +6,9 @@ GraphQL Engine for PowerStack projects.
 
 _Disclaimer: This is a work in progress. Will be finalized soon._
 
-## General 
+## General
 
-Hasura service is responsible for 
+Hasura service is responsible for
 
 - Database migrations.
 - GraphQL API Gateway.
@@ -22,12 +22,10 @@ Hasura service is responsible for
 
 ## Hasura Fundamentals
 
-- [How Hasura GraphQL engine works](https://hasura.io/docs/latest/getting-started/how-it-works/index/)
- -[Filter query results / search queries](https://hasura.io/docs/latest/queries/postgres/query-filters/)
+- [How Hasura GraphQL engine works](https://hasura.io/docs/latest/getting-started/how-it-works/index/) -[Filter query results / search queries](https://hasura.io/docs/latest/queries/postgres/query-filters/)
 - [Postgres JSON and JSONB type support on GraphQL](https://hasura.io/blog/postgres-json-and-jsonb-type-support-on-graphql-41f586e47536/)
 - [Authentication with JWT](https://hasura.io/docs/latest/auth/authentication/jwt/)
 - [Access Control](https://hasura.io/docs/latest/auth/authorization/index/)
-
 
 Ref [Hasura Environment Variables](https://hasura.io/docs/latest/graphql/core/hasura-cli/config-reference/#environment-variables)
 
@@ -40,6 +38,7 @@ Ref [Hasura Environment Variables](https://hasura.io/docs/latest/graphql/core/ha
 ├── config.yaml.......................................... hasura config
 └── .env ................................................ environment variables ([ hasura variables] )
 ```
+
 ## Database Migrations
 
 [Hasura Database Migrations](https://hasura.io/docs/latest/graphql/core/migrations/index) enable a rock-solid deployment.

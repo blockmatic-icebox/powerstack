@@ -1,1 +1,1 @@
-export * from "./datocms-layout.service"
+export * from './datocms-layout.service'

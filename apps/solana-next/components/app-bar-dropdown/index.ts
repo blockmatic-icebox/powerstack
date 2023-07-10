@@ -1,1 +1,1 @@
-export * from "./app-bar-dropdown.component"
+export * from './app-bar-dropdown.component'

@@ -1,14 +1,10 @@
-"use client"
+'use client'
 
-import {
-  signIn as nextAuthSignIn,
-  signOut as nextAuthSignOut,
-  useSession,
-} from "next-auth/react"
-import { useEffectOnce } from "react-use"
+import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession } from 'next-auth/react'
+import { useEffectOnce } from 'react-use'
 
-import { chainConfig } from "~/config/chain"
-import { clientEnv } from "~/config/client"
+import { chainConfig } from '~/config/chain'
+import { clientEnv } from '~/config/client'
 
 export function useAuth() {
   const { data: session, status } = useSession()
@@ -25,7 +21,7 @@ export function useAuth() {
   }
 
   const signOutWithRainbowKit = async () => {
-    console.log("signing out")
+    console.log('signing out')
     if (!session) return
 
     nextAuthSignOut()

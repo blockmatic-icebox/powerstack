@@ -1,1 +1,1 @@
-export * from "./connect-wallet.component"
+export * from './connect-wallet.component'

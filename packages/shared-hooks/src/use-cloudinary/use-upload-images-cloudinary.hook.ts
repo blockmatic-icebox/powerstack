@@ -1,34 +1,34 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react'
 
-import { clientEnv } from "~/config/client";
+import { clientEnv } from '~/config/client'
 
-const presetCloudinary = "avatar";
+const presetCloudinary = 'avatar'
 
 export function useUploadImagesCloudinary() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const uploadFilesCloudinary = useCallback(async (files: File[]) => {
     const uploadedImages = files.map((file) => {
-      setLoading(true);
-      const data = new FormData();
-      data.append("file", file);
-      data.append("upload_preset", presetCloudinary);
+      setLoading(true)
+      const data = new FormData()
+      data.append('file', file)
+      data.append('upload_preset', presetCloudinary)
       return fetch(clientEnv.cloudinary.apiPublicUrl, {
-        method: "post",
+        method: 'post',
         body: data,
-      });
-    });
+      })
+    })
 
     return Promise.all(uploadedImages)
       .then((responses) => {
-        return Promise.all(responses.map((response) => response.json()));
+        return Promise.all(responses.map((response) => response.json()))
       })
       .then((data) => {
-        setLoading(false);
-        return data;
+        setLoading(false)
+        return data
       })
-      .catch((error) => console.log("error cloudinary:", error));
-  }, []);
+      .catch((error) => console.log('error cloudinary:', error))
+  }, [])
 
-  return { uploadFilesCloudinary, loading };
+  return { uploadFilesCloudinary, loading }
 }

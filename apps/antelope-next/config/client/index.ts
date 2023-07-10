@@ -1,1 +1,1 @@
-export * from "./client-env.config"
+export * from './client-env.config'

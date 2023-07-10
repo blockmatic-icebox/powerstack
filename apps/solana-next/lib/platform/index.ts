@@ -1,1 +1,1 @@
-export * from "./platform.lib"
+export * from './platform.lib'

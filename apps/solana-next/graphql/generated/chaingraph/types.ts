@@ -1,8 +1,7 @@
 export default {
   scalars: [
-    0, 2, 3, 5, 13, 26, 34, 44, 53, 61, 76, 87, 99, 111, 120, 124, 126, 127,
-    134, 143, 147, 154, 166, 170, 172, 182, 196, 200, 202, 209, 219, 227, 232,
-    240, 253, 261,
+    0, 2, 3, 5, 13, 26, 34, 44, 53, 61, 76, 87, 99, 111, 120, 124, 126, 127, 134, 143, 147, 154, 166, 170, 172, 182,
+    196, 200, 202, 209, 219, 227, 232, 240, 253, 261,
   ],
   types: {
     Boolean: {},
@@ -108,7 +107,7 @@ export default {
       count: [
         3,
         {
-          columns: [26, "[actions_select_column!]"],
+          columns: [26, '[actions_select_column!]'],
           distinct: [0],
         },
       ],
@@ -366,7 +365,7 @@ export default {
       count: [
         3,
         {
-          columns: [53, "[api_users_select_column!]"],
+          columns: [53, '[api_users_select_column!]'],
           distinct: [0],
         },
       ],
@@ -542,7 +541,7 @@ export default {
       count: [
         3,
         {
-          columns: [87, "[blocks_select_column!]"],
+          columns: [87, '[blocks_select_column!]'],
           distinct: [0],
         },
       ],
@@ -756,20 +755,20 @@ export default {
       blocks: [
         66,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
       blocks_aggregate: [
         67,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
@@ -779,20 +778,20 @@ export default {
       table_rows: [
         173,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
       table_rows_aggregate: [
         174,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
@@ -807,7 +806,7 @@ export default {
       count: [
         3,
         {
-          columns: [120, "[chains_select_column!]"],
+          columns: [120, '[chains_select_column!]'],
           distinct: [0],
         },
       ],
@@ -941,7 +940,7 @@ export default {
       count: [
         3,
         {
-          columns: [143, "[manifests_select_column!]"],
+          columns: [143, '[manifests_select_column!]'],
           distinct: [0],
         },
       ],
@@ -1061,7 +1060,7 @@ export default {
       count: [
         3,
         {
-          columns: [166, "[mappings_select_column!]"],
+          columns: [166, '[mappings_select_column!]'],
           distinct: [0],
         },
       ],
@@ -1218,7 +1217,7 @@ export default {
       count: [
         3,
         {
-          columns: [196, "[table_rows_select_column!]"],
+          columns: [196, '[table_rows_select_column!]'],
           distinct: [0],
         },
       ],
@@ -1406,7 +1405,7 @@ export default {
       count: [
         3,
         {
-          columns: [219, "[transactions_select_column!]"],
+          columns: [219, '[transactions_select_column!]'],
           distinct: [0],
         },
       ],
@@ -1629,7 +1628,7 @@ export default {
       count: [
         3,
         {
-          columns: [253, "[whitelists_select_column!]"],
+          columns: [253, '[whitelists_select_column!]'],
           distinct: [0],
         },
       ],
@@ -1815,245 +1814,245 @@ export default {
       actions: [
         7,
         {
-          distinct_on: [26, "[actions_select_column!]"],
+          distinct_on: [26, '[actions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [23, "[actions_order_by!]"],
+          order_by: [23, '[actions_order_by!]'],
           where: [12],
         },
       ],
       actions_aggregate: [
         8,
         {
-          distinct_on: [26, "[actions_select_column!]"],
+          distinct_on: [26, '[actions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [23, "[actions_order_by!]"],
+          order_by: [23, '[actions_order_by!]'],
           where: [12],
         },
       ],
       actions_by_pk: [
         7,
         {
-          chain: [5, "String!"],
-          global_sequence: [5, "String!"],
+          chain: [5, 'String!'],
+          global_sequence: [5, 'String!'],
         },
       ],
       api_users: [
         39,
         {
-          distinct_on: [53, "[api_users_select_column!]"],
+          distinct_on: [53, '[api_users_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [51, "[api_users_order_by!]"],
+          order_by: [51, '[api_users_order_by!]'],
           where: [43],
         },
       ],
       api_users_aggregate: [
         40,
         {
-          distinct_on: [53, "[api_users_select_column!]"],
+          distinct_on: [53, '[api_users_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [51, "[api_users_order_by!]"],
+          order_by: [51, '[api_users_order_by!]'],
           where: [43],
         },
       ],
       api_users_by_pk: [
         39,
         {
-          id: [3, "Int!"],
+          id: [3, 'Int!'],
         },
       ],
       blocks: [
         66,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
       blocks_aggregate: [
         67,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
       blocks_by_pk: [
         66,
         {
-          block_num: [3, "Int!"],
-          chain: [5, "String!"],
+          block_num: [3, 'Int!'],
+          chain: [5, 'String!'],
         },
       ],
       chains: [
         107,
         {
-          distinct_on: [120, "[chains_select_column!]"],
+          distinct_on: [120, '[chains_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [118, "[chains_order_by!]"],
+          order_by: [118, '[chains_order_by!]'],
           where: [110],
         },
       ],
       chains_aggregate: [
         108,
         {
-          distinct_on: [120, "[chains_select_column!]"],
+          distinct_on: [120, '[chains_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [118, "[chains_order_by!]"],
+          order_by: [118, '[chains_order_by!]'],
           where: [110],
         },
       ],
       chains_by_pk: [
         107,
         {
-          chain_name: [5, "String!"],
+          chain_name: [5, 'String!'],
         },
       ],
       manifests: [
         130,
         {
-          distinct_on: [143, "[manifests_select_column!]"],
+          distinct_on: [143, '[manifests_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [141, "[manifests_order_by!]"],
+          order_by: [141, '[manifests_order_by!]'],
           where: [133],
         },
       ],
       manifests_aggregate: [
         131,
         {
-          distinct_on: [143, "[manifests_select_column!]"],
+          distinct_on: [143, '[manifests_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [141, "[manifests_order_by!]"],
+          order_by: [141, '[manifests_order_by!]'],
           where: [133],
         },
       ],
       manifests_by_pk: [
         130,
         {
-          app_id: [232, "uuid!"],
+          app_id: [232, 'uuid!'],
         },
       ],
       mappings: [
         149,
         {
-          distinct_on: [166, "[mappings_select_column!]"],
+          distinct_on: [166, '[mappings_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [163, "[mappings_order_by!]"],
+          order_by: [163, '[mappings_order_by!]'],
           where: [153],
         },
       ],
       mappings_aggregate: [
         150,
         {
-          distinct_on: [166, "[mappings_select_column!]"],
+          distinct_on: [166, '[mappings_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [163, "[mappings_order_by!]"],
+          order_by: [163, '[mappings_order_by!]'],
           where: [153],
         },
       ],
       mappings_by_pk: [
         149,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       table_rows: [
         173,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
       table_rows_aggregate: [
         174,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
       table_rows_by_pk: [
         173,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
-          primary_key: [5, "String!"],
-          scope: [5, "String!"],
-          table: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
+          primary_key: [5, 'String!'],
+          scope: [5, 'String!'],
+          table: [5, 'String!'],
         },
       ],
       transactions: [
         204,
         {
-          distinct_on: [219, "[transactions_select_column!]"],
+          distinct_on: [219, '[transactions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [217, "[transactions_order_by!]"],
+          order_by: [217, '[transactions_order_by!]'],
           where: [208],
         },
       ],
       transactions_aggregate: [
         205,
         {
-          distinct_on: [219, "[transactions_select_column!]"],
+          distinct_on: [219, '[transactions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [217, "[transactions_order_by!]"],
+          order_by: [217, '[transactions_order_by!]'],
           where: [208],
         },
       ],
       transactions_by_pk: [
         204,
         {
-          chain: [5, "String!"],
-          transaction_id: [5, "String!"],
+          chain: [5, 'String!'],
+          transaction_id: [5, 'String!'],
         },
       ],
       whitelists: [
         234,
         {
-          distinct_on: [253, "[whitelists_select_column!]"],
+          distinct_on: [253, '[whitelists_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [250, "[whitelists_order_by!]"],
+          order_by: [250, '[whitelists_order_by!]'],
           where: [239],
         },
       ],
       whitelists_aggregate: [
         235,
         {
-          distinct_on: [253, "[whitelists_select_column!]"],
+          distinct_on: [253, '[whitelists_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [250, "[whitelists_order_by!]"],
+          order_by: [250, '[whitelists_order_by!]'],
           where: [239],
         },
       ],
       whitelists_by_pk: [
         234,
         {
-          app_id: [232, "uuid!"],
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          app_id: [232, 'uuid!'],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       __typename: [5],
@@ -2062,244 +2061,244 @@ export default {
       delete_actions: [
         21,
         {
-          where: [12, "actions_bool_exp!"],
+          where: [12, 'actions_bool_exp!'],
         },
       ],
       delete_actions_by_pk: [
         7,
         {
-          chain: [5, "String!"],
-          global_sequence: [5, "String!"],
+          chain: [5, 'String!'],
+          global_sequence: [5, 'String!'],
         },
       ],
       delete_api_users: [
         49,
         {
-          where: [43, "api_users_bool_exp!"],
+          where: [43, 'api_users_bool_exp!'],
         },
       ],
       delete_api_users_by_pk: [
         39,
         {
-          id: [3, "Int!"],
+          id: [3, 'Int!'],
         },
       ],
       delete_blocks: [
         83,
         {
-          where: [75, "blocks_bool_exp!"],
+          where: [75, 'blocks_bool_exp!'],
         },
       ],
       delete_blocks_by_pk: [
         66,
         {
-          block_num: [3, "Int!"],
-          chain: [5, "String!"],
+          block_num: [3, 'Int!'],
+          chain: [5, 'String!'],
         },
       ],
       delete_chains: [
         115,
         {
-          where: [110, "chains_bool_exp!"],
+          where: [110, 'chains_bool_exp!'],
         },
       ],
       delete_chains_by_pk: [
         107,
         {
-          chain_name: [5, "String!"],
+          chain_name: [5, 'String!'],
         },
       ],
       delete_manifests: [
         138,
         {
-          where: [133, "manifests_bool_exp!"],
+          where: [133, 'manifests_bool_exp!'],
         },
       ],
       delete_manifests_by_pk: [
         130,
         {
-          app_id: [232, "uuid!"],
+          app_id: [232, 'uuid!'],
         },
       ],
       delete_mappings: [
         161,
         {
-          where: [153, "mappings_bool_exp!"],
+          where: [153, 'mappings_bool_exp!'],
         },
       ],
       delete_mappings_by_pk: [
         149,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       delete_table_rows: [
         191,
         {
-          where: [181, "table_rows_bool_exp!"],
+          where: [181, 'table_rows_bool_exp!'],
         },
       ],
       delete_table_rows_by_pk: [
         173,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
-          primary_key: [5, "String!"],
-          scope: [5, "String!"],
-          table: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
+          primary_key: [5, 'String!'],
+          scope: [5, 'String!'],
+          table: [5, 'String!'],
         },
       ],
       delete_transactions: [
         214,
         {
-          where: [208, "transactions_bool_exp!"],
+          where: [208, 'transactions_bool_exp!'],
         },
       ],
       delete_transactions_by_pk: [
         204,
         {
-          chain: [5, "String!"],
-          transaction_id: [5, "String!"],
+          chain: [5, 'String!'],
+          transaction_id: [5, 'String!'],
         },
       ],
       delete_whitelists: [
         248,
         {
-          where: [239, "whitelists_bool_exp!"],
+          where: [239, 'whitelists_bool_exp!'],
         },
       ],
       delete_whitelists_by_pk: [
         234,
         {
-          app_id: [232, "uuid!"],
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          app_id: [232, 'uuid!'],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       insert_actions: [
         21,
         {
-          objects: [18, "[actions_insert_input!]!"],
+          objects: [18, '[actions_insert_input!]!'],
           on_conflict: [22],
         },
       ],
       insert_actions_one: [
         7,
         {
-          object: [18, "actions_insert_input!"],
+          object: [18, 'actions_insert_input!'],
           on_conflict: [22],
         },
       ],
       insert_api_users: [
         49,
         {
-          objects: [46, "[api_users_insert_input!]!"],
+          objects: [46, '[api_users_insert_input!]!'],
           on_conflict: [50],
         },
       ],
       insert_api_users_one: [
         39,
         {
-          object: [46, "api_users_insert_input!"],
+          object: [46, 'api_users_insert_input!'],
           on_conflict: [50],
         },
       ],
       insert_blocks: [
         83,
         {
-          objects: [78, "[blocks_insert_input!]!"],
+          objects: [78, '[blocks_insert_input!]!'],
           on_conflict: [84],
         },
       ],
       insert_blocks_one: [
         66,
         {
-          object: [78, "blocks_insert_input!"],
+          object: [78, 'blocks_insert_input!'],
           on_conflict: [84],
         },
       ],
       insert_chains: [
         115,
         {
-          objects: [112, "[chains_insert_input!]!"],
+          objects: [112, '[chains_insert_input!]!'],
           on_conflict: [117],
         },
       ],
       insert_chains_one: [
         107,
         {
-          object: [112, "chains_insert_input!"],
+          object: [112, 'chains_insert_input!'],
           on_conflict: [117],
         },
       ],
       insert_manifests: [
         138,
         {
-          objects: [135, "[manifests_insert_input!]!"],
+          objects: [135, '[manifests_insert_input!]!'],
           on_conflict: [140],
         },
       ],
       insert_manifests_one: [
         130,
         {
-          object: [135, "manifests_insert_input!"],
+          object: [135, 'manifests_insert_input!'],
           on_conflict: [140],
         },
       ],
       insert_mappings: [
         161,
         {
-          objects: [158, "[mappings_insert_input!]!"],
+          objects: [158, '[mappings_insert_input!]!'],
           on_conflict: [162],
         },
       ],
       insert_mappings_one: [
         149,
         {
-          object: [158, "mappings_insert_input!"],
+          object: [158, 'mappings_insert_input!'],
           on_conflict: [162],
         },
       ],
       insert_table_rows: [
         191,
         {
-          objects: [186, "[table_rows_insert_input!]!"],
+          objects: [186, '[table_rows_insert_input!]!'],
           on_conflict: [192],
         },
       ],
       insert_table_rows_one: [
         173,
         {
-          object: [186, "table_rows_insert_input!"],
+          object: [186, 'table_rows_insert_input!'],
           on_conflict: [192],
         },
       ],
       insert_transactions: [
         214,
         {
-          objects: [211, "[transactions_insert_input!]!"],
+          objects: [211, '[transactions_insert_input!]!'],
           on_conflict: [216],
         },
       ],
       insert_transactions_one: [
         204,
         {
-          object: [211, "transactions_insert_input!"],
+          object: [211, 'transactions_insert_input!'],
           on_conflict: [216],
         },
       ],
       insert_whitelists: [
         248,
         {
-          objects: [245, "[whitelists_insert_input!]!"],
+          objects: [245, '[whitelists_insert_input!]!'],
           on_conflict: [249],
         },
       ],
       insert_whitelists_one: [
         234,
         {
-          object: [245, "whitelists_insert_input!"],
+          object: [245, 'whitelists_insert_input!'],
           on_conflict: [249],
         },
       ],
@@ -2313,7 +2312,7 @@ export default {
           _inc: [17],
           _prepend: [25],
           _set: [27],
-          where: [12, "actions_bool_exp!"],
+          where: [12, 'actions_bool_exp!'],
         },
       ],
       update_actions_by_pk: [
@@ -2326,13 +2325,13 @@ export default {
           _inc: [17],
           _prepend: [25],
           _set: [27],
-          pk_columns: [24, "actions_pk_columns_input!"],
+          pk_columns: [24, 'actions_pk_columns_input!'],
         },
       ],
       update_actions_many: [
         21,
         {
-          updates: [35, "[actions_updates!]!"],
+          updates: [35, '[actions_updates!]!'],
         },
       ],
       update_api_users: [
@@ -2340,7 +2339,7 @@ export default {
         {
           _inc: [45],
           _set: [54],
-          where: [43, "api_users_bool_exp!"],
+          where: [43, 'api_users_bool_exp!'],
         },
       ],
       update_api_users_by_pk: [
@@ -2348,13 +2347,13 @@ export default {
         {
           _inc: [45],
           _set: [54],
-          pk_columns: [52, "api_users_pk_columns_input!"],
+          pk_columns: [52, 'api_users_pk_columns_input!'],
         },
       ],
       update_api_users_many: [
         49,
         {
-          updates: [62, "[api_users_updates!]!"],
+          updates: [62, '[api_users_updates!]!'],
         },
       ],
       update_blocks: [
@@ -2362,7 +2361,7 @@ export default {
         {
           _inc: [77],
           _set: [88],
-          where: [75, "blocks_bool_exp!"],
+          where: [75, 'blocks_bool_exp!'],
         },
       ],
       update_blocks_by_pk: [
@@ -2370,53 +2369,53 @@ export default {
         {
           _inc: [77],
           _set: [88],
-          pk_columns: [86, "blocks_pk_columns_input!"],
+          pk_columns: [86, 'blocks_pk_columns_input!'],
         },
       ],
       update_blocks_many: [
         83,
         {
-          updates: [100, "[blocks_updates!]!"],
+          updates: [100, '[blocks_updates!]!'],
         },
       ],
       update_chains: [
         115,
         {
           _set: [121],
-          where: [110, "chains_bool_exp!"],
+          where: [110, 'chains_bool_exp!'],
         },
       ],
       update_chains_by_pk: [
         107,
         {
           _set: [121],
-          pk_columns: [119, "chains_pk_columns_input!"],
+          pk_columns: [119, 'chains_pk_columns_input!'],
         },
       ],
       update_chains_many: [
         115,
         {
-          updates: [125, "[chains_updates!]!"],
+          updates: [125, '[chains_updates!]!'],
         },
       ],
       update_manifests: [
         138,
         {
           _set: [144],
-          where: [133, "manifests_bool_exp!"],
+          where: [133, 'manifests_bool_exp!'],
         },
       ],
       update_manifests_by_pk: [
         130,
         {
           _set: [144],
-          pk_columns: [142, "manifests_pk_columns_input!"],
+          pk_columns: [142, 'manifests_pk_columns_input!'],
         },
       ],
       update_manifests_many: [
         138,
         {
-          updates: [148, "[manifests_updates!]!"],
+          updates: [148, '[manifests_updates!]!'],
         },
       ],
       update_mappings: [
@@ -2428,7 +2427,7 @@ export default {
           _delete_key: [157],
           _prepend: [165],
           _set: [167],
-          where: [153, "mappings_bool_exp!"],
+          where: [153, 'mappings_bool_exp!'],
         },
       ],
       update_mappings_by_pk: [
@@ -2440,13 +2439,13 @@ export default {
           _delete_key: [157],
           _prepend: [165],
           _set: [167],
-          pk_columns: [164, "mappings_pk_columns_input!"],
+          pk_columns: [164, 'mappings_pk_columns_input!'],
         },
       ],
       update_mappings_many: [
         161,
         {
-          updates: [171, "[mappings_updates!]!"],
+          updates: [171, '[mappings_updates!]!'],
         },
       ],
       update_table_rows: [
@@ -2458,7 +2457,7 @@ export default {
           _delete_key: [185],
           _prepend: [195],
           _set: [197],
-          where: [181, "table_rows_bool_exp!"],
+          where: [181, 'table_rows_bool_exp!'],
         },
       ],
       update_table_rows_by_pk: [
@@ -2470,13 +2469,13 @@ export default {
           _delete_key: [185],
           _prepend: [195],
           _set: [197],
-          pk_columns: [194, "table_rows_pk_columns_input!"],
+          pk_columns: [194, 'table_rows_pk_columns_input!'],
         },
       ],
       update_table_rows_many: [
         191,
         {
-          updates: [201, "[table_rows_updates!]!"],
+          updates: [201, '[table_rows_updates!]!'],
         },
       ],
       update_transactions: [
@@ -2484,7 +2483,7 @@ export default {
         {
           _inc: [210],
           _set: [220],
-          where: [208, "transactions_bool_exp!"],
+          where: [208, 'transactions_bool_exp!'],
         },
       ],
       update_transactions_by_pk: [
@@ -2492,13 +2491,13 @@ export default {
         {
           _inc: [210],
           _set: [220],
-          pk_columns: [218, "transactions_pk_columns_input!"],
+          pk_columns: [218, 'transactions_pk_columns_input!'],
         },
       ],
       update_transactions_many: [
         214,
         {
-          updates: [228, "[transactions_updates!]!"],
+          updates: [228, '[transactions_updates!]!'],
         },
       ],
       update_whitelists: [
@@ -2511,7 +2510,7 @@ export default {
           _inc: [244],
           _prepend: [252],
           _set: [254],
-          where: [239, "whitelists_bool_exp!"],
+          where: [239, 'whitelists_bool_exp!'],
         },
       ],
       update_whitelists_by_pk: [
@@ -2524,13 +2523,13 @@ export default {
           _inc: [244],
           _prepend: [252],
           _set: [254],
-          pk_columns: [251, "whitelists_pk_columns_input!"],
+          pk_columns: [251, 'whitelists_pk_columns_input!'],
         },
       ],
       update_whitelists_many: [
         248,
         {
-          updates: [262, "[whitelists_updates!]!"],
+          updates: [262, '[whitelists_updates!]!'],
         },
       ],
       __typename: [5],
@@ -2539,316 +2538,316 @@ export default {
       actions: [
         7,
         {
-          distinct_on: [26, "[actions_select_column!]"],
+          distinct_on: [26, '[actions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [23, "[actions_order_by!]"],
+          order_by: [23, '[actions_order_by!]'],
           where: [12],
         },
       ],
       actions_aggregate: [
         8,
         {
-          distinct_on: [26, "[actions_select_column!]"],
+          distinct_on: [26, '[actions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [23, "[actions_order_by!]"],
+          order_by: [23, '[actions_order_by!]'],
           where: [12],
         },
       ],
       actions_by_pk: [
         7,
         {
-          chain: [5, "String!"],
-          global_sequence: [5, "String!"],
+          chain: [5, 'String!'],
+          global_sequence: [5, 'String!'],
         },
       ],
       actions_stream: [
         7,
         {
-          batch_size: [3, "Int!"],
-          cursor: [31, "[actions_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [31, '[actions_stream_cursor_input]!'],
           where: [12],
         },
       ],
       api_users: [
         39,
         {
-          distinct_on: [53, "[api_users_select_column!]"],
+          distinct_on: [53, '[api_users_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [51, "[api_users_order_by!]"],
+          order_by: [51, '[api_users_order_by!]'],
           where: [43],
         },
       ],
       api_users_aggregate: [
         40,
         {
-          distinct_on: [53, "[api_users_select_column!]"],
+          distinct_on: [53, '[api_users_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [51, "[api_users_order_by!]"],
+          order_by: [51, '[api_users_order_by!]'],
           where: [43],
         },
       ],
       api_users_by_pk: [
         39,
         {
-          id: [3, "Int!"],
+          id: [3, 'Int!'],
         },
       ],
       api_users_stream: [
         39,
         {
-          batch_size: [3, "Int!"],
-          cursor: [58, "[api_users_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [58, '[api_users_stream_cursor_input]!'],
           where: [43],
         },
       ],
       blocks: [
         66,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
       blocks_aggregate: [
         67,
         {
-          distinct_on: [87, "[blocks_select_column!]"],
+          distinct_on: [87, '[blocks_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [85, "[blocks_order_by!]"],
+          order_by: [85, '[blocks_order_by!]'],
           where: [75],
         },
       ],
       blocks_by_pk: [
         66,
         {
-          block_num: [3, "Int!"],
-          chain: [5, "String!"],
+          block_num: [3, 'Int!'],
+          chain: [5, 'String!'],
         },
       ],
       blocks_stream: [
         66,
         {
-          batch_size: [3, "Int!"],
-          cursor: [95, "[blocks_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [95, '[blocks_stream_cursor_input]!'],
           where: [75],
         },
       ],
       chains: [
         107,
         {
-          distinct_on: [120, "[chains_select_column!]"],
+          distinct_on: [120, '[chains_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [118, "[chains_order_by!]"],
+          order_by: [118, '[chains_order_by!]'],
           where: [110],
         },
       ],
       chains_aggregate: [
         108,
         {
-          distinct_on: [120, "[chains_select_column!]"],
+          distinct_on: [120, '[chains_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [118, "[chains_order_by!]"],
+          order_by: [118, '[chains_order_by!]'],
           where: [110],
         },
       ],
       chains_by_pk: [
         107,
         {
-          chain_name: [5, "String!"],
+          chain_name: [5, 'String!'],
         },
       ],
       chains_stream: [
         107,
         {
-          batch_size: [3, "Int!"],
-          cursor: [122, "[chains_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [122, '[chains_stream_cursor_input]!'],
           where: [110],
         },
       ],
       manifests: [
         130,
         {
-          distinct_on: [143, "[manifests_select_column!]"],
+          distinct_on: [143, '[manifests_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [141, "[manifests_order_by!]"],
+          order_by: [141, '[manifests_order_by!]'],
           where: [133],
         },
       ],
       manifests_aggregate: [
         131,
         {
-          distinct_on: [143, "[manifests_select_column!]"],
+          distinct_on: [143, '[manifests_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [141, "[manifests_order_by!]"],
+          order_by: [141, '[manifests_order_by!]'],
           where: [133],
         },
       ],
       manifests_by_pk: [
         130,
         {
-          app_id: [232, "uuid!"],
+          app_id: [232, 'uuid!'],
         },
       ],
       manifests_stream: [
         130,
         {
-          batch_size: [3, "Int!"],
-          cursor: [145, "[manifests_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [145, '[manifests_stream_cursor_input]!'],
           where: [133],
         },
       ],
       mappings: [
         149,
         {
-          distinct_on: [166, "[mappings_select_column!]"],
+          distinct_on: [166, '[mappings_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [163, "[mappings_order_by!]"],
+          order_by: [163, '[mappings_order_by!]'],
           where: [153],
         },
       ],
       mappings_aggregate: [
         150,
         {
-          distinct_on: [166, "[mappings_select_column!]"],
+          distinct_on: [166, '[mappings_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [163, "[mappings_order_by!]"],
+          order_by: [163, '[mappings_order_by!]'],
           where: [153],
         },
       ],
       mappings_by_pk: [
         149,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       mappings_stream: [
         149,
         {
-          batch_size: [3, "Int!"],
-          cursor: [168, "[mappings_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [168, '[mappings_stream_cursor_input]!'],
           where: [153],
         },
       ],
       table_rows: [
         173,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
       table_rows_aggregate: [
         174,
         {
-          distinct_on: [196, "[table_rows_select_column!]"],
+          distinct_on: [196, '[table_rows_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [193, "[table_rows_order_by!]"],
+          order_by: [193, '[table_rows_order_by!]'],
           where: [181],
         },
       ],
       table_rows_by_pk: [
         173,
         {
-          chain: [5, "String!"],
-          contract: [5, "String!"],
-          primary_key: [5, "String!"],
-          scope: [5, "String!"],
-          table: [5, "String!"],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
+          primary_key: [5, 'String!'],
+          scope: [5, 'String!'],
+          table: [5, 'String!'],
         },
       ],
       table_rows_stream: [
         173,
         {
-          batch_size: [3, "Int!"],
-          cursor: [198, "[table_rows_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [198, '[table_rows_stream_cursor_input]!'],
           where: [181],
         },
       ],
       transactions: [
         204,
         {
-          distinct_on: [219, "[transactions_select_column!]"],
+          distinct_on: [219, '[transactions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [217, "[transactions_order_by!]"],
+          order_by: [217, '[transactions_order_by!]'],
           where: [208],
         },
       ],
       transactions_aggregate: [
         205,
         {
-          distinct_on: [219, "[transactions_select_column!]"],
+          distinct_on: [219, '[transactions_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [217, "[transactions_order_by!]"],
+          order_by: [217, '[transactions_order_by!]'],
           where: [208],
         },
       ],
       transactions_by_pk: [
         204,
         {
-          chain: [5, "String!"],
-          transaction_id: [5, "String!"],
+          chain: [5, 'String!'],
+          transaction_id: [5, 'String!'],
         },
       ],
       transactions_stream: [
         204,
         {
-          batch_size: [3, "Int!"],
-          cursor: [224, "[transactions_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [224, '[transactions_stream_cursor_input]!'],
           where: [208],
         },
       ],
       whitelists: [
         234,
         {
-          distinct_on: [253, "[whitelists_select_column!]"],
+          distinct_on: [253, '[whitelists_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [250, "[whitelists_order_by!]"],
+          order_by: [250, '[whitelists_order_by!]'],
           where: [239],
         },
       ],
       whitelists_aggregate: [
         235,
         {
-          distinct_on: [253, "[whitelists_select_column!]"],
+          distinct_on: [253, '[whitelists_select_column!]'],
           limit: [3],
           offset: [3],
-          order_by: [250, "[whitelists_order_by!]"],
+          order_by: [250, '[whitelists_order_by!]'],
           where: [239],
         },
       ],
       whitelists_by_pk: [
         234,
         {
-          app_id: [232, "uuid!"],
-          chain: [5, "String!"],
-          contract: [5, "String!"],
+          app_id: [232, 'uuid!'],
+          chain: [5, 'String!'],
+          contract: [5, 'String!'],
         },
       ],
       whitelists_stream: [
         234,
         {
-          batch_size: [3, "Int!"],
-          cursor: [258, "[whitelists_stream_cursor_input]!"],
+          batch_size: [3, 'Int!'],
+          cursor: [258, '[whitelists_stream_cursor_input]!'],
           where: [239],
         },
       ],

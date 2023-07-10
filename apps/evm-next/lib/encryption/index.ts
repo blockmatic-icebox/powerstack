@@ -1,1 +1,1 @@
-export * from "./encryption.lib"
+export * from './encryption.lib'

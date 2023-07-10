@@ -1,12 +1,5 @@
 // @ts-nocheck
-import type {
-  CompressedType,
-  CompressedTypeMap,
-  LinkedArgMap,
-  LinkedField,
-  LinkedType,
-  LinkedTypeMap,
-} from "./types"
+import type { CompressedType, CompressedTypeMap, LinkedArgMap, LinkedField, LinkedType, LinkedTypeMap } from './types'
 
 export interface PartialLinkedFieldMap {
   [field: string]: {
@@ -15,9 +8,7 @@ export interface PartialLinkedFieldMap {
   }
 }
 
-export const linkTypeMap = (
-  typeMap: CompressedTypeMap<number>
-): LinkedTypeMap => {
+export const linkTypeMap = (typeMap: CompressedTypeMap<number>): LinkedTypeMap => {
   const indexToName: Record<number, string> = Object.assign(
     {},
     ...Object.keys(typeMap.types).map((k, i) => ({ [i]: k }))
@@ -57,10 +48,7 @@ export const linkTypeMap = (
                       }
                       const [argTypeName, argTypeString] = args[k] as any
                       return {
-                        [k]: [
-                          indexToName[argTypeName],
-                          argTypeString || indexToName[argTypeName],
-                        ],
+                        [k]: [indexToName[argTypeName], argTypeString || indexToName[argTypeName]],
                       }
                     })
                   ),
@@ -98,7 +86,7 @@ export const resolveConcreteTypes = (linkedTypeMap: LinkedTypeMap) => {
           if (arg) {
             const [typeName] = arg
 
-            if (typeof typeName === "string") {
+            if (typeof typeName === 'string') {
               if (!linkedTypeMap[typeName]) {
                 linkedTypeMap[typeName] = { name: typeName }
               }
@@ -111,7 +99,7 @@ export const resolveConcreteTypes = (linkedTypeMap: LinkedTypeMap) => {
 
       const typeName = field.type as LinkedType | string
 
-      if (typeof typeName === "string") {
+      if (typeof typeName === 'string') {
         if (!linkedTypeMap[typeName]) {
           linkedTypeMap[typeName] = { name: typeName }
         }
