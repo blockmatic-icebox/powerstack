@@ -1,12 +1,9 @@
-export async function fetchJson<JSON = unknown>(input: RequestInfo, init?: RequestInit): Promise<JSON> {
+export async function fetchJson<JSON = {}>(
+  input: RequestInfo,
+  init?: RequestInit
+): Promise<JSON> {
   const response = await fetch(input, init)
-
-  // if the server replies, there's always some data in json
-  // if there's a network error, it will throw at the previous line
   const data = await response.json()
-
-  // response.ok is true when res.status is 2xx
-  // https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
   if (response.ok) return data
 
   throw new FetchError({
@@ -40,7 +37,7 @@ export class FetchError extends Error {
       Error.captureStackTrace(this, FetchError)
     }
 
-    this.name = 'FetchError'
+    this.name = "FetchError"
     this.response = response
     this.data = data ?? { message: message }
   }

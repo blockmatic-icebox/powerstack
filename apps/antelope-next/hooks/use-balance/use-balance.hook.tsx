@@ -1,6 +1,6 @@
-import { antelopeApi } from '~/lib/antelope'
+import { antelopeApi } from "~/lib/anchor"
 
-import { useAuth } from '../use-auth'
+import { useAuth } from "../use-auth"
 
 export async function useBalance() {
   const { session } = useAuth()
@@ -11,5 +11,5 @@ export async function useBalance() {
   //   "EOS"
   // )
 
-  return '0 EOS'
+  return "0 EOS"
 }

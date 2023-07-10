@@ -43,6 +43,7 @@ _ This is a work in progress._
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
 - React Hook Form [react-hook-form.com](https://react-hook-form.com)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
+- Date-fns [date-fns.org](https://date-fns.org/)
 
 ## Coding Style Best Practices
 
@@ -229,9 +230,14 @@ This is a [great interview with TailwindCSS founder](https://open.spotify.com/ep
 
 Its possible to write variant based component using Class Variant Authority [cva.style](https://cva.style/docs)
 
+## Other Useful Libs
+
+- Faker [fakerjs.dev/](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
+- Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
+
 ## Contributing
 
-Follow the standard Github Flow for PRs. [Contributing Guidelines](https://docs.powerstack.xyz/powerstack/other-resources/contributing-guidelines).
+Follow the standard Github Flow for PRs.
 
 ## Blockmatic
 

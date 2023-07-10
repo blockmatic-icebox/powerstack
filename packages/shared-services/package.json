@@ -1,9 +1,9 @@
 {
-  "name": "shared-lib",
+  "name": "shared-services",
   "version": "0.0.0",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "sideEffects": false,
   "license": "MIT",
   "files": [
@@ -16,6 +16,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
+    "@sentry/types": "^7.57.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "eslint": "^8.15.0",
@@ -29,6 +30,8 @@
     "access": "public"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.10.1",
+    "@sentry/browser": "^7.57.0",
     "clsx": "^1.2.1",
     "crypto": "^1.0.1",
     "lodash": "^4.17.21",

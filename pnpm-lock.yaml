@@ -15,12 +15,15 @@ importers:
         specifier: ^4.22.1
         version: 4.22.1(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
+      '@types/node':
+        specifier: ^20.4.1
+        version: 20.4.1
       eslint:
         specifier: ^8.44.0
         version: 8.44.0
       eslint-config-custom:
         specifier: workspace:*
-        version: link:packages/eslint-custom
+        version: link:packages/eslint-config
       prettier:
         specifier: ^3.0.0
         version: 3.0.0
@@ -42,12 +45,6 @@ importers:
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.0.5
         version: 2.0.5(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-      '@sentry/browser':
-        specifier: ^7.57.0
-        version: 7.57.0
-      '@sentry/types':
-        specifier: ^7.57.0
-        version: 7.57.0
       anchor-link:
         specifier: ^3.5.1
         version: 3.5.1(bufferutil@4.0.7)(encoding@0.1.13)(utf-8-validate@6.0.3)
@@ -60,9 +57,6 @@ importers:
       class-variance-authority:
         specifier: ^0.6.1
         version: 0.6.1
-      clsx:
-        specifier: ^1.2.1
-        version: 1.2.1
       cmdk:
         specifier: ^0.2.0
         version: 0.2.0(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
@@ -72,9 +66,6 @@ importers:
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
-      diff:
-        specifier: ^5.1.0
-        version: 5.1.0
       lucide-react:
         specifier: 0.259.0
         version: 0.259.0(react@18.2.0)
@@ -105,9 +96,6 @@ importers:
       sharp:
         specifier: ^0.32.1
         version: 0.32.1
-      tailwind-merge:
-        specifier: ^1.13.2
-        version: 1.13.2
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
@@ -124,9 +112,6 @@ importers:
       '@types/lodash':
         specifier: ^4.14.195
         version: 4.14.195
-      '@types/node':
-        specifier: ^20.4.1
-        version: 20.4.1
       '@types/react':
         specifier: ^18.2.14
         version: 18.2.14
@@ -144,16 +129,16 @@ importers:
         version: 0.1.13
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../../packages/eslint-custom
+        version: link:../../packages/eslint-config
       postcss:
         specifier: ^8.4.25
         version: 8.4.25
-      prettier:
-        specifier: ^3.0.0
-        version: 3.0.0
       prettier-config:
         specifier: workspace:*
         version: link:../../packages/prettier-config
+      shared-lib:
+        specifier: workspace:*
+        version: link:../../packages/shared-lib
       tailwind-config:
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -280,7 +265,7 @@ importers:
         version: 0.1.13
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../../packages/eslint-custom
+        version: link:../../packages/eslint-config
       postcss:
         specifier: ^8.4.25
         version: 8.4.25
@@ -425,7 +410,7 @@ importers:
         version: 0.1.13
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../../packages/eslint-custom
+        version: link:../../packages/eslint-config
       postcss:
         specifier: ^8.4.25
         version: 8.4.25
@@ -517,7 +502,7 @@ importers:
         specifier: ^0.8.2
         version: 0.8.2(hardhat@2.14.0)
 
-  packages/eslint-custom:
+  packages/eslint-config:
     dependencies:
       eslint-config-next:
         specifier: ^13.4.1
@@ -546,7 +531,7 @@ importers:
     devDependencies:
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -565,7 +550,7 @@ importers:
     devDependencies:
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -590,7 +575,7 @@ importers:
     devDependencies:
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -623,7 +608,7 @@ importers:
         version: 8.15.0
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
       react:
         specifier: ^18.1.0
         version: 18.2.0
@@ -650,7 +635,7 @@ importers:
         version: 7.32.0
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -662,6 +647,19 @@ importers:
         version: 4.5.3
 
   packages/shared-lib:
+    dependencies:
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
+      crypto:
+        specifier: ^1.0.1
+        version: 1.0.1
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      tailwind-merge:
+        specifier: ^1.13.2
+        version: 1.13.2
     devDependencies:
       '@types/react':
         specifier: ^18.0.9
@@ -674,7 +672,56 @@ importers:
         version: 8.15.0
       eslint-config-custom:
         specifier: workspace:*
-        version: link:../eslint-custom
+        version: link:../eslint-config
+      react:
+        specifier: ^18.1.0
+        version: 18.2.0
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      tsup:
+        specifier: ^5.10.1
+        version: 5.10.1(typescript@4.5.3)
+      typescript:
+        specifier: ^4.5.3
+        version: 4.5.3
+
+  packages/shared-services:
+    dependencies:
+      '@cloudinary/url-gen':
+        specifier: ^1.10.1
+        version: 1.10.1
+      '@sentry/browser':
+        specifier: ^7.57.0
+        version: 7.57.0
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
+      crypto:
+        specifier: ^1.0.1
+        version: 1.0.1
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      tailwind-merge:
+        specifier: ^1.13.2
+        version: 1.13.2
+    devDependencies:
+      '@sentry/types':
+        specifier: ^7.57.0
+        version: 7.57.0
+      '@types/react':
+        specifier: ^18.0.9
+        version: 18.2.14
+      '@types/react-dom':
+        specifier: ^18.0.4
+        version: 18.2.6
+      eslint:
+        specifier: ^8.15.0
+        version: 8.44.0
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../eslint-config
       react:
         specifier: ^18.1.0
         version: 18.2.0
@@ -2929,7 +2976,6 @@ packages:
   /@sentry/types@7.57.0:
     resolution: {integrity: sha512-D7ifoUfxuVCUyktIr5Gc+jXUbtcUMmfHdTtTbf1XCZHua5mJceK9wtl3YCg3eq/HK2Ppd52BKnTzEcS5ZKQM+w==}
     engines: {node: '>=8'}
-    dev: false
 
   /@sentry/utils@5.30.0:
     resolution: {integrity: sha512-zaYmoH0NWWtvnJjC9/CBseXMtKHm/tm40sz3YfJRxeQjyzRqNQPgivpd9R/oDJCYj999mzdW382p/qi2ypjLww==}
@@ -4390,6 +4436,11 @@ packages:
 
   /crypt@0.0.2:
     resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
+    dev: false
+
+  /crypto@1.0.1:
+    resolution: {integrity: sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==}
+    deprecated: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
     dev: false
 
   /css-in-js-utils@3.1.0:
