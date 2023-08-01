@@ -72,6 +72,11 @@ _ This is a work in progress._
 - Nexus GraphQL [nexusjs.org](https://nexusjs.org/)
 - Docker [docker.com](https://www.docker.com/)
 
+### Other Useful Libs
+
+- Faker [fakerjs.dev/](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
+- Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
+
 ## Coding Style Best Practices
 
 Follow a semantic, idiomatic, functional and declarative codestyle, using Modern JavaScript features and TypeScript.
@@ -223,17 +228,6 @@ If you are okay with things like persistence and time-travel debugging potential
 
 Use Arrays instead of Maps.
 
-## Turborepo Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-
 ## Styling
 
 We are going to leverage TailwindCSS as css framework for our React components.
@@ -257,10 +251,16 @@ This is a [great interview with TailwindCSS founder](https://open.spotify.com/ep
 
 Its possible to write variant based component using Class Variant Authority [cva.style](https://cva.style/docs)
 
-## Other Useful Libs
+## Turborepo Useful Links
 
-- Faker [fakerjs.dev/](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
-- Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
 
 ## Contributing
 
