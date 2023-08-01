@@ -37,7 +37,7 @@ _ This is a work in progress._
 
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
-- Metaplex [metaplex.com/](metaplex.com)
+- Metaplex [metaplex.com](https://metaplex.com)
 
 ### EOS
 
@@ -67,10 +67,10 @@ _ This is a work in progress._
 
 ### Backend (Offchain)
 
-- Hasura GraphQL [https://hasura.io](https://hasura.io/)
+- Hasura GraphQL [hasura.io](https://hasura.io/)
 - Prisma ORM [prisma.io](https://www.prisma.io/)
-- Nexus GraphQL [https://nexusjs.org](https://nexusjs.org/)
-- Docker [www.docker.com](https://www.docker.com/)
+- Nexus GraphQL [nexusjs.org](https://nexusjs.org/)
+- Docker [docker.com](https://www.docker.com/)
 
 ## Coding Style Best Practices
 
