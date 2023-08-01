@@ -1,6 +1,6 @@
 # PowerStack
 
-Application starters and tools for rapid development of blockchain based applications
+An opinitionated Blockchain Application Framework that provides starters, guidelines and tools for rapid development following industry best practices.
 
 <img width="892" alt="image" src="https://697788980-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZ9TDrZUmPgINqUrCxxId%2Fuploads%2Fae1Zeh49ADF1WWrQ5PIW%2Fimage.png?alt=media&token=daf2165f-f530-4f4e-875b-b6d936012a10">
 
@@ -11,39 +11,66 @@ _ This is a work in progress._
 ## Features
 
 - Web2 and Web3 authentication ( EVM, Solana, Antelope, Web3Auth, Flow ).
-- Read blockchain state, sign messages and transactions.
-- Read account token balances and nfts.
+- Read and modify blockchain state, sign messages and transactions.
 - Read token prices and market data.
-- Utility first CSS with TailwindCSS components.
+- Utility first CSS with TailwindCSS components with shadcn/ui.
 - Upload files to Arweave using Blundr.
 - Upload files to IPFS using Pinata.
 - Utilities for decimal precision and math.
-- Internationalization and integration with Sanity CMS.
+- Code-First GraphQL clients with genql.
 - Turbo monorepo and pnpm package manager for fast builds.
-- TypeScript, ESLint, Prettier for code quality.
+- Smart contract development environments.
+- Web2 APIs for offchain processing.
+- TypeScript, ESLint, Prettier configs for code quality.
 - Idiomatic, functional and declarative codestyle.
 - Automated testing and deployment utilities.
+- Code conventions and good documentation.
 
 ## Tech Stack
 
-- Turbo Monorepo [turbo.build](https://turbo.build/repo/docs/handbook)
-- pnpm [pnpm.io](https://pnpm.io/)
-- NextJS [nextjs.org](https://nextjs.org)
-- Next Auth [next-auth.js.org](https://next-auth.js.org/)
-- GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
-- TailwindCSS [tailwindcss.com](https://tailwindcss.com)
-- Class Variance Authority [https://cva.style](https://cva.style)
-- Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
+### EVM
+
+- Hardhat [hardhat.org](https://hardhat.org/)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
+
+### Solana
+
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
+- Metaplex [metaplex.com/](metaplex.com)
+
+### EOS
+
 - Wharfkit [wharfkit/antelope](https://github.com/wharfkit/antelope)
+
+### Shared
+
+- Turbo Monorepo [turbo.build](https://turbo.build/repo/docs/handbook)
+- pnpm [pnpm.io](https://pnpm.io/)
 - Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
 - Lodash tools [lodash.com/docs](https://lodash.com/docs)
 - Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
+- Date-fns [date-fns.org](https://date-fns.org/)
+
+### Frontend
+
+- NextJS [nextjs.org](https://nextjs.org)
+- PreactJS [preactjs.com](https://preactjs.com/)
+- Next Auth [next-auth.js.org](https://next-auth.js.org/)
+- GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
+- TailwindCSS [tailwindcss.com](https://tailwindcss.com)
+- Shadcn UI [ui.shadcn.com](https://ui.shadcn.com/)
+- Class Variance Authority [https://cva.style](https://cva.style)
+- Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
 - React Hook Form [react-hook-form.com](https://react-hook-form.com)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
-- Date-fns [date-fns.org](https://date-fns.org/)
+
+### Backend (Offchain)
+
+- Hasura GraphQL [https://hasura.io](https://hasura.io/)
+- Prisma ORM [prisma.io](https://www.prisma.io/)
+- Nexus GraphQL [https://nexusjs.org](https://nexusjs.org/)
+- Docker [www.docker.com](https://www.docker.com/)
 
 ## Coding Style Best Practices
 
