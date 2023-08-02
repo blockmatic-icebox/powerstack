@@ -255,6 +255,10 @@ This is a [great interview with TailwindCSS founder](https://open.spotify.com/ep
 
 Its possible to write variant based component using Class Variant Authority [cva.style](https://cva.style/docs)
 
+## Services
+
+The services directory contains vanillajs pure functions that interact with external apis. They encasulate logic for https, websocket and api queries.
+
 ## Turborepo Useful Links
 
 Learn more about the power of Turborepo:
