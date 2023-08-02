@@ -39,9 +39,13 @@ _ This is a work in progress._
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
 - Metaplex [metaplex.com](https://metaplex.com)
 
-### EOS
+### Antelope
 
 - Wharfkit [wharfkit/antelope](https://github.com/wharfkit/antelope)
+
+### Flow
+
+- Niftory [niftory.com](https://niftory.com/)
 
 ### Shared
 
@@ -74,7 +78,7 @@ _ This is a work in progress._
 
 ### Other Useful Libs
 
-- Faker [fakerjs.dev/](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
+- Faker [fakerjs.dev](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
 - Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
 
 ## Coding Style Best Practices
