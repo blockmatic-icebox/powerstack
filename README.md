@@ -91,10 +91,10 @@ _ This is a work in progress._
 
 ## Coding Style
 
-Follow a functional and declarative code style using Modern JavaScript features and TypeScript.
-Use correct semantics and meaningful naming.
-Write small components that do one thing well, avoid big components.
-Favor composability over big objects, leverage pure functions and keep state simple and flat, avoid deeply nested objects.
+- Follow a functional and declarative code style using Modern JavaScript features and TypeScript.
+- Use correct semantics and meaningful naming.
+- Write small components that do one thing well, avoid big components.
+- Favor composability over big objects, leverage pure functions and keep state simple and flat, avoid deeply nested objects.
 
 ## JavaScript Conventions
 
