@@ -63,7 +63,7 @@ _ This is a work in progress._
 - GenQL GraphQL Query Composer [remorses/genql](https://github.com/remorses/genql)
 - TailwindCSS [tailwindcss.com](https://tailwindcss.com)
 - Shadcn UI [ui.shadcn.com](https://ui.shadcn.com/)
-- Class Variance Authority [https://cva.style](https://cva.style)
+- Class Variance Authority [cva.style](https://cva.style)
 - Conditional Classes [package/clsx](https://www.npmjs.com/package/clsx)
 - React Hook Form [react-hook-form.com](https://react-hook-form.com)
 - React-use hooks [streamich/react-use](https://github.com/streamich/react-use)
@@ -80,7 +80,7 @@ _ This is a work in progress._
 - Turbo Monorepo [turbo.build](https://turbo.build/repo/docs/handbook)
 - pnpm [pnpm.io](https://pnpm.io/)
 
-### Polymorphic Packages
+### Packages
 
 - Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
 - Lodash tools [lodash.com/docs](https://lodash.com/docs)
@@ -89,19 +89,11 @@ _ This is a work in progress._
 - Faker [fakerjs.dev](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
 - Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
 
-## Coding Style Best Practices
+## Coding Style
 
-Follow a semantic, idiomatic, functional and declarative codestyle, using Modern JavaScript features and TypeScript.
-React is declarative, you declare you component structure and React and NextJS take care of handling the DOM changes require, it is possible to write imperative code but that is not recommended.
-Code should use correct semantics and meaningful naming, and be autoexplanatory, when you read your code outloud it should sound like plain english as much as possible.
-
-Declarative programming is like describing the picture, where imperative programming is the instruction for painting that picture. Declarative programming makes code:
-
-**more readable:** Program that are easier to read because it hides the lower level detail. In declarative programming we don't even know about the lower level details of the system.
-
-**easier to reason about:** the code we write is easier to reason about because it is much abstracted and we describe the solution instead of procedure.
-
-**single responsibility**, create small components that do one thing well, avoid big components.
+Follow a functional and declarative code style using Modern JavaScript features and TypeScript.
+Use correct semantics and meaningful naming.
+Write small components that do one thing well, avoid big components.
 Favor composability over big objects, leverage pure functions and keep state simple and flat, avoid deeply nested objects.
 
 ## JavaScript Conventions
