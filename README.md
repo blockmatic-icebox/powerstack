@@ -220,8 +220,7 @@ Use Arrays instead of Maps.
 
 ## Styling
 
-We are going to leverage TailwindCSS as css framework for our React components.
-Following its Utility First approach to develop faster with high quality.
+PowerStack uses a Utility-First approach with TailwindCSS to develop faster with high quality.
 
 This is a [great interview with TailwindCSS founder](https://open.spotify.com/episode/2NCNJ3AqEjALX2xza3JKkE?si=ZbnuQrwOT-C4agFxC6yTjg).
 
@@ -234,7 +233,6 @@ This is a [great interview with TailwindCSS founder](https://open.spotify.com/ep
 - tailwindui is great and the community is huge, you can copy paste any project and use it on your own without creating frankensteins
 - you can use it in combination with emmet, since it only uses className.
 - it enforce css based on constraints through theme and design tokens.
-- in 3.1 there is a feature called arbitrary variants that makes it even more flexible.
 - it gives you better performance, really good with ssr ( nextjs/remix ).
 - it removes the problems associated with preprocessors such as large bundles.
 - it is relatively less complex than styled components (you need to know more about javascript).
