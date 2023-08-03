@@ -93,22 +93,8 @@ Declarative programming is like describing the picture, where imperative program
 
 **easier to reason about:** the code we write is easier to reason about because it is much abstracted and we describe the solution instead of procedure.
 
-**Follow Single Responsibility Principle\***, create small components that do one thing well, avoid big components.
+**single responsibility**, create small components that do one thing well, avoid big components.
 Favor composability over big objects, leverage pure functions and keep state simple and flat, avoid deeply nested objects.
-
-## Be SOLID
-
-SOLID turns out to be a good idea for the functional/imperative realms too.
-
-SRP - 'Only do one thing' was taken from imperative programming in the first place. Having small, focused functions is good.
-
-OCP - Allowing you to change behaviors without modifying code is good. Functional programming uses higher order functions more than inheritance, but the principle holds.
-
-LSP - Abiding by some interface contract is just as good in functional programming as in object oriented. If a sort function takes a comparator, then you would expect the '0 is equals, less than provides negative results, greater than positive results' behavior.
-
-ISP - Most functional languages still have structs. Specifying the smallest set of data required by a function is still good practice. Requiring the least specific interface to the data (why use Lists of ints when Enumerations of T work just as well?) is still good practice.
-
-DIP - Specifying parameters to a function (or a higher order function to retrieve them) rather than hard coding the function to go get some value is just as good in functional programming as in object oriented.
 
 ## JavaScript Conventions
 
@@ -259,7 +245,7 @@ Its possible to write variant based component using Class Variant Authority [cva
 
 The services directory contains vanillajs pure functions that interact with external apis. They encasulate logic for https, websocket and api queries.
 
-## Turborepo Useful Links
+## Turborepo
 
 Learn more about the power of Turborepo:
 
