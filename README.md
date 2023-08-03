@@ -32,29 +32,28 @@ _ This is a work in progress._
 
 - Hardhat [hardhat.org](https://hardhat.org/)
 - Ethers [docs.ethers.io](https://docs.ethers.io/v5)
+- Rainbow Kit [rainbowkit.com](https://www.rainbowkit.com)
 
 ### Solana
 
 - Solana Web3 [solana-labs/solana-web3.js](https://github.com/solana-labs/solana-web3.js)
 - TweetNaCl.js [dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js)
 - Metaplex [metaplex.com](https://metaplex.com)
+- Phantom & Backpack
 
 ### Antelope
 
 - Wharfkit [wharfkit/antelope](https://github.com/wharfkit/antelope)
+- Anchor
 
 ### Flow
 
 - Niftory [niftory.com](https://niftory.com/)
 
-### Shared
+### Decentralized Storage
 
-- Turbo Monorepo [turbo.build](https://turbo.build/repo/docs/handbook)
-- pnpm [pnpm.io](https://pnpm.io/)
-- Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
-- Lodash tools [lodash.com/docs](https://lodash.com/docs)
-- Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
-- Date-fns [date-fns.org](https://date-fns.org/)
+- Bundlr Network [bundlr.network](https://bundlr.network)
+- Pinata Cloud [pinata.cloud](https://www.pinata.cloud)
 
 ### Frontend
 
@@ -76,8 +75,17 @@ _ This is a work in progress._
 - Nexus GraphQL [nexusjs.org](https://nexusjs.org/)
 - Docker [docker.com](https://www.docker.com/)
 
-### Other Useful Libs
+### Dev Tools
 
+- Turbo Monorepo [turbo.build](https://turbo.build/repo/docs/handbook)
+- pnpm [pnpm.io](https://pnpm.io/)
+
+### Polymorphic Packages
+
+- Decimal.js [MikeMcl/decimal.js](https://github.com/MikeMcl/decimal.js)
+- Lodash tools [lodash.com/docs](https://lodash.com/docs)
+- Zod validator [colinhacks/zod](https://github.com/colinhacks/zod)
+- Date-fns [date-fns.org](https://date-fns.org/)
 - Faker [fakerjs.dev](https://fakerjs.dev/): Generate massive amounts of fake data in the browser and node.js
 - Currency.js [scurker/currency.js](https://github.com/scurker/currency.js): A small, lightweight javascript library for working with currency values.
 
